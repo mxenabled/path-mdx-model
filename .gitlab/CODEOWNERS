@@ -1,0 +1,5 @@
+[MODELS]
+/models/src/main/java/com/mx/models/ @Ryan.Jones @Mitchell.Williams @matthew.nichols
+
+[ACCESSORS]
+/models/src/main/java/com/mx/accessors/ @Ryan.Jones @Mitchell.Williams @matthew.nichols

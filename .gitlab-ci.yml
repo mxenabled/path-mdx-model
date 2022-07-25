@@ -1,0 +1,88 @@
+image: java:8
+
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+stages:
+  - scan
+  - package
+  - publish
+
+cache:
+  paths:
+    - .gradle/wrapper
+    - .gradle/caches
+
+scan:
+  image: java:8
+  stage: scan
+  script:
+    - 'if ./gradlew -m hushReport ; then'
+    -   'echo "Skipping dependency check task -- Hush is configured"'
+    -   'exit 0'
+    - 'fi'
+    - "./gradlew dependencyCheckAnalyze --info"
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - build/reports/dependency-check-report.html
+      - .dependency-check-data/**
+  except:
+    - tags
+
+vogue:
+  image: java:8
+  stage: scan
+  script:
+    - if ./gradlew -m vogueReport ; then ./gradlew vogueReport ; else echo 'Vogue plugin not configured. Skipping.' ; fi
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - build/dependencyUpdates/report.json
+  except:
+    refs:
+      - master
+      - tags
+      - sand
+      - qa
+      - int
+      - corp
+      - prod
+
+hush:
+  image: java:8
+  stage: scan
+  script:
+    - if ./gradlew -m hushReport ; then ./gradlew hushReport ; else echo 'Hush plugin not configured. Skipping.' ; fi
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - build/reports/hush/report.json
+  except:
+    refs:
+      - master
+      - tags
+      - sand
+      - qa
+      - int
+      - corp
+      - prod
+
+build:
+  stage: package
+  script:
+    - ./gradlew clean build
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - build/generated/**
+      - build/libs/*.jar
+
+publish:
+  stage: publish
+  dependencies:
+    - build
+  script:
+    - ./gradlew artifactoryPublish
+  only:
+    - tags
