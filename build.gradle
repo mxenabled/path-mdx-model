@@ -8,7 +8,7 @@ plugins {
   id "io.freefair.lombok" version "6.4.3" apply false
 }
 
-version "18.0.0.3.pre"
+version "18.0.0.5.pre"
 
 allprojects {
   group "com.mx.path.sdk"
@@ -29,7 +29,7 @@ allprojects {
 
 subprojects {
   ext {
-    pathSDKVersion = "18.0.0.3.pre"
+    pathSDKVersion = "18.0.0.5.pre"
   }
 }
 

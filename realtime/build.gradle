@@ -8,7 +8,5 @@ coppuccino {
 }
 
 dependencies {
-  // We have to import Gateway so that we can use Request & Response. When these classes are moved to their own
-  // library we should remove this dependency.
   implementation project(":mdx-models")
 }

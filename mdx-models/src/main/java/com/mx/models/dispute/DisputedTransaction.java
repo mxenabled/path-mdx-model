@@ -1,9 +1,9 @@
 package com.mx.models.dispute;
 
+import javax.xml.bind.annotation.XmlElement;
+
 import com.mx.models.MdxBase;
 import com.mx.models.UserIdProvider;
-
-import jakarta.xml.bind.annotation.XmlElement;
 
 /**
  * Represents an MDX disputed transaction. XmlElements assigned so that it can be demarshalled from MDXv5 XML.
