@@ -4,4 +4,8 @@
         <notes>https://gitlab.mx.com/mx/money-experiences/path/path-issues/-/issues/804</notes>
         <cve>CVE-2020-36518</cve>
     </suppress>
+    <suppress>
+        <notes>https://gitlab.mx.com/mx/money-experiences/path/path-issues/-/issues/1057</notes>
+        <cve>CVE-2022-38752</cve>
+    </suppress>
 </suppressions>

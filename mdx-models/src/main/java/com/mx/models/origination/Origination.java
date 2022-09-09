@@ -15,8 +15,9 @@ public class Origination extends MdxBase<Origination> {
   private String id;
   private List<Challenge> challenges;
   private Integer currentStep;
+  private Boolean displaySteps = true;
+  private String loginToken;
   private String stepTitle;
   private Integer totalSteps;
-  private Boolean displaySteps = true;
 
 }
