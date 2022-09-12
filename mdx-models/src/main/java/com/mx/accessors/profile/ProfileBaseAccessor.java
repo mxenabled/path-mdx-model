@@ -122,6 +122,7 @@ public class ProfileBaseAccessor extends Accessor {
    */
   @GatewayAPI
   @API(description = "Update user's profile")
+  @Deprecated
   public AccessorResponse<Profile> update(Profile profile) {
     throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
   }
