@@ -1,0 +1,167 @@
+MXpath DEVELOPMENT LICENSE AGREEMENT
+Effective Date: first date you select “I Agree” or use the MXpath Code
+Last Updated: August 26, 2022
+
+The MXpath Code (defined below) is licensed to you subject to the terms and conditions below which
+form a binding agreement between you and MX. By selecting “I Agree”, or by downloading,
+installing, or making use of any portion of the MXpath Code, you are agreeing to the
+following terms and conditions. If you do not agree to the terms and conditions below, do not
+use the MXpath Code. If you agree to be bound by this agreement on behalf of your employer or
+other entity, you must have the legal authority to do so. If you are not authorized to so bind your employer
+or such entity, do not select “I Agree” to accept this agreement and do not use the MXpath Code.
+
+AGREED TERMS AND CONDITIONS
+
+1. DEFINITIONS
+ 1.1 “MX” means MX Technologies, Inc., a company incorporated in Delaware, U.S.A., having a place of
+business at 3401 N Thanksgiving Way, Suite 500, Lehi, Utah 84043.
+ 1.2 “MXpath Code” means the code and all associated materials licensed to you by MX as part of
+the MXmoible Development License Agreement.
+ 1.3 “MX Product(s)” means software applications, programs, SDKs, products, services, and other
+technologies not included in or directly with the MXpath Code which are or may be made
+available by MX. This agreement does not govern use of MX Products and such MX products are
+not licensed hereunder. See the master services agreement that your company signed with MX for
+terms governing its use.
+ 1.4 “Intellectual Property Rights” means copyright, moral rights, trademark, trade dress,
+patent, trade secret, unfair competition, and any other intellectual and proprietary rights.
+
+2. LICENSES GRANTED TO YOU
+ 2.1 MXpath Code. Subject to your compliance with terms of this agreement, MX grants to you a
+non-exclusive, non-sublicensable, non-transferable license to install and use the MXpath Code
+solely to support your development of MXpath extensions and customizations, as specifically
+requested by MX.
+
+3. SCOPE OF LICENSE; LIMITATIONS AND RESTRICTIONS
+ 3.1 You may not distribute the MXpath Code or any of its component parts to interoperate with or to
+run on a platform other than the MX-approved platform.
+ 3.2 You may not modify, port, adapt, creative derivate works, redistribute, or translate any portion of
+this MXpath Code; or add or delete any MXpath Code program files that would in any way
+result in modifying the functionality or appearance of any element of the MX Products, except as
+specifically requested by MX.
+ 3.4 You may not reverse engineer, decompile, disassemble, or otherwise attempt to discover the
+source code of any portion of the MXpath Code, except and only to the extent that applicable
+laws of the jurisdiction where you are located grant you the right to decompile MXpath Code in
+order to obtain information necessary to render the MXpath Code interoperable with other
+software; in which case you must first request the information from MX in writing and MX may, in
+its discretion, either provide such information to you or impose reasonable conditions, including
+reasonable fees, on your use of the mobile Code software to ensure that MX’s and its licensors’
+Intellectual Proprietary Rights in the MXpath Code are protected.
+ 3.5 You may not unbundle, repackage, distribute, rent, lease, offer, sell, resale, sublicense, assign or
+transfer all, or any component parts of the MXpath Code, or any of your rights in the MXpath
+Code, nor authorize any portion of the MXpath Code to be copied onto another’s device,
+computer or platform, including on a service bureau basis to other providers (i.e., volume printing,
+banking, payroll service providers, etc.) who provide you free or fee-based business services.
+
+4. VIRAL OPEN SOURCE SOFTWARE AND SERVICES
+You are not licensed to (and you agree that you will not) merge, integrate, or use the MXpath Code
+with any Viral Open Source Software or Viral Service, or otherwise take any action that could require
+disclosure, distribution, or licensing of all or any part of the MXpath Code in source code form for any
+purpose whatsoever. For purposes of this Agreement, “Viral Open Source Software” means
+software licensed under the GNU General Public License, the GNU Affero General Public License (AGPL),
+or any other license terms that would require, or condition your use, modification, or distribution of
+such licensed software on the disclosure, distribution, or licensing of any other software in source code
+form, for the purpose of making derivative works, or at no charge, and “Viral Service” means any
+service that contains any viruses, Trojan horses, worms, time bombs, cancelbots, or other computer
+programming routines that are intended to damage, detrimentally interfere with, surreptitiously
+intercept, expropriate, or deprive owners’ possession of any system, data or personal information, or
+that in any way violates any law, statute, ordinance, regulation, or rights (including any law,
+regulations, or rights respecting intellectual property, computer spyware, privacy, export control, unfair
+competition, antidiscrimination, or false advertising), or otherwise interferes with the operability of MX
+Products or third-party programs or software.
+
+5. NON-BLOCKING OF MX DEVELOPMENT
+Nothing in this agreement will impair, limit, or curtail MX’s right to continue with its development,
+maintenance, or distribution of MX Products. You agree that you will not assert in any way any patent
+owned by you arising out of or in connection with your use of the MXpath Code, or any MXpath
+Codemodifications made by you, against MX, its customers, subsidiaries, or affiliates, or any of their
+customers, direct or indirect, agents and contractors for the manufacture, use, import, license, offer for
+sale, or sale of any MX Products.
+
+6. OWNERSHIP; INTELLECTUAL PROPERTY RIGHTS
+ 6.1 The items contained in the MXpath Code are the Intellectual Property of MX and its licensors and
+are protected by United States copyright and patent law, international treaty provisions, and
+applicable laws of the country in which it is being used. MX and its licensors reserve all rights not
+expressly granted to you under this agreement, and retain all right, title, and interest in the
+MXpath Code, including all Intellectual Property Rights.
+ 6.2 The MXpath Code, or any of its component parts, may be supplied to you with certain
+accompanying proprietary notices, including patent, copyright, and trademark notices. You agree
+to protect all copyright and other ownership interests of MX and its licensors in the MXpath Code
+supplied to you under this agreement; to preserve exactly (and not remove or alter) all proprietary
+notices displayed in or on the MXpath Code; to reproduce the same proprietary notices in all
+copies you make of any portion of the MXpath Code.
+ 6.3 Nothing in this agreement gives you a right to use the name, logo, or trademarks of MX or its
+licensors to market your products.
+
+7. CONFIDENTIAL INFORMATION
+With respect to the API, and any portion included in the MXpath Code (for purposes of this Section,
+“MX Confidential Information”), you will treat the MX Confidential Information, and exercise the
+same degree of care to protect it, as you afford to your own confidential information. Your obligations
+under this Section will terminate when you can document that (a) the MX Confidential Information was
+in the public domain at or subsequent to the time MX communicated or provided it to you with no fault
+of your own; (b) your employees or agents developed independently without reference to any MX
+Confidential Information MX communicated or provided to you; or (c) your communication of MX
+Confidential Information was in response to a valid order by a court or other governmental body, was
+otherwise required by law, or was necessary to establish the rights of a party under this agreement.
+
+8. TERM; TERMINATION
+This agreement will commence on the Effective Date and will continue unless terminated. MX may
+terminate this agreement immediately upon notice to you, and without judicial intervention, if you fail
+to comply with any term of this agreement. You may terminate this agreement at any time by
+discontinuing all your use(s) of the MXpath Code and you agree to destroying or removing all full and
+partial copies of the MXpath Code from your computer and any and all websites or mobile
+applications where you may have installed the MXpath Code. If requested by MX, you must
+demonstrate proof of your compliance with the terms of this Section. In the event of termination, the
+terms of this agreement that, by their nature, are meant to survive termination, including all terms
+relating to Viral Open Source Software and services, ownership, confidential information, indemnity
+obligations and procedures, disclaimers of warranty, limitations on and exclusions of remedies and
+damages, dispute resolution, and waiver, will survive termination of this agreement.
+
+9. DISCLAIMER OF WARRANTY; LIMITATION OF LIABILITY
+You expressly understand and agree that, to the maximum extent permitted by applicable law:
+ 9.1 Use OF THE MXpath Code is entirely at your own risk. The MXpath Code is provided
+by MX “AS-IS” and with all faults. MX and its licensors are not liable to you or anyone
+else for any special, incidental, indirect, consequential, or punitive damages
+whatsoever (even if MX has been advised of the possibility of such damages), including
+(a) damages resulting from loss of use, data, or profits, whether or not foreseeable, (b)
+damages based on any theory of liability, including breach of contract or warranty,
+negligence or other tortious action, or (c) damages arising from any other claim arising
+out of or in connection with your use of the MXpath Code.
+ 9.2 MX’s total liability in any matter arising out of or related to these terms is limited to US
+$100. This limitation will apply even if MX has been advised of the possibility of such
+damages and regardless of any failure of the essential purpose of any limited remedy.
+
+10. INDEMNIFICATION
+To the maximum extent permitted by law, you agree to indemnify MX, its subsidiaries, affiliates,
+officers, agents, employees, partners, licensors, or suppliers from any claim or demand, including
+reasonable attorneys’ fees, that arise from your use of the MXpath Code, or from your violation of
+the terms of this agreement.
+
+11. DISPUTE RESOLUTION
+ 11.1 Governing Law. This Agreement and any disputes arising out of or related hereto will be
+governed by and construed in accordance with the laws of the State of Utah, without giving effect
+to its conflicts of law rules, the United Nations Convention of the International Sale of Goods, or the
+Uniform Computer Information Transactions Act.
+ 11.2 Venue; Waiver of Jury Trial. The state and Federal courts located in Salt Lake County,
+Utah or Utah County, Utah will have exclusive jurisdiction to adjudicate any dispute arising out of
+or related to this Agreement. Each Party hereby consents to the exclusive jurisdiction of such
+courts and waives any objection it might otherwise have to venue, personal jurisdiction,
+inconvenience of forum, and any similar or related doctrine. Each party also hereby waives any
+right to a jury trial in connection with any action or litigation in any way arising out of or related to
+this Agreement.
+ 11.3 Injunctive Relief. Notwithstanding the foregoing, in the event of your or others’ unauthorized
+access to or use of the MXpath Code in violation of this Agreement, you agree that MX is entitled
+to apply for injunctive remedies (or an equivalent type of urgent legal relief) in any jurisdiction.
+
+12. EXPORT RULES
+The MXpath Code and your use of the MXpath Code are subject to U.S. and international laws,
+restrictions, and regulations that may govern the import, export, and use of the MXpath Code. You
+agree to comply with all such laws, restrictions, and regulations.
+
+14. GENERAL PROVISIONS
+ 14.1 Severability. If it turns out that a particular term is not enforceable, the unenforceability of that
+term will not affect any other terms.
+ 14.2 Modification; Waiver. No provision of this agreement will be deemed to have been modified or
+waived by any act or acquiescence on the part of MX, its agents, or employees, except only by any
+instrument in writing, signed by an authorized officer of MX.
+ 14.4 Entire Agreement. This Agreement is the entire agreement, superseding any prior written or
+oral agreements, between you and MX relating to the MXpath Code.
