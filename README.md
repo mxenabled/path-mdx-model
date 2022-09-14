@@ -1,3 +1,5 @@
+[![Release](https://jitpack.io/v/mxenabled/path-mdx-model.svg)](https://jitpack.io/p/mxenabled/path-mdx-model)
+
 # Path - MDX Model
 
 This repository contains 4 projects:
