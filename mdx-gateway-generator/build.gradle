@@ -3,5 +3,5 @@ jar.archiveBaseName = "mdx-gateway-generator"
 
 dependencies {
   api project(":mdx-models")
-  api "com.mx.path.api.gateway:gateway-generator:${project.property('pathSDKVersion')}"
+  api "com.github.mxenabled.path-sdk:gateway-generator:${project.property('pathSDKVersion')}"
 }
