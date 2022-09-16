@@ -6,6 +6,7 @@ import com.mx.models.MdxList;
  * We need to have a special class to wrap lists because Jackson will wrap all arrays, regardless of configuration
  * options provided. Lame.
  */
+@Deprecated
 public class MdxListWrapper {
   private final MdxList<?> list;
   private final String wrapperName;

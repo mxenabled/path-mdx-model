@@ -11,6 +11,7 @@ import com.mx.models.account.AccountNumbers;
 import com.mx.models.account.AccountOwner;
 import com.mx.models.account.AccountOwnerDetails;
 import com.mx.models.account.AccountTransactions;
+import com.mx.models.account.OnDemandAccounts;
 import com.mx.models.account.Transaction;
 import com.mx.models.account.TransactionsPage;
 import com.mx.models.ach_transfer.AchAccount;
@@ -48,6 +49,7 @@ import com.mx.models.ondemand.mixins.AccountOwnerXmlMixin;
 import com.mx.models.ondemand.mixins.AccountTransactionsMixIn;
 import com.mx.models.ondemand.mixins.AccountXmlMixin;
 import com.mx.models.ondemand.mixins.MixinDefinition;
+import com.mx.models.ondemand.mixins.OnDemandAccountsXmlMixin;
 import com.mx.models.ondemand.mixins.SessionXmlMixin;
 import com.mx.models.ondemand.mixins.TransactionMixIn;
 import com.mx.models.ondemand.mixins.TransactionsPageMixin;
@@ -265,6 +267,10 @@ public class Resources {
     module.addSerializer(AccountOwner.class, new MdxOnDemandSerializer<>(
         new MixinDefinition(AccountOwner.class, AccountOwnerXmlMixin.class),
         new MixinDefinition(AccountOwnerDetails.class, AccountOwnerDetailsXmlMixin.class)));
+
+    module.addSerializer(OnDemandAccounts.class, new MdxOnDemandSerializer<>(
+        new MixinDefinition(OnDemandAccounts.class, OnDemandAccountsXmlMixin.class),
+        new MixinDefinition(Account.class, AccountXmlMixin.class)));
   }
 
   private static void registerProfileModelClasses(GsonBuilder builder) {
