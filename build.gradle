@@ -26,7 +26,7 @@ allprojects {
 
 subprojects {
   ext {
-    pathSDKVersion = "0.+"
+    pathSDKVersion = "v1-SNAPSHOT"
   }
 }
 
