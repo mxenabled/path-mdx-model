@@ -13,6 +13,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import com.mx.common.models.MdxWrappable;
 
 public class MdxWrappableSerializer implements JsonDeserializer<MdxWrappable<?>>, JsonSerializer<MdxWrappable<?>> {
   private Gson gson;

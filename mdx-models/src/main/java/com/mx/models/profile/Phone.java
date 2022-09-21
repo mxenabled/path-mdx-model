@@ -3,7 +3,7 @@ package com.mx.models.profile;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 import com.mx.models.challenges.Challenge;
 
 public final class Phone extends MdxBase<Phone> {

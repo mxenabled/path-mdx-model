@@ -1,6 +1,6 @@
 package com.mx.models.authorization;
 
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 public class Authorization extends MdxBase<Authorization> {
 

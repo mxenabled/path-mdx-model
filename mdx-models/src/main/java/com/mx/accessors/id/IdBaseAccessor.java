@@ -1,11 +1,10 @@
 package com.mx.accessors.id;
 
-import com.mx.accessors.API;
-import com.mx.accessors.Accessor;
-import com.mx.accessors.AccessorConfiguration;
-import com.mx.accessors.AccessorException;
-import com.mx.accessors.AccessorResponse;
-import com.mx.accessors.AccessorResponseStatus;
+import com.mx.common.accessors.API;
+import com.mx.common.accessors.Accessor;
+import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.common.accessors.AccessorMethodNotImplementedException;
+import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.gateway.GatewayAPI;
 import com.mx.common.gateway.GatewayClass;
 import com.mx.models.authorization.HtmlPage;
@@ -34,7 +33,7 @@ public abstract class IdBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "start Authentication process by sending if login should be webview or normal login")
   public AccessorResponse<Authentication> startAuthentication(Authentication authentication) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -45,7 +44,7 @@ public abstract class IdBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Authenticate user")
   public AccessorResponse<Authentication> authenticate(Authentication authentication) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -56,7 +55,7 @@ public abstract class IdBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Authenticate user with user key")
   public AccessorResponse<Authentication> authenticateWithUserKey(Authentication authentication) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -65,7 +64,7 @@ public abstract class IdBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Terminate the session")
   public AccessorResponse<Void> logout(String sessionId) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -76,7 +75,7 @@ public abstract class IdBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Respond to MFA questions")
   public AccessorResponse<Authentication> resumeMFA(Authentication authentication) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -87,7 +86,7 @@ public abstract class IdBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "An HTML responder used to handle non-standard webview requirements.")
   public AccessorResponse<HtmlPage> callback(String token) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -97,7 +96,7 @@ public abstract class IdBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Forgot Username")
   public AccessorResponse<ForgotUsername> forgotUsername() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -108,7 +107,7 @@ public abstract class IdBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Answer Forgot Username")
   public AccessorResponse<ForgotUsername> answerForgotUsername(ForgotUsername forgotUsername) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -118,7 +117,7 @@ public abstract class IdBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Reset Password")
   public AccessorResponse<ResetPassword> resetPassword() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -129,6 +128,6 @@ public abstract class IdBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Answer Reset Password")
   public AccessorResponse<ResetPassword> answerResetPassword(ResetPassword resetPassword) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 }

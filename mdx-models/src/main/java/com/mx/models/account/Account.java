@@ -6,8 +6,8 @@ import java.time.LocalDate;
 import javax.xml.bind.annotation.XmlElement;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.models.Internal;
-import com.mx.models.MdxBase;
+import com.mx.common.models.Internal;
+import com.mx.common.models.MdxBase;
 import com.mx.models.UserIdProvider;
 
 @SuppressWarnings("PMD.CyclomaticComplexity")

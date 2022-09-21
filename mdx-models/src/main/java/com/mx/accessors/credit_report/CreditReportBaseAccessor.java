@@ -3,15 +3,14 @@ package com.mx.accessors.credit_report;
 import lombok.AccessLevel;
 import lombok.Getter;
 
-import com.mx.accessors.API;
-import com.mx.accessors.Accessor;
-import com.mx.accessors.AccessorConfiguration;
-import com.mx.accessors.AccessorException;
-import com.mx.accessors.AccessorResponse;
-import com.mx.accessors.AccessorResponseStatus;
+import com.mx.common.accessors.API;
+import com.mx.common.accessors.Accessor;
+import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.common.accessors.AccessorMethodNotImplementedException;
+import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.gateway.GatewayAPI;
 import com.mx.common.gateway.GatewayClass;
-import com.mx.models.MdxList;
+import com.mx.common.models.MdxList;
 import com.mx.models.credit_report.CreditReport;
 import com.mx.models.credit_report.CreditReportSettings;
 
@@ -44,7 +43,7 @@ public abstract class CreditReportBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Get a credit report")
   public AccessorResponse<CreditReport> get(String reportId) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -54,7 +53,7 @@ public abstract class CreditReportBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "List credit reports")
   public AccessorResponse<MdxList<CreditReport>> list() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -75,7 +74,7 @@ public abstract class CreditReportBaseAccessor extends Accessor {
       return scoreFactors;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -88,7 +87,7 @@ public abstract class CreditReportBaseAccessor extends Accessor {
       return settings;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -106,7 +105,7 @@ public abstract class CreditReportBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Subscribe to credit reporting")
   public AccessorResponse<CreditReportSettings> subscribe() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -116,7 +115,7 @@ public abstract class CreditReportBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Unsubscribe from credit reporting")
   public AccessorResponse<CreditReportSettings> unsubscribe() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
 }

@@ -2,7 +2,7 @@ package com.mx.models.documents;
 
 import java.time.LocalDate;
 
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 import com.mx.models.UserIdProvider;
 
 /*

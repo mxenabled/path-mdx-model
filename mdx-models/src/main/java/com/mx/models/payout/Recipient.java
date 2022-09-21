@@ -1,7 +1,7 @@
 package com.mx.models.payout;
 
-import com.mx.models.MdxBase;
-import com.mx.models.MdxList;
+import com.mx.common.models.MdxBase;
+import com.mx.common.models.MdxList;
 import com.mx.models.UserIdProvider;
 
 public final class Recipient extends MdxBase<Recipient> {

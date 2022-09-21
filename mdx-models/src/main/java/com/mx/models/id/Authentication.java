@@ -3,7 +3,7 @@ package com.mx.models.id;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 public class Authentication extends MdxBase<Authentication> {
 

@@ -1,7 +1,7 @@
 package com.mx.models.challenges;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 public final class Action extends MdxBase<Action> {
   private String id;

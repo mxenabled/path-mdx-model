@@ -2,10 +2,10 @@ package com.mx.testing;
 
 import lombok.Setter;
 
-import com.mx.accessors.AccessorConfiguration;
 import com.mx.accessors.BaseAccessor;
 import com.mx.accessors.account.AccountBaseAccessor;
 import com.mx.accessors.id.IdBaseAccessor;
+import com.mx.common.accessors.AccessorConfiguration;
 
 public class BaseAccessorImpl extends BaseAccessor {
 

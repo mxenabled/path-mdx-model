@@ -7,7 +7,7 @@ plugins {
   id "io.freefair.lombok" version "6.5.1" apply false
 }
 
-version "0.1.0"
+version "1.0.0-rc.5"
 
 allprojects {
   group "com.github.mxenabled.path-mdx-model"
@@ -35,7 +35,7 @@ subprojects {
   apply plugin: "io.freefair.lombok"
 
   ext {
-    pathSDKVersion = "0.+"
+    pathSDKVersion = "1.+"
   }
 
   dependencies {

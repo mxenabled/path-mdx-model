@@ -18,6 +18,11 @@ import com.mx.accessors.payout.PayoutBaseAccessor;
 import com.mx.accessors.profile.ProfileBaseAccessor;
 import com.mx.accessors.remote_deposit.RemoteDepositBaseAccessor;
 import com.mx.accessors.transfer.TransferBaseAccessor;
+import com.mx.common.accessors.API;
+import com.mx.common.accessors.Accessor;
+import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.common.accessors.AccessorMethodNotImplementedException;
+import com.mx.common.accessors.RootAccessor;
 import com.mx.common.gateway.GatewayAPI;
 
 /**
@@ -105,7 +110,7 @@ public abstract class BaseAccessor extends Accessor {
       return achTransfers;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -126,7 +131,7 @@ public abstract class BaseAccessor extends Accessor {
       return accounts;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -147,7 +152,7 @@ public abstract class BaseAccessor extends Accessor {
       return authorizations;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -168,7 +173,7 @@ public abstract class BaseAccessor extends Accessor {
       return creditReports;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -189,7 +194,7 @@ public abstract class BaseAccessor extends Accessor {
       return documents;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -210,7 +215,7 @@ public abstract class BaseAccessor extends Accessor {
       return id;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -231,7 +236,7 @@ public abstract class BaseAccessor extends Accessor {
       return locations;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -252,7 +257,7 @@ public abstract class BaseAccessor extends Accessor {
       return managedCards;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -273,7 +278,7 @@ public abstract class BaseAccessor extends Accessor {
       return originations;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -294,7 +299,7 @@ public abstract class BaseAccessor extends Accessor {
       return payments;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -315,7 +320,7 @@ public abstract class BaseAccessor extends Accessor {
       return payouts;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -336,7 +341,7 @@ public abstract class BaseAccessor extends Accessor {
       return profiles;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -378,7 +383,7 @@ public abstract class BaseAccessor extends Accessor {
       return remoteDeposits;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -399,7 +404,7 @@ public abstract class BaseAccessor extends Accessor {
       return transfers;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -420,7 +425,7 @@ public abstract class BaseAccessor extends Accessor {
       return crossAccount;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**

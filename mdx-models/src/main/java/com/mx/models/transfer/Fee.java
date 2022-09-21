@@ -2,7 +2,7 @@ package com.mx.models.transfer;
 
 import lombok.Data;
 
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 @Data
 public final class Fee extends MdxBase<Fee> {

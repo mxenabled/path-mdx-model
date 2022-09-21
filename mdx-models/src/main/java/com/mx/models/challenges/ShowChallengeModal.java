@@ -1,6 +1,6 @@
 package com.mx.models.challenges;
 
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 public final class ShowChallengeModal extends MdxBase<ShowChallengeModal> {
   private Challenge challenge;

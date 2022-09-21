@@ -1,7 +1,7 @@
 package com.mx.models.profile;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 public final class Address extends MdxBase<Address> {
   @SerializedName("address_line_one")

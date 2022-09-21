@@ -1,6 +1,6 @@
 package com.mx.models.id;
 
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 public class MfaChallengeOption extends MdxBase<MfaChallengeOption> {
   private String id;
