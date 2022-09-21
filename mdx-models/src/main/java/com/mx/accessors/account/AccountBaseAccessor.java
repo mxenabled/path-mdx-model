@@ -3,15 +3,14 @@ package com.mx.accessors.account;
 import lombok.AccessLevel;
 import lombok.Getter;
 
-import com.mx.accessors.API;
-import com.mx.accessors.Accessor;
-import com.mx.accessors.AccessorConfiguration;
-import com.mx.accessors.AccessorException;
-import com.mx.accessors.AccessorResponse;
-import com.mx.accessors.AccessorResponseStatus;
+import com.mx.common.accessors.API;
+import com.mx.common.accessors.Accessor;
+import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.common.accessors.AccessorMethodNotImplementedException;
+import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.gateway.GatewayAPI;
 import com.mx.common.gateway.GatewayClass;
-import com.mx.models.MdxList;
+import com.mx.common.models.MdxList;
 import com.mx.models.account.Account;
 
 /**
@@ -51,7 +50,7 @@ public abstract class AccountBaseAccessor extends Accessor {
       return accountNumbers;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -64,7 +63,7 @@ public abstract class AccountBaseAccessor extends Accessor {
       return accountOwners;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -77,7 +76,7 @@ public abstract class AccountBaseAccessor extends Accessor {
       return transactions;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -90,7 +89,7 @@ public abstract class AccountBaseAccessor extends Accessor {
       return repayments;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -132,7 +131,7 @@ public abstract class AccountBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Get all user's account")
   public AccessorResponse<MdxList<Account>> list() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -143,7 +142,7 @@ public abstract class AccountBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Create account")
   public AccessorResponse<Account> create(Account account) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -154,7 +153,7 @@ public abstract class AccountBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Delete account")
   public AccessorResponse<Account> delete(String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -165,7 +164,7 @@ public abstract class AccountBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Get an account by id")
   public AccessorResponse<Account> get(String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -176,6 +175,6 @@ public abstract class AccountBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Update given account")
   public AccessorResponse<Account> update(String id, Account account) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 }

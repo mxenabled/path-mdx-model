@@ -2,6 +2,7 @@ package com.mx.models;
 
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
+import com.mx.common.models.Internal;
 
 public class ExcludeInternalFields implements ExclusionStrategy {
   @Override

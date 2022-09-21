@@ -3,7 +3,7 @@ package com.mx.models.remote_deposit;
 import java.time.LocalDate;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 import com.mx.models.MdxRelationId;
 import com.mx.models.UserIdProvider;
 import com.mx.models.account.Account;

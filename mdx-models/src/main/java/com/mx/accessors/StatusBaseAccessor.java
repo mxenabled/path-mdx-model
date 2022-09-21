@@ -1,20 +1,25 @@
 package com.mx.accessors;
 
+import com.mx.common.accessors.API;
+import com.mx.common.accessors.Accessor;
+import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.common.accessors.AccessorMethodNotImplementedException;
+import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.gateway.GatewayAPI;
 
 /**
  * Accessor base for upstream system status
  *
  * <p>
- * Returns {@link AccessorResponseStatus#NO_CONTENT} if all is well.
+ * Returns {@link PathResponseStatus#NO_CONTENT} if all is well.
  * </p>
  *
  * <p>
- * Returns {@link AccessorResponseStatus#SERVICE_UNAVAILABLE} if upstream system is unavailable
+ * Returns {@link PathResponseStatus#SERVICE_UNAVAILABLE} if upstream system is unavailable
  * </p>
  *
  * <p>
- * Returns {@link AccessorResponseStatus#GATEWAY_TIMEOUT} if upstream system not responsive or circuit breaker is open
+ * Returns {@link PathResponseStatus#GATEWAY_TIMEOUT} if upstream system not responsive or circuit breaker is open
  * </p>
  */
 @API(description = "Returns system status")
@@ -31,6 +36,6 @@ public abstract class StatusBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Get upstream system status")
   public AccessorResponse<Void> get() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 }

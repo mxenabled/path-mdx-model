@@ -3,15 +3,14 @@ package com.mx.accessors.profile;
 import lombok.AccessLevel;
 import lombok.Getter;
 
-import com.mx.accessors.API;
-import com.mx.accessors.Accessor;
-import com.mx.accessors.AccessorConfiguration;
-import com.mx.accessors.AccessorException;
-import com.mx.accessors.AccessorResponse;
-import com.mx.accessors.AccessorResponseStatus;
+import com.mx.common.accessors.API;
+import com.mx.common.accessors.Accessor;
+import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.common.accessors.AccessorMethodNotImplementedException;
+import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.gateway.GatewayAPI;
 import com.mx.common.gateway.GatewayClass;
-import com.mx.models.MdxList;
+import com.mx.common.models.MdxList;
 import com.mx.models.challenges.Challenge;
 import com.mx.models.profile.Password;
 import com.mx.models.profile.Profile;
@@ -52,7 +51,7 @@ public class ProfileBaseAccessor extends Accessor {
       return addresses;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -73,7 +72,7 @@ public class ProfileBaseAccessor extends Accessor {
       return emails;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -94,7 +93,7 @@ public class ProfileBaseAccessor extends Accessor {
       return phones;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -112,7 +111,7 @@ public class ProfileBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Get user's profile")
   public AccessorResponse<Profile> get() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -124,7 +123,7 @@ public class ProfileBaseAccessor extends Accessor {
   @API(description = "Update user's profile")
   @Deprecated
   public AccessorResponse<Profile> update(Profile profile) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -135,7 +134,7 @@ public class ProfileBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Update user's user name")
   public AccessorResponse<Void> updateUserName(UserName userName) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -146,7 +145,7 @@ public class ProfileBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Update user's password")
   public AccessorResponse<MdxList<Challenge>> updatePassword(Password password) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -158,7 +157,7 @@ public class ProfileBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Update user's password")
   public AccessorResponse<MdxList<Challenge>> updatePasswordResume(String challengeId, Challenge challenge) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
 }

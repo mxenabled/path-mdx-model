@@ -1,14 +1,13 @@
 package com.mx.accessors.cross_account_transfer;
 
-import com.mx.accessors.API;
-import com.mx.accessors.Accessor;
-import com.mx.accessors.AccessorConfiguration;
-import com.mx.accessors.AccessorException;
-import com.mx.accessors.AccessorResponse;
-import com.mx.accessors.AccessorResponseStatus;
+import com.mx.common.accessors.API;
+import com.mx.common.accessors.Accessor;
+import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.common.accessors.AccessorMethodNotImplementedException;
+import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.gateway.GatewayAPI;
 import com.mx.common.gateway.GatewayClass;
-import com.mx.models.MdxList;
+import com.mx.common.models.MdxList;
 import com.mx.models.cross_account_transfer.CrossAccountRecurringTransfer;
 
 /**
@@ -31,7 +30,7 @@ public class CrossAccountRecurringTransferBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Create a recurring cross account transfer")
   public AccessorResponse<CrossAccountRecurringTransfer> create(CrossAccountRecurringTransfer crossAccountRecurringTransfer) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -42,7 +41,7 @@ public class CrossAccountRecurringTransferBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "delete the recurring cross account transfer")
   public AccessorResponse<Void> delete(String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -53,7 +52,7 @@ public class CrossAccountRecurringTransferBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Get a recurring cross account transfer")
   public AccessorResponse<CrossAccountRecurringTransfer> get(String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -63,7 +62,7 @@ public class CrossAccountRecurringTransferBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "List all recurring cross account transfers")
   public AccessorResponse<MdxList<CrossAccountRecurringTransfer>> list() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -74,7 +73,7 @@ public class CrossAccountRecurringTransferBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Skip next occurrence of recurring cross account transfer")
   public AccessorResponse<CrossAccountRecurringTransfer> skipNext(String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -86,7 +85,7 @@ public class CrossAccountRecurringTransferBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Update recurring cross account transfer")
   public AccessorResponse<CrossAccountRecurringTransfer> update(String id, CrossAccountRecurringTransfer crossAccountRecurringTransfer) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
 }

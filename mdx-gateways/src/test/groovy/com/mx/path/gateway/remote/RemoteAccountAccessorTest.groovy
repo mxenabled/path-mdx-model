@@ -8,8 +8,8 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.mx.common.messaging.MessageError
 import com.mx.common.messaging.MessageStatus
+import com.mx.common.models.MdxList
 import com.mx.common.serialization.LocalDateDeserializer
-import com.mx.models.MdxList
 import com.mx.models.account.Account
 import com.mx.path.api.connect.messaging.MessageHeaders
 import com.mx.path.api.connect.messaging.MessageParameters

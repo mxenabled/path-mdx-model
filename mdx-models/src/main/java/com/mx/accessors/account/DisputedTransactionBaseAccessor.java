@@ -1,14 +1,13 @@
 package com.mx.accessors.account;
 
-import com.mx.accessors.API;
-import com.mx.accessors.Accessor;
-import com.mx.accessors.AccessorConfiguration;
-import com.mx.accessors.AccessorException;
-import com.mx.accessors.AccessorResponse;
-import com.mx.accessors.AccessorResponseStatus;
+import com.mx.common.accessors.API;
+import com.mx.common.accessors.Accessor;
+import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.common.accessors.AccessorMethodNotImplementedException;
+import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.gateway.GatewayAPI;
 import com.mx.common.gateway.GatewayClass;
-import com.mx.models.MdxList;
+import com.mx.common.models.MdxList;
 import com.mx.models.dispute.DisputedTransaction;
 
 /**
@@ -30,7 +29,7 @@ public abstract class DisputedTransactionBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Get all user's disputed transaction")
   public AccessorResponse<MdxList<DisputedTransaction>> list(String disputeId) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -42,7 +41,7 @@ public abstract class DisputedTransactionBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Create disputed transaction")
   public AccessorResponse<DisputedTransaction> create(String disputeId, DisputedTransaction disputedTransaction) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -54,7 +53,7 @@ public abstract class DisputedTransactionBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Delete disputed transaction")
   public AccessorResponse<Void> delete(String disputeId, String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -66,7 +65,7 @@ public abstract class DisputedTransactionBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Get a disputed transaction by id")
   public AccessorResponse<DisputedTransaction> get(String disputeId, String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -79,6 +78,6 @@ public abstract class DisputedTransactionBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Update given account")
   public AccessorResponse<DisputedTransaction> update(String disputeId, String id, DisputedTransaction disputedTransaction) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 }

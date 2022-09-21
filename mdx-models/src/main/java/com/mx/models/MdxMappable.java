@@ -2,6 +2,9 @@ package com.mx.models;
 
 import java.util.List;
 
+import com.mx.common.models.MdxBase;
+import com.mx.common.models.MdxList;
+
 public abstract class MdxMappable<T extends MdxBase<T>> {
   public abstract T map() throws MdxMappingException;
 

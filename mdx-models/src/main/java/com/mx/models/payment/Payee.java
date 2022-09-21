@@ -2,7 +2,7 @@ package com.mx.models.payment;
 
 import java.util.List;
 
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 import com.mx.models.UserIdProvider;
 import com.mx.models.challenges.Challenge;
 

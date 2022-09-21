@@ -3,15 +3,14 @@ package com.mx.accessors.payout;
 import lombok.AccessLevel;
 import lombok.Getter;
 
-import com.mx.accessors.API;
-import com.mx.accessors.Accessor;
-import com.mx.accessors.AccessorConfiguration;
-import com.mx.accessors.AccessorException;
-import com.mx.accessors.AccessorResponse;
-import com.mx.accessors.AccessorResponseStatus;
+import com.mx.common.accessors.API;
+import com.mx.common.accessors.Accessor;
+import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.common.accessors.AccessorMethodNotImplementedException;
+import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.gateway.GatewayAPI;
 import com.mx.common.gateway.GatewayClass;
-import com.mx.models.MdxList;
+import com.mx.common.models.MdxList;
 import com.mx.models.payout.Recipient;
 
 /**
@@ -37,7 +36,7 @@ public abstract class RecipientBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Create a recipient")
   public AccessorResponse<Recipient> create(Recipient recipient) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -48,7 +47,7 @@ public abstract class RecipientBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "List all recipients")
   public AccessorResponse<MdxList<Recipient>> list(boolean includePayoutMethods) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -59,7 +58,7 @@ public abstract class RecipientBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Get a recipient")
   public AccessorResponse<Recipient> get(String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -71,7 +70,7 @@ public abstract class RecipientBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Update a recipient")
   public AccessorResponse<Recipient> update(String id, Recipient recipient) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -82,7 +81,7 @@ public abstract class RecipientBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Delete a recipient")
   public AccessorResponse<Void> delete(String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -95,7 +94,7 @@ public abstract class RecipientBaseAccessor extends Accessor {
       return payoutMethods;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**

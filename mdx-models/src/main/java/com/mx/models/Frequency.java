@@ -1,5 +1,7 @@
 package com.mx.models;
 
+import com.mx.common.models.MdxBase;
+
 public final class Frequency extends MdxBase<Frequency> {
 
   private String description;

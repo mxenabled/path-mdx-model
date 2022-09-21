@@ -1,15 +1,14 @@
 package com.mx.accessors.payout;
 
-import com.mx.accessors.API;
-import com.mx.accessors.Accessor;
-import com.mx.accessors.AccessorConfiguration;
-import com.mx.accessors.AccessorException;
-import com.mx.accessors.AccessorResponse;
-import com.mx.accessors.AccessorResponseStatus;
+import com.mx.common.accessors.API;
+import com.mx.common.accessors.Accessor;
+import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.common.accessors.AccessorMethodNotImplementedException;
+import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.gateway.GatewayAPI;
 import com.mx.common.gateway.GatewayClass;
+import com.mx.common.models.MdxList;
 import com.mx.models.Frequency;
-import com.mx.models.MdxList;
 import com.mx.models.payout.RecurringPayout;
 
 /**
@@ -30,7 +29,7 @@ public class RecurringBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "List all recurring payout")
   public AccessorResponse<MdxList<RecurringPayout>> list() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -41,7 +40,7 @@ public class RecurringBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Create a recurring payout")
   public AccessorResponse<RecurringPayout> create(RecurringPayout recurringPayout) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -52,7 +51,7 @@ public class RecurringBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Get a recurring payout")
   public AccessorResponse<RecurringPayout> get(String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -64,7 +63,7 @@ public class RecurringBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Update a recurring payout")
   public AccessorResponse<RecurringPayout> update(String id, RecurringPayout recurringPayout) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -75,7 +74,7 @@ public class RecurringBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Cancel a recurring payout")
   public AccessorResponse<Void> cancel(String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -85,7 +84,7 @@ public class RecurringBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "List all recurring payout")
   public AccessorResponse<MdxList<Frequency>> frequencies() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -97,7 +96,7 @@ public class RecurringBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Skip next occurrence of recurring payout")
   public AccessorResponse<RecurringPayout> skipNext(String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
 }

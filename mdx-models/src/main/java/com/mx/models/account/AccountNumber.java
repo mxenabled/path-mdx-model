@@ -1,7 +1,7 @@
 package com.mx.models.account;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 public final class AccountNumber extends MdxBase<AccountNumber> {
   @SerializedName("account_number")

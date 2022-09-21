@@ -3,7 +3,7 @@ package com.mx.models.challenges;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 public final class Button extends MdxBase<Button> {
   private String type;

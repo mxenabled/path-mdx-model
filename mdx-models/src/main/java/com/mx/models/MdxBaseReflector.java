@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import com.mx.common.models.MdxBase;
 import com.mx.common.reflection.Annotations;
 
 /**

@@ -1,6 +1,6 @@
 package com.mx.path.gateway.configuration
 
-import com.mx.accessors.AccessorConfiguration
+import com.mx.common.accessors.AccessorConfiguration
 import com.mx.path.gateway.accessor.proxy.BaseAccessorProxyPrototype
 import com.mx.testing.BaseAccessorImpl
 

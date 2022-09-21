@@ -1,15 +1,14 @@
 package com.mx.accessors.transfer;
 
-import com.mx.accessors.API;
-import com.mx.accessors.Accessor;
-import com.mx.accessors.AccessorConfiguration;
-import com.mx.accessors.AccessorException;
-import com.mx.accessors.AccessorResponse;
-import com.mx.accessors.AccessorResponseStatus;
+import com.mx.common.accessors.API;
+import com.mx.common.accessors.Accessor;
+import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.common.accessors.AccessorMethodNotImplementedException;
+import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.gateway.GatewayAPI;
 import com.mx.common.gateway.GatewayClass;
+import com.mx.common.models.MdxList;
 import com.mx.common.remote.RemoteOperation;
-import com.mx.models.MdxList;
 import com.mx.models.transfer.Fee;
 import com.mx.models.transfer.options.FeeListOptions;
 
@@ -35,7 +34,7 @@ public abstract class FeeBaseAccessor extends Accessor {
   @API(description = "Get a transfer's fees")
   @RemoteOperation("listById")
   public AccessorResponse<MdxList<Fee>> list(String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -46,6 +45,6 @@ public abstract class FeeBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Get transfer fees based on options")
   public AccessorResponse<MdxList<Fee>> list(FeeListOptions options) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 }

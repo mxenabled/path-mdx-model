@@ -2,6 +2,8 @@ package com.mx.models;
 
 import java.util.function.Supplier;
 
+import com.mx.common.models.MdxBase;
+
 /**
  * User ID Provider
  *

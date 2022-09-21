@@ -3,8 +3,8 @@ package com.mx.models.managed_cards;
 import lombok.EqualsAndHashCode;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.models.Internal;
-import com.mx.models.MdxBase;
+import com.mx.common.models.Internal;
+import com.mx.common.models.MdxBase;
 import com.mx.models.UserIdProvider;
 import com.mx.models.challenges.Challenge;
 

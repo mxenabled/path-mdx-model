@@ -1,6 +1,6 @@
 package com.mx.models.payout;
 
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 import com.mx.models.UserIdProvider;
 
 public final class PayoutMethod extends MdxBase<PayoutMethod> {

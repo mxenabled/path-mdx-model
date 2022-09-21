@@ -1,6 +1,7 @@
 package com.mx.accessors
 
-
+import com.mx.common.accessors.Accessor
+import com.mx.common.accessors.AccessorConfiguration
 import com.mx.testing.BaseAccessorTestImplemented
 
 import spock.lang.Specification

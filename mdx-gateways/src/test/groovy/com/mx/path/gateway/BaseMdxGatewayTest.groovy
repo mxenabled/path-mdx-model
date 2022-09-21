@@ -3,9 +3,9 @@ package com.mx.path.gateway
 import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.verify
 
-import com.mx.accessors.AccessorConfiguration
-import com.mx.accessors.AccessorResponse
 import com.mx.accessors.BaseAccessor
+import com.mx.common.accessors.AccessorConfiguration
+import com.mx.common.accessors.AccessorResponse
 import com.mx.common.collections.ObjectMap
 import com.mx.models.account.Account
 import com.mx.path.gateway.api.account.AccountGateway

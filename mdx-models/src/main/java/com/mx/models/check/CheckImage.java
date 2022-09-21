@@ -1,7 +1,7 @@
 package com.mx.models.check;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 /**
  * | Name                  | Type   | Description |

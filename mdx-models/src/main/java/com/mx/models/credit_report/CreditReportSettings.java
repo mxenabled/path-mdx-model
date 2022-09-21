@@ -3,7 +3,7 @@ package com.mx.models.credit_report;
 import java.time.LocalDate;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 public final class CreditReportSettings extends MdxBase<CreditReportSettings> {
   @SerializedName("expected_schedule")

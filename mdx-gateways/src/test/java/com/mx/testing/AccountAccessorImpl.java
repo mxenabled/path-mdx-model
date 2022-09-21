@@ -2,9 +2,9 @@ package com.mx.testing;
 
 import lombok.Setter;
 
-import com.mx.accessors.AccessorConfiguration;
 import com.mx.accessors.account.AccountBaseAccessor;
 import com.mx.accessors.account.TransactionBaseAccessor;
+import com.mx.common.accessors.AccessorConfiguration;
 
 public class AccountAccessorImpl extends AccountBaseAccessor {
   @Setter
