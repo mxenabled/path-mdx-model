@@ -2,7 +2,7 @@ package com.mx.models.ondemand.mixins;
 
 import com.fasterxml.jackson.databind.introspect.AnnotatedMember;
 import com.fasterxml.jackson.dataformat.xml.JacksonXmlAnnotationIntrospector;
-import com.mx.models.Internal;
+import com.mx.common.models.Internal;
 
 /**
  * Skip rendering of Internal fields.

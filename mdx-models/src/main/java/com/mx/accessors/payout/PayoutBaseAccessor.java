@@ -3,15 +3,14 @@ package com.mx.accessors.payout;
 import lombok.AccessLevel;
 import lombok.Getter;
 
-import com.mx.accessors.API;
-import com.mx.accessors.Accessor;
-import com.mx.accessors.AccessorConfiguration;
-import com.mx.accessors.AccessorException;
-import com.mx.accessors.AccessorResponse;
-import com.mx.accessors.AccessorResponseStatus;
+import com.mx.common.accessors.API;
+import com.mx.common.accessors.Accessor;
+import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.common.accessors.AccessorMethodNotImplementedException;
+import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.gateway.GatewayAPI;
 import com.mx.common.gateway.GatewayClass;
-import com.mx.models.MdxList;
+import com.mx.common.models.MdxList;
 import com.mx.models.account.Account;
 import com.mx.models.payout.Payout;
 
@@ -43,7 +42,7 @@ public abstract class PayoutBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "List of account options for funding source")
   public AccessorResponse<MdxList<Account>> accounts() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -54,7 +53,7 @@ public abstract class PayoutBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Create a payout")
   public AccessorResponse<Payout> create(Payout payout) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -68,7 +67,7 @@ public abstract class PayoutBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Cancel a payout", notes = "Typically used to cancel a future-dated payout or payout that has not posted")
   public AccessorResponse<Void> cancel(String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -78,7 +77,7 @@ public abstract class PayoutBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "List all payout")
   public AccessorResponse<MdxList<Payout>> list() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -89,7 +88,7 @@ public abstract class PayoutBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Get a payout")
   public AccessorResponse<Payout> get(String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -99,7 +98,7 @@ public abstract class PayoutBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Enroll user in payouts")
   public AccessorResponse<Void> enroll() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -112,7 +111,7 @@ public abstract class PayoutBaseAccessor extends Accessor {
       return recipients;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -133,7 +132,7 @@ public abstract class PayoutBaseAccessor extends Accessor {
       return recurring;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**

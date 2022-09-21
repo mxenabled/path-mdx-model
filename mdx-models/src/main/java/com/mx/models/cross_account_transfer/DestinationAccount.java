@@ -1,6 +1,6 @@
 package com.mx.models.cross_account_transfer;
 
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 public class DestinationAccount extends MdxBase<DestinationAccount> {
 

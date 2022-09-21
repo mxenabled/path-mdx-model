@@ -2,7 +2,7 @@ package com.mx.models.id;
 
 import java.util.List;
 
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 import com.mx.models.challenges.Challenge;
 
 public class ResetPassword extends MdxBase<ResetPassword> {

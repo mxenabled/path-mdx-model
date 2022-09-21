@@ -1,6 +1,6 @@
 package com.mx.models.account;
 
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 public final class AccountOwnerDetails extends MdxBase<AccountOwnerDetails> {
   private String ownerName;

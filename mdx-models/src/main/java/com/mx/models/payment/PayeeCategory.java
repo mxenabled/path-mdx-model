@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)

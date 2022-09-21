@@ -1,8 +1,8 @@
 package com.mx.models.ach_transfer;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.models.Internal;
-import com.mx.models.MdxBase;
+import com.mx.common.models.Internal;
+import com.mx.common.models.MdxBase;
 import com.mx.models.UserIdProvider;
 
 @Deprecated // This is being replaced by: https://developer.mx.com/drafts/mdx/ach_transfer/#mdx-ach-transfer

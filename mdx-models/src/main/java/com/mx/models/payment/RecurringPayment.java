@@ -2,7 +2,7 @@ package com.mx.models.payment;
 
 import java.time.LocalDate;
 
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 import com.mx.models.UserIdProvider;
 
 public final class RecurringPayment extends MdxBase<RecurringPayment> {

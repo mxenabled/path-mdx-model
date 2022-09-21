@@ -2,7 +2,7 @@ package com.mx.models.id;
 
 import java.util.List;
 
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 import com.mx.models.authorization.Authorization;
 
 public final class MfaChallenge extends MdxBase<MfaChallenge> {

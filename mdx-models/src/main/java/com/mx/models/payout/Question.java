@@ -1,6 +1,6 @@
 package com.mx.models.payout;
 
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 public final class Question extends MdxBase<Question> {
   private String answer;

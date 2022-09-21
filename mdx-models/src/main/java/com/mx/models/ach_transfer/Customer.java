@@ -3,7 +3,7 @@ package com.mx.models.ach_transfer;
 import java.time.LocalDate;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 import com.mx.models.UserIdProvider;
 
 @Deprecated // This is going to be removed in favor of the new ACH transfer spec: https://developer.mx.com/drafts/mdx/ach_transfer/#mdx-ach-transfer

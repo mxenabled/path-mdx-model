@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.mx.common.models.MdxList;
 import com.mx.models.account.Account;
 import com.mx.models.account.AccountNumber;
 import com.mx.models.account.AccountNumbers;

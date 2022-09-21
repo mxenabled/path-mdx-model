@@ -3,15 +3,14 @@ package com.mx.accessors.account;
 import lombok.AccessLevel;
 import lombok.Getter;
 
-import com.mx.accessors.API;
-import com.mx.accessors.Accessor;
-import com.mx.accessors.AccessorConfiguration;
-import com.mx.accessors.AccessorException;
-import com.mx.accessors.AccessorResponse;
-import com.mx.accessors.AccessorResponseStatus;
+import com.mx.common.accessors.API;
+import com.mx.common.accessors.Accessor;
+import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.common.accessors.AccessorMethodNotImplementedException;
+import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.gateway.GatewayAPI;
 import com.mx.common.gateway.GatewayClass;
-import com.mx.models.MdxList;
+import com.mx.common.models.MdxList;
 import com.mx.models.account.Transaction;
 import com.mx.models.account.TransactionSearchRequest;
 import com.mx.models.account.TransactionsPage;
@@ -46,7 +45,7 @@ public abstract class TransactionBaseAccessor extends Accessor {
       return checkImages;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -58,7 +57,7 @@ public abstract class TransactionBaseAccessor extends Accessor {
       return disputes;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -84,7 +83,7 @@ public abstract class TransactionBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "List recent transactions")
   public AccessorResponse<MdxList<Transaction>> recent(String accountId) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -96,7 +95,7 @@ public abstract class TransactionBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "List transactions")
   public AccessorResponse<MdxList<Transaction>> list(String accountId, TransactionListOptions transactionListOptions) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -107,7 +106,7 @@ public abstract class TransactionBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Find transactions matching SearchRequest")
   public AccessorResponse<TransactionsPage> search(String accountId, TransactionSearchRequest searchRequest) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
 }

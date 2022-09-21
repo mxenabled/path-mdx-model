@@ -1,5 +1,7 @@
 package com.mx.models;
 
+import com.mx.common.models.MdxBase;
+
 public class AccountType extends MdxBase<AccountType> {
   private String id;
   private String name;

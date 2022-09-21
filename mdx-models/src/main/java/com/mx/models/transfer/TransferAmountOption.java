@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 /**
  * Used in creating transfers and recurring transfers based on specific amounts

@@ -3,15 +3,14 @@ package com.mx.accessors.payment;
 import lombok.AccessLevel;
 import lombok.Getter;
 
-import com.mx.accessors.API;
-import com.mx.accessors.Accessor;
-import com.mx.accessors.AccessorConfiguration;
-import com.mx.accessors.AccessorException;
-import com.mx.accessors.AccessorResponse;
-import com.mx.accessors.AccessorResponseStatus;
+import com.mx.common.accessors.API;
+import com.mx.common.accessors.Accessor;
+import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.common.accessors.AccessorMethodNotImplementedException;
+import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.gateway.GatewayAPI;
 import com.mx.common.gateway.GatewayClass;
-import com.mx.models.MdxList;
+import com.mx.common.models.MdxList;
 import com.mx.models.account.Account;
 import com.mx.models.payment.Payment;
 
@@ -51,7 +50,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Account options to fund payments")
   public AccessorResponse<MdxList<Account>> accounts() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -62,7 +61,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Create new payment")
   public AccessorResponse<Payment> create(Payment payment) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -73,7 +72,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Update a payment")
   public AccessorResponse<Payment> update(String id, Payment payment) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -86,7 +85,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Cancel a payment", notes = "Typically applicable to future-dated payments or payments that are not posted")
   public AccessorResponse<Void> cancel(String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -97,7 +96,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Get a payment")
   public AccessorResponse<Payment> get(String id) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -107,7 +106,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "List all payments")
   public AccessorResponse<MdxList<Payment>> list() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -120,7 +119,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
       return bills;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -141,7 +140,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
       return merchants;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -162,7 +161,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
       return payees;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -183,7 +182,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
       return recurring;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**

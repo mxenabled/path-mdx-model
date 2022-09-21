@@ -1,7 +1,7 @@
 package com.mx.path.gateway
 
-import com.mx.accessors.AccessorConfiguration
 import com.mx.accessors.BaseAccessor
+import com.mx.common.accessors.AccessorConfiguration
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.api.account.TransactionGateway

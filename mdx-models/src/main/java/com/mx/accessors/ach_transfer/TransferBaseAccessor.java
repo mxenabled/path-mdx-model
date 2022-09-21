@@ -3,15 +3,14 @@ package com.mx.accessors.ach_transfer;
 import lombok.AccessLevel;
 import lombok.Getter;
 
-import com.mx.accessors.API;
-import com.mx.accessors.Accessor;
-import com.mx.accessors.AccessorConfiguration;
-import com.mx.accessors.AccessorException;
-import com.mx.accessors.AccessorResponse;
-import com.mx.accessors.AccessorResponseStatus;
+import com.mx.common.accessors.API;
+import com.mx.common.accessors.Accessor;
+import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.common.accessors.AccessorMethodNotImplementedException;
+import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.gateway.GatewayAPI;
 import com.mx.common.gateway.GatewayClass;
-import com.mx.models.MdxList;
+import com.mx.common.models.MdxList;
 import com.mx.models.ach_transfer.Transfer;
 
 /**
@@ -43,7 +42,7 @@ public abstract class TransferBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "List all transfers")
   public AccessorResponse<MdxList<Transfer>> list() {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -54,7 +53,7 @@ public abstract class TransferBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Get a transfer")
   public AccessorResponse<Transfer> get(String transferId) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -65,7 +64,7 @@ public abstract class TransferBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Create a transfer")
   public AccessorResponse<Transfer> create(Transfer achTransfer) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -76,7 +75,7 @@ public abstract class TransferBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Update a transfer")
   public AccessorResponse<Transfer> update(String transferId, Transfer achTransfer) {
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -89,7 +88,7 @@ public abstract class TransferBaseAccessor extends Accessor {
       return customer;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -110,7 +109,7 @@ public abstract class TransferBaseAccessor extends Accessor {
       return fundingSources;
     }
 
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**

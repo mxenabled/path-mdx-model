@@ -1,6 +1,6 @@
 package com.mx.models.managed_cards;
 
-import com.mx.models.MdxBase;
+import com.mx.common.models.MdxBase;
 
 public final class Destination extends MdxBase<Destination> {
 
