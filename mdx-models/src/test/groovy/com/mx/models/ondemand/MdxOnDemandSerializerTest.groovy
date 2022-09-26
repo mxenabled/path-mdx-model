@@ -6,10 +6,13 @@ import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.databind.SerializerProvider
 import com.fasterxml.jackson.dataformat.xml.XmlFactory
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator
+import com.mx.models.MdxList
 import com.mx.models.account.Account
+import com.mx.models.account.OnDemandAccounts
 import com.mx.models.account.Transaction
 import com.mx.models.ondemand.mixins.AccountXmlMixin
 import com.mx.models.ondemand.mixins.MixinDefinition
+import com.mx.models.ondemand.mixins.OnDemandAccountsXmlMixin
 import com.mx.testing.WithMockery
 
 import spock.lang.Specification
@@ -23,6 +26,11 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
     subject = new MdxOnDemandSerializer()
     stringWriter = new StringWriter()
     generator = new XmlFactory().createGenerator(stringWriter)
+  }
+
+  def cleanup() {
+    // Verify that exceptions won't be thrown when this is called
+    generator.close()
   }
 
   def "unwrapped, interacts with generator"() {
@@ -95,6 +103,72 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
         "  <name>Checking</name>\n" +
         "  <payment_due_on>2020-12-05</payment_due_on>\n" +
         "</account>\n" +
+        "</mdx>\n"
+  }
+
+  def "accounts list mixins"() {
+    given:
+    subject = new MdxOnDemandSerializer(
+        new MixinDefinition(OnDemandAccounts, OnDemandAccountsXmlMixin),
+        new MixinDefinition(Account, AccountXmlMixin))
+
+    def accounts = new MdxList()
+    accounts.add(new Account().tap {
+      id = "A-123"
+      name = "Checking"
+      balance = 0.09
+      fullAccountNumber = "DONT_RENDER_ME"
+      paymentDueOn = LocalDate.of(2020, 12, 5)
+    })
+
+    accounts.add(new Account().tap {
+      id = "A-321"
+      name = "Savings"
+      balance = 0.09
+      fullAccountNumber = "DONT_RENDER_ME"
+      paymentDueOn = LocalDate.of(2020, 12, 5)
+    })
+    def onDemandAccounts = new OnDemandAccounts(accounts)
+
+    when:
+    subject.serialize(onDemandAccounts.wrapped(), (JsonGenerator) generator, (SerializerProvider) null)
+    generator.flush()
+
+    then:
+    stringWriter.toString() == "<mdx version=\"5.0\">\n" +
+        "<accounts>\n" +
+        "  <account>\n" +
+        "    <balance>0.09</balance>\n" +
+        "    <id>A-123</id>\n" +
+        "    <name>Checking</name>\n" +
+        "    <payment_due_on>2020-12-05</payment_due_on>\n" +
+        "  </account>\n" +
+        "  <account>\n" +
+        "    <balance>0.09</balance>\n" +
+        "    <id>A-321</id>\n" +
+        "    <name>Savings</name>\n" +
+        "    <payment_due_on>2020-12-05</payment_due_on>\n" +
+        "  </account>\n" +
+        "</accounts>\n" +
+        "</mdx>\n"
+  }
+
+  def "empty accounts list mixins"() {
+    given:
+    subject = new MdxOnDemandSerializer(
+        new MixinDefinition(OnDemandAccounts, OnDemandAccountsXmlMixin),
+        new MixinDefinition(Account, AccountXmlMixin))
+
+    def accounts = new MdxList()
+    def onDemandAccounts = new OnDemandAccounts(accounts)
+
+    when:
+    subject.serialize(onDemandAccounts.wrapped(), (JsonGenerator) generator, (SerializerProvider) null)
+    generator.flush()
+
+    then:
+    stringWriter.toString() == "<mdx version=\"5.0\">\n" +
+        "<accounts/>\n" +
         "</mdx>\n"
   }
 

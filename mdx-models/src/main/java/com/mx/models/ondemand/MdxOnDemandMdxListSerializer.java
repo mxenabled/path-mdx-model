@@ -26,6 +26,7 @@ import com.mx.models.ondemand.mixins.XmlSkipInternalAnnotationsIntrospector;
  * Relies on Jackson Mix-ins to control details of serialization. For more information on Jackson Mix-ins see:
  * https://github.com/FasterXML/jackson-docs/wiki/JacksonMixInAnnotations
  */
+@Deprecated
 public class MdxOnDemandMdxListSerializer extends JsonSerializer<MdxListWrapper> {
 
   private final ObjectMapper mapper;
