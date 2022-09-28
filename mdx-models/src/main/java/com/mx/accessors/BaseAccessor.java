@@ -45,11 +45,6 @@ public abstract class BaseAccessor extends Accessor {
 
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
-  @Deprecated
-  private com.mx.accessors.ach_transfer.TransferBaseAccessor deprecatedAchTransfers;
-
-  @GatewayAPI
-  @Getter(AccessLevel.PROTECTED)
   private DocumentBaseAccessor documents;
 
   @GatewayAPI
@@ -182,29 +177,6 @@ public abstract class BaseAccessor extends Accessor {
    */
   public void setCreditReports(CreditReportBaseAccessor creditReports) {
     this.creditReports = creditReports;
-  }
-
-  /**
-   * Deprecated accessor for ACH transfer operations
-   * @return accessor
-   */
-  @API
-  @Deprecated
-  public com.mx.accessors.ach_transfer.TransferBaseAccessor deprecatedAchTransfers() {
-    if (deprecatedAchTransfers != null) {
-      return deprecatedAchTransfers;
-    }
-
-    throw new AccessorException(AccessorResponseStatus.NOT_IMPLEMENTED);
-  }
-
-  /**
-   * Set deprecated ACH transfers accessor
-   * @param deprecatedAchTransfers
-   */
-  @Deprecated
-  public void setDeprecatedAchTransfers(com.mx.accessors.ach_transfer.TransferBaseAccessor deprecatedAchTransfers) {
-    this.deprecatedAchTransfers = deprecatedAchTransfers;
   }
 
   /**
