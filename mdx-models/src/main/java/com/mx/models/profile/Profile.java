@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import com.mx.models.MdxBase;
 
 public final class Profile extends MdxBase<Profile> {
-  @SerializedName("birth_date")
+  @SerializedName("birth_date_on")
   private LocalDate birthDate;
   @SerializedName("first_name")
   private String firstName;
