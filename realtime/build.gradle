@@ -1,6 +1,3 @@
-group "com.mx.path.api.lib"
-jar.archiveBaseName = "realtime"
-
 coppuccino {
   coverage {
     minimumCoverage = 0.98

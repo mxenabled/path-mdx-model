@@ -10,8 +10,8 @@ plugins {
 version "0.0.4"
 
 allprojects {
-  group "com.mx.path.sdk"
-  description "The Path SDK"
+  group "com.github.mxenabled.path-mdx-model"
+  description "Path MDX Model"
   version rootProject.version
   apply plugin: "java"
   sourceCompatibility = 1.8
@@ -25,20 +25,18 @@ allprojects {
 }
 
 subprojects {
-  ext {
-    pathSDKVersion = "0.+"
-  }
-}
-
-configure(project.subprojects) {
   apply plugin: "java"
   apply plugin: "java-library"
   apply plugin: "maven-publish"
   apply plugin: "groovy"
-  apply plugin: "com.mx.hush"
-  apply plugin: "com.mx.coppuccino"
-  apply plugin: "com.mx.vogue"
+  apply plugin: "com.github.mxenabled.hush"
+  apply plugin: "com.github.mxenabled.coppuccino"
+  apply plugin: "com.github.mxenabled.vogue"
   apply plugin: "io.freefair.lombok"
+
+  ext {
+    pathSDKVersion = "0.+"
+  }
 
   dependencies {
     testImplementation "org.mockito:mockito-inline:4.+"

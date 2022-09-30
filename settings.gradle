@@ -7,8 +7,7 @@ pluginManagement {
   }
 }
 
-rootProject.name = "mdx-model"
-
+rootProject.name = "path-mdx-model"
 include "mdx-models"
 include "mdx-gateway-generator"
 include "mdx-gateways"
