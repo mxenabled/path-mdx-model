@@ -17,8 +17,6 @@ import com.mx.models.account.TransactionsPage;
 import com.mx.models.ach_transfer.AchAccount;
 import com.mx.models.ach_transfer.AchScheduledTransfer;
 import com.mx.models.ach_transfer.AchTransfer;
-import com.mx.models.ach_transfer.Customer;
-import com.mx.models.ach_transfer.FundingSource;
 import com.mx.models.authorization.Authorization;
 import com.mx.models.check.CheckImage;
 import com.mx.models.credit_report.CreditReport;
@@ -301,15 +299,6 @@ public class Resources {
   }
 
   private static void registerAchTransfersModels(GsonBuilder builder) {
-    // ACH Transfers
-    builder.registerTypeAdapter(Customer.class, new MdxWrappableSerializer("customer"));
-    builder.registerTypeAdapter(FundingSource.class, new MdxWrappableSerializer("funding_source"));
-    builder.registerTypeAdapter(new TypeToken<MdxList<FundingSource>>() {
-    }.getType(), new MdxWrappableSerializer("funding_sources"));
-    builder.registerTypeAdapter(com.mx.models.ach_transfer.Transfer.class, new MdxWrappableSerializer("transfer"));
-    builder.registerTypeAdapter(new TypeToken<MdxList<com.mx.models.ach_transfer.Transfer>>() {
-    }.getType(), new MdxWrappableSerializer("transfers"));
-
     builder.registerTypeAdapter(AchTransfer.class, new MdxWrappableSerializer("ach_transfer"));
     builder.registerTypeAdapter(new TypeToken<MdxList<AchTransfer>>() {
     }.getType(), new MdxWrappableSerializer("ach_transfers"));
