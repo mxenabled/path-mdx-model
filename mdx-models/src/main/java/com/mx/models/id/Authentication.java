@@ -14,6 +14,7 @@ public class Authentication extends MdxBase<Authentication> {
   @Deprecated
   private Boolean canUseRemoteDeposit;
   private List<MfaChallenge> challenges;
+  private String clientDeviceToken;
   private Integer deviceHeight;
   private String deviceId;
   private Boolean deviceIsJailbroken;
@@ -73,6 +74,14 @@ public class Authentication extends MdxBase<Authentication> {
 
   public final void setChallenges(List<MfaChallenge> newChallenges) {
     this.challenges = newChallenges;
+  }
+
+  public final String getClientDeviceToken() {
+    return clientDeviceToken;
+  }
+
+  public final void setClientDeviceToken(String clientDeviceToken) {
+    this.clientDeviceToken = clientDeviceToken;
   }
 
   public final Integer getDeviceHeight() {
