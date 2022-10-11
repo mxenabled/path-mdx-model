@@ -205,3 +205,6 @@ gradle-app.setting
 .coppuccino
 **/.coppuccino
 **/.dependency-check-data
+
+# Node
+node_modules/
