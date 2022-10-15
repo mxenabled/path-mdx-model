@@ -1,6 +1,8 @@
 package com.mx.models;
 
-public class MdxMappingException extends Exception {
+import com.mx.common.accessors.AccessorSystemException;
+
+public class MdxMappingException extends AccessorSystemException {
   private static final long serialVersionUID = 1L;
 
   public MdxMappingException(String message) {

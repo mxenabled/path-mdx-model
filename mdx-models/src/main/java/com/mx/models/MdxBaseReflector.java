@@ -75,7 +75,7 @@ public class MdxBaseReflector {
       getIdMethod = getIdMethod(klass);
       id = (String) getIdMethod.invoke(obj);
     } catch (IllegalAccessException | InvocationTargetException e) {
-      throw new RuntimeException("Unable to extract id from model " + klass.getCanonicalName(), e);
+      throw new MdxReflectorException("Unable to extract id from model " + klass.getCanonicalName(), e);
     }
 
     return id;
@@ -108,7 +108,7 @@ public class MdxBaseReflector {
       try {
         return (String) relation.getMethod().invoke(obj);
       } catch (IllegalAccessException | InvocationTargetException e) {
-        throw new RuntimeException("Unable to extract relation (" + parentClass.getCanonicalName() + " -> " + referredClass.getCanonicalName() + ") id using " + relation.getMethod().getName(), e);
+        throw new MdxReflectorException("Unable to extract relation (" + parentClass.getCanonicalName() + " -> " + referredClass.getCanonicalName() + ") id using " + relation.getMethod().getName(), e);
       }
     }).filter(Objects::nonNull).collect(Collectors.toList());
   }
@@ -120,7 +120,7 @@ public class MdxBaseReflector {
       try {
         idMethod = klass.getMethod("getId");
       } catch (NoSuchMethodException e) {
-        throw new RuntimeException("Unable to reflect getId method from model " + klass.getCanonicalName(), e);
+        throw new MdxReflectorException("Unable to reflect getId method from model " + klass.getCanonicalName(), e);
       }
       METHODS.put(klass, idMethod);
     }
