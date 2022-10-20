@@ -24,11 +24,11 @@
       "types": {
         "feat": {
           "title": "Feature",
-          "description": "A new feature"
+          "description": "A new feature, model, or accessor"
         },
         "fix": {
           "title": "Bug Fix",
-          "description": "A bug fix"
+          "description": "A bug fix, add new field (existing model)"
         },
         "docs": {
           "title": "Documentation",

@@ -27,6 +27,30 @@ This project defines the MDX base gateway used as the launching point for the an
 
 This is an API used to interact with MDX realtime.
 
+## Usage
+
+_Gradle_
+<!-- x-release-please-start-version -->
+```groovy
+dependencies {
+  implementation "com.github.mxenabled.path-mdx-model:mdx-models:1.1.0"
+  implementation "com.github.mxenabled.path-mdx-model:mdx-gateways:1.1.0"
+  implementation "com.github.mxenabled.path-mdx-model:realtime:1.1.0"
+}
+```
+<!-- x-release-please-end -->
+
+_Or pin to the the latest major version_
+<!-- x-release-please-start-major -->
+```groovy
+dependencies {
+  implementation "com.github.mxenabled.path-mdx-model:mdx-models:1.+"
+  implementation "com.github.mxenabled.path-mdx-model:mdx-gateways:1.+"
+  implementation "com.github.mxenabled.path-mdx-model:realtime:1.+"
+}
+```
+<!-- x-release-please-end -->
+
 ## Contributing
 
 Commits should conform to the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification (not enforced yet).
