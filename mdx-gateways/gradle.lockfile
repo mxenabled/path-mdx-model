@@ -16,6 +16,7 @@ com.github.mxenabled.path-core:context:1.2.0=annotationProcessor,compileClasspat
 com.github.mxenabled.path-core:gateway-generator:1.2.0=annotationProcessor
 com.github.mxenabled.path-core:gateway:1.2.0=annotationProcessor,compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 com.github.mxenabled.path-core:messaging:1.2.0=annotationProcessor,compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+com.github.mxenabled.path-core:platform:1.2.0=annotationProcessor,compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 com.github.mxenabled.path-core:utilities:1.2.0=annotationProcessor,compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 com.github.spotbugs:spotbugs-annotations:4.4.2=spotbugs
 com.github.spotbugs:spotbugs-annotations:4.7.2=annotationProcessor,compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath

@@ -8,11 +8,16 @@ plugins {
 
 version "1.4.0" // x-release-please-version
 
+def platformProject = "platform"
+
 allprojects {
+  if (it.name != platformProject) {
+    apply plugin: "java"
+  }
+
   group "com.github.mxenabled.path-mdx-model"
   description "Path MDX Model"
   version rootProject.version
-  apply plugin: "java"
   sourceCompatibility = 1.8
   targetCompatibility = 1.8
 
@@ -21,77 +26,79 @@ allprojects {
     mavenLocal()
     maven { url "https://jitpack.io" }
   }
+
+  ext {
+    pathSDKVersion = "[1.0,2.0["
+  }
 }
 
 subprojects {
-  apply plugin: "java"
-  apply plugin: "java-library"
-  apply plugin: "maven-publish"
-  apply plugin: "groovy"
-  apply plugin: "com.github.mxenabled.hush"
-  apply plugin: "com.github.mxenabled.coppuccino"
-  apply plugin: "com.github.mxenabled.vogue"
-  apply plugin: "io.freefair.lombok"
+  if (it.name != platformProject) {
+    apply plugin: "java-library"
+    apply plugin: "maven-publish"
+    apply plugin: "groovy"
+    apply plugin: "com.github.mxenabled.hush"
+    apply plugin: "com.github.mxenabled.coppuccino"
+    apply plugin: "com.github.mxenabled.vogue"
+    apply plugin: "io.freefair.lombok"
 
-  ext {
-    pathSDKVersion = "1.+"
-  }
-
-  dependencies {
-    testImplementation "org.mockito:mockito-inline:4.+"
-    testImplementation "org.spockframework:spock-core:2.+"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:5.+"
-  }
-
-  test { useJUnitPlatform() }
-
-  compileJava { options.compilerArgs << "-parameters" }
-
-  sourceSets {
-    test {
-      groovy { srcDirs "src/test/groovy" }
-      java { srcDirs "src/test/java" }
+    dependencies {
+      api platform("com.github.mxenabled.path-core:platform:${project.ext.pathSDKVersion}")
+      testImplementation "org.mockito:mockito-inline:[4.0,5.0["
+      testImplementation "org.spockframework:spock-core:[2.0,3.0["
+      testImplementation "org.junit.jupiter:junit-jupiter-api:[5.0,6.0["
     }
-  }
 
-  javadoc {
-    classpath = configurations.compileClasspath
-    options {
-      setMemberLevel JavadocMemberLevel.PUBLIC
-      setAuthor true
+    test { useJUnitPlatform() }
+
+    compileJava { options.compilerArgs << "-parameters" }
+
+    sourceSets {
+      test {
+        groovy { srcDirs "src/test/groovy" }
+        java { srcDirs "src/test/java" }
+      }
     }
-  }
 
-  coppuccino {
-    rootDir = "${projectDir}/"
-  }
+    javadoc {
+      classpath = configurations.compileClasspath
+      options {
+        setMemberLevel JavadocMemberLevel.PUBLIC
+        setAuthor true
+      }
+    }
 
-  vogue {
-    dependencyUpdatesOutputDir = "${projectDir}/build/dependencyUpdates"
-  }
+    coppuccino {
+      rootDir = "${projectDir}/"
+    }
 
-  task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = "sources"
-    from sourceSets.main.allSource
-  }
+    vogue {
+      dependencyUpdatesOutputDir = "${projectDir}/build/dependencyUpdates"
+    }
 
-  task packageJavadoc(type: Jar) {
-    classifier = 'javadoc'
-    from javadoc
-  }
+    task sourcesJar(type: Jar, dependsOn: classes) {
+      classifier = "sources"
+      from sourceSets.main.allSource
+    }
 
-  artifacts {
-    archives sourcesJar
-    archives jar
-    archives packageJavadoc
-  }
+    task packageJavadoc(type: Jar) {
+      classifier = 'javadoc'
+      from javadoc
+    }
 
-  publishing {
-    publications {
-      mavenJava(MavenPublication) {
-        from components.java
-        artifact sourcesJar
-        artifact packageJavadoc
+    artifacts {
+      archives sourcesJar
+      archives jar
+      archives packageJavadoc
+    }
+
+    publishing {
+      publications {
+        mavenJava(MavenPublication) {
+          from components.java
+          artifact sourcesJar
+          artifact packageJavadoc
+        }
       }
     }
   }
@@ -99,42 +106,35 @@ subprojects {
 
 task spotlessApply {
   subprojects.each {
-    it.afterEvaluate {
-      def spotlessApplyTask = it.tasks.findByName("spotlessApply")
-      dependsOn(spotlessApplyTask)
+    if (it.name != platformProject) {
+      it.afterEvaluate {
+        def spotlessApplyTask = it.tasks.findByName("spotlessApply")
+        dependsOn(spotlessApplyTask)
+      }
     }
   }
 }
 
 task dependencyCheckAnalyze {
   subprojects.each {
-    it.afterEvaluate {
-      def dependencyCheckAnalyzeTask = it.tasks.findByName("dependencyCheckAnalyze")
-      dependsOn(dependencyCheckAnalyzeTask)
+    if (it.name != platformProject) {
+      it.afterEvaluate {
+        def dependencyCheckAnalyzeTask = it.tasks.findByName("dependencyCheckAnalyze")
+        dependsOn(dependencyCheckAnalyzeTask)
+      }
     }
   }
 }
 
 task subdependencies {
   subprojects.each {
-    it.afterEvaluate {
-      def dependenciesTask = it.tasks.findByName("dependencies")
-      dependsOn(dependenciesTask)
+    if (it.name != platformProject) {
+      it.afterEvaluate {
+        def dependenciesTask = it.tasks.findByName("dependencies")
+        dependsOn(dependenciesTask)
+      }
     }
   }
 }
 
 project.tasks.getByPath("dependencies").finalizedBy("subdependencies")
-
-task install {
-  configure {
-    description "Publishes all subprojects to local maven repo"
-    setProperty("group", "Publishing")
-  }
-  subprojects.each {
-    it.afterEvaluate {
-      def publishToMavenLocalTask = it.tasks.findByName("publishToMavenLocal")
-      dependsOn(publishToMavenLocalTask)
-    }
-  }
-}

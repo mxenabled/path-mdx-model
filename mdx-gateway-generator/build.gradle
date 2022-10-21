@@ -1,4 +1,4 @@
 dependencies {
   api project(":mdx-models")
-  api "com.github.mxenabled.path-core:gateway-generator:${project.property('pathSDKVersion')}"
+  api "com.github.mxenabled.path-core:gateway-generator"
 }

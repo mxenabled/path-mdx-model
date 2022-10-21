@@ -15,6 +15,7 @@ com.github.mxenabled.path-core:common:1.2.0=compileClasspath,runtimeClasspath,te
 com.github.mxenabled.path-core:context:1.2.0=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 com.github.mxenabled.path-core:gateway:1.2.0=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 com.github.mxenabled.path-core:messaging:1.2.0=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+com.github.mxenabled.path-core:platform:1.2.0=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 com.github.mxenabled.path-core:utilities:1.2.0=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 com.github.spotbugs:spotbugs-annotations:4.4.2=spotbugs
 com.github.spotbugs:spotbugs-annotations:4.7.2=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath

@@ -1,0 +1,29 @@
+plugins {
+  id "java-platform"
+  id "maven-publish"
+}
+
+javaPlatform {
+  allowDependencies()
+}
+
+// Dependency versions aren't resolved, by default. Check this out to resolve this issue:
+// https://github.com/gradle/gradle/issues/8887
+dependencies {
+  api(platform("com.github.mxenabled.path-sdk:platform:${project.ext.pathSDKVersion}"))
+
+  constraints {
+    api(project(":mdx-models"))
+    api(project(":mdx-gateway-generator"))
+    api(project(":mdx-gateways"))
+    api(project(":realtime"))
+  }
+}
+
+publishing {
+  publications {
+    bom(MavenPublication) {
+      from components.javaPlatform
+    }
+  }
+}
