@@ -10,6 +10,7 @@ public class MfaChallengeQuestion extends MdxBase<MfaChallengeQuestion> {
   private String id;
   private List<MfaChallengeOption> options;
   private String prompt;
+  private String title;
   private String type;
 
   public final String getAnswer() {
@@ -42,6 +43,14 @@ public class MfaChallengeQuestion extends MdxBase<MfaChallengeQuestion> {
 
   public final void setPrompt(String prompt) {
     this.prompt = prompt;
+  }
+
+  public final String getTitle() {
+    return title;
+  }
+
+  public final void setTitle(String title) {
+    this.title = title;
   }
 
   public final String getType() {
