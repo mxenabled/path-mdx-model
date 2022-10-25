@@ -10,6 +10,7 @@ import com.mx.path.gateway.api.id.IdGateway
 import com.mx.path.gateway.behavior.GatewayBehavior
 import com.mx.path.gateway.configuration.AccessorProxy
 import com.mx.path.gateway.configuration.AccessorProxyMap
+import com.mx.path.gateway.events.GatewayEventBus
 import com.mx.path.gateway.remote.account.RemoteAccountGateway
 import com.mx.path.gateway.remote.account.RemoteTransactionGateway
 import com.mx.path.model.context.facility.Facilities
@@ -192,6 +193,7 @@ class GatewayConfiguratorTest extends Specification {
     assert Facilities.getEncryptionService("clientName").class == EncryptionServiceImpl.class
     assert Facilities.getMessageBroker("clientName").class == MessageBrokerImpl.class
     assert Facilities.getFaultTolerantExecutor("clientName").class == FaultTolerantExecutorImpl.class
+    assert Facilities.getEventBus("clientName").class == GatewayEventBus.class
     assert ((StoreImpl) Facilities.getCacheStore("clientName")).getConfigurations().get("key1") == "value1"
     assert ((StoreImpl) Facilities.getSessionStore("clientName")).getConfigurations().get("key1") == "value2"
     assert ((EncryptionServiceImpl) Facilities.getEncryptionService("clientName")).getConfigurations().get("key1") == "value3"
