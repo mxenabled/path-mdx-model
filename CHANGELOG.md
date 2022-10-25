@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/mxenabled/path-mdx-model/compare/v1.2.0...v1.3.0) (2022-10-25)
+
+
+### Features
+
+* add statement_closed_on to Account ([78cfd8a](https://github.com/mxenabled/path-mdx-model/commit/78cfd8a876bab43c394b82e7bda012f0ec89e63f))
+
 ## [1.2.0](https://github.com/mxenabled/path-mdx-model/compare/1.1.0...v1.2.0) (2022-10-24)
 
 

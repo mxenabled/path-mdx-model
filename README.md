@@ -33,9 +33,9 @@ _Gradle_
 <!-- x-release-please-start-version -->
 ```groovy
 dependencies {
-  implementation "com.github.mxenabled.path-mdx-model:mdx-models:1.2.0"
-  implementation "com.github.mxenabled.path-mdx-model:mdx-gateways:1.2.0"
-  implementation "com.github.mxenabled.path-mdx-model:realtime:1.2.0"
+  implementation "com.github.mxenabled.path-mdx-model:mdx-models:1.3.0"
+  implementation "com.github.mxenabled.path-mdx-model:mdx-gateways:1.3.0"
+  implementation "com.github.mxenabled.path-mdx-model:realtime:1.3.0"
 }
 ```
 <!-- x-release-please-end -->
