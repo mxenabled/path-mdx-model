@@ -94,7 +94,7 @@ public class Account extends MdxBase<Account> {
   @XmlElement(name = "statement_balance")
   private BigDecimal statementBalance;
   @XmlElement(name = "statement_closed_on")
-  private String statementClosedOn;
+  private LocalDate statementClosedOn;
   @XmlElement(name = "subtype")
   private String subtype;
   @XmlElement(name = "type")
@@ -454,11 +454,11 @@ public class Account extends MdxBase<Account> {
     this.statementBalance = newStatementBalance;
   }
 
-  public final String getStatementClosedOn() {
+  public final LocalDate getStatementClosedOn() {
     return statementClosedOn;
   }
 
-  public final void setStatementClosedOn(String newStatementClosedOn) {
+  public final void setStatementClosedOn(LocalDate newStatementClosedOn) {
     this.statementClosedOn = newStatementClosedOn;
   }
 
