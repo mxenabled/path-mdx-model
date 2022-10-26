@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/mxenabled/path-mdx-model/compare/v1.3.0...v1.3.1) (2022-10-26)
+
+
+### Bug Fixes
+
+* make statement_closed_on LocalDate ([518c925](https://github.com/mxenabled/path-mdx-model/commit/518c925280588bedad026c272850644d055e62f7))
+
 ## [1.3.0](https://github.com/mxenabled/path-mdx-model/compare/v1.2.0...v1.3.0) (2022-10-25)
 
 
