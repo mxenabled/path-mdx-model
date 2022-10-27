@@ -23,6 +23,7 @@ public abstract class AchAccountBaseAccessor extends Accessor {
 
   /**
    * Creates an ACH account
+   *
    * @param achAccount
    * @return AchAccount
    */
@@ -34,6 +35,7 @@ public abstract class AchAccountBaseAccessor extends Accessor {
 
   /**
    * Deletes an ACH account
+   *
    * @param id
    * @return
    */
@@ -45,6 +47,7 @@ public abstract class AchAccountBaseAccessor extends Accessor {
 
   /**
    * Gets an ACH account
+   *
    * @param id
    * @return AchAccount
    */
@@ -56,8 +59,9 @@ public abstract class AchAccountBaseAccessor extends Accessor {
 
   /**
    * Lists an ACH account according to search criteria
+   *
    * @param options
-   * @return MdxList\<AchAccount\>
+   * @return MdxList&lt;AchAccount&gt;
    */
   @GatewayAPI
   @API(description = "List ACH Accounts according to search criteria")
@@ -67,6 +71,7 @@ public abstract class AchAccountBaseAccessor extends Accessor {
 
   /**
    * Updates an ACH account
+   *
    * @param id
    * @param achAccount
    * @return AchAccount

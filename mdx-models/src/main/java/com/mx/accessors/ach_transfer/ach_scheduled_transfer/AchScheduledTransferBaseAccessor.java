@@ -31,6 +31,7 @@ public abstract class AchScheduledTransferBaseAccessor extends Accessor {
 
   /**
    * Accessor for ACH scheduled transfer frequencies
+   *
    * @return FrequencyBaseAccessor
    */
   @API(description = "List scheduled ACH transfer frequencies")
@@ -44,6 +45,7 @@ public abstract class AchScheduledTransferBaseAccessor extends Accessor {
 
   /**
    * Set accessor for ACH scheduled transfer frequencies
+   *
    * @param frequencies
    */
   public void setFrequencies(FrequencyBaseAccessor frequencies) {
@@ -63,6 +65,7 @@ public abstract class AchScheduledTransferBaseAccessor extends Accessor {
 
   /**
    * Creates an ACH scheduled transfer
+   *
    * @param achScheduledTransfer
    * @return AchScheduledTransfer
    */
@@ -74,6 +77,7 @@ public abstract class AchScheduledTransferBaseAccessor extends Accessor {
 
   /**
    * Gets an ACH scheduled transfer
+   *
    * @param id
    * @return AchScheduledTransfer
    */
@@ -85,7 +89,8 @@ public abstract class AchScheduledTransferBaseAccessor extends Accessor {
 
   /**
    * List all ACH scheduled transfers
-   * @return MdxList\<AchScheduledTransfer\>
+   *
+   * @return MdxList&lt;AchScheduledTransfer&gt;
    */
   @GatewayAPI
   @API(description = "List all ACH scheduled transfers")
@@ -95,6 +100,7 @@ public abstract class AchScheduledTransferBaseAccessor extends Accessor {
 
   /**
    * Updates an ACH scheduled transfer
+   *
    * @param id
    * @param achScheduledTransfer
    * @return AchScheduledTransfer
