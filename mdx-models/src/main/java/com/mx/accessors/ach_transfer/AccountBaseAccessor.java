@@ -23,8 +23,9 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   /**
    * Lists held accounts according to search criteria
+   *
    * @param options
-   * @return MdxList\<Account\>
+   * @return MdxList&lt;Account&gt;
    */
   @GatewayAPI
   @API(description = "Lists accounts according to search criteria")

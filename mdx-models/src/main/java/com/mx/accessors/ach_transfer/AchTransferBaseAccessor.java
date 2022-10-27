@@ -39,6 +39,7 @@ public abstract class AchTransferBaseAccessor extends Accessor {
 
   /**
    * Account accessor
+   *
    * @return AccountBaseAccessor
    */
   @API(description = "Access held accounts")
@@ -52,6 +53,7 @@ public abstract class AchTransferBaseAccessor extends Accessor {
 
   /**
    * ACH account accessor
+   *
    * @return AchAccountBaseAccessor
    */
   @API(description = "Access ACH accounts")
@@ -73,6 +75,7 @@ public abstract class AchTransferBaseAccessor extends Accessor {
 
   /**
    * Set account accessor
+   *
    * @param achAccounts
    */
   public void setAchAccounts(AchAccountBaseAccessor achAccounts) {
@@ -81,8 +84,9 @@ public abstract class AchTransferBaseAccessor extends Accessor {
 
   /**
    * Cancels an ACH transfer
+   *
    * @param id
-   * @return
+   * @return void
    */
   @GatewayAPI
   @API(description = "Cancels an ACH transfer")
@@ -92,6 +96,7 @@ public abstract class AchTransferBaseAccessor extends Accessor {
 
   /**
    * Creates an ACH transfer
+   *
    * @param achTransfer
    * @return AchTransfer
    */
@@ -103,6 +108,7 @@ public abstract class AchTransferBaseAccessor extends Accessor {
 
   /**
    * Gets an ACH transfer
+   *
    * @param id
    * @return AchTransfer
    */
@@ -114,7 +120,8 @@ public abstract class AchTransferBaseAccessor extends Accessor {
 
   /**
    * List all ACH transfers
-   * @return MdxList\<AchTransfer\>
+   *
+   * @return MdxList&lt;AchTransfer&gt;
    */
   @GatewayAPI
   @API(description = "List all ACH transfers")
@@ -124,6 +131,7 @@ public abstract class AchTransferBaseAccessor extends Accessor {
 
   /**
    * Updates an ACH transfer
+   *
    * @param id
    * @param achTransfer
    * @return AchTransfer
@@ -136,6 +144,7 @@ public abstract class AchTransferBaseAccessor extends Accessor {
 
   /**
    * Accessor for scheduled ACH transfer operations
+   *
    * @return accessor
    */
   @API(specificationUrl = "https://developer.mx.com/drafts/mdx/ach_transfer/#ach-scheduled-transfers")
@@ -149,6 +158,7 @@ public abstract class AchTransferBaseAccessor extends Accessor {
 
   /**
    * Set ACH scheduled transfer accessor
+   *
    * @param scheduled
    */
   public void setScheduled(AchScheduledTransferBaseAccessor scheduled) {

@@ -23,8 +23,8 @@ import com.mx.models.ondemand.mixins.XmlSkipInternalAnnotationsIntrospector;
 /**
  * MdxList serializer for MDX OnDemand
  *
- * Relies on Jackson Mix-ins to control details of serialization. For more information on Jackson Mix-ins see:
- * https://github.com/FasterXML/jackson-docs/wiki/JacksonMixInAnnotations
+ * <p>Relies on Jackson Mix-ins to control details of serialization. For more information on Jackson Mix-ins see:
+ * {@see https://github.com/FasterXML/jackson-docs/wiki/JacksonMixInAnnotations}
  */
 @Deprecated
 public class MdxOnDemandMdxListSerializer extends JsonSerializer<MdxListWrapper> {
@@ -58,7 +58,7 @@ public class MdxOnDemandMdxListSerializer extends JsonSerializer<MdxListWrapper>
   /**
    * Custom serialize.
    *
-   * Wraps response in <mdx></mdx> if marked as wrapped.
+   * Wraps response in {@code <mdx></mdx>} if marked as wrapped.
    *
    * @param value
    * @param gen

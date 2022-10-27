@@ -14,21 +14,20 @@ import com.mx.common.reflection.Annotations;
 /**
  * Provides MdxBase reflection utilities.
  *
- * ID:
+ * <p>ID:
  *
- * Extract the ID of an object:
- *
- * <pre>
+ * <p>Extract the ID of an object:
+ * <pre>{@code
  *   Account account = new Account();
  *   account.setId("account1");
  *
  *   // Get the ID
  *   String id = new MdxBaseReflector().getId(account);
  *
- * </pre>
+ * }</pre>
  *
- * Relations:
- * <pre>
+ * <p>Relations:
+ * <pre>{@code
  *   class Transfer extends MdxBase<Transfer> {
  *     private String fromAccountId;
  *
@@ -37,11 +36,11 @@ import com.mx.common.reflection.Annotations;
  *       return fromAccountId;
  *     }
  *   }
- * </pre>
+ * }</pre>
  *
- * To discover the relationship
+ * <p>To discover the relationship
  *
- * <pre>
+ * <pre>{@code
  *   Transfer transfer = new Transfer();
  *   transfer.setFromAccountId("account-1");
  *
@@ -50,7 +49,7 @@ import com.mx.common.reflection.Annotations;
  *
  *   // Get the relationship values:
  *   List<String> ids = new MdxBaseReflector().getRelationIds(transfer);
- * </pre>
+ * }</pre>
  */
 public class MdxBaseReflector {
 
@@ -83,6 +82,7 @@ public class MdxBaseReflector {
 
   /**
    * Get list of relations annotated on parentClass that refers to referredClass
+   *
    * @param parentClass the class with relation annotation
    * @param referredClass the class that the parentClass refers to
    * @return list of relation defs
@@ -95,6 +95,7 @@ public class MdxBaseReflector {
 
   /**
    * Extract the reference values from obj that refer to referredClass
+   *
    * @param obj
    * @param referredClass
    * @return list of reference ids
@@ -145,5 +146,4 @@ public class MdxBaseReflector {
 
     return relations;
   }
-
 }
