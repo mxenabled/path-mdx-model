@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/mxenabled/path-mdx-model/compare/v1.3.1...1.4.0) (2022-10-28)
+
+
+### Features
+
+* publish sources and javadocs artifacts ([c8e131c](https://github.com/mxenabled/path-mdx-model/commit/c8e131c4ecbadff7e7ebca94da1dcc8f3ca7c99d))
+
 ## [1.3.1](https://github.com/mxenabled/path-mdx-model/compare/v1.3.0...v1.3.1) (2022-10-26)
 
 
