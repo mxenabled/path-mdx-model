@@ -4,18 +4,25 @@ plugins {
   id "com.github.mxenabled.coppuccino" version "3.1.3" apply false
   id "com.github.mxenabled.hush" version "2.3.1" apply false
   id "io.freefair.lombok" version "6.5.1" apply false
+  id "io.github.gradle-nexus.publish-plugin" version "1.1.0"
 }
 
 version "1.4.0" // x-release-please-version
 
 def platformProject = "platform"
+def publishedProjects = [
+  platformProject,
+  "realtime",
+  "mdx-gateways",
+  "mdx-models"
+]
 
 allprojects {
   if (it.name != platformProject) {
     apply plugin: "java"
   }
 
-  group "com.github.mxenabled.path-mdx-model"
+  group "com.mx.path-mdx-model"
   description "Path MDX Model"
   version rootProject.version
   sourceCompatibility = 1.8
@@ -35,7 +42,6 @@ allprojects {
 subprojects {
   if (it.name != platformProject) {
     apply plugin: "java-library"
-    apply plugin: "maven-publish"
     apply plugin: "groovy"
     apply plugin: "com.github.mxenabled.hush"
     apply plugin: "com.github.mxenabled.coppuccino"
@@ -92,14 +98,75 @@ subprojects {
       archives packageJavadoc
     }
 
-    publishing {
-      publications {
-        mavenJava(MavenPublication) {
-          from components.java
-          artifact sourcesJar
-          artifact packageJavadoc
+    if (publishedProjects.contains(it.name)) {
+      apply plugin: "maven-publish"
+      apply plugin: "signing"
+
+      publishing {
+        publications {
+          maven(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact packageJavadoc
+
+            pom {
+              groupId = project.group
+              artifactId = project.name
+              name = project.name
+              description = project.description
+              url = "https://github.com/mxenabled/path-mdx-model"
+
+              developers {
+                developer {
+                  name = "MX"
+                  email = "path@mx.com"
+                  organization = "MX Technologies Inc."
+                  url = "http://www.mx.com"
+                }
+              }
+
+              licenses {
+                  license {
+                      name = "Proprietary"
+                      url = "https://github.com/mxenabled/path-mdx-model/blob/master/LICENSE"
+                      distribution = "repo"
+                  }
+              }
+
+              scm {
+                connection = "scm:git:git@github.com:mxenabled/path-mdx-model.git"
+                url = "https://github.com/mxenabled/path-mdx-model/tree/master"
+              }
+            }
+          }
         }
       }
+
+      signing {
+        def signingKey = findProperty("signingKey")
+        def signingPassword = findProperty("signingKeyPassword")
+        if (signingKey != null && signingKey != "") {
+          useInMemoryPgpKeys(signingKey, signingPassword)
+          sign publishing.publications.maven
+          logger.lifecycle("Configuring signing for ${project.name}")
+        } else {
+          logger.lifecycle("Skipping artifact signing for ${project.name} - missing signing key")
+        }
+      }
+    }
+  }
+}
+
+nexusPublishing {
+  def ossrhUserName = findProperty("ossrhUserName")
+  def ossrhToken = findProperty("ossrhToken")
+
+  repositories {
+    central {
+      nexusUrl = uri("https://s01.oss.sonatype.org/service/local/")
+      snapshotRepositoryUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+      username = ossrhUserName
+      password = ossrhToken
     }
   }
 }

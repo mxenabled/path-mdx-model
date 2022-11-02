@@ -7,7 +7,6 @@ Issues: https://github.com/mxenabled/path-sdk/issues
 This repository contains 4 projects:
 
 * mdx-models
-* mdx-gateway-generator
 * mdx-gateways
 * realtime
 
@@ -29,24 +28,30 @@ This is an API used to interact with MDX realtime.
 
 ## Usage
 
+### Using platform (preferred)
+
 _Gradle_
 <!-- x-release-please-start-version -->
 ```groovy
 dependencies {
-  implementation "com.github.mxenabled.path-mdx-model:mdx-models:1.4.0"
-  implementation "com.github.mxenabled.path-mdx-model:mdx-gateways:1.4.0"
-  implementation "com.github.mxenabled.path-mdx-model:realtime:1.4.0"
+  api platform("com.mx.path-mdx-model:platform:1.4.0")
+
+  implementation "com.mx.path-mdx-model:mdx-models"
+  implementation "com.mx.path-mdx-model:mdx-gateways"
+  implementation "com.mx.path-mdx-model:realtime"
 }
 ```
 <!-- x-release-please-end -->
 
-_Or pin to the the latest major version_
-<!-- x-release-please-start-major -->
+### Using without platform
+
+_Gradle_
+<!-- x-release-please-start-version -->
 ```groovy
 dependencies {
-  implementation "com.github.mxenabled.path-mdx-model:mdx-models:1.+"
-  implementation "com.github.mxenabled.path-mdx-model:mdx-gateways:1.+"
-  implementation "com.github.mxenabled.path-mdx-model:realtime:1.+"
+  implementation "com.mx.path-mdx-model:mdx-models:1.4.0"
+  implementation "com.mx.path-mdx-model:mdx-gateways:1.4.0"
+  implementation "com.mx.path-mdx-model:realtime:1.4.0"
 }
 ```
 <!-- x-release-please-end -->
