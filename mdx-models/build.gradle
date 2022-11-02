@@ -5,7 +5,7 @@ coppuccino {
 }
 
 dependencies {
-  api "com.github.mxenabled.path-core:gateway"
+  api "com.mx.path-core:gateway"
   api "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.14.0-rc1"
   api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.0-rc1"
 

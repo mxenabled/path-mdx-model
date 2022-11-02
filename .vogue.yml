@@ -1,5 +1,0 @@
----
-defaultRules: {}
-packageRules:
-  - package: com.github.mxenabled.path-sdk
-    suppressUntil: 2022-12-01

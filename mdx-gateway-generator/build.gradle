@@ -1,4 +1,4 @@
 dependencies {
   api project(":mdx-models")
-  api "com.github.mxenabled.path-core:gateway-generator"
+  api "com.mx.path-core:gateway-generator"
 }
