@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.0](https://github.com/mxenabled/path-mdx-model/compare/1.4.0...1.5.0) (2022-11-03)
+
+
+### Features
+
+* publish platform ([c976c86](https://github.com/mxenabled/path-mdx-model/commit/c976c86d477649edf3d71ef2ebc7195415c6214e))
+* publish to central ([577e4d2](https://github.com/mxenabled/path-mdx-model/commit/577e4d2a04d42636c00b1b273fb2041b2a810ef2))
+
 ## [1.4.0](https://github.com/mxenabled/path-mdx-model/compare/v1.3.1...1.4.0) (2022-10-28)
 
 
