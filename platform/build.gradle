@@ -11,13 +11,15 @@ javaPlatform {
 // Dependency versions aren't resolved, by default. Check this out to resolve this issue:
 // https://github.com/gradle/gradle/issues/8887
 dependencies {
-  api(platform("com.mx.path-core:platform:${project.ext.pathSDKVersion}"))
+  api platform("com.mx.path-core:platform:${project.ext.pathSDKVersion}")
+  api platform("org.springframework.boot:spring-boot-starter-parent:${project.ext.springVersion}")
 
   constraints {
-    api(project(":mdx-models"))
-    api(project(":mdx-gateway-generator"))
-    api(project(":mdx-gateways"))
-    api(project(":realtime"))
+    api project(":mdx-gateway-generator")
+    api project(":mdx-gateways")
+    api project(":mdx-models")
+    api project(":mdx-web")
+    api project(":realtime")
   }
 }
 

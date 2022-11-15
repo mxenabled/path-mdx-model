@@ -13,7 +13,7 @@ import com.mx.models.account.Transaction
 import com.mx.models.ondemand.mixins.AccountXmlMixin
 import com.mx.models.ondemand.mixins.MixinDefinition
 import com.mx.models.ondemand.mixins.OnDemandAccountsXmlMixin
-import com.mx.testing.WithMockery
+import com.mx.path.testing.WithMockery
 
 import spock.lang.Specification
 
