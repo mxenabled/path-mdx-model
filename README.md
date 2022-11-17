@@ -1,6 +1,8 @@
-[![Release](https://jitpack.io/v/mxenabled/path-mdx-model.svg)](https://jitpack.io/p/mxenabled/path-mdx-model)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.mx.path-mdx-model/common/badge.svg)](https://search.maven.org/search?q=com.mx.path-mdx-model)
+![img](https://img.shields.io/badge/semver-2.0.0-green)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 
-Issues: https://github.com/mxenabled/path-sdk/issues
+Issues: https://github.com/mxenabled/path-core/issues
 
 # Path - MDX Model
 
@@ -13,6 +15,8 @@ This repository contains 4 projects:
 ## mdx-models
 
 This contains the data model and accessor definitions for [MDXv6](https://developer.mx.com/drafts/mdx/overview/#what-is-helios).
+
+Also, see [Path Documentation](https://docs.mx.com/path-sdk#overview_getting_started)
 
 ## mdx-gateway-generator
 
