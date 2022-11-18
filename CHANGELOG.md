@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/mxenabled/path-mdx-model/compare/1.5.0...v1.6.0) (2022-11-18)
+
+
+### Features
+
+* create mdx-web module ([2fa621a](https://github.com/mxenabled/path-mdx-model/commit/2fa621aaa49c99f11196fa44201cec299bdd7a59))
+
 ## [1.5.0](https://github.com/mxenabled/path-mdx-model/compare/1.4.0...1.5.0) (2022-11-03)
 
 
