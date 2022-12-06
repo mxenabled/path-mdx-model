@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/mxenabled/path-mdx-model/compare/v1.6.0...v1.6.1) (2022-12-06)
+
+
+### Bug Fixes
+
+* added serialization for fromAccountId and toAccountId ([04fb086](https://github.com/mxenabled/path-mdx-model/commit/04fb08639b9c195acc1edcd9ee2574de29e71619))
+
 ## [1.6.0](https://github.com/mxenabled/path-mdx-model/compare/1.5.0...v1.6.0) (2022-11-18)
 
 
