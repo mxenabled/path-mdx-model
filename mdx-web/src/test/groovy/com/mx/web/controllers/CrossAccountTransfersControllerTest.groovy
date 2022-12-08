@@ -1,9 +1,12 @@
 package com.mx.web.mdx.controllers
 
+import static org.mockito.ArgumentMatchers.any
+import static org.mockito.ArgumentMatchers.anyString
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
+import com.mx.common.accessors.PathResponseStatus
 import com.mx.common.models.MdxList
 import com.mx.models.AccountType
 import com.mx.models.Frequency
@@ -48,6 +51,24 @@ class CrossAccountTransfersControllerTest extends Specification implements WithM
     verify(crossAccountTransferGateway).create(crossAccountTransfer) || true
     response.getBody() == crossAccountTransfer
     HttpStatus.OK == response.getStatusCode()
+  }
+
+  def "deleteCrossAccountTransfer interacts with gateway"() {
+    given:
+    BaseController.setGateway(gateway)
+    def crossAccountTransfer = new CrossAccountTransfer().tap {
+      id = "testId"
+    }
+
+    when:
+    Mockito.doReturn(new AccessorResponse<CrossAccountTransfer>().withResult(crossAccountTransfer)).when(crossAccountTransferGateway).create(crossAccountTransfer)
+    Mockito.doReturn(new AccessorResponse<>().withStatus(PathResponseStatus.NO_CONTENT)).when(crossAccountTransferGateway).delete(any())
+    def createResponse = subject.createCrossAccountTransfer(crossAccountTransfer)
+    def response = subject.deleteCrossAccountTransfer(createResponse.getBody().getId())
+
+    then:
+    verify(crossAccountTransferGateway).delete(anyString()) || true
+    HttpStatus.NO_CONTENT == response.getStatusCode()
   }
 
   def "getCrossAccountTransfer interacts with gateway"() {

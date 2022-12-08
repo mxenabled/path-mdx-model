@@ -4,6 +4,7 @@ import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
 import com.mx.models.cross_account_transfer.options.FeeListOptions;
 import com.mx.models.transfer.Fee;
+import com.mx.web.mdx.models.CrossAccountTransfers.CrossAccountTransferFeeListQueryParameters;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class CrossAccountTransferFeesController extends BaseController {
 
   @RequestMapping(value = "/users/{userId}/cross_account_transfers/fees", method = RequestMethod.GET)
-  public final ResponseEntity<MdxList<Fee>> list(FeeListOptions options) {
+  public final ResponseEntity<MdxList<Fee>> list(CrossAccountTransferFeeListQueryParameters queryParameters) {
+    FeeListOptions options = new FeeListOptions();
+    options.setAccountTypeId(queryParameters.getAccount_type_id());
+    options.setAccountTypeNumber(queryParameters.getAccount_type_number());
+    options.setAmount(queryParameters.getAmount());
+    options.setDestinationId(queryParameters.getDestination_id());
+    options.setFromAccountId(queryParameters.getFrom_account_id());
     AccessorResponse<MdxList<Fee>> response = gateway().crossAccount().fees().list(options);
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }

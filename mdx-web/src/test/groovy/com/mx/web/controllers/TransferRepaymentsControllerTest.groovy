@@ -43,7 +43,6 @@ class TransferRepaymentsControllerTest extends Specification implements WithMock
     BaseController.setGateway(gateway)
     def repayments = new MdxList<Repayment>().tap { add(new Repayment()) }
     def queryParameters = new TransferRepaymentsQueryParameters().tap {
-      transfer_type = "test"
       start_on = "test2"
       frequency_id = "test3"
     }

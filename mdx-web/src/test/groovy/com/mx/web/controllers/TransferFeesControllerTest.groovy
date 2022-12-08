@@ -12,7 +12,7 @@ import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.transfer.FeeGateway
 import com.mx.path.gateway.api.transfer.TransferGateway
 import com.mx.path.testing.WithMockery
-import com.mx.web.mdx.models.Transfers.TransferFeesQueryParameters
+import com.mx.web.mdx.models.Transfers.TransferFeeListQueryParameters
 
 import org.mockito.Mockito
 import org.springframework.http.HttpStatus
@@ -40,11 +40,10 @@ class TransferFeesControllerTest extends Specification implements WithMockery {
     given:
     BaseController.setGateway(gateway)
     def fees = new MdxList<Fee>().tap { add(new Fee()) }
-    def queryParameters = new TransferFeesQueryParameters().tap { transfer_type = "test" }
 
     when:
     Mockito.doReturn(new AccessorResponse<MdxList<Fee>>().withResult(fees)).when(transferFeeGateway).list(anyString())
-    def response = subject.list("id", queryParameters)
+    def response = subject.list("id")
 
     then:
     HttpStatus.OK == response.getStatusCode()
@@ -56,12 +55,26 @@ class TransferFeesControllerTest extends Specification implements WithMockery {
   def "list fees with options interacts with gateway"() {
     given:
     BaseController.setGateway(gateway)
-    def fees = new MdxList<Fee>().tap { add(new Fee()) }
-    def options = new FeeListOptions()
+    def fees = new MdxList<Fee>().tap {
+      add(new Fee().tap {
+        amount = 1.0
+        description = "test description"
+      })
+    }
+    def options = new FeeListOptions().tap {
+      amount = 1.0
+      toAccountId = "testAccountTypeId"
+      fromAccountId = "testFromAccountId"
+    }
+    def queryParams = new TransferFeeListQueryParameters().tap {
+      amount = 1.0
+      to_account_id = "testAccountTypeId"
+      from_account_id = "testFromAccountId"
+    }
 
     when:
     Mockito.doReturn(new AccessorResponse<MdxList<Fee>>().withResult(fees)).when(transferFeeGateway).list(options)
-    def response = subject.list(options)
+    def response = subject.list(queryParams)
 
     then:
     HttpStatus.OK == response.getStatusCode()

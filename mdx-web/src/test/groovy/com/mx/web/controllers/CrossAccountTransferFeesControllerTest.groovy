@@ -1,5 +1,6 @@
 package com.mx.web.mdx.controllers
 
+import static org.mockito.Mockito.description
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
@@ -11,6 +12,7 @@ import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.cross_account_transfer.CrossAccountTransferGateway
 import com.mx.path.gateway.api.cross_account_transfer.FeeGateway
 import com.mx.path.testing.WithMockery
+import com.mx.web.mdx.models.CrossAccountTransfers.CrossAccountTransferFeeListQueryParameters
 
 import org.mockito.Mockito
 import org.springframework.http.HttpStatus
@@ -37,12 +39,30 @@ class CrossAccountTransferFeesControllerTest extends Specification implements Wi
   def "list fees with options interacts with gateway"() {
     given:
     BaseController.setGateway(gateway)
-    def fees = new MdxList<Fee>().tap { add(new Fee()) }
-    def options = new FeeListOptions()
+    def fees = new MdxList<Fee>().tap {
+      add(new Fee().tap {
+        amount = 1.0
+        description = "test description"
+      })
+    }
+    def options = new FeeListOptions().tap {
+      amount = 1.0
+      accountTypeId = "testAccountTypeId"
+      destinationId = "testDestId"
+      fromAccountId = "testFromAccountId"
+      accountTypeNumber = 1
+    }
+    def queryParams = new CrossAccountTransferFeeListQueryParameters().tap {
+      amount = 1.0
+      account_type_id = "testAccountTypeId"
+      destination_id = "testDestId"
+      from_account_id = "testFromAccountId"
+      account_type_number = 1
+    }
 
     when:
     Mockito.doReturn(new AccessorResponse<MdxList<Fee>>().withResult(fees)).when(crossAccountTransferFeeGateway).list(options)
-    def response = subject.list(options)
+    def response = subject.list(queryParams)
 
     then:
     HttpStatus.OK == response.getStatusCode()
