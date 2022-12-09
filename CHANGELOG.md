@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/mxenabled/path-mdx-model/compare/v1.6.1...v1.7.0) (2022-12-09)
+
+
+### Features
+
+* set transfer fee controllers to use query parameters ([ae08dc9](https://github.com/mxenabled/path-mdx-model/commit/ae08dc9d0ebbba888c66a90d4173ada7ee269e81))
+
 ## [1.6.1](https://github.com/mxenabled/path-mdx-model/compare/v1.6.0...v1.6.1) (2022-12-06)
 
 
