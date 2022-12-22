@@ -4,6 +4,10 @@
   "release-type": "simple",
   "packages": {
     ".": {
+      "extra-files": [
+        "build.gradle",
+        "README.md"
+      ]
     }
   }
 }
