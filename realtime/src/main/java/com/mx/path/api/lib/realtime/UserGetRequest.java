@@ -2,11 +2,11 @@ package com.mx.path.api.lib.realtime;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.mx.common.accessors.ResourceNotFoundException;
 import com.mx.common.http.HttpStatus;
 import com.mx.common.http.MediaType;
 import com.mx.path.api.lib.realtime.models.MdxUserWrapper;
 import com.mx.path.gateway.net.Request;
-import com.mx.path.gateway.util.MdxApiException;
 
 public class UserGetRequest extends Request {
 
@@ -39,7 +39,7 @@ public class UserGetRequest extends Request {
         .withOnComplete(response -> {
           HttpStatus status = response.getStatus();
           if (status != HttpStatus.OK) {
-            throw new MdxApiException("Error retrieving Mdx user", clientId, HttpStatus.NOT_FOUND, "id", "mdx_failed", true, null);
+            throw new ResourceNotFoundException("Error retrieving Mdx user", "Error retrieving Mdx user").withReport(true);
           }
         })
         .withProcessor(response -> GSON.fromJson(response.getBody(), MdxUserWrapper.class));
