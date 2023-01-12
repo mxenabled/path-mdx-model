@@ -10,7 +10,6 @@ import com.mx.models.payment.RecurringPayment
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.payment.PaymentGateway
 import com.mx.path.gateway.api.payment.RecurringPaymentGateway
-import com.mx.path.gateway.util.MdxApiException
 
 import org.mockito.Mockito
 import org.springframework.http.HttpStatus

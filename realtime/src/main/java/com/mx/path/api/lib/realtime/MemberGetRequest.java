@@ -1,9 +1,9 @@
 package com.mx.path.api.lib.realtime;
 
+import com.mx.common.accessors.UpstreamSystemUnavailable;
 import com.mx.common.http.HttpStatus;
 import com.mx.common.http.MediaType;
 import com.mx.path.gateway.net.Request;
-import com.mx.path.gateway.util.MdxApiException;
 
 public class MemberGetRequest extends Request {
 
@@ -31,9 +31,8 @@ public class MemberGetRequest extends Request {
         .withOnComplete(response -> {
           HttpStatus status = response.getStatus();
           if (status != HttpStatus.OK) {
-            throw new MdxApiException("Error getting Mdx member", clientId, status, "id", "mdx_failed", false, null);
+            throw new UpstreamSystemUnavailable("Error getting Mdx member", "Error getting Mdx member");
           }
         });
   }
-
 }
