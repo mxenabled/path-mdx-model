@@ -1,9 +1,9 @@
 package com.mx.web.mdx.controllers;
 
 import com.mx.common.accessors.AccessorResponse;
+import com.mx.common.accessors.BadRequestException;
 import com.mx.models.challenges.Challenge;
 import com.mx.models.origination.Origination;
-import com.mx.path.gateway.util.MdxApiException;
 import com.mx.path.model.context.Session;
 
 import org.springframework.http.HttpHeaders;
@@ -23,7 +23,7 @@ public class OriginationsController extends BaseController {
   }
 
   @RequestMapping(value = "/originations/start", method = RequestMethod.POST)
-  public final ResponseEntity<Origination> start() throws MdxApiException {
+  public final ResponseEntity<Origination> start() {
     // Delete existing session if it exists;
     Session.deleteCurrent();
     Session.createSession();
@@ -41,7 +41,7 @@ public class OriginationsController extends BaseController {
   @RequestMapping(value = "/originations/{id}/challenges/{challengeId}", method = RequestMethod.PUT, consumes = BaseController.MDX_MEDIA)
   public final ResponseEntity<Origination> answerChallenge(
       @PathVariable("id") String id,
-      @PathVariable("challengeId") String challengeId, @RequestBody Challenge challenge) throws MdxApiException {
+      @PathVariable("challengeId") String challengeId, @RequestBody Challenge challenge) {
     AccessorResponse<Origination> response = gateway().originations().answerChallenge(id, challengeId, challenge);
     Origination result = response.getResult();
 
@@ -62,7 +62,7 @@ public class OriginationsController extends BaseController {
 
   @RequestMapping(value = "/users/{userId}/originations/authenticated_start", method = RequestMethod.POST)
   public final ResponseEntity<Origination> authenticatedUserStart(
-      @PathVariable("userId") String userId) throws MdxApiException {
+      @PathVariable("userId") String userId) {
     AccessorResponse<Origination> response = gateway().originations().authenticatedUserStart(userId);
     Origination result = response.getResult();
     result.setId(getCurrentSessionId());
@@ -75,7 +75,7 @@ public class OriginationsController extends BaseController {
   public final ResponseEntity<Origination> authenticatedUserAnswerChallenge(
       @PathVariable("userId") String userId,
       @PathVariable("id") String id,
-      @PathVariable("challengeId") String challengeId, @RequestBody Challenge challenge) throws MdxApiException {
+      @PathVariable("challengeId") String challengeId, @RequestBody Challenge challenge) {
     AccessorResponse<Origination> response = gateway().originations().authenticatedUserAnswerChallenge(userId, id, challengeId, challenge);
     Origination result = response.getResult();
 
@@ -94,7 +94,7 @@ public class OriginationsController extends BaseController {
 
   private static String getCurrentSessionId() {
     if (Session.current() == null) {
-      throw new MdxApiException("Current session is null. No session id could be found.", com.mx.common.http.HttpStatus.BAD_REQUEST, true, null);
+      throw new BadRequestException("Current session is null. No session id could be found.", "Current session is null. No session id could be found.").withReport(true);
     }
 
     return Session.current().getId();

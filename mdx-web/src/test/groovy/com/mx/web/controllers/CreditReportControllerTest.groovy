@@ -2,8 +2,6 @@ package com.mx.web.mdx.controllers
 
 import static org.mockito.Mockito.spy
 
-import java.time.LocalDate
-
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.models.MdxList
 import com.mx.models.credit_report.CreditReport
@@ -13,7 +11,6 @@ import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.credit_report.CreditReportGateway
 import com.mx.path.gateway.api.credit_report.CreditReportSettingsGateway
 import com.mx.path.gateway.api.credit_report.ScoreFactorGateway
-import com.mx.path.gateway.util.MdxApiException
 import com.mx.path.testing.WithMockery
 
 import org.mockito.Mockito
