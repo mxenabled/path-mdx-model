@@ -1,11 +1,12 @@
 package com.mx.path.api.lib.realtime
 
 import com.google.gson.Gson
+import com.mx.common.accessors.UnauthorizedException
+import com.mx.common.accessors.UpstreamSystemUnavailable
 import com.mx.common.http.HttpStatus
 import com.mx.path.api.lib.realtime.models.MdxUser
 import com.mx.path.api.lib.realtime.models.MdxUserWrapper
 import com.mx.path.gateway.net.Response
-import com.mx.path.gateway.util.MdxApiException
 
 import spock.lang.Shared
 import spock.lang.Specification
@@ -59,7 +60,7 @@ class UserUpdateRequestTest extends Specification {
     request.completed(response)
 
     then:
-    def e = thrown(MdxApiException)
+    def e = thrown(UnauthorizedException)
     e.message == "Error updating Mdx user"
   }
 
@@ -72,7 +73,7 @@ class UserUpdateRequestTest extends Specification {
     request.completed(response)
 
     then:
-    def e = thrown(MdxApiException)
+    def e = thrown(UnauthorizedException)
     e.message == "Error updating Mdx user"
   }
 

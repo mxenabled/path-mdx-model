@@ -5,11 +5,11 @@ import lombok.Data;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
+import com.mx.common.accessors.UnauthorizedException;
 import com.mx.common.http.HttpStatus;
 import com.mx.common.http.MediaType;
 import com.mx.path.api.lib.realtime.models.MdxAccount;
 import com.mx.path.gateway.net.Request;
-import com.mx.path.gateway.util.MdxApiException;
 
 public class AccountCreateRequest extends Request {
   private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
@@ -46,7 +46,7 @@ public class AccountCreateRequest extends Request {
           // if the member_id already exists we would expect a 409 status;
           // other status would indicate something might have gone wrong.
           if (status != HttpStatus.OK && status != HttpStatus.CONFLICT) {
-            throw new MdxApiException("Error checking/creating Mdx account", clientId, HttpStatus.UNAUTHORIZED, "id", "mdx_failed", true, null);
+            throw new UnauthorizedException("Error checking/creating Mdx account", "Error checking/creating Mdx account").withReport(true);
           }
         });
   }

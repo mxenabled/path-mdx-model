@@ -2,12 +2,12 @@ package com.mx.path.api.lib.realtime;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.mx.common.accessors.UnauthorizedException;
 import com.mx.common.http.HttpStatus;
 import com.mx.common.http.MediaType;
 import com.mx.path.api.lib.realtime.models.MdxUser;
 import com.mx.path.api.lib.realtime.models.MdxUserWrapper;
 import com.mx.path.gateway.net.Request;
-import com.mx.path.gateway.util.MdxApiException;
 
 public class UserUpdateRequest extends Request {
 
@@ -44,7 +44,7 @@ public class UserUpdateRequest extends Request {
         .withOnComplete(response -> {
           HttpStatus status = response.getStatus();
           if (status != HttpStatus.OK && status != HttpStatus.CONFLICT) {
-            throw new MdxApiException("Error updating Mdx user", clientId, HttpStatus.UNAUTHORIZED, "id", "mdx_failed", true, null);
+            throw new UnauthorizedException("Error updating Mdx user", "Error updating Mdx user").withReport(true);
           }
         })
         .withProcessor(response -> GSON.fromJson(response.getBody(), MdxUserWrapper.class));

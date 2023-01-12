@@ -1,9 +1,10 @@
 package com.mx.path.api.lib.realtime
 
+import com.mx.common.accessors.ResourceNotFoundException
+import com.mx.common.accessors.UpstreamSystemUnavailable
 import com.mx.common.http.HttpStatus
 import com.mx.path.api.lib.realtime.models.MdxUserWrapper
 import com.mx.path.gateway.net.Response
-import com.mx.path.gateway.util.MdxApiException
 
 import spock.lang.Specification
 
@@ -46,7 +47,7 @@ class UserGetRequestTest extends Specification {
     request.completed(response)
 
     then:
-    def e = thrown(MdxApiException)
+    def e = thrown(ResourceNotFoundException)
     e.message == "Error retrieving Mdx user"
   }
 
@@ -59,7 +60,7 @@ class UserGetRequestTest extends Specification {
     request.completed(response)
 
     then:
-    def e = thrown(MdxApiException)
+    def e = thrown(ResourceNotFoundException)
     e.message == "Error retrieving Mdx user"
   }
 

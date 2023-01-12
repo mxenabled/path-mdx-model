@@ -3,12 +3,12 @@ package com.mx.web.mdx.controllers;
 import java.util.Objects;
 
 import com.mx.common.accessors.AccessorResponse;
+import com.mx.common.accessors.BadRequestException;
 import com.mx.common.lang.Strings;
 import com.mx.models.authorization.HtmlPage;
 import com.mx.models.id.Authentication;
 import com.mx.models.id.ForgotUsername;
 import com.mx.models.id.ResetPassword;
-import com.mx.path.gateway.util.MdxApiException;
 import com.mx.path.model.context.Session;
 import com.mx.path.model.context.Session.SessionState;
 
@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController extends BaseController {
 
   @RequestMapping(value = { "/authentications", "/sessions" }, method = RequestMethod.POST, consumes = { MDX_MEDIA, MDX_ONDEMAND_MEDIA }, produces = { MDX_MEDIA, MDX_ONDEMAND_MEDIA })
-  public final ResponseEntity<Authentication> authenticate(@PathVariable("clientId") String clientId, @RequestBody Authentication requestAuthentication) throws MdxApiException {
+  public final ResponseEntity<Authentication> authenticate(@PathVariable("clientId") String clientId, @RequestBody Authentication requestAuthentication) {
 
     // Delete existing session if it exists;
     Session.deleteCurrent();
@@ -90,9 +90,9 @@ public class AuthenticationController extends BaseController {
   }
 
   @RequestMapping(value = "/authentications/{sessionId}", method = RequestMethod.PUT, consumes = MDX_MEDIA)
-  public final ResponseEntity<Authentication> resumeMfa(@PathVariable("clientId") String clientId, @PathVariable("sessionId") String sessionKey, @RequestBody Authentication requestAuthentication) throws MdxApiException {
+  public final ResponseEntity<Authentication> resumeMfa(@PathVariable("clientId") String clientId, @PathVariable("sessionId") String sessionKey, @RequestBody Authentication requestAuthentication) {
     if (!Objects.equals(sessionKey, Session.current().getId())) {
-      throw new MdxApiException("Session key mismatch. Header and path session keys don't match.", com.mx.common.http.HttpStatus.BAD_REQUEST, true, null);
+      throw new BadRequestException("Session key mismatch. Header and path session keys don't match.", "Session key mismatch. Header and path session keys don't match.").withReport(true);
     }
 
     AccessorResponse<Authentication> response = gateway()
@@ -119,7 +119,7 @@ public class AuthenticationController extends BaseController {
   }
 
   @RequestMapping(value = "/authentications/start", method = RequestMethod.POST, consumes = MDX_MEDIA)
-  public final ResponseEntity<Authentication> start(@PathVariable("clientId") String clientId, @RequestBody Authentication requestAuthentication) throws MdxApiException {
+  public final ResponseEntity<Authentication> start(@PathVariable("clientId") String clientId, @RequestBody Authentication requestAuthentication) {
 
     // Delete existing session if it exists;
     Session.deleteCurrent();
@@ -158,13 +158,13 @@ public class AuthenticationController extends BaseController {
   }
 
   @RequestMapping(value = "/reset_password", method = RequestMethod.POST)
-  public final ResponseEntity<ResetPassword> resetPassword() throws MdxApiException {
+  public final ResponseEntity<ResetPassword> resetPassword() {
     AccessorResponse<ResetPassword> response = gateway().id().resetPassword();
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/reset_password/challenges/{challengeId}", method = RequestMethod.PUT, consumes = MDX_MEDIA)
-  public final ResponseEntity<ResetPassword> resetPassword(@RequestBody ResetPassword resetPasswordAuthentication) throws MdxApiException {
+  public final ResponseEntity<ResetPassword> resetPassword(@RequestBody ResetPassword resetPasswordAuthentication) {
     AccessorResponse<ResetPassword> response = gateway().id().answerResetPassword(resetPasswordAuthentication);
     ResetPassword result = response.getResult();
     // Return 202 returning challenge questions
@@ -176,13 +176,13 @@ public class AuthenticationController extends BaseController {
   }
 
   @RequestMapping(value = "/forgot_username", method = RequestMethod.POST)
-  public final ResponseEntity<ForgotUsername> forgotUsername() throws MdxApiException {
+  public final ResponseEntity<ForgotUsername> forgotUsername() {
     AccessorResponse<ForgotUsername> response = gateway().id().forgotUsername();
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/forgot_username/challenges/{challengeId}", method = RequestMethod.PUT, consumes = MDX_MEDIA)
-  public final ResponseEntity<ForgotUsername> forgotUsername(@RequestBody ForgotUsername forgotUsernameRequest) throws MdxApiException {
+  public final ResponseEntity<ForgotUsername> forgotUsername(@RequestBody ForgotUsername forgotUsernameRequest) {
     AccessorResponse<ForgotUsername> response = gateway().id().answerForgotUsername(forgotUsernameRequest);
     ForgotUsername result = response.getResult();
     // Return 202 returning challenge questions
@@ -213,7 +213,7 @@ public class AuthenticationController extends BaseController {
       // ---------------------------------------------
       // Invalid authentication request
 
-      throw new MdxApiException("Invalid authentication body", com.mx.common.http.HttpStatus.BAD_REQUEST, false, null);
+      throw new BadRequestException("Invalid authentication body", "Invalid authentication body");
     }
     return result;
   }

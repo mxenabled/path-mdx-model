@@ -2,12 +2,12 @@ package com.mx.path.api.lib.realtime;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.mx.common.accessors.UnauthorizedException;
 import com.mx.common.http.HttpStatus;
 import com.mx.common.http.MediaType;
 import com.mx.path.api.lib.realtime.models.MdxUser;
 import com.mx.path.api.lib.realtime.models.MdxUserWrapper;
 import com.mx.path.gateway.net.Request;
-import com.mx.path.gateway.util.MdxApiException;
 
 public class UserRemapIdRequest extends Request {
 
@@ -22,7 +22,7 @@ public class UserRemapIdRequest extends Request {
   // Private
 
   /**
-   * setup the request using the member variables
+   * set up the request using the member variables
    */
   private void setupRequest(String baseUrl, String clientId, String apiKey, String userId, String newUserId) {
     MdxUserWrapper mdxUserWrapper = new MdxUserWrapper();
@@ -46,7 +46,7 @@ public class UserRemapIdRequest extends Request {
         .withOnComplete(response -> {
           HttpStatus status = response.getStatus();
           if (status != HttpStatus.OK) {
-            throw new MdxApiException("Error updating Mdx user id", clientId, HttpStatus.UNAUTHORIZED, "id", "mdx_failed", true, null);
+            throw new UnauthorizedException("Error updating Mdx user id", "Error updating Mdx user id").withReport(true);
           }
         })
         .withProcessor(response -> GSON.fromJson(response.getBody(), MdxUserWrapper.class));
