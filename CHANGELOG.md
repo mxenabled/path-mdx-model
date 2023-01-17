@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.7.1](https://github.com/mxenabled/path-mdx-model/compare/v1.7.0...v1.7.1) (2023-01-17)
+
+
+### Bug Fixes
+
+* removing MdxApiExceptions ([1591917](https://github.com/mxenabled/path-mdx-model/commit/159191770044940bef99b8ab4e5c870d53ac0ba9))
+* rework ([1591917](https://github.com/mxenabled/path-mdx-model/commit/159191770044940bef99b8ab4e5c870d53ac0ba9))
+
 ## [1.7.0](https://github.com/mxenabled/path-mdx-model/compare/v1.6.1...v1.7.0) (2022-12-09)
 
 
