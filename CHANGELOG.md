@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/mxenabled/path-mdx-model/compare/v1.7.1...v1.8.0) (2023-02-01)
+
+
+### Features
+
+* use session.current to get user id in UserIdProvider ([8656b5a](https://github.com/mxenabled/path-mdx-model/commit/8656b5a24467d32deff655c443a42f1fa828a772))
+
 ## [1.7.1](https://github.com/mxenabled/path-mdx-model/compare/v1.7.0...v1.7.1) (2023-01-17)
 
 
