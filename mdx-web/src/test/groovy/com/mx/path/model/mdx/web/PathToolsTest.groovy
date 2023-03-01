@@ -1,4 +1,4 @@
-package com.mx.path.model.web.mdx
+package com.mx.path.model.mdx.web
 
 import com.mx.path.model.mdx.web.PathTools
 
