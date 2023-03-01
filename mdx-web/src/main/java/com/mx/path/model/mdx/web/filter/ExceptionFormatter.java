@@ -1,4 +1,4 @@
-package com.mx.path.model.mdx.web;
+package com.mx.path.model.mdx.web.filter;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,7 +11,7 @@ import com.mx.common.lang.Strings;
 /**
  *
  */
-public class ExceptionFormatter {
+class ExceptionFormatter {
   /**
    * @param exception the exception thrown
    * @param response the response given

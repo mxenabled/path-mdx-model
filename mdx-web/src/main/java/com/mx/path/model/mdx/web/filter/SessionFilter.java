@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mx.common.lang.Strings;
 import com.mx.path.model.context.Session;
-import com.mx.path.model.mdx.web.FilterOrderSequence;
 import com.mx.path.model.mdx.web.PathTools;
 import com.mx.path.utilities.jwt.JWTUtility;
 

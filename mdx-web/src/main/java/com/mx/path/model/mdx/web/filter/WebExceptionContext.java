@@ -1,4 +1,4 @@
-package com.mx.path.model.mdx.web;
+package com.mx.path.model.mdx.web.filter;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,7 +17,7 @@ import com.mx.path.model.context.tracing.CustomTracer;
 import org.springframework.core.env.Environment;
 import org.springframework.lang.NonNull;
 
-public class WebExceptionContext implements ExceptionContext {
+class WebExceptionContext implements ExceptionContext {
 
   private final Map<String, String> context = new LinkedHashMap<>();
   private final Environment environment;
@@ -26,7 +26,7 @@ public class WebExceptionContext implements ExceptionContext {
   private final Session session;
   private long sessionCreateTime;
 
-  public WebExceptionContext(HttpServletRequest request, Environment environment, Session session, RequestContext requestContext) {
+  WebExceptionContext(HttpServletRequest request, Environment environment, Session session, RequestContext requestContext) {
     this.request = request;
     this.requestContext = requestContext;
     this.session = session;
