@@ -1,4 +1,4 @@
-package com.mx.path.model.mdx.web;
+package com.mx.path.model.mdx.web.filter;
 
 public class FilterOrderSequence {
   public static final int REQUEST_CONTEXT_FILTER = 1;

@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse
 
 import com.mx.common.accessors.AccessorUserException
 import com.mx.common.accessors.PathResponseStatus
-import com.mx.path.model.mdx.web.ErrorHandler
 
 import spock.lang.Specification
 

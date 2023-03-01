@@ -1,4 +1,4 @@
-package com.mx.path.model.mdx.web;
+package com.mx.path.model.mdx.web.filter;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -26,7 +26,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ErrorHandler {
+class ErrorHandler {
   private static final Logger LOGGER = LoggerFactory.getLogger(ErrorHandler.class);
 
   @Autowired
