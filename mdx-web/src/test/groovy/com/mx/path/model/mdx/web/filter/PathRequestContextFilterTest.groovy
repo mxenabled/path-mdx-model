@@ -9,13 +9,13 @@ import com.mx.path.model.context.store.SessionRepository
 
 import spock.lang.Specification
 
-class RequestContextFilterTest extends Specification {
+class PathRequestContextFilterTest extends Specification {
   FilterChain filterChain
   HttpServletRequest request
   SessionRepository repository
   HttpServletResponse response
 
-  RequestContextFilter subject
+  PathRequestContextFilter subject
   RequestContext requestContext
 
   def setup() {
@@ -23,7 +23,7 @@ class RequestContextFilterTest extends Specification {
     request = Mock()
     response = Mock()
     repository = Mock()
-    subject = new RequestContextFilter()
+    subject = new PathRequestContextFilter()
 
     // Intercept MDC values
     filterChain.doFilter(request, response) >> {
