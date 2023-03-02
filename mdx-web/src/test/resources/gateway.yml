@@ -1,0 +1,57 @@
+---
+- definitions:
+    # pointless anchor, but useful for testing.
+    - &servicesAnchor
+      services:
+        - class: com.mx.testing.MockGatewayService
+    - &cacheStoreAnchor
+      class: com.mx.testing.TestStore
+      configurations:
+        host: localhost
+        port: 6379
+        connectionTimeoutSeconds: 10
+        computationThreadPoolSize: 5
+        ioThreadPoolSize: 5
+    - &sessionStoreAnchor
+      class: com.mx.testing.TestStore
+      configurations:
+        host: localhost
+        port: 6380
+        connectionTimeoutSeconds: 8
+        computationThreadPoolSize: 7
+        ioThreadPoolSize: 6
+  afcu:
+    gateways:
+      remoteDeposits:
+        <<: *servicesAnchor
+        remotes:
+          get: {}
+- definitions:
+    connection: &testConnection
+      baseUrl: http://localhost:3000
+      keystorePath: "./src/main/resources/certificates/keystore.jks"
+      keystorePassword: "${env:KEYSTORE_PASSWORD}"
+      certificateAlias: afcu_ensenta
+  profiles:
+    - development
+  afcu:
+    accessor:
+      class: com.mx.testing.TestAccessor
+      scope: singleton
+      connections:
+        testConnection: *testConnection
+      configurations:
+        test: devProfiles
+    facilities:
+      sessionStore: *sessionStoreAnchor
+      cacheStore: *cacheStoreAnchor
+- profiles:
+    - sand
+    - qa
+    - int
+  afcu:
+    accessor:
+      class: com.mx.testing.TestAccessor
+      scope: singleton
+      configurations:
+        test: otherProfiles

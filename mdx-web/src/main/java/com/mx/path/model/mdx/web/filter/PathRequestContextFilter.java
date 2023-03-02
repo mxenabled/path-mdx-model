@@ -22,7 +22,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
  */
 @Component
 @Order(FilterOrderSequence.REQUEST_CONTEXT_FILTER)
-public class RequestContextFilter extends OncePerRequestFilter {
+public class PathRequestContextFilter extends OncePerRequestFilter {
 
   // Statics
   public static final String CLIENT_GUID_HEADER = "mx-client-guid";
