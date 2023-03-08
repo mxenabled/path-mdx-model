@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mx.path.model.mdx.web.PathTools;
 import com.mx.path.model.mdx.web.SpringMdxGatewayManager;
-import com.mx.web.mdx.controllers.BaseController;
+import com.mx.path.model.mdx.web.controller.BaseController;
 
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
