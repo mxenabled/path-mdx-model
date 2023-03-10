@@ -12,10 +12,8 @@ import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.ach_transfer.AchTransferGateway
 import com.mx.path.gateway.api.ach_transfer.ach_scheduled_transfer.AchScheduledTransferGateway
 import com.mx.path.gateway.api.ach_transfer.ach_scheduled_transfer.FrequencyGateway
-import com.mx.path.model.mdx.web.controller.AchScheduledTransferFrequenciesController
-import com.mx.path.model.mdx.web.controller.BaseController
+import com.mx.path.model.mdx.web.model.ach_transfer.AchScheduledTransferFrequencyListQueryParameters
 import com.mx.path.testing.WithMockery
-import com.mx.web.mdx.models.AchTransfers.AchScheduledTransferFrequencyListQueryParameters
 
 import org.mockito.ArgumentCaptor
 import org.mockito.Mockito

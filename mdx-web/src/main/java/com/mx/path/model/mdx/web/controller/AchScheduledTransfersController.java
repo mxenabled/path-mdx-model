@@ -4,7 +4,7 @@ import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
 import com.mx.models.ach_transfer.AchScheduledTransfer;
 import com.mx.models.ach_transfer.options.AchScheduledTransferListOptions;
-import com.mx.web.mdx.models.AchTransfers.AchScheduledTransferListQueryParameters;
+import com.mx.path.model.mdx.web.model.ach_transfer.AchScheduledTransferListQueryParameters;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

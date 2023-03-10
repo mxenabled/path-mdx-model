@@ -11,10 +11,8 @@ import com.mx.models.transfer.options.RecurringTransferListOptions
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.transfer.TransferGateway
 import com.mx.path.gateway.api.transfer.recurring_transfer.RecurringTransferGateway
-import com.mx.path.model.mdx.web.controller.BaseController
-import com.mx.path.model.mdx.web.controller.RecurringTransfersController
+import com.mx.path.model.mdx.web.model.transfer.RecurringTransferListQueryParameters
 import com.mx.path.testing.WithMockery
-import com.mx.web.mdx.models.Transfers.RecurringTransferListQueryParameters
 
 import org.mockito.Mockito
 import org.springframework.http.HttpStatus

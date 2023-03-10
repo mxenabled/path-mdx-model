@@ -4,7 +4,7 @@ import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
 import com.mx.models.Frequency;
 import com.mx.models.transfer.options.FrequencyListOptions;
-import com.mx.web.mdx.models.Transfers.RecurringTransferFrequencyListQueryParameters;
+import com.mx.path.model.mdx.web.model.transfer.RecurringTransferFrequencyListQueryParameters;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

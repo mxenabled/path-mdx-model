@@ -3,7 +3,7 @@ package com.mx.path.model.mdx.web.controller;
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.models.check.CheckImage;
 import com.mx.models.check.options.CheckImageGetOptions;
-import com.mx.web.mdx.models.CheckImages.CheckImagesGetQueryParameters;
+import com.mx.path.model.mdx.web.model.check_image.CheckImagesGetQueryParameters;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

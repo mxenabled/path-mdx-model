@@ -1,4 +1,4 @@
-package com.mx.web.mdx.models.Transfers;
+package com.mx.path.model.mdx.web.model.transfer;
 
 import lombok.Data;
 

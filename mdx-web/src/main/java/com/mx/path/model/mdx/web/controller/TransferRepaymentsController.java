@@ -4,7 +4,7 @@ import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
 import com.mx.models.transfer.Repayment;
 import com.mx.models.transfer.options.RepaymentListOptions;
-import com.mx.web.mdx.models.Transfers.TransferRepaymentsQueryParameters;
+import com.mx.path.model.mdx.web.model.transfer.TransferRepaymentsQueryParameters;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

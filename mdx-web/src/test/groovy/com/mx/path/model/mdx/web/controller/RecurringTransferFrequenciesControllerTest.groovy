@@ -12,10 +12,8 @@ import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.transfer.TransferGateway
 import com.mx.path.gateway.api.transfer.recurring_transfer.FrequencyGateway
 import com.mx.path.gateway.api.transfer.recurring_transfer.RecurringTransferGateway
-import com.mx.path.model.mdx.web.controller.BaseController
-import com.mx.path.model.mdx.web.controller.RecurringTransferFrequenciesController
+import com.mx.path.model.mdx.web.model.transfer.RecurringTransferFrequencyListQueryParameters
 import com.mx.path.testing.WithMockery
-import com.mx.web.mdx.models.Transfers.RecurringTransferFrequencyListQueryParameters
 
 import org.mockito.ArgumentCaptor
 import org.mockito.Mockito

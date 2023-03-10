@@ -10,10 +10,8 @@ import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.api.account.CheckImageGateway
 import com.mx.path.gateway.api.account.TransactionGateway
-import com.mx.path.model.mdx.web.controller.BaseController
-import com.mx.path.model.mdx.web.controller.CheckImagesController
+import com.mx.path.model.mdx.web.model.check_image.CheckImagesGetQueryParameters
 import com.mx.path.testing.WithMockery
-import com.mx.web.mdx.models.CheckImages.CheckImagesGetQueryParameters
 
 import org.springframework.http.HttpStatus
 
