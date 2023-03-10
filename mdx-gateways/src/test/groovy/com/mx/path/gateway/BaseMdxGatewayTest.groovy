@@ -3,11 +3,9 @@ package com.mx.path.gateway
 import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.verify
 
-import com.mx.accessors.BaseAccessor
 import com.mx.common.accessors.AccessorConfiguration
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.collections.ObjectMap
-import com.mx.models.account.Account
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.api.id.IdGateway
 import com.mx.path.gateway.behavior.BlockBehavior
@@ -15,6 +13,8 @@ import com.mx.path.gateway.behavior.GatewayBehavior
 import com.mx.path.gateway.context.GatewayRequestContext
 import com.mx.path.gateway.remote.account.RemoteAccountGateway
 import com.mx.path.gateway.service.GatewayService
+import com.mx.path.model.mdx.accessor.BaseAccessor
+import com.mx.path.model.mdx.model.account.Account
 import com.mx.testing.BaseMdxGatewayImpl
 
 import spock.lang.Specification

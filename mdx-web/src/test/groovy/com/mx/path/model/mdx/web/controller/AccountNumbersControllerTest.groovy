@@ -5,12 +5,10 @@ import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
-import com.mx.models.account.AccountNumbers
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.api.account.AccountNumberGateway
-import com.mx.path.model.mdx.web.controller.AccountNumbersController
-import com.mx.path.model.mdx.web.controller.AccountsController
+import com.mx.path.model.mdx.model.account.AccountNumbers
 
 import spock.lang.Specification
 

@@ -2,8 +2,8 @@ package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
-import com.mx.models.transfer.Repayment;
-import com.mx.models.transfer.options.RepaymentListOptions;
+import com.mx.path.model.mdx.model.transfer.Repayment;
+import com.mx.path.model.mdx.model.transfer.options.RepaymentListOptions;
 import com.mx.path.model.mdx.web.model.transfer.TransferRepaymentsQueryParameters;
 
 import org.springframework.http.HttpStatus;

@@ -1,8 +1,8 @@
 package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
-import com.mx.models.check.CheckImage;
-import com.mx.models.check.options.CheckImageGetOptions;
+import com.mx.path.model.mdx.model.check.CheckImage;
+import com.mx.path.model.mdx.model.check.options.CheckImageGetOptions;
 import com.mx.path.model.mdx.web.model.check_image.CheckImagesGetQueryParameters;
 
 import org.springframework.http.HttpStatus;

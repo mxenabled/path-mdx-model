@@ -5,15 +5,14 @@ import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.models.MdxList
-import com.mx.models.account.Account
-import com.mx.models.account.Transaction
-import com.mx.models.account.TransactionSearchRequest
-import com.mx.models.account.TransactionsPage
-import com.mx.models.account.options.TransactionListOptions
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.api.account.TransactionGateway
-import com.mx.path.model.mdx.web.controller.AccountsController
+import com.mx.path.model.mdx.model.account.Account
+import com.mx.path.model.mdx.model.account.Transaction
+import com.mx.path.model.mdx.model.account.TransactionSearchRequest
+import com.mx.path.model.mdx.model.account.TransactionsPage
+import com.mx.path.model.mdx.model.account.options.TransactionListOptions
 import com.mx.path.testing.WithMockery
 
 import org.mockito.Mockito

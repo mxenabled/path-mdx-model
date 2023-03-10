@@ -1,8 +1,8 @@
 package com.mx.testing;
 
-import com.mx.accessors.BaseAccessor;
-import com.mx.accessors.account.AccountBaseAccessor;
 import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.path.model.mdx.accessor.BaseAccessor;
+import com.mx.path.model.mdx.accessor.account.AccountBaseAccessor;
 
 public class BaseAccessorTestImplemented extends BaseAccessor {
 

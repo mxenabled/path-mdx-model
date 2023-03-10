@@ -3,12 +3,10 @@ package com.mx.path.model.mdx.web.controller
 import static org.mockito.Mockito.*
 
 import com.mx.common.accessors.AccessorResponse
-import com.mx.models.account.AccountOwner
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.api.account.AccountOwnerGateway
-import com.mx.path.model.mdx.web.controller.AccountOwnersController
-import com.mx.path.model.mdx.web.controller.AccountsController
+import com.mx.path.model.mdx.model.account.AccountOwner
 
 import spock.lang.Specification
 

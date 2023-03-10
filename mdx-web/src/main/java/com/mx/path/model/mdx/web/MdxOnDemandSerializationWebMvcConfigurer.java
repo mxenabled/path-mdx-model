@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.mx.models.Resources;
+import com.mx.path.model.mdx.model.Resources;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;

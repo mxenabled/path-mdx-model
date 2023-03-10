@@ -2,9 +2,9 @@ package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
-import com.mx.models.credit_report.CreditReport;
-import com.mx.models.credit_report.CreditReportScoreFactor;
-import com.mx.models.credit_report.CreditReportSettings;
+import com.mx.path.model.mdx.model.credit_report.CreditReport;
+import com.mx.path.model.mdx.model.credit_report.CreditReportScoreFactor;
+import com.mx.path.model.mdx.model.credit_report.CreditReportSettings;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

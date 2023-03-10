@@ -5,13 +5,11 @@ import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.models.MdxList
-import com.mx.models.payment.Merchant
-import com.mx.models.payment.MerchantCategory
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.payment.MerchantGateway
 import com.mx.path.gateway.api.payment.PaymentGateway
-import com.mx.path.model.mdx.web.controller.BaseController
-import com.mx.path.model.mdx.web.controller.MerchantsController
+import com.mx.path.model.mdx.model.payment.Merchant
+import com.mx.path.model.mdx.model.payment.MerchantCategory
 
 import org.mockito.Mockito
 import org.springframework.http.HttpStatus

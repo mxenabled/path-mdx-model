@@ -4,12 +4,12 @@ import java.lang.reflect.InvocationTargetException;
 
 import lombok.Data;
 
-import com.mx.models.account.Account;
+import com.mx.path.model.mdx.model.account.Account;
 
 import org.apache.commons.beanutils.BeanUtils;
 
 /**
- * @deprecated Use {@link com.mx.models.account.Account}
+ * @deprecated Use {@link Account}
  */
 @Data
 @Deprecated

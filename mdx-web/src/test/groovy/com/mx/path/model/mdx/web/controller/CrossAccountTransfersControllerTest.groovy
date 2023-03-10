@@ -8,14 +8,11 @@ import static org.mockito.Mockito.verify
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.accessors.PathResponseStatus
 import com.mx.common.models.MdxList
-import com.mx.models.AccountType
-import com.mx.models.account.Account
-import com.mx.models.cross_account_transfer.CrossAccountTransfer
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.cross_account_transfer.CrossAccountTransferGateway
-import com.mx.path.model.mdx.web.controller.AccountsController
-import com.mx.path.model.mdx.web.controller.BaseController
-import com.mx.path.model.mdx.web.controller.CrossAccountTransfersController
+import com.mx.path.model.mdx.model.AccountType
+import com.mx.path.model.mdx.model.account.Account
+import com.mx.path.model.mdx.model.cross_account_transfer.CrossAccountTransfer
 import com.mx.path.testing.WithMockery
 
 import org.mockito.Mockito

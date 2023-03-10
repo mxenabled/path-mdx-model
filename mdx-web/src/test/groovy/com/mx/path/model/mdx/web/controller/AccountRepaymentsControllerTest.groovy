@@ -5,12 +5,10 @@ import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.models.MdxList
-import com.mx.models.transfer.Repayment
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.api.account.RepaymentGateway
-import com.mx.path.model.mdx.web.controller.AccountRepaymentsController
-import com.mx.path.model.mdx.web.controller.BaseController
+import com.mx.path.model.mdx.model.transfer.Repayment
 import com.mx.path.testing.WithMockery
 
 import org.mockito.Mockito

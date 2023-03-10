@@ -6,13 +6,11 @@ import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.models.MdxList
-import com.mx.models.dispute.Dispute
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.api.account.DisputeGateway
 import com.mx.path.gateway.api.account.TransactionGateway
-import com.mx.path.model.mdx.web.controller.BaseController
-import com.mx.path.model.mdx.web.controller.DisputesController
+import com.mx.path.model.mdx.model.dispute.Dispute
 
 import org.springframework.http.HttpStatus
 

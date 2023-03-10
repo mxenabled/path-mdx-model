@@ -1,11 +1,11 @@
 package com.mx.testing;
 
-import com.mx.accessors.remote_deposit.RemoteDepositBaseAccessor;
 import com.mx.common.accessors.AccessorConfiguration;
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
-import com.mx.models.account.Account;
-import com.mx.models.remote_deposit.RemoteDeposit;
+import com.mx.path.model.mdx.accessor.remote_deposit.RemoteDepositBaseAccessor;
+import com.mx.path.model.mdx.model.account.Account;
+import com.mx.path.model.mdx.model.remote_deposit.RemoteDeposit;
 
 public class RemoteDepositAccessor extends RemoteDepositBaseAccessor {
   public RemoteDepositAccessor(AccessorConfiguration configuration) {

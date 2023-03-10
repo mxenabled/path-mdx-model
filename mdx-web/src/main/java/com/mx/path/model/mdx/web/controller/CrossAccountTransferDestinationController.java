@@ -2,7 +2,7 @@ package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
-import com.mx.models.cross_account_transfer.DestinationAccount;
+import com.mx.path.model.mdx.model.cross_account_transfer.DestinationAccount;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

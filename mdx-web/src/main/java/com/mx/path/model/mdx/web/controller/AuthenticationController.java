@@ -5,12 +5,12 @@ import java.util.Objects;
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.accessors.BadRequestException;
 import com.mx.common.lang.Strings;
-import com.mx.models.authorization.HtmlPage;
-import com.mx.models.id.Authentication;
-import com.mx.models.id.ForgotUsername;
-import com.mx.models.id.ResetPassword;
 import com.mx.path.model.context.Session;
 import com.mx.path.model.context.Session.SessionState;
+import com.mx.path.model.mdx.model.authorization.HtmlPage;
+import com.mx.path.model.mdx.model.id.Authentication;
+import com.mx.path.model.mdx.model.id.ForgotUsername;
+import com.mx.path.model.mdx.model.id.ResetPassword;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

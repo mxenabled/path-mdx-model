@@ -5,16 +5,14 @@ import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.models.MdxList
-import com.mx.models.account.Account
-import com.mx.models.payout.Payout
-import com.mx.models.payout.PayoutMethod
-import com.mx.models.payout.Recipient
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.payout.PayoutGateway
 import com.mx.path.gateway.api.payout.PayoutMethodGateway
 import com.mx.path.gateway.api.payout.RecipientGateway
-import com.mx.path.model.mdx.web.controller.BaseController
-import com.mx.path.model.mdx.web.controller.PayoutsController
+import com.mx.path.model.mdx.model.account.Account
+import com.mx.path.model.mdx.model.payout.Payout
+import com.mx.path.model.mdx.model.payout.PayoutMethod
+import com.mx.path.model.mdx.model.payout.Recipient
 import com.mx.path.testing.WithMockery
 
 import org.mockito.Mockito

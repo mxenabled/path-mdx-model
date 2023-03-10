@@ -10,13 +10,13 @@ import com.mx.common.messaging.MessageError
 import com.mx.common.messaging.MessageStatus
 import com.mx.common.models.MdxList
 import com.mx.common.serialization.LocalDateDeserializer
-import com.mx.models.account.Account
 import com.mx.path.api.connect.messaging.MessageHeaders
 import com.mx.path.api.connect.messaging.MessageParameters
 import com.mx.path.api.connect.messaging.MessageRequest
 import com.mx.path.api.connect.messaging.MessageResponse
 import com.mx.path.gateway.accessor.remote.account.RemoteAccountAccessor
 import com.mx.path.model.context.RequestContext
+import com.mx.path.model.mdx.model.account.Account
 
 import spock.lang.Specification
 

@@ -8,14 +8,14 @@ import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.models.MdxList
-import com.mx.models.account.Account
-import com.mx.models.ach_transfer.AchAccount
-import com.mx.models.ach_transfer.options.AccountListOptions
-import com.mx.models.ach_transfer.options.AchAccountListOptions
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.ach_transfer.AccountGateway
 import com.mx.path.gateway.api.ach_transfer.AchAccountGateway
 import com.mx.path.gateway.api.ach_transfer.AchTransferGateway
+import com.mx.path.model.mdx.model.account.Account
+import com.mx.path.model.mdx.model.ach_transfer.AchAccount
+import com.mx.path.model.mdx.model.ach_transfer.options.AccountListOptions
+import com.mx.path.model.mdx.model.ach_transfer.options.AchAccountListOptions
 import com.mx.path.model.mdx.web.model.ach_transfer.AchTransferAccountListQueryParameters
 import com.mx.path.model.mdx.web.model.ach_transfer.AchTransferAchAccountListQueryParameters
 

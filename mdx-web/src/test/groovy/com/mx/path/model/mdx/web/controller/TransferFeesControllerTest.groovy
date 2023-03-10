@@ -6,11 +6,11 @@ import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.models.MdxList
-import com.mx.models.transfer.Fee
-import com.mx.models.transfer.options.FeeListOptions
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.transfer.FeeGateway
 import com.mx.path.gateway.api.transfer.TransferGateway
+import com.mx.path.model.mdx.model.transfer.Fee
+import com.mx.path.model.mdx.model.transfer.options.FeeListOptions
 import com.mx.path.model.mdx.web.model.transfer.TransferFeeListQueryParameters
 import com.mx.path.testing.WithMockery
 

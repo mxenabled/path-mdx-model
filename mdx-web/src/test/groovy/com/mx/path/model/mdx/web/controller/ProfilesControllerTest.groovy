@@ -7,19 +7,18 @@ import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.models.MdxList
-import com.mx.models.challenges.Challenge
-import com.mx.models.profile.Address
-import com.mx.models.profile.Email
-import com.mx.models.profile.Password
-import com.mx.models.profile.Phone
-import com.mx.models.profile.Profile
-import com.mx.models.profile.UserName
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.profile.AddressGateway
 import com.mx.path.gateway.api.profile.EmailGateway
 import com.mx.path.gateway.api.profile.PhoneGateway
 import com.mx.path.gateway.api.profile.ProfileGateway
-import com.mx.path.model.mdx.web.controller.ProfilesController
+import com.mx.path.model.mdx.model.challenges.Challenge
+import com.mx.path.model.mdx.model.profile.Address
+import com.mx.path.model.mdx.model.profile.Email
+import com.mx.path.model.mdx.model.profile.Password
+import com.mx.path.model.mdx.model.profile.Phone
+import com.mx.path.model.mdx.model.profile.Profile
+import com.mx.path.model.mdx.model.profile.UserName
 
 import org.springframework.http.HttpStatus
 
@@ -241,7 +240,7 @@ class ProfilesControllerTest extends Specification {
     def mockResponse = new AccessorResponse<Phone>().withResult(new Phone().tap {
       setChallenges(new ArrayList<Challenge>().tap {
         add(new Challenge())
-      } as List<com.mx.models.payout.Challenge>)
+      } as List<com.mx.path.model.mdx.model.payout.Challenge>)
     })
     doReturn(mockResponse).when(phoneGateway).update(any(), any())
 

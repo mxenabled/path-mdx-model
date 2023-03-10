@@ -6,12 +6,10 @@ import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.models.MdxList
-import com.mx.models.challenges.Challenge
-import com.mx.models.managed_cards.ManagedCard
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.managed_card.ManagedCardGateway
-import com.mx.path.model.mdx.web.controller.BaseController
-import com.mx.path.model.mdx.web.controller.ManagedCardsController
+import com.mx.path.model.mdx.model.challenges.Challenge
+import com.mx.path.model.mdx.model.managed_cards.ManagedCard
 
 import org.springframework.http.HttpStatus
 

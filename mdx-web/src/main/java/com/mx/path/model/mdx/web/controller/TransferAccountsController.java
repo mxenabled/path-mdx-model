@@ -2,8 +2,8 @@ package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
-import com.mx.models.account.Account;
-import com.mx.models.transfer.options.AccountListOptions;
+import com.mx.path.model.mdx.model.account.Account;
+import com.mx.path.model.mdx.model.transfer.options.AccountListOptions;
 import com.mx.path.model.mdx.web.model.transfer.TransferAccountListQueryParameters;
 
 import org.springframework.http.HttpStatus;

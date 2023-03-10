@@ -2,7 +2,7 @@ package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
-import com.mx.models.payment.Bill;
+import com.mx.path.model.mdx.model.payment.Bill;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
