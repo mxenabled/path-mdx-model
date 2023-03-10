@@ -3,16 +3,16 @@ package com.mx.path.gateway
 import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.when
 
-import com.mx.accessors.BaseAccessor
-import com.mx.accessors.account.AccountBaseAccessor
-import com.mx.accessors.account.TransactionBaseAccessor
 import com.mx.common.accessors.AccessorConfiguration
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.models.MdxList
-import com.mx.models.account.Transaction
-import com.mx.models.account.TransactionSearchRequest
-import com.mx.models.account.TransactionsPage
 import com.mx.path.gateway.api.account.TransactionGateway
+import com.mx.path.model.mdx.accessor.BaseAccessor
+import com.mx.path.model.mdx.accessor.account.AccountBaseAccessor
+import com.mx.path.model.mdx.accessor.account.TransactionBaseAccessor
+import com.mx.path.model.mdx.model.account.Transaction
+import com.mx.path.model.mdx.model.account.TransactionSearchRequest
+import com.mx.path.model.mdx.model.account.TransactionsPage
 import com.mx.testing.AccountAccessorImpl
 import com.mx.testing.BaseAccessorImpl
 

@@ -6,10 +6,10 @@ import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.models.MdxList
-import com.mx.models.transfer.Transfer
-import com.mx.models.transfer.options.TransferListOptions
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.transfer.TransferGateway
+import com.mx.path.model.mdx.model.transfer.Transfer
+import com.mx.path.model.mdx.model.transfer.options.TransferListOptions
 import com.mx.path.model.mdx.web.model.transfer.TransferListQueryParameters
 
 import org.mockito.ArgumentCaptor

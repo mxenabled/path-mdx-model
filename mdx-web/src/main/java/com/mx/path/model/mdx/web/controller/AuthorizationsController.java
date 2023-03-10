@@ -1,8 +1,8 @@
 package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
-import com.mx.models.authorization.Authorization;
-import com.mx.models.authorization.HtmlPage;
+import com.mx.path.model.mdx.model.authorization.Authorization;
+import com.mx.path.model.mdx.model.authorization.HtmlPage;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -6,12 +6,12 @@ import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.models.MdxList
-import com.mx.models.ach_transfer.AchScheduledTransfer
-import com.mx.models.ach_transfer.options.AchScheduledTransferListOptions
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.ach_transfer.AchTransferGateway
 import com.mx.path.gateway.api.ach_transfer.ach_scheduled_transfer.AchScheduledTransferGateway
 import com.mx.path.gateway.api.ach_transfer.ach_scheduled_transfer.FrequencyGateway
+import com.mx.path.model.mdx.model.ach_transfer.AchScheduledTransfer
+import com.mx.path.model.mdx.model.ach_transfer.options.AchScheduledTransferListOptions
 import com.mx.path.model.mdx.web.model.ach_transfer.AchScheduledTransferListQueryParameters
 import com.mx.path.testing.WithMockery
 

@@ -2,8 +2,8 @@ package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
-import com.mx.models.dispute.Dispute;
-import com.mx.models.dispute.DisputedTransaction;
+import com.mx.path.model.mdx.model.dispute.Dispute;
+import com.mx.path.model.mdx.model.dispute.DisputedTransaction;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

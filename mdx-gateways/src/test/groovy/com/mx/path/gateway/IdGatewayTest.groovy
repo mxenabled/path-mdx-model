@@ -4,11 +4,11 @@ import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.verify
 import static org.mockito.Mockito.when
 
-import com.mx.accessors.BaseAccessor
-import com.mx.accessors.id.IdBaseAccessor
 import com.mx.common.accessors.AccessorResponse
-import com.mx.models.id.Authentication
 import com.mx.path.gateway.api.id.IdGateway
+import com.mx.path.model.mdx.accessor.BaseAccessor
+import com.mx.path.model.mdx.accessor.id.IdBaseAccessor
+import com.mx.path.model.mdx.model.id.Authentication
 import com.mx.testing.BaseAccessorImpl
 
 import spock.lang.Specification

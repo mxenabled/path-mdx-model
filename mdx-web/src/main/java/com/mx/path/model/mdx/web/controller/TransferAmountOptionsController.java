@@ -2,8 +2,8 @@ package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
-import com.mx.models.transfer.TransferAmountOption;
-import com.mx.models.transfer.options.TransferAmountOptionListOptions;
+import com.mx.path.model.mdx.model.transfer.TransferAmountOption;
+import com.mx.path.model.mdx.model.transfer.options.TransferAmountOptionListOptions;
 import com.mx.path.model.mdx.web.model.transfer.TransferAmountOptionsListQueryParameters;
 
 import org.springframework.http.HttpStatus;

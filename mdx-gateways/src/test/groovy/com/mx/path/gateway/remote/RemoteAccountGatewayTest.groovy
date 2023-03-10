@@ -7,10 +7,10 @@ import com.mx.common.collections.ObjectMap
 import com.mx.common.messaging.MessageError
 import com.mx.common.messaging.MessageStatus
 import com.mx.common.models.MdxList
-import com.mx.models.account.Account
 import com.mx.path.api.connect.messaging.MessageRequest
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.remote.account.RemoteAccountGateway
+import com.mx.path.model.mdx.model.account.Account
 
 import org.mockito.ArgumentMatchers
 

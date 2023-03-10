@@ -2,8 +2,8 @@ package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
-import com.mx.models.ach_transfer.AchTransfer;
-import com.mx.models.ach_transfer.options.AchTransferListOptions;
+import com.mx.path.model.mdx.model.ach_transfer.AchTransfer;
+import com.mx.path.model.mdx.model.ach_transfer.options.AchTransferListOptions;
 import com.mx.path.model.mdx.web.model.ach_transfer.AchTransferListQueryParameters;
 
 import org.springframework.http.HttpStatus;

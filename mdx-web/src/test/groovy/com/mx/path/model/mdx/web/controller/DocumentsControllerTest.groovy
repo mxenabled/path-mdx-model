@@ -5,12 +5,10 @@ import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.models.MdxList
-import com.mx.models.documents.Document
-import com.mx.models.documents.DocumentSearch
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.document.DocumentGateway
-import com.mx.path.model.mdx.web.controller.BaseController
-import com.mx.path.model.mdx.web.controller.DocumentsController
+import com.mx.path.model.mdx.model.documents.Document
+import com.mx.path.model.mdx.model.documents.DocumentSearch
 
 import org.mockito.Mockito
 import org.springframework.http.HttpStatus

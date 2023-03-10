@@ -1,7 +1,7 @@
 package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
-import com.mx.models.account.AccountNumbers;
+import com.mx.path.model.mdx.model.account.AccountNumbers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

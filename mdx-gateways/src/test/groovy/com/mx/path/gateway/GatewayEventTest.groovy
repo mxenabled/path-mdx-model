@@ -6,14 +6,14 @@ import static org.mockito.Mockito.never
 import static org.mockito.Mockito.verify
 import static org.mockito.Mockito.when
 
-import com.mx.accessors.BaseAccessor
-import com.mx.accessors.account.AccountBaseAccessor
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.context.GatewayRequestContext
 import com.mx.path.gateway.events.AfterAccessorEvent
 import com.mx.path.gateway.events.BeforeAccessorEvent
 import com.mx.path.gateway.events.GatewayEventBus
 import com.mx.path.model.context.facility.Facilities
+import com.mx.path.model.mdx.accessor.BaseAccessor
+import com.mx.path.model.mdx.accessor.account.AccountBaseAccessor
 
 import spock.lang.Specification
 

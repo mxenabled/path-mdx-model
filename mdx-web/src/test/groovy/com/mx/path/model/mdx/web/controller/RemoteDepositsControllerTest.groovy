@@ -5,12 +5,10 @@ import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.models.MdxList
-import com.mx.models.account.Account
-import com.mx.models.remote_deposit.RemoteDeposit
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.remote_deposit.RemoteDepositGateway
-import com.mx.path.model.mdx.web.controller.BaseController
-import com.mx.path.model.mdx.web.controller.RemoteDepositsController
+import com.mx.path.model.mdx.model.account.Account
+import com.mx.path.model.mdx.model.remote_deposit.RemoteDeposit
 
 import org.mockito.Mockito
 import org.springframework.http.HttpStatus

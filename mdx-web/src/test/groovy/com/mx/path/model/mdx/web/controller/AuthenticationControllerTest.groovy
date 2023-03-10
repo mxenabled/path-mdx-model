@@ -6,21 +6,19 @@ import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.accessors.PathResponseStatus
-import com.mx.models.authorization.Authorization
-import com.mx.models.authorization.HtmlPage
-import com.mx.models.challenges.Challenge
-import com.mx.models.challenges.Question
-import com.mx.models.id.Authentication
-import com.mx.models.id.ForgotUsername
-import com.mx.models.id.MfaChallenge
-import com.mx.models.id.ResetPassword
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.id.IdGateway
 import com.mx.path.model.context.RequestContext
 import com.mx.path.model.context.Session
 import com.mx.path.model.context.store.SessionRepository
-import com.mx.path.model.mdx.web.controller.AuthenticationController
-import com.mx.path.model.mdx.web.controller.BaseController
+import com.mx.path.model.mdx.model.authorization.Authorization
+import com.mx.path.model.mdx.model.authorization.HtmlPage
+import com.mx.path.model.mdx.model.challenges.Challenge
+import com.mx.path.model.mdx.model.challenges.Question
+import com.mx.path.model.mdx.model.id.Authentication
+import com.mx.path.model.mdx.model.id.ForgotUsername
+import com.mx.path.model.mdx.model.id.MfaChallenge
+import com.mx.path.model.mdx.model.id.ResetPassword
 import com.mx.path.testing.WithMockery
 
 import org.springframework.http.HttpStatus

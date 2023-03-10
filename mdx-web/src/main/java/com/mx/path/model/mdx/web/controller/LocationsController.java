@@ -2,8 +2,8 @@ package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
-import com.mx.models.location.Location;
-import com.mx.models.location.LocationSearch;
+import com.mx.path.model.mdx.model.location.Location;
+import com.mx.path.model.mdx.model.location.LocationSearch;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

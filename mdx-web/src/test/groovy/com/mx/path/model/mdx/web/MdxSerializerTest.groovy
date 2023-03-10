@@ -1,7 +1,7 @@
 package com.mx.path.model.mdx.web
 
 import com.google.gson.Gson
-import com.mx.models.id.Authentication
+import com.mx.path.model.mdx.model.id.Authentication
 
 import spock.lang.Specification
 

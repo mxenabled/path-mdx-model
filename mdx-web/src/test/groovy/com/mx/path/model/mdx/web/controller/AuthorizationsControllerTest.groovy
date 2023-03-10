@@ -4,12 +4,10 @@ import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
-import com.mx.models.authorization.Authorization
-import com.mx.models.authorization.HtmlPage
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.authorization.AuthorizationGateway
-import com.mx.path.model.mdx.web.controller.AuthorizationsController
-import com.mx.path.model.mdx.web.controller.BaseController
+import com.mx.path.model.mdx.model.authorization.Authorization
+import com.mx.path.model.mdx.model.authorization.HtmlPage
 
 import org.mockito.Mockito
 import org.springframework.http.HttpStatus

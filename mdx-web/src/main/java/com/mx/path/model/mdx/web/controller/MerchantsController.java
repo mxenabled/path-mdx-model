@@ -2,8 +2,8 @@ package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
-import com.mx.models.payment.Merchant;
-import com.mx.models.payment.MerchantCategory;
+import com.mx.path.model.mdx.model.payment.Merchant;
+import com.mx.path.model.mdx.model.payment.MerchantCategory;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -6,11 +6,11 @@ import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.models.MdxList
-import com.mx.models.account.Account
-import com.mx.models.transfer.options.AccountListOptions
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.transfer.AccountGateway
 import com.mx.path.gateway.api.transfer.TransferGateway
+import com.mx.path.model.mdx.model.account.Account
+import com.mx.path.model.mdx.model.transfer.options.AccountListOptions
 import com.mx.path.model.mdx.web.model.transfer.TransferAccountListQueryParameters
 
 import org.mockito.ArgumentCaptor

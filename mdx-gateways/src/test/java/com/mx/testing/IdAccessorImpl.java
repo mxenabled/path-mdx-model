@@ -1,9 +1,9 @@
 package com.mx.testing;
 
-import com.mx.accessors.id.IdBaseAccessor;
 import com.mx.common.accessors.AccessorConfiguration;
 import com.mx.common.accessors.AccessorResponse;
-import com.mx.models.id.Authentication;
+import com.mx.path.model.mdx.accessor.id.IdBaseAccessor;
+import com.mx.path.model.mdx.model.id.Authentication;
 
 public class IdAccessorImpl extends IdBaseAccessor {
   public IdAccessorImpl(AccessorConfiguration configuration) {

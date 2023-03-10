@@ -4,13 +4,13 @@ import javax.servlet.http.HttpSession;
 
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
-import com.mx.models.account.Account;
-import com.mx.models.account.AccountTransactions;
-import com.mx.models.account.Transaction;
-import com.mx.models.account.TransactionSearchRequest;
-import com.mx.models.account.TransactionsPage;
-import com.mx.models.account.options.TransactionListOptions;
-import com.mx.models.ondemand.MdxListWrapper;
+import com.mx.path.model.mdx.model.account.Account;
+import com.mx.path.model.mdx.model.account.AccountTransactions;
+import com.mx.path.model.mdx.model.account.Transaction;
+import com.mx.path.model.mdx.model.account.TransactionSearchRequest;
+import com.mx.path.model.mdx.model.account.TransactionsPage;
+import com.mx.path.model.mdx.model.account.options.TransactionListOptions;
+import com.mx.path.model.mdx.model.ondemand.MdxListWrapper;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

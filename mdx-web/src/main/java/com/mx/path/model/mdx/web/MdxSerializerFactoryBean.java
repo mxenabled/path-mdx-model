@@ -3,7 +3,7 @@ package com.mx.path.model.mdx.web;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mx.models.Resources;
+import com.mx.path.model.mdx.model.Resources;
 
 import org.springframework.beans.factory.FactoryBean;
 

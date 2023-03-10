@@ -2,13 +2,13 @@ package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
-import com.mx.models.challenges.Challenge;
-import com.mx.models.profile.Address;
-import com.mx.models.profile.Email;
-import com.mx.models.profile.Password;
-import com.mx.models.profile.Phone;
-import com.mx.models.profile.Profile;
-import com.mx.models.profile.UserName;
+import com.mx.path.model.mdx.model.challenges.Challenge;
+import com.mx.path.model.mdx.model.profile.Address;
+import com.mx.path.model.mdx.model.profile.Email;
+import com.mx.path.model.mdx.model.profile.Password;
+import com.mx.path.model.mdx.model.profile.Phone;
+import com.mx.path.model.mdx.model.profile.Profile;
+import com.mx.path.model.mdx.model.profile.UserName;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

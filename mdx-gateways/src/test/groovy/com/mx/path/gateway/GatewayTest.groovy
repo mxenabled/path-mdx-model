@@ -1,11 +1,11 @@
 package com.mx.path.gateway
 
-import com.mx.accessors.BaseAccessor
 import com.mx.common.accessors.AccessorConfiguration
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.api.account.TransactionGateway
 import com.mx.path.gateway.api.id.IdGateway
+import com.mx.path.model.mdx.accessor.BaseAccessor
 import com.mx.testing.BaseAccessorImpl
 import com.mx.testing.GatewayBehaviorImpl
 
