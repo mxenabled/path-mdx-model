@@ -10,10 +10,8 @@ import com.mx.models.ach_transfer.AchTransfer
 import com.mx.models.ach_transfer.options.AchTransferListOptions
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.ach_transfer.AchTransferGateway
-import com.mx.path.model.mdx.web.controller.AchTransfersController
-import com.mx.path.model.mdx.web.controller.BaseController
+import com.mx.path.model.mdx.web.model.ach_transfer.AchTransferListQueryParameters
 import com.mx.path.testing.WithMockery
-import com.mx.web.mdx.models.AchTransfers.AchTransferListQueryParameters
 
 import org.mockito.ArgumentCaptor
 import org.mockito.Mockito

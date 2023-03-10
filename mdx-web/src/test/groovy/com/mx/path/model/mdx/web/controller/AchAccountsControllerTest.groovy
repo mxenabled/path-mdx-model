@@ -16,10 +16,8 @@ import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.ach_transfer.AccountGateway
 import com.mx.path.gateway.api.ach_transfer.AchAccountGateway
 import com.mx.path.gateway.api.ach_transfer.AchTransferGateway
-import com.mx.path.model.mdx.web.controller.AchAccountsController
-import com.mx.path.model.mdx.web.controller.BaseController
-import com.mx.web.mdx.models.AchTransfers.AchTransferAccountListQueryParameters
-import com.mx.web.mdx.models.AchTransfers.AchTransferAchAccountListQueryParameters
+import com.mx.path.model.mdx.web.model.ach_transfer.AchTransferAccountListQueryParameters
+import com.mx.path.model.mdx.web.model.ach_transfer.AchTransferAchAccountListQueryParameters
 
 import org.mockito.ArgumentCaptor
 import org.springframework.http.HttpStatus

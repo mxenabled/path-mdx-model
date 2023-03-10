@@ -12,10 +12,8 @@ import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.ach_transfer.AchTransferGateway
 import com.mx.path.gateway.api.ach_transfer.ach_scheduled_transfer.AchScheduledTransferGateway
 import com.mx.path.gateway.api.ach_transfer.ach_scheduled_transfer.FrequencyGateway
-import com.mx.path.model.mdx.web.controller.AchScheduledTransfersController
-import com.mx.path.model.mdx.web.controller.BaseController
+import com.mx.path.model.mdx.web.model.ach_transfer.AchScheduledTransferListQueryParameters
 import com.mx.path.testing.WithMockery
-import com.mx.web.mdx.models.AchTransfers.AchScheduledTransferListQueryParameters
 
 import org.mockito.Mockito
 import org.springframework.http.HttpStatus

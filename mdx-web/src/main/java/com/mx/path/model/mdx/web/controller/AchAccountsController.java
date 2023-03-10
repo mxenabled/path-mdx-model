@@ -6,8 +6,8 @@ import com.mx.models.account.Account;
 import com.mx.models.ach_transfer.AchAccount;
 import com.mx.models.ach_transfer.options.AccountListOptions;
 import com.mx.models.ach_transfer.options.AchAccountListOptions;
-import com.mx.web.mdx.models.AchTransfers.AchTransferAccountListQueryParameters;
-import com.mx.web.mdx.models.AchTransfers.AchTransferAchAccountListQueryParameters;
+import com.mx.path.model.mdx.web.model.ach_transfer.AchTransferAccountListQueryParameters;
+import com.mx.path.model.mdx.web.model.ach_transfer.AchTransferAchAccountListQueryParameters;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

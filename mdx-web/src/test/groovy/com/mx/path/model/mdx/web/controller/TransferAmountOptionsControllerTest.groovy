@@ -8,10 +8,7 @@ import com.mx.models.transfer.TransferAmountOption
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.transfer.AmountOptionGateway
 import com.mx.path.gateway.api.transfer.TransferGateway
-import com.mx.path.model.mdx.web.controller.BaseController
-import com.mx.path.model.mdx.web.controller.TransferAmountOptionsController
-import com.mx.path.model.mdx.web.controller.TransfersController
-import com.mx.web.mdx.models.Transfers.TransferAmountOptionsListQueryParameters
+import com.mx.path.model.mdx.web.model.transfer.TransferAmountOptionsListQueryParameters
 
 import org.springframework.http.HttpStatus
 

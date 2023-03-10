@@ -11,10 +11,8 @@ import com.mx.models.transfer.options.FeeListOptions
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.transfer.FeeGateway
 import com.mx.path.gateway.api.transfer.TransferGateway
-import com.mx.path.model.mdx.web.controller.BaseController
-import com.mx.path.model.mdx.web.controller.TransferFeesController
+import com.mx.path.model.mdx.web.model.transfer.TransferFeeListQueryParameters
 import com.mx.path.testing.WithMockery
-import com.mx.web.mdx.models.Transfers.TransferFeeListQueryParameters
 
 import org.mockito.Mockito
 import org.springframework.http.HttpStatus

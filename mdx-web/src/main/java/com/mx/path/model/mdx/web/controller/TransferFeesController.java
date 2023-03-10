@@ -4,7 +4,7 @@ import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.models.MdxList;
 import com.mx.models.transfer.Fee;
 import com.mx.models.transfer.options.FeeListOptions;
-import com.mx.web.mdx.models.Transfers.TransferFeeListQueryParameters;
+import com.mx.path.model.mdx.web.model.transfer.TransferFeeListQueryParameters;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

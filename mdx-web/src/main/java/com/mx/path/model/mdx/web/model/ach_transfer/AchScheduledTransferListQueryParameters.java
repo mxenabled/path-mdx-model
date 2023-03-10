@@ -1,4 +1,4 @@
-package com.mx.web.mdx.models.AchTransfers;
+package com.mx.path.model.mdx.web.model.ach_transfer;
 
 import lombok.Data;
 

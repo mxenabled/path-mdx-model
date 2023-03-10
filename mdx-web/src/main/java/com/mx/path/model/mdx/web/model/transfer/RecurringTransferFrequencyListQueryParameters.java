@@ -1,9 +1,10 @@
-package com.mx.web.mdx.models.Transfers;
+package com.mx.path.model.mdx.web.model.transfer;
 
 import lombok.Data;
 
 @SuppressWarnings({ "checkstyle:MemberName", "checkstyle:ParameterName", "checkstyle:MethodName" })
 @Data
-public class TransferListQueryParameters {
+public class RecurringTransferFrequencyListQueryParameters {
+  private String flow;
   private String transfer_type;
 }

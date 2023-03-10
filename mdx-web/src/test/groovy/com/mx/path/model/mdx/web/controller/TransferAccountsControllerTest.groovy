@@ -11,10 +11,7 @@ import com.mx.models.transfer.options.AccountListOptions
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.transfer.AccountGateway
 import com.mx.path.gateway.api.transfer.TransferGateway
-import com.mx.path.model.mdx.web.controller.BaseController
-import com.mx.path.model.mdx.web.controller.TransferAccountsController
-import com.mx.path.model.mdx.web.controller.TransfersController
-import com.mx.web.mdx.models.Transfers.TransferAccountListQueryParameters
+import com.mx.path.model.mdx.web.model.transfer.TransferAccountListQueryParameters
 
 import org.mockito.ArgumentCaptor
 import org.mockito.Mockito

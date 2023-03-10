@@ -1,4 +1,4 @@
-package com.mx.web.mdx.models.CrossAccountTransfers;
+package com.mx.path.model.mdx.web.model.cross_account_transfer;
 
 import lombok.Data;
 

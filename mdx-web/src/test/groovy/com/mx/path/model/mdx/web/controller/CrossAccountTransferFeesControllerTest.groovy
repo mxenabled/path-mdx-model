@@ -10,10 +10,8 @@ import com.mx.models.transfer.Fee
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.cross_account_transfer.CrossAccountTransferGateway
 import com.mx.path.gateway.api.cross_account_transfer.FeeGateway
-import com.mx.path.model.mdx.web.controller.BaseController
-import com.mx.path.model.mdx.web.controller.CrossAccountTransferFeesController
+import com.mx.path.model.mdx.web.model.cross_account_transfer.CrossAccountTransferFeeListQueryParameters
 import com.mx.path.testing.WithMockery
-import com.mx.web.mdx.models.CrossAccountTransfers.CrossAccountTransferFeeListQueryParameters
 
 import org.mockito.Mockito
 import org.springframework.http.HttpStatus
