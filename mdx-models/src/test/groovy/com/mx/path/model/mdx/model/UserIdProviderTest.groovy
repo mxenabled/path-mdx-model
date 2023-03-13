@@ -18,7 +18,6 @@ class UserIdProviderTest extends Specification {
     def account = new Account()
 
     when:
-    UserIdProvider.setUserIdProvider(null)
     UserIdProvider.setUserId(account)
 
     then:

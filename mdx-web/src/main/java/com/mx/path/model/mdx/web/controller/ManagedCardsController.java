@@ -38,7 +38,7 @@ public class ManagedCardsController extends BaseController {
 
   @RequestMapping(value = "/users/{userId}/managed_cards/{id}/pause", method = RequestMethod.PUT)
   public final ResponseEntity<?> pause(@PathVariable("id") String id) throws Exception {
-    AccessorResponse<Void> response = gateway().managedCards().disable(id);
+    AccessorResponse<Void> response = gateway().managedCards().pause(id);
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
 
