@@ -72,7 +72,6 @@ public class SpringMdxGatewayManager {
   private static String profiles;
 
   private static boolean initialized = false;
-  private static final List<Consumer<Map<String, Gateway>>> AFTER_INITIALIZED_CONSUMERS_OLD = new ArrayList<>();
   private static final List<BiConsumer<Configurator<Gateway>, Map<String, Gateway>>> AFTER_INITIALIZED_CONSUMERS = new ArrayList<>();
   private static final List<Object> AFTER_INITIALIZED_LISTENERS = new ArrayList<>();
   private static Consumer<GatewayConfigurationFileContext> gatewayFileContentPreProcessor;
@@ -96,21 +95,6 @@ public class SpringMdxGatewayManager {
     }
 
     return gateways.get(clientId);
-  }
-
-  /**
-   * Register a block of code to run after the Gateways and Facilities are initialized
-   *
-   * @param consumer block of code to execute
-   * @throws MdxWebApplicationException if attempting to register a new consumer after initialization has already occurred.
-   * @deprecated Use {@link #registerAfterInitialized(BiConsumer)}
-   */
-  @Deprecated
-  public static void registerAfterInitialized(Consumer<Map<String, Gateway>> consumer) {
-    if (initialized) {
-      throw new MdxWebApplicationException("Initialization order issue. Calling registerAfterInitialized after gateways already initialized.");
-    }
-    AFTER_INITIALIZED_CONSUMERS_OLD.add(consumer);
   }
 
   /**
