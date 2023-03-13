@@ -46,16 +46,6 @@ public abstract class ManagedCardBaseAccessor extends Accessor {
   }
 
   /**
-   * @deprecated - Use {@link #pause(String)} instead
-   */
-  @GatewayAPI
-  @API(description = "Disable managed card (deprecated)")
-  @Deprecated
-  public AccessorResponse<Void> disable(String id) {
-    return pause(id);
-  }
-
-  /**
    * Enable a managed card
    * @param id
    * @return

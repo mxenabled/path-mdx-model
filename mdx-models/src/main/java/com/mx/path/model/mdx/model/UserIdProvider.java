@@ -1,7 +1,5 @@
 package com.mx.path.model.mdx.model;
 
-import java.util.function.Supplier;
-
 import com.mx.common.models.MdxBase;
 import com.mx.path.model.context.Session;
 
@@ -16,13 +14,5 @@ public class UserIdProvider {
     if (Session.current() != null) {
       obj.setUserId(Session.current().getUserId());
     }
-  }
-
-  /**
-   * @deprecated This no longer any affect. Now uses Session.current()
-   * todo: V2 - remove
-   */
-  @Deprecated
-  public static void setUserIdProvider(Supplier<String> newUserIdProvider) {
   }
 }

@@ -79,11 +79,11 @@ class ManagedCardsControllerTest extends Specification {
     ManagedCard managedCard = new ManagedCard()
 
     when:
-    doReturn(new AccessorResponse<ManagedCard>().withResult(managedCard)).when(managedCardGateway).disable("mc-123")
+    doReturn(new AccessorResponse<ManagedCard>().withResult(managedCard)).when(managedCardGateway).pause("mc-123")
     def response = subject.pause("mc-123")
 
     then:
-    verify(managedCardGateway).disable("mc-123") || true
+    verify(managedCardGateway).pause("mc-123") || true
     response.statusCode == HttpStatus.NO_CONTENT
   }
 
