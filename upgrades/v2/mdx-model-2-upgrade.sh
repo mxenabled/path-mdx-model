@@ -67,14 +67,18 @@ function process_file {
     #"com.mx.accessors.AccessorConfiguration([^a-zA-Z])=com.mx.common.accessors.AccessorConfiguration\1"
     #"([^a-zA-Z])YamlSerializer([^a-zA-Z])=\1ObjectMapYamlDeserializer\2"
     #"([^a-zA-Z])JsonObjectMapDeserializer([^a-zA-Z])=\1ObjectMapJsonDeserializer\2"
-    "com\.mx\.models\.=com.mx.path.model.mdx.model.\1"
-    "com\.mx\.accessors\.=com.mx.path.model.mdx.accessor.\1"
+
+    "com\.mx\.models\.=com.mx.path.model.mdx.model."
+    "com\.mx\.accessors\.=com.mx.path.model.mdx.accessor."
   )
   local groovy_mappings=(
     "JUNK=JUNK"
     #"com.mx.accessors.AccessorConfiguration([^a-zA-Z]?)=com.mx.common.accessors.AccessorConfiguration\1"
     #"([^a-zA-Z])YamlSerializer([^a-zA-Z]?)=\1ObjectMapYamlDeserializer\2"
     #"package com.mx.accessors([_a-zA-Z\.]*)([^_a-zA-Z\.])$=package com.mx.accessors\1\2\nimport com.mx.common.exception.AccessorMethodNotImplementedException\nimport com.mx.common.gateway.GatewayAPI\nimport com.mx.common.accessors.API\nimport com.mx.common.accessors.AccessorConfiguration\nimport com.mx.common.accessors.Accessor\nimport com.mx.common.accessors.RootAccessor\nimport com.mx.common.accessors.AccessorResponse\nimport com.mx.common.accessors.PathResponseStatus"
+
+    "com\.mx\.models\.=com.mx.path.model.mdx.model."
+    "com\.mx\.accessors\.=com.mx.path.model.mdx.accessor."
   )
   local gradle_mappings=(
     "([\"\'])com\.mx\.path-mdx-model:platform:[^\"\']+([\"\'])=\1com.mx.path-mdx-model:platform:$model_version\2"
