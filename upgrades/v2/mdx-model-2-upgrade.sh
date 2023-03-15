@@ -70,6 +70,8 @@ function process_file {
 
     "com\.mx\.models\.=com.mx.path.model.mdx.model."
     "com\.mx\.accessors\.=com.mx.path.model.mdx.accessor."
+
+    "UserIdProvider\.setUserIdProvider=UserIdProvider.setUserIdProvider ** REMOVED **"
   )
   local groovy_mappings=(
     "JUNK=JUNK"
@@ -79,6 +81,9 @@ function process_file {
 
     "com\.mx\.models\.=com.mx.path.model.mdx.model."
     "com\.mx\.accessors\.=com.mx.path.model.mdx.accessor."
+
+
+    "UserIdProvider\.setUserIdProvider=UserIdProvider.setUserIdProvider ** REMOVED **"
   )
   local gradle_mappings=(
     "([\"\'])com\.mx\.path-mdx-model:platform:[^\"\']+([\"\'])=\1com.mx.path-mdx-model:platform:$model_version\2"
@@ -95,7 +100,6 @@ function process_file {
   elif [ "${file: -7}" == ".groovy" ] || [ "${file: -3}" == ".kt" ]; then
     mappings=("${mappings[@]}" "${groovy_mappings[@]}")
   elif [ "${file: -12}" == "build.gradle" ]; then
-    echo "found build.gradle"
     mappings=("${mappings[@]}" "${gradle_mappings[@]}")
   elif [ "${file: -11}" == "gateway.yml" ] || [ "${file: -12}" == "gateway.yaml" ]; then
     mappings=("${mappings[@]}" "${gateway_mappings[@]}")
