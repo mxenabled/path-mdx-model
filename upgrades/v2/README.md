@@ -12,7 +12,7 @@ See [Release Notes](https://github.com/mxenabled/path-sdk/blob/master/CHANGELOG.
 
 1. In terminal
 2. `cd` to repository root
-3. Run `curl --header "PRIVATE-TOKEN: glpat-oFE1eP_Mf6GsWU_j68zs" "https://gitlab.mx.com/api/v4/projects/1113/repository/files/upgrades%2Fv35%2Fmdx-web-35-upgrade.sh/raw?ref=master" | bash -s ./ -d false`
+3. Run `curl -L "https://raw.github.com/mxenabled/path-mdx-model/v2/upgrades/v2/mdx-model-2-upgrade.sh" | bash -s ./ -d false`
 
 ### Update to new mdx-web platform
 
