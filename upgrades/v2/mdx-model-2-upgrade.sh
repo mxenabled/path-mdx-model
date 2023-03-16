@@ -63,9 +63,7 @@ function process_file {
   export nl=$'\n'
   local file=$1
   local java_mappings=(
-    #"com.mx.accessors.AccessorConfiguration
-
-}    }([^a-zA-Z])=com.mx.common.accessors.AccessorConfiguration\1"
+    #"com.mx.accessors.AccessorConfiguration([^a-zA-Z])=com.mx.common.accessors.AccessorConfiguration\1"
     #"([^a-zA-Z])YamlSerializer([^a-zA-Z])=\1ObjectMapYamlDeserializer\2"
     #"([^a-zA-Z])JsonObjectMapDeserializer([^a-zA-Z])=\1ObjectMapJsonDeserializer\2"
 
