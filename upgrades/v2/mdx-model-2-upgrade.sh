@@ -58,13 +58,13 @@ fi
 
 # Find & Replace all imports
 function process_file {
-  #local model_version="[35.0,36.0)"
   local model_version="2.0.0-SNAPSHOT"
 
   export nl=$'\n'
   local file=$1
   local java_mappings=(
-    #"com.mx.accessors.AccessorConfiguration([^a-zA-Z])=com.mx.common.accessors.AccessorConfiguration\1"
+    #"com.mx.accessors.AccessorConfiguration
+    }([^a-zA-Z])=com.mx.common.accessors.AccessorConfiguration\1"
     #"([^a-zA-Z])YamlSerializer([^a-zA-Z])=\1ObjectMapYamlDeserializer\2"
     #"([^a-zA-Z])JsonObjectMapDeserializer([^a-zA-Z])=\1ObjectMapJsonDeserializer\2"
 
@@ -134,5 +134,5 @@ function process_file {
 ### Driver
 export -f process_file
 export DRY_RUN
-find "$ROOT_DIR" -type f \( -iname "*.java" -or -iname "*.groovy" -or -iname "build.gradle" -or -iname "gateway.yml" -or -iname "gateway.yaml" \) -exec bash -c 'process_file "$0"' {} \;
+find "$ROOT_DIR" -type f \( -iname "*.java" -or -iname "*.groovy" -or -iname "*.kt" -or -iname "build.gradle" -or -iname "gateway.yml" -or -iname "gateway.yaml" \) -exec bash -c 'process_file "$0"' {} \;
 exit 0
