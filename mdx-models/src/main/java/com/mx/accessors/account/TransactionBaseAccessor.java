@@ -99,6 +99,17 @@ public abstract class TransactionBaseAccessor extends Accessor {
   }
 
   /**
+   * Pending transactions
+   * @param accountId
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "List pending transactions")
+  public AccessorResponse<MdxList<Transaction>> pending(String accountId) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
    * Search paged transactions
    * @param searchRequest
    * @return
