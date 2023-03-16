@@ -58,13 +58,14 @@ fi
 
 # Find & Replace all imports
 function process_file {
-  local model_version="2.0.0-SNAPSHOT"
+  local model_version="[2.0,3.0)"
 
   export nl=$'\n'
   local file=$1
   local java_mappings=(
     #"com.mx.accessors.AccessorConfiguration
-    }([^a-zA-Z])=com.mx.common.accessors.AccessorConfiguration\1"
+
+}    }([^a-zA-Z])=com.mx.common.accessors.AccessorConfiguration\1"
     #"([^a-zA-Z])YamlSerializer([^a-zA-Z])=\1ObjectMapYamlDeserializer\2"
     #"([^a-zA-Z])JsonObjectMapDeserializer([^a-zA-Z])=\1ObjectMapJsonDeserializer\2"
 
