@@ -25,3 +25,7 @@ dependencies {
 ```
 
 ### Potential Issues
+
+## DateDeserializer not found or adapters not found
+
+`com.mx.adapters.DateDeserializer` was moved. Use `com.mx.common.serialization.LocalDateDeserializer` instead.
