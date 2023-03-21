@@ -32,9 +32,6 @@ class ErrorHandler {
   @Autowired
   private Environment environment;
 
-  @Autowired
-  private ExceptionReporter springExceptionReporter;
-
   // Private
 
   private JsonObject exceptionToJson(PathRequestException ex) {
@@ -120,14 +117,10 @@ class ErrorHandler {
       context.setSessionCreateTime(Session.current().getStartedAt().toEpochSecond(ZoneOffset.UTC));
       context.getContext().put("client_id", RequestContext.current().getClientId());
     }
-    exceptionReporter().report(ex, ex.getMessage(), context);
-  }
 
-  private ExceptionReporter exceptionReporter() {
-    if (Facilities.getExceptionReporter(RequestContext.current().getClientId()) != null) {
-      return Facilities.getExceptionReporter(RequestContext.current().getClientId());
+    ExceptionReporter exceptionReporter = Facilities.getExceptionReporter(RequestContext.current().getClientId());
+    if (exceptionReporter != null) {
+      exceptionReporter.report(ex, ex.getMessage(), context);
     }
-
-    return springExceptionReporter;
   }
 }
