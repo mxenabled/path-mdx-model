@@ -99,7 +99,7 @@ public abstract class TransactionBaseAccessor extends Accessor {
   }
 
   /**
-   * Pending transactions
+   * List pending transactions for an account
    * @param accountId
    * @return
    */
