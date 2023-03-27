@@ -144,6 +144,20 @@ class AccountsControllerTest extends Specification implements WithMockery {
     result.body.transactions == page
   }
 
+  def "pending transactions"() {
+    given:
+    AccountsController.setGateway(gateway)
+    MdxList<Transaction> transactions = new MdxList<Transaction>()
+
+    when:
+    Mockito.doReturn(new AccessorResponse<MdxList<Transaction>>().withResult(transactions)).when(transactionGateway).pending("A-123")
+    def result = subject.pendingTransactions("A-123")
+
+    then:
+    verify(transactionGateway).pending("A-123") || true
+    result.body == transactions
+  }
+
   def "get recent transactions"() {
     given:
     AccountsController.setGateway(gateway)
