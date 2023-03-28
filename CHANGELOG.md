@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.1](https://github.com/mxenabled/path-mdx-model/compare/v1.8.0...v1.8.1) (2023-03-28)
+
+
+### Features
+
+* Add pending function to TransactionsBaseAccessor and pending endpoint to AccountsController ([f3107ac](https://github.com/mxenabled/path-mdx-model/commit/f3107ac3297c71afcdf100c8419a0d1c1a6f616d))
+
 ## [1.8.0](https://github.com/mxenabled/path-mdx-model/compare/v1.7.1...v1.8.0) (2023-02-01)
 
 
