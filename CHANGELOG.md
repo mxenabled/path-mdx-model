@@ -1,5 +1,47 @@
 # Changelog
 
+## [2.0.0](https://github.com/mxenabled/path-mdx-model/compare/v1.8.1...v2.0.0) (2023-03-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove deprecated classes and methods
+* move models and accessors to new package
+* move controllers to new package
+* move RepositoryFilter and GatewayManager
+* move MdxRequestContextFilter
+* move HmacFilter
+* clean up filter package paths
+* move RequireAuthenticationFilter
+* move SessionFilter
+* move ErrorHandlerFilter
+
+### Features
+
+* add gateway content pre-processor ([2f1da5d](https://github.com/mxenabled/path-mdx-model/commit/2f1da5d727832e6c2e8832279490f26265f51e6c))
+* add gateway manager ([2f1da5d](https://github.com/mxenabled/path-mdx-model/commit/2f1da5d727832e6c2e8832279490f26265f51e6c))
+* move controllers to new package ([ec0b2c7](https://github.com/mxenabled/path-mdx-model/commit/ec0b2c74bf777c79e5e1d23018793a2c1faf2bfc))
+* move ErrorHandlerFilter ([9440808](https://github.com/mxenabled/path-mdx-model/commit/944080858937db0cfcd0170a57758c0e7879d351))
+* move HmacFilter ([98022b1](https://github.com/mxenabled/path-mdx-model/commit/98022b174fc37069d66ced399121b9f377b7a36b))
+* move MdxRequestContextFilter ([4c430e8](https://github.com/mxenabled/path-mdx-model/commit/4c430e8d9415b8790a5f0966bf88ad61306e2258))
+* move RepositoryFilter and GatewayManager ([2f1da5d](https://github.com/mxenabled/path-mdx-model/commit/2f1da5d727832e6c2e8832279490f26265f51e6c))
+* move RequireAuthenticationFilter ([45d8e32](https://github.com/mxenabled/path-mdx-model/commit/45d8e3294c5c8ae8c38e17ff9902f3a5a6a01598))
+* move SessionFilter ([21ba00b](https://github.com/mxenabled/path-mdx-model/commit/21ba00b6392295cac56f9976f2dd7c21532c081f))
+* move ValidationExceptionHandler and FilterOrderSequence ([df443eb](https://github.com/mxenabled/path-mdx-model/commit/df443eb84ef0601d78f95c325459e93a96b2b59e))
+
+
+### Bug Fixes
+
+* clean up filter package paths ([bea5708](https://github.com/mxenabled/path-mdx-model/commit/bea5708d862068ebca382d548efd7fba0ae672b3))
+* correct PathToolsTest package ([e3a4b8d](https://github.com/mxenabled/path-mdx-model/commit/e3a4b8d064a1c598c4d8596bf80d4e188e7b1c4a))
+* correct the package paths in v2 upgrade script ([a41b9ef](https://github.com/mxenabled/path-mdx-model/commit/a41b9ef4b8992a60b3d00503981f35f5291103be))
+
+
+### Code Refactoring
+
+* move models and accessors to new package ([d6c678e](https://github.com/mxenabled/path-mdx-model/commit/d6c678e724ef6179fba727e1d647e165b9cc0584))
+* remove deprecated classes and methods ([1f4a988](https://github.com/mxenabled/path-mdx-model/commit/1f4a988283442149204ae166db9ea7bfbc8f84f0))
+
 ## [1.8.1](https://github.com/mxenabled/path-mdx-model/compare/v1.8.0...v1.8.1) (2023-03-28)
 
 
