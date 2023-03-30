@@ -1,7 +1,10 @@
-package com.mx.path.api.lib.realtime.models
+package com.mx.path.api.lib.realtime.model
+
+import com.mx.path.api.lib.realtime.models.MdxAccount
 
 import spock.lang.Specification
 
+@Deprecated
 class MdxAccountTest extends Specification {
 
   def "test for getter/setter"() {

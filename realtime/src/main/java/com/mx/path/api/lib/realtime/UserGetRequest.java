@@ -8,6 +8,10 @@ import com.mx.common.http.MediaType;
 import com.mx.path.api.lib.realtime.models.MdxUserWrapper;
 import com.mx.path.gateway.net.Request;
 
+/**
+ * @deprecated Use {@link com.mx.path.service.connection.realtime.MdxRealtimeUsersConnection}
+ */
+@Deprecated
 public class UserGetRequest extends Request {
 
   private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();

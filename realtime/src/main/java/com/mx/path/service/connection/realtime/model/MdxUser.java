@@ -1,4 +1,4 @@
-package com.mx.path.api.lib.realtime.models;
+package com.mx.path.service.connection.realtime.model;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -10,10 +10,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import com.mx.common.collections.ObjectMap;
 
-/**
- * @deprecated Use {@link com.mx.path.service.connection.realtime.model.MdxUser}
- */
-@Deprecated
 @Data
 public class MdxUser {
 

@@ -5,6 +5,7 @@ import com.mx.path.gateway.net.Response
 
 import spock.lang.Specification
 
+@Deprecated
 class UserDeleteRequestTest extends Specification {
   def request
 

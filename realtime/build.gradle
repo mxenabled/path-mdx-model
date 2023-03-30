@@ -1,9 +1,12 @@
 coppuccino {
   coverage {
-    minimumCoverage = 0.98
+    minimumCoverage = 0.99
   }
 }
 
 dependencies {
   implementation project(":mdx-models")
+  implementation "com.mx.path-core:http"
+
+  testImplementation "com.mx.path-core:testing"
 }

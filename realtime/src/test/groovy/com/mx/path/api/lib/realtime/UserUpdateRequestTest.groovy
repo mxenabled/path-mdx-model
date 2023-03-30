@@ -2,7 +2,6 @@ package com.mx.path.api.lib.realtime
 
 import com.google.gson.Gson
 import com.mx.common.accessors.UnauthorizedException
-import com.mx.common.accessors.UpstreamSystemUnavailable
 import com.mx.common.http.HttpStatus
 import com.mx.path.api.lib.realtime.models.MdxUser
 import com.mx.path.api.lib.realtime.models.MdxUserWrapper
@@ -11,6 +10,7 @@ import com.mx.path.gateway.net.Response
 import spock.lang.Shared
 import spock.lang.Specification
 
+@Deprecated
 class UserUpdateRequestTest extends Specification {
   Gson gson = new Gson()
   @Shared
