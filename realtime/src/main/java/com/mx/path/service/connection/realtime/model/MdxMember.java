@@ -1,13 +1,9 @@
-package com.mx.path.api.lib.realtime.models;
+package com.mx.path.service.connection.realtime.model;
 
 import lombok.Data;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * @deprecated Use {@link com.mx.path.service.connection.realtime.model.MdxMember}
- */
-@Deprecated
 @Data
 public class MdxMember {
   @SerializedName("id")

@@ -5,6 +5,10 @@ import com.mx.common.http.HttpStatus;
 import com.mx.common.http.MediaType;
 import com.mx.path.gateway.net.Request;
 
+/**
+ * @deprecated Use {@link com.mx.path.service.connection.realtime.MdxRealtimeMembersConnection}
+ */
+@Deprecated
 public class MemberGetRequest extends Request {
 
   public MemberGetRequest(String baseUrl, String clientId, String apiKey, String userId, String memberId) {

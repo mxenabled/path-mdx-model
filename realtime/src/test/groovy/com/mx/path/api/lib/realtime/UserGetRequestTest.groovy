@@ -1,13 +1,13 @@
 package com.mx.path.api.lib.realtime
 
 import com.mx.common.accessors.ResourceNotFoundException
-import com.mx.common.accessors.UpstreamSystemUnavailable
 import com.mx.common.http.HttpStatus
 import com.mx.path.api.lib.realtime.models.MdxUserWrapper
 import com.mx.path.gateway.net.Response
 
 import spock.lang.Specification
 
+@Deprecated
 class UserGetRequestTest extends Specification {
   def request
 

@@ -6,6 +6,7 @@ import com.mx.path.gateway.net.Response
 
 import spock.lang.Specification
 
+@Deprecated
 class MemberGetRequestTest extends Specification {
 
   Gson gson

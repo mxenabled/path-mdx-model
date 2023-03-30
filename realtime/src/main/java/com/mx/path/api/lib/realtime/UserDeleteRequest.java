@@ -4,6 +4,10 @@ import com.mx.common.http.HttpStatus;
 import com.mx.common.http.MediaType;
 import com.mx.path.gateway.net.Request;
 
+/**
+ * @deprecated Use {@link com.mx.path.service.connection.realtime.MdxRealtimeUsersConnection}
+ */
+@Deprecated
 public class UserDeleteRequest extends Request {
 
   // Public

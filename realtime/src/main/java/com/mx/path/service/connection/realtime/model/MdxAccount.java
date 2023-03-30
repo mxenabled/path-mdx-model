@@ -1,4 +1,4 @@
-package com.mx.path.api.lib.realtime.models;
+package com.mx.path.service.connection.realtime.model;
 
 import java.math.BigDecimal;
 
@@ -6,10 +6,6 @@ import lombok.Data;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * @deprecated Use {@link com.mx.path.service.connection.realtime.model.MdxAccount}
- */
-@Deprecated
 @Data
 public class MdxAccount {
   @SerializedName("available_balance")

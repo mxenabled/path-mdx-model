@@ -1,4 +1,4 @@
-package com.mx.path.api.lib.realtime.models
+package com.mx.path.service.connection.realtime.model
 
 import spock.lang.Specification
 

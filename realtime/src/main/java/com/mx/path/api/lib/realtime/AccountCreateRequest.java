@@ -11,6 +11,10 @@ import com.mx.common.http.MediaType;
 import com.mx.path.api.lib.realtime.models.MdxAccount;
 import com.mx.path.gateway.net.Request;
 
+/**
+ * @deprecated Use {@link com.mx.path.service.connection.realtime.MdxRealtimeAccountsConnection}
+ */
+@Deprecated
 public class AccountCreateRequest extends Request {
   private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
