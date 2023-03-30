@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.1.0](https://github.com/mxenabled/path-mdx-model/compare/v2.0.0...v2.1.0) (2023-03-30)
+
+
+### Features
+
+* realtime - deprecated Request objects, added connection ([9cd52ca](https://github.com/mxenabled/path-mdx-model/commit/9cd52ca9ac0f5ad3953b6e04942cdf9f714718f2))
+
+
+### Bug Fixes
+
+* fixing breaking change ([9cd52ca](https://github.com/mxenabled/path-mdx-model/commit/9cd52ca9ac0f5ad3953b6e04942cdf9f714718f2))
+* only throw on 401, check status in onProcess ([9cd52ca](https://github.com/mxenabled/path-mdx-model/commit/9cd52ca9ac0f5ad3953b6e04942cdf9f714718f2))
+* removing breaking change, fixing constructor ([9cd52ca](https://github.com/mxenabled/path-mdx-model/commit/9cd52ca9ac0f5ad3953b6e04942cdf9f714718f2))
+* restoring old tests ([9cd52ca](https://github.com/mxenabled/path-mdx-model/commit/9cd52ca9ac0f5ad3953b6e04942cdf9f714718f2))
+
 ## [2.0.0](https://github.com/mxenabled/path-mdx-model/compare/v1.8.1...v2.0.0) (2023-03-29)
 
 
