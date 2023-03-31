@@ -23,6 +23,7 @@ import com.mx.common.serialization.ObjectMapYamlDeserializer;
 import com.mx.path.gateway.api.Gateway;
 import com.mx.path.gateway.api.GatewayConfigurator;
 import com.mx.path.gateway.configuration.Configurator;
+import com.mx.path.gateway.configuration.ConfiguratorObserver;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,9 +73,8 @@ public class SpringMdxGatewayManager {
   private static String profiles;
 
   private static boolean initialized = false;
-  private static final List<BiConsumer<Configurator<Gateway>, Map<String, Gateway>>> AFTER_INITIALIZED_CONSUMERS = new ArrayList<>();
-  private static final List<Object> AFTER_INITIALIZED_LISTENERS = new ArrayList<>();
   private static Consumer<GatewayConfigurationFileContext> gatewayFileContentPreProcessor;
+  private static GatewayConfigurator configurator = new GatewayConfigurator();
 
   public static ObjectMap describe() {
     ObjectMap description = new ObjectMap();
@@ -97,24 +97,41 @@ public class SpringMdxGatewayManager {
     return gateways.get(clientId);
   }
 
+  public static ConfiguratorObserver<Gateway> getConfiguratorObserver() {
+    return configurator.getObserver();
+  }
+
   /**
    * Register a block of code to run after the Gateways and Facilities are initialized
    *
    * @param consumer block of code to execute
    * @throws MdxWebApplicationException if attempting to register a new consumer after initialization has already occurred.
+   *
+   * @deprecated Use {@link #getConfiguratorObserver()} to register consumer. Will be removed in next major version
    */
+  @Deprecated
   public static void registerAfterInitialized(BiConsumer<Configurator<Gateway>, Map<String, Gateway>> consumer) {
     if (initialized) {
       throw new MdxWebApplicationException("Initialization order issue. Calling registerAfterInitialized after gateways already initialized.");
     }
-    AFTER_INITIALIZED_CONSUMERS.add(consumer);
+
+    getConfiguratorObserver().registerGatewaysInitialized(consumer);
   }
 
+  /**
+   * Register listener object annotated with {@link com.google.common.eventbus.Subscribe} annotations
+   *
+   * @param listener listener object
+   *
+   * @deprecated Use {@link #getConfiguratorObserver()} to register listeners. Will be removed in next major version
+   */
+  @Deprecated
   public static void registerAfterInitializedListener(Object listener) {
     if (initialized) {
-      throw new MdxWebApplicationException("Initialization order issue. Calling registerAfterInitializedListener after gateways already initialized.");
+      throw new MdxWebApplicationException("Initialization order issue. Calling registerListener after gateways already initialized.");
     }
-    AFTER_INITIALIZED_LISTENERS.add(listener);
+
+    getConfiguratorObserver().registerListener(listener);
   }
 
   /**
@@ -129,17 +146,25 @@ public class SpringMdxGatewayManager {
     gatewayFileContentPreProcessor = gatewayConfigurationFileContextConsumer;
   }
 
+  /**
+   * FOR TESTING PURPOSES ONLY
+   *
+   * <p>This class is loaded by Spring. If reset is called on it, there is no way for Spring to know it needs to be reinitialized.
+   */
   public static void reset() {
+    configurator = new GatewayConfigurator();
     gateways = null;
     profiles = null;
-    resetAfterInitialized();
+    initialized = false;
     setConfigPaths(STATIC_CONFIG_PATHS);
     gatewayFileContentPreProcessor = null;
   }
 
+  /**
+   * Use {@link #reset()}
+   */
+  @Deprecated
   public static void resetAfterInitialized() {
-    AFTER_INITIALIZED_CONSUMERS.clear();
-    AFTER_INITIALIZED_LISTENERS.clear();
     initialized = false;
   }
 
@@ -202,11 +227,6 @@ public class SpringMdxGatewayManager {
 
   private void initializeFromProfiles() {
     GatewayConfigurationFileContext gatewayConfigurationFileContext = buildConfigFile();
-    GatewayConfigurator configurator = gatewayConfigurationFileContext.configurator;
-
-    // Register event hooks
-    AFTER_INITIALIZED_CONSUMERS.forEach((consumer) -> configurator.getObserver().registerGatewaysInitialized(consumer));
-    AFTER_INITIALIZED_LISTENERS.forEach((listener) -> configurator.getObserver().registerListener(listener));
 
     // Hand off configuration file to pre-processor block if it is present
     if (gatewayFileContentPreProcessor != null) {
@@ -249,7 +269,7 @@ public class SpringMdxGatewayManager {
     String fileContents = compiledExists ? buildMergedConfigString(compiledConfigPaths) : readConfigFile(configPath);
     String path = compiledExists ? compiledConfigPaths.get(0).toString() : configPath.toString();
 
-    return new GatewayConfigurationFileContext(fileContents, path, getActiveProfiles(), new GatewayConfigurator());
+    return new GatewayConfigurationFileContext(fileContents, path, getActiveProfiles(), SpringMdxGatewayManager.configurator);
   }
 
   private String buildMergedConfigString(List<Path> paths) {
@@ -302,5 +322,4 @@ public class SpringMdxGatewayManager {
       return this.path.endsWith(".json");
     }
   }
-
 }
