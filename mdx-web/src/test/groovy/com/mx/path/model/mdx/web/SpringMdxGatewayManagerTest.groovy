@@ -232,6 +232,19 @@ class SpringMdxGatewayManagerTest extends Specification implements WithMockery {
     called
   }
 
+  def "executes before initialization hook"() {
+    when:
+    def called = false
+    SpringMdxGatewayManager.registerBeforeInitialization({ Configurator<Gateway> configurator ->
+      called = true
+    })
+    withYaml()
+    makeGateway("development")
+
+    then:
+    called
+  }
+
   def makeGateway(profiles, clientId = "afcu") {
     new SpringMdxGatewayManager().setActiveProfiles(profiles)
     return SpringMdxGatewayManager.getClientGateway(clientId)
