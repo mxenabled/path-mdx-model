@@ -44,6 +44,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpringMdxGatewayManager {
 
+  private static final List<Consumer<GatewayConfigurator>> BEFORE_INITIALIZATION_CONSUMERS = new ArrayList<>();
+
   private static final String[] STATIC_CONFIG_PATHS = {
       "gateway.json",
       "resources/gateway.json",
@@ -135,6 +137,15 @@ public class SpringMdxGatewayManager {
   }
 
   /**
+   * Register consumer that will be fired after Spring context is loaded and before GatewayConfigurator is initiated.
+   *
+   * @param consumer
+   */
+  public static void registerBeforeInitialization(Consumer<GatewayConfigurator> consumer) {
+    BEFORE_INITIALIZATION_CONSUMERS.add(consumer);
+  }
+
+  /**
    * Register block of code that is called after the gateway file contents are located and loaded, but before they are
    * processed by the configurator.
    *
@@ -158,6 +169,7 @@ public class SpringMdxGatewayManager {
     initialized = false;
     setConfigPaths(STATIC_CONFIG_PATHS);
     gatewayFileContentPreProcessor = null;
+    BEFORE_INITIALIZATION_CONSUMERS.clear();
   }
 
   /**
@@ -226,6 +238,9 @@ public class SpringMdxGatewayManager {
   }
 
   private void initializeFromProfiles() {
+    // Notify consumers that initialization is starting
+    BEFORE_INITIALIZATION_CONSUMERS.forEach(consumer -> consumer.accept(configurator));
+
     GatewayConfigurationFileContext gatewayConfigurationFileContext = buildConfigFile();
 
     // Hand off configuration file to pre-processor block if it is present
