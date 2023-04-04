@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.2.0](https://github.com/mxenabled/path-mdx-model/compare/v2.1.0...v2.2.0) (2023-04-04)
+
+
+### Features
+
+* **web:** add before initialization hook to SpringMdxGatewayManagerTest ([bb40d6b](https://github.com/mxenabled/path-mdx-model/commit/bb40d6b8608846d0983a45a18ab3a98949fd1eeb))
+* **web:** expose configurator observer ([607b9a7](https://github.com/mxenabled/path-mdx-model/commit/607b9a7dc8f88c18c269ebf77bd6dad91cc1c295))
+
 ## [2.1.0](https://github.com/mxenabled/path-mdx-model/compare/v2.0.0...v2.1.0) (2023-03-30)
 
 
