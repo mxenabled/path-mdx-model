@@ -2,7 +2,7 @@ package com.mx.path.api.connect.messaging.remote.models;
 
 import lombok.Data;
 
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 
 @Data
 public class RemoteJointOwner extends MdxBase<RemoteJointOwner> {

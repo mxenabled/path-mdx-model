@@ -1,7 +1,7 @@
 package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
-import com.mx.common.models.MdxList;
+import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.transfer.RecurringTransfer;
 import com.mx.path.model.mdx.model.transfer.options.RecurringTransferListOptions;
 import com.mx.path.model.mdx.web.model.transfer.RecurringTransferListQueryParameters;

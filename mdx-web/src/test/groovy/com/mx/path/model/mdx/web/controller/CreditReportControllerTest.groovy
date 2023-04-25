@@ -3,11 +3,11 @@ package com.mx.path.model.mdx.web.controller
 import static org.mockito.Mockito.spy
 
 import com.mx.common.accessors.AccessorResponse
-import com.mx.common.models.MdxList
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.credit_report.CreditReportGateway
 import com.mx.path.gateway.api.credit_report.CreditReportSettingsGateway
 import com.mx.path.gateway.api.credit_report.ScoreFactorGateway
+import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.credit_report.CreditReport
 import com.mx.path.model.mdx.model.credit_report.CreditReportScoreFactor
 import com.mx.path.model.mdx.model.credit_report.CreditReportSettings

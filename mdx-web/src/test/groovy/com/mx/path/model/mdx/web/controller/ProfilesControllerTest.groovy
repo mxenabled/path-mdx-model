@@ -6,12 +6,12 @@ import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
-import com.mx.common.models.MdxList
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.profile.AddressGateway
 import com.mx.path.gateway.api.profile.EmailGateway
 import com.mx.path.gateway.api.profile.PhoneGateway
 import com.mx.path.gateway.api.profile.ProfileGateway
+import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.challenges.Challenge
 import com.mx.path.model.mdx.model.profile.Address
 import com.mx.path.model.mdx.model.profile.Email

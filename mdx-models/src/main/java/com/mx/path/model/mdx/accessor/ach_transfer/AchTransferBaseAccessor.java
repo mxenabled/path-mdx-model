@@ -10,8 +10,8 @@ import com.mx.common.accessors.AccessorMethodNotImplementedException;
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.gateway.GatewayAPI;
 import com.mx.common.gateway.GatewayClass;
-import com.mx.common.models.MdxList;
 import com.mx.path.model.mdx.accessor.ach_transfer.ach_scheduled_transfer.AchScheduledTransferBaseAccessor;
+import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.ach_transfer.AchTransfer;
 import com.mx.path.model.mdx.model.ach_transfer.options.AchTransferListOptions;
 

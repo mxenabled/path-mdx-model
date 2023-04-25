@@ -5,10 +5,10 @@ import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
 import com.mx.common.accessors.PathResponseStatus
-import com.mx.common.models.MdxList
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.payment.PayeeGateway
 import com.mx.path.gateway.api.payment.PaymentGateway
+import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.payment.Payee
 
 import org.mockito.Mockito

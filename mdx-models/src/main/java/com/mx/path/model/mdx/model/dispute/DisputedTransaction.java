@@ -2,7 +2,7 @@ package com.mx.path.model.mdx.model.dispute;
 
 import javax.xml.bind.annotation.XmlElement;
 
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.UserIdProvider;
 
 /**

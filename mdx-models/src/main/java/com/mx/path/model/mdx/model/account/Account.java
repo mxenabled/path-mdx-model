@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 import com.google.gson.annotations.SerializedName;
 import com.mx.common.models.Internal;
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.UserIdProvider;
 
 @SuppressWarnings("PMD.CyclomaticComplexity")

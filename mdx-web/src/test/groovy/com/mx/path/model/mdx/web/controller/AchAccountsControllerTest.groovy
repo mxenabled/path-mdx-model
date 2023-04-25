@@ -7,11 +7,11 @@ import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
-import com.mx.common.models.MdxList
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.ach_transfer.AccountGateway
 import com.mx.path.gateway.api.ach_transfer.AchAccountGateway
 import com.mx.path.gateway.api.ach_transfer.AchTransferGateway
+import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.account.Account
 import com.mx.path.model.mdx.model.ach_transfer.AchAccount
 import com.mx.path.model.mdx.model.ach_transfer.options.AccountListOptions

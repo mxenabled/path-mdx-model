@@ -2,7 +2,7 @@ package com.mx.path.model.mdx.model.payout;
 
 import java.time.LocalDate;
 
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.UserIdProvider;
 
 public final class PayoutRequest extends MdxBase<PayoutRequest> {

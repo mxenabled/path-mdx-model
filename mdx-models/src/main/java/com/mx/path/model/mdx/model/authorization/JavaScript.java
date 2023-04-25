@@ -1,6 +1,6 @@
 package com.mx.path.model.mdx.model.authorization;
 
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 
 public class JavaScript extends MdxBase<JavaScript> {
 

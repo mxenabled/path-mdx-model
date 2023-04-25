@@ -5,10 +5,10 @@ import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
-import com.mx.common.models.MdxList
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.transfer.TransferGateway
 import com.mx.path.gateway.api.transfer.recurring_transfer.RecurringTransferGateway
+import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.transfer.RecurringTransfer
 import com.mx.path.model.mdx.model.transfer.options.RecurringTransferListOptions
 import com.mx.path.model.mdx.web.model.transfer.RecurringTransferListQueryParameters

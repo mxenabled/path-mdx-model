@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.mx.common.models.MdxList;
 import com.mx.path.model.mdx.model.account.Account;
 import com.mx.path.model.mdx.model.account.AccountNumber;
 import com.mx.path.model.mdx.model.account.AccountNumbers;
@@ -97,145 +96,145 @@ public class Resources {
     builder.registerTypeAdapter(LocalDate.class, new MdxLocalDateSerializer());
     builder.setDateFormat("YYYY-MM-dd");
     // Account
-    builder.registerTypeAdapter(Account.class, new MdxWrappableSerializer("account"));
+    builder.registerTypeAdapter(Account.class, new ModelWrappableSerializer("account"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Account>>() {
-    }.getType(), new MdxWrappableSerializer("accounts"));
+    }.getType(), new ModelWrappableSerializer("accounts"));
     // Origination
-    builder.registerTypeAdapter(Origination.class, new MdxWrappableSerializer("origination"));
+    builder.registerTypeAdapter(Origination.class, new ModelWrappableSerializer("origination"));
     // Origination challenge
-    builder.registerTypeAdapter(com.mx.path.model.mdx.model.challenges.Challenge.class, new MdxWrappableSerializer("challenge"));
+    builder.registerTypeAdapter(com.mx.path.model.mdx.model.challenges.Challenge.class, new ModelWrappableSerializer("challenge"));
     // Authentication
-    builder.registerTypeAdapter(Authentication.class, new MdxWrappableSerializer("authentication"));
+    builder.registerTypeAdapter(Authentication.class, new ModelWrappableSerializer("authentication"));
     // Transaction
-    builder.registerTypeAdapter(Transaction.class, new MdxWrappableSerializer("transaction"));
+    builder.registerTypeAdapter(Transaction.class, new ModelWrappableSerializer("transaction"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Transaction>>() {
-    }.getType(), new MdxWrappableSerializer("transactions"));
+    }.getType(), new ModelWrappableSerializer("transactions"));
     // AccountType
-    builder.registerTypeAdapter(AccountType.class, new MdxWrappableSerializer("account_type"));
+    builder.registerTypeAdapter(AccountType.class, new ModelWrappableSerializer("account_type"));
     builder.registerTypeAdapter(new TypeToken<MdxList<AccountType>>() {
-    }.getType(), new MdxWrappableSerializer("account_types"));
+    }.getType(), new ModelWrappableSerializer("account_types"));
     // Transfer
-    builder.registerTypeAdapter(Transfer.class, new MdxWrappableSerializer("transfer"));
+    builder.registerTypeAdapter(Transfer.class, new ModelWrappableSerializer("transfer"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Transfer>>() {
-    }.getType(), new MdxWrappableSerializer("transfers"));
+    }.getType(), new ModelWrappableSerializer("transfers"));
     // RecurringTransfer
-    builder.registerTypeAdapter(RecurringTransfer.class, new MdxWrappableSerializer("recurring_transfer"));
+    builder.registerTypeAdapter(RecurringTransfer.class, new ModelWrappableSerializer("recurring_transfer"));
     builder.registerTypeAdapter(new TypeToken<MdxList<RecurringTransfer>>() {
-    }.getType(), new MdxWrappableSerializer("recurring_transfers"));
+    }.getType(), new ModelWrappableSerializer("recurring_transfers"));
     // TransferAmountOptions
-    builder.registerTypeAdapter(TransferAmountOption.class, new MdxWrappableSerializer("amount_option"));
+    builder.registerTypeAdapter(TransferAmountOption.class, new ModelWrappableSerializer("amount_option"));
     builder.registerTypeAdapter(new TypeToken<MdxList<TransferAmountOption>>() {
-    }.getType(), new MdxWrappableSerializer("amount_options"));
+    }.getType(), new ModelWrappableSerializer("amount_options"));
     // Frequency
-    builder.registerTypeAdapter(Frequency.class, new MdxWrappableSerializer("frequency"));
+    builder.registerTypeAdapter(Frequency.class, new ModelWrappableSerializer("frequency"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Frequency>>() {
-    }.getType(), new MdxWrappableSerializer("frequencies"));
+    }.getType(), new ModelWrappableSerializer("frequencies"));
     // RecurringPayout
-    builder.registerTypeAdapter(RecurringPayout.class, new MdxWrappableSerializer("recurring_payout"));
+    builder.registerTypeAdapter(RecurringPayout.class, new ModelWrappableSerializer("recurring_payout"));
     builder.registerTypeAdapter(new TypeToken<MdxList<RecurringPayout>>() {
-    }.getType(), new MdxWrappableSerializer("recurring_payouts"));
+    }.getType(), new ModelWrappableSerializer("recurring_payouts"));
     // PayoutSettings
-    builder.registerTypeAdapter(PayoutSettings.class, new MdxWrappableSerializer("payout_setting"));
+    builder.registerTypeAdapter(PayoutSettings.class, new ModelWrappableSerializer("payout_setting"));
     builder.registerTypeAdapter(new TypeToken<MdxList<PayoutSettings>>() {
-    }.getType(), new MdxWrappableSerializer("payout_settings"));
+    }.getType(), new ModelWrappableSerializer("payout_settings"));
     // PayoutContactMethod
-    builder.registerTypeAdapter(PayoutContactMethod.class, new MdxWrappableSerializer("payout_contact_method"));
+    builder.registerTypeAdapter(PayoutContactMethod.class, new ModelWrappableSerializer("payout_contact_method"));
     builder.registerTypeAdapter(new TypeToken<MdxList<PayoutContactMethod>>() {
-    }.getType(), new MdxWrappableSerializer("payout_contact_methods"));
+    }.getType(), new ModelWrappableSerializer("payout_contact_methods"));
     // Recipient
-    builder.registerTypeAdapter(Recipient.class, new MdxWrappableSerializer("recipient"));
+    builder.registerTypeAdapter(Recipient.class, new ModelWrappableSerializer("recipient"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Recipient>>() {
-    }.getType(), new MdxWrappableSerializer("recipients"));
+    }.getType(), new ModelWrappableSerializer("recipients"));
     // PayoutMethod
-    builder.registerTypeAdapter(PayoutMethod.class, new MdxWrappableSerializer("payout_method"));
+    builder.registerTypeAdapter(PayoutMethod.class, new ModelWrappableSerializer("payout_method"));
     builder.registerTypeAdapter(new TypeToken<MdxList<PayoutMethod>>() {
-    }.getType(), new MdxWrappableSerializer("payout_methods"));
+    }.getType(), new ModelWrappableSerializer("payout_methods"));
     // Payout
-    builder.registerTypeAdapter(Payout.class, new MdxWrappableSerializer("payout"));
+    builder.registerTypeAdapter(Payout.class, new ModelWrappableSerializer("payout"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Payout>>() {
-    }.getType(), new MdxWrappableSerializer("payouts"));
+    }.getType(), new ModelWrappableSerializer("payouts"));
     // PayoutRequest
-    builder.registerTypeAdapter(PayoutRequest.class, new MdxWrappableSerializer("payout_request"));
+    builder.registerTypeAdapter(PayoutRequest.class, new ModelWrappableSerializer("payout_request"));
     builder.registerTypeAdapter(new TypeToken<MdxList<PayoutRequest>>() {
-    }.getType(), new MdxWrappableSerializer("payout_requests"));
+    }.getType(), new ModelWrappableSerializer("payout_requests"));
     // Challenge
-    builder.registerTypeAdapter(Challenge.class, new MdxWrappableSerializer("challenge"));
+    builder.registerTypeAdapter(Challenge.class, new ModelWrappableSerializer("challenge"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Challenge>>() {
-    }.getType(), new MdxWrappableSerializer("challenges"));
+    }.getType(), new ModelWrappableSerializer("challenges"));
     // Question
-    builder.registerTypeAdapter(Question.class, new MdxWrappableSerializer("question"));
+    builder.registerTypeAdapter(Question.class, new ModelWrappableSerializer("question"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Question>>() {
-    }.getType(), new MdxWrappableSerializer("questions"));
+    }.getType(), new ModelWrappableSerializer("questions"));
     // Option
-    builder.registerTypeAdapter(Option.class, new MdxWrappableSerializer("option"));
+    builder.registerTypeAdapter(Option.class, new ModelWrappableSerializer("option"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Option>>() {
-    }.getType(), new MdxWrappableSerializer("options"));
+    }.getType(), new ModelWrappableSerializer("options"));
     // ChallengeAnswer
-    builder.registerTypeAdapter(ChallengeAnswer.class, new MdxWrappableSerializer("challenge_answer"));
+    builder.registerTypeAdapter(ChallengeAnswer.class, new ModelWrappableSerializer("challenge_answer"));
     builder.registerTypeAdapter(new TypeToken<MdxList<ChallengeAnswer>>() {
-    }.getType(), new MdxWrappableSerializer("challenge_answers"));
+    }.getType(), new ModelWrappableSerializer("challenge_answers"));
     // Authorization
-    builder.registerTypeAdapter(Authorization.class, new MdxWrappableSerializer("authorization"));
+    builder.registerTypeAdapter(Authorization.class, new ModelWrappableSerializer("authorization"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Authorization>>() {
-    }.getType(), new MdxWrappableSerializer("authorizations"));
+    }.getType(), new ModelWrappableSerializer("authorizations"));
     // CheckImages
-    builder.registerTypeAdapter(CheckImage.class, new MdxWrappableSerializer("check_image"));
+    builder.registerTypeAdapter(CheckImage.class, new ModelWrappableSerializer("check_image"));
     builder.registerTypeAdapter(new TypeToken<MdxList<CheckImage>>() {
-    }.getType(), new MdxWrappableSerializer("check_images"));
+    }.getType(), new ModelWrappableSerializer("check_images"));
     // CreditReportSetting
-    builder.registerTypeAdapter(CreditReportSettings.class, new MdxWrappableSerializer("settings"));
+    builder.registerTypeAdapter(CreditReportSettings.class, new ModelWrappableSerializer("settings"));
     // CreditReport
-    builder.registerTypeAdapter(CreditReport.class, new MdxWrappableSerializer("credit_report"));
+    builder.registerTypeAdapter(CreditReport.class, new ModelWrappableSerializer("credit_report"));
     builder.registerTypeAdapter(new TypeToken<MdxList<CreditReport>>() {
-    }.getType(), new MdxWrappableSerializer("credit_reports"));
+    }.getType(), new ModelWrappableSerializer("credit_reports"));
     // CreditReportScoreFactor
-    builder.registerTypeAdapter(CreditReportScoreFactor.class, new MdxWrappableSerializer("score_factor"));
+    builder.registerTypeAdapter(CreditReportScoreFactor.class, new ModelWrappableSerializer("score_factor"));
     builder.registerTypeAdapter(new TypeToken<MdxList<CreditReportScoreFactor>>() {
-    }.getType(), new MdxWrappableSerializer("score_factors"));
+    }.getType(), new ModelWrappableSerializer("score_factors"));
     // CrossAccountTransfer
-    builder.registerTypeAdapter(CrossAccountTransfer.class, new MdxWrappableSerializer("cross_account_transfer"));
+    builder.registerTypeAdapter(CrossAccountTransfer.class, new ModelWrappableSerializer("cross_account_transfer"));
     builder.registerTypeAdapter(new TypeToken<MdxList<CrossAccountTransfer>>() {
-    }.getType(), new MdxWrappableSerializer("cross_account_transfers"));
+    }.getType(), new ModelWrappableSerializer("cross_account_transfers"));
     //CrossAccountRecurringTransfer
-    builder.registerTypeAdapter(CrossAccountRecurringTransfer.class, new MdxWrappableSerializer("recurring_cross_account_transfer"));
+    builder.registerTypeAdapter(CrossAccountRecurringTransfer.class, new ModelWrappableSerializer("recurring_cross_account_transfer"));
     builder.registerTypeAdapter(new TypeToken<MdxList<CrossAccountRecurringTransfer>>() {
-    }.getType(), new MdxWrappableSerializer("recurring_cross_account_transfers"));
+    }.getType(), new ModelWrappableSerializer("recurring_cross_account_transfers"));
     //Destination Accounts
-    builder.registerTypeAdapter(DestinationAccount.class, new MdxWrappableSerializer("destination"));
+    builder.registerTypeAdapter(DestinationAccount.class, new ModelWrappableSerializer("destination"));
     builder.registerTypeAdapter(new TypeToken<MdxList<DestinationAccount>>() {
-    }.getType(), new MdxWrappableSerializer("destinations"));
+    }.getType(), new ModelWrappableSerializer("destinations"));
     // Documents
-    builder.registerTypeAdapter(Document.class, new MdxWrappableSerializer("document"));
+    builder.registerTypeAdapter(Document.class, new ModelWrappableSerializer("document"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Document>>() {
-    }.getType(), new MdxWrappableSerializer("documents"));
+    }.getType(), new ModelWrappableSerializer("documents"));
     // Location
-    builder.registerTypeAdapter(Location.class, new MdxWrappableSerializer("location"));
+    builder.registerTypeAdapter(Location.class, new ModelWrappableSerializer("location"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Location>>() {
-    }.getType(), new MdxWrappableSerializer("locations"));
+    }.getType(), new ModelWrappableSerializer("locations"));
     // Destination
-    builder.registerTypeAdapter(Destination.class, new MdxWrappableSerializer("destination"));
+    builder.registerTypeAdapter(Destination.class, new ModelWrappableSerializer("destination"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Destination>>() {
-    }.getType(), new MdxWrappableSerializer("destinations"));
+    }.getType(), new ModelWrappableSerializer("destinations"));
     // TravelSchedule
-    builder.registerTypeAdapter(TravelSchedule.class, new MdxWrappableSerializer("travel_schedule"));
+    builder.registerTypeAdapter(TravelSchedule.class, new ModelWrappableSerializer("travel_schedule"));
     builder.registerTypeAdapter(new TypeToken<MdxList<TravelSchedule>>() {
-    }.getType(), new MdxWrappableSerializer("travel_schedules"));
+    }.getType(), new ModelWrappableSerializer("travel_schedules"));
     // ManagedCard
-    builder.registerTypeAdapter(ManagedCard.class, new MdxWrappableSerializer("managed_card"));
+    builder.registerTypeAdapter(ManagedCard.class, new ModelWrappableSerializer("managed_card"));
     builder.registerTypeAdapter(new TypeToken<MdxList<ManagedCard>>() {
-    }.getType(), new MdxWrappableSerializer("managed_cards"));
+    }.getType(), new ModelWrappableSerializer("managed_cards"));
     // RemoteDeposit
-    builder.registerTypeAdapter(RemoteDeposit.class, new MdxWrappableSerializer("remote_deposit"));
+    builder.registerTypeAdapter(RemoteDeposit.class, new ModelWrappableSerializer("remote_deposit"));
     builder.registerTypeAdapter(new TypeToken<MdxList<RemoteDeposit>>() {
-    }.getType(), new MdxWrappableSerializer("remote_deposits"));
+    }.getType(), new ModelWrappableSerializer("remote_deposits"));
     // MfaChallenge
-    builder.registerTypeAdapter(MfaChallenge.class, new MdxWrappableSerializer("mfa_challenge"));
+    builder.registerTypeAdapter(MfaChallenge.class, new ModelWrappableSerializer("mfa_challenge"));
     builder.registerTypeAdapter(new TypeToken<MdxList<MfaChallenge>>() {
-    }.getType(), new MdxWrappableSerializer("mfa_challenges"));
+    }.getType(), new ModelWrappableSerializer("mfa_challenges"));
     //ResetPassword
-    builder.registerTypeAdapter(ResetPassword.class, new MdxWrappableSerializer("reset_password"));
+    builder.registerTypeAdapter(ResetPassword.class, new ModelWrappableSerializer("reset_password"));
     //ForgotUsername
-    builder.registerTypeAdapter(ForgotUsername.class, new MdxWrappableSerializer("forgot_username"));
+    builder.registerTypeAdapter(ForgotUsername.class, new ModelWrappableSerializer("forgot_username"));
     // Register Profile related models
     registerProfileModelClasses(builder);
     // Register ACH Transfer related models
@@ -274,91 +273,91 @@ public class Resources {
 
   private static void registerProfileModelClasses(GsonBuilder builder) {
     // Profiles
-    builder.registerTypeAdapter(Profile.class, new MdxWrappableSerializer("profile"));
+    builder.registerTypeAdapter(Profile.class, new ModelWrappableSerializer("profile"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Profile>>() {
-    }.getType(), new MdxWrappableSerializer("profiles"));
+    }.getType(), new ModelWrappableSerializer("profiles"));
     // Addresses
-    builder.registerTypeAdapter(Address.class, new MdxWrappableSerializer("address"));
+    builder.registerTypeAdapter(Address.class, new ModelWrappableSerializer("address"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Address>>() {
-    }.getType(), new MdxWrappableSerializer("addresses"));
+    }.getType(), new ModelWrappableSerializer("addresses"));
     // Phones
-    builder.registerTypeAdapter(Phone.class, new MdxWrappableSerializer("phone"));
+    builder.registerTypeAdapter(Phone.class, new ModelWrappableSerializer("phone"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Phone>>() {
-    }.getType(), new MdxWrappableSerializer("phones"));
+    }.getType(), new ModelWrappableSerializer("phones"));
     // Emails
-    builder.registerTypeAdapter(Email.class, new MdxWrappableSerializer("email"));
+    builder.registerTypeAdapter(Email.class, new ModelWrappableSerializer("email"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Email>>() {
-    }.getType(), new MdxWrappableSerializer("emails"));
+    }.getType(), new ModelWrappableSerializer("emails"));
     // Update Password
-    builder.registerTypeAdapter(Password.class, new MdxWrappableSerializer("password"));
+    builder.registerTypeAdapter(Password.class, new ModelWrappableSerializer("password"));
     builder.registerTypeAdapter(new TypeToken<Password>() {
-    }.getType(), new MdxWrappableSerializer("update_password"));
+    }.getType(), new ModelWrappableSerializer("update_password"));
     //UserName
-    builder.registerTypeAdapter(UserName.class, new MdxWrappableSerializer("username"));
+    builder.registerTypeAdapter(UserName.class, new ModelWrappableSerializer("username"));
     builder.registerTypeAdapter(new TypeToken<UserName>() {
-    }.getType(), new MdxWrappableSerializer("update_username"));
+    }.getType(), new ModelWrappableSerializer("update_username"));
   }
 
   private static void registerAchTransfersModels(GsonBuilder builder) {
-    builder.registerTypeAdapter(AchTransfer.class, new MdxWrappableSerializer("ach_transfer"));
+    builder.registerTypeAdapter(AchTransfer.class, new ModelWrappableSerializer("ach_transfer"));
     builder.registerTypeAdapter(new TypeToken<MdxList<AchTransfer>>() {
-    }.getType(), new MdxWrappableSerializer("ach_transfers"));
+    }.getType(), new ModelWrappableSerializer("ach_transfers"));
 
-    builder.registerTypeAdapter(AchScheduledTransfer.class, new MdxWrappableSerializer("ach_scheduled_transfer"));
+    builder.registerTypeAdapter(AchScheduledTransfer.class, new ModelWrappableSerializer("ach_scheduled_transfer"));
     builder.registerTypeAdapter(new TypeToken<MdxList<AchScheduledTransfer>>() {
-    }.getType(), new MdxWrappableSerializer("ach_scheduled_transfers"));
+    }.getType(), new ModelWrappableSerializer("ach_scheduled_transfers"));
 
-    builder.registerTypeAdapter(AchAccount.class, new MdxWrappableSerializer("ach_account"));
+    builder.registerTypeAdapter(AchAccount.class, new ModelWrappableSerializer("ach_account"));
     builder.registerTypeAdapter(new TypeToken<MdxList<AchAccount>>() {
-    }.getType(), new MdxWrappableSerializer("ach_accounts"));
+    }.getType(), new ModelWrappableSerializer("ach_accounts"));
   }
 
   private static void registerDisputesModels(GsonBuilder builder) {
     // Disputes
-    builder.registerTypeAdapter(Dispute.class, new MdxWrappableSerializer("dispute"));
+    builder.registerTypeAdapter(Dispute.class, new ModelWrappableSerializer("dispute"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Dispute>>() {
-    }.getType(), new MdxWrappableSerializer("disputes"));
+    }.getType(), new ModelWrappableSerializer("disputes"));
     // Disputed Transactions
-    builder.registerTypeAdapter(DisputedTransaction.class, new MdxWrappableSerializer("disputed_transaction"));
+    builder.registerTypeAdapter(DisputedTransaction.class, new ModelWrappableSerializer("disputed_transaction"));
     builder.registerTypeAdapter(new TypeToken<MdxList<DisputedTransaction>>() {
-    }.getType(), new MdxWrappableSerializer("disputed_transactions"));
+    }.getType(), new ModelWrappableSerializer("disputed_transactions"));
   }
 
   private static void registerPaymentsModels(GsonBuilder builder) {
     // Merchant
-    builder.registerTypeAdapter(Merchant.class, new MdxWrappableSerializer("merchant"));
+    builder.registerTypeAdapter(Merchant.class, new ModelWrappableSerializer("merchant"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Merchant>>() {
-    }.getType(), new MdxWrappableSerializer("merchants"));
+    }.getType(), new ModelWrappableSerializer("merchants"));
     // MerchantCategory
-    builder.registerTypeAdapter(MerchantCategory.class, new MdxWrappableSerializer("merchant_category"));
+    builder.registerTypeAdapter(MerchantCategory.class, new ModelWrappableSerializer("merchant_category"));
     builder.registerTypeAdapter(new TypeToken<MdxList<MerchantCategory>>() {
-    }.getType(), new MdxWrappableSerializer("merchant_categories"));
+    }.getType(), new ModelWrappableSerializer("merchant_categories"));
     // Payee
-    builder.registerTypeAdapter(Payee.class, new MdxWrappableSerializer("payee"));
+    builder.registerTypeAdapter(Payee.class, new ModelWrappableSerializer("payee"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Payee>>() {
-    }.getType(), new MdxWrappableSerializer("payees"));
+    }.getType(), new ModelWrappableSerializer("payees"));
     // Bill
-    builder.registerTypeAdapter(Bill.class, new MdxWrappableSerializer("bill"));
+    builder.registerTypeAdapter(Bill.class, new ModelWrappableSerializer("bill"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Bill>>() {
-    }.getType(), new MdxWrappableSerializer("bills"));
+    }.getType(), new ModelWrappableSerializer("bills"));
     // Payment
-    builder.registerTypeAdapter(Payment.class, new MdxWrappableSerializer("payment"));
+    builder.registerTypeAdapter(Payment.class, new ModelWrappableSerializer("payment"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Payment>>() {
-    }.getType(), new MdxWrappableSerializer("payments"));
+    }.getType(), new ModelWrappableSerializer("payments"));
     // Recurring Payment
-    builder.registerTypeAdapter(RecurringPayment.class, new MdxWrappableSerializer("recurring_payment"));
+    builder.registerTypeAdapter(RecurringPayment.class, new ModelWrappableSerializer("recurring_payment"));
     builder.registerTypeAdapter(new TypeToken<MdxList<RecurringPayment>>() {
-    }.getType(), new MdxWrappableSerializer("recurring_payments"));
+    }.getType(), new ModelWrappableSerializer("recurring_payments"));
   }
 
   private static void registerMultistageTransferModels(GsonBuilder builder) {
     // Fee
-    builder.registerTypeAdapter(Fee.class, new MdxWrappableSerializer("fee"));
+    builder.registerTypeAdapter(Fee.class, new ModelWrappableSerializer("fee"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Fee>>() {
-    }.getType(), new MdxWrappableSerializer("fees"));
+    }.getType(), new ModelWrappableSerializer("fees"));
     // Repayment
-    builder.registerTypeAdapter(Repayment.class, new MdxWrappableSerializer("repayment"));
+    builder.registerTypeAdapter(Repayment.class, new ModelWrappableSerializer("repayment"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Repayment>>() {
-    }.getType(), new MdxWrappableSerializer("repayments"));
+    }.getType(), new ModelWrappableSerializer("repayments"));
   }
 }

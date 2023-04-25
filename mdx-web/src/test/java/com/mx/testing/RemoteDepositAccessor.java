@@ -2,8 +2,8 @@ package com.mx.testing;
 
 import com.mx.common.accessors.AccessorConfiguration;
 import com.mx.common.accessors.AccessorResponse;
-import com.mx.common.models.MdxList;
 import com.mx.path.model.mdx.accessor.remote_deposit.RemoteDepositBaseAccessor;
+import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.account.Account;
 import com.mx.path.model.mdx.model.remote_deposit.RemoteDeposit;
 

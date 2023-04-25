@@ -1,7 +1,7 @@
 package com.mx.path.model.mdx.model.profile;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 
 public final class Email extends MdxBase<Email> {
   @SerializedName("email_address")

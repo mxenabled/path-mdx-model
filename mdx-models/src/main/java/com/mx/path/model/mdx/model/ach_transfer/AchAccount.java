@@ -1,7 +1,7 @@
 package com.mx.path.model.mdx.model.ach_transfer;
 
 import com.mx.common.models.Internal;
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 
 public final class AchAccount extends MdxBase<AchAccount> {
   private String id;

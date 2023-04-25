@@ -1,6 +1,6 @@
 package com.mx.path.model.mdx.model.account;
 
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 
 public final class AccountNumbers extends MdxBase<AccountNumbers> {
   private String id;

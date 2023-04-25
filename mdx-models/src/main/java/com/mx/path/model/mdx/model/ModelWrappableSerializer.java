@@ -13,13 +13,13 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import com.mx.common.models.MdxWrappable;
+import com.mx.common.models.ModelWrappable;
 
-public class MdxWrappableSerializer implements JsonDeserializer<MdxWrappable<?>>, JsonSerializer<MdxWrappable<?>> {
+public class ModelWrappableSerializer implements JsonDeserializer<ModelWrappable<?>>, JsonSerializer<ModelWrappable<?>> {
   private Gson gson;
   private String key;
 
-  public MdxWrappableSerializer(String newKey) {
+  public ModelWrappableSerializer(String newKey) {
     gson = new GsonBuilder()
         .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
         .registerTypeAdapter(LocalDate.class, new MdxLocalDateSerializer())
@@ -32,7 +32,7 @@ public class MdxWrappableSerializer implements JsonDeserializer<MdxWrappable<?>>
   }
 
   @Override
-  public final MdxWrappable<?> deserialize(final JsonElement json, final Type typeOfT,
+  public final ModelWrappable<?> deserialize(final JsonElement json, final Type typeOfT,
       final JsonDeserializationContext context) throws JsonParseException {
 
     if (!json.isJsonObject()) {
@@ -52,7 +52,7 @@ public class MdxWrappableSerializer implements JsonDeserializer<MdxWrappable<?>>
   }
 
   @Override
-  public final JsonElement serialize(MdxWrappable<?> src, Type typeOfSrc, JsonSerializationContext context) {
+  public final JsonElement serialize(ModelWrappable<?> src, Type typeOfSrc, JsonSerializationContext context) {
     if (src.getWrapped()) {
       JsonObject wrapper = new JsonObject();
       wrapper.add(key, gson.toJsonTree(src));

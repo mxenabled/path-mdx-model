@@ -3,7 +3,7 @@ package com.mx.path.model.mdx.model.profile;
 import java.time.LocalDate;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 
 public final class Profile extends MdxBase<Profile> {
   @SerializedName("birth_date_on")

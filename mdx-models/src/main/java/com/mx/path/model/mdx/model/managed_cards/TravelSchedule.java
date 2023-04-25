@@ -1,6 +1,6 @@
 package com.mx.path.model.mdx.model.managed_cards;
 
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.UserIdProvider;
 
 public final class TravelSchedule extends MdxBase<TravelSchedule> {

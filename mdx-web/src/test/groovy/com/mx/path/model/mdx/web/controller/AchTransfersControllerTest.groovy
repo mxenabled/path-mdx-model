@@ -5,9 +5,9 @@ import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
-import com.mx.common.models.MdxList
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.ach_transfer.AchTransferGateway
+import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.ach_transfer.AchTransfer
 import com.mx.path.model.mdx.model.ach_transfer.options.AchTransferListOptions
 import com.mx.path.model.mdx.web.model.ach_transfer.AchTransferListQueryParameters

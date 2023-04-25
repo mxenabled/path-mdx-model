@@ -2,8 +2,8 @@ package com.mx.path.model.mdx.model.account;
 
 import java.util.List;
 
-import com.mx.common.models.MdxBase;
-import com.mx.common.models.MdxList;
+import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.MdxList;
 
 /**
  * Represents a pageable list of transactions.

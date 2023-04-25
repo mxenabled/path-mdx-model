@@ -3,10 +3,10 @@ package com.mx.path.model.mdx.web.controller
 import static org.mockito.Mockito.*
 
 import com.mx.common.accessors.AccessorResponse
-import com.mx.common.models.MdxList
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.transfer.AmountOptionGateway
 import com.mx.path.gateway.api.transfer.TransferGateway
+import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.transfer.TransferAmountOption
 import com.mx.path.model.mdx.web.model.transfer.TransferAmountOptionsListQueryParameters
 

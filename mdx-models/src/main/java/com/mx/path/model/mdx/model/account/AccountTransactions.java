@@ -1,6 +1,6 @@
 package com.mx.path.model.mdx.model.account;
 
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 
 /**
  * Represents an account with a page of transactions, MDX OnDemand style.

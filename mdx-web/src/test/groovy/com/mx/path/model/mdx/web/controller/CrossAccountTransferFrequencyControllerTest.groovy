@@ -4,11 +4,11 @@ import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
-import com.mx.common.models.MdxList
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.cross_account_transfer.CrossAccountTransferGateway
 import com.mx.path.gateway.api.cross_account_transfer.FrequencyGateway
 import com.mx.path.model.mdx.model.Frequency
+import com.mx.path.model.mdx.model.MdxList
 
 import org.mockito.Mockito
 import org.springframework.http.HttpStatus
