@@ -3,7 +3,7 @@ package com.mx.path.model.mdx.model.credit_report;
 import java.time.LocalDate;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 
 public final class CreditReport extends MdxBase<CreditReport> {
   @SerializedName("agency")

@@ -8,7 +8,7 @@ import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mx.common.models.MdxWrappable;
+import com.mx.common.models.ModelWrappable;
 
 /**
  * Custom deserializer for MDX OnDemand Resources
@@ -16,7 +16,7 @@ import com.mx.common.models.MdxWrappable;
  * Digs out the node using the nodePath locator, then deserializes.
  * @param <T>
  */
-public class MdxOnDemandDeserializer<T extends MdxWrappable<?>> extends JsonDeserializer<T> {
+public class MdxOnDemandDeserializer<T extends ModelWrappable<?>> extends JsonDeserializer<T> {
   private static final ObjectMapper MAPPER = new ObjectMapper();
 
   private final String nodePath;

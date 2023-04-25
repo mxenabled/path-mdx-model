@@ -1,6 +1,6 @@
 package com.mx.path.model.mdx.model.payout;
 
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.UserIdProvider;
 
 public final class Challenge extends MdxBase<Challenge> {

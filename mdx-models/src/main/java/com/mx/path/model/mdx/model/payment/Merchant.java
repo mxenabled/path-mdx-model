@@ -1,6 +1,6 @@
 package com.mx.path.model.mdx.model.payment;
 
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 
 public final class Merchant extends MdxBase<Merchant> {
 

@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import lombok.Data;
 
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 
 @Data
 public final class Repayment extends MdxBase<Repayment> {

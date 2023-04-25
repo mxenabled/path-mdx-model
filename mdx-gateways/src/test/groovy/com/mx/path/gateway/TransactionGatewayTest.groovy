@@ -5,11 +5,11 @@ import static org.mockito.Mockito.when
 
 import com.mx.common.accessors.AccessorConfiguration
 import com.mx.common.accessors.AccessorResponse
-import com.mx.common.models.MdxList
 import com.mx.path.gateway.api.account.TransactionGateway
 import com.mx.path.model.mdx.accessor.BaseAccessor
 import com.mx.path.model.mdx.accessor.account.AccountBaseAccessor
 import com.mx.path.model.mdx.accessor.account.TransactionBaseAccessor
+import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.account.Transaction
 import com.mx.path.model.mdx.model.account.TransactionSearchRequest
 import com.mx.path.model.mdx.model.account.TransactionsPage

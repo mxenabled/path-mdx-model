@@ -4,10 +4,10 @@ import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
-import com.mx.common.models.MdxList
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.payment.BillGateway
 import com.mx.path.gateway.api.payment.PaymentGateway
+import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.payment.Bill
 import com.mx.path.testing.WithMockery
 

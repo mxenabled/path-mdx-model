@@ -2,7 +2,7 @@ package com.mx.path.model.mdx.model.cross_account_transfer;
 
 import java.time.LocalDate;
 
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.UserIdProvider;
 
 public class CrossAccountRecurringTransfer extends MdxBase<CrossAccountRecurringTransfer> {

@@ -1,8 +1,8 @@
 package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
-import com.mx.common.models.MdxList;
 import com.mx.path.model.mdx.model.AccountType;
+import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.account.Account;
 import com.mx.path.model.mdx.model.cross_account_transfer.CrossAccountTransfer;
 

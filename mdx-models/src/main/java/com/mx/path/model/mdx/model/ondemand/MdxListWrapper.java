@@ -1,6 +1,6 @@
 package com.mx.path.model.mdx.model.ondemand;
 
-import com.mx.common.models.MdxList;
+import com.mx.path.model.mdx.model.MdxList;
 
 /**
  * We need to have a special class to wrap lists because Jackson will wrap all arrays, regardless of configuration

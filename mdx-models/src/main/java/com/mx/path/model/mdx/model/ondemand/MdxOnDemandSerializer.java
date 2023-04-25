@@ -15,7 +15,7 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
-import com.mx.common.models.MdxWrappable;
+import com.mx.common.models.ModelWrappable;
 import com.mx.path.model.mdx.model.ondemand.mixins.MixinDefinition;
 import com.mx.path.model.mdx.model.ondemand.mixins.XmlSkipInternalAnnotationsIntrospector;
 
@@ -25,7 +25,7 @@ import com.mx.path.model.mdx.model.ondemand.mixins.XmlSkipInternalAnnotationsInt
  * Relies on Jackson Mix-ins to control details of serialization. For more information on Jackson Mix-ins see:
  * https://github.com/FasterXML/jackson-docs/wiki/JacksonMixInAnnotations
  */
-public class MdxOnDemandSerializer<T extends MdxWrappable<?>> extends JsonSerializer<T> {
+public class MdxOnDemandSerializer<T extends ModelWrappable<?>> extends JsonSerializer<T> {
 
   private ObjectMapper mapper;
 

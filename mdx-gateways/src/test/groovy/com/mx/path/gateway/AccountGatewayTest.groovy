@@ -4,11 +4,11 @@ import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.when
 
 import com.mx.common.accessors.AccessorResponse
-import com.mx.common.models.MdxList
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.api.account.TransactionGateway
 import com.mx.path.model.mdx.accessor.BaseAccessor
 import com.mx.path.model.mdx.accessor.account.AccountBaseAccessor
+import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.account.Account
 import com.mx.testing.BaseAccessorImpl
 

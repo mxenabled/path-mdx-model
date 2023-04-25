@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.MdxRelationId;
 import com.mx.path.model.mdx.model.UserIdProvider;
 import com.mx.path.model.mdx.model.account.Account;

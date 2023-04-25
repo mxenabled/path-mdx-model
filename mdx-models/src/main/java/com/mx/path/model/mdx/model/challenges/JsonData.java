@@ -3,7 +3,7 @@ package com.mx.path.model.mdx.model.challenges;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

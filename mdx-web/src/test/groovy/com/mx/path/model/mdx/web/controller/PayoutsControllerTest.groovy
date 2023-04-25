@@ -4,11 +4,11 @@ import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
-import com.mx.common.models.MdxList
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.payout.PayoutGateway
 import com.mx.path.gateway.api.payout.PayoutMethodGateway
 import com.mx.path.gateway.api.payout.RecipientGateway
+import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.account.Account
 import com.mx.path.model.mdx.model.payout.Payout
 import com.mx.path.model.mdx.model.payout.PayoutMethod

@@ -5,12 +5,12 @@ import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
 import com.mx.common.accessors.AccessorResponse
-import com.mx.common.models.MdxList
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.api.account.DisputeGateway
 import com.mx.path.gateway.api.account.DisputedTransactionGateway
 import com.mx.path.gateway.api.account.TransactionGateway
+import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.dispute.DisputedTransaction
 
 import org.springframework.http.HttpStatus

@@ -1,7 +1,7 @@
 package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
-import com.mx.common.models.MdxList;
+import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.cross_account_transfer.options.FeeListOptions;
 import com.mx.path.model.mdx.model.transfer.Fee;
 import com.mx.path.model.mdx.web.model.cross_account_transfer.CrossAccountTransferFeeListQueryParameters;

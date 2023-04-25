@@ -2,7 +2,7 @@ package com.mx.path.model.mdx.model.location;
 
 import java.time.LocalDate;
 
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 
 public final class Location extends MdxBase<Location> {
 

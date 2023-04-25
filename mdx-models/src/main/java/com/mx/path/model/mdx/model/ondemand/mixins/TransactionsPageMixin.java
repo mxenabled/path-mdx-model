@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.mx.common.models.MdxList;
+import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.account.Transaction;
 
 public interface TransactionsPageMixin {

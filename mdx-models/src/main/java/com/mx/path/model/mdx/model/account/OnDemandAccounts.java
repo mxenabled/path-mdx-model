@@ -1,7 +1,7 @@
 package com.mx.path.model.mdx.model.account;
 
-import com.mx.common.models.MdxBase;
-import com.mx.common.models.MdxList;
+import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.MdxList;
 
 /**
  * Represents a list of accounts. Helps for OnDemand serialization

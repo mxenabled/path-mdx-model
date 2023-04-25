@@ -1,7 +1,7 @@
 package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
-import com.mx.common.models.MdxList;
+import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.challenges.Challenge;
 import com.mx.path.model.mdx.model.profile.Address;
 import com.mx.path.model.mdx.model.profile.Email;

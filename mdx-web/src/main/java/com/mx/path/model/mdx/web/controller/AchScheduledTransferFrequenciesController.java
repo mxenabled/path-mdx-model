@@ -1,8 +1,8 @@
 package com.mx.path.model.mdx.web.controller;
 
 import com.mx.common.accessors.AccessorResponse;
-import com.mx.common.models.MdxList;
 import com.mx.path.model.mdx.model.Frequency;
+import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.ach_transfer.options.FrequencyListOptions;
 import com.mx.path.model.mdx.web.model.ach_transfer.AchScheduledTransferFrequencyListQueryParameters;
 

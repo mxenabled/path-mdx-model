@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.databind.SerializerProvider
 import com.fasterxml.jackson.dataformat.xml.XmlFactory
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator
-import com.mx.common.models.MdxList
+import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.account.Account
 import com.mx.path.model.mdx.model.account.Transaction
 import com.mx.path.model.mdx.model.ondemand.mixins.AccountXmlMixin

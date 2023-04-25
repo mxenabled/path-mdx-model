@@ -7,7 +7,7 @@ import com.mx.common.accessors.AccessorMethodNotImplementedException;
 import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.gateway.GatewayAPI;
 import com.mx.common.gateway.GatewayClass;
-import com.mx.common.models.MdxList;
+import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.transfer.TransferAmountOption;
 import com.mx.path.model.mdx.model.transfer.options.TransferAmountOptionListOptions;
 

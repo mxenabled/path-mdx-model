@@ -1,6 +1,5 @@
 package com.mx.path.model.mdx.model;
 
-import com.mx.common.models.MdxBase;
 import com.mx.path.model.context.Session;
 
 /**

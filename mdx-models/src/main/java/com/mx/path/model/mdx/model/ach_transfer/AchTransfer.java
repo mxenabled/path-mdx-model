@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import lombok.Data;
 import lombok.Getter;
 
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.MdxRelationId;
 import com.mx.path.model.mdx.model.account.Account;
 

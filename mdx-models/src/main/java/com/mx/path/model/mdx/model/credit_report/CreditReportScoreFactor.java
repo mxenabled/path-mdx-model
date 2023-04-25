@@ -1,7 +1,7 @@
 package com.mx.path.model.mdx.model.credit_report;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.common.models.MdxBase;
+import com.mx.path.model.mdx.model.MdxBase;
 
 /**
  * To provide a list of the key Factors effecting your credit report.
