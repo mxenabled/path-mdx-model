@@ -6,7 +6,7 @@ plugins {
   id "io.github.gradle-nexus.publish-plugin" version "1.1.0"
 }
 
-version "3.0.0-SNAPSHOT" // x-release-please-version
+version "3.0.0-rc.0" // x-release-please-version
 
 def platformProject = "platform"
 def publishedProjects = [
@@ -44,7 +44,7 @@ allprojects {
   }
 
   ext {
-    pathSDKVersion = "2.0.0-SNAPSHOT"
+    pathSDKVersion = "[2.0,3.0)"
     springVersion = "[2.7.0,2.8.0)!!2.7.5"
   }
 }
