@@ -2,7 +2,7 @@ package com.mx.path.gateway;
 
 import lombok.experimental.SuperBuilder;
 
-import com.mx.common.gateway.GatewayBaseClass;
+import com.mx.path.core.common.gateway.GatewayBaseClass;
 import com.mx.path.model.mdx.accessor.BaseAccessor;
 
 @GatewayBaseClass(namespace = "com.mx.path.gateway.api", target = BaseAccessor.class, className = "Gateway")

@@ -5,13 +5,13 @@ import static org.mockito.ArgumentMatchers.eq
 import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.verify
 
-import com.mx.common.messaging.MessageBroker
-import com.mx.path.api.connect.messaging.remote.RemoteService
+import com.mx.path.connect.messaging.remote.RemoteService
+import com.mx.path.core.common.messaging.MessageBroker
+import com.mx.path.core.context.facility.Facilities
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.configuration.AccessorProxy
 import com.mx.path.gateway.configuration.Configurator
 import com.mx.path.gateway.remote.remote_deposit.RemoteRemoteDepositGateway
-import com.mx.path.model.context.facility.Facilities
 import com.mx.path.testing.WithMockery
 import com.mx.testing.MockGatewayService
 import com.mx.testing.TestAccessor

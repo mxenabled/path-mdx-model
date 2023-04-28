@@ -8,11 +8,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.mx.common.collections.MultiValueMap;
-import com.mx.common.exception.ExceptionContext;
-import com.mx.path.model.context.RequestContext;
-import com.mx.path.model.context.Session;
-import com.mx.path.model.context.tracing.CustomTracer;
+import com.mx.path.core.common.collection.MultiValueMap;
+import com.mx.path.core.common.exception.ExceptionContext;
+import com.mx.path.core.context.RequestContext;
+import com.mx.path.core.context.Session;
+import com.mx.path.core.context.tracing.CustomTracer;
 
 import org.springframework.core.env.Environment;
 import org.springframework.lang.NonNull;

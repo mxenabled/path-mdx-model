@@ -4,8 +4,8 @@ import java.util.Set;
 
 import lombok.Data;
 
-import com.mx.common.collections.ObjectMap;
-import com.mx.common.store.Store;
+import com.mx.path.core.common.collection.ObjectMap;
+import com.mx.path.core.common.store.Store;
 
 @Data
 public class StoreImpl implements Store {

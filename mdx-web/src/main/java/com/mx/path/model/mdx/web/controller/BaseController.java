@@ -3,7 +3,7 @@ package com.mx.path.model.mdx.web.controller;
 import java.util.List;
 import java.util.Map;
 
-import com.mx.common.accessors.PathResponseStatus;
+import com.mx.path.core.common.accessor.PathResponseStatus;
 import com.mx.path.gateway.api.Gateway;
 
 import org.springframework.http.HttpHeaders;

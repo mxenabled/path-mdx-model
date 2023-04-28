@@ -1,6 +1,6 @@
 package com.mx.path.model.mdx.web.controller;
 
-import com.mx.common.accessors.AccessorResponse;
+import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.check.CheckImage;
 import com.mx.path.model.mdx.model.check.options.CheckImageGetOptions;
 import com.mx.path.model.mdx.web.model.check_image.CheckImagesGetQueryParameters;

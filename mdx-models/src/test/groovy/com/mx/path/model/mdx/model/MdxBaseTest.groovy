@@ -1,6 +1,6 @@
 package com.mx.path.model.mdx.model
 
-import com.mx.common.models.Warning
+import com.mx.path.core.common.model.Warning
 import com.mx.path.model.mdx.model.account.Account
 
 import spock.lang.Specification

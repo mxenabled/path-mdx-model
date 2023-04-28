@@ -8,7 +8,7 @@ import lombok.Setter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
-import com.mx.common.collections.ObjectMap;
+import com.mx.path.core.common.collection.ObjectMap;
 
 @Data
 public class MdxUser {

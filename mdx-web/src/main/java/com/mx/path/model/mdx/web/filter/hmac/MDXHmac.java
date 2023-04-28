@@ -8,7 +8,7 @@ import java.util.Objects;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
-import com.mx.common.accessors.UnauthorizedException;
+import com.mx.path.core.common.accessor.UnauthorizedException;
 import com.mx.path.model.mdx.web.filter.MultiReadHttpServletRequest;
 
 import org.apache.commons.io.IOUtils;

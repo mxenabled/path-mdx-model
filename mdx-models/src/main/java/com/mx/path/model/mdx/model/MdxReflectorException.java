@@ -1,6 +1,6 @@
 package com.mx.path.model.mdx.model;
 
-import com.mx.common.exception.PathSystemException;
+import com.mx.path.core.common.exception.PathSystemException;
 
 public class MdxReflectorException extends PathSystemException {
   public MdxReflectorException(String message, Throwable cause) {

@@ -1,6 +1,6 @@
 package com.mx.path.model.mdx.model.ach_transfer;
 
-import com.mx.common.models.Internal;
+import com.mx.path.core.common.model.Internal;
 import com.mx.path.model.mdx.model.MdxBase;
 
 public final class AchAccount extends MdxBase<AchAccount> {

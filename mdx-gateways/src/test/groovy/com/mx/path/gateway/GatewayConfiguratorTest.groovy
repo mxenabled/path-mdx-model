@@ -1,6 +1,7 @@
 package com.mx.path.gateway
 
-import com.mx.common.collections.ObjectMap
+import com.mx.path.core.common.collection.ObjectMap
+import com.mx.path.core.context.facility.Facilities
 import com.mx.path.gateway.Gateway
 import com.mx.path.gateway.accessor.proxy.BaseAccessorProxySingleton
 import com.mx.path.gateway.api.GatewayConfigurator
@@ -10,10 +11,9 @@ import com.mx.path.gateway.api.id.IdGateway
 import com.mx.path.gateway.behavior.GatewayBehavior
 import com.mx.path.gateway.configuration.AccessorProxy
 import com.mx.path.gateway.configuration.AccessorProxyMap
-import com.mx.path.gateway.events.GatewayEventBus
+import com.mx.path.gateway.event.GatewayEventBus
 import com.mx.path.gateway.remote.account.RemoteAccountGateway
 import com.mx.path.gateway.remote.account.RemoteTransactionGateway
-import com.mx.path.model.context.facility.Facilities
 import com.mx.testing.*
 
 import spock.lang.Specification

@@ -3,8 +3,8 @@ package com.mx.path.model.mdx.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mx.common.models.ModelBase;
-import com.mx.common.models.Warning;
+import com.mx.path.core.common.model.ModelBase;
+import com.mx.path.core.common.model.Warning;
 
 public abstract class MdxBase<T> extends ModelBase<T> {
   private String userId;

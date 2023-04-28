@@ -6,12 +6,12 @@ import static org.mockito.Mockito.never
 import static org.mockito.Mockito.verify
 import static org.mockito.Mockito.when
 
+import com.mx.path.core.context.facility.Facilities
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.context.GatewayRequestContext
-import com.mx.path.gateway.events.AfterAccessorEvent
-import com.mx.path.gateway.events.BeforeAccessorEvent
-import com.mx.path.gateway.events.GatewayEventBus
-import com.mx.path.model.context.facility.Facilities
+import com.mx.path.gateway.event.AfterAccessorEvent
+import com.mx.path.gateway.event.BeforeAccessorEvent
+import com.mx.path.gateway.event.GatewayEventBus
 import com.mx.path.model.mdx.accessor.BaseAccessor
 import com.mx.path.model.mdx.accessor.account.AccountBaseAccessor
 

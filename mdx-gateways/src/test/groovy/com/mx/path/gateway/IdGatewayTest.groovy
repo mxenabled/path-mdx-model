@@ -4,7 +4,7 @@ import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.verify
 import static org.mockito.Mockito.when
 
-import com.mx.common.accessors.AccessorResponse
+import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.id.IdGateway
 import com.mx.path.model.mdx.accessor.BaseAccessor
 import com.mx.path.model.mdx.accessor.id.IdBaseAccessor

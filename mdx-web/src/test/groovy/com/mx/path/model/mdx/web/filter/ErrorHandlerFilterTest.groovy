@@ -5,8 +5,8 @@ import javax.servlet.ServletOutputStream
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-import com.mx.common.accessors.AccessorUserException
-import com.mx.common.accessors.PathResponseStatus
+import com.mx.path.core.common.accessor.AccessorUserException
+import com.mx.path.core.common.accessor.PathResponseStatus
 
 import spock.lang.Specification
 

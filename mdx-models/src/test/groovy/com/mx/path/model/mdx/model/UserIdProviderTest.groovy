@@ -1,6 +1,6 @@
 package com.mx.path.model.mdx.model
 
-import com.mx.path.model.context.Session
+import com.mx.path.core.context.Session
 import com.mx.path.model.mdx.model.account.Account
 
 import spock.lang.Specification

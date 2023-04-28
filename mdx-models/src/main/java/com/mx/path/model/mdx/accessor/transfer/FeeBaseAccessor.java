@@ -1,13 +1,13 @@
 package com.mx.path.model.mdx.accessor.transfer;
 
-import com.mx.common.accessors.API;
-import com.mx.common.accessors.Accessor;
-import com.mx.common.accessors.AccessorConfiguration;
-import com.mx.common.accessors.AccessorMethodNotImplementedException;
-import com.mx.common.accessors.AccessorResponse;
-import com.mx.common.gateway.GatewayAPI;
-import com.mx.common.gateway.GatewayClass;
-import com.mx.common.remote.RemoteOperation;
+import com.mx.path.core.common.accessor.API;
+import com.mx.path.core.common.accessor.AccessorMethodNotImplementedException;
+import com.mx.path.core.common.gateway.GatewayAPI;
+import com.mx.path.core.common.gateway.GatewayClass;
+import com.mx.path.core.common.remote.RemoteOperation;
+import com.mx.path.gateway.accessor.Accessor;
+import com.mx.path.gateway.accessor.AccessorConfiguration;
+import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.transfer.Fee;
 import com.mx.path.model.mdx.model.transfer.options.FeeListOptions;

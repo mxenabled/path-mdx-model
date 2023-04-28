@@ -15,7 +15,7 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
-import com.mx.common.models.ModelWrappable;
+import com.mx.path.core.common.model.ModelWrappable;
 import com.mx.path.model.mdx.model.ondemand.mixins.MixinDefinition;
 import com.mx.path.model.mdx.model.ondemand.mixins.XmlSkipInternalAnnotationsIntrospector;
 

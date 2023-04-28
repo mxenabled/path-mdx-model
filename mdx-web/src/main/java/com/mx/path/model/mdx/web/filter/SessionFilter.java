@@ -7,10 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mx.common.lang.Strings;
-import com.mx.path.model.context.Session;
+import com.mx.path.core.common.lang.Strings;
+import com.mx.path.core.context.Session;
+import com.mx.path.core.utility.jwt.JWTUtility;
 import com.mx.path.model.mdx.web.PathTools;
-import com.mx.path.utilities.jwt.JWTUtility;
 
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;

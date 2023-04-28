@@ -6,7 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mx.common.accessors.RequestValidationException;
+import com.mx.path.core.common.accessor.RequestValidationException;
 import com.mx.path.model.mdx.web.EnvironmentHelper;
 
 import org.springframework.beans.factory.annotation.Autowired;

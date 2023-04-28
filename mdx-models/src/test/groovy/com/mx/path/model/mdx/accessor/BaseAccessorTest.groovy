@@ -1,7 +1,7 @@
 package com.mx.path.model.mdx.accessor
 
-import com.mx.common.accessors.Accessor
-import com.mx.common.accessors.AccessorConfiguration
+import com.mx.path.gateway.accessor.Accessor
+import com.mx.path.gateway.accessor.AccessorConfiguration
 import com.mx.testing.BaseAccessorTestImplemented
 
 import spock.lang.Specification

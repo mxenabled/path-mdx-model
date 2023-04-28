@@ -6,11 +6,11 @@ import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.times
 import static org.mockito.Mockito.verify
 
-import com.mx.common.accessors.AccessorResponse
+import com.mx.path.core.context.Session
+import com.mx.path.core.context.store.SessionRepository
+import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.origination.OriginationGateway
-import com.mx.path.model.context.Session
-import com.mx.path.model.context.store.SessionRepository
 import com.mx.path.model.mdx.model.challenges.Challenge
 import com.mx.path.model.mdx.model.challenges.Question
 import com.mx.path.model.mdx.model.origination.Origination

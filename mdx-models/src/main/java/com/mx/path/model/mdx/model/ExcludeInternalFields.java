@@ -2,7 +2,7 @@ package com.mx.path.model.mdx.model;
 
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
-import com.mx.common.models.Internal;
+import com.mx.path.core.common.model.Internal;
 
 public class ExcludeInternalFields implements ExclusionStrategy {
   @Override

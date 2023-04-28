@@ -2,11 +2,11 @@ package com.mx.path.model.mdx.web.controller;
 
 import java.util.Objects;
 
-import com.mx.common.accessors.AccessorResponse;
-import com.mx.common.accessors.BadRequestException;
-import com.mx.common.lang.Strings;
-import com.mx.path.model.context.Session;
-import com.mx.path.model.context.Session.SessionState;
+import com.mx.path.core.common.accessor.BadRequestException;
+import com.mx.path.core.common.lang.Strings;
+import com.mx.path.core.context.Session;
+import com.mx.path.core.context.Session.SessionState;
+import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.authorization.HtmlPage;
 import com.mx.path.model.mdx.model.id.Authentication;
 import com.mx.path.model.mdx.model.id.ForgotUsername;

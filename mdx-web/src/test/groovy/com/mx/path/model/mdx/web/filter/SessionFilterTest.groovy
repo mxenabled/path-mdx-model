@@ -4,9 +4,9 @@ import javax.servlet.FilterChain
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-import com.mx.path.model.context.RequestContext
-import com.mx.path.model.context.Session
-import com.mx.path.model.context.store.SessionRepository
+import com.mx.path.core.context.RequestContext
+import com.mx.path.core.context.Session
+import com.mx.path.core.context.store.SessionRepository
 
 import spock.lang.Specification
 

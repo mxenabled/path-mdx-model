@@ -3,8 +3,8 @@ package com.mx.path.service.connection.realtime;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import com.mx.common.configuration.Configuration;
-import com.mx.path.api.connect.http.HttpAccessorConnection;
+import com.mx.path.connect.http.HttpAccessorConnection;
+import com.mx.path.core.common.configuration.Configuration;
 
 @EqualsAndHashCode(callSuper = true)
 public class MdxRealtimeConnection extends HttpAccessorConnection {

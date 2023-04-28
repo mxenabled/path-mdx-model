@@ -4,9 +4,9 @@ import lombok.Getter;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mx.common.accessors.UnauthorizedException;
-import com.mx.common.http.HttpStatus;
-import com.mx.common.http.MediaType;
+import com.mx.path.core.common.accessor.UnauthorizedException;
+import com.mx.path.core.common.http.HttpStatus;
+import com.mx.path.core.common.http.MediaType;
 import com.mx.path.service.connection.realtime.model.MdxMember;
 import com.mx.path.service.connection.realtime.model.MdxMemberWrapper;
 import com.mx.path.service.connection.realtime.model.MdxRealtimeResponse;

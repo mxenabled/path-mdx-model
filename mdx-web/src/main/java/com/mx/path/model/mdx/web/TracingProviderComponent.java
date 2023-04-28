@@ -1,6 +1,6 @@
 package com.mx.path.model.mdx.web;
 
-import com.mx.path.model.context.tracing.CustomTracer;
+import com.mx.path.core.context.tracing.CustomTracer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

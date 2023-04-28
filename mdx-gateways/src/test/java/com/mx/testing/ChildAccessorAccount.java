@@ -1,7 +1,7 @@
 package com.mx.testing;
 
-import com.mx.common.accessors.AccessorConfiguration;
-import com.mx.common.accessors.AccessorResponse;
+import com.mx.path.gateway.accessor.AccessorConfiguration;
+import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.accessor.account.AccountBaseAccessor;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.account.Account;

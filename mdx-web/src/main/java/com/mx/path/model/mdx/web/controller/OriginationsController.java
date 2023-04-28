@@ -1,8 +1,8 @@
 package com.mx.path.model.mdx.web.controller;
 
-import com.mx.common.accessors.AccessorResponse;
-import com.mx.common.accessors.BadRequestException;
-import com.mx.path.model.context.Session;
+import com.mx.path.core.common.accessor.BadRequestException;
+import com.mx.path.core.context.Session;
+import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.challenges.Challenge;
 import com.mx.path.model.mdx.model.origination.Origination;
 

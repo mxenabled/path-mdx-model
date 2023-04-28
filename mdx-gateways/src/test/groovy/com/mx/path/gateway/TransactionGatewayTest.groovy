@@ -3,8 +3,8 @@ package com.mx.path.gateway
 import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.when
 
-import com.mx.common.accessors.AccessorConfiguration
-import com.mx.common.accessors.AccessorResponse
+import com.mx.path.gateway.accessor.AccessorConfiguration
+import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.account.TransactionGateway
 import com.mx.path.model.mdx.accessor.BaseAccessor
 import com.mx.path.model.mdx.accessor.account.AccountBaseAccessor

@@ -18,8 +18,8 @@ import lombok.Setter;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
-import com.mx.common.collections.ObjectMap;
-import com.mx.common.serialization.ObjectMapYamlDeserializer;
+import com.mx.path.core.common.collection.ObjectMap;
+import com.mx.path.core.common.serialization.ObjectMapYamlDeserializer;
 import com.mx.path.gateway.api.Gateway;
 import com.mx.path.gateway.api.GatewayConfigurator;
 import com.mx.path.gateway.configuration.Configurator;

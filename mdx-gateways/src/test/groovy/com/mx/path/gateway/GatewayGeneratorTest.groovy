@@ -5,10 +5,10 @@ import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.times
 import static org.mockito.Mockito.verify
 
+import com.mx.path.core.context.RequestContext
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.api.account.TransactionGateway
 import com.mx.path.gateway.context.GatewayRequestContext
-import com.mx.path.model.context.RequestContext
 import com.mx.path.model.mdx.accessor.BaseAccessor
 import com.mx.path.model.mdx.accessor.account.AccountBaseAccessor
 import com.mx.testing.BaseAccessorImpl

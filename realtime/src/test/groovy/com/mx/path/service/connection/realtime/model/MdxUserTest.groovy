@@ -1,6 +1,6 @@
 package com.mx.path.service.connection.realtime.model
 
-import com.mx.path.api.connect.messaging.remote.models.RemoteUser
+import com.mx.path.connect.messaging.remote.models.RemoteUser
 
 import spock.lang.Specification
 import spock.lang.Unroll
