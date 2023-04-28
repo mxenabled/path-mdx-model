@@ -1,9 +1,9 @@
 package com.mx.path.model.mdx.accessor;
 
-import com.mx.common.accessors.API;
-import com.mx.common.accessors.AccessorConfiguration;
-import com.mx.common.accessors.AccessorResponse;
-import com.mx.common.accessors.PathResponseStatus;
+import com.mx.path.core.common.accessor.API;
+import com.mx.path.core.common.accessor.PathResponseStatus;
+import com.mx.path.gateway.accessor.AccessorConfiguration;
+import com.mx.path.gateway.accessor.AccessorResponse;
 
 @API(notes = "Default status operations.")
 public class StatusDefaultAccessor extends StatusBaseAccessor {

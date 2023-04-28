@@ -1,6 +1,6 @@
 package com.mx.path.model.mdx.web.controller;
 
-import com.mx.common.accessors.AccessorResponse;
+import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.Frequency;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.ach_transfer.options.FrequencyListOptions;

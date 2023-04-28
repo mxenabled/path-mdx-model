@@ -4,7 +4,7 @@ import static org.mockito.ArgumentMatchers.anyString
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
-import com.mx.common.accessors.AccessorResponse
+import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.transfer.FeeGateway
 import com.mx.path.gateway.api.transfer.TransferGateway

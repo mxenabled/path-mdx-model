@@ -4,13 +4,13 @@ import static org.mockito.Mockito.doReturn
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
-import com.mx.common.accessors.AccessorResponse
-import com.mx.common.accessors.PathResponseStatus
+import com.mx.path.core.common.accessor.PathResponseStatus
+import com.mx.path.core.context.RequestContext
+import com.mx.path.core.context.Session
+import com.mx.path.core.context.store.SessionRepository
+import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.id.IdGateway
-import com.mx.path.model.context.RequestContext
-import com.mx.path.model.context.Session
-import com.mx.path.model.context.store.SessionRepository
 import com.mx.path.model.mdx.model.authorization.Authorization
 import com.mx.path.model.mdx.model.authorization.HtmlPage
 import com.mx.path.model.mdx.model.challenges.Challenge

@@ -1,6 +1,6 @@
 package com.mx.path.model.mdx.web.filter.hmac;
 
-import com.mx.common.exception.PathSystemException;
+import com.mx.path.core.common.exception.PathSystemException;
 
 public class PathHMACException extends PathSystemException {
   public PathHMACException(String message) {

@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import javax.xml.bind.annotation.XmlElement;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.common.models.Internal;
+import com.mx.path.core.common.model.Internal;
 import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.UserIdProvider;
 

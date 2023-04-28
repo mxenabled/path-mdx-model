@@ -2,7 +2,7 @@ package com.mx.path.model.mdx.model;
 
 import java.util.List;
 
-import com.mx.common.models.ModelList;
+import com.mx.path.core.common.model.ModelList;
 
 /**
  * List of MdxBase objects

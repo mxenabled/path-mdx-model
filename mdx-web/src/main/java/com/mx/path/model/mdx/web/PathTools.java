@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.mx.common.accessors.RequestValidationException;
+import com.mx.path.core.common.accessor.RequestValidationException;
 
 /**
  * Utility methods for dealing with raw request paths.

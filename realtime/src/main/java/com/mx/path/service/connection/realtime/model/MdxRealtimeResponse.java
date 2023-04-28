@@ -2,7 +2,7 @@ package com.mx.path.service.connection.realtime.model;
 
 import lombok.Data;
 
-import com.mx.common.http.HttpStatus;
+import com.mx.path.core.common.http.HttpStatus;
 
 @Data
 public class MdxRealtimeResponse<T> {

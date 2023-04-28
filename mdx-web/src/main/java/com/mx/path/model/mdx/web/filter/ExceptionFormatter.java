@@ -2,11 +2,11 @@ package com.mx.path.model.mdx.web.filter;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.mx.common.accessors.PathResponseStatus;
-import com.mx.common.exception.PathRequestException;
-import com.mx.common.exception.PathRequestExceptionWrapper;
-import com.mx.common.http.HttpStatus;
-import com.mx.common.lang.Strings;
+import com.mx.path.core.common.accessor.PathResponseStatus;
+import com.mx.path.core.common.exception.PathRequestException;
+import com.mx.path.core.common.exception.PathRequestExceptionWrapper;
+import com.mx.path.core.common.http.HttpStatus;
+import com.mx.path.core.common.lang.Strings;
 
 /**
  *

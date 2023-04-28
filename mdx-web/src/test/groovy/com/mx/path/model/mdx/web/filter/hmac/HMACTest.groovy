@@ -1,6 +1,6 @@
 package com.mx.path.model.mdx.web.filter.hmac
 
-import com.mx.common.accessors.AccessorUserException
+import com.mx.path.core.common.accessor.AccessorUserException
 import com.mx.path.model.mdx.web.filter.MultiReadHttpServletRequest
 
 import org.springframework.mock.web.MockHttpServletRequest

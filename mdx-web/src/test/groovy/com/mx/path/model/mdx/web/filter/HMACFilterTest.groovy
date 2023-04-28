@@ -4,9 +4,9 @@ import javax.servlet.FilterChain
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-import com.mx.common.accessors.ResourceNotFoundException
-import com.mx.path.model.context.Session
-import com.mx.path.model.context.store.SessionRepository
+import com.mx.path.core.common.accessor.ResourceNotFoundException
+import com.mx.path.core.context.Session
+import com.mx.path.core.context.store.SessionRepository
 import com.mx.path.model.mdx.web.filter.hmac.HMACConfiguration
 import com.mx.path.model.mdx.web.filter.hmac.HMACConfigurationFactory
 

@@ -8,7 +8,7 @@ import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mx.common.models.ModelWrappable;
+import com.mx.path.core.common.model.ModelWrappable;
 
 /**
  * Custom deserializer for MDX OnDemand Resources

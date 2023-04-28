@@ -3,12 +3,12 @@ package com.mx.path.model.mdx.accessor;
 import lombok.AccessLevel;
 import lombok.Getter;
 
-import com.mx.common.accessors.API;
-import com.mx.common.accessors.Accessor;
-import com.mx.common.accessors.AccessorConfiguration;
-import com.mx.common.accessors.AccessorMethodNotImplementedException;
-import com.mx.common.accessors.RootAccessor;
-import com.mx.common.gateway.GatewayAPI;
+import com.mx.path.core.common.accessor.API;
+import com.mx.path.core.common.accessor.AccessorMethodNotImplementedException;
+import com.mx.path.core.common.accessor.RootAccessor;
+import com.mx.path.core.common.gateway.GatewayAPI;
+import com.mx.path.gateway.accessor.Accessor;
+import com.mx.path.gateway.accessor.AccessorConfiguration;
 import com.mx.path.model.mdx.accessor.account.AccountBaseAccessor;
 import com.mx.path.model.mdx.accessor.ach_transfer.AchTransferBaseAccessor;
 import com.mx.path.model.mdx.accessor.authorization.AuthorizationBaseAccessor;

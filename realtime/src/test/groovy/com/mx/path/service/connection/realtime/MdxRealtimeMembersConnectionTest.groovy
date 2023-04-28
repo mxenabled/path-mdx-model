@@ -3,9 +3,9 @@ package com.mx.path.service.connection.realtime
 import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.when
 
-import com.mx.common.accessors.UnauthorizedException
-import com.mx.common.accessors.UpstreamSystemUnavailable
-import com.mx.common.http.HttpStatus
+import com.mx.path.core.common.accessor.UnauthorizedException
+import com.mx.path.core.common.accessor.UpstreamSystemUnavailable
+import com.mx.path.core.common.http.HttpStatus
 import com.mx.path.service.connection.realtime.MdxRealtimeConnection
 import com.mx.path.service.connection.realtime.MdxRealtimeConnectionConfiguration
 import com.mx.path.service.connection.realtime.MdxRealtimeMembersConnection

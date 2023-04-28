@@ -3,8 +3,8 @@ package com.mx.path.model.mdx.web.controller
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
-import com.mx.common.accessors.AccessorResponse
-import com.mx.common.accessors.PathResponseStatus
+import com.mx.path.core.common.accessor.PathResponseStatus
+import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.payment.PayeeGateway
 import com.mx.path.gateway.api.payment.PaymentGateway

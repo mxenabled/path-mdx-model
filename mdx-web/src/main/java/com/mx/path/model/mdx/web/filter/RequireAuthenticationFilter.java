@@ -7,9 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mx.common.accessors.UnauthorizedException;
-import com.mx.path.model.context.Session;
-import com.mx.path.model.context.Session.SessionState;
+import com.mx.path.core.common.accessor.UnauthorizedException;
+import com.mx.path.core.context.Session;
+import com.mx.path.core.context.Session.SessionState;
 import com.mx.path.model.mdx.web.PathTools;
 
 import org.springframework.core.annotation.Order;

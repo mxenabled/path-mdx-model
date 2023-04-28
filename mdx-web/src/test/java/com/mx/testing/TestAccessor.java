@@ -1,6 +1,6 @@
 package com.mx.testing;
 
-import com.mx.common.accessors.AccessorConfiguration;
+import com.mx.path.gateway.accessor.AccessorConfiguration;
 import com.mx.path.model.mdx.accessor.BaseAccessor;
 import com.mx.path.model.mdx.accessor.remote_deposit.RemoteDepositBaseAccessor;
 

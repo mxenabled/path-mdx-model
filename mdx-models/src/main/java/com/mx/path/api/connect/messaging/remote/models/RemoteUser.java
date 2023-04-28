@@ -1,4 +1,4 @@
-package com.mx.path.api.connect.messaging.remote.models;
+package com.mx.path.connect.messaging.remote.models;
 
 import lombok.Data;
 

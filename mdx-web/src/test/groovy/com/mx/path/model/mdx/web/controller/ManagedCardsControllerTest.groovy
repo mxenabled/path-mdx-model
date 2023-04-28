@@ -4,7 +4,7 @@ import static org.mockito.Mockito.doReturn
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
-import com.mx.common.accessors.AccessorResponse
+import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.managed_card.ManagedCardGateway
 import com.mx.path.model.mdx.model.MdxList

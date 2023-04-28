@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import com.google.gson.JsonObject;
-import com.mx.common.accessors.PathResponseStatus;
-import com.mx.common.exception.ExceptionReporter;
-import com.mx.common.exception.PathRequestException;
-import com.mx.common.exception.PathRequestExceptionWrapper;
-import com.mx.path.model.context.RequestContext;
-import com.mx.path.model.context.Session;
-import com.mx.path.model.context.facility.Facilities;
+import com.mx.path.core.common.accessor.PathResponseStatus;
+import com.mx.path.core.common.exception.ExceptionReporter;
+import com.mx.path.core.common.exception.PathRequestException;
+import com.mx.path.core.common.exception.PathRequestExceptionWrapper;
+import com.mx.path.core.context.RequestContext;
+import com.mx.path.core.context.Session;
+import com.mx.path.core.context.facility.Facilities;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

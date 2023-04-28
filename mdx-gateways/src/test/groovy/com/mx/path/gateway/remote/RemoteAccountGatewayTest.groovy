@@ -2,11 +2,11 @@ package com.mx.path.gateway.remote
 
 import static org.mockito.Mockito.*
 
-import com.mx.common.accessors.AccessorResponse
-import com.mx.common.collections.ObjectMap
-import com.mx.common.messaging.MessageError
-import com.mx.common.messaging.MessageStatus
-import com.mx.path.api.connect.messaging.MessageRequest
+import com.mx.path.connect.messaging.MessageRequest
+import com.mx.path.core.common.collection.ObjectMap
+import com.mx.path.core.common.messaging.MessageError
+import com.mx.path.core.common.messaging.MessageStatus
+import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.remote.account.RemoteAccountGateway
 import com.mx.path.model.mdx.model.MdxList

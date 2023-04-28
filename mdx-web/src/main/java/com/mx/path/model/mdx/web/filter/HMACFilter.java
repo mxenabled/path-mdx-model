@@ -11,7 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mx.common.accessors.ResourceNotFoundException;
+import com.mx.path.core.common.accessor.ResourceNotFoundException;
 import com.mx.path.model.mdx.web.PathTools;
 import com.mx.path.model.mdx.web.filter.hmac.HMACConfiguration;
 import com.mx.path.model.mdx.web.filter.hmac.HMACConfigurationFactory;

@@ -3,7 +3,7 @@ package com.mx.path.model.mdx.model.managed_cards;
 import lombok.EqualsAndHashCode;
 
 import com.google.gson.annotations.SerializedName;
-import com.mx.common.models.Internal;
+import com.mx.path.core.common.model.Internal;
 import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.UserIdProvider;
 import com.mx.path.model.mdx.model.challenges.Challenge;
