@@ -1,6 +1,7 @@
 ## Path MDX-Model Upgrade - path-core V2
 
-Upgrades to support the move to path-core V2
+* Upgrades to support path-core 2.0.+
+  * See [README](https://github.com/mxenabled/path-core/tree/v2/upgrades/v2)
 
 ### Change Summary
 
