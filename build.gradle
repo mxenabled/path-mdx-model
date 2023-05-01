@@ -44,7 +44,7 @@ allprojects {
   }
 
   ext {
-    pathSDKVersion = "2.0.0-rc.+"
+    pathSDKVersion = "[2.0,3.0)"
     springVersion = "[2.7.0,2.8.0)!!2.7.5"
   }
 }

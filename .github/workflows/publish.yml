@@ -1,8 +1,4 @@
 on:
-  # Automatically re-publish SNAPSHOT
-  push:
-    branches:
-      - coreV2
   workflow_dispatch:
     inputs:
       dry-run:
