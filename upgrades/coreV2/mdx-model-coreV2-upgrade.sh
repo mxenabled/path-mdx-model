@@ -58,24 +58,24 @@ fi
 
 # Find & Replace all imports
 function process_file {
-  local model_version="[2.0,3.0)"
+  local model_version="[3.0,4.0)"
 
   export nl=$'\n'
   local file=$1
   local java_mappings=(
-    #"com.mx.accessors.AccessorConfiguration([^a-zA-Z])=com.mx.common.accessors.AccessorConfiguration\1"
+    "com.mx.path.api.lib.realtime.models.MdxUser([^a-zA-Z])=com.mx.path.service.connection.realtime.model.MdxUser\1"
     #"([^a-zA-Z])YamlSerializer([^a-zA-Z])=\1ObjectMapYamlDeserializer\2"
     #"([^a-zA-Z])JsonObjectMapDeserializer([^a-zA-Z])=\1ObjectMapJsonDeserializer\2"
   )
   local groovy_mappings=(
-    "JUNK=JUNK"
+    "com.mx.path.api.lib.realtime.models.MdxUser([^a-zA-Z]?)=com.mx.path.service.connection.realtime.model.MdxUser\1"
     #"com.mx.accessors.AccessorConfiguration([^a-zA-Z]?)=com.mx.common.accessors.AccessorConfiguration\1"
     #"([^a-zA-Z])YamlSerializer([^a-zA-Z]?)=\1ObjectMapYamlDeserializer\2"
     #"package com.mx.accessors([_a-zA-Z\.]*)([^_a-zA-Z\.])$=package com.mx.accessors\1\2\nimport com.mx.common.exception.AccessorMethodNotImplementedException\nimport com.mx.common.gateway.GatewayAPI\nimport com.mx.common.accessors.API\nimport com.mx.common.accessors.AccessorConfiguration\nimport com.mx.common.accessors.Accessor\nimport com.mx.common.accessors.RootAccessor\nimport com.mx.common.accessors.AccessorResponse\nimport com.mx.common.accessors.PathResponseStatus"
 
   )
   local gradle_mappings=(
-    #"([\"\'])com\.mx\.path-mdx-model:platform:[^\"\']+([\"\'])=\1com.mx.path-mdx-model:platform:$model_version\2"
+    "([\"\'])com\.mx\.path-mdx-model:platform:[^\"\']+([\"\'])=\1com.mx.path-mdx-model:platform:$model_version\2"
   )
   local gateway_mappings=(
     "JUNK=JUNK"
