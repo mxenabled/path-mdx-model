@@ -121,6 +121,16 @@ function process_file {
 }
 
 ### Driver
+
+echo
+echo "###################################################"
+echo "Processing core upgrade..."
+echo "###################################################"
+echo
+sleep 2
+curl -L "https://raw.github.com/mxenabled/path-core/v2/upgrades/v2/core-2-upgrade.sh" | bash -s $ROOT_DIR -d $DRY_RUN
+#../path-core/upgrades/v2/core-2-upgrade.sh  $ROOT_DIR -d $DRY_RUN
+
 export -f process_file
 export DRY_RUN
 find "$ROOT_DIR" -type f \( -iname "*.java" -or -iname "*.groovy" -or -iname "*.kt" -or -iname "build.gradle" -or -iname "gateway.yml" -or -iname "gateway.yaml" \) -exec bash -c 'process_file "$0"' {} \;
