@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse
 
 import com.mx.path.core.common.accessor.AccessorUserException
 import com.mx.path.core.common.accessor.PathResponseStatus
+import com.mx.path.core.common.accessor.RequestValidationException
+import com.mx.path.core.common.accessor.UnauthorizedException
 
 import spock.lang.Specification
 
@@ -36,7 +38,7 @@ class ErrorHandlerFilterTest extends Specification {
     given:
     response.getOutputStream() >> outputStream
     filterChain.doFilter(_ as HttpServletRequest, _ as HttpServletResponse) >> { HttpServletRequest request, HttpServletResponse response ->
-      throw new AccessorUserException("Danger!", "Danger", PathResponseStatus.USER_ERROR)
+      throw new RequestValidationException("Danger!", "Danger").withStatus(PathResponseStatus.USER_ERROR)
     }
 
     when:
@@ -51,7 +53,7 @@ class ErrorHandlerFilterTest extends Specification {
     given:
     response.getOutputStream() >> outputStream
     filterChain.doFilter(_ as HttpServletRequest, _ as HttpServletResponse) >> { HttpServletRequest request, HttpServletResponse response ->
-      throw new RuntimeException("Start fan, insert crap", new AccessorUserException("Danger!", "Danger!", PathResponseStatus.USER_ERROR))
+      throw new RuntimeException("Start fan, insert crap", new RequestValidationException("Danger!", "Danger!").withStatus(PathResponseStatus.USER_ERROR))
     }
 
     when:
@@ -66,7 +68,7 @@ class ErrorHandlerFilterTest extends Specification {
     given:
     response.getOutputStream() >> outputStream
     filterChain.doFilter(_ as HttpServletRequest, _ as HttpServletResponse) >> { HttpServletRequest request, HttpServletResponse response ->
-      throw new AccessorUserException("Danger!", "Danger!", PathResponseStatus.USER_ERROR).withCode("4011")
+      throw new RequestValidationException("Danger!", "Danger!").withStatus(PathResponseStatus.USER_ERROR).withCode("4011")
     }
 
     when:
@@ -81,7 +83,7 @@ class ErrorHandlerFilterTest extends Specification {
     given:
     response.getOutputStream() >> outputStream
     filterChain.doFilter(_ as HttpServletRequest, _ as HttpServletResponse) >> { HttpServletRequest request, HttpServletResponse response ->
-      throw new AccessorUserException("Danger!", "Danger!", PathResponseStatus.USER_ERROR).withCode("4011").withErrorTitle("errorTitle")
+      throw new RequestValidationException("Danger!", "Danger!").withStatus(PathResponseStatus.USER_ERROR).withCode("4011").withErrorTitle("errorTitle")
     }
 
     when:
@@ -97,7 +99,7 @@ class ErrorHandlerFilterTest extends Specification {
     response.getOutputStream() >> outputStream
     filterChain.doFilter(_ as HttpServletRequest, _ as HttpServletResponse) >> { HttpServletRequest request, HttpServletResponse response ->
       throw new RuntimeException("Start fan, insert crap",
-      new AccessorUserException("Danger!", "Danger!", PathResponseStatus.USER_ERROR)
+      new RequestValidationException("Danger!", "Danger!").withStatus(PathResponseStatus.USER_ERROR)
       .withHeader("header", "value"))
     }
 
@@ -112,7 +114,7 @@ class ErrorHandlerFilterTest extends Specification {
     given:
     response.getOutputStream() >> outputStream
     filterChain.doFilter(_ as HttpServletRequest, _ as HttpServletResponse) >> { HttpServletRequest request, HttpServletResponse response ->
-      throw new AccessorUserException("Danger!", "Danger!", PathResponseStatus.USER_ERROR).withHeader("header", "value")
+      throw new RequestValidationException("Danger!", "Danger!").withStatus(PathResponseStatus.USER_ERROR).withHeader("header", "value")
     }
 
     when:
