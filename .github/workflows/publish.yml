@@ -6,6 +6,9 @@ on:
         description: Dry-Run
         required: false
         type: boolean
+  push:
+    branches:
+      - coreV2
 
 name: publish
 
