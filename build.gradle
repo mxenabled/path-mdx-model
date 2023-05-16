@@ -62,7 +62,7 @@ subprojects {
 
       testImplementation "org.mockito:mockito-inline:[4.0,5.0)"
       testImplementation "org.spockframework:spock-core:[2.0,3.0)"
-      testImplementation "org.junit.jupiter:junit-jupiter-api:[5.0,6.0)"
+      testImplementation "org.junit.jupiter:junit-jupiter-api:[5.9.0,5.10.0)"
     }
 
     test { useJUnitPlatform() }
@@ -86,9 +86,6 @@ subprojects {
 
     coppuccino {
       rootDir = "${projectDir}/"
-      dependencies {
-        excludePreReleaseVersions = false
-      }
     }
 
     vogue {
