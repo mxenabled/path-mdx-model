@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/mxenabled/path-mdx-model/compare/v2.2.0...v2.2.1) (2023-04-24)
+
+
+### Bug Fixes
+
+* Add account model relation to cross account transfers ([995d5f9](https://github.com/mxenabled/path-mdx-model/commit/995d5f9564521004f25fa71f1f7fbf3a65ead160))
+
 ## [2.2.0](https://github.com/mxenabled/path-mdx-model/compare/v2.1.0...v2.2.0) (2023-04-04)
 
 
