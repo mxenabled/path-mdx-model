@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.0.0](https://github.com/mxenabled/path-mdx-model/compare/v2.2.1...v3.0.0) (2023-05-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* apply v2 upgrade script
+* removing deprecated code to fix build
+
+### Bug Fixes
+
+* adding MdxBase, MdxList, changing models base class ([7da31d5](https://github.com/mxenabled/path-mdx-model/commit/7da31d5bc01dcefd11226e8390f80fc469628a80))
+* adding to upgrade script ([adb1f43](https://github.com/mxenabled/path-mdx-model/commit/adb1f435b5ca4bf8f78453691d1239961c43bcc8))
+* removing deprecated code to fix build ([7da31d5](https://github.com/mxenabled/path-mdx-model/commit/7da31d5bc01dcefd11226e8390f80fc469628a80))
+
+
+### Code Refactoring
+
+* apply v2 upgrade script ([a5425a9](https://github.com/mxenabled/path-mdx-model/commit/a5425a9b605016e5f13a1cbdcd18c35727c04225))
+
 ## [2.2.1](https://github.com/mxenabled/path-mdx-model/compare/v2.2.0...v2.2.1) (2023-04-24)
 
 
