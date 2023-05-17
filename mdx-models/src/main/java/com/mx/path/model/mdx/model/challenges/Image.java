@@ -1,15 +1,12 @@
 package com.mx.path.model.mdx.model.challenges;
 
+import lombok.Data;
+
+import com.mx.path.core.common.configuration.ConfigurationField;
 import com.mx.path.model.mdx.model.MdxBase;
 
+@Data
 public final class Image extends MdxBase<Image> {
+  @ConfigurationField
   private String url;
-
-  public String getUrl() {
-    return url;
-  }
-
-  public void setUrl(String url) {
-    this.url = url;
-  }
 }

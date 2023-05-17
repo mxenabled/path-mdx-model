@@ -2,70 +2,31 @@ package com.mx.path.model.mdx.model.challenges;
 
 import java.util.List;
 
+import lombok.Data;
+
+import com.mx.path.core.common.configuration.ConfigurationField;
 import com.mx.path.model.mdx.model.MdxBase;
 
+@Data
 public final class Challenge extends MdxBase<Challenge> {
+  @ConfigurationField
   private String id;
+
+  @ConfigurationField
   private String prompt;
+
+  @ConfigurationField
   private String title;
+
+  @ConfigurationField(elementType = Question.class)
   private List<Question> questions;
+
+  @ConfigurationField
   private String[] modes;
+
+  @ConfigurationField
   private String format;
+
+  @ConfigurationField(elementType = Action.class)
   private List<Action> actions;
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public String getPrompt() {
-    return prompt;
-  }
-
-  public void setPrompt(String prompt) {
-    this.prompt = prompt;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public List<Question> getQuestions() {
-    return questions;
-  }
-
-  public void setQuestions(List<Question> questions) {
-    this.questions = questions;
-  }
-
-  public String[] getModes() {
-    return modes;
-  }
-
-  public void setModes(String[] modes) {
-    this.modes = modes;
-  }
-
-  public String getFormat() {
-    return format;
-  }
-
-  public void setFormat(String format) {
-    this.format = format;
-  }
-
-  public List<Action> getActions() {
-    return actions;
-  }
-
-  public void setActions(List<Action> actions) {
-    this.actions = actions;
-  }
 }

@@ -1,55 +1,28 @@
 package com.mx.path.model.mdx.model.challenges;
 
+import lombok.Data;
+
 import com.google.gson.annotations.SerializedName;
+import com.mx.path.core.common.configuration.ConfigurationField;
 import com.mx.path.model.mdx.model.MdxBase;
 
+@Data
 public final class Action extends MdxBase<Action> {
+  @ConfigurationField
   private String id;
+
+  @ConfigurationField
   private String type;
+
+  @ConfigurationField
   @SerializedName("show_challenge_modal_data")
   private ShowChallengeModal showChallengeModalData;
+
+  @ConfigurationField
   @SerializedName("show_status_data")
   private ShowStatus showStatusData;
+
+  @ConfigurationField
   @SerializedName("deep_link_data")
   private DeepLinkData deepLinkData;
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  public ShowChallengeModal getShowChallengeModalData() {
-    return showChallengeModalData;
-  }
-
-  public void setShowChallengeModalData(ShowChallengeModal showChallengeModalData) {
-    this.showChallengeModalData = showChallengeModalData;
-  }
-
-  public ShowStatus getShowStatusData() {
-    return showStatusData;
-  }
-
-  public void setShowStatusData(ShowStatus showStatusData) {
-    this.showStatusData = showStatusData;
-  }
-
-  public DeepLinkData getDeepLinkData() {
-    return deepLinkData;
-  }
-
-  public void setDeepLinkData(DeepLinkData deepLinkData) {
-    this.deepLinkData = deepLinkData;
-  }
 }
