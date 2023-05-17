@@ -128,7 +128,7 @@ echo "Processing core upgrade..."
 echo "###################################################"
 echo
 sleep 2
-curl -L "https://raw.github.com/mxenabled/path-core/v2/upgrades/v2/core-2-upgrade.sh" | bash -s $ROOT_DIR -d $DRY_RUN
+curl -L "https://raw.github.com/mxenabled/path-core/master/upgrades/v2/core-2-upgrade.sh" | bash -s $ROOT_DIR -d $DRY_RUN
 #../path-core/upgrades/v2/core-2-upgrade.sh  $ROOT_DIR -d $DRY_RUN
 
 export -f process_file
