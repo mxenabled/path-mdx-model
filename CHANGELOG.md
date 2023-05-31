@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/mxenabled/path-mdx-model/compare/v3.0.0...v3.0.1) (2023-05-31)
+
+
+### Bug Fixes
+
+* **build:** raise max sdk version to <4.0 ([d1e2358](https://github.com/mxenabled/path-mdx-model/commit/d1e23581226e5884b4fb6183b2120d0d595f7518))
+
 ## [3.0.0](https://github.com/mxenabled/path-mdx-model/compare/v2.2.1...v3.0.0) (2023-05-16)
 
 
