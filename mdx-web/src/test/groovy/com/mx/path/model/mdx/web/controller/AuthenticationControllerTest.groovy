@@ -79,6 +79,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     HttpStatus.OK == response.getStatusCode()
     Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
     "user-1234" == response.getBody().getUserId()
+    RequestContext.current().feature == "identity"
   }
 
   def "loginWithTokenSuccessful"() {

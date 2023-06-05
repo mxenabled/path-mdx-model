@@ -28,6 +28,7 @@ public class AuthenticationController extends BaseController {
 
   @RequestMapping(value = { "/authentications", "/sessions" }, method = RequestMethod.POST, consumes = { MDX_MEDIA, MDX_ONDEMAND_MEDIA }, produces = { MDX_MEDIA, MDX_ONDEMAND_MEDIA })
   public final ResponseEntity<Authentication> authenticate(@PathVariable("clientId") String clientId, @RequestBody Authentication requestAuthentication) {
+    ensureFeature("identity");
 
     // Delete existing session if it exists;
     Session.deleteCurrent();

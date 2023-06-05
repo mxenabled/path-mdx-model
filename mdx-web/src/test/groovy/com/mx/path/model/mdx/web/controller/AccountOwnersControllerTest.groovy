@@ -2,6 +2,7 @@ package com.mx.path.model.mdx.web.controller
 
 import static org.mockito.Mockito.*
 
+import com.mx.path.core.context.RequestContext
 import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.account.AccountGateway
@@ -20,6 +21,8 @@ class AccountOwnersControllerTest extends Specification {
     def clientId = "client-1234"
     subject = new AccountOwnersController()
 
+    RequestContext.builder().clientId(clientId).build().register()
+
     accountOwnerGateway = spy(AccountOwnerGateway.builder().clientId(clientId).build())
     accountGateway = spy(AccountGateway.builder().clientId(clientId).accountOwners(accountOwnerGateway).build())
     gateway = spy(Gateway.builder().clientId(clientId).accounts(accountGateway).build())
@@ -27,6 +30,7 @@ class AccountOwnersControllerTest extends Specification {
 
   def cleanup() {
     AccountsController.clearRepository()
+    RequestContext.clear()
   }
 
   def "gets account owner for an account"() {
@@ -42,5 +46,6 @@ class AccountOwnersControllerTest extends Specification {
     verify(accountGateway).accountOwners() || true
     verify(accountOwnerGateway).get("A-123") || true
     result.getBody() == accountOwner
+    RequestContext.current().feature == "accounts"
   }
 }

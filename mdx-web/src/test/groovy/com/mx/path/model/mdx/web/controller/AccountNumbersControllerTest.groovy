@@ -4,6 +4,7 @@ import static org.mockito.Mockito.doReturn
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
+import com.mx.path.core.context.RequestContext
 import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.account.AccountGateway
@@ -22,6 +23,8 @@ class AccountNumbersControllerTest extends Specification {
     def clientId = "client-1234"
     subject = new AccountNumbersController()
 
+    RequestContext.builder().clientId(clientId).build().register()
+
     accountNumberGateway = spy(AccountNumberGateway.builder().clientId(clientId).build())
     accountGateway = spy(AccountGateway.builder().clientId(clientId).accountNumbers(accountNumberGateway).build())
     gateway = spy(Gateway.builder().clientId(clientId).accounts(accountGateway).build())
@@ -29,6 +32,7 @@ class AccountNumbersControllerTest extends Specification {
 
   def cleanup() {
     AccountsController.clearRepository()
+    RequestContext.clear()
   }
 
   def "gets account numbers for an account"() {
@@ -44,5 +48,6 @@ class AccountNumbersControllerTest extends Specification {
     verify(accountGateway).accountNumbers() || true
     verify(accountNumberGateway).get("A-123") || true
     result.getBody() == accountNumbers
+    RequestContext.current().feature == "accounts"
   }
 }

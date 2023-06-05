@@ -40,6 +40,7 @@ public class AccountsController extends BaseController {
   @RequestMapping(value = "/accounts", method = RequestMethod.GET, produces = BaseController.MDX_ONDEMAND_MEDIA)
   public final ResponseEntity<MdxListWrapper> getOnDemandAccounts()
       throws Exception {
+    ensureFeature("accounts");
     return new ResponseEntity<>(new MdxListWrapper("accounts", gateway().accounts().list().getResult().wrapped()), HttpStatus.OK);
   }
 
@@ -74,6 +75,7 @@ public class AccountsController extends BaseController {
       TransactionSearchRequest searchRequest,
       @PathVariable("id") String accountId) throws Exception {
 
+    ensureFeature("transactions");
     AccessorResponse<TransactionsPage> response = gateway().accounts().transactions().search(accountId, searchRequest);
 
     AccountTransactions accountTransactions = new AccountTransactions();
