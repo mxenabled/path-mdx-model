@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.mx.path.core.common.accessor.PathResponseStatus;
+import com.mx.path.core.common.lang.Strings;
+import com.mx.path.core.context.RequestContext;
 import com.mx.path.gateway.api.Gateway;
 
 import org.springframework.http.HttpHeaders;
@@ -44,6 +46,17 @@ public class BaseController {
     }
 
     return sessionId;
+  }
+
+  /**
+   * In cases where the downstream system is not expected to send the request feature, call this to ensure one is set.
+   *
+   * @param feature to use for request
+   */
+  protected void ensureFeature(String feature) {
+    if (RequestContext.current() != null && Strings.isBlank(RequestContext.current().getFeature())) {
+      RequestContext.current().setFeature(feature);
+    }
   }
 
   protected final HttpStatus statusFromAccessorStatus(PathResponseStatus accessorResponseStatus) {

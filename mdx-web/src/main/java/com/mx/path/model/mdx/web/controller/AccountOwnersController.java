@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountOwnersController extends BaseController {
   @RequestMapping(value = "/accounts/{id}/account_owner", method = RequestMethod.GET, produces = BaseController.MDX_ONDEMAND_MEDIA)
   public final ResponseEntity<AccountOwner> get(@PathVariable("id") String accountId) throws Exception {
+    ensureFeature("accounts");
     AccessorResponse<AccountOwner> response = gateway().accounts().accountOwners().get(accountId);
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }

@@ -3,6 +3,7 @@ package com.mx.path.model.mdx.web.controller
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
+import com.mx.path.core.context.RequestContext
 import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.account.AccountGateway
@@ -31,6 +32,8 @@ class AccountsControllerTest extends Specification implements WithMockery {
     def clientId = "client-1234"
     subject = new AccountsController()
 
+    RequestContext.builder().clientId(clientId).build().register()
+
     transactionGateway = spy(TransactionGateway.builder().clientId(clientId).build())
     accountGateway = spy(AccountGateway.builder().clientId(clientId).transactions(transactionGateway).build())
     gateway = spy(Gateway.builder().clientId(clientId).accounts(accountGateway).build())
@@ -38,6 +41,7 @@ class AccountsControllerTest extends Specification implements WithMockery {
 
   def cleanup() {
     AccountsController.clearRepository()
+    RequestContext.clear()
   }
 
   def "create when implemented"() {
@@ -124,6 +128,7 @@ class AccountsControllerTest extends Specification implements WithMockery {
     then:
     verify(accountGateway).list() || true
     result.body.list == accounts
+    RequestContext.current().getFeature() == "accounts"
   }
 
   def "searches transactions"() {
@@ -141,6 +146,7 @@ class AccountsControllerTest extends Specification implements WithMockery {
     then:
     verify(transactionGateway).search("A-123", searchRequest) || true
     result.body.transactions == page
+    RequestContext.current().feature == "transactions"
   }
 
   def "get recent transactions"() {
