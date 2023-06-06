@@ -37,7 +37,7 @@ This is an API used to interact with MDX realtime.
 _Gradle_
 ```groovy
 dependencies {
-  api platform("com.mx.path-mdx-model:platform:3.0.1") // x-release-version
+  api platform("com.mx.path-mdx-model:platform:3.0.2") // x-release-version
 
   implementation "com.mx.path-mdx-model:mdx-models"
   implementation "com.mx.path-mdx-model:mdx-gateways"

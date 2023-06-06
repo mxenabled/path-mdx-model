@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/mxenabled/path-mdx-model/compare/v3.0.1...3.0.2) (2023-06-06)
+
+
+### Bug Fixes
+
+* **controllers:** set feature if unset on all MdxOnDemand endpoints ([0e782dd](https://github.com/mxenabled/path-mdx-model/commit/0e782dd6f96990d62eca1c2d754c59c3fe19e6ee))
+
 # Changelog
 
 ## [3.0.1](https://github.com/mxenabled/path-mdx-model/compare/v3.0.0...v3.0.1) (2023-05-31)
