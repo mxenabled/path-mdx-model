@@ -1,4 +1,4 @@
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.mx.path-mdx-model/mdx-model/badge.svg)](https://search.maven.org/search?q=com.mx.path-mdx-model)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.mx.path-mdx-model/mdx-models/badge.svg)](https://search.maven.org/search?q=com.mx.path-mdx-model)
 ![img](https://img.shields.io/badge/semver-2.0.0-green)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 
