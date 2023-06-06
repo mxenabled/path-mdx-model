@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/mxenabled/path-mdx-model/compare/3.0.2...3.0.3) (2023-06-06)
+
+
+### Bug Fixes
+
+* semantic release ([ec7b28f](https://github.com/mxenabled/path-mdx-model/commit/ec7b28ff4c9d726cd0f9e4c471172b024a109544))
+
 ## [3.0.2](https://github.com/mxenabled/path-mdx-model/compare/v3.0.1...3.0.2) (2023-06-06)
 
 
