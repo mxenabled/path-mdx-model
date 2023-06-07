@@ -1,3 +1,14 @@
+## [4.0.0](https://github.com/mxenabled/path-mdx-model/compare/3.0.2...4.0.0) (2023-06-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to core:3.0.0
+
+### Build System
+
+* upgrade to core:3.0.0 ([5ac38e1](https://github.com/mxenabled/path-mdx-model/commit/5ac38e17e29541e6ff23ad4ba58a13ba3b684202))
+
 ## [3.0.2](https://github.com/mxenabled/path-mdx-model/compare/v3.0.1...3.0.2) (2023-06-06)
 
 
