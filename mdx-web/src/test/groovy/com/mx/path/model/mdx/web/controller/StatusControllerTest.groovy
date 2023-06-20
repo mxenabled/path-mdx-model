@@ -7,8 +7,6 @@ import com.mx.path.core.common.accessor.PathResponseStatus
 import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.StatusGateway
-import com.mx.path.model.mdx.web.controller.BaseController
-import com.mx.path.model.mdx.web.controller.StatusController
 
 import org.mockito.Mockito
 import org.springframework.http.HttpStatus
@@ -28,7 +26,7 @@ class StatusControllerTest extends Specification {
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "getStatus interacts with gateway"() {

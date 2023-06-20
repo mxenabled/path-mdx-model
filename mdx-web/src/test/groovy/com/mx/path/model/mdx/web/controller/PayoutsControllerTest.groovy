@@ -37,7 +37,7 @@ class PayoutsControllerTest extends Specification implements WithMockery {
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "ListPayoutFromAccounts interacts with gateway"() {

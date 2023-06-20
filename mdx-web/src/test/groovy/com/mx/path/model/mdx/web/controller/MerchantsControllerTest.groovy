@@ -32,7 +32,7 @@ class MerchantsControllerTest extends Specification {
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "getMerchantCategoryList interacts with gateway"() {

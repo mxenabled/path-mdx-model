@@ -29,7 +29,7 @@ class AccountOwnersControllerTest extends Specification {
   }
 
   def cleanup() {
-    AccountsController.clearRepository()
+    AccountsController.clearGateway()
     RequestContext.clear()
   }
 

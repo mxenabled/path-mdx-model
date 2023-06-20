@@ -40,7 +40,7 @@ class AccountsControllerTest extends Specification implements WithMockery {
   }
 
   def cleanup() {
-    AccountsController.clearRepository()
+    AccountsController.clearGateway()
     RequestContext.clear()
   }
 

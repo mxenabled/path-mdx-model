@@ -26,7 +26,7 @@ class LocationsControllerTest extends Specification {
   }
 
   def cleanup() {
-    LocationsController.clearRepository()
+    LocationsController.clearGateway()
   }
 
   def "getLocation interacts with gateway"() {

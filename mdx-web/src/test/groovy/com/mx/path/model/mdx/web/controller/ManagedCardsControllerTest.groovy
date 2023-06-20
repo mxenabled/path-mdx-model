@@ -30,7 +30,7 @@ class ManagedCardsControllerTest extends Specification {
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "get interacts with gateway"() {

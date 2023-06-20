@@ -23,7 +23,7 @@ public class BaseController {
 
   private static ThreadLocal<Gateway> gatewayThreadLocal = new ThreadLocal<>();
 
-  public static void clearRepository() {
+  public static void clearGateway() {
     gatewayThreadLocal.remove();
   }
 

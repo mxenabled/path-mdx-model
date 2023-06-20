@@ -27,7 +27,7 @@ class DocumentsControllerTest extends Specification {
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "getDocument interacts with gateway"() {

@@ -37,7 +37,7 @@ class OriginationsControllerTest extends Specification {
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
     Session.clearSession()
     Session.setRepositorySupplier(null)
   }

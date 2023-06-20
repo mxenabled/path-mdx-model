@@ -34,7 +34,7 @@ class RecurringTransfersControllerTest extends Specification implements WithMock
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "createRecurringTransfer interacts with gateway"() {

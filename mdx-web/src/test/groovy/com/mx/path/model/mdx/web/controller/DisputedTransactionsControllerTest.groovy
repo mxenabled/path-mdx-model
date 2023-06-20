@@ -36,7 +36,7 @@ class DisputedTransactionsControllerTest extends Specification {
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "createDisputedTransaction interacts with gateway"() {

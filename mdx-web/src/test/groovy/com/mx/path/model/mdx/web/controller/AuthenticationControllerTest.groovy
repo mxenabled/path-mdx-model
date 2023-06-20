@@ -58,7 +58,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
     Session.clearSession()
     Session.setRepositorySupplier(null)
     RequestContext.clear()

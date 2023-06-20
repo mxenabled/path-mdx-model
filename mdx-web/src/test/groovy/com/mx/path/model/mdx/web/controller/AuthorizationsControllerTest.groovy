@@ -26,7 +26,7 @@ class AuthorizationsControllerTest extends Specification {
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "createAuthorization interacts with gateway"() {

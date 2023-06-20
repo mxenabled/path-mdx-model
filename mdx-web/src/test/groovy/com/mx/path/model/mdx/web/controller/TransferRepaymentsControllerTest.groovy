@@ -35,7 +35,7 @@ class TransferRepaymentsControllerTest extends Specification implements WithMock
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "list repayments interacts with gateway"() {

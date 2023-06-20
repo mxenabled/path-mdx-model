@@ -33,7 +33,7 @@ class DisputesControllerTest extends Specification {
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "cancelDispute interacts with gateway"() {

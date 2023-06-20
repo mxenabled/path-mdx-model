@@ -34,7 +34,7 @@ class CrossAccountTransfersControllerTest extends Specification implements WithM
   }
 
   def cleanup() {
-    AccountsController.clearRepository()
+    AccountsController.clearGateway()
   }
 
   def "createCrossAccountTransfer interacts with gateway"() {

@@ -37,7 +37,7 @@ class AchScheduledTransfersControllerTest extends Specification implements WithM
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "create interacts with gateway"() {

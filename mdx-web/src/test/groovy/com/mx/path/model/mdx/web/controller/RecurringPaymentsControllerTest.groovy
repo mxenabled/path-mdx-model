@@ -30,7 +30,7 @@ class RecurringPaymentsControllerTest extends Specification {
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "index recurring payment frequencies invokes gateway"() {
