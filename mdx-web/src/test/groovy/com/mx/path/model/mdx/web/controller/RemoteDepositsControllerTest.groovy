@@ -27,7 +27,7 @@ class RemoteDepositsControllerTest extends Specification {
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "getRemoteDeposit interacts with gateway"() {

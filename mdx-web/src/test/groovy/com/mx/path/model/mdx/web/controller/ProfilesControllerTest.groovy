@@ -46,7 +46,7 @@ class ProfilesControllerTest extends Specification {
   }
 
   def cleanup() {
-    ProfilesController.clearRepository()
+    ProfilesController.clearGateway()
   }
 
   def "getProfile_implemented"() {

@@ -31,7 +31,7 @@ class PayeesControllerTest extends Specification {
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "getPayees interacts with gateway"() {

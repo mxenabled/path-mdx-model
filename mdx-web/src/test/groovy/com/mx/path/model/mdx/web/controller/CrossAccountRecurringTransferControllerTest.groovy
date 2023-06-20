@@ -30,7 +30,7 @@ class CrossAccountRecurringTransferControllerTest extends Specification{
   }
 
   def cleanup() {
-    CrossAccountRecurringTransferController.clearRepository()
+    CrossAccountRecurringTransferController.clearGateway()
   }
 
   def "createCrossAccountRecurringTransfer interacts with gateway"() {

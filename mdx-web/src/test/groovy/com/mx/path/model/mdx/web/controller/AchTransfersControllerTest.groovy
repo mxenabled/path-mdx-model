@@ -33,7 +33,7 @@ class AchTransfersControllerTest extends Specification implements WithMockery {
   }
 
   def cleanup() {
-    AchTransfersController.clearRepository()
+    AchTransfersController.clearGateway()
   }
 
   def "list interacts with gateway"() {

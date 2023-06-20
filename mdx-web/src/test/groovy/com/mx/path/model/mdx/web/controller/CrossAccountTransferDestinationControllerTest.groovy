@@ -29,7 +29,7 @@ class CrossAccountTransferDestinationControllerTest  extends Specification {
   }
 
   def cleanup() {
-    CrossAccountTransferDestinationController.clearRepository()
+    CrossAccountTransferDestinationController.clearGateway()
   }
 
   def "createDestination interacts with gateway"() {

@@ -32,7 +32,7 @@ class CrossAccountTransferFeesControllerTest extends Specification implements Wi
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "list fees with options interacts with gateway"() {

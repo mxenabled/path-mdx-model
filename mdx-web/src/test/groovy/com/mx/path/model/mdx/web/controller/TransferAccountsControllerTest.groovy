@@ -34,7 +34,7 @@ class TransferAccountsControllerTest extends Specification {
   }
 
   def cleanup() {
-    TransfersController.clearRepository()
+    TransfersController.clearGateway()
   }
 
   def "getAccounts interacts with gateway"() {

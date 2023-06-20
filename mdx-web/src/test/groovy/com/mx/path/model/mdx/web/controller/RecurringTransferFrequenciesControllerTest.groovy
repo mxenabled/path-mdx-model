@@ -38,7 +38,7 @@ class RecurringTransferFrequenciesControllerTest extends Specification implement
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "getRecurringTransferFrequencies interacts with gateway"() {

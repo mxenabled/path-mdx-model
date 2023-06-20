@@ -30,7 +30,7 @@ class AccountRepaymentsControllerTest extends Specification implements WithMocke
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "list repayments interacts with gateway"() {

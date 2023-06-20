@@ -38,7 +38,7 @@ class AchScheduledTransferFrequenciesControllerTest extends Specification implem
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "getRecurringTransferFrequencies interacts with gateway"() {

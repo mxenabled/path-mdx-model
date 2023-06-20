@@ -35,7 +35,7 @@ class CreditReportControllerTest extends Specification implements WithMockery {
   }
 
   def cleanup() {
-    CreditReportController.clearRepository()
+    CreditReportController.clearGateway()
   }
 
   def "getCreditReportSettings interacts with gateway"() {

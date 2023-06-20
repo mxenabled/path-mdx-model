@@ -40,7 +40,7 @@ class TransferAmountOptionsControllerTest extends Specification {
   }
 
   def cleanup() {
-    TransfersController.clearRepository()
+    TransfersController.clearGateway()
   }
 
   def "list transfer amount options interacts with gateway"() {

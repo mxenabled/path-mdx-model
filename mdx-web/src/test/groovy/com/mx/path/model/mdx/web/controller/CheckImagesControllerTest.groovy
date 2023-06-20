@@ -43,7 +43,7 @@ class CheckImagesControllerTest extends Specification implements WithMockery{
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "getCheckImages interacts with gateway"() {

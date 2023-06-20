@@ -59,7 +59,7 @@ public class GatewayFilter extends OncePerRequestFilter {
     try {
       filterChain.doFilter(request, response);
     } finally {
-      BaseController.clearRepository();
+      BaseController.clearGateway();
     }
   }
 }

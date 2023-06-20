@@ -29,7 +29,7 @@ class CrossAccountTransferFrequencyControllerTest extends Specification {
   }
 
   def cleanup() {
-    CrossAccountTransferFrequencyController.clearRepository()
+    CrossAccountTransferFrequencyController.clearGateway()
   }
 
   def "list Frequencies for cross accounts interacts with gateway"() {

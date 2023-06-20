@@ -31,7 +31,7 @@ class TransfersControllerTest extends Specification {
   }
 
   def cleanup() {
-    TransfersController.clearRepository()
+    TransfersController.clearGateway()
   }
 
   def "createTransfer interacts with gateway"() {

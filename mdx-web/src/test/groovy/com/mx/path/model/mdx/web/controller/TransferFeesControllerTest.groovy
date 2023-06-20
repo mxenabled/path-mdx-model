@@ -33,7 +33,7 @@ class TransferFeesControllerTest extends Specification implements WithMockery {
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "list fees by id interacts with gateway"() {

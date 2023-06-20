@@ -30,7 +30,7 @@ class BillsControllerTest extends Specification implements WithMockery {
   }
 
   def cleanup() {
-    BaseController.clearRepository()
+    BaseController.clearGateway()
   }
 
   def "getBill interacts with gateway"() {
