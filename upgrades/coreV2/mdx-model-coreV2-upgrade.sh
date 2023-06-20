@@ -58,7 +58,7 @@ fi
 
 # Find & Replace all imports
 function process_file {
-  local model_version="[3.0,4.0)"
+  local model_version="[4.0,5.0)"
 
   export nl=$'\n'
   local file=$1
