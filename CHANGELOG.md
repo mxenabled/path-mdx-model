@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/mxenabled/path-mdx-model/compare/4.0.0...4.0.1) (2023-06-21)
+
+
+### Bug Fixes
+
+* remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
+
 ## [4.0.0](https://github.com/mxenabled/path-mdx-model/compare/3.0.2...4.0.0) (2023-06-07)
 
 
