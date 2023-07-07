@@ -16,13 +16,21 @@ import com.mx.path.model.mdx.model.payout.PayoutMethod;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/payout/#payout-methods")
 public abstract class PayoutMethodBaseAccessor extends Accessor {
+  public PayoutMethodBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public PayoutMethodBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Create payout method
+   *
    * @param recipientId
    * @param payoutMethod
    * @return
@@ -35,6 +43,7 @@ public abstract class PayoutMethodBaseAccessor extends Accessor {
 
   /**
    * List all payout methods
+   *
    * @param recipientId
    * @return
    */
@@ -46,6 +55,7 @@ public abstract class PayoutMethodBaseAccessor extends Accessor {
 
   /**
    * Get a payout method
+   *
    * @param recipientId
    * @param id
    * @return
@@ -58,6 +68,7 @@ public abstract class PayoutMethodBaseAccessor extends Accessor {
 
   /**
    * Update a payout method
+   *
    * @param recipientId
    * @param id
    * @param payoutMethod
@@ -71,6 +82,7 @@ public abstract class PayoutMethodBaseAccessor extends Accessor {
 
   /**
    * Delete a payout method
+   *
    * @param recipientId
    * @param id
    * @return

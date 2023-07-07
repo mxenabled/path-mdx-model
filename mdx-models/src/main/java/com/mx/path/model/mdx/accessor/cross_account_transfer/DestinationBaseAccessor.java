@@ -18,12 +18,21 @@ import com.mx.path.model.mdx.model.cross_account_transfer.DestinationAccount;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/cross_account_transfer/#destinations")
 public class DestinationBaseAccessor extends Accessor {
+  public DestinationBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public DestinationBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Create a Destination account
+   *
    * @param destinationAccount
    * @return
    */
@@ -35,6 +44,7 @@ public class DestinationBaseAccessor extends Accessor {
 
   /**
    * Delete a destination account
+   *
    * @param id
    * @return
    */
@@ -46,6 +56,7 @@ public class DestinationBaseAccessor extends Accessor {
 
   /**
    * Get a destination account information
+   *
    * @param id
    * @return
    */
@@ -57,6 +68,7 @@ public class DestinationBaseAccessor extends Accessor {
 
   /**
    * List all destination accounts
+   *
    * @return
    */
   @GatewayAPI
@@ -67,6 +79,7 @@ public class DestinationBaseAccessor extends Accessor {
 
   /**
    * Update destination account
+   *
    * @param id
    * @param destinationAccount
    * @return

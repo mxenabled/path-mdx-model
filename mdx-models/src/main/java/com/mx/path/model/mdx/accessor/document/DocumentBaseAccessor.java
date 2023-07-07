@@ -19,13 +19,21 @@ import com.mx.path.model.mdx.model.documents.DocumentSearch;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/documents/#mdx-documents")
 public abstract class DocumentBaseAccessor extends Accessor {
+  public DocumentBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public DocumentBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Get a document
+   *
    * @param id
    * @return
    */
@@ -37,6 +45,7 @@ public abstract class DocumentBaseAccessor extends Accessor {
 
   /**
    * List documents
+   *
    * @param documentSearch
    * @return
    */

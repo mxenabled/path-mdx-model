@@ -21,6 +21,7 @@ public class MdxList<T extends MdxBase<?>> extends ModelList<T> {
   /**
    * Marks list as wrapped
    * Override to modify wrapping behavior
+   *
    * @return wrapped T
    */
   @Override

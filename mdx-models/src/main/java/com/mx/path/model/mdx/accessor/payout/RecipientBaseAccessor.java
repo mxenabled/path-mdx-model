@@ -24,12 +24,21 @@ public abstract class RecipientBaseAccessor extends Accessor {
   @Getter(AccessLevel.PROTECTED)
   private PayoutMethodBaseAccessor payoutMethods;
 
+  public RecipientBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public RecipientBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Create a recipient
+   *
    * @param recipient
    * @return
    */
@@ -41,6 +50,7 @@ public abstract class RecipientBaseAccessor extends Accessor {
 
   /**
    * List all recipients
+   *
    * @param includePayoutMethods
    * @return
    */
@@ -52,6 +62,7 @@ public abstract class RecipientBaseAccessor extends Accessor {
 
   /**
    * Get a recipient
+   *
    * @param id
    * @return
    */
@@ -63,6 +74,7 @@ public abstract class RecipientBaseAccessor extends Accessor {
 
   /**
    * Update a recipient
+   *
    * @param id
    * @param recipient
    * @return
@@ -75,6 +87,7 @@ public abstract class RecipientBaseAccessor extends Accessor {
 
   /**
    * Delete a recipient
+   *
    * @param id
    * @return
    */
@@ -86,6 +99,7 @@ public abstract class RecipientBaseAccessor extends Accessor {
 
   /**
    * Accessor for payout method operations
+   *
    * @return accessor
    */
   @API
@@ -99,6 +113,7 @@ public abstract class RecipientBaseAccessor extends Accessor {
 
   /**
    * Set payout method accessor
+   *
    * @param payoutMethods
    */
   public void setPayoutMethods(PayoutMethodBaseAccessor payoutMethods) {

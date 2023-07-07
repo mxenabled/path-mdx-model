@@ -8,7 +8,6 @@ public final class MerchantCategory extends MdxBase<MerchantCategory> {
   private String name;
 
   public MerchantCategory() {
-
   }
 
   public String getId() {

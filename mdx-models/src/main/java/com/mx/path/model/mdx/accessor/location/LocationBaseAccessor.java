@@ -19,13 +19,21 @@ import com.mx.path.model.mdx.model.location.LocationSearch;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/location/#mdx-location")
 public abstract class LocationBaseAccessor extends Accessor {
+  public LocationBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public LocationBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Get a location
+   *
    * @param id
    * @return
    */
@@ -37,6 +45,7 @@ public abstract class LocationBaseAccessor extends Accessor {
 
   /**
    * Search for locations using {@link LocationSearch}
+   *
    * @param locationSearch
    * @return
    */

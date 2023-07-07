@@ -57,7 +57,7 @@ public class MdxOnDemandMdxListSerializer extends JsonSerializer<MdxListWrapper>
 
   /**
    * Custom serialize.
-   *
+   * <p>
    * Wraps response in {@code <mdx></mdx>} if marked as wrapped.
    *
    * @param value

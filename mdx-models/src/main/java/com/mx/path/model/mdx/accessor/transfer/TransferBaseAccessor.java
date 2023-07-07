@@ -44,12 +44,21 @@ public abstract class TransferBaseAccessor extends Accessor {
   @Getter(AccessLevel.PROTECTED)
   private RepaymentBaseAccessor repayments;
 
+  public TransferBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public TransferBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Create a transfer
+   *
    * @param transfer
    * @return
    */
@@ -61,6 +70,7 @@ public abstract class TransferBaseAccessor extends Accessor {
 
   /**
    * Get a transfer
+   *
    * @param id
    * @return
    */
@@ -72,6 +82,7 @@ public abstract class TransferBaseAccessor extends Accessor {
 
   /**
    * List all transfers
+   *
    * @return
    */
   @GatewayAPI
@@ -84,6 +95,7 @@ public abstract class TransferBaseAccessor extends Accessor {
    * Update a transfer
    *
    * <p>Note: Typically only available on future-dated transfers or transfers that haven't posted
+   *
    * @param transfer
    * @return
    */
@@ -97,6 +109,7 @@ public abstract class TransferBaseAccessor extends Accessor {
    * Cancel a transfer
    *
    * <p>Note: Typically only available on future-dated transfers or transfers that haven't posted
+   *
    * @param id
    * @return
    */
@@ -108,6 +121,7 @@ public abstract class TransferBaseAccessor extends Accessor {
 
   /**
    * Start a multistage transfer
+   *
    * @param transfer
    * @return
    */
@@ -119,6 +133,7 @@ public abstract class TransferBaseAccessor extends Accessor {
 
   /**
    * Finish a multistage transfer
+   *
    * @param id
    * @return
    */
@@ -130,6 +145,7 @@ public abstract class TransferBaseAccessor extends Accessor {
 
   /**
    * Accessor for transfer account operations
+   *
    * @return accessor
    */
   @API(description = "Access transfer accounts")
@@ -143,6 +159,7 @@ public abstract class TransferBaseAccessor extends Accessor {
 
   /**
    * Set transfer account accessor
+   *
    * @param accounts
    */
   public void setAccounts(AccountBaseAccessor accounts) {
@@ -151,6 +168,7 @@ public abstract class TransferBaseAccessor extends Accessor {
 
   /**
    * Accessor for recurring transfer operations
+   *
    * @return accessor
    */
   @API(description = "Access recurring transfers")
@@ -164,6 +182,7 @@ public abstract class TransferBaseAccessor extends Accessor {
 
   /**
    * Set recurring transfer accessor
+   *
    * @param recurring
    */
   public void setRecurring(RecurringTransferBaseAccessor recurring) {
@@ -172,6 +191,7 @@ public abstract class TransferBaseAccessor extends Accessor {
 
   /**
    * Accessor for transfer amount option operations
+   *
    * @return accessor
    */
   @API(description = "Access transfer amount options")
@@ -185,6 +205,7 @@ public abstract class TransferBaseAccessor extends Accessor {
 
   /**
    * Set transfer amount option accessor
+   *
    * @param transferAmountOptions
    */
   public void setTransferAmountOptions(AmountOptionBaseAccessor transferAmountOptions) {
@@ -193,6 +214,7 @@ public abstract class TransferBaseAccessor extends Accessor {
 
   /**
    * Accessor for transfer fee operations
+   *
    * @return accessor
    */
   @API(description = "Access transfer fees")
@@ -206,6 +228,7 @@ public abstract class TransferBaseAccessor extends Accessor {
 
   /**
    * Set transfer fee accessor
+   *
    * @param fees
    */
   public void setFees(FeeBaseAccessor fees) {
@@ -214,6 +237,7 @@ public abstract class TransferBaseAccessor extends Accessor {
 
   /**
    * Accessor for transfer repayment operations
+   *
    * @return accessor
    */
   @API(description = "Access transfer repayments")
@@ -227,6 +251,7 @@ public abstract class TransferBaseAccessor extends Accessor {
 
   /**
    * Set transfer repayment accessor
+   *
    * @param repayments
    */
   public void setRepayments(RepaymentBaseAccessor repayments) {

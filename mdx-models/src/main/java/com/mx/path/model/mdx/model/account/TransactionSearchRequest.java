@@ -2,7 +2,7 @@ package com.mx.path.model.mdx.model.account;
 
 /**
  * Contains optional transaction search parameters for MDX OnDemand.
- *
+ * <p>
  * Using non-standard naming to support demarshalling in controller. Tried @XmlAttribute, @JsonProperty,
  * and @ConstructorProperties to control the binding names. None of them worked. :.(
  */

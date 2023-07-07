@@ -11,7 +11,6 @@ public final class Question extends MdxBase<Question> {
   private String type;
 
   public Question() {
-
   }
 
   public String getAnswer() {

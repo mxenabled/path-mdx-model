@@ -15,13 +15,21 @@ import com.mx.path.model.mdx.model.credit_report.CreditReportSettings;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/credit_report/#mdx-credit-reports")
 public abstract class CreditReportSettingsBaseAccessor extends Accessor {
+  public CreditReportSettingsBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public CreditReportSettingsBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Get credit report settings
+   *
    * @return
    */
   @GatewayAPI

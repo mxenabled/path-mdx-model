@@ -31,12 +31,21 @@ public abstract class CreditReportBaseAccessor extends Accessor {
   @Getter(AccessLevel.PROTECTED)
   private CreditReportSettingsBaseAccessor settings;
 
+  public CreditReportBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public CreditReportBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Get a credit report
+   *
    * @param reportId
    * @return
    */
@@ -48,6 +57,7 @@ public abstract class CreditReportBaseAccessor extends Accessor {
 
   /**
    * List credit reports
+   *
    * @return
    */
   @GatewayAPI
@@ -58,6 +68,7 @@ public abstract class CreditReportBaseAccessor extends Accessor {
 
   /**
    * Set score factor accessor
+   *
    * @param scoreFactors
    */
   public void setScoreFactors(ScoreFactorBaseAccessor scoreFactors) {
@@ -66,6 +77,7 @@ public abstract class CreditReportBaseAccessor extends Accessor {
 
   /**
    * Accessor for transfer operations
+   *
    * @return accessor
    */
   @API(specificationUrl = "https://developer.mx.com/drafts/mdx/id/#mdx-id")
@@ -79,6 +91,7 @@ public abstract class CreditReportBaseAccessor extends Accessor {
 
   /**
    * Accessor for credit report setting operations
+   *
    * @return accessor
    */
   @API(specificationUrl = "https://developer.mx.com/drafts/mdx/id/#mdx-id")
@@ -92,6 +105,7 @@ public abstract class CreditReportBaseAccessor extends Accessor {
 
   /**
    * Set credit report setting accessor
+   *
    * @param settings
    */
   public void setSettings(CreditReportSettingsBaseAccessor settings) {
@@ -100,6 +114,7 @@ public abstract class CreditReportBaseAccessor extends Accessor {
 
   /**
    * Subscribe to credit reporting
+   *
    * @return
    */
   @GatewayAPI
@@ -110,6 +125,7 @@ public abstract class CreditReportBaseAccessor extends Accessor {
 
   /**
    * Unsubscribe from credit reporting
+   *
    * @return
    */
   @GatewayAPI

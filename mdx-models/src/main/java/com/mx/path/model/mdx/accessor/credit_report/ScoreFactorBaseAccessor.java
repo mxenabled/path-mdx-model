@@ -16,13 +16,21 @@ import com.mx.path.model.mdx.model.credit_report.CreditReportScoreFactor;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/credit_report/#credit-report-score-factors")
 public abstract class ScoreFactorBaseAccessor extends Accessor {
+  public ScoreFactorBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public ScoreFactorBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Get a score factor
+   *
    * @param reportId
    * @param factorId
    * @return
@@ -35,6 +43,7 @@ public abstract class ScoreFactorBaseAccessor extends Accessor {
 
   /**
    * List score factors
+   *
    * @param reportId
    * @return
    */

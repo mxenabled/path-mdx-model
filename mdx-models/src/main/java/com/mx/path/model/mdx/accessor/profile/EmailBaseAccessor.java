@@ -18,13 +18,21 @@ import com.mx.path.model.mdx.model.profile.Email;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/profile/#email-addresses")
 public class EmailBaseAccessor extends Accessor {
+  public EmailBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public EmailBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Create an email
+   *
    * @param email
    * @return
    */
@@ -36,6 +44,7 @@ public class EmailBaseAccessor extends Accessor {
 
   /**
    * Delete email by id
+   *
    * @param id
    * @return
    */
@@ -47,6 +56,7 @@ public class EmailBaseAccessor extends Accessor {
 
   /**
    * Get an email
+   *
    * @param id
    * @return
    */
@@ -58,6 +68,7 @@ public class EmailBaseAccessor extends Accessor {
 
   /**
    * List emails
+   *
    * @return
    */
   @GatewayAPI
@@ -68,6 +79,7 @@ public class EmailBaseAccessor extends Accessor {
 
   /**
    * Update an email
+   *
    * @param email
    * @return
    */

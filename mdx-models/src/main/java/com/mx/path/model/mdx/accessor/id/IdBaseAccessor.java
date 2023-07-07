@@ -20,13 +20,21 @@ import com.mx.path.model.mdx.model.id.ResetPassword;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/id/#mdx-id")
 public abstract class IdBaseAccessor extends Accessor {
+  public IdBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public IdBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Start Authenticate
+   *
    * @param authentication
    * @return
    */
@@ -38,6 +46,7 @@ public abstract class IdBaseAccessor extends Accessor {
 
   /**
    * Authenticate session
+   *
    * @param authentication
    * @return
    */
@@ -49,6 +58,7 @@ public abstract class IdBaseAccessor extends Accessor {
 
   /**
    * Authenticate session
+   *
    * @param authentication
    * @return
    */
@@ -69,6 +79,7 @@ public abstract class IdBaseAccessor extends Accessor {
 
   /**
    * Resume MFA Session
+   *
    * @param authentication
    * @return
    */
@@ -80,6 +91,7 @@ public abstract class IdBaseAccessor extends Accessor {
 
   /**
    * An HTML responder used to handle non-standard webview requirements.
+   *
    * @param token
    * @return HTML
    */
@@ -91,6 +103,7 @@ public abstract class IdBaseAccessor extends Accessor {
 
   /**
    * Forgot username
+   *
    * @return
    */
   @GatewayAPI
@@ -101,6 +114,7 @@ public abstract class IdBaseAccessor extends Accessor {
 
   /**
    * Answer forgot username
+   *
    * @param forgotUsername
    * @return
    */
@@ -112,6 +126,7 @@ public abstract class IdBaseAccessor extends Accessor {
 
   /**
    * Reset password
+   *
    * @return
    */
   @GatewayAPI
@@ -122,6 +137,7 @@ public abstract class IdBaseAccessor extends Accessor {
 
   /**
    * Answer reset password
+   *
    * @param resetPassword
    * @return
    */

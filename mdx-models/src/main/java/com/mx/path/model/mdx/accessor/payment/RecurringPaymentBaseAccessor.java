@@ -20,13 +20,21 @@ import com.mx.path.model.mdx.model.payment.RecurringPayment;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/payment#recurring-payments")
 public abstract class RecurringPaymentBaseAccessor extends Accessor {
+  public RecurringPaymentBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public RecurringPaymentBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Create a recurring payment
+   *
    * @param recurringPayment
    * @return
    */
@@ -38,6 +46,7 @@ public abstract class RecurringPaymentBaseAccessor extends Accessor {
 
   /**
    * Get a recurring payment
+   *
    * @param id
    * @return
    */
@@ -49,6 +58,7 @@ public abstract class RecurringPaymentBaseAccessor extends Accessor {
 
   /**
    * List frequency options for recurring payments
+   *
    * @return
    */
   @GatewayAPI
@@ -59,6 +69,7 @@ public abstract class RecurringPaymentBaseAccessor extends Accessor {
 
   /**
    * List all recurring payments
+   *
    * @return
    */
   @GatewayAPI
@@ -69,6 +80,7 @@ public abstract class RecurringPaymentBaseAccessor extends Accessor {
 
   /**
    * Cancel a recurring payment
+   *
    * @param id
    * @return
    */
@@ -80,6 +92,7 @@ public abstract class RecurringPaymentBaseAccessor extends Accessor {
 
   /**
    * Update recurring payment
+   *
    * @param id
    * @param recurringPayment
    * @return

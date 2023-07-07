@@ -15,12 +15,21 @@ import com.mx.path.model.mdx.model.account.AccountNumbers;
 @GatewayClass
 @API(description = "Access to user account numbers")
 public abstract class AccountNumberBaseAccessor extends Accessor {
+  public AccountNumberBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public AccountNumberBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Get account numbers
+   *
    * @param id
    * @return
    */

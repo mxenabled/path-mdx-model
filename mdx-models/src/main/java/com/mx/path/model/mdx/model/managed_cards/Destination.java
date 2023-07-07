@@ -7,7 +7,6 @@ public final class Destination extends MdxBase<Destination> {
   private String id;
 
   public Destination() {
-
   }
 
   public String getId() {

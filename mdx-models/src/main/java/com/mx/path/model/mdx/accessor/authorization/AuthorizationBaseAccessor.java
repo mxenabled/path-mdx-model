@@ -16,13 +16,21 @@ import com.mx.path.model.mdx.model.authorization.HtmlPage;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/authorization/#mdx-authorization")
 public abstract class AuthorizationBaseAccessor extends Accessor {
+  public AuthorizationBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public AuthorizationBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Create authorization
+   *
    * @param authorization
    * @return
    */
@@ -34,6 +42,7 @@ public abstract class AuthorizationBaseAccessor extends Accessor {
 
   /**
    * An HTML responder used to handle non-standard webview requirements.
+   *
    * @param token needed to continue SSO
    * @return HTML
    */

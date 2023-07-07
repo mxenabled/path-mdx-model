@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
  */
 public class MdxOnDemandLocalDateSerializer extends StdSerializer<LocalDate> {
 
-  private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+  private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
   public MdxOnDemandLocalDateSerializer() {
     this(null);
@@ -25,7 +25,7 @@ public class MdxOnDemandLocalDateSerializer extends StdSerializer<LocalDate> {
 
   @Override
   public final void serialize(LocalDate value, JsonGenerator gen, SerializerProvider provider) throws IOException {
-    gen.writeString(formatter.format(value));
+    gen.writeString(FORMATTER.format(value));
   }
 
 }

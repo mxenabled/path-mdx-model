@@ -17,6 +17,14 @@ import com.mx.path.model.mdx.model.ach_transfer.options.AccountListOptions;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/ach_transfer/#ach-account-list-held-accounts")
 public abstract class AccountBaseAccessor extends Accessor {
+  public AccountBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public AccountBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }

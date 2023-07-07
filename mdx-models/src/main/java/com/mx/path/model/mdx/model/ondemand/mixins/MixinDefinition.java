@@ -2,7 +2,7 @@ package com.mx.path.model.mdx.model.ondemand.mixins;
 
 /**
  * Mixins allows us to modify model serialization without modifying the model directly with annotations.
- *
+ * <p>
  * For more information on Jackson Mix-ins see:
  * https://github.com/FasterXML/jackson-docs/wiki/JacksonMixInAnnotations
  */

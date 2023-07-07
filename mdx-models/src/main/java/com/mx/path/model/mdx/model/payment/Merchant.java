@@ -10,7 +10,6 @@ public final class Merchant extends MdxBase<Merchant> {
   private Boolean postalCodeRequired;
 
   public Merchant() {
-
   }
 
   public String getId() {

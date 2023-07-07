@@ -8,7 +8,6 @@ public final class ChallengeAnswer extends MdxBase<ChallengeAnswer> {
   private String id;
 
   public ChallengeAnswer() {
-
   }
 
   public String getAnswer() {

@@ -24,12 +24,21 @@ public abstract class DisputeBaseAccessor extends Accessor {
   @Getter(AccessLevel.PROTECTED)
   private DisputedTransactionBaseAccessor disputedTransactions;
 
+  public DisputeBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public DisputeBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Get a dispute by id
+   *
    * @param id
    * @return
    */
@@ -41,6 +50,7 @@ public abstract class DisputeBaseAccessor extends Accessor {
 
   /**
    * Get all disputes
+   *
    * @return
    */
   @GatewayAPI
@@ -51,6 +61,7 @@ public abstract class DisputeBaseAccessor extends Accessor {
 
   /**
    * Start a dispute
+   *
    * @param dispute
    * @return
    */
@@ -62,6 +73,7 @@ public abstract class DisputeBaseAccessor extends Accessor {
 
   /**
    * Update dispute
+   *
    * @param dispute
    * @return
    */
@@ -73,6 +85,7 @@ public abstract class DisputeBaseAccessor extends Accessor {
 
   /**
    * Submit dispute
+   *
    * @return
    */
   @GatewayAPI
@@ -83,6 +96,7 @@ public abstract class DisputeBaseAccessor extends Accessor {
 
   /**
    * Cancel a dispute
+   *
    * @param id
    * @return
    */
@@ -94,6 +108,7 @@ public abstract class DisputeBaseAccessor extends Accessor {
 
   /**
    * DisputedTransaction accessor
+   *
    * @return
    */
   @API(description = "Access account's disputed transactions")
@@ -107,6 +122,7 @@ public abstract class DisputeBaseAccessor extends Accessor {
 
   /**
    * Set disputed transaction accessor
+   *
    * @param disputedTransactions
    */
   public void setDisputedTransactions(DisputedTransactionBaseAccessor disputedTransactions) {

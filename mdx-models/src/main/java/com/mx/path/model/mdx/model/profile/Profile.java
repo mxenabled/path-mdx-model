@@ -76,7 +76,7 @@ public final class Profile extends MdxBase<Profile> {
     FEMALE("Female"), @SerializedName("UNDECLARED")
     UNDECLARED("Gender Undeclared");
 
-    private String description;
+    private final String description;
 
     Gender(String description) {
       this.description = description;

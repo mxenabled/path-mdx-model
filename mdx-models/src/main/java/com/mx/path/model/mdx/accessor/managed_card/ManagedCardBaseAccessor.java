@@ -18,13 +18,21 @@ import com.mx.path.model.mdx.model.managed_cards.ManagedCard;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/managed_cards/#mdx-managed-cards")
 public abstract class ManagedCardBaseAccessor extends Accessor {
+  public ManagedCardBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public ManagedCardBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Activate a managed card
+   *
    * @param id
    * @return
    */
@@ -36,6 +44,7 @@ public abstract class ManagedCardBaseAccessor extends Accessor {
 
   /**
    * Create a managed card
+   *
    * @param card
    * @return
    */
@@ -47,6 +56,7 @@ public abstract class ManagedCardBaseAccessor extends Accessor {
 
   /**
    * Enable a managed card
+   *
    * @param id
    * @return
    */
@@ -58,6 +68,7 @@ public abstract class ManagedCardBaseAccessor extends Accessor {
 
   /**
    * Get a managed card
+   *
    * @param id
    * @return
    */
@@ -69,6 +80,7 @@ public abstract class ManagedCardBaseAccessor extends Accessor {
 
   /**
    * Get unmasked card number
+   *
    * @param id
    * @return
    */
@@ -80,6 +92,7 @@ public abstract class ManagedCardBaseAccessor extends Accessor {
 
   /**
    * Get cvv
+   *
    * @param id
    * @return
    */
@@ -91,6 +104,7 @@ public abstract class ManagedCardBaseAccessor extends Accessor {
 
   /**
    * List managed cards
+   *
    * @return
    */
   @GatewayAPI
@@ -101,6 +115,7 @@ public abstract class ManagedCardBaseAccessor extends Accessor {
 
   /**
    * Pause a managed card
+   *
    * @param id
    * @return
    */
@@ -112,6 +127,7 @@ public abstract class ManagedCardBaseAccessor extends Accessor {
 
   /**
    * Replace a managed card
+   *
    * @return
    */
   @GatewayAPI
@@ -122,6 +138,7 @@ public abstract class ManagedCardBaseAccessor extends Accessor {
 
   /**
    * Set managed card pin
+   *
    * @return
    */
   @GatewayAPI
@@ -132,6 +149,7 @@ public abstract class ManagedCardBaseAccessor extends Accessor {
 
   /**
    * Update a managed card
+   *
    * @return
    */
   @GatewayAPI

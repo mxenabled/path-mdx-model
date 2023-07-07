@@ -19,13 +19,21 @@ import com.mx.path.model.mdx.model.transfer.options.RepaymentListOptions;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/transfer/#transfers-transfer-repayment-schedule")
 public abstract class RepaymentBaseAccessor extends Accessor {
+  public RepaymentBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public RepaymentBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Return a transfer's repayment schedule
+   *
    * @param id
    * @param options
    * @return

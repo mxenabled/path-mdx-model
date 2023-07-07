@@ -19,13 +19,21 @@ import com.mx.path.model.mdx.model.remote_deposit.RemoteDeposit;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/remote_deposit/#mdx-remote-deposit")
 public abstract class RemoteDepositBaseAccessor extends Accessor {
+  public RemoteDepositBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public RemoteDepositBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Create a remote deposit
+   *
    * @param remoteDeposit
    * @return
    */
@@ -37,6 +45,7 @@ public abstract class RemoteDepositBaseAccessor extends Accessor {
 
   /**
    * Get a remote deposit
+   *
    * @param id
    * @return
    */
@@ -48,6 +57,7 @@ public abstract class RemoteDepositBaseAccessor extends Accessor {
 
   /**
    * List deposit accounts for remote deposits
+   *
    * @return
    */
   @GatewayAPI
@@ -58,6 +68,7 @@ public abstract class RemoteDepositBaseAccessor extends Accessor {
 
   /**
    * List all remote deposits
+   *
    * @return
    */
   @GatewayAPI

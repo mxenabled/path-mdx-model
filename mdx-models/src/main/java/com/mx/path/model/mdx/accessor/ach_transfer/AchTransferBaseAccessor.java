@@ -33,6 +33,14 @@ public abstract class AchTransferBaseAccessor extends Accessor {
   @Getter(AccessLevel.PROTECTED)
   private AchScheduledTransferBaseAccessor scheduled;
 
+  public AchTransferBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public AchTransferBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
@@ -67,6 +75,7 @@ public abstract class AchTransferBaseAccessor extends Accessor {
 
   /**
    * Set account accessor
+   *
    * @param accounts
    */
   public void setAccounts(AccountBaseAccessor accounts) {

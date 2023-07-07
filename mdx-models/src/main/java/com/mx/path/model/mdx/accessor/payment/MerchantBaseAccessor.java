@@ -19,13 +19,21 @@ import com.mx.path.model.mdx.model.payment.MerchantCategory;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/payment/#merchants")
 public abstract class MerchantBaseAccessor extends Accessor {
+  public MerchantBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public MerchantBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * List all merchants
+   *
    * @param name
    * @return
    */
@@ -37,6 +45,7 @@ public abstract class MerchantBaseAccessor extends Accessor {
 
   /**
    * Search merchants by category
+   *
    * @param merchantCategoryId
    * @return
    */
@@ -48,6 +57,7 @@ public abstract class MerchantBaseAccessor extends Accessor {
 
   /**
    * List all merchant categories
+   *
    * @return
    */
   @GatewayAPI

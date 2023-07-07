@@ -18,13 +18,21 @@ import com.mx.path.model.mdx.model.MdxList;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/cross_account_transfer/#frequencies")
 public abstract class FrequencyBaseAccessor extends Accessor {
+  public FrequencyBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public FrequencyBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * List frequency options for cross account transfers
+   *
    * @return
    */
   @GatewayAPI

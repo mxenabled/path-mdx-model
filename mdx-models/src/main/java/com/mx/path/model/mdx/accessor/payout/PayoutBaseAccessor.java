@@ -31,12 +31,21 @@ public abstract class PayoutBaseAccessor extends Accessor {
   @Getter(AccessLevel.PROTECTED)
   private RecurringBaseAccessor recurring;
 
+  public PayoutBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public PayoutBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * List of account options for funding source
+   *
    * @return
    */
   @GatewayAPI
@@ -47,6 +56,7 @@ public abstract class PayoutBaseAccessor extends Accessor {
 
   /**
    * Create a payout
+   *
    * @param payout
    * @return
    */
@@ -72,6 +82,7 @@ public abstract class PayoutBaseAccessor extends Accessor {
 
   /**
    * List all payouts
+   *
    * @return
    */
   @GatewayAPI
@@ -82,6 +93,7 @@ public abstract class PayoutBaseAccessor extends Accessor {
 
   /**
    * Get a payout
+   *
    * @param id
    * @return
    */
@@ -93,6 +105,7 @@ public abstract class PayoutBaseAccessor extends Accessor {
 
   /**
    * Enroll user in payouts
+   *
    * @return
    */
   @GatewayAPI
@@ -103,6 +116,7 @@ public abstract class PayoutBaseAccessor extends Accessor {
 
   /**
    * Accessor for recipients operations
+   *
    * @return accessor
    */
   @API(specificationUrl = "https://developer.mx.com/drafts/mdx/payout/#recipients")
@@ -116,6 +130,7 @@ public abstract class PayoutBaseAccessor extends Accessor {
 
   /**
    * Set recipients accessor
+   *
    * @param recipients
    */
   public void setRecipients(RecipientBaseAccessor recipients) {
@@ -124,6 +139,7 @@ public abstract class PayoutBaseAccessor extends Accessor {
 
   /**
    * Accessor for recurring payout accessor
+   *
    * @return accessor
    */
   @API(specificationUrl = "https://developer.mx.com/drafts/mdx/payout/#recurring-payouts")
@@ -137,6 +153,7 @@ public abstract class PayoutBaseAccessor extends Accessor {
 
   /**
    * Set recurring payout accessor
+   *
    * @param recurring
    */
   public void setRecurring(RecurringBaseAccessor recurring) {

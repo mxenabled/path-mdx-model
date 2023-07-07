@@ -19,13 +19,21 @@ import com.mx.path.model.mdx.model.transfer.options.FrequencyListOptions;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/transfer/index.html#recurring-transfer-frequencies")
 public abstract class FrequencyBaseAccessor extends Accessor {
+  public FrequencyBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public FrequencyBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * List frequency options for recurring transfers
+   *
    * @param options
    * @return
    */

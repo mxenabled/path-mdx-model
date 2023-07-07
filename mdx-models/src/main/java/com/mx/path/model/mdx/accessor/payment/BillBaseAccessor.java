@@ -18,13 +18,21 @@ import com.mx.path.model.mdx.model.payment.Bill;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/payment/#bills")
 public abstract class BillBaseAccessor extends Accessor {
+  public BillBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public BillBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Get a bill
+   *
    * @param id
    * @return
    */
@@ -36,6 +44,7 @@ public abstract class BillBaseAccessor extends Accessor {
 
   /**
    * List all bills
+   *
    * @return
    */
   @GatewayAPI

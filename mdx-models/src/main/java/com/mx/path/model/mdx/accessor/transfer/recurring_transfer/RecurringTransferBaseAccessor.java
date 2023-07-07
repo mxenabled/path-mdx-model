@@ -27,12 +27,21 @@ public abstract class RecurringTransferBaseAccessor extends Accessor {
   @Getter(AccessLevel.PROTECTED)
   private FrequencyBaseAccessor frequencies;
 
+  public RecurringTransferBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public RecurringTransferBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Create a recurring transfer
+   *
    * @param recurringTransfer
    * @return
    */
@@ -44,6 +53,7 @@ public abstract class RecurringTransferBaseAccessor extends Accessor {
 
   /**
    * Delete a recurring transfer
+   *
    * @param id
    * @return
    */
@@ -55,6 +65,7 @@ public abstract class RecurringTransferBaseAccessor extends Accessor {
 
   /**
    * Get a recurring transfer
+   *
    * @param id
    * @return
    */
@@ -66,6 +77,7 @@ public abstract class RecurringTransferBaseAccessor extends Accessor {
 
   /**
    * List recurring transfers
+   *
    * @return
    */
   @GatewayAPI
@@ -76,6 +88,7 @@ public abstract class RecurringTransferBaseAccessor extends Accessor {
 
   /**
    * Skip next payment of recurring transfer
+   *
    * @param id
    * @return
    */
@@ -87,6 +100,7 @@ public abstract class RecurringTransferBaseAccessor extends Accessor {
 
   /**
    * Update a recurring transfer
+   *
    * @param id
    * @param recurringTransfer
    * @return
@@ -99,6 +113,7 @@ public abstract class RecurringTransferBaseAccessor extends Accessor {
 
   /**
    * Accessor for recurring transfer frequency operations
+   *
    * @return accessor
    */
   @API(description = "Access recurring transfer frequencies")
@@ -112,6 +127,7 @@ public abstract class RecurringTransferBaseAccessor extends Accessor {
 
   /**
    * Set recurring transfer frequencies accessor
+   *
    * @param frequencies
    */
   public void setFrequencies(FrequencyBaseAccessor frequencies) {
