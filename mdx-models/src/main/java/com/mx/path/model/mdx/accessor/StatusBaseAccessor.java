@@ -19,13 +19,21 @@ import com.mx.path.gateway.accessor.AccessorResponse;
  */
 @API(description = "Returns system status")
 public abstract class StatusBaseAccessor extends Accessor {
+  public StatusBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public StatusBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Get upstream system status
+   *
    * @return
    */
   @GatewayAPI

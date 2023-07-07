@@ -39,12 +39,21 @@ public abstract class PaymentBaseAccessor extends Accessor {
   @Getter(AccessLevel.PROTECTED)
   private RecurringPaymentBaseAccessor recurring;
 
+  public PaymentBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public PaymentBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * List accounts to pay from
+   *
    * @return
    */
   @GatewayAPI
@@ -55,6 +64,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
 
   /**
    * Create new payment
+   *
    * @param payment
    * @return
    */
@@ -66,6 +76,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
 
   /**
    * Update a payment
+   *
    * @param payment
    * @return
    */
@@ -79,6 +90,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
    * Cancel a payment
    *
    * <p>Note: Typically applicable to future-dated payments or payments that are not posted
+   *
    * @param id
    * @return
    */
@@ -90,6 +102,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
 
   /**
    * Get a payment
+   *
    * @param id
    * @return
    */
@@ -101,6 +114,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
 
   /**
    * List all payments
+   *
    * @return
    */
   @GatewayAPI
@@ -111,6 +125,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
 
   /**
    * Accessor for bill operations
+   *
    * @return accessor
    */
   @API(specificationUrl = "https://developer.mx.com/drafts/mdx/payment/#bills")
@@ -124,6 +139,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
 
   /**
    * Set bills accessor
+   *
    * @param bills
    */
   public void setBills(BillBaseAccessor bills) {
@@ -132,6 +148,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
 
   /**
    * Accessor for merchant operations
+   *
    * @return accessor
    */
   @API(specificationUrl = "https://developer.mx.com/drafts/mdx/payment/#merchants")
@@ -145,6 +162,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
 
   /**
    * Set merchants accessor
+   *
    * @param merchants
    */
   public void setMerchants(MerchantBaseAccessor merchants) {
@@ -153,6 +171,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
 
   /**
    * Accessor for merchant operations
+   *
    * @return accessor
    */
   @API(specificationUrl = "https://developer.mx.com/drafts/mdx/payment/#payees")
@@ -166,6 +185,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
 
   /**
    * Set payees accessor
+   *
    * @param payees
    */
   public void setPayees(PayeeBaseAccessor payees) {
@@ -174,6 +194,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
 
   /**
    * Accessor for recurring payment operations
+   *
    * @return accessor
    */
   @API(specificationUrl = "https://developer.mx.com/drafts/mdx/payment#recurring-payments")
@@ -187,6 +208,7 @@ public abstract class PaymentBaseAccessor extends Accessor {
 
   /**
    * Set recurring payment accessor
+   *
    * @param recurring
    */
   public void setRecurring(RecurringPaymentBaseAccessor recurring) {

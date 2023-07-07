@@ -19,6 +19,14 @@ import com.mx.path.model.mdx.model.transfer.options.TransferAmountOptionListOpti
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/transfer/#transfer-amount-options")
 public abstract class AmountOptionBaseAccessor extends Accessor {
+  public AmountOptionBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public AmountOptionBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }

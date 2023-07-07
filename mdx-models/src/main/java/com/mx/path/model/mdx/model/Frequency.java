@@ -7,7 +7,6 @@ public final class Frequency extends MdxBase<Frequency> {
   private String name;
 
   public Frequency() {
-
   }
 
   public Frequency(String initialId, String initialName, String initialDescription) {

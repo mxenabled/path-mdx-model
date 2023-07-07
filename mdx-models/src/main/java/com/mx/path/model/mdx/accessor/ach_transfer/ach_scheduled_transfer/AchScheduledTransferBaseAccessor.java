@@ -25,6 +25,14 @@ public abstract class AchScheduledTransferBaseAccessor extends Accessor {
   @Getter(AccessLevel.PROTECTED)
   private FrequencyBaseAccessor frequencies;
 
+  public AchScheduledTransferBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public AchScheduledTransferBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
@@ -54,6 +62,7 @@ public abstract class AchScheduledTransferBaseAccessor extends Accessor {
 
   /**
    * Cancels an ACH scheduled transfer
+   *
    * @param id
    * @return
    */

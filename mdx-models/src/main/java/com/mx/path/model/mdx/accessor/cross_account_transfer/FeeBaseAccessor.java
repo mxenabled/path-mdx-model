@@ -19,13 +19,21 @@ import com.mx.path.model.mdx.model.transfer.Fee;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/cross_account_transfer/#fees-list-cross-account-transfer-fees")
 public abstract class FeeBaseAccessor extends Accessor {
+  public FeeBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public FeeBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * List fees for cross account transfers
+   *
    * @return
    */
   @GatewayAPI

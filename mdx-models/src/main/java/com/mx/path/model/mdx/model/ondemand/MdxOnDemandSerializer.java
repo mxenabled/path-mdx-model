@@ -21,13 +21,13 @@ import com.mx.path.model.mdx.model.ondemand.mixins.XmlSkipInternalAnnotationsInt
 
 /**
  * Object serializer for MDX OnDemand
- *
+ * <p>
  * Relies on Jackson Mix-ins to control details of serialization. For more information on Jackson Mix-ins see:
  * https://github.com/FasterXML/jackson-docs/wiki/JacksonMixInAnnotations
  */
 public class MdxOnDemandSerializer<T extends ModelWrappable<?>> extends JsonSerializer<T> {
 
-  private ObjectMapper mapper;
+  private final ObjectMapper mapper;
 
   /**
    * Build a serializer handler for targetClass.

@@ -17,7 +17,6 @@ public final class MfaChallenge extends MdxBase<MfaChallenge> {
   private Authorization authorization;
 
   public MfaChallenge() {
-
   }
 
   public String getAnswer() {

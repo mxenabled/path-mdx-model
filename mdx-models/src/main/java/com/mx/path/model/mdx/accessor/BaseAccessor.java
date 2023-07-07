@@ -96,12 +96,21 @@ public abstract class BaseAccessor extends Accessor {
   @Getter(AccessLevel.PROTECTED)
   private CrossAccountTransferBaseAccessor crossAccount;
 
+  public BaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public BaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Accessor for ACH transfer operations
+   *
    * @return accessor
    */
   @API
@@ -115,6 +124,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Set ACH transfers accessor
+   *
    * @param achTransfers
    */
   public void setAchTransfers(AchTransferBaseAccessor achTransfers) {
@@ -123,6 +133,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Accessor for account operations
+   *
    * @return accessor
    */
   @API
@@ -136,6 +147,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Set accounts accessor
+   *
    * @param accounts
    */
   public void setAccounts(AccountBaseAccessor accounts) {
@@ -144,6 +156,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Accessor for authorization operations
+   *
    * @return accessor
    */
   @API
@@ -157,6 +170,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Set authorizations accessor
+   *
    * @param authorizations
    */
   public void setAuthorizations(AuthorizationBaseAccessor authorizations) {
@@ -165,6 +179,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Accessor for account operations
+   *
    * @return accessor
    */
   @API
@@ -178,6 +193,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Set credit report accessor
+   *
    * @param creditReports
    */
   public void setCreditReports(CreditReportBaseAccessor creditReports) {
@@ -186,6 +202,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Accessor for account operations
+   *
    * @return accessor
    */
   @API
@@ -199,6 +216,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Set documents accessor
+   *
    * @param documents
    */
   public void setDocuments(DocumentBaseAccessor documents) {
@@ -207,6 +225,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Accessor for id operations
+   *
    * @return accessor
    */
   @API
@@ -220,6 +239,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Set id accessor
+   *
    * @param id
    */
   public void setId(IdBaseAccessor id) {
@@ -228,6 +248,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Accessor for location operations
+   *
    * @return accessor
    */
   @API
@@ -241,6 +262,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Set locations accessor
+   *
    * @param locations
    */
   public void setLocations(LocationBaseAccessor locations) {
@@ -249,6 +271,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Accessor for managed cards operations
+   *
    * @return accessor
    */
   @API
@@ -262,6 +285,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Set managed cards accessor
+   *
    * @param managedCards
    */
   public void setManagedCards(ManagedCardBaseAccessor managedCards) {
@@ -270,6 +294,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Accessor for originations operations
+   *
    * @return accessor
    */
   @API
@@ -283,6 +308,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Set originations accessor
+   *
    * @param originations
    */
   public void setOriginations(OriginationBaseAccessor originations) {
@@ -291,6 +317,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Accessor for payment operations
+   *
    * @return accessor
    */
   @API
@@ -304,6 +331,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Set payments accessor
+   *
    * @param payments
    */
   public void setPayments(PaymentBaseAccessor payments) {
@@ -312,6 +340,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Accessor for payout operations
+   *
    * @return accessor
    */
   @API
@@ -325,6 +354,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Set payouts accessor
+   *
    * @param payouts
    */
   public void setPayouts(PayoutBaseAccessor payouts) {
@@ -333,6 +363,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Accessor for profile operations
+   *
    * @return accessor
    */
   @API
@@ -346,6 +377,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Set profiles accessor
+   *
    * @param profiles
    */
   public void setProfiles(ProfileBaseAccessor profiles) {
@@ -354,6 +386,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Accessor for status operations
+   *
    * @return accessor
    */
   @API
@@ -367,6 +400,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Set status accessor
+   *
    * @param status
    */
   public void setStatus(StatusBaseAccessor status) {
@@ -375,6 +409,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Accessor for remote deposit operations
+   *
    * @return
    */
   @API
@@ -388,6 +423,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Set remote deposits accessor
+   *
    * @param remoteDeposits
    */
   public void setRemoteDeposits(RemoteDepositBaseAccessor remoteDeposits) {
@@ -396,6 +432,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Accessor for transfer operations
+   *
    * @return accessor
    */
   @API
@@ -409,6 +446,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Set transfers accessor
+   *
    * @param transfers
    */
   public void setTransfers(TransferBaseAccessor transfers) {
@@ -417,6 +455,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Accessor for cross-account transfer operations
+   *
    * @return accessor
    */
   @API
@@ -430,6 +469,7 @@ public abstract class BaseAccessor extends Accessor {
 
   /**
    * Set cross-account transfer accessor
+   *
    * @param crossAccount
    */
   public void setCrossAccount(CrossAccountTransferBaseAccessor crossAccount) {

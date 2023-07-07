@@ -16,8 +16,8 @@ import com.google.gson.JsonSerializer;
 import com.mx.path.core.common.model.ModelWrappable;
 
 public class ModelWrappableSerializer implements JsonDeserializer<ModelWrappable<?>>, JsonSerializer<ModelWrappable<?>> {
-  private Gson gson;
-  private String key;
+  private final Gson gson;
+  private final String key;
 
   public ModelWrappableSerializer(String newKey) {
     gson = new GsonBuilder()

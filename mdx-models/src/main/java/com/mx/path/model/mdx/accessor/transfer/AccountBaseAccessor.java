@@ -19,13 +19,21 @@ import com.mx.path.model.mdx.model.transfer.options.AccountListOptions;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/transfer/index.html#transfer-accounts")
 public abstract class AccountBaseAccessor extends Accessor {
+  public AccountBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public AccountBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * List account options
+   *
    * @param options
    * @return
    */
@@ -37,6 +45,7 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   /**
    * List from accounts
+   *
    * @return
    */
   @Deprecated
@@ -49,6 +58,7 @@ public abstract class AccountBaseAccessor extends Accessor {
   /**
    * List to accounts
    * Notes: Dependent on fromAccount selection
+   *
    * @param fromAccountId
    * @return
    */

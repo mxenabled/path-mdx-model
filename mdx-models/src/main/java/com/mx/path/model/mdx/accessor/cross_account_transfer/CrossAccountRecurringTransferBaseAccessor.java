@@ -18,12 +18,21 @@ import com.mx.path.model.mdx.model.cross_account_transfer.CrossAccountRecurringT
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/cross_account_transfer/#recurring-cross-account-transfers")
 public class CrossAccountRecurringTransferBaseAccessor extends Accessor {
+  public CrossAccountRecurringTransferBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public CrossAccountRecurringTransferBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Create a recurring cross account transfer
+   *
    * @param crossAccountRecurringTransfer
    * @return
    */
@@ -35,6 +44,7 @@ public class CrossAccountRecurringTransferBaseAccessor extends Accessor {
 
   /**
    * Delete a recurring cross account transfer
+   *
    * @param id
    * @return
    */
@@ -46,6 +56,7 @@ public class CrossAccountRecurringTransferBaseAccessor extends Accessor {
 
   /**
    * Get a recurring cross account transfer
+   *
    * @param id
    * @return
    */
@@ -57,6 +68,7 @@ public class CrossAccountRecurringTransferBaseAccessor extends Accessor {
 
   /**
    * List all recurring cross account transfers
+   *
    * @return
    */
   @GatewayAPI
@@ -67,6 +79,7 @@ public class CrossAccountRecurringTransferBaseAccessor extends Accessor {
 
   /**
    * Skip next payment of recurring cross account transfer
+   *
    * @param id
    * @return
    */
@@ -78,6 +91,7 @@ public class CrossAccountRecurringTransferBaseAccessor extends Accessor {
 
   /**
    * Update recurring cross account transfer
+   *
    * @param id
    * @param crossAccountRecurringTransfer
    * @return

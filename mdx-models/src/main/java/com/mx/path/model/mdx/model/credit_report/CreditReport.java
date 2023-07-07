@@ -63,7 +63,7 @@ public final class CreditReport extends MdxBase<CreditReport> {
   public enum ConsumerReportingAgencies {
     EXPERIAN("Experian"), EQUIFAX("Equifax"), TRANS_UNION("TransUnion");
 
-    private String description;
+    private final String description;
 
     public String getDescription() {
       return description;
@@ -77,7 +77,7 @@ public final class CreditReport extends MdxBase<CreditReport> {
   public enum ScoreVersions {
     FICO_SCORE_8("Fico Score 8"), FICO_SCORE_9("Fico Score 9");
 
-    private String description;
+    private final String description;
 
     public String getDescription() {
       return description;

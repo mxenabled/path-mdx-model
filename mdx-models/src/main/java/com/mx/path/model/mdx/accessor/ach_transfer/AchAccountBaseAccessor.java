@@ -17,6 +17,14 @@ import com.mx.path.model.mdx.model.ach_transfer.options.AchAccountListOptions;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/ach_transfer/#ach-account")
 public abstract class AchAccountBaseAccessor extends Accessor {
+  public AchAccountBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public AchAccountBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }

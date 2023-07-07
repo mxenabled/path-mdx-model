@@ -27,7 +27,6 @@ public final class Location extends MdxBase<Location> {
   private LocalDate updatedOn;
 
   public Location() {
-
   }
 
   public String getAddress() {

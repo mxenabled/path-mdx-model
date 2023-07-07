@@ -16,7 +16,6 @@ public class Authorization extends MdxBase<Authorization> {
   private String vendorId;
 
   public Authorization() {
-
   }
 
   public final String getAccountId() {

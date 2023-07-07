@@ -101,7 +101,7 @@ public final class Address extends MdxBase<Address> {
     BUSINESS("Business Address"), @SerializedName("WORK")
     WORK("Work Address");
 
-    private String description;
+    private final String description;
 
     AddressType(String description) {
       this.description = description;

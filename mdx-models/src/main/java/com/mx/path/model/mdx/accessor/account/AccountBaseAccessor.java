@@ -36,12 +36,21 @@ public abstract class AccountBaseAccessor extends Accessor {
   @Getter(AccessLevel.PROTECTED)
   private RepaymentBaseAccessor repayments;
 
+  public AccountBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public AccountBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Account number accessor
+   *
    * @return
    */
   @API(description = "Access account numbers")
@@ -55,6 +64,7 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   /**
    * Account owner accessor
+   *
    * @return
    */
   @API(description = "Access account owners")
@@ -68,6 +78,7 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   /**
    * Transaction accessor
+   *
    * @return
    */
   @API(description = "Access account's transactions")
@@ -81,6 +92,7 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   /**
    * Repayment accessor
+   *
    * @return
    */
   @API(description = "Access account's repayments")
@@ -94,6 +106,7 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   /**
    * Set account number accessor
+   *
    * @param accountNumbers
    */
   public void setAccountNumbers(AccountNumberBaseAccessor accountNumbers) {
@@ -102,6 +115,7 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   /**
    * Set account owner accessor
+   *
    * @param accountOwners
    */
   public void setAccountOwners(AccountOwnerBaseAccessor accountOwners) {
@@ -110,6 +124,7 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   /**
    * Set transaction accessor
+   *
    * @param transactions
    */
   public void setTransactions(TransactionBaseAccessor transactions) {
@@ -118,6 +133,7 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   /**
    * Set repayment accessor
+   *
    * @param repayments
    */
   public void setRepayments(RepaymentBaseAccessor repayments) {
@@ -126,6 +142,7 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   /**
    * Get all accounts
+   *
    * @return
    */
   @GatewayAPI
@@ -136,6 +153,7 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   /**
    * Create an account
+   *
    * @param account
    * @return
    */
@@ -147,6 +165,7 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   /**
    * Delete an account
+   *
    * @param id
    * @return
    */
@@ -158,6 +177,7 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   /**
    * Get an account by id
+   *
    * @param id
    * @return
    */
@@ -169,6 +189,7 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   /**
    * Update account
+   *
    * @param account
    * @return
    */

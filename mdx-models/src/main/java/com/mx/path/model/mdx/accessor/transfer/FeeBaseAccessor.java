@@ -20,13 +20,21 @@ import com.mx.path.model.mdx.model.transfer.options.FeeListOptions;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/transfer/#transfers-transfer-fees")
 public abstract class FeeBaseAccessor extends Accessor {
+  public FeeBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public FeeBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Return a transfer's fees
+   *
    * @param id
    * @return
    */
@@ -39,6 +47,7 @@ public abstract class FeeBaseAccessor extends Accessor {
 
   /**
    * Return transfer fees based on options
+   *
    * @param options
    * @return
    */

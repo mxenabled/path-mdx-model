@@ -16,13 +16,21 @@ import com.mx.path.model.mdx.model.dispute.DisputedTransaction;
 @GatewayClass
 @API(description = "Access to user disputed transactions", specificationUrl = "https://developer.mx.com/drafts/mdx/accounts/#disputes-disputed-transaction")
 public abstract class DisputedTransactionBaseAccessor extends Accessor {
+  public DisputedTransactionBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public DisputedTransactionBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Get all disputed transactions
+   *
    * @param disputeId
    * @return
    */
@@ -34,6 +42,7 @@ public abstract class DisputedTransactionBaseAccessor extends Accessor {
 
   /**
    * Create a disputed transaction
+   *
    * @param disputeId
    * @param disputedTransaction
    * @return
@@ -46,6 +55,7 @@ public abstract class DisputedTransactionBaseAccessor extends Accessor {
 
   /**
    * Delete a disputed transaction
+   *
    * @param disputeId
    * @param id
    * @return
@@ -58,6 +68,7 @@ public abstract class DisputedTransactionBaseAccessor extends Accessor {
 
   /**
    * Get a disputed transaction by id
+   *
    * @param disputeId
    * @param id
    * @return
@@ -70,6 +81,7 @@ public abstract class DisputedTransactionBaseAccessor extends Accessor {
 
   /**
    * Update disputed transaction
+   *
    * @param disputeId
    * @param id
    * @param disputedTransaction

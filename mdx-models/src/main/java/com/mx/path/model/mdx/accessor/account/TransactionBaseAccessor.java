@@ -31,12 +31,21 @@ public abstract class TransactionBaseAccessor extends Accessor {
   @Getter(AccessLevel.PROTECTED)
   private DisputeBaseAccessor disputes;
 
+  public TransactionBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public TransactionBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Accessor for check image operations
+   *
    * @return accessor
    */
   @API
@@ -50,6 +59,7 @@ public abstract class TransactionBaseAccessor extends Accessor {
 
   /**
    * Accessor for dispute operations
+   *
    * @return accessor
    */
   public DisputeBaseAccessor disputes() {
@@ -62,6 +72,7 @@ public abstract class TransactionBaseAccessor extends Accessor {
 
   /**
    * Set accessor for check images
+   *
    * @param checkImagesBaseAccessor
    */
   public void setCheckImages(CheckImageBaseAccessor checkImagesBaseAccessor) {
@@ -70,6 +81,7 @@ public abstract class TransactionBaseAccessor extends Accessor {
 
   /**
    * Set accessor for disputes
+   *
    * @param disputesBaseAccessor
    */
   public void setDisputes(DisputeBaseAccessor disputesBaseAccessor) {
@@ -78,6 +90,7 @@ public abstract class TransactionBaseAccessor extends Accessor {
 
   /**
    * Get all transactions for this account
+   *
    * @return
    */
   @GatewayAPI
@@ -88,6 +101,7 @@ public abstract class TransactionBaseAccessor extends Accessor {
 
   /**
    * List transactions
+   *
    * @param accountId
    * @param transactionListOptions
    * @return
@@ -100,6 +114,7 @@ public abstract class TransactionBaseAccessor extends Accessor {
 
   /**
    * List pending transactions for an account
+   *
    * @param accountId
    * @return
    */
@@ -111,6 +126,7 @@ public abstract class TransactionBaseAccessor extends Accessor {
 
   /**
    * Search paged transactions
+   *
    * @param searchRequest
    * @return
    */

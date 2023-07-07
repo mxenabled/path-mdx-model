@@ -7,7 +7,6 @@ public final class Option extends MdxBase<Option> {
   private String name;
 
   public Option() {
-
   }
 
   public String getId() {

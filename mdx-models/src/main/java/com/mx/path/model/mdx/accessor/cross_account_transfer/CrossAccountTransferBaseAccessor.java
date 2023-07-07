@@ -40,12 +40,21 @@ public abstract class CrossAccountTransferBaseAccessor extends Accessor {
   @Getter(AccessLevel.PROTECTED)
   private FrequencyBaseAccessor frequency;
 
+  public CrossAccountTransferBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public CrossAccountTransferBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * List source account options for cross-account transfer
+   *
    * @return
    */
   @GatewayAPI
@@ -56,6 +65,7 @@ public abstract class CrossAccountTransferBaseAccessor extends Accessor {
 
   /**
    * List account type options for destination account
+   *
    * @return
    */
   @GatewayAPI
@@ -66,6 +76,7 @@ public abstract class CrossAccountTransferBaseAccessor extends Accessor {
 
   /**
    * Create a cross-account transfer
+   *
    * @param crossAccountTransfer
    * @return
    */
@@ -77,6 +88,7 @@ public abstract class CrossAccountTransferBaseAccessor extends Accessor {
 
   /**
    * Accessor for recurring cross account transfer operations
+   *
    * @return accessor
    */
   @API
@@ -86,6 +98,7 @@ public abstract class CrossAccountTransferBaseAccessor extends Accessor {
 
   /**
    * Delete a scheduled cross account transfer
+   *
    * @param id the id for the transfer
    * @return a AccessorResponse object with Void content
    */
@@ -97,6 +110,7 @@ public abstract class CrossAccountTransferBaseAccessor extends Accessor {
 
   /**
    * Accessor for destination accounts operations
+   *
    * @return accessor
    */
   @API
@@ -126,6 +140,7 @@ public abstract class CrossAccountTransferBaseAccessor extends Accessor {
 
   /**
    * Get a cross-account transfer
+   *
    * @param id
    * @return
    */
@@ -137,6 +152,7 @@ public abstract class CrossAccountTransferBaseAccessor extends Accessor {
 
   /**
    * List all cross-account transfers
+   *
    * @return list of cross account transfers
    */
   @GatewayAPI
@@ -147,6 +163,7 @@ public abstract class CrossAccountTransferBaseAccessor extends Accessor {
 
   /**
    * Update a scheduled cross account transfer
+   *
    * @param id the transfer id
    * @param crossAccountTransfer transfer object that contains data for update
    * @return updated transfer
@@ -159,6 +176,7 @@ public abstract class CrossAccountTransferBaseAccessor extends Accessor {
 
   /**
    * Set cross account recurring transfer accessor
+   *
    * @param crossAccountRecurring
    */
   public void setCrossAccountRecurring(CrossAccountRecurringTransferBaseAccessor crossAccountRecurring) {
@@ -167,6 +185,7 @@ public abstract class CrossAccountTransferBaseAccessor extends Accessor {
 
   /**
    * Set destination account accessor
+   *
    * @param destination
    */
   public void setDestination(DestinationBaseAccessor destination) {
@@ -175,6 +194,7 @@ public abstract class CrossAccountTransferBaseAccessor extends Accessor {
 
   /**
    * Set fees accessor
+   *
    * @param fees
    */
   public void setFees(FeeBaseAccessor fees) {
@@ -183,6 +203,7 @@ public abstract class CrossAccountTransferBaseAccessor extends Accessor {
 
   /**
    * Set frequency accessor
+   *
    * @param frequency
    */
   public void setFrequency(FrequencyBaseAccessor frequency) {

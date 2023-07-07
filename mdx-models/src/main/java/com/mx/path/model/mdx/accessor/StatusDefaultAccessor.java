@@ -7,6 +7,9 @@ import com.mx.path.gateway.accessor.AccessorResponse;
 
 @API(notes = "Default status operations.")
 public class StatusDefaultAccessor extends StatusBaseAccessor {
+  public StatusDefaultAccessor() {
+  }
+
   public StatusDefaultAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }

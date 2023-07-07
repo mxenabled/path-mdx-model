@@ -17,13 +17,21 @@ import com.mx.path.model.mdx.model.payout.RecurringPayout;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/payout/#recurring-payouts")
 public class RecurringBaseAccessor extends Accessor {
+  public RecurringBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public RecurringBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * List all recurring payout
+   *
    * @return
    */
   @GatewayAPI
@@ -34,6 +42,7 @@ public class RecurringBaseAccessor extends Accessor {
 
   /**
    * Create a recurring payout
+   *
    * @param recurringPayout
    * @return
    */
@@ -45,6 +54,7 @@ public class RecurringBaseAccessor extends Accessor {
 
   /**
    * Get a recurring payout
+   *
    * @param id
    * @return
    */
@@ -56,6 +66,7 @@ public class RecurringBaseAccessor extends Accessor {
 
   /**
    * Update a recurring payout
+   *
    * @param id
    * @param recurringPayout
    * @return
@@ -68,6 +79,7 @@ public class RecurringBaseAccessor extends Accessor {
 
   /**
    * Cancel a recurring payout
+   *
    * @param id
    * @return
    */
@@ -79,6 +91,7 @@ public class RecurringBaseAccessor extends Accessor {
 
   /**
    * List the available frequencies for recurring payouts
+   *
    * @return
    */
   @GatewayAPI
@@ -89,6 +102,7 @@ public class RecurringBaseAccessor extends Accessor {
 
   /**
    * Skip next occurrence of recurring payout
+   *
    * @param id
    * todo: Add recurring payout to response (to sync this up with recurring transfers)
    * @return

@@ -12,8 +12,9 @@ import com.mx.path.core.common.model.ModelWrappable;
 
 /**
  * Custom deserializer for MDX OnDemand Resources
- *
+ * <p>
  * Digs out the node using the nodePath locator, then deserializes.
+ *
  * @param <T>
  */
 public class MdxOnDemandDeserializer<T extends ModelWrappable<?>> extends JsonDeserializer<T> {

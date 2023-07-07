@@ -18,13 +18,21 @@ import com.mx.path.model.mdx.model.payment.Payee;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/payment/#payees")
 public abstract class PayeeBaseAccessor extends Accessor {
+  public PayeeBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public PayeeBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Create a payee
+   *
    * @param payee
    * @return
    */
@@ -36,6 +44,7 @@ public abstract class PayeeBaseAccessor extends Accessor {
 
   /**
    * Delete a payee
+   *
    * @param id
    * @return
    */
@@ -47,6 +56,7 @@ public abstract class PayeeBaseAccessor extends Accessor {
 
   /**
    * Get a payee
+   *
    * @param id
    * @return
    */
@@ -58,6 +68,7 @@ public abstract class PayeeBaseAccessor extends Accessor {
 
   /**
    * List all payee
+   *
    * @return
    */
   @GatewayAPI
@@ -68,6 +79,7 @@ public abstract class PayeeBaseAccessor extends Accessor {
 
   /**
    * Update a payee
+   *
    * @param payee
    * @return
    */

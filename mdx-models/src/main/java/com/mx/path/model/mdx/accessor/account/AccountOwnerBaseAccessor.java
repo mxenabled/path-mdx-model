@@ -14,12 +14,21 @@ import com.mx.path.model.mdx.model.account.AccountOwner;
  */
 @GatewayClass
 public abstract class AccountOwnerBaseAccessor extends Accessor {
+  public AccountOwnerBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public AccountOwnerBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Gets the account owner
+   *
    * @param id
    * @return
    */

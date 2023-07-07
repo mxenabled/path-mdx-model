@@ -18,13 +18,21 @@ import com.mx.path.model.mdx.model.profile.Phone;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/profile/#phone-numbers")
 public class PhoneBaseAccessor extends Accessor {
+  public PhoneBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public PhoneBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Create a phone
+   *
    * @param phone
    * @return
    */
@@ -36,6 +44,7 @@ public class PhoneBaseAccessor extends Accessor {
 
   /**
    * Delete phone by id
+   *
    * @param id
    * @return
    */
@@ -47,6 +56,7 @@ public class PhoneBaseAccessor extends Accessor {
 
   /**
    * Get a phone
+   *
    * @param id
    * @return
    */
@@ -58,6 +68,7 @@ public class PhoneBaseAccessor extends Accessor {
 
   /**
    * List phones
+   *
    * @return
    */
   @GatewayAPI
@@ -68,6 +79,7 @@ public class PhoneBaseAccessor extends Accessor {
 
   /**
    * Update a phone
+   *
    * @param phone
    * @return
    */

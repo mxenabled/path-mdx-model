@@ -18,13 +18,21 @@ import com.mx.path.model.mdx.model.profile.Address;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/profile/#addresses")
 public class AddressBaseAccessor extends Accessor {
+  public AddressBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public AddressBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Create an address
+   *
    * @param address
    * @return
    */
@@ -36,6 +44,7 @@ public class AddressBaseAccessor extends Accessor {
 
   /**
    * Delete address by id
+   *
    * @param id
    * @return
    */
@@ -47,6 +56,7 @@ public class AddressBaseAccessor extends Accessor {
 
   /**
    * Get address by id
+   *
    * @param id
    * @return
    */
@@ -58,6 +68,7 @@ public class AddressBaseAccessor extends Accessor {
 
   /**
    * List addresses
+   *
    * @return
    */
   @GatewayAPI
@@ -68,6 +79,7 @@ public class AddressBaseAccessor extends Accessor {
 
   /**
    * Update address
+   *
    * @param id
    * @param address
    * @return

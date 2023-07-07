@@ -16,13 +16,21 @@ import com.mx.path.model.mdx.model.check.options.CheckImageGetOptions;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/accounts/#check-images")
 public abstract class CheckImageBaseAccessor extends Accessor {
+  public CheckImageBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public CheckImageBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Get a check image
+   *
    * @param accountId
    * @param transactionId
    * @param checkNumber

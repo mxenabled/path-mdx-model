@@ -1,12 +1,13 @@
 package com.mx.path.service.connection.realtime;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
+
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import com.mx.path.connect.http.HttpAccessorConnection;
 import com.mx.path.core.common.configuration.Configuration;
 
-@EqualsAndHashCode(callSuper = true)
+@SuppressFBWarnings("EQ_DOESNT_OVERRIDE_EQUALS")
 public class MdxRealtimeConnection extends HttpAccessorConnection {
   @Getter
   private MdxRealtimeConnectionConfiguration config;

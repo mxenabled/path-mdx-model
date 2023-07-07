@@ -37,12 +37,21 @@ public class ProfileBaseAccessor extends Accessor {
   @Getter(AccessLevel.PROTECTED)
   private PhoneBaseAccessor phones;
 
+  public ProfileBaseAccessor() {
+  }
+
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public ProfileBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Accessor for address operations
+   *
    * @return accessor
    */
   @API(specificationUrl = "https://developer.mx.com/drafts/mdx/profile/#addresses")
@@ -56,6 +65,7 @@ public class ProfileBaseAccessor extends Accessor {
 
   /**
    * Set addresses accessor
+   *
    * @param addresses
    */
   public void setAddresses(AddressBaseAccessor addresses) {
@@ -64,6 +74,7 @@ public class ProfileBaseAccessor extends Accessor {
 
   /**
    * Accessor for email operations
+   *
    * @return accessor
    */
   @API(specificationUrl = "https://developer.mx.com/drafts/mdx/profile/#addresses")
@@ -77,6 +88,7 @@ public class ProfileBaseAccessor extends Accessor {
 
   /**
    * Set emails accessor
+   *
    * @param emails
    */
   public void setEmails(EmailBaseAccessor emails) {
@@ -85,6 +97,7 @@ public class ProfileBaseAccessor extends Accessor {
 
   /**
    * Accessor for phone operations
+   *
    * @return accessor
    */
   @API(specificationUrl = "https://developer.mx.com/drafts/mdx/profile/#addresses")
@@ -98,6 +111,7 @@ public class ProfileBaseAccessor extends Accessor {
 
   /**
    * set ohones accessor
+   *
    * @param phones
    */
   public void setPhones(PhoneBaseAccessor phones) {
@@ -106,6 +120,7 @@ public class ProfileBaseAccessor extends Accessor {
 
   /**
    * Get user's profile
+   *
    * @return
    */
   @GatewayAPI
@@ -116,6 +131,7 @@ public class ProfileBaseAccessor extends Accessor {
 
   /**
    * Update user's profile
+   *
    * @param profile
    * @return
    */
@@ -128,6 +144,7 @@ public class ProfileBaseAccessor extends Accessor {
 
   /**
    * Update user's user name
+   *
    * @param userName
    * @return
    */
@@ -139,6 +156,7 @@ public class ProfileBaseAccessor extends Accessor {
 
   /**
    * Update user's password
+   *
    * @param password
    * @return
    */
@@ -150,6 +168,7 @@ public class ProfileBaseAccessor extends Accessor {
 
   /**
    * Update user's password
+   *
    * @param challengeId
    * @param challenge
    * @return

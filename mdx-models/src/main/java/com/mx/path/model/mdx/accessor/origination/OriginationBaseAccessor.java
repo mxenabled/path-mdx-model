@@ -18,13 +18,21 @@ import com.mx.path.model.mdx.model.origination.Origination;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/origination/#mdx-origination")
 public abstract class OriginationBaseAccessor extends Accessor {
+  public OriginationBaseAccessor() {
+  }
 
+  /**
+   * @param configuration
+   * @deprecated Use the default constructor, the configuration is set by the accessor construction context code
+   */
+  @Deprecated
   public OriginationBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
 
   /**
    * Start Origination
+   *
    * @return
    */
   @GatewayAPI
@@ -35,6 +43,7 @@ public abstract class OriginationBaseAccessor extends Accessor {
 
   /**
    * answer a challenge
+   *
    * @param id
    * @param challenge
    * @return
@@ -47,6 +56,7 @@ public abstract class OriginationBaseAccessor extends Accessor {
 
   /**
    * Authenticated user origination start
+   *
    * @return
    */
   @GatewayAPI
@@ -57,6 +67,7 @@ public abstract class OriginationBaseAccessor extends Accessor {
 
   /**
    * answer a challenge for an authenticated user
+   *
    * @param id
    * @param challenge
    * @return
