@@ -1,6 +1,8 @@
 package com.mx.path.model.mdx.web.filter;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Enumeration;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mx.path.core.common.lang.Strings;
 import com.mx.path.core.context.RequestContext;
+import com.mx.path.core.context.ResponseContext;
 
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -32,7 +35,6 @@ public class PathRequestContextFilter extends OncePerRequestFilter {
   public static final String JOB_TYPE_HEADER = "mdx-job-type";
   public static final String SESSION_TRACE_ID_HEADER = "mx-session-trace-id";
   public static final String DEVICE_TRACE_ID_HEADER = "mx-device-trace-id";
-  public static final String REFRESH_TOKEN_HEADER = "mx-refresh-token";
 
   // Protected
   @Override
@@ -48,7 +50,6 @@ public class PathRequestContextFilter extends OncePerRequestFilter {
     String originatingIp = request.getHeader(DEVICE_IP_ADDRESS);
     String sessionTraceId = request.getHeader(SESSION_TRACE_ID_HEADER);
     String deviceTraceId = request.getHeader(DEVICE_TRACE_ID_HEADER);
-    String refreshToken = request.getHeader(REFRESH_TOKEN_HEADER);
 
     String path = request.getRequestURI();
     if (path != null) {
@@ -62,7 +63,7 @@ public class PathRequestContextFilter extends OncePerRequestFilter {
       }
     }
 
-    RequestContext.RequestContextBuilder builder = RequestContext.builder()
+    RequestContext.RequestContextBuilder<?, ?> builder = RequestContext.builder()
         .clientGuid(clientGuid)
         .clientId(clientId)
         .deviceTraceId(deviceTraceId)
@@ -77,16 +78,25 @@ public class PathRequestContextFilter extends OncePerRequestFilter {
       builder.header("mdx-job-type", jobType);
     }
 
-    if (Strings.isNotBlank(refreshToken)) {
-      builder.header(REFRESH_TOKEN_HEADER, refreshToken);
-    }
+    attachHeaders(request, builder);
 
     builder.build().register();
+    ResponseContext.builder().build().register();
 
     try {
       filterChain.doFilter(request, response);
     } finally {
       RequestContext.clear();
+      ResponseContext.clear();
+    }
+  }
+
+  private void attachHeaders(HttpServletRequest request, RequestContext.RequestContextBuilder<?, ?> requestContextBuilder) {
+    Enumeration<String> headerNames = request.getHeaderNames();
+    if (headerNames != null) {
+      Collections.list(headerNames).forEach(headerName -> {
+        requestContextBuilder.header(headerName, request.getHeader(headerName));
+      });
     }
   }
 }

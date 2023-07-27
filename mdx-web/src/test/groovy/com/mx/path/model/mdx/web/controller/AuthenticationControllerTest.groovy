@@ -1,11 +1,14 @@
 package com.mx.path.model.mdx.web.controller
 
+import static org.mockito.Mockito.doAnswer
 import static org.mockito.Mockito.doReturn
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
+import static org.mockito.Mockito.when
 
 import com.mx.path.core.common.accessor.PathResponseStatus
 import com.mx.path.core.context.RequestContext
+import com.mx.path.core.context.ResponseContext
 import com.mx.path.core.context.Session
 import com.mx.path.core.context.store.SessionRepository
 import com.mx.path.gateway.accessor.AccessorResponse
@@ -21,6 +24,8 @@ import com.mx.path.model.mdx.model.id.MfaChallenge
 import com.mx.path.model.mdx.model.id.ResetPassword
 import com.mx.path.testing.WithMockery
 
+import org.mockito.invocation.InvocationOnMock
+import org.mockito.stubbing.Answer
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 
@@ -42,6 +47,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     sessionRepository = Mock()
     Session.setRepositorySupplier({ -> sessionRepository })
     RequestContext.builder().build().register()
+    ResponseContext.builder().build().register()
 
     authentication = new Authentication()
     authentication.setLogin("login")
@@ -62,6 +68,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     Session.clearSession()
     Session.setRepositorySupplier(null)
     RequestContext.clear()
+    ResponseContext.clear()
   }
 
 
@@ -187,6 +194,31 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     HttpStatus.ACCEPTED == response.getStatusCode()
     Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
     response.getBody().getUserId() == null
+  }
+
+  def "loginWithForwardedResponseHeaders"() {
+    given:
+    AuthenticationController.setGateway(gateway)
+    def challenge = new MfaChallenge()
+    challenge.setId("NEW_PASSWORD")
+    challenge.setQuestion("Yo, change your password!")
+    challenge.setType("PASSWORD")
+    def resultAuthentication = new Authentication()
+    resultAuthentication.setUserId("U-1234")
+    doAnswer(new Answer() {
+          public Object answer(InvocationOnMock invocation) {
+            ResponseContext.current().getHeaders().put("forwarded-h1", "v1")
+            return new AccessorResponse<Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK);
+          }
+        }).when(id).authenticate(authentication)
+
+    when:
+    def response = subject.authenticate("client1234", authentication)
+
+    then:
+    Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
+    response.getHeaders().getFirst("forwarded-h1") == "v1"
+    response.getBody().getUserId() == "U-1234"
   }
 
   def "respondToMfaSuccessful"() {

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 import com.mx.path.core.context.RequestContext
+import com.mx.path.core.context.ResponseContext
 import com.mx.path.core.context.store.SessionRepository
 
 import spock.lang.Specification
@@ -17,6 +18,7 @@ class PathRequestContextFilterTest extends Specification {
 
   PathRequestContextFilter subject
   RequestContext requestContext
+  ResponseContext responseContext
 
   def setup() {
     filterChain = Mock()
@@ -24,14 +26,14 @@ class PathRequestContextFilterTest extends Specification {
     response = Mock()
     repository = Mock()
     subject = new PathRequestContextFilter()
-
-    // Intercept MDC values
-    filterChain.doFilter(request, response) >> {
-      requestContext = RequestContext.current()
-    }
   }
 
   def "filter with headers"() {
+    given:
+    filterChain.doFilter(request, response) >> {
+      requestContext = RequestContext.current()
+    }
+
     when:
     subject.doFilter(request, response, filterChain)
 
@@ -45,6 +47,7 @@ class PathRequestContextFilterTest extends Specification {
     1 * request.getHeader("mx-device-trace-id") >> "device123"
     1 * request.getHeader("mx-refresh-token") >> "afdsfeadfclvkdds"
     1 * request.getRequestURI() >> "/afcu/users/usr1234/accounts/acc123/transactions/recent"
+    1 * request.getHeaderNames() >> Collections.enumeration(["mx-refresh-token"])
 
     and: "has values set in requestContext"
     requestContext.getUserGuid() == "76f5dg-dfg75dfg-sdg75fd"
@@ -61,6 +64,11 @@ class PathRequestContextFilterTest extends Specification {
   }
 
   def "filter without headers"() {
+    given:
+    filterChain.doFilter(request, response) >> {
+      requestContext = RequestContext.current()
+    }
+
     when:
     subject.doFilter(request, response, filterChain)
 
