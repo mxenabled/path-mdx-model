@@ -6,6 +6,7 @@ import java.util.Map;
 import com.mx.path.core.common.accessor.PathResponseStatus;
 import com.mx.path.core.common.lang.Strings;
 import com.mx.path.core.context.RequestContext;
+import com.mx.path.core.context.ResponseContext;
 import com.mx.path.gateway.api.Gateway;
 
 import org.springframework.http.HttpHeaders;
@@ -66,6 +67,8 @@ public class BaseController {
   public final MultiValueMap<String, String> createMultiMapForResponse(Map<String, String> accessorHeaderMap) {
     MultiValueMap<String, String> headerMap = new LinkedMultiValueMap<>();
     accessorHeaderMap.entrySet().stream().forEach(entry -> headerMap.add(entry.getKey(), entry.getValue()));
+    forwardResponseHeaders(headerMap);
+
     return headerMap;
   }
 
@@ -74,6 +77,18 @@ public class BaseController {
     MultiValueMap<String, String> headerMap = new LinkedMultiValueMap<>();
     accessorHeaderMap.entrySet().stream().forEach(entry -> headerMap.add(entry.getKey(), entry.getValue()));
     headerMap.addAll(httpHeaders);
+    forwardResponseHeaders(headerMap);
+
     return headerMap;
+  }
+
+  public final void forwardResponseHeaders(MultiValueMap<String, String> headerMap) {
+    if (ResponseContext.current() != null && ResponseContext.current().getHeaders() != null) {
+      ResponseContext.current().getHeaders().forEach((key, value) -> {
+        if (!headerMap.containsKey(key)) {
+          headerMap.add(key, value);
+        }
+      });
+    }
   }
 }
