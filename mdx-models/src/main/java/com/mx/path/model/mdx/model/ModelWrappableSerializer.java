@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -35,20 +36,26 @@ public class ModelWrappableSerializer implements JsonDeserializer<ModelWrappable
   public final ModelWrappable<?> deserialize(final JsonElement json, final Type typeOfT,
       final JsonDeserializationContext context) throws JsonParseException {
 
-    if (!json.isJsonObject()) {
-      throw new JsonParseException("Body not an object");
+    if (json.isJsonArray()) {
+      JsonArray array = json.getAsJsonArray();
+      return gson.fromJson(array, typeOfT);
+
+    } else {
+      if (!json.isJsonObject()) {
+        throw new JsonParseException("Body not an object");
+      }
+
+      JsonObject wrapper = json.getAsJsonObject();
+      JsonElement objElement = wrapper.get(key);
+
+      // Not wrapped
+      if (objElement == null) {
+        return gson.fromJson(wrapper, typeOfT);
+      }
+
+      // Wrapped
+      return gson.fromJson(objElement, typeOfT);
     }
-
-    JsonObject wrapper = json.getAsJsonObject();
-    JsonElement objElement = wrapper.get(key);
-
-    // Not wrapped
-    if (objElement == null) {
-      return gson.fromJson(wrapper, typeOfT);
-    }
-
-    // Wrapped
-    return gson.fromJson(objElement, typeOfT);
   }
 
   @Override
