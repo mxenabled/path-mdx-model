@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.2.0](https://github.com/mxenabled/path-mdx-model/compare/v4.1.0...v4.2.0) (2023-08-08)
+
+
+### Features
+
+* add support for header forwarding ([996e983](https://github.com/mxenabled/path-mdx-model/commit/996e983dfd175a17abff1e9aef78ca7ca01b4bea))
+
 ## [4.1.0](https://github.com/mxenabled/path-mdx-model/compare/4.0.1...v4.1.0) (2023-07-07)
 
 
