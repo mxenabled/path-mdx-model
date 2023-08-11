@@ -16,6 +16,7 @@ import com.mx.path.core.common.exception.ExceptionReporter;
 import com.mx.path.core.common.exception.PathRequestException;
 import com.mx.path.core.common.exception.PathRequestExceptionWrapper;
 import com.mx.path.core.context.RequestContext;
+import com.mx.path.core.context.ResponseContext;
 import com.mx.path.core.context.Session;
 import com.mx.path.core.context.facility.Facilities;
 
@@ -104,6 +105,12 @@ class ErrorHandler {
     response.setStatus(status.value());
     response.setContentType("application/vnd.mx.mdx.v6+json");
 
+    // Attach response context headers
+    if (ResponseContext.current() != null && ResponseContext.current().getHeaders() != null) {
+      ResponseContext.current().getHeaders().forEach(response::setHeader);
+    }
+
+    // Attach exception headers (these take precedence)
     if (headers != null) {
       headers.forEach(response::setHeader);
     }
