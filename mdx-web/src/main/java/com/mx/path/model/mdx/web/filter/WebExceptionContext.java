@@ -93,17 +93,17 @@ class WebExceptionContext implements ExceptionContext {
 
   @Override
   public final MultiValueMap<String, String> getParameters() {
-    MultiValueMap<String, String> headers = new MultiValueMap<>();
+    MultiValueMap<String, String> parameters = new MultiValueMap<>();
     Enumeration<String> names = request.getParameterNames();
     while (names.hasMoreElements()) {
-      String headerName = names.nextElement();
-      Enumeration<String> headerValues = Collections.enumeration(Arrays.asList(request.getParameterValues(headerName)));
-      while (headerValues.hasMoreElements()) {
-        headers.add(headerName, headerValues.nextElement());
+      String parameterName = names.nextElement();
+      Enumeration<String> parameterValues = Collections.enumeration(Arrays.asList(request.getParameterValues(parameterName)));
+      while (parameterValues.hasMoreElements()) {
+        parameters.add(parameterName, parameterValues.nextElement());
       }
     }
 
-    return headers;
+    return parameters;
   }
 
   @Override
