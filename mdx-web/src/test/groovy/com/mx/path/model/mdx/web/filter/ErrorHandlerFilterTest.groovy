@@ -5,10 +5,10 @@ import javax.servlet.ServletOutputStream
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-import com.mx.path.core.common.accessor.AccessorUserException
 import com.mx.path.core.common.accessor.PathResponseStatus
 import com.mx.path.core.common.accessor.RequestValidationException
-import com.mx.path.core.common.accessor.UnauthorizedException
+import com.mx.path.core.context.RequestContext
+import com.mx.path.core.context.ResponseContext
 
 import spock.lang.Specification
 
@@ -32,6 +32,13 @@ class ErrorHandlerFilterTest extends Specification {
     errorHandler = new ErrorHandler()
     subject = new ErrorHandlerFilter()
     subject.setErrorHandler(errorHandler)
+
+    ResponseContext.builder().build().register()
+  }
+
+  def cleanup() {
+    RequestContext.clear()
+    ResponseContext.clear()
   }
 
   def "renders exception"() {
@@ -94,12 +101,13 @@ class ErrorHandlerFilterTest extends Specification {
     responseBody == '{"error":{"message":"Danger!","user_message":"Danger!","error_title":"errorTitle","error_code":"4011"}}'
   }
 
-  def "adds header to exception caused by exception"() {
+  def "adds header to response from RequestValidationException when cause is RuntimeException"() {
     given:
     response.getOutputStream() >> outputStream
     filterChain.doFilter(_ as HttpServletRequest, _ as HttpServletResponse) >> { HttpServletRequest request, HttpServletResponse response ->
       throw new RuntimeException("Start fan, insert crap",
-      new RequestValidationException("Danger!", "Danger!").withStatus(PathResponseStatus.USER_ERROR)
+      new RequestValidationException("Danger!", "Danger!")
+      .withStatus(PathResponseStatus.USER_ERROR)
       .withHeader("header", "value"))
     }
 
@@ -110,11 +118,13 @@ class ErrorHandlerFilterTest extends Specification {
     1 * response.setHeader("header", "value")
   }
 
-  def "adds header to exception"() {
+  def "adds header to response from RequestValidationException"() {
     given:
     response.getOutputStream() >> outputStream
     filterChain.doFilter(_ as HttpServletRequest, _ as HttpServletResponse) >> { HttpServletRequest request, HttpServletResponse response ->
-      throw new RequestValidationException("Danger!", "Danger!").withStatus(PathResponseStatus.USER_ERROR).withHeader("header", "value")
+      throw new RequestValidationException("Danger!", "Danger!")
+      .withStatus(PathResponseStatus.USER_ERROR)
+      .withHeader("header", "value")
     }
 
     when:
@@ -122,5 +132,24 @@ class ErrorHandlerFilterTest extends Specification {
 
     then:
     1 * response.setHeader("header", "value")
+  }
+
+  def "adds headers to response from ResponseContext"() {
+    given:
+    response.getOutputStream() >> outputStream
+    filterChain.doFilter(_ as HttpServletRequest, _ as HttpServletResponse) >> { HttpServletRequest request, HttpServletResponse response ->
+      throw new RequestValidationException("Danger!", "Danger!")
+      .withStatus(PathResponseStatus.USER_ERROR)
+      .withHeader("header1", "value1")
+    }
+
+    ResponseContext.current().getHeaders().put("header2", "value2")
+
+    when:
+    subject.doFilter(request, response, filterChain)
+
+    then:
+    1 * response.setHeader("header1", "value1")
+    1 * response.setHeader("header2", "value2")
   }
 }

@@ -64,31 +64,37 @@ public class BaseController {
     return HttpStatus.resolve(accessorResponseStatus.value());
   }
 
-  public final MultiValueMap<String, String> createMultiMapForResponse(Map<String, String> accessorHeaderMap) {
+  public final MultiValueMap<String, String> createMultiMapForResponse(Map<String, String> accessorResponseHeaders) {
     MultiValueMap<String, String> headerMap = new LinkedMultiValueMap<>();
-    accessorHeaderMap.entrySet().stream().forEach(entry -> headerMap.add(entry.getKey(), entry.getValue()));
-    forwardResponseHeaders(headerMap);
+
+    // Attach headers from ResponseContext
+    attachResponseContextHeaders(headerMap);
+
+    // Attach headers added by the controller (these take precedence)
+    accessorResponseHeaders.forEach(headerMap::set);
 
     return headerMap;
   }
 
-  public final MultiValueMap<String, String> createMultiMapForResponse(Map<String, String> accessorHeaderMap,
+  public final MultiValueMap<String, String> createMultiMapForResponse(Map<String, String> accessorResponseHeaders,
       HttpHeaders httpHeaders) {
     MultiValueMap<String, String> headerMap = new LinkedMultiValueMap<>();
-    accessorHeaderMap.entrySet().stream().forEach(entry -> headerMap.add(entry.getKey(), entry.getValue()));
+
+    // Attach headers from ResponseContext
+    attachResponseContextHeaders(headerMap);
+
+    // Attach headers from accessor response
+    accessorResponseHeaders.forEach(headerMap::set);
+
+    // Attach headers added by the controller (these take precedence)
     headerMap.addAll(httpHeaders);
-    forwardResponseHeaders(headerMap);
 
     return headerMap;
   }
 
-  public final void forwardResponseHeaders(MultiValueMap<String, String> headerMap) {
+  public final void attachResponseContextHeaders(MultiValueMap<String, String> headerMap) {
     if (ResponseContext.current() != null && ResponseContext.current().getHeaders() != null) {
-      ResponseContext.current().getHeaders().forEach((key, value) -> {
-        if (!headerMap.containsKey(key)) {
-          headerMap.add(key, value);
-        }
-      });
+      ResponseContext.current().getHeaders().forEach(headerMap::set);
     }
   }
 }
