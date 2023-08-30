@@ -34,6 +34,8 @@ public class Account extends MdxBase<Account> {
   private String guid;
   @XmlElement(name = "has_monthly_transfer_limit")
   private Boolean hasMonthlyTransferLimit;
+  @XmlElement(name = "hold_total")
+  private BigDecimal holdTotal;
   @XmlElement(name = "id")
   private String id;
   @XmlElement(name = "interest_rate")
@@ -82,6 +84,8 @@ public class Account extends MdxBase<Account> {
   private BigDecimal payoffBalance;
   @XmlElement(name = "pending_balance")
   private BigDecimal pendingBalance;
+  @XmlElement(name = "pending_transactions_total")
+  private BigDecimal pendingTransactionsTotal;
   @XmlElement(name = "routing_number")
   private String routingNumber;
   @Deprecated
@@ -220,6 +224,14 @@ public class Account extends MdxBase<Account> {
 
   public final void setHasMonthlyTransferLimit(Boolean hasMonthlyTransferLimit) {
     this.hasMonthlyTransferLimit = hasMonthlyTransferLimit;
+  }
+
+  public final BigDecimal getHoldTotal() {
+    return holdTotal;
+  }
+
+  public final void setHoldTotal(BigDecimal holdTotal) {
+    this.holdTotal = holdTotal;
   }
 
   public final String getId() {
@@ -412,6 +424,14 @@ public class Account extends MdxBase<Account> {
 
   public final void setPendingBalance(BigDecimal pendingBalance) {
     this.pendingBalance = pendingBalance;
+  }
+
+  public final BigDecimal getPendingTransactionsTotal() {
+    return pendingTransactionsTotal;
+  }
+
+  public final void setPendingTransactionsTotal(BigDecimal pendingTransactionsTotal) {
+    this.pendingTransactionsTotal = pendingTransactionsTotal;
   }
 
   public final String getRoutingNumber() {
