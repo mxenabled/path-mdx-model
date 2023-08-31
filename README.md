@@ -38,7 +38,7 @@ _Gradle_
 <!-- x-release-please-start-version -->
 ```groovy
 dependencies {
-  api platform("com.mx.path-mdx-model:platform:4.2.1")
+  api platform("com.mx.path-mdx-model:platform:4.3.0")
 
   implementation "com.mx.path-mdx-model:mdx-models"
   implementation "com.mx.path-mdx-model:mdx-gateways"
@@ -53,9 +53,9 @@ _Gradle_
 <!-- x-release-please-start-version -->
 ```groovy
 dependencies {
-  implementation "com.mx.path-mdx-model:mdx-models:4.2.1"
-  implementation "com.mx.path-mdx-model:mdx-gateways:4.2.1"
-  implementation "com.mx.path-mdx-model:realtime:4.2.1"
+  implementation "com.mx.path-mdx-model:mdx-models:4.3.0"
+  implementation "com.mx.path-mdx-model:mdx-gateways:4.3.0"
+  implementation "com.mx.path-mdx-model:realtime:4.3.0"
 }
 ```
 <!-- x-release-please-end -->
