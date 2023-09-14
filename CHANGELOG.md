@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.4.0](https://github.com/mxenabled/path-mdx-model/compare/v4.3.0...v4.4.0) (2023-09-14)
+
+
+### Features
+
+* added remoteDepositEnrolled field to RemoteUser ([e7621cd](https://github.com/mxenabled/path-mdx-model/commit/e7621cd7428c383ad9c6a8ed65d526c77e64fed0))
+
 ## [4.3.0](https://github.com/mxenabled/path-mdx-model/compare/v4.2.1...v4.3.0) (2023-08-31)
 
 
