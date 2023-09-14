@@ -20,6 +20,7 @@ public class RemoteUser extends MdxBase<RemoteUser> {
   private String lastName;
   private String phone;
   private Boolean remoteDepositEligible;
+  private Boolean remoteDepositEnrolled;
   private String ssn;
   private String state;
   private String postalCode;
