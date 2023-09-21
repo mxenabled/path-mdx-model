@@ -3,7 +3,9 @@ package com.mx.path.model.mdx.web.controller;
 import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.account.Account;
+import com.mx.path.model.mdx.model.payment.Enrollment;
 import com.mx.path.model.mdx.model.payment.Payment;
+import com.mx.path.model.mdx.model.payment.Settings;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,30 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "{clientId}/users/{user_id}", produces = BaseController.MDX_MEDIA)
 public class PaymentsController extends BaseController {
+
+  @RequestMapping(value = "/payments/enrollment", method = RequestMethod.GET, consumes = BaseController.MDX_MEDIA)
+  public final ResponseEntity<Enrollment> getPaymentEnrollStatus(@RequestBody Enrollment enrollmentRequest) {
+    AccessorResponse<Enrollment> response = gateway().payments().enrollmentStatus(enrollmentRequest);
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+  }
+
+  @RequestMapping(value = "/payments/enrollment", method = RequestMethod.PUT, consumes = BaseController.MDX_MEDIA)
+  public final ResponseEntity<Enrollment> setPaymentEnrollStatus(@RequestBody Enrollment enrollmentRequest) {
+    AccessorResponse<Enrollment> response = gateway().payments().updateEnrollmentStatus(enrollmentRequest);
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+  }
+
+  @RequestMapping(value = "/payments/settings", method = RequestMethod.GET, consumes = BaseController.MDX_MEDIA)
+  public final ResponseEntity<Settings> getPaymentSettings(@RequestBody Settings settingsRequest) {
+    AccessorResponse<Settings> response = gateway().payments().settings(settingsRequest);
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+  }
+
+  @RequestMapping(value = "/payments/settings", method = RequestMethod.PUT, consumes = BaseController.MDX_MEDIA)
+  public final ResponseEntity<Settings> setPaymentSettings(Settings settingsRequest) {
+    AccessorResponse<Settings> response = gateway().payments().updateSettings(settingsRequest);
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+  }
 
   @RequestMapping(value = "/payments", method = RequestMethod.POST, consumes = BaseController.MDX_MEDIA)
   public final ResponseEntity<Payment> createPayment(@RequestBody Payment paymentRequest) {
