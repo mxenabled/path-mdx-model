@@ -56,12 +56,11 @@ public abstract class PaymentBaseAccessor extends Accessor {
   /**
    * Enrollment status
    *
-   * @param enrollmentRequest
    * @return
    */
   @GatewayAPI
   @API(description = "Get the Enrollment status")
-  public AccessorResponse<Enrollment> enrollmentStatus(Enrollment enrollmentRequest) {
+  public AccessorResponse<Enrollment> enrollmentStatus() {
     throw new AccessorMethodNotImplementedException();
   }
 
@@ -80,12 +79,11 @@ public abstract class PaymentBaseAccessor extends Accessor {
   /**
    * Get Payment Settings
    *
-   * @param settings
    * @return
    */
   @GatewayAPI
   @API(description = "Get the current Payment Settings")
-  public AccessorResponse<Settings> settings(Settings settings) {
+  public AccessorResponse<Settings> settings() {
     throw new AccessorMethodNotImplementedException();
   }
 

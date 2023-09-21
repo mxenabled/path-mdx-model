@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class PaymentsController extends BaseController {
 
   @RequestMapping(value = "/payments/enrollment", method = RequestMethod.GET, consumes = BaseController.MDX_MEDIA)
-  public final ResponseEntity<Enrollment> getPaymentEnrollStatus(@RequestBody Enrollment enrollmentRequest) {
-    AccessorResponse<Enrollment> response = gateway().payments().enrollmentStatus(enrollmentRequest);
+  public final ResponseEntity<Enrollment> getPaymentEnrollStatus() {
+    AccessorResponse<Enrollment> response = gateway().payments().enrollmentStatus();
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
@@ -32,8 +32,8 @@ public class PaymentsController extends BaseController {
   }
 
   @RequestMapping(value = "/payments/settings", method = RequestMethod.GET, consumes = BaseController.MDX_MEDIA)
-  public final ResponseEntity<Settings> getPaymentSettings(@RequestBody Settings settingsRequest) {
-    AccessorResponse<Settings> response = gateway().payments().settings(settingsRequest);
+  public final ResponseEntity<Settings> getPaymentSettings() {
+    AccessorResponse<Settings> response = gateway().payments().settings();
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
