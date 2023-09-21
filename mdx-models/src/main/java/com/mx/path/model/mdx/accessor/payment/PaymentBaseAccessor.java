@@ -12,7 +12,9 @@ import com.mx.path.gateway.accessor.AccessorConfiguration;
 import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.account.Account;
+import com.mx.path.model.mdx.model.payment.Enrollment;
 import com.mx.path.model.mdx.model.payment.Payment;
+import com.mx.path.model.mdx.model.payment.Settings;
 
 /**
  * Accessor base for payment operations
@@ -49,6 +51,54 @@ public abstract class PaymentBaseAccessor extends Accessor {
   @Deprecated
   public PaymentBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
+  }
+
+  /**
+   * Enrollment status
+   *
+   * @param enrollmentRequest
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Get the Enrollment status")
+  public AccessorResponse<Enrollment> enrollmentStatus(Enrollment enrollmentRequest) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Update Enrollment status
+   *
+   * @param enrollmentRequest
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Update the Enrollment status")
+  public AccessorResponse<Enrollment> updateEnrollmentStatus(Enrollment enrollmentRequest) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Get Payment Settings
+   *
+   * @param settings
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Get the current Payment Settings")
+  public AccessorResponse<Settings> settings(Settings settings) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Update Payment Settings
+   *
+   * @param settings
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Update the Payment Settings")
+  public AccessorResponse<Settings> updateSettings(Settings settings) {
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**

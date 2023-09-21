@@ -53,11 +53,13 @@ import com.mx.path.model.mdx.model.ondemand.mixins.TransactionMixIn;
 import com.mx.path.model.mdx.model.ondemand.mixins.TransactionsPageMixin;
 import com.mx.path.model.mdx.model.origination.Origination;
 import com.mx.path.model.mdx.model.payment.Bill;
+import com.mx.path.model.mdx.model.payment.Enrollment;
 import com.mx.path.model.mdx.model.payment.Merchant;
 import com.mx.path.model.mdx.model.payment.MerchantCategory;
 import com.mx.path.model.mdx.model.payment.Payee;
 import com.mx.path.model.mdx.model.payment.Payment;
 import com.mx.path.model.mdx.model.payment.RecurringPayment;
+import com.mx.path.model.mdx.model.payment.Settings;
 import com.mx.path.model.mdx.model.payout.Challenge;
 import com.mx.path.model.mdx.model.payout.ChallengeAnswer;
 import com.mx.path.model.mdx.model.payout.Option;
@@ -341,6 +343,8 @@ public class Resources {
     builder.registerTypeAdapter(new TypeToken<MdxList<Bill>>() {
     }.getType(), new ModelWrappableSerializer("bills"));
     // Payment
+    builder.registerTypeAdapter(Enrollment.class, new ModelWrappableSerializer("enrollment"));
+    builder.registerTypeAdapter(Settings.class, new ModelWrappableSerializer("settings"));
     builder.registerTypeAdapter(Payment.class, new ModelWrappableSerializer("payment"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Payment>>() {
     }.getType(), new ModelWrappableSerializer("payments"));
