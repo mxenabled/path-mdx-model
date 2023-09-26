@@ -3,19 +3,19 @@ package com.mx.path.model.mdx.model.payment;
 import java.util.List;
 
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.id.MfaChallenge;
+import com.mx.path.model.mdx.model.challenges.Challenge;
 
 public final class Settings extends MdxBase<Settings> {
-  private List<MfaChallenge> challenges;
+  private List<Challenge> challenges;
 
   public Settings() {
   }
 
-  public List<MfaChallenge> getChallenges() {
+  public List<Challenge> getChallenges() {
     return challenges;
   }
 
-  public void setChallenges(List<MfaChallenge> challenges) {
+  public void setChallenges(List<Challenge> challenges) {
     this.challenges = challenges;
   }
 }
