@@ -59,8 +59,8 @@ public abstract class PaymentBaseAccessor extends Accessor {
    * @return
    */
   @GatewayAPI
-  @API(description = "Get the Enrollment status")
-  public AccessorResponse<Enrollment> enrollmentStatus() {
+  @API(description = "Get the Enrollment Information")
+  public AccessorResponse<Enrollment> enrollment() {
     throw new AccessorMethodNotImplementedException();
   }
 
@@ -71,8 +71,8 @@ public abstract class PaymentBaseAccessor extends Accessor {
    * @return
    */
   @GatewayAPI
-  @API(description = "Update the Enrollment status")
-  public AccessorResponse<Enrollment> updateEnrollmentStatus(Enrollment enrollmentRequest) {
+  @API(description = "Update the Enrollment Information")
+  public AccessorResponse<Enrollment> updateEnrollment(Enrollment enrollmentRequest) {
     throw new AccessorMethodNotImplementedException();
   }
 

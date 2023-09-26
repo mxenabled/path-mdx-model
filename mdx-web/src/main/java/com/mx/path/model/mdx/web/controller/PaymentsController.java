@@ -21,13 +21,13 @@ public class PaymentsController extends BaseController {
 
   @RequestMapping(value = "/payments/enrollment", method = RequestMethod.GET, consumes = BaseController.MDX_MEDIA)
   public final ResponseEntity<Enrollment> getPaymentEnrollStatus() {
-    AccessorResponse<Enrollment> response = gateway().payments().enrollmentStatus();
+    AccessorResponse<Enrollment> response = gateway().payments().enrollment();
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/payments/enrollment", method = RequestMethod.PUT, consumes = BaseController.MDX_MEDIA)
   public final ResponseEntity<Enrollment> setPaymentEnrollStatus(@RequestBody Enrollment enrollmentRequest) {
-    AccessorResponse<Enrollment> response = gateway().payments().updateEnrollmentStatus(enrollmentRequest);
+    AccessorResponse<Enrollment> response = gateway().payments().updateEnrollment(enrollmentRequest);
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
@@ -38,7 +38,7 @@ public class PaymentsController extends BaseController {
   }
 
   @RequestMapping(value = "/payments/settings", method = RequestMethod.PUT, consumes = BaseController.MDX_MEDIA)
-  public final ResponseEntity<Settings> setPaymentSettings(Settings settingsRequest) {
+  public final ResponseEntity<Settings> setPaymentSettings(@RequestBody Settings settingsRequest) {
     AccessorResponse<Settings> response = gateway().payments().updateSettings(settingsRequest);
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }

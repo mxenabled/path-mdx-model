@@ -4,30 +4,30 @@ import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.id.MfaChallenge;
+import com.mx.path.model.mdx.model.challenges.Challenge;
 
 public final class Enrollment extends MdxBase<Enrollment> {
   @SerializedName("is_active")
   private Boolean isActive;
 
-  private List<MfaChallenge> challenges;
+  private List<Challenge> challenges;
 
   public Enrollment() {
   }
 
-  public Boolean getActive() {
+  public Boolean getIsActive() {
     return isActive;
   }
 
-  public void setActive(Boolean active) {
+  public void setIsActive(Boolean active) {
     isActive = active;
   }
 
-  public List<MfaChallenge> getChallenges() {
+  public List<Challenge> getChallenges() {
     return challenges;
   }
 
-  public void setChallenges(List<MfaChallenge> challenges) {
+  public void setChallenges(List<Challenge> challenges) {
     this.challenges = challenges;
   }
 }
