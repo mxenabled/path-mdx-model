@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.5.0](https://github.com/mxenabled/path-mdx-model/compare/v4.4.0...v4.5.0) (2023-09-26)
+
+
+### Features
+
+* add payment enrollment and settings ([67a2f4f](https://github.com/mxenabled/path-mdx-model/commit/67a2f4f4ad15c864269d3cf4e66fab129ac8bb91))
+
 ## [4.4.0](https://github.com/mxenabled/path-mdx-model/compare/v4.3.0...v4.4.0) (2023-09-14)
 
 
