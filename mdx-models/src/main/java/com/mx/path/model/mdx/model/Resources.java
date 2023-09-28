@@ -6,12 +6,16 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.mx.path.model.mdx.model.account.Account;
+import com.mx.path.model.mdx.model.account.AccountDetails;
 import com.mx.path.model.mdx.model.account.AccountNumber;
 import com.mx.path.model.mdx.model.account.AccountNumbers;
 import com.mx.path.model.mdx.model.account.AccountOwner;
 import com.mx.path.model.mdx.model.account.AccountOwnerDetails;
 import com.mx.path.model.mdx.model.account.AccountTransactions;
 import com.mx.path.model.mdx.model.account.OnDemandAccounts;
+import com.mx.path.model.mdx.model.account.Overdraft;
+import com.mx.path.model.mdx.model.account.StopPayment;
+import com.mx.path.model.mdx.model.account.StopPaymentReason;
 import com.mx.path.model.mdx.model.account.Transaction;
 import com.mx.path.model.mdx.model.account.TransactionsPage;
 import com.mx.path.model.mdx.model.ach_transfer.AchAccount;
@@ -101,6 +105,14 @@ public class Resources {
     builder.registerTypeAdapter(Account.class, new ModelWrappableSerializer("account"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Account>>() {
     }.getType(), new ModelWrappableSerializer("accounts"));
+    builder.registerTypeAdapter(AccountDetails.class, new ModelWrappableSerializer("account_details"));
+    builder.registerTypeAdapter(Overdraft.class, new ModelWrappableSerializer("overdraft"));
+    builder.registerTypeAdapter(StopPayment.class, new ModelWrappableSerializer("stop_payment"));
+    builder.registerTypeAdapter(new TypeToken<MdxList<StopPayment>>() {
+    }.getType(), new ModelWrappableSerializer("stop_payments"));
+    builder.registerTypeAdapter(StopPaymentReason.class, new ModelWrappableSerializer("stop_payment_reason"));
+    builder.registerTypeAdapter(new TypeToken<MdxList<StopPaymentReason>>() {
+    }.getType(), new ModelWrappableSerializer("stop_payment_reasons"));
     // Origination
     builder.registerTypeAdapter(Origination.class, new ModelWrappableSerializer("origination"));
     // Origination challenge

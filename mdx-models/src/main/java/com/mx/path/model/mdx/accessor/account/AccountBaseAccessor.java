@@ -22,11 +22,23 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
+  private AccountDetailsBaseAccessor accountDetails;
+
+  @GatewayAPI
+  @Getter(AccessLevel.PROTECTED)
   private AccountNumberBaseAccessor accountNumbers;
 
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
+  private AccountOverdraftBaseAccessor accountOverdrafts;
+
+  @GatewayAPI
+  @Getter(AccessLevel.PROTECTED)
   private AccountOwnerBaseAccessor accountOwners;
+
+  @GatewayAPI
+  @Getter(AccessLevel.PROTECTED)
+  private AccountStopPaymentsBaseAccessor accountStopPayments;
 
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
@@ -49,6 +61,20 @@ public abstract class AccountBaseAccessor extends Accessor {
   }
 
   /**
+   * Account details accessor
+   *
+   * @return
+   */
+  @API(description = "Access account details")
+  public AccountDetailsBaseAccessor accountDetails() {
+    if (accountDetails != null) {
+      return accountDetails;
+    }
+
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
    * Account number accessor
    *
    * @return
@@ -63,6 +89,19 @@ public abstract class AccountBaseAccessor extends Accessor {
   }
 
   /**
+   * Account stop payment accessor
+   * @return
+   */
+  @API(description = "Access account stop payments")
+  public AccountStopPaymentsBaseAccessor accountStopPayments() {
+    if (accountStopPayments != null) {
+      return accountStopPayments;
+    }
+
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
    * Account owner accessor
    *
    * @return
@@ -71,6 +110,19 @@ public abstract class AccountBaseAccessor extends Accessor {
   public AccountOwnerBaseAccessor accountOwners() {
     if (accountOwners != null) {
       return accountOwners;
+    }
+
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Account stop payment accessor
+   * @return
+   */
+  @API(description = "Access account overdrafts")
+  public AccountOverdraftBaseAccessor accountOverdrafts() {
+    if (accountOverdrafts != null) {
+      return accountOverdrafts;
     }
 
     throw new AccessorMethodNotImplementedException();
@@ -105,6 +157,15 @@ public abstract class AccountBaseAccessor extends Accessor {
   }
 
   /**
+   * Set account details accessor
+   *
+   * @param accountDetails
+   */
+  public void setAccountDetails(AccountDetailsBaseAccessor accountDetails) {
+    this.accountDetails = accountDetails;
+  }
+
+  /**
    * Set account number accessor
    *
    * @param accountNumbers
@@ -114,12 +175,30 @@ public abstract class AccountBaseAccessor extends Accessor {
   }
 
   /**
+   * Set account overdrafts accessor
+   *
+   * @param accountOverdrafts
+   */
+  public void setAccountOverdrafts(AccountOverdraftBaseAccessor accountOverdrafts) {
+    this.accountOverdrafts = accountOverdrafts;
+  }
+
+  /**
    * Set account owner accessor
    *
    * @param accountOwners
    */
   public void setAccountOwners(AccountOwnerBaseAccessor accountOwners) {
     this.accountOwners = accountOwners;
+  }
+
+  /**
+   * Set account stop payments accessor
+   *
+   * @param accountStopPayments
+   */
+  public void setAccountStopPayments(AccountStopPaymentsBaseAccessor accountStopPayments) {
+    this.accountStopPayments = accountStopPayments;
   }
 
   /**
