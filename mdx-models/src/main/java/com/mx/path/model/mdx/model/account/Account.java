@@ -8,7 +8,9 @@ import javax.xml.bind.annotation.XmlElement;
 import com.google.gson.annotations.SerializedName;
 import com.mx.path.core.common.model.Internal;
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.UserIdProvider;
+import com.mx.path.model.mdx.model.challenges.Challenge;
 
 @SuppressWarnings("PMD.CyclomaticComplexity")
 public class Account extends MdxBase<Account> {
@@ -24,6 +26,8 @@ public class Account extends MdxBase<Account> {
   private Double apr;
   @XmlElement(name = "apy")
   private Double apy;
+  @XmlElement(name = "challenges")
+  private MdxList<Challenge> challenges;
   @XmlElement(name = "credit_limit")
   private BigDecimal creditLimit;
   @XmlElement(name = "currency_code")
@@ -184,6 +188,14 @@ public class Account extends MdxBase<Account> {
 
   public final void setBalance(BigDecimal newBalance) {
     this.balance = newBalance;
+  }
+
+  public final MdxList<Challenge> getChallenges() {
+    return challenges;
+  }
+
+  public final void setChallenges(MdxList<Challenge> challenges) {
+    this.challenges = challenges;
   }
 
   public final BigDecimal getCreditLimit() {

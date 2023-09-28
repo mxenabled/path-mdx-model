@@ -92,7 +92,7 @@ public final class Question extends MdxBase<Question> {
     return errorMessage;
   }
 
-  public void setIsRequired(boolean isRequired) {
+  public void setIsRequired(Boolean isRequired) {
     this.isRequired = isRequired;
   }
 
