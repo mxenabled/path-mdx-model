@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.6.0](https://github.com/mxenabled/path-mdx-model/compare/v4.5.0...v4.6.0) (2023-10-04)
+
+
+### Features
+
+* add account stop payment, overdraft, and details endpoints ([9558ce0](https://github.com/mxenabled/path-mdx-model/commit/9558ce056b9934e8f57f2484a2a2ec385b6bb81c))
+
 ## [4.5.0](https://github.com/mxenabled/path-mdx-model/compare/v4.4.0...v4.5.0) (2023-09-26)
 
 
