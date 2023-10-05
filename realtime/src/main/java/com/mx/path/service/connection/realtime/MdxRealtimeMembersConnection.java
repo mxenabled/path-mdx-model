@@ -87,8 +87,8 @@ public class MdxRealtimeMembersConnection {
    * @return
    */
   public MdxRealtimeResponse<MdxMember> create(String userId, MdxMember mdxMember) {
-    MdxMemberWrapper mdxUserWrapper = new MdxMemberWrapper();
-    mdxUserWrapper.setMember(mdxMember);
+    MdxMemberWrapper mdxMemberWrapper = new MdxMemberWrapper();
+    mdxMemberWrapper.setMember(mdxMember);
 
     MediaType mdxType = new MediaType("application", "vnd.moneydesktop.mdx.v5+json");
 
@@ -99,7 +99,7 @@ public class MdxRealtimeMembersConnection {
           headers.put("Accept-Encoding", "gzip, deflate, br");
           headers.put("MD-API-KEY", connection.getConfig().getApiKey());
         })
-        .withBody(GSON.toJson(mdxUserWrapper))
+        .withBody(GSON.toJson(mdxMemberWrapper))
         .withOnComplete(response -> {
           HttpStatus status = response.getStatus();
           if (status == HttpStatus.UNAUTHORIZED) {
@@ -114,6 +114,45 @@ public class MdxRealtimeMembersConnection {
           return mdxRealtimeResponse;
         })
         .post()
+        .throwException()
+        .getObject();
+  }
+
+  /**
+   * Updates a member
+   *
+   * @param userId
+   * @param mdxMember
+   * @return
+   */
+  public MdxRealtimeResponse<MdxMember> update(String userId, MdxMember mdxMember) {
+    MdxMemberWrapper mdxMemberWrapper = new MdxMemberWrapper();
+    mdxMemberWrapper.setMember(mdxMember);
+
+    MediaType mdxType = new MediaType("application", "vnd.moneydesktop.mdx.v5+json");
+
+    return connection.request("/" + connection.getConfig().getClientId() + "/users/" + userId + "/members/" + mdxMember.getId() + ".json")
+        .withContentType(mdxType.toString())
+        .withAccept(mdxType.toString())
+        .withHeaders(headers -> {
+          headers.put("Accept-Encoding", "gzip, deflate, br");
+          headers.put("MD-API-KEY", connection.getConfig().getApiKey());
+        })
+        .withBody(GSON.toJson(mdxMemberWrapper))
+        .withOnComplete(response -> {
+          HttpStatus status = response.getStatus();
+          if (status == HttpStatus.UNAUTHORIZED) {
+            throw new UnauthorizedException("Encountered an authorization error updating MDX member", "Encountered an authorization error updating MDX member").withReport(true);
+          }
+        })
+        .withProcessor(response -> {
+          MdxRealtimeResponse<MdxMember> mdxRealtimeResponse = new MdxRealtimeResponse<>(response.getStatus());
+          if (response.getStatus() == HttpStatus.OK) {
+            mdxRealtimeResponse.setObject(GSON.fromJson(response.getBody(), MdxMemberWrapper.class).getMember());
+          }
+          return mdxRealtimeResponse;
+        })
+        .put()
         .throwException()
         .getObject();
   }

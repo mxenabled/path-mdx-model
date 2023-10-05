@@ -4,11 +4,7 @@ import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.when
 
 import com.mx.path.core.common.accessor.UnauthorizedException
-import com.mx.path.core.common.accessor.UpstreamSystemUnavailable
 import com.mx.path.core.common.http.HttpStatus
-import com.mx.path.service.connection.realtime.MdxRealtimeConnection
-import com.mx.path.service.connection.realtime.MdxRealtimeConnectionConfiguration
-import com.mx.path.service.connection.realtime.MdxRealtimeMembersConnection
 import com.mx.path.service.connection.realtime.model.MdxMember
 import com.mx.path.testing.WithRequestExpectations
 
@@ -135,7 +131,6 @@ class MdxRealtimeMembersConnectionTest extends Specification implements WithRequ
     noExceptionThrown()
     mdxRealtimeResponse.status == HttpStatus.OK
     mdxRealtimeResponse.object != null
-    mdxRealtimeResponse.object != null
     mdxRealtimeResponse.object.id == "x"
   }
 
@@ -154,5 +149,58 @@ class MdxRealtimeMembersConnectionTest extends Specification implements WithRequ
     then:
     def ex = thrown(UnauthorizedException)
     ex.message == "Encountered an authorization error getting MDX member"
+  }
+
+  def "update"() {
+    given:
+    expectConnection(withPath("/clientId/users/userId/members/memberId.json")
+        .withMatcher { request ->
+          return request.body == "{\n" +
+              "  \"member\": {\n" +
+              "    \"id\": \"memberId\",\n" +
+              "    \"userkey\": \"newUserKey\"\n" +
+              "  }\n" +
+              "}"
+        }
+        )
+        .toRespond { request, response ->
+          response.withStatus(HttpStatus.OK)
+          response.withBody("{\"member\":{\"id\":\"memberId\",\"userkey\":\"newUserKey\"}}")
+        }
+
+    def mdxMember = new MdxMember().tap {
+      id = "memberId"
+      userKey = "newUserKey"
+    }
+
+    when:
+    def mdxRealtimeResponse = subject.update("userId", mdxMember)
+
+    then:
+    noExceptionThrown()
+    mdxRealtimeResponse.status == HttpStatus.OK
+    mdxRealtimeResponse.object != null
+    mdxRealtimeResponse.object.id == "memberId"
+    mdxRealtimeResponse.object.userKey == "newUserKey"
+  }
+
+  def "create error"() {
+    given:
+    expectConnection(withPath("/clientId/users/userId/members/memberId.json"))
+        .toRespond { request, response ->
+          response.withStatus(HttpStatus.UNAUTHORIZED)
+        }
+
+    def mdxMember = new MdxMember().tap {
+      id = "memberId"
+      userKey = "newUserKey"
+    }
+
+    when:
+    def status = subject.update("userId", mdxMember)
+
+    then:
+    def ex = thrown(UnauthorizedException)
+    ex.message == "Encountered an authorization error updating MDX member"
   }
 }
