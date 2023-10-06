@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.7.0](https://github.com/mxenabled/path-mdx-model/compare/v4.6.0...v4.7.0) (2023-10-06)
+
+
+### Features
+
+* adding update for MdxRealtimeMembersConnection ([9f163b8](https://github.com/mxenabled/path-mdx-model/commit/9f163b880d1d01b86e48f50a78389018a81ac43c))
+
 ## [4.6.0](https://github.com/mxenabled/path-mdx-model/compare/v4.5.0...v4.6.0) (2023-10-04)
 
 
