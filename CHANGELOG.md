@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.7.1](https://github.com/mxenabled/path-mdx-model/compare/v4.7.0...v4.7.1) (2023-10-11)
+
+
+### Bug Fixes
+
+* check for challenges in create account controller ([730c281](https://github.com/mxenabled/path-mdx-model/commit/730c2813b6e8d86b5c5306b61e0ddd7719a6fa27))
+
 ## [4.7.0](https://github.com/mxenabled/path-mdx-model/compare/v4.6.0...v4.7.0) (2023-10-06)
 
 
