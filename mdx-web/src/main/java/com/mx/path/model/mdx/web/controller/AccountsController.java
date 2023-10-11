@@ -59,7 +59,14 @@ public class AccountsController extends BaseController {
   @RequestMapping(value = "/users/{userId}/accounts", method = RequestMethod.POST)
   public final ResponseEntity<Account> createAccount(@RequestBody Account accountRequest) throws Exception {
     AccessorResponse<Account> response = gateway().accounts().create(accountRequest);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+
+    // Return 202 returning challenge questions
+    Account result = response.getResult();
+    HttpStatus status = HttpStatus.OK;
+    if (result.getChallenges() != null && !result.getChallenges().isEmpty()) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 
   @RequestMapping(value = "/users/{userId}/accounts/{id}", method = RequestMethod.PUT)

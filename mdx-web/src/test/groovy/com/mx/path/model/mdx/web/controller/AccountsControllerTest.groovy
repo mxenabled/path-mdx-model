@@ -14,6 +14,7 @@ import com.mx.path.model.mdx.model.account.Transaction
 import com.mx.path.model.mdx.model.account.TransactionSearchRequest
 import com.mx.path.model.mdx.model.account.TransactionsPage
 import com.mx.path.model.mdx.model.account.options.TransactionListOptions
+import com.mx.path.model.mdx.model.challenges.Challenge
 import com.mx.path.testing.WithMockery
 
 import org.mockito.Mockito
@@ -46,7 +47,7 @@ class AccountsControllerTest extends Specification implements WithMockery {
 
   def "create when implemented"() {
     given:
-    def account = new Account();
+    def account = new Account()
     AccountsController.setGateway(gateway)
     Mockito.doReturn(new AccessorResponse<Account>().withResult(account)).when(accountGateway).create(account)
 
@@ -57,6 +58,24 @@ class AccountsControllerTest extends Specification implements WithMockery {
     verify(accountGateway).create(account) || true
     response.body == account
     HttpStatus.OK == response.statusCode
+  }
+
+  def "create with challenges"() {
+    given:
+    def challenges = new MdxList()
+    challenges.add(new Challenge())
+    def account = new Account()
+    account.setChallenges(challenges)
+    AccountsController.setGateway(gateway)
+    Mockito.doReturn(new AccessorResponse<Account>().withResult(account)).when(accountGateway).create(account)
+
+    when:
+    def response = subject.createAccount(account)
+
+    then:
+    verify(accountGateway).create(account) || true
+    response.body == account
+    HttpStatus.ACCEPTED == response.statusCode
   }
 
   def "delete when implemented"() {
