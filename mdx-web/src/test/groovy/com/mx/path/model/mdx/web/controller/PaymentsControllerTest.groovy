@@ -8,7 +8,9 @@ import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.payment.PaymentGateway
 import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.account.Account
+import com.mx.path.model.mdx.model.challenges.Challenge
 import com.mx.path.model.mdx.model.payment.Payment
+import com.mx.path.model.mdx.model.payment.Settings
 
 import org.mockito.Mockito
 import org.springframework.http.HttpStatus
@@ -123,5 +125,77 @@ class PaymentsControllerTest extends Specification {
     HttpStatus.OK == response.getStatusCode()
     response.getBody() == accounts
     verify(paymentGateway).accounts() || true
+  }
+
+  def "getPaymentSettings interacts with gateway - 202"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def settings = new Settings().tap {
+      setChallenges(new ArrayList<Challenge>().tap {
+        add(new Challenge())
+      })
+    }
+
+    when:
+    Mockito.doReturn(new AccessorResponse<Settings>().withResult(settings)).when(paymentGateway).settings()
+    def response = subject.getPaymentSettings()
+
+    then:
+    HttpStatus.ACCEPTED == response.getStatusCode()
+    response.getBody() == settings
+    verify(paymentGateway).settings() || true
+  }
+
+  def "getPaymentSettings interacts with gateway - 200"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def settings = new Settings()
+
+    when:
+    Mockito.doReturn(new AccessorResponse<Settings>().withResult(settings)).when(paymentGateway).settings()
+    def response = subject.getPaymentSettings()
+
+    then:
+    HttpStatus.OK == response.getStatusCode()
+    response.getBody() == settings
+    verify(paymentGateway).settings() || true
+  }
+
+  def "setPaymentSettings interacts with gateway - 202"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def settings = new Settings().tap {
+      setChallenges(new ArrayList<Challenge>().tap {
+        add(new Challenge())
+      })
+    }
+
+    when:
+    Mockito.doReturn(new AccessorResponse<Settings>().withResult(settings)).when(paymentGateway).updateSettings(settings)
+    def response = subject.setPaymentSettings(settings)
+
+    then:
+    HttpStatus.ACCEPTED == response.getStatusCode()
+    response.getBody() == settings
+    verify(paymentGateway).updateSettings(settings) || true
+  }
+
+  def "setPaymentSettings interacts with gateway - 200"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def settings = new Settings()
+
+    when:
+    Mockito.doReturn(new AccessorResponse<Settings>().withResult(settings)).when(paymentGateway).updateSettings(settings)
+    def response = subject.setPaymentSettings(settings)
+
+    then:
+    HttpStatus.OK == response.getStatusCode()
+    response.getBody() == settings
+    verify(paymentGateway).updateSettings(settings) || true
   }
 }

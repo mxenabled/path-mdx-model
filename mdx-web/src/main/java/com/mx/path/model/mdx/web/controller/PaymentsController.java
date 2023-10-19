@@ -34,12 +34,22 @@ public class PaymentsController extends BaseController {
   @RequestMapping(value = "/payments/settings", method = RequestMethod.GET, consumes = BaseController.MDX_MEDIA)
   public final ResponseEntity<Settings> getPaymentSettings() {
     AccessorResponse<Settings> response = gateway().payments().settings();
+    Settings result = response.getResult();
+    // Return 202 returning challenge questions
+    if (result != null && result.getChallenges() != null && result.getChallenges().size() > 0) {
+      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+    }
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/payments/settings", method = RequestMethod.PUT, consumes = BaseController.MDX_MEDIA)
   public final ResponseEntity<Settings> setPaymentSettings(@RequestBody Settings settingsRequest) {
     AccessorResponse<Settings> response = gateway().payments().updateSettings(settingsRequest);
+    Settings result = response.getResult();
+    // Return 202 returning challenge questions
+    if (result != null && result.getChallenges() != null && result.getChallenges().size() > 0) {
+      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+    }
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
