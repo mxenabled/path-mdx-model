@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.7.2](https://github.com/mxenabled/path-mdx-model/compare/v4.7.1...v4.7.2) (2023-10-21)
+
+
+### Bug Fixes
+
+* return 202 when challenge provided when fetching/updating payment settings ([6cced96](https://github.com/mxenabled/path-mdx-model/commit/6cced96fe2aa98ebe5af01832b477abd7b147119))
+
 ## [4.7.1](https://github.com/mxenabled/path-mdx-model/compare/v4.7.0...v4.7.1) (2023-10-11)
 
 
