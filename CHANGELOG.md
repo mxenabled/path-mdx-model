@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.7.3](https://github.com/mxenabled/path-mdx-model/compare/v4.7.2...v4.7.3) (2023-10-24)
+
+
+### Bug Fixes
+
+* get to enrollment and settings should not expect content-type header ([067cb7d](https://github.com/mxenabled/path-mdx-model/commit/067cb7d899bbf704c15bfbe6ae1830fdcfb18df5))
+
 ## [4.7.2](https://github.com/mxenabled/path-mdx-model/compare/v4.7.1...v4.7.2) (2023-10-21)
 
 
