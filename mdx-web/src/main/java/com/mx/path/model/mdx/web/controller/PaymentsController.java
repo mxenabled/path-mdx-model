@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "{clientId}/users/{user_id}", produces = BaseController.MDX_MEDIA)
 public class PaymentsController extends BaseController {
 
-  @RequestMapping(value = "/payments/enrollment", method = RequestMethod.GET, consumes = BaseController.MDX_MEDIA)
+  @RequestMapping(value = "/payments/enrollment", method = RequestMethod.GET)
   public final ResponseEntity<Enrollment> getPaymentEnrollment() {
     AccessorResponse<Enrollment> response = gateway().payments().enrollment();
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
@@ -31,7 +31,7 @@ public class PaymentsController extends BaseController {
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
-  @RequestMapping(value = "/payments/settings", method = RequestMethod.GET, consumes = BaseController.MDX_MEDIA)
+  @RequestMapping(value = "/payments/settings", method = RequestMethod.GET)
   public final ResponseEntity<Settings> getPaymentSettings() {
     AccessorResponse<Settings> response = gateway().payments().settings();
     Settings result = response.getResult();
