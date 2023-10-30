@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- This configuration is for testing only. -->
+
+    <!--
+      In normal configuration, SplunkLogger will use class com.splunk.logging.HttpEventCollectorLogbackAppender
+      Can't use that here because this library has dependencies on Spring.
+    -->
+    <appender name="splunkLogger" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%message</pattern>
+        </layout>
+    </appender>
+
+    <logger name="splunk.afcu" level="info" additivity="false">
+        <appender-ref ref="splunkLogger" />
+    </logger>
+</configuration>

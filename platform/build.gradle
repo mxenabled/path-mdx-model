@@ -20,6 +20,8 @@ dependencies {
     api project(":mdx-models")
     api project(":mdx-web")
     api project(":realtime")
+    api project(":legacy")
+    api project(":splunk-logger")
   }
 }
 
