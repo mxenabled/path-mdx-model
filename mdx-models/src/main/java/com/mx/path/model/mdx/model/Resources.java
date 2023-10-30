@@ -76,6 +76,7 @@ import com.mx.path.model.mdx.model.payout.Question;
 import com.mx.path.model.mdx.model.payout.Recipient;
 import com.mx.path.model.mdx.model.payout.RecurringPayout;
 import com.mx.path.model.mdx.model.profile.Address;
+import com.mx.path.model.mdx.model.profile.ChallengeQuestions;
 import com.mx.path.model.mdx.model.profile.Email;
 import com.mx.path.model.mdx.model.profile.Password;
 import com.mx.path.model.mdx.model.profile.Phone;
@@ -292,6 +293,8 @@ public class Resources {
     }.getType(), new ModelWrappableSerializer("profiles"));
     // Addresses
     builder.registerTypeAdapter(Address.class, new ModelWrappableSerializer("address"));
+    // Challenge Questions
+    builder.registerTypeAdapter(ChallengeQuestions.class, new ModelWrappableSerializer("challenge_questions"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Address>>() {
     }.getType(), new ModelWrappableSerializer("addresses"));
     // Phones

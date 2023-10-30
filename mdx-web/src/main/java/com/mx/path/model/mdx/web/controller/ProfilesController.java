@@ -4,6 +4,7 @@ import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.challenges.Challenge;
 import com.mx.path.model.mdx.model.profile.Address;
+import com.mx.path.model.mdx.model.profile.ChallengeQuestions;
 import com.mx.path.model.mdx.model.profile.Email;
 import com.mx.path.model.mdx.model.profile.Password;
 import com.mx.path.model.mdx.model.profile.Phone;
@@ -65,6 +66,23 @@ public class ProfilesController extends BaseController {
   @RequestMapping(value = "/users/{userId}/profile/addresses/{addressId}", method = RequestMethod.DELETE)
   public final ResponseEntity<?> deleteAddress(@PathVariable("addressId") String addressId) {
     AccessorResponse<Void> response = gateway().profiles().addresses().delete(addressId);
+    return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
+  }
+
+  @RequestMapping(value = "/users/{userId}/profile/challenge_questions", method = RequestMethod.GET)
+  public final ResponseEntity<ChallengeQuestions> getChallengeQuestions() {
+    AccessorResponse<ChallengeQuestions> response = gateway().profiles().challengeQuestions().list();
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+  }
+
+  @RequestMapping(value = "/users/{userId}/profile/challenge_questions", method = RequestMethod.PUT, consumes = MDX_MEDIA)
+  public final ResponseEntity<?> updateChallengeQuestions(@RequestBody ChallengeQuestions challengeQuestions) {
+    AccessorResponse<ChallengeQuestions> response = gateway().profiles().challengeQuestions().update(challengeQuestions);
+
+    ChallengeQuestions result = response.getResult();
+    if (result.getChallenges() != null && !result.getChallenges().isEmpty()) {
+      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+    }
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
 

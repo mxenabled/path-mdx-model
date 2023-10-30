@@ -8,12 +8,14 @@ import static org.mockito.Mockito.verify
 import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.profile.AddressGateway
+import com.mx.path.gateway.api.profile.ChallengeQuestionGateway
 import com.mx.path.gateway.api.profile.EmailGateway
 import com.mx.path.gateway.api.profile.PhoneGateway
 import com.mx.path.gateway.api.profile.ProfileGateway
 import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.challenges.Challenge
 import com.mx.path.model.mdx.model.profile.Address
+import com.mx.path.model.mdx.model.profile.ChallengeQuestions
 import com.mx.path.model.mdx.model.profile.Email
 import com.mx.path.model.mdx.model.profile.Password
 import com.mx.path.model.mdx.model.profile.Phone
@@ -29,6 +31,7 @@ class ProfilesControllerTest extends Specification {
   Gateway gateway
   ProfileGateway profileGateway
   AddressGateway addressGateway
+  ChallengeQuestionGateway challengeQuestionGateway
   EmailGateway emailGateway
   PhoneGateway phoneGateway
   String clientId
@@ -37,9 +40,10 @@ class ProfilesControllerTest extends Specification {
     clientId = "client123"
 
     addressGateway = spy(AddressGateway.builder().clientId(clientId).build())
+    challengeQuestionGateway = spy(ChallengeQuestionGateway.builder().clientId(clientId).build())
     emailGateway = spy(EmailGateway.builder().clientId(clientId).build())
     phoneGateway = spy(PhoneGateway.builder().clientId(clientId).build())
-    profileGateway = spy(ProfileGateway.builder().clientId(clientId).emails(emailGateway).phones(phoneGateway).addresses(addressGateway).build())
+    profileGateway = spy(ProfileGateway.builder().clientId(clientId).emails(emailGateway).phones(phoneGateway).addresses(addressGateway).challengeQuestions(challengeQuestionGateway).build())
     gateway = spy(Gateway.builder().clientId(clientId).profiles(profileGateway).build())
 
     subject = new ProfilesController()
@@ -147,6 +151,59 @@ class ProfilesControllerTest extends Specification {
     response.body == mockResponse.result
     response.body.wrapped
     response.statusCode == HttpStatus.OK
+  }
+
+  def "getChallengeQuestions_implemented"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def mockResponse = new AccessorResponse<ChallengeQuestions>().withResult(new ChallengeQuestions())
+    doReturn(mockResponse).when(challengeQuestionGateway).list()
+
+    when:
+    def response = subject.getChallengeQuestions()
+
+    then:
+    response.body == mockResponse.result
+    response.body.wrapped
+    response.statusCode == HttpStatus.ACCEPTED
+  }
+
+  def "updateChallengeQuestions_implemented response is 202"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def body = new ChallengeQuestions()
+    def challenges = new MdxList()
+    challenges.add(new Challenge())
+
+    def mockResponse = new AccessorResponse<ChallengeQuestions>().withResult(new ChallengeQuestions().tap {
+      setChallenges(challenges)
+    })
+    doReturn(mockResponse).when(challengeQuestionGateway).update(body)
+
+    when:
+    def response = subject.updateChallengeQuestions(body)
+
+    then:
+    response.body == mockResponse.result
+    response.body.wrapped
+    response.statusCode == HttpStatus.ACCEPTED
+  }
+
+  def "updateChallengeQuestions_implemented response is 204"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def body = new ChallengeQuestions()
+    def mockResponse = new AccessorResponse<ChallengeQuestions>().withResult(new ChallengeQuestions())
+    doReturn(mockResponse).when(challengeQuestionGateway).update(body)
+
+    when:
+    def response = subject.updateChallengeQuestions(body)
+
+    then:
+    response.statusCode == HttpStatus.NO_CONTENT
   }
 
   def "deleteAddress_implemented"() {

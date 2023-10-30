@@ -31,6 +31,10 @@ public class ProfileBaseAccessor extends Accessor {
 
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
+  private ChallengeQuestionBaseAccessor challengeQuestions;
+
+  @GatewayAPI
+  @Getter(AccessLevel.PROTECTED)
   private EmailBaseAccessor emails;
 
   @GatewayAPI
@@ -70,6 +74,29 @@ public class ProfileBaseAccessor extends Accessor {
    */
   public void setAddresses(AddressBaseAccessor addresses) {
     this.addresses = addresses;
+  }
+
+  /**
+   * Accessor for challenge question operations
+   *
+   * @return accessor
+   */
+  @API(specificationUrl = "https://developer.mx.com/drafts/mdx/profile/index.html#challenge-questions")
+  public ChallengeQuestionBaseAccessor challengeQuestions() {
+    if (challengeQuestions != null) {
+      return challengeQuestions;
+    }
+
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Set challege questions accessor
+   *
+   * @param challengeQuestions
+   */
+  public void setChallengeQuestions(ChallengeQuestionBaseAccessor challengeQuestions) {
+    this.challengeQuestions = challengeQuestions;
   }
 
   /**
