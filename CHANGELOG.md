@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.8.0](https://github.com/mxenabled/path-mdx-model/compare/v4.7.3...v4.8.0) (2023-11-01)
+
+
+### Features
+
+* add list and update challenge questions endpoints ([f723361](https://github.com/mxenabled/path-mdx-model/commit/f7233616957c86800045a5835f8e577ad4bcab9c))
+
 ## [4.7.3](https://github.com/mxenabled/path-mdx-model/compare/v4.7.2...v4.7.3) (2023-10-24)
 
 
