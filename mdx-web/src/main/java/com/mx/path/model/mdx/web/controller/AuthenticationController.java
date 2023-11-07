@@ -1,12 +1,15 @@
 package com.mx.path.model.mdx.web.controller;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
+import com.google.common.hash.Hashing;
 import com.mx.path.core.common.accessor.BadRequestException;
 import com.mx.path.core.common.lang.Strings;
 import com.mx.path.core.context.Session;
 import com.mx.path.core.context.Session.SessionState;
 import com.mx.path.gateway.accessor.AccessorResponse;
+import com.mx.path.gateway.context.Scope;
 import com.mx.path.model.mdx.model.authorization.HtmlPage;
 import com.mx.path.model.mdx.model.id.Authentication;
 import com.mx.path.model.mdx.model.id.ForgotUsername;
@@ -45,6 +48,9 @@ public class AuthenticationController extends BaseController {
     Session.current().setDeviceLatitude(requestAuthentication.getDeviceLatitude());
     Session.current().setDeviceLongitude(requestAuthentication.getDeviceLongitude());
     Session.current().setDeviceWidth(requestAuthentication.getDeviceWidth());
+
+    // Store login for troubleshooting failed authentication
+    dumpEncryptedLoginHashToSession(requestAuthentication.getLogin());
 
     AccessorResponse<Authentication> accessorResponse;
     accessorResponse = getAuthenticationResult(requestAuthentication);
@@ -194,8 +200,19 @@ public class AuthenticationController extends BaseController {
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 
+  // Package private
+
+  final void dumpEncryptedLoginHashToSession(String login) {
+    if (Strings.isNotBlank(login)) {
+      String sha256hex = Hashing.sha256()
+          .hashString(login, StandardCharsets.UTF_8)
+          .toString();
+      Session.current().sput(Scope.Session, "loginHash", sha256hex);
+    }
+  }
+
   @SuppressWarnings("PMD.UselessParentheses")
-  private AccessorResponse<Authentication> getAuthenticationResult(Authentication requestAuthentication) {
+  final AccessorResponse<Authentication> getAuthenticationResult(Authentication requestAuthentication) {
     AccessorResponse<Authentication> result;
     if (Strings.isNotBlank(requestAuthentication.getToken())
         || Strings.isNotBlank(requestAuthentication.getAccessToken())

@@ -6,7 +6,11 @@ import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 import static org.mockito.Mockito.when
 
+import java.nio.charset.StandardCharsets
+
+import com.google.common.hash.Hashing
 import com.mx.path.core.common.accessor.PathResponseStatus
+import com.mx.path.core.common.collection.ObjectMap
 import com.mx.path.core.context.RequestContext
 import com.mx.path.core.context.ResponseContext
 import com.mx.path.core.context.Session
@@ -14,6 +18,7 @@ import com.mx.path.core.context.store.SessionRepository
 import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.id.IdGateway
+import com.mx.path.gateway.context.Scope
 import com.mx.path.model.mdx.model.authorization.Authorization
 import com.mx.path.model.mdx.model.authorization.HtmlPage
 import com.mx.path.model.mdx.model.challenges.Challenge
@@ -23,6 +28,10 @@ import com.mx.path.model.mdx.model.id.ForgotUsername
 import com.mx.path.model.mdx.model.id.MfaChallenge
 import com.mx.path.model.mdx.model.id.ResetPassword
 import com.mx.path.testing.WithMockery
+import com.mx.path.testing.WithSessionRepository
+import com.mx.path.testing.session.TestEncryptionService
+import com.mx.path.testing.session.TestSessionRepository
+import com.mx.testing.Utils
 
 import org.mockito.invocation.InvocationOnMock
 import org.mockito.stubbing.Answer
@@ -46,6 +55,8 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
 
     sessionRepository = Mock()
     Session.setRepositorySupplier({ -> sessionRepository })
+    Utils.injectSessionEncryptionService()
+
     RequestContext.builder().build().register()
     ResponseContext.builder().build().register()
 
@@ -171,6 +182,32 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     then:
     verify(id).authenticate(authentication) || true
     "client1234" == Session.current().getClientId()
+  }
+
+  def "dumpEncryptedLoginHashToSession() saves encrypted login as sha256 to session"() {
+    given:
+    // manually setup session
+    SessionRepository repository = new TestSessionRepository()
+    Session.setRepositorySupplier({ -> repository })
+    TestEncryptionService testEncryptionService = new TestEncryptionService(new ObjectMap())
+    Session.setEncryptionServiceSupplier({-> testEncryptionService})
+    Utils.injectSessionEncryptionService()
+
+    def login = "user_1234"
+    def authentication = new Authentication().tap { setLogin(login)}
+    def subjectSpy = spy(subject)
+    doReturn(new AccessorResponse<Authentication>().withResult(authentication)).when(subjectSpy).getAuthenticationResult(authentication)
+
+    when:
+    subjectSpy.authenticate("client1234", authentication)
+
+    then:
+    def hashedLogin = Session.current().get(Scope.Session, "loginHash")
+    String sha256hex = Hashing.sha256()
+        .hashString(login, StandardCharsets.UTF_8)
+        .toString()
+    hashedLogin == sha256hex
+
   }
 
   def "loginWithPasswordWithChallenges"() {
