@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.9.0](https://github.com/mxenabled/path-mdx-model/compare/v4.8.0...v4.9.0) (2023-11-08)
+
+
+### Features
+
+* dump encrypted sha256 user login to session for troubleshooting failed logins as login_hash ([3aeeee2](https://github.com/mxenabled/path-mdx-model/commit/3aeeee2d879ca9145621af86e9b292b7e040897c))
+
 ## [4.8.0](https://github.com/mxenabled/path-mdx-model/compare/v4.7.3...v4.8.0) (2023-11-01)
 
 
