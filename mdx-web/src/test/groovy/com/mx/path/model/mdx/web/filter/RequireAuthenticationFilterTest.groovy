@@ -118,6 +118,22 @@ class RequireAuthenticationFilterTest extends Specification {
     subject.doFilter(request, response, filterChain)
   }
 
+  def "userRouteWithDifferentUserIdFromSessionUserId"() {
+    given:
+    Session.createSession()
+    Session.current().setUserId("user123")
+    Session.current().setSessionState(Session.SessionState.AUTHENTICATED)
+    setPath("/hughes/users/U-197191/accounts")
+
+    when:
+    subject.doFilter(request, response, filterChain)
+
+    then:
+    def err = thrown(UnauthorizedException)
+    err.message == "User does not match user session"
+    err.userMessage == "Not Authenticated"
+  }
+
   private void setPath(String path) {
     request.getServletPath() >> path
   }

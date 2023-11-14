@@ -28,6 +28,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 public class RequireAuthenticationFilter extends OncePerRequestFilter {
 
   @Override
+  @SuppressWarnings("PMD.CyclomaticComplexity")
   protected final void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
       throws ServletException, IOException {
     String path = request.getServletPath();
@@ -46,6 +47,12 @@ public class RequireAuthenticationFilter extends OncePerRequestFilter {
       throw new UnauthorizedException("Not Authenticated", "Not Authenticated");
     }
 
+    if (PathTools.isUserRequiredPath(path)) {
+      String userId = PathTools.extractUserId(path);
+      if (userId != null && !userId.equals(Session.current().getUserId())) {
+        throw new UnauthorizedException("User does not match user session", "Not Authenticated");
+      }
+    }
     filterChain.doFilter(request, response);
   }
 }
