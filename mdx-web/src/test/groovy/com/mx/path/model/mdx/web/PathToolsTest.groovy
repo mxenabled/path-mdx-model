@@ -29,6 +29,14 @@ class PathToolsTest extends Specification {
     PathTools.isAuthenticationPath("/hughes/authentications/start")
   }
 
+  def "isUserRequiredPath"() {
+    expect:
+    !PathTools.isUserRequiredPath("/hughes/authentications")
+    !PathTools.isUserRequiredPath("/hughes/authentications/")
+    !PathTools.isUserRequiredPath("/hughes/authentications/start")
+    PathTools.isUserRequiredPath("/hughes/users/U-197191/accounts")
+  }
+
   def "isAuthenticationPathIsFalseOnLogoutAndMFARoutes"() {
     expect:
     !PathTools.isAuthenticationPath("/hughes/authentications/session-1234")
@@ -50,5 +58,10 @@ class PathToolsTest extends Specification {
   def "extractSessionId"() {
     expect:
     PathTools.extractSessionId("/hughes/authentications/session-1234/sso") == "session-1234"
+  }
+
+  def "extractUserId"() {
+    expect:
+    PathTools.extractUserId("/hughes/users/U-197191/accounts") == "U-197191"
   }
 }
