@@ -62,6 +62,7 @@ public class PathTools {
    */
   private static final Pattern PATH_CLIENT_GUID_PATTERN = Pattern.compile("^\\/((?<clientId>[^\\/]+)\\/.*)");
   private static final Pattern PATH_SESSION_ID_PATTERN = Pattern.compile("^\\/[^\\/]+\\/authentications\\/(?<sessionId>[^\\/]+)\\/sso\\/*");
+  private static final Pattern PATH_USER_ID_PATTERN = Pattern.compile("^\\/[^\\/]+\\/users\\/(?<userId>[^\\/]+)\\/.*$");
 
   /**
    * Extract the ClientId from a path
@@ -102,6 +103,10 @@ public class PathTools {
     return AUTHENTICATION_REQUIRED_PATHS.stream().anyMatch(p -> p.test(path));
   }
 
+  public static boolean isUserRequiredPath(String path) {
+    return PATH_USER_ID_PATTERN.asPredicate().test(path);
+  }
+
   public static String extractSessionId(String path) {
     Matcher sessionIdMatcher = PATH_SESSION_ID_PATTERN.matcher(path);
     if (sessionIdMatcher.matches()) {
@@ -109,5 +114,10 @@ public class PathTools {
     }
 
     return null;
+  }
+
+  public static String extractUserId(String path) {
+    Matcher userIdMatcher = PATH_USER_ID_PATTERN.matcher(path);
+    return userIdMatcher.matches() ? userIdMatcher.group("userId") : null;
   }
 }
