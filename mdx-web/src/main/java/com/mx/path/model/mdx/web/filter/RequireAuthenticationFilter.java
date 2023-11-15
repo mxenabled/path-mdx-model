@@ -49,7 +49,7 @@ public class RequireAuthenticationFilter extends OncePerRequestFilter {
 
     if (PathTools.isUserRequiredPath(path)) {
       String userId = PathTools.extractUserId(path);
-      if (userId != null && !userId.equals(Session.current().getUserId())) {
+      if (userId != null && Session.current().getUserId() != null && !userId.equals(Session.current().getUserId())) {
         throw new UnauthorizedException("User does not match user session", "Not Authenticated");
       }
     }
