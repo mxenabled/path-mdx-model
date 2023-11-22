@@ -52,6 +52,8 @@ public class Transaction extends MdxBase<Transaction> {
   private Long postedAt;
   @XmlElement(name = "posted_on")
   private LocalDate postedOn;
+  @XmlElement(name = "running_balance")
+  private Double runningBalance;
   @XmlElement(name = "status")
   private String status;
   @XmlElement(name = "transacted_at")
@@ -225,6 +227,14 @@ public class Transaction extends MdxBase<Transaction> {
 
   public final void setPostedOn(LocalDate newPostedOn) {
     this.postedOn = newPostedOn;
+  }
+
+  public final Double getRunningBalance() {
+    return runningBalance;
+  }
+
+  public final void setRunningBalance(Double runningBalance) {
+    this.runningBalance = runningBalance;
   }
 
   public final String getStatus() {
