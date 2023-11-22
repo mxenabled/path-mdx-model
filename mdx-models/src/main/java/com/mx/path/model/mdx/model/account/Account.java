@@ -232,19 +232,19 @@ public class Account extends MdxBase<Account> {
     this.currencyCode = newCurrencyCode;
   }
 
-  public Double getDailyDepositLimitCurrent() {
+  public final Double getDailyDepositLimitCurrent() {
     return dailyDepositLimitCurrent;
   }
 
-  public void setDailyDepositLimitCurrent(Double dailyDepositLimitCurrent) {
+  public final void setDailyDepositLimitCurrent(Double dailyDepositLimitCurrent) {
     this.dailyDepositLimitCurrent = dailyDepositLimitCurrent;
   }
 
-  public Double getDailyDepositLimitTotal() {
+  public final Double getDailyDepositLimitTotal() {
     return dailyDepositLimitTotal;
   }
 
-  public void setDailyDepositLimitTotal(Double dailyDepositLimitTotal) {
+  public final void setDailyDepositLimitTotal(Double dailyDepositLimitTotal) {
     this.dailyDepositLimitTotal = dailyDepositLimitTotal;
   }
 
@@ -288,19 +288,19 @@ public class Account extends MdxBase<Account> {
     this.id = newId;
   }
 
-  public Double getInterestPaidPreviousYear() {
+  public final Double getInterestPaidPreviousYear() {
     return interestPaidPreviousYear;
   }
 
-  public void setInterestPaidPreviousYear(Double interestPaidPreviousYear) {
+  public final void setInterestPaidPreviousYear(Double interestPaidPreviousYear) {
     this.interestPaidPreviousYear = interestPaidPreviousYear;
   }
 
-  public Double getInterestPaidYtd() {
+  public final Double getInterestPaidYtd() {
     return interestPaidYtd;
   }
 
-  public void setInterestPaidYtd(Double interestPaidYtd) {
+  public final void setInterestPaidYtd(Double interestPaidYtd) {
     this.interestPaidYtd = interestPaidYtd;
   }
 
@@ -352,19 +352,19 @@ public class Account extends MdxBase<Account> {
     this.lastPaymentOn = newLastPaymentOn;
   }
 
-  public Double getMonthlyDepositLimitCurrent() {
+  public final Double getMonthlyDepositLimitCurrent() {
     return monthlyDepositLimitCurrent;
   }
 
-  public void setMonthlyDepositLimitCurrent(Double monthlyDepositLimitCurrent) {
+  public final void setMonthlyDepositLimitCurrent(Double monthlyDepositLimitCurrent) {
     this.monthlyDepositLimitCurrent = monthlyDepositLimitCurrent;
   }
 
-  public Double getMonthlyDepositLimitTotal() {
+  public final Double getMonthlyDepositLimitTotal() {
     return monthlyDepositLimitTotal;
   }
 
-  public void setMonthlyDepositLimitTotal(Double monthlyDepositLimitTotal) {
+  public final void setMonthlyDepositLimitTotal(Double monthlyDepositLimitTotal) {
     this.monthlyDepositLimitTotal = monthlyDepositLimitTotal;
   }
 
@@ -448,11 +448,11 @@ public class Account extends MdxBase<Account> {
     this.nickname = newNickname;
   }
 
-  public Double getNextPayment() {
+  public final Double getNextPayment() {
     return nextPayment;
   }
 
-  public void setNextPayment(Double nextPayment) {
+  public final void setNextPayment(Double nextPayment) {
     this.nextPayment = nextPayment;
   }
 
@@ -520,11 +520,11 @@ public class Account extends MdxBase<Account> {
     this.pendingTransactionsTotal = pendingTransactionsTotal;
   }
 
-  public Double getPrincipalBalance() {
+  public final Double getPrincipalBalance() {
     return principalBalance;
   }
 
-  public void setPrincipalBalance(Double principalBalance) {
+  public final void setPrincipalBalance(Double principalBalance) {
     this.principalBalance = principalBalance;
   }
 
@@ -576,11 +576,11 @@ public class Account extends MdxBase<Account> {
     this.statementClosedOn = newStatementClosedOn;
   }
 
-  public Double getStatementLateCharges() {
+  public final Double getStatementLateCharges() {
     return statementLateCharges;
   }
 
-  public void setStatementLateCharges(Double statementLateCharges) {
+  public final void setStatementLateCharges(Double statementLateCharges) {
     this.statementLateCharges = statementLateCharges;
   }
 
