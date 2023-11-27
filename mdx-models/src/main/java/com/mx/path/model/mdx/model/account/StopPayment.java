@@ -9,7 +9,7 @@ import com.mx.path.model.mdx.model.MdxBase;
 @Data
 public class StopPayment extends MdxBase<StopPayment> {
   private Double amount;
-  private String effectiveOn;
+  private String effectiveDate;
   private String endingCheckNumber;
   private Double fee;
   private String id;
