@@ -5,6 +5,20 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.10.0](https://github.com/mxenabled/path-mdx-model/compare/v4.9.0...v4.10.0) (2023-11-28)
+
+
+### Features
+
+* add runningBalance field to transaction model ([161212b](https://github.com/mxenabled/path-mdx-model/commit/161212b335f309452088825e150ea5a89b454868))
+
+
+### Bug Fixes
+
+* dataType update ([efc92b1](https://github.com/mxenabled/path-mdx-model/commit/efc92b105efa41f5b69aa9d75c6cb157926cffa1))
+* effectiveOn ([87e90e0](https://github.com/mxenabled/path-mdx-model/commit/87e90e0b81cc2e984544f15c6ac3a92b5b349137))
+* field name update ([94f7cd1](https://github.com/mxenabled/path-mdx-model/commit/94f7cd1ea6cb501bee6a4a24f9bad6dd7aa06ace))
+
 ## [4.9.0](https://github.com/mxenabled/path-mdx-model/compare/v4.8.0...v4.9.0) (2023-11-08)
 
 
