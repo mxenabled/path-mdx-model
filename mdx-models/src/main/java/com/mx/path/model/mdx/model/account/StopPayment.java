@@ -1,11 +1,11 @@
 package com.mx.path.model.mdx.model.account;
 
+import java.time.LocalDate;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import com.mx.path.model.mdx.model.MdxBase;
-
-import java.time.LocalDate;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
