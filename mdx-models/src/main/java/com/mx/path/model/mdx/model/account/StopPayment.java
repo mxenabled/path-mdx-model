@@ -5,11 +5,13 @@ import lombok.EqualsAndHashCode;
 
 import com.mx.path.model.mdx.model.MdxBase;
 
+import java.time.LocalDate;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class StopPayment extends MdxBase<StopPayment> {
   private Double amount;
-  private String effectiveOn;
+  private LocalDate effectiveOn;
   private String endingCheckNumber;
   private Double fee;
   private String id;
