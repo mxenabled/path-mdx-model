@@ -5,6 +5,7 @@ import static org.mockito.Mockito.doReturn
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
+import com.mx.path.core.common.accessor.PathResponseStatus
 import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.profile.AddressGateway
@@ -179,7 +180,8 @@ class ProfilesControllerTest extends Specification {
 
     def mockResponse = new AccessorResponse<ChallengeQuestions>().withResult(new ChallengeQuestions().tap {
       setChallenges(challenges)
-    })
+    }).withStatus(PathResponseStatus.ACCEPTED)
+
     doReturn(mockResponse).when(challengeQuestionGateway).update(body)
 
     when:
@@ -196,7 +198,7 @@ class ProfilesControllerTest extends Specification {
     ProfilesController.setGateway(gateway)
 
     def body = new ChallengeQuestions()
-    def mockResponse = new AccessorResponse<ChallengeQuestions>().withResult(new ChallengeQuestions())
+    def mockResponse = new AccessorResponse<ChallengeQuestions>().withResult(new ChallengeQuestions()).withStatus(PathResponseStatus.ACCEPTED)
     doReturn(mockResponse).when(challengeQuestionGateway).update(body)
 
     when:
