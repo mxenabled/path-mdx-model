@@ -1,6 +1,5 @@
 package com.mx.path.model.mdx.web.controller;
 
-import com.mx.path.core.common.accessor.PathResponseStatus;
 import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.challenges.Challenge;
@@ -80,11 +79,9 @@ public class ProfilesController extends BaseController {
   public final ResponseEntity<?> updateChallengeQuestions(@RequestBody ChallengeQuestions challengeQuestions) {
     AccessorResponse<ChallengeQuestions> response = gateway().profiles().challengeQuestions().update(challengeQuestions);
 
-    if (!response.getStatus().equals(PathResponseStatus.NO_CONTENT)) {
-      ChallengeQuestions result = response.getResult();
-      if (result.getChallenges() != null && !result.getChallenges().isEmpty()) {
-        return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
-      }
+    ChallengeQuestions result = response.getResult();
+    if (result != null && result.getChallenges() != null && !result.getChallenges().isEmpty()) {
+      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
     }
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
