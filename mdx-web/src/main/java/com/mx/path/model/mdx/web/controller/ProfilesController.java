@@ -79,9 +79,11 @@ public class ProfilesController extends BaseController {
   public final ResponseEntity<?> updateChallengeQuestions(@RequestBody ChallengeQuestions challengeQuestions) {
     AccessorResponse<ChallengeQuestions> response = gateway().profiles().challengeQuestions().update(challengeQuestions);
 
-    ChallengeQuestions result = response.getResult();
-    if (result.getChallenges() != null && !result.getChallenges().isEmpty()) {
-      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+    if (!response.getStatus().equals(HttpStatus.NO_CONTENT)) {
+      ChallengeQuestions result = response.getResult();
+      if (result.getChallenges() != null && !result.getChallenges().isEmpty()) {
+        return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+      }
     }
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
