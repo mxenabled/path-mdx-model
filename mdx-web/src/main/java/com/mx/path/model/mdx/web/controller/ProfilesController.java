@@ -60,7 +60,12 @@ public class ProfilesController extends BaseController {
   public final ResponseEntity<Address> updateAddress(@PathVariable("addressId") String addressId, @RequestBody Address address) {
     address.setId(addressId);
     AccessorResponse<Address> response = gateway().profiles().addresses().update(addressId, address);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+    Address result = response.getResult();
+    HttpStatus status = HttpStatus.OK;
+    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 
   @RequestMapping(value = "/users/{userId}/profile/addresses/{addressId}", method = RequestMethod.DELETE)
@@ -76,14 +81,14 @@ public class ProfilesController extends BaseController {
   }
 
   @RequestMapping(value = "/users/{userId}/profile/challenge_questions", method = RequestMethod.PUT, consumes = MDX_MEDIA)
-  public final ResponseEntity<?> updateChallengeQuestions(@RequestBody ChallengeQuestions challengeQuestions) {
+  public final ResponseEntity<ChallengeQuestions> updateChallengeQuestions(@RequestBody ChallengeQuestions challengeQuestions) {
     AccessorResponse<ChallengeQuestions> response = gateway().profiles().challengeQuestions().update(challengeQuestions);
-
     ChallengeQuestions result = response.getResult();
-    if (result != null && result.getChallenges() != null && !result.getChallenges().isEmpty()) {
-      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+    HttpStatus status = HttpStatus.NO_CONTENT;
+    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+      status = HttpStatus.ACCEPTED;
     }
-    return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 
   @RequestMapping(value = "/users/{userId}/profile/phones", method = RequestMethod.GET)
@@ -145,7 +150,12 @@ public class ProfilesController extends BaseController {
   public final ResponseEntity<Email> updateEmail(@PathVariable("emailId") String emailId, @RequestBody Email email) {
     email.setId(emailId);
     AccessorResponse<Email> response = gateway().profiles().emails().update(emailId, email);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+    Email result = response.getResult();
+    HttpStatus status = HttpStatus.OK;
+    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 
   @RequestMapping(value = "/users/{userId}/profile/emails/{emailId}", method = RequestMethod.DELETE)
@@ -173,8 +183,13 @@ public class ProfilesController extends BaseController {
   }
 
   @RequestMapping(value = "/users/{userId}/profile/update_username", method = RequestMethod.PUT)
-  public final ResponseEntity<?> updateUserName(@RequestBody UserName updateUserInfo) {
-    AccessorResponse<Void> response = gateway().profiles().updateUserName(updateUserInfo);
-    return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
+  public final ResponseEntity<UserName> updateUserName(@RequestBody UserName updateUserInfo) {
+    AccessorResponse<UserName> response = gateway().profiles().updateUserName(updateUserInfo);
+    UserName result = response.getResult();
+    HttpStatus status = HttpStatus.NO_CONTENT;
+    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 }

@@ -177,7 +177,7 @@ public class ProfileBaseAccessor extends Accessor {
    */
   @GatewayAPI
   @API(description = "Update user's user name")
-  public AccessorResponse<Void> updateUserName(UserName userName) {
+  public AccessorResponse<UserName> updateUserName(UserName userName) {
     throw new AccessorMethodNotImplementedException();
   }
 

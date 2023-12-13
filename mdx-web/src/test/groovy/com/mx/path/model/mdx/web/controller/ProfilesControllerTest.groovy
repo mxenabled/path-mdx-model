@@ -138,7 +138,25 @@ class ProfilesControllerTest extends Specification {
     response.statusCode == HttpStatus.OK
   }
 
-  def "putAddress_implemented"() {
+  def "putAddress_implemented - 202"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def mockResponse = new AccessorResponse<Address>().withResult(new Address().tap {
+      setChallenges(new MdxList<Challenge>().tap { add(new Challenge()) })
+    })
+    doReturn(mockResponse).when(addressGateway).update(any(), any())
+
+    when:
+    def response = subject.updateAddress("1", new Address())
+
+    then:
+    response.body == mockResponse.result
+    response.body.wrapped
+    response.statusCode == HttpStatus.ACCEPTED
+  }
+
+  def "putAddress_implemented - 200"() {
     given:
     ProfilesController.setGateway(gateway)
 
@@ -174,18 +192,16 @@ class ProfilesControllerTest extends Specification {
     given:
     ProfilesController.setGateway(gateway)
 
-    def body = new ChallengeQuestions()
-    def challenges = new MdxList()
-    challenges.add(new Challenge())
+    def mockResponse = new AccessorResponse<ChallengeQuestions>().withResult(
+        new ChallengeQuestions().tap {
+          setChallenges(new MdxList<Challenge>().tap { add(new Challenge()) })
+        }
+        )
 
-    def mockResponse = new AccessorResponse<ChallengeQuestions>().withResult(new ChallengeQuestions().tap {
-      setChallenges(challenges)
-    }).withStatus(PathResponseStatus.ACCEPTED)
-
-    doReturn(mockResponse).when(challengeQuestionGateway).update(body)
+    doReturn(mockResponse).when(challengeQuestionGateway).update(any())
 
     when:
-    def response = subject.updateChallengeQuestions(body)
+    def response = subject.updateChallengeQuestions(new ChallengeQuestions())
 
     then:
     response.body == mockResponse.result
@@ -197,12 +213,11 @@ class ProfilesControllerTest extends Specification {
     given:
     ProfilesController.setGateway(gateway)
 
-    def body = new ChallengeQuestions()
     def mockResponse = new AccessorResponse<ChallengeQuestions>().withResult(new ChallengeQuestions()).withStatus(PathResponseStatus.ACCEPTED)
-    doReturn(mockResponse).when(challengeQuestionGateway).update(body)
+    doReturn(mockResponse).when(challengeQuestionGateway).update(any())
 
     when:
-    def response = subject.updateChallengeQuestions(body)
+    def response = subject.updateChallengeQuestions(new ChallengeQuestions())
 
     then:
     response.statusCode == HttpStatus.NO_CONTENT
@@ -380,7 +395,25 @@ class ProfilesControllerTest extends Specification {
     response.statusCode == HttpStatus.OK
   }
 
-  def "putEmail_implemented"() {
+  def "putEmail_implemented - 202"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def mockResponse = new AccessorResponse<Email>().withResult(new Email().tap {
+      setChallenges(new MdxList<Challenge>().tap { add(new Challenge()) })
+    })
+    doReturn(mockResponse).when(emailGateway).update(any(), any())
+
+    when:
+    def response = subject.updateEmail("1", new Email())
+
+    then:
+    response.body == mockResponse.result
+    response.body.wrapped
+    response.statusCode == HttpStatus.ACCEPTED
+  }
+
+  def "putEmail_implemented - 200"() {
     given:
     ProfilesController.setGateway(gateway)
 
@@ -481,17 +514,38 @@ class ProfilesControllerTest extends Specification {
     response.statusCode == HttpStatus.NO_CONTENT
   }
 
-  def "updateUserName test"() {
+  def "updateUserName_implemented - 202"() {
     given:
     ProfilesController.setGateway(gateway)
 
-    def mockResponse = new AccessorResponse<Void>()
+    def mockResponse = new AccessorResponse<UserName>().withResult(new UserName().tap {
+      setChallenges(new MdxList<>().tap {add(new Challenge()) })
+    })
+
     doReturn(mockResponse).when(profileGateway).updateUserName(any())
 
     when:
     def response = subject.updateUserName(new UserName())
 
     then:
+    response.body == mockResponse.result
+    response.body.wrapped
+    response.statusCode == HttpStatus.ACCEPTED
+  }
+
+  def "updateUserName_implemented - 204"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def mockResponse = new AccessorResponse<UserName>().withResult(new UserName())
+
+    doReturn(mockResponse).when(profileGateway).updateUserName(any())
+
+    when:
+    def response = subject.updateUserName(new UserName())
+
+    then:
+    response.body == mockResponse.result
     response.statusCode == HttpStatus.NO_CONTENT
   }
 }
