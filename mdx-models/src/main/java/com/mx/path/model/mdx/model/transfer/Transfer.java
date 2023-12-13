@@ -1,6 +1,7 @@
 package com.mx.path.model.mdx.model.transfer;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,10 +11,14 @@ import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.MdxRelationId;
 import com.mx.path.model.mdx.model.UserIdProvider;
 import com.mx.path.model.mdx.model.account.Account;
+import com.mx.path.model.mdx.model.challenges.Challenge;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
 public final class Transfer extends MdxBase<Transfer> {
+
+  private List<Challenge> challenges;
+
   private Double amount;
   private String confirmationId;
   private Long createdAt;
@@ -35,6 +40,14 @@ public final class Transfer extends MdxBase<Transfer> {
   private String transferType;
   private Long updatedAt;
   private LocalDate updatedOn;
+
+  public List<Challenge> getChallenges() {
+    return challenges;
+  }
+
+  public void setChallenges(List<Challenge> challenges) {
+    this.challenges = challenges;
+  }
 
   public Transfer() {
     UserIdProvider.setUserId(this);

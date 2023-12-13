@@ -35,14 +35,24 @@ public class TransfersController extends BaseController {
   @RequestMapping(value = "/users/{user_id}/transfers", method = RequestMethod.POST, consumes = MDX_MEDIA)
   public final ResponseEntity<Transfer> postTransfers(@RequestBody Transfer transferRequest) {
     AccessorResponse<Transfer> response = gateway().transfers().create(transferRequest);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+    Transfer result = response.getResult();
+    HttpStatus status = HttpStatus.OK;
+    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 
   @RequestMapping(value = "/users/{user_id}/transfers/{id}", method = RequestMethod.PUT, consumes = MDX_MEDIA)
   public final ResponseEntity<Transfer> updateTransfer(@PathVariable("id") String transferId, @RequestBody Transfer transfer) {
     transfer.setId(transferId);
     AccessorResponse<Transfer> response = gateway().transfers().update(transferId, transfer);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+    Transfer result = response.getResult();
+    HttpStatus status = HttpStatus.OK;
+    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 
   @RequestMapping(value = "/users/{user_id}/transfers/{id}/cancel", method = RequestMethod.PUT)
