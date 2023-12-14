@@ -433,8 +433,8 @@ class ProfilesControllerTest extends Specification {
     given:
     ProfilesController.setGateway(gateway)
 
-    def mockResponse = new AccessorResponse<MdxList<Challenge>>().withResult(new MdxList<>().tap {
-      add(new Challenge())
+    def mockResponse = new AccessorResponse<Password>().withResult(new Password().tap {
+      setChallenges(new MdxList<>().tap { add(new Challenge()) })
     })
 
     doReturn(mockResponse).when(profileGateway).updatePassword(any())
@@ -452,7 +452,7 @@ class ProfilesControllerTest extends Specification {
     given:
     ProfilesController.setGateway(gateway)
 
-    def mockResponse = new AccessorResponse<Void>()
+    def mockResponse = new AccessorResponse<Password>().withResult(new Password())
 
     doReturn(mockResponse).when(profileGateway).updatePassword(any())
 
@@ -468,8 +468,8 @@ class ProfilesControllerTest extends Specification {
     given:
     ProfilesController.setGateway(gateway)
 
-    def mockResponse = new AccessorResponse<MdxList<Challenge>>().withResult(new MdxList<>().tap {
-      add(new Challenge())
+    def mockResponse = new AccessorResponse<Password>().withResult(new Password().tap {
+      setChallenges(new MdxList<>().tap { add(new Challenge()) })
     })
 
     doReturn(mockResponse).when(profileGateway).updatePasswordResume(any(), any())
@@ -487,7 +487,7 @@ class ProfilesControllerTest extends Specification {
     given:
     ProfilesController.setGateway(gateway)
 
-    def mockResponse = new AccessorResponse<Void>()
+    def mockResponse = new AccessorResponse<Password>().withResult(new Password())
 
     doReturn(mockResponse).when(profileGateway).updatePasswordResume(any(), any())
 

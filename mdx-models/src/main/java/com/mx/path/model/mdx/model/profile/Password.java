@@ -1,15 +1,29 @@
 package com.mx.path.model.mdx.model.profile;
 
+import java.util.List;
+
 import com.google.gson.annotations.SerializedName;
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.challenges.Challenge;
 
 public final class Password extends MdxBase<Password> {
+
+  private List<Challenge> challenges;
+
   @SerializedName("current_password")
   private String currentPassword;
   @SerializedName("new_password")
   private String newPassword;
 
   public Password() {
+  }
+
+  public List<Challenge> getChallenges() {
+    return challenges;
+  }
+
+  public void setChallenges(List<Challenge> challenges) {
+    this.challenges = challenges;
   }
 
   public String getCurrentPassword() {
