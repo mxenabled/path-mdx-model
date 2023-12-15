@@ -5,6 +5,14 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.11.0](https://github.com/mxenabled/path-mdx-model/compare/v4.10.1...v4.11.0) (2023-12-15)
+
+
+### Features
+
+* add mfa to update methods ([6e62de4](https://github.com/mxenabled/path-mdx-model/commit/6e62de499182c3d400bf2bab03d91c4ca2be962a))
+* update password returns password ([a68f83c](https://github.com/mxenabled/path-mdx-model/commit/a68f83cc7c6b158416a01dade30ea3f84a9a2839))
+
 ## [4.10.1](https://github.com/mxenabled/path-mdx-model/compare/v4.10.0...v4.10.1) (2023-12-07)
 
 
