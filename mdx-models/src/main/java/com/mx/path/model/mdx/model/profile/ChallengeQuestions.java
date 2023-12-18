@@ -12,4 +12,12 @@ import com.mx.path.model.mdx.model.challenges.Challenge;
 @Data
 public final class ChallengeQuestions extends MdxBase<ChallengeQuestions> {
   private List<Challenge> challenges;
+
+  public List<Challenge> getChallenges() {
+    return challenges;
+  }
+
+  public void setChallenges(List<Challenge> challenges) {
+    this.challenges = challenges;
+  }
 }

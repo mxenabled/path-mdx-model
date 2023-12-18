@@ -8,6 +8,7 @@ import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.transfer.TransferGateway
 import com.mx.path.model.mdx.model.MdxList
+import com.mx.path.model.mdx.model.challenges.Challenge
 import com.mx.path.model.mdx.model.transfer.Transfer
 import com.mx.path.model.mdx.model.transfer.options.TransferListOptions
 import com.mx.path.model.mdx.web.model.transfer.TransferListQueryParameters
@@ -34,7 +35,7 @@ class TransfersControllerTest extends Specification {
     TransfersController.clearGateway()
   }
 
-  def "createTransfer interacts with gateway"() {
+  def "createTransfer_implements - 200"() {
     given:
     def transfer = new Transfer()
 
@@ -47,6 +48,22 @@ class TransfersControllerTest extends Specification {
     then:
     verify(transferGateway).create(transfer) || true
     HttpStatus.OK == response.getStatusCode()
+  }
+
+  def "createTransfer_implements - 202"() {
+    given:
+    def challenges = new MdxList<Challenge>().tap { add(new Challenge()) }
+    def transfer = new Transfer().tap { setChallenges(challenges)}
+
+    BaseController.setGateway(gateway)
+
+    when:
+    Mockito.doReturn(new AccessorResponse<Transfer>().withResult(transfer)).when(transferGateway).create(transfer)
+    def response = subject.postTransfers(transfer)
+
+    then:
+    verify(transferGateway).create(transfer) || true
+    HttpStatus.ACCEPTED == response.getStatusCode()
   }
 
   def "getTransfer interacts with gateway"() {
@@ -83,7 +100,7 @@ class TransfersControllerTest extends Specification {
     captor.value.transferType == "test"
   }
 
-  def "updateTransfer interacts with gateway"() {
+  def "updateTransfer_implements - 200"() {
     given:
     BaseController.setGateway(gateway)
 
@@ -95,6 +112,22 @@ class TransfersControllerTest extends Specification {
 
     then:
     HttpStatus.OK == response.getStatusCode()
+    verify(transferGateway).update("id", transfer) || true
+  }
+
+  def "updateTransfer_implements - 202"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def challenges = new MdxList<Challenge>().tap { add(new Challenge()) }
+    def transfer = new Transfer().tap { setChallenges(challenges) }
+
+    when:
+    Mockito.doReturn(new AccessorResponse<Transfer>().withResult(transfer)).when(transferGateway).update("id", transfer)
+    def response = subject.updateTransfer("id", transfer)
+
+    then:
+    HttpStatus.ACCEPTED == response.getStatusCode()
     verify(transferGateway).update("id", transfer) || true
   }
 

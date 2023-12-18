@@ -1,9 +1,15 @@
 package com.mx.path.model.mdx.model.profile;
 
+import java.util.List;
+
 import com.google.gson.annotations.SerializedName;
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.challenges.Challenge;
 
 public final class Address extends MdxBase<Address> {
+
+  private List<Challenge> challenges;
+
   @SerializedName("address_line_one")
   private String addressLineOne;
   @SerializedName("address_line_two")
@@ -20,6 +26,14 @@ public final class Address extends MdxBase<Address> {
   private String state;
 
   public Address() {
+  }
+
+  public List<Challenge> getChallenges() {
+    return challenges;
+  }
+
+  public void setChallenges(List<Challenge> challenges) {
+    this.challenges = challenges;
   }
 
   public String getAddressLineOne() {
