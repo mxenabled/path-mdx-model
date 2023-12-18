@@ -5,6 +5,14 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.12.0](https://github.com/mxenabled/path-mdx-model/compare/v4.11.0...v4.12.0) (2023-12-18)
+
+
+### Features
+
+* updated fields ([95cfc45](https://github.com/mxenabled/path-mdx-model/commit/95cfc4546cecf49a6369cde7e88053afa4de6129))
+* updating account details endpoint ([bf4d8a6](https://github.com/mxenabled/path-mdx-model/commit/bf4d8a6bed754d6201bfd012ece2cccf6385ad1e))
+
 ## [4.11.0](https://github.com/mxenabled/path-mdx-model/compare/v4.10.1...v4.11.0) (2023-12-15)
 
 
