@@ -460,7 +460,7 @@ class ProfilesControllerTest extends Specification {
     def response = subject.updatePassword(new Password())
 
     then:
-    response.body == mockResponse.result
+    response.body == null
     response.statusCode == HttpStatus.NO_CONTENT
   }
 
@@ -495,7 +495,7 @@ class ProfilesControllerTest extends Specification {
     def response = subject.updatePasswordResume("1", new Challenge())
 
     then:
-    response.body == mockResponse.result
+    response.body == null
     response.statusCode == HttpStatus.NO_CONTENT
   }
 
@@ -545,7 +545,7 @@ class ProfilesControllerTest extends Specification {
     def response = subject.updateUserName(new UserName())
 
     then:
-    response.body == mockResponse.result
+    response.body == null
     response.statusCode == HttpStatus.NO_CONTENT
   }
 }
