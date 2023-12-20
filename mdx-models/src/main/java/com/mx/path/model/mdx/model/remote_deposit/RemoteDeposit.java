@@ -14,19 +14,28 @@ public final class RemoteDeposit extends MdxBase<RemoteDeposit> {
   private Double amount;
   @SerializedName("back_of_check_image")
   private String backOfCheckImage;
+  @SerializedName("confirmation_id")
   private String confirmationId;
+  @SerializedName("created_at")
   private Long createdAt;
+  @SerializedName("created_on")
   private LocalDate createdOn;
+  @SerializedName("failure_reason")
   private String failureReason;
+  @SerializedName("failure_type")
   private String failureType;
   @SerializedName("front_of_check_image")
   private String frontOfCheckImage;
   private String id;
   private String memo;
+  @SerializedName("posted_at")
   private Long postedAt;
+  @SerializedName("posted_on")
   private LocalDate postedOn;
   private String status;
+  @SerializedName("updated_at")
   private Long updatedAt;
+  @SerializedName("updated_on")
   private LocalDate updatedOn;
 
   public RemoteDeposit() {
