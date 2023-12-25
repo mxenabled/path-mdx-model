@@ -9,6 +9,8 @@ import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.transfer.TransferGateway
 import com.mx.path.gateway.api.transfer.recurring_transfer.RecurringTransferGateway
 import com.mx.path.model.mdx.model.MdxList
+import com.mx.path.model.mdx.model.challenges.Challenge
+import com.mx.path.model.mdx.model.profile.ChallengeQuestions
 import com.mx.path.model.mdx.model.transfer.RecurringTransfer
 import com.mx.path.model.mdx.model.transfer.options.RecurringTransferListOptions
 import com.mx.path.model.mdx.web.model.transfer.RecurringTransferListQueryParameters
@@ -37,20 +39,42 @@ class RecurringTransfersControllerTest extends Specification implements WithMock
     BaseController.clearGateway()
   }
 
-  def "createRecurringTransfer interacts with gateway"() {
+  def "createRecurringTransfer_implemented response is 202"() {
     given:
     BaseController.setGateway(gateway)
 
     def transfer = new RecurringTransfer()
+    def mockResponse = new AccessorResponse<RecurringTransfer>().withResult(
+        new RecurringTransfer().tap {
+          setChallenges(new MdxList<Challenge>().tap { add(new Challenge()) })
+        }
+        )
 
     when:
-    Mockito.doReturn(new AccessorResponse<RecurringTransfer>().withResult(transfer)).when(recurringTransferGateway).create(transfer)
+    Mockito.doReturn(mockResponse).when(recurringTransferGateway).create(transfer)
+    def response = subject.postRecurringTransfers(transfer)
+
+    then:
+    HttpStatus.ACCEPTED == response.statusCode
+    verify(recurringTransferGateway).create(transfer) || true
+    response.body == mockResponse.result
+  }
+
+  def "createRecurringTransfer_implemented response is 200"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def transfer = new RecurringTransfer()
+    def mockResponse = new AccessorResponse<RecurringTransfer>().withResult(transfer)
+
+    when:
+    Mockito.doReturn(mockResponse).when(recurringTransferGateway).create(transfer)
     def response = subject.postRecurringTransfers(transfer)
 
     then:
     HttpStatus.OK == response.statusCode
     verify(recurringTransferGateway).create(transfer) || true
-    response.body == transfer
+    response.body == mockResponse.result
   }
 
   def "getRecurringTransfer interacts with gateway"() {
@@ -113,18 +137,39 @@ class RecurringTransfersControllerTest extends Specification implements WithMock
     verify(recurringTransferGateway).delete("id") || true
   }
 
-  def "updateRecurringTransfer interacts with gateway"() {
+  def "updateRecurringTransfer_implemented response is 202"() {
     given:
     BaseController.setGateway(gateway)
     def transfer = new RecurringTransfer()
+    def mockResponse = new AccessorResponse<RecurringTransfer>().withResult(
+        new RecurringTransfer().tap {
+          setChallenges(new MdxList<Challenge>().tap { add(new Challenge()) })
+        }
+        )
 
     when:
-    Mockito.doReturn(new AccessorResponse<RecurringTransfer>().withResult(transfer)).when(recurringTransferGateway).update("id", transfer)
+    Mockito.doReturn(mockResponse).when(recurringTransferGateway).update("id", transfer)
+    def response = subject.updateRecurringTransfer("id", transfer)
+
+    then:
+    HttpStatus.ACCEPTED == response.statusCode
+    verify(recurringTransferGateway).update("id", transfer) || true
+    response.body == mockResponse.result
+  }
+
+  def "updateRecurringTransfer_implemented response is 200"() {
+    given:
+    BaseController.setGateway(gateway)
+    def transfer = new RecurringTransfer()
+    def mockResponse = new AccessorResponse<RecurringTransfer>().withResult(transfer)
+
+    when:
+    Mockito.doReturn(mockResponse).when(recurringTransferGateway).update("id", transfer)
     def response = subject.updateRecurringTransfer("id", transfer)
 
     then:
     HttpStatus.OK == response.statusCode
     verify(recurringTransferGateway).update("id", transfer) || true
-    response.body == transfer
+    response.body == mockResponse.result
   }
 }
