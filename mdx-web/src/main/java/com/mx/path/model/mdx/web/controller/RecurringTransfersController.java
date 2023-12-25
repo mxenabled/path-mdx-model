@@ -29,7 +29,12 @@ public class RecurringTransfersController extends BaseController {
   @RequestMapping(value = "/users/{userId}/recurring_transfers", method = RequestMethod.POST, consumes = MDX_MEDIA)
   public final ResponseEntity<RecurringTransfer> postRecurringTransfers(@RequestBody RecurringTransfer recurringTransferRequest) {
     AccessorResponse<RecurringTransfer> response = gateway().transfers().recurring().create(recurringTransferRequest);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+    RecurringTransfer result = response.getResult();
+    HttpStatus status = HttpStatus.OK;
+    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 
   @RequestMapping(value = "/users/{userId}/recurring_transfers/{id}/cancel", method = RequestMethod.PUT)
@@ -54,6 +59,11 @@ public class RecurringTransfersController extends BaseController {
   public final ResponseEntity<RecurringTransfer> updateRecurringTransfer(@PathVariable("id") String recurringTransferId, @RequestBody RecurringTransfer recurringTransferRequest) {
     recurringTransferRequest.setId(recurringTransferId);
     AccessorResponse<RecurringTransfer> response = gateway().transfers().recurring().update(recurringTransferId, recurringTransferRequest);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+    RecurringTransfer result = response.getResult();
+    HttpStatus status = HttpStatus.OK;
+    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 }
