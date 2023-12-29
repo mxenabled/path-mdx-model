@@ -8,6 +8,9 @@ import com.mx.path.model.mdx.model.challenges.Challenge;
 
 public final class Address extends MdxBase<Address> {
 
+  @SerializedName("account_id")
+  private String accountId;
+
   private List<Challenge> challenges;
 
   @SerializedName("address_line_one")
@@ -26,6 +29,14 @@ public final class Address extends MdxBase<Address> {
   private String state;
 
   public Address() {
+  }
+
+  public String getAccountId() {
+    return accountId;
+  }
+
+  public void setAccountId(String accountId) {
+    this.accountId = accountId;
   }
 
   public List<Challenge> getChallenges() {
