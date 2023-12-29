@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.13.0](https://github.com/mxenabled/path-mdx-model/compare/v4.12.1...v4.13.0) (2023-12-29)
+
+
+### Features
+
+* add mfa recurring transfer ([89ff46f](https://github.com/mxenabled/path-mdx-model/commit/89ff46fc653cc35e4715e09bfcfc7139114d0a63))
+
 ## [4.12.1](https://github.com/mxenabled/path-mdx-model/compare/v4.12.0...v4.12.1) (2023-12-19)
 
 
