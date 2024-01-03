@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mx.path.core.common.accessor.UnauthorizedException;
+import com.mx.path.core.common.lang.Strings;
 import com.mx.path.core.context.Session;
 import com.mx.path.core.context.Session.SessionState;
 import com.mx.path.model.mdx.web.PathTools;
@@ -48,8 +49,11 @@ public class RequireAuthenticationFilter extends OncePerRequestFilter {
     }
 
     if (PathTools.isUserRequiredPath(path)) {
+      if (Strings.isBlank(Session.current().getUserId())) {
+        throw new UnauthorizedException("UserId missing in authenticated session", "Not Authenticated");
+      }
       String userId = PathTools.extractUserId(path);
-      if (userId != null && Session.current().getUserId() != null && !userId.equals(Session.current().getUserId())) {
+      if (userId != null && !userId.equals(Session.current().getUserId())) {
         throw new UnauthorizedException("User does not match user session", "Not Authenticated");
       }
     }

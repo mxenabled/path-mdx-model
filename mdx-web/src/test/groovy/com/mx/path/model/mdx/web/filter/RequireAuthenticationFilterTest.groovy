@@ -134,6 +134,21 @@ class RequireAuthenticationFilterTest extends Specification {
     err.userMessage == "Not Authenticated"
   }
 
+  def "userRouteWithMissingSessionUserId"() {
+    given:
+    Session.createSession()
+    Session.current().setSessionState(Session.SessionState.AUTHENTICATED)
+    setPath("/hughes/users/U-197191/accounts")
+
+    when:
+    subject.doFilter(request, response, filterChain)
+
+    then:
+    def err = thrown(UnauthorizedException)
+    err.message == "UserId missing in authenticated session"
+    err.userMessage == "Not Authenticated"
+  }
+
   private void setPath(String path) {
     request.getServletPath() >> path
   }
