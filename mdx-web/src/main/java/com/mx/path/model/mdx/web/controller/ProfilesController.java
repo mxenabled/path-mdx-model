@@ -164,32 +164,26 @@ public class ProfilesController extends BaseController {
   }
 
   @RequestMapping(value = "/users/{userId}/profile/update_password", method = RequestMethod.PUT)
-  public final ResponseEntity<Password> updatePassword(@RequestBody Password password) {
-    AccessorResponse<Password> response = gateway().profiles().updatePassword(password);
-    Password result = response.getResult();
-    if (result != null && result.getChallenges() != null && result.getChallenges().size() > 0) {
+  public final ResponseEntity<MdxList<Challenge>> updatePassword(@RequestBody Password password) {
+    AccessorResponse<MdxList<Challenge>> response = gateway().profiles().updatePassword(password);
+    if (response.getResult() != null && response.getResult().size() != 0) {
       return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
     }
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
 
   @RequestMapping(value = "/users/{userId}/profile/update_password/challenges/{challengeId}", method = RequestMethod.PUT)
-  public final ResponseEntity<Password> updatePasswordResume(@PathVariable("challengeId") String challengeId, @RequestBody Challenge challenge) {
-    AccessorResponse<Password> response = gateway().profiles().updatePasswordResume(challengeId, challenge);
-    Password result = response.getResult();
-    if (result != null && result.getChallenges() != null && result.getChallenges().size() > 0) {
+  public final ResponseEntity<MdxList<Challenge>> updatePasswordResume(@PathVariable("challengeId") String challengeId, @RequestBody Challenge challenge) {
+    AccessorResponse<MdxList<Challenge>> response = gateway().profiles().updatePasswordResume(challengeId, challenge);
+    if (response.getResult() != null && response.getResult().size() != 0) {
       return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
     }
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
 
   @RequestMapping(value = "/users/{userId}/profile/update_username", method = RequestMethod.PUT)
-  public final ResponseEntity<UserName> updateUserName(@RequestBody UserName updateUserInfo) {
-    AccessorResponse<UserName> response = gateway().profiles().updateUserName(updateUserInfo);
-    UserName result = response.getResult();
-    if (result != null && result.getChallenges() != null && result.getChallenges().size() > 0) {
-      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
-    }
+  public final ResponseEntity<?> updateUserName(@RequestBody UserName updateUserInfo) {
+    AccessorResponse<Void> response = gateway().profiles().updateUserName(updateUserInfo);
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
 }

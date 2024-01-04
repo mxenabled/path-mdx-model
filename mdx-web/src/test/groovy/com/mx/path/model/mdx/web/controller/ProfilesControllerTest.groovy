@@ -433,8 +433,8 @@ class ProfilesControllerTest extends Specification {
     given:
     ProfilesController.setGateway(gateway)
 
-    def mockResponse = new AccessorResponse<Password>().withResult(new Password().tap {
-      setChallenges(new MdxList<>().tap { add(new Challenge()) })
+    def mockResponse = new AccessorResponse<MdxList<Challenge>>().withResult(new MdxList<>().tap {
+      add(new Challenge())
     })
 
     doReturn(mockResponse).when(profileGateway).updatePassword(any())
@@ -452,7 +452,7 @@ class ProfilesControllerTest extends Specification {
     given:
     ProfilesController.setGateway(gateway)
 
-    def mockResponse = new AccessorResponse<Password>().withResult(new Password())
+    def mockResponse = new AccessorResponse<Void>()
 
     doReturn(mockResponse).when(profileGateway).updatePassword(any())
 
@@ -460,7 +460,7 @@ class ProfilesControllerTest extends Specification {
     def response = subject.updatePassword(new Password())
 
     then:
-    response.body == null
+    response.body == mockResponse.result
     response.statusCode == HttpStatus.NO_CONTENT
   }
 
@@ -468,8 +468,8 @@ class ProfilesControllerTest extends Specification {
     given:
     ProfilesController.setGateway(gateway)
 
-    def mockResponse = new AccessorResponse<Password>().withResult(new Password().tap {
-      setChallenges(new MdxList<>().tap { add(new Challenge()) })
+    def mockResponse = new AccessorResponse<MdxList<Challenge>>().withResult(new MdxList<>().tap {
+      add(new Challenge())
     })
 
     doReturn(mockResponse).when(profileGateway).updatePasswordResume(any(), any())
@@ -487,7 +487,7 @@ class ProfilesControllerTest extends Specification {
     given:
     ProfilesController.setGateway(gateway)
 
-    def mockResponse = new AccessorResponse<Password>().withResult(new Password())
+    def mockResponse = new AccessorResponse<Void>()
 
     doReturn(mockResponse).when(profileGateway).updatePasswordResume(any(), any())
 
@@ -495,7 +495,7 @@ class ProfilesControllerTest extends Specification {
     def response = subject.updatePasswordResume("1", new Challenge())
 
     then:
-    response.body == null
+    response.body == mockResponse.result
     response.statusCode == HttpStatus.NO_CONTENT
   }
 
@@ -514,38 +514,17 @@ class ProfilesControllerTest extends Specification {
     response.statusCode == HttpStatus.NO_CONTENT
   }
 
-  def "updateUserName_implemented - 202"() {
+  def "updateUserName test"() {
     given:
     ProfilesController.setGateway(gateway)
 
-    def mockResponse = new AccessorResponse<UserName>().withResult(new UserName().tap {
-      setChallenges(new MdxList<>().tap {add(new Challenge()) })
-    })
-
+    def mockResponse = new AccessorResponse<Void>()
     doReturn(mockResponse).when(profileGateway).updateUserName(any())
 
     when:
     def response = subject.updateUserName(new UserName())
 
     then:
-    response.body == mockResponse.result
-    response.body.wrapped
-    response.statusCode == HttpStatus.ACCEPTED
-  }
-
-  def "updateUserName_implemented - 204"() {
-    given:
-    ProfilesController.setGateway(gateway)
-
-    def mockResponse = new AccessorResponse<UserName>().withResult(new UserName())
-
-    doReturn(mockResponse).when(profileGateway).updateUserName(any())
-
-    when:
-    def response = subject.updateUserName(new UserName())
-
-    then:
-    response.body == null
     response.statusCode == HttpStatus.NO_CONTENT
   }
 }

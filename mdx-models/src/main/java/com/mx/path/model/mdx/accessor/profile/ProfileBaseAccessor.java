@@ -10,6 +10,7 @@ import com.mx.path.core.common.gateway.GatewayClass;
 import com.mx.path.gateway.accessor.Accessor;
 import com.mx.path.gateway.accessor.AccessorConfiguration;
 import com.mx.path.gateway.accessor.AccessorResponse;
+import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.challenges.Challenge;
 import com.mx.path.model.mdx.model.profile.Password;
 import com.mx.path.model.mdx.model.profile.Profile;
@@ -176,7 +177,7 @@ public class ProfileBaseAccessor extends Accessor {
    */
   @GatewayAPI
   @API(description = "Update user's user name")
-  public AccessorResponse<UserName> updateUserName(UserName userName) {
+  public AccessorResponse<Void> updateUserName(UserName userName) {
     throw new AccessorMethodNotImplementedException();
   }
 
@@ -188,7 +189,7 @@ public class ProfileBaseAccessor extends Accessor {
    */
   @GatewayAPI
   @API(description = "Update user's password")
-  public AccessorResponse<Password> updatePassword(Password password) {
+  public AccessorResponse<MdxList<Challenge>> updatePassword(Password password) {
     throw new AccessorMethodNotImplementedException();
   }
 
@@ -201,7 +202,7 @@ public class ProfileBaseAccessor extends Accessor {
    */
   @GatewayAPI
   @API(description = "Update user's password")
-  public AccessorResponse<Password> updatePasswordResume(String challengeId, Challenge challenge) {
+  public AccessorResponse<MdxList<Challenge>> updatePasswordResume(String challengeId, Challenge challenge) {
     throw new AccessorMethodNotImplementedException();
   }
 
