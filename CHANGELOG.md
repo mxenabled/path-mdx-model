@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.14.1](https://github.com/mxenabled/path-mdx-model/compare/v4.14.0...v4.14.1) (2024-01-05)
+
+
+### Bug Fixes
+
+* reverting mfa changes on profile base accessor ([cd68eca](https://github.com/mxenabled/path-mdx-model/commit/cd68ecab92e1cef0c5821d47464bec7bd59901a5))
+
 ## [4.14.0](https://github.com/mxenabled/path-mdx-model/compare/v4.13.0...v4.14.0) (2023-12-29)
 
 
