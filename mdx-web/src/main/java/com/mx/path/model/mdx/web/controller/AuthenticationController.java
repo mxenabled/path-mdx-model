@@ -165,7 +165,9 @@ public class AuthenticationController extends BaseController {
   }
 
   /***
-   * This endpoint always creates a new session when it called even if there is an existing session being passed
+   * Initiates the reset password workflow.
+   *
+   * Always creates a new session, discards old session
    *
    * @return
    */
