@@ -5,6 +5,14 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.14.2](https://github.com/mxenabled/path-mdx-model/compare/v4.14.1...v4.14.2) (2024-01-08)
+
+
+### Bug Fixes
+
+* adding the documentation and sending the session key header in response ([7225e74](https://github.com/mxenabled/path-mdx-model/commit/7225e7413137e60dd962f3f98f145a9dc27d3dcb))
+* fixing the session issue for the reset password flow ([ab8b07f](https://github.com/mxenabled/path-mdx-model/commit/ab8b07ffebaffcc9af98368430a8ea2fa6595109))
+
 ## [4.14.1](https://github.com/mxenabled/path-mdx-model/compare/v4.14.0...v4.14.1) (2024-01-05)
 
 
