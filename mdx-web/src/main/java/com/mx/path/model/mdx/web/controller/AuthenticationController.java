@@ -166,6 +166,10 @@ public class AuthenticationController extends BaseController {
 
   @RequestMapping(value = "/reset_password", method = RequestMethod.POST)
   public final ResponseEntity<ResetPassword> resetPassword() {
+    // Delete existing session if it exists;
+    Session.deleteCurrent();
+    Session.createSession();
+
     AccessorResponse<ResetPassword> response = gateway().id().resetPassword();
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
