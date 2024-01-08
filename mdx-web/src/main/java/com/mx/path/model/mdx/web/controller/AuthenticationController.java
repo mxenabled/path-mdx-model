@@ -164,14 +164,22 @@ public class AuthenticationController extends BaseController {
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders(), headers), status);
   }
 
+  /***
+   * This endpoint always creates a new session when it called even if there is an existing session being passed
+   *
+   * @return
+   */
   @RequestMapping(value = "/reset_password", method = RequestMethod.POST)
   public final ResponseEntity<ResetPassword> resetPassword() {
-    // Delete existing session if it exists;
+    //This endpoint always creates a new session when it called even if there is an existing session being passed
     Session.deleteCurrent();
     Session.createSession();
 
     AccessorResponse<ResetPassword> response = gateway().id().resetPassword();
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("mx-session-key", Session.current().getId());
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders(), headers), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/reset_password/challenges/{challengeId}", method = RequestMethod.PUT, consumes = MDX_MEDIA)
