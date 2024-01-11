@@ -78,6 +78,8 @@ import com.mx.path.model.mdx.model.payout.RecurringPayout;
 import com.mx.path.model.mdx.model.profile.Address;
 import com.mx.path.model.mdx.model.profile.ChallengeQuestions;
 import com.mx.path.model.mdx.model.profile.Email;
+import com.mx.path.model.mdx.model.profile.NewPassword;
+import com.mx.path.model.mdx.model.profile.NewUserName;
 import com.mx.path.model.mdx.model.profile.Password;
 import com.mx.path.model.mdx.model.profile.Phone;
 import com.mx.path.model.mdx.model.profile.Profile;
@@ -313,6 +315,14 @@ public class Resources {
     builder.registerTypeAdapter(UserName.class, new ModelWrappableSerializer("username"));
     builder.registerTypeAdapter(new TypeToken<UserName>() {
     }.getType(), new ModelWrappableSerializer("update_username"));
+    // New Update Password
+    builder.registerTypeAdapter(NewPassword.class, new ModelWrappableSerializer("password"));
+    builder.registerTypeAdapter(new TypeToken<NewPassword>() {
+    }.getType(), new ModelWrappableSerializer("password"));
+    // New UserName
+    builder.registerTypeAdapter(NewUserName.class, new ModelWrappableSerializer("username"));
+    builder.registerTypeAdapter(new TypeToken<NewUserName>() {
+    }.getType(), new ModelWrappableSerializer("username"));
   }
 
   private static void registerAchTransfersModels(GsonBuilder builder) {

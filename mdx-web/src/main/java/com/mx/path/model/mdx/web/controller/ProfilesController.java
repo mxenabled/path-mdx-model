@@ -6,6 +6,8 @@ import com.mx.path.model.mdx.model.challenges.Challenge;
 import com.mx.path.model.mdx.model.profile.Address;
 import com.mx.path.model.mdx.model.profile.ChallengeQuestions;
 import com.mx.path.model.mdx.model.profile.Email;
+import com.mx.path.model.mdx.model.profile.NewPassword;
+import com.mx.path.model.mdx.model.profile.NewUserName;
 import com.mx.path.model.mdx.model.profile.Password;
 import com.mx.path.model.mdx.model.profile.Phone;
 import com.mx.path.model.mdx.model.profile.Profile;
@@ -163,6 +165,11 @@ public class ProfilesController extends BaseController {
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
 
+  /**
+   * @deprecated This method is deprecated to allow a better interface with mfa challenges.
+   * Use {@link #updatePasswordWithMFA} instead.
+   */
+  @Deprecated
   @RequestMapping(value = "/users/{userId}/profile/update_password", method = RequestMethod.PUT)
   public final ResponseEntity<MdxList<Challenge>> updatePassword(@RequestBody Password password) {
     AccessorResponse<MdxList<Challenge>> response = gateway().profiles().updatePassword(password);
@@ -181,9 +188,34 @@ public class ProfilesController extends BaseController {
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
 
+  /**
+   * @deprecated This method is deprecated to allow a better interface with mfa challenges.
+   * Use {@link #updateUserNameWithMFA} instead.
+   */
+  @Deprecated
   @RequestMapping(value = "/users/{userId}/profile/update_username", method = RequestMethod.PUT)
   public final ResponseEntity<?> updateUserName(@RequestBody UserName updateUserInfo) {
     AccessorResponse<Void> response = gateway().profiles().updateUserName(updateUserInfo);
+    return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
+  }
+
+  @RequestMapping(value = "/users/{userId}/profile/password", method = RequestMethod.PUT)
+  public final ResponseEntity<NewPassword> updatePasswordWithMFA(@RequestBody NewPassword password) {
+    AccessorResponse<NewPassword> response = gateway().profiles().updatePasswordWithMFA(password);
+    NewPassword result = response.getResult();
+    if (result != null && result.getChallenges() != null && result.getChallenges().size() > 0) {
+      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+    }
+    return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
+  }
+
+  @RequestMapping(value = "/users/{userId}/profile/username", method = RequestMethod.PUT)
+  public final ResponseEntity<NewUserName> updateUserNameWithMFA(@RequestBody NewUserName updateUserInfo) {
+    AccessorResponse<NewUserName> response = gateway().profiles().updateUserNameWithMFA(updateUserInfo);
+    NewUserName result = response.getResult();
+    if (result != null && result.getChallenges() != null && result.getChallenges().size() > 0) {
+      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+    }
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
 }

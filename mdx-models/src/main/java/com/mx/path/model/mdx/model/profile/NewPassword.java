@@ -7,11 +7,9 @@ import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.challenges.Challenge;
 
 /**
- * @deprecated This method is deprecated due to a change in the object serialization.
- * Use {@link NewPassword} instead.
+ * Replaces Password class allowing to update user password using mfa
  */
-@Deprecated
-public final class Password extends MdxBase<Password> {
+public final class NewPassword extends MdxBase<NewPassword> {
 
   private List<Challenge> challenges;
 
@@ -20,7 +18,7 @@ public final class Password extends MdxBase<Password> {
   @SerializedName("new_password")
   private String newPassword;
 
-  public Password() {
+  public NewPassword() {
   }
 
   public List<Challenge> getChallenges() {
