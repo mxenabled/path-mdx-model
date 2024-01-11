@@ -12,6 +12,8 @@ import com.mx.path.gateway.accessor.AccessorConfiguration;
 import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.challenges.Challenge;
+import com.mx.path.model.mdx.model.profile.NewPassword;
+import com.mx.path.model.mdx.model.profile.NewUserName;
 import com.mx.path.model.mdx.model.profile.Password;
 import com.mx.path.model.mdx.model.profile.Profile;
 import com.mx.path.model.mdx.model.profile.UserName;
@@ -174,7 +176,11 @@ public class ProfileBaseAccessor extends Accessor {
    *
    * @param userName
    * @return
+   *
+   * @deprecated This method is deprecated to allow a better interface with mfa challenges.
+   * Use {@link #updateUserNameWithMFA} instead.
    */
+  @Deprecated
   @GatewayAPI
   @API(description = "Update user's user name")
   public AccessorResponse<Void> updateUserName(UserName userName) {
@@ -186,7 +192,11 @@ public class ProfileBaseAccessor extends Accessor {
    *
    * @param password
    * @return
+   *
+   * @deprecated This method is deprecated to allow a better interface with mfa challenges.
+   * Use {@link #updatePasswordWithMFA} instead.
    */
+  @Deprecated
   @GatewayAPI
   @API(description = "Update user's password")
   public AccessorResponse<MdxList<Challenge>> updatePassword(Password password) {
@@ -203,6 +213,30 @@ public class ProfileBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Update user's password")
   public AccessorResponse<MdxList<Challenge>> updatePasswordResume(String challengeId, Challenge challenge) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Update user's user name with mfa
+   *
+   * @param userName
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Update user's user name with mfa")
+  public AccessorResponse<NewUserName> updateUserNameWithMFA(NewUserName userName) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Update user's password with mfa
+   *
+   * @param password
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Update user's password with mfa")
+  public AccessorResponse<NewPassword> updatePasswordWithMFA(NewPassword password) {
     throw new AccessorMethodNotImplementedException();
   }
 

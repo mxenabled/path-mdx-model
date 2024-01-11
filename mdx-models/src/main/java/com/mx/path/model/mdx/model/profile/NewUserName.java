@@ -7,11 +7,9 @@ import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.challenges.Challenge;
 
 /**
- * @deprecated This method is deprecated due to a change in the object serialization.
- * Use {@link NewUserName} instead.
+ * Replaces UserName class allowing to update the username using mfa
  */
-@Deprecated
-public class UserName extends MdxBase<UserName> {
+public class NewUserName extends MdxBase<NewUserName> {
 
   private List<Challenge> challenges;
 

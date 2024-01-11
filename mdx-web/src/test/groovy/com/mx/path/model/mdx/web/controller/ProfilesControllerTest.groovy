@@ -18,6 +18,8 @@ import com.mx.path.model.mdx.model.challenges.Challenge
 import com.mx.path.model.mdx.model.profile.Address
 import com.mx.path.model.mdx.model.profile.ChallengeQuestions
 import com.mx.path.model.mdx.model.profile.Email
+import com.mx.path.model.mdx.model.profile.NewPassword
+import com.mx.path.model.mdx.model.profile.NewUserName
 import com.mx.path.model.mdx.model.profile.Password
 import com.mx.path.model.mdx.model.profile.Phone
 import com.mx.path.model.mdx.model.profile.Profile
@@ -499,6 +501,41 @@ class ProfilesControllerTest extends Specification {
     response.statusCode == HttpStatus.NO_CONTENT
   }
 
+  def "updatePasswordWithMFA_implemented - 202"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def mockResponse = new AccessorResponse<NewPassword>().withResult(new NewPassword().tap {
+      setChallenges(new MdxList<Challenge>().tap { add(new Challenge()) })
+    })
+
+    doReturn(mockResponse).when(profileGateway).updatePasswordWithMFA(any())
+
+    when:
+    def response = subject.updatePasswordWithMFA(new NewPassword())
+
+    then:
+    response.body == mockResponse.result
+    response.body.wrapped
+    response.statusCode == HttpStatus.ACCEPTED
+  }
+
+  def "updatePasswordWithMFA_implemented - 204"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def mockResponse = new AccessorResponse<Void>()
+
+    doReturn(mockResponse).when(profileGateway).updatePasswordWithMFA(any())
+
+    when:
+    def response = subject.updatePasswordWithMFA(new NewPassword())
+
+    then:
+    response.body == mockResponse.result
+    response.statusCode == HttpStatus.NO_CONTENT
+  }
+
   def "deleteEmail_implemented"() {
     given:
     ProfilesController.setGateway(gateway)
@@ -525,6 +562,41 @@ class ProfilesControllerTest extends Specification {
     def response = subject.updateUserName(new UserName())
 
     then:
+    response.statusCode == HttpStatus.NO_CONTENT
+  }
+
+  def "updateUserNameWithMFA_implemented - 202"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def mockResponse = new AccessorResponse<NewUserName>().withResult(new NewUserName().tap {
+      setChallenges(new MdxList<Challenge>().tap { add(new Challenge()) })
+    })
+
+    doReturn(mockResponse).when(profileGateway).updateUserNameWithMFA(any())
+
+    when:
+    def response = subject.updateUserNameWithMFA(new NewUserName())
+
+    then:
+    response.body == mockResponse.result
+    response.body.wrapped
+    response.statusCode == HttpStatus.ACCEPTED
+  }
+
+  def "updateUserNameWithMFA_implemented - 204"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def mockResponse = new AccessorResponse<Void>()
+
+    doReturn(mockResponse).when(profileGateway).updateUserNameWithMFA(any())
+
+    when:
+    def response = subject.updateUserNameWithMFA(new NewUserName()  )
+
+    then:
+    response.body == mockResponse.result
     response.statusCode == HttpStatus.NO_CONTENT
   }
 }
