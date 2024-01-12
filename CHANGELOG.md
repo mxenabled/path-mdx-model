@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.15.0](https://github.com/mxenabled/path-mdx-model/compare/v4.14.2...v4.15.0) (2024-01-12)
+
+
+### Features
+
+* Adding merchant category code to Transaction ([657bf3d](https://github.com/mxenabled/path-mdx-model/commit/657bf3deb55478467218ec215ec4a64894286f15))
+
 ## [4.14.2](https://github.com/mxenabled/path-mdx-model/compare/v4.14.1...v4.14.2) (2024-01-08)
 
 
