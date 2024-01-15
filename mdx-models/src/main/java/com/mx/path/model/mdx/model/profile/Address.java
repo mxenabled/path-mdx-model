@@ -8,6 +8,9 @@ import com.mx.path.model.mdx.model.challenges.Challenge;
 
 public final class Address extends MdxBase<Address> {
 
+  @SerializedName("apply_to_all")
+  private Boolean applyToAll;
+
   @SerializedName("account_id")
   private String accountId;
 
@@ -29,6 +32,14 @@ public final class Address extends MdxBase<Address> {
   private String state;
 
   public Address() {
+  }
+
+  public Boolean getApplyToAll() {
+    return applyToAll;
+  }
+
+  public void setApplyToAll(Boolean applyToAll) {
+    this.applyToAll = applyToAll;
   }
 
   public String getAccountId() {
