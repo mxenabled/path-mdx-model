@@ -6,11 +6,11 @@ import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.account.Account;
 import com.mx.path.model.mdx.model.account.AccountTransactions;
+import com.mx.path.model.mdx.model.account.OnDemandAccounts;
 import com.mx.path.model.mdx.model.account.Transaction;
 import com.mx.path.model.mdx.model.account.TransactionSearchRequest;
 import com.mx.path.model.mdx.model.account.TransactionsPage;
 import com.mx.path.model.mdx.model.account.options.TransactionListOptions;
-import com.mx.path.model.mdx.model.ondemand.MdxListWrapper;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -38,10 +38,10 @@ public class AccountsController extends BaseController {
   }
 
   @RequestMapping(value = "/accounts", method = RequestMethod.GET, produces = BaseController.MDX_ONDEMAND_MEDIA)
-  public final ResponseEntity<MdxListWrapper> getOnDemandAccounts()
-      throws Exception {
+  public final ResponseEntity<OnDemandAccounts> getOnDemandAccounts() throws Exception {
     ensureFeature("accounts");
-    return new ResponseEntity<>(new MdxListWrapper("accounts", gateway().accounts().list().getResult().wrapped()), HttpStatus.OK);
+    AccessorResponse<OnDemandAccounts> response = new AccessorResponse<OnDemandAccounts>().withResult(new OnDemandAccounts(gateway().accounts().list().getResult()));
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/users/{userId}/accounts/{id}", method = RequestMethod.GET)

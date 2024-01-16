@@ -146,7 +146,7 @@ class AccountsControllerTest extends Specification implements WithMockery {
 
     then:
     verify(accountGateway).list() || true
-    result.body.list == accounts
+    result.body.accounts == accounts
     RequestContext.current().getFeature() == "accounts"
   }
 
