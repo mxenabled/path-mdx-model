@@ -190,7 +190,8 @@ public class AuthenticationController extends BaseController {
     ResetPassword result = response.getResult();
     // Return 202 returning challenge questions
     HttpStatus status = HttpStatus.NO_CONTENT;
-    if (result.getChallenge() != null) {
+    if (result.getChallenge() != null || response.getResult().getChallenges() != null
+        && response.getResult().getChallenges().size() > 0) {
       status = HttpStatus.ACCEPTED;
     }
     return new ResponseEntity<>(result.wrapped(), createMultiMapForResponse(response.getHeaders()), status);
