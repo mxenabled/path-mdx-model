@@ -5,6 +5,23 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.16.0](https://github.com/mxenabled/path-mdx-model/compare/v4.15.0...v4.16.0) (2024-01-18)
+
+
+### Features
+
+* add apply to all on address ([e4f068f](https://github.com/mxenabled/path-mdx-model/commit/e4f068f9f3aef89ad78e8914a429d5c0f1bc678e))
+* add null check against Session.current().getUserId in route userId verification check ([188c4f0](https://github.com/mxenabled/path-mdx-model/commit/188c4f0c8bf443d7054f5255e9659f95b969a502))
+* add null check against Session.current().getUserId in route userId verification check ([b53dda1](https://github.com/mxenabled/path-mdx-model/commit/b53dda166a17e29de96f6fafc8ec2c14a573adcb))
+* add user route verification against session user ([41fc65b](https://github.com/mxenabled/path-mdx-model/commit/41fc65b6e8992461c9925922c2511a029516e1f9))
+* throw exception when userId is missing from authenticated session ([f3705b7](https://github.com/mxenabled/path-mdx-model/commit/f3705b7a06aca33f6b64e11594ddc0995e3e7ecc))
+* throw exception when userId is missing from authenticated session ([020ea55](https://github.com/mxenabled/path-mdx-model/commit/020ea55309a6ed9e03353e64ea4aea82c683ad94))
+
+
+### Bug Fixes
+
+* applying Tess' xml serialization mixin fix ([916dce9](https://github.com/mxenabled/path-mdx-model/commit/916dce9276b8c1538e9cf2b1e82e23dff2f0e834))
+
 ## [4.15.0](https://github.com/mxenabled/path-mdx-model/compare/v4.14.2...v4.15.0) (2024-01-12)
 
 
