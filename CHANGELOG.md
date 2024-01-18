@@ -5,6 +5,14 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.16.1](https://github.com/mxenabled/path-mdx-model/compare/v4.16.0...v4.16.1) (2024-01-18)
+
+
+### Bug Fixes
+
+* code clean up ([1c3d75a](https://github.com/mxenabled/path-mdx-model/commit/1c3d75ab36c23f07361f45595ab9d1cfa1e77297))
+* fixing the status code for reset password challenges list ([ba256d8](https://github.com/mxenabled/path-mdx-model/commit/ba256d80c5d51ebacc47f3e7659be44a6524db3f))
+
 ## [4.16.0](https://github.com/mxenabled/path-mdx-model/compare/v4.15.0...v4.16.0) (2024-01-18)
 
 
