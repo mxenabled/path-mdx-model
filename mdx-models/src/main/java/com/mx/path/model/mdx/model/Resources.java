@@ -31,6 +31,7 @@ import com.mx.path.model.mdx.model.cross_account_transfer.CrossAccountTransfer;
 import com.mx.path.model.mdx.model.cross_account_transfer.DestinationAccount;
 import com.mx.path.model.mdx.model.dispute.Dispute;
 import com.mx.path.model.mdx.model.dispute.DisputedTransaction;
+import com.mx.path.model.mdx.model.documents.DeliveryPreferences;
 import com.mx.path.model.mdx.model.documents.Document;
 import com.mx.path.model.mdx.model.id.Authentication;
 import com.mx.path.model.mdx.model.id.ForgotUsername;
@@ -367,6 +368,8 @@ public class Resources {
     builder.registerTypeAdapter(RecurringPayment.class, new ModelWrappableSerializer("recurring_payment"));
     builder.registerTypeAdapter(new TypeToken<MdxList<RecurringPayment>>() {
     }.getType(), new ModelWrappableSerializer("recurring_payments"));
+    // Documents
+    builder.registerTypeAdapter(DeliveryPreferences.class, new ModelWrappableSerializer("delivery_preferences"));
   }
 
   private static void registerMultistageTransferModels(GsonBuilder builder) {
