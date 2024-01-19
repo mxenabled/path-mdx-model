@@ -8,6 +8,7 @@ import com.mx.path.gateway.accessor.Accessor;
 import com.mx.path.gateway.accessor.AccessorConfiguration;
 import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
+import com.mx.path.model.mdx.model.documents.DeliveryPreferences;
 import com.mx.path.model.mdx.model.documents.Document;
 import com.mx.path.model.mdx.model.documents.DocumentSearch;
 
@@ -55,4 +56,27 @@ public abstract class DocumentBaseAccessor extends Accessor {
     throw new AccessorMethodNotImplementedException();
   }
 
+  /**
+   * Get delivery preferences
+   *
+   * @param deliveryPreferences
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Get the current delivery preferences")
+  public AccessorResponse<DeliveryPreferences> deliveryPreferences(DeliveryPreferences deliveryPreferences) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Update delivery preferences
+   *
+   * @param deliveryPreferences
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Update the delivery preferences")
+  public AccessorResponse<Void> updateDeliveryPreferences(DeliveryPreferences deliveryPreferences) {
+    throw new AccessorMethodNotImplementedException();
+  }
 }

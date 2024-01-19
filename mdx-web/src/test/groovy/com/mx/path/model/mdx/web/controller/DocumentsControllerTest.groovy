@@ -1,5 +1,6 @@
 package com.mx.path.model.mdx.web.controller
 
+import static org.mockito.ArgumentMatchers.any
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
@@ -7,8 +8,10 @@ import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.document.DocumentGateway
 import com.mx.path.model.mdx.model.MdxList
+import com.mx.path.model.mdx.model.documents.DeliveryPreferences
 import com.mx.path.model.mdx.model.documents.Document
 import com.mx.path.model.mdx.model.documents.DocumentSearch
+import com.mx.path.model.mdx.web.model.document.DocumentDeliveryGetQueryParameters
 
 import org.mockito.Mockito
 import org.springframework.http.HttpStatus
@@ -60,5 +63,36 @@ class DocumentsControllerTest extends Specification {
     then:
     verify(documentGateway).list(documentSearch) || true
     HttpStatus.OK == response.getStatusCode()
+  }
+
+  def "getDeliveryPreferences interacts with gateway"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def queryParameters = new DocumentDeliveryGetQueryParameters()
+    def deliveryPreferences = new DeliveryPreferences()
+
+    when:
+    Mockito.doReturn(new AccessorResponse<DeliveryPreferences>().withResult(deliveryPreferences)).when(documentGateway).deliveryPreferences(any(DeliveryPreferences))
+    def response = subject.getDeliveryPreferences(queryParameters)
+
+    then:
+    verify(documentGateway).deliveryPreferences(any(DeliveryPreferences)) || true
+    HttpStatus.ACCEPTED == response.getStatusCode()
+  }
+
+  def "updateDeliveryPreferences interacts with gateway"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def deliveryPreferences = new DeliveryPreferences()
+
+    when:
+    Mockito.doReturn(new AccessorResponse<Void>()).when(documentGateway).updateDeliveryPreferences(deliveryPreferences)
+    def response = subject.updateDeliveryPreferences(deliveryPreferences)
+
+    then:
+    verify(documentGateway).updateDeliveryPreferences(deliveryPreferences) || true
+    HttpStatus.NO_CONTENT == response.getStatusCode()
   }
 }
