@@ -76,7 +76,7 @@ public abstract class DocumentBaseAccessor extends Accessor {
    */
   @GatewayAPI
   @API(description = "Update the delivery preferences")
-  public AccessorResponse<Void> updateDeliveryPreferences(DeliveryPreferences deliveryPreferences) {
+  public AccessorResponse<DeliveryPreferences> updateDeliveryPreferences(DeliveryPreferences deliveryPreferences) {
     throw new AccessorMethodNotImplementedException();
   }
 }

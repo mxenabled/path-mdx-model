@@ -88,11 +88,11 @@ class DocumentsControllerTest extends Specification {
     def deliveryPreferences = new DeliveryPreferences()
 
     when:
-    Mockito.doReturn(new AccessorResponse<Void>()).when(documentGateway).updateDeliveryPreferences(deliveryPreferences)
+    Mockito.doReturn(new AccessorResponse<DeliveryPreferences>().withResult(deliveryPreferences)).when(documentGateway).updateDeliveryPreferences(deliveryPreferences)
     def response = subject.updateDeliveryPreferences(deliveryPreferences)
 
     then:
     verify(documentGateway).updateDeliveryPreferences(deliveryPreferences) || true
-    HttpStatus.NO_CONTENT == response.getStatusCode()
+    HttpStatus.ACCEPTED == response.getStatusCode()
   }
 }
