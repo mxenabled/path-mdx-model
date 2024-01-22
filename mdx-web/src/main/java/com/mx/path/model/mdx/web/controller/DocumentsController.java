@@ -44,8 +44,8 @@ public class DocumentsController extends BaseController {
   }
 
   @RequestMapping(value = "/users/{userId}/documents/delivery_preferences", method = RequestMethod.PUT)
-  public final ResponseEntity<?> updateDeliveryPreferences(@RequestBody DeliveryPreferences deliveryPreferences) {
-    AccessorResponse<Void> response = gateway().documents().updateDeliveryPreferences(deliveryPreferences);
-    return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
+  public final ResponseEntity<DeliveryPreferences> updateDeliveryPreferences(@RequestBody DeliveryPreferences deliveryPreferences) {
+    AccessorResponse<DeliveryPreferences> response = gateway().documents().updateDeliveryPreferences(deliveryPreferences);
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
   }
 }
