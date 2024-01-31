@@ -5,6 +5,18 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.18.0](https://github.com/mxenabled/path-mdx-model/compare/v4.17.0...v4.18.0) (2024-01-31)
+
+
+### Features
+
+* added support for updating document delivery preferences ([be87814](https://github.com/mxenabled/path-mdx-model/commit/be878145851ad0453fb0c348dd98461e13bc22f0))
+
+
+### Bug Fixes
+
+* echoing back challenge when updating document delivery preferences ([ad41971](https://github.com/mxenabled/path-mdx-model/commit/ad41971a1fd492357b7ae56da7d8545d208f117b))
+
 ## [4.17.0](https://github.com/mxenabled/path-mdx-model/compare/v4.16.1...v4.17.0) (2024-01-25)
 
 
