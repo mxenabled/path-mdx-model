@@ -36,6 +36,7 @@ import com.mx.path.model.mdx.model.id.Authentication
 import com.mx.path.model.mdx.model.id.ForgotUsername
 import com.mx.path.model.mdx.model.id.MfaChallenge
 import com.mx.path.model.mdx.model.id.ResetPassword
+import com.mx.path.model.mdx.model.id.UnlockUser
 import com.mx.path.testing.WithMockery
 import com.mx.path.testing.session.TestEncryptionService
 import com.mx.path.testing.session.TestSessionRepository
@@ -626,6 +627,54 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     then:
     verify(gateway).id()                          || true
     verify(id).answerResetPassword(resetPassword) || true
+    response.statusCode == HttpStatus.NO_CONTENT
+  }
+
+  def "unlockUser"() {
+    given:
+    AuthenticationController.setGateway(gateway)
+    def unlockUser = new UnlockUser()
+    doReturn(new AccessorResponse<UnlockUser>().withResult(unlockUser).withStatus(PathResponseStatus.OK)).when(id).unlockUser(unlockUser)
+
+    when:
+    def response = subject.unlockUser(unlockUser)
+
+    then:
+    verify(gateway).id()              || true
+    verify(id).unlockUser(unlockUser) || true
+    Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
+    response.statusCode == HttpStatus.ACCEPTED
+  }
+
+  def "unlockUser - ACCEPTED"() {
+    given:
+    AuthenticationController.setGateway(gateway)
+    def challenge = getChallenge()
+    def unlockUser = new UnlockUser().tap { challenges = [challenge] }
+    def expected = new UnlockUser().tap { challenges = [new Challenge()] }
+    doReturn(new AccessorResponse<UnlockUser>().withResult(expected).withStatus(PathResponseStatus.ACCEPTED)).when(id).unlockUser(unlockUser)
+
+    when:
+    def response = subject.answerUnlockUser(unlockUser)
+
+    then:
+    verify(gateway).id()              || true
+    verify(id).unlockUser(unlockUser) || true
+    response.statusCode == HttpStatus.ACCEPTED
+  }
+
+  def "unlockUser - NO_CONTENT"() {
+    given:
+    AuthenticationController.setGateway(gateway)
+    def unlockUser = new UnlockUser().tap { challenges = [challenge] }
+    doReturn(new AccessorResponse<UnlockUser>().withResult(new UnlockUser()).withStatus(PathResponseStatus.NO_CONTENT)).when(id).unlockUser(unlockUser)
+
+    when:
+    def response = subject.answerUnlockUser(unlockUser)
+
+    then:
+    verify(gateway).id()              || true
+    verify(id).unlockUser(unlockUser) || true
     response.statusCode == HttpStatus.NO_CONTENT
   }
 

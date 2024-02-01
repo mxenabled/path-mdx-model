@@ -16,6 +16,7 @@ import com.mx.path.model.mdx.model.authorization.HtmlPage;
 import com.mx.path.model.mdx.model.id.Authentication;
 import com.mx.path.model.mdx.model.id.ForgotUsername;
 import com.mx.path.model.mdx.model.id.ResetPassword;
+import com.mx.path.model.mdx.model.id.UnlockUser;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -293,6 +294,31 @@ public class AuthenticationController extends BaseController {
     // Return 202 returning challenge questions
     HttpStatus status = HttpStatus.NO_CONTENT;
     if (result.getChallenge() != null) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
+  }
+
+  @RequestMapping(value = "/unlock", method = RequestMethod.POST)
+  public final ResponseEntity<UnlockUser> unlockUser(@RequestBody UnlockUser unlockUser) {
+    //This endpoint always creates a new session when it called even if there is an existing session being passed
+    Session.deleteCurrent();
+    Session.createSession();
+
+    AccessorResponse<UnlockUser> response = gateway().id().unlockUser(unlockUser);
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("mx-session-key", Session.current().getId());
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders(), headers), HttpStatus.ACCEPTED);
+  }
+
+  @RequestMapping(value = "/unlock", method = RequestMethod.PUT)
+  public final ResponseEntity<UnlockUser> answerUnlockUser(@RequestBody UnlockUser unlockUser) {
+    AccessorResponse<UnlockUser> response = gateway().id().unlockUser(unlockUser);
+    UnlockUser result = response.getResult();
+    // Return 202 returning challenge questions
+    HttpStatus status = HttpStatus.NO_CONTENT;
+    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
       status = HttpStatus.ACCEPTED;
     }
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
