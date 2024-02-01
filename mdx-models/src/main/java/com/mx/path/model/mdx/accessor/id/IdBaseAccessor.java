@@ -12,6 +12,7 @@ import com.mx.path.model.mdx.model.authorization.HtmlPage;
 import com.mx.path.model.mdx.model.id.Authentication;
 import com.mx.path.model.mdx.model.id.ForgotUsername;
 import com.mx.path.model.mdx.model.id.ResetPassword;
+import com.mx.path.model.mdx.model.id.UnlockUser;
 
 /**
  * Accessor for id operations
@@ -184,6 +185,17 @@ public abstract class IdBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Answer Reset Password")
   public AccessorResponse<ResetPassword> answerResetPassword(ResetPassword resetPassword) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Unlock user
+   *
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Unlock User")
+  public AccessorResponse<UnlockUser> unlockUser(UnlockUser unlockUser) {
     throw new AccessorMethodNotImplementedException();
   }
 }

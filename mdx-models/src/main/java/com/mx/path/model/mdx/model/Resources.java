@@ -37,6 +37,7 @@ import com.mx.path.model.mdx.model.id.Authentication;
 import com.mx.path.model.mdx.model.id.ForgotUsername;
 import com.mx.path.model.mdx.model.id.MfaChallenge;
 import com.mx.path.model.mdx.model.id.ResetPassword;
+import com.mx.path.model.mdx.model.id.UnlockUser;
 import com.mx.path.model.mdx.model.location.Location;
 import com.mx.path.model.mdx.model.managed_cards.Destination;
 import com.mx.path.model.mdx.model.managed_cards.ManagedCard;
@@ -250,10 +251,12 @@ public class Resources {
     builder.registerTypeAdapter(MfaChallenge.class, new ModelWrappableSerializer("mfa_challenge"));
     builder.registerTypeAdapter(new TypeToken<MdxList<MfaChallenge>>() {
     }.getType(), new ModelWrappableSerializer("mfa_challenges"));
-    //ResetPassword
+    // ResetPassword
     builder.registerTypeAdapter(ResetPassword.class, new ModelWrappableSerializer("reset_password"));
-    //ForgotUsername
+    // ForgotUsername
     builder.registerTypeAdapter(ForgotUsername.class, new ModelWrappableSerializer("forgot_username"));
+    // UnlockUser
+    builder.registerTypeAdapter(UnlockUser.class, new ModelWrappableSerializer("unlock"));
     // Register Profile related models
     registerProfileModelClasses(builder);
     // Register ACH Transfer related models
