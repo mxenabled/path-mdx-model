@@ -36,6 +36,9 @@ public final class Question extends MdxBase<Question> {
   @SerializedName("json_data")
   private JsonData jsonData;
 
+  @SerializedName("html_data")
+  private HtmlData htmlData;
+
   public void setId(String id) {
     this.id = id;
   }
@@ -178,5 +181,13 @@ public final class Question extends MdxBase<Question> {
 
   public void setJsonData(JsonData jsonData) {
     this.jsonData = jsonData;
+  }
+
+  public HtmlData getHtmlData() {
+    return htmlData;
+  }
+
+  public void setHtmlData(HtmlData htmlData) {
+    this.htmlData = htmlData;
   }
 }
