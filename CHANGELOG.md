@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [4.18.1](https://github.com/mxenabled/path-mdx-model/compare/v4.18.0...v4.18.1) (2024-02-08)
+
+
+### Bug Fixes
+
+* add html data to question challenge ([2da9e07](https://github.com/mxenabled/path-mdx-model/commit/2da9e07e49ce1d573ad4a4123df08e139a7efd98))
+
 ## [4.18.0](https://github.com/mxenabled/path-mdx-model/compare/v4.17.0...v4.18.0) (2024-01-31)
 
 
