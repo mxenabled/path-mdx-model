@@ -1,17 +1,10 @@
 package com.mx.path.model.mdx.web;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mx.path.core.common.lang.Strings;
-import com.mx.path.core.common.serialization.PathRequestSerializableException;
-import com.mx.path.model.mdx.model.Resources;
-import lombok.Builder;
-import lombok.Data;
-import org.springframework.http.ResponseEntity;
+import static com.mx.path.model.mdx.web.controller.BaseController.MDX_MEDIA;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +13,19 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static com.mx.path.model.mdx.web.controller.BaseController.MDX_MEDIA;
+import javax.servlet.http.HttpServletRequest;
+
+import lombok.Builder;
+import lombok.Data;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mx.path.core.common.lang.Strings;
+import com.mx.path.core.common.serialization.PathRequestSerializableException;
+import com.mx.path.model.mdx.model.Resources;
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 
 public class VersionedResponse {
   private final HttpServletRequest request;
@@ -31,7 +36,7 @@ public class VersionedResponse {
   @Builder
   public static class VersionedResponder {
     private Function<Object, ResponseEntity<?>> supplier;
-    private Integer minorVersion;
+    private Integer version;
     private Class<?> requestType;
     private Class<?> responseType;
 
@@ -54,9 +59,21 @@ public class VersionedResponse {
       }
 
       ResponseEntity<T> response = (ResponseEntity<T>) supplier.apply(requestObject);
-      response.getHeaders().add("Content-Type", MDX_MEDIA.replace("+json;", ";v=" + minorVersion + ";"));
 
-      return response;
+      String contentType;
+      if (version == null) {
+        contentType = MDX_MEDIA;
+      } else {
+        // todo: figure out a better way to inject version
+        contentType = MDX_MEDIA.replace("+json;", "+json;version=" + version + ";");
+      }
+
+      HttpHeaders headers = new HttpHeaders();
+      headers.addAll(response.getHeaders());
+      headers.add("Content-Type", contentType);
+
+      // Add Content-Type header to response
+      return new ResponseEntity<>(response.getBody(), headers, response.getStatusCode());
     }
 
     private String getRequestBody(HttpServletRequest request) {
@@ -72,11 +89,11 @@ public class VersionedResponse {
     this.request = request;
   }
 
-  public final <REQ> VersionedResponse version(int minorVersion, Class<REQ> requestType, Class<?> responseType, Function<REQ, ResponseEntity<?>> supplier) {
-    responders.put(minorVersion, VersionedResponder.builder()
+  public final <REQ> VersionedResponse version(int version, Class<REQ> requestType, Class<?> responseType, Function<REQ, ResponseEntity<?>> supplier) {
+    responders.put(version, VersionedResponder.builder()
         .requestType(requestType)
         .responseType(responseType)
-        .minorVersion(minorVersion)
+        .version(version)
         .supplier((Function<Object, ResponseEntity<?>>) supplier)
         .build());
 
@@ -94,16 +111,17 @@ public class VersionedResponse {
   }
 
   public final ResponseEntity<?> execute() {
-    Integer minorVersion = extractMinorVersion("Accept");
-    if (minorVersion == null) {
-      minorVersion = extractMinorVersion("Content-Type");
+    Integer version = extractVersion("Accept");
+    if (version == null) {
+      version = extractVersion("Content-Type");
     }
 
-    return supplier(minorVersion).call(request);
+    return supplier(version).call(request);
   }
 
-  private Integer extractMinorVersion(String header) {
-    String patternString = ";v=(\\d+)";
+  private Integer extractVersion(String header) {
+    // todo: figure out a better way to extract version
+    String patternString = ";version=(\\d+)";
     Pattern p = Pattern.compile(patternString);
 
     Enumeration<String> headers = request.getHeaders(header);
@@ -112,20 +130,30 @@ public class VersionedResponse {
       Matcher m = p.matcher(value);
 
       if (m.find()) {
-        return Integer.valueOf(m.group(1));
+        return fixVersion(Integer.valueOf(m.group(1)));
       }
     }
 
     return null;
   }
 
-  private VersionedResponder supplier(Integer minorVersion) {
-    if (minorVersion == null) {
+  private Integer fixVersion(Integer version) {
+    return new ArrayList<>(responders.keySet())
+        .stream()
+        .filter(i -> i <= version)
+        .max(Integer::compareTo)
+        .orElseGet(() -> null);
+  }
+
+  private VersionedResponder supplier(Integer version) {
+    if (version == null) {
       return defaultVersion;
     }
-    if (responders.containsKey(minorVersion)) {
-      return responders.get(minorVersion);
+
+    if (responders.containsKey(version)) {
+      return responders.get(version);
     }
+
     return defaultVersion;
   }
 }

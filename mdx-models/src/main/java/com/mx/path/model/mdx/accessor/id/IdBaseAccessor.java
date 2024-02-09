@@ -11,6 +11,7 @@ import com.mx.path.model.mdx.model.authorization.HtmlPage;
 import com.mx.path.model.mdx.model.id.Authentication;
 import com.mx.path.model.mdx.model.id.ForgotUsername;
 import com.mx.path.model.mdx.model.id.ResetPassword;
+import com.mx.path.model.mdx.model.id.v20240209.Authentication20240209;
 
 /**
  * Accessor for id operations
@@ -53,6 +54,18 @@ public abstract class IdBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Authenticate user")
   public AccessorResponse<Authentication> authenticate(Authentication authentication) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Authenticate session
+   *
+   * @param authentication
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Authenticate user version 20240209")
+  public AccessorResponse<Authentication20240209> authenticate20240209(Authentication20240209 authentication) {
     throw new AccessorMethodNotImplementedException();
   }
 

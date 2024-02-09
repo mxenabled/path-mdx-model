@@ -1,46 +1,28 @@
 package com.mx.path.model.mdx.web.controller;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import javax.servlet.http.HttpServletRequest;
+
 import com.mx.path.core.common.accessor.PathResponseStatus;
 import com.mx.path.core.common.lang.Strings;
-import com.mx.path.core.common.serialization.PathRequestSerializableException;
 import com.mx.path.core.context.RequestContext;
 import com.mx.path.core.context.ResponseContext;
 import com.mx.path.gateway.api.Gateway;
-
-import com.mx.path.model.mdx.model.Resources;
 import com.mx.path.model.mdx.web.VersionedResponse;
-import lombok.Builder;
-import lombok.Data;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Service
 public class BaseController {
   // NO INSTANCE VARIABLES! Controllers are Singletons
 
-  public static final String MDX_MEDIA = "application/vnd.mx.mdx.v6+json;version=0;charset=UTF-8";
-  public static final String MDX_MEDIA_1 = "application/vnd.mx.mdx.v6+json;version=1;charset=UTF-8";
+  public static final String MDX_MEDIA = "application/vnd.mx.mdx.v6+json;charset=UTF-8";
   public static final String MDX_ONDEMAND_MEDIA = "application/vnd.moneydesktop.mdx.v5+xml";
 
   private static ThreadLocal<Gateway> gatewayThreadLocal = new ThreadLocal<>();

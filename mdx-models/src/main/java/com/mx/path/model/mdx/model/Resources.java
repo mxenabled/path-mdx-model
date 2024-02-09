@@ -37,6 +37,7 @@ import com.mx.path.model.mdx.model.id.Authentication;
 import com.mx.path.model.mdx.model.id.ForgotUsername;
 import com.mx.path.model.mdx.model.id.MfaChallenge;
 import com.mx.path.model.mdx.model.id.ResetPassword;
+import com.mx.path.model.mdx.model.id.v20240209.Authentication20240209;
 import com.mx.path.model.mdx.model.location.Location;
 import com.mx.path.model.mdx.model.managed_cards.Destination;
 import com.mx.path.model.mdx.model.managed_cards.ManagedCard;
@@ -123,6 +124,7 @@ public class Resources {
     builder.registerTypeAdapter(com.mx.path.model.mdx.model.challenges.Challenge.class, new ModelWrappableSerializer("challenge"));
     // Authentication
     builder.registerTypeAdapter(Authentication.class, new ModelWrappableSerializer("authentication"));
+    builder.registerTypeAdapter(Authentication20240209.class, new ModelWrappableSerializer("authentication"));
     // Transaction
     builder.registerTypeAdapter(Transaction.class, new ModelWrappableSerializer("transaction"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Transaction>>() {
