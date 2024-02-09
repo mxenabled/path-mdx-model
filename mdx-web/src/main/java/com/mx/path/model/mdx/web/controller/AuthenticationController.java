@@ -1,10 +1,8 @@
 package com.mx.path.model.mdx.web.controller;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Objects;
-
 import com.google.common.hash.Hashing;
 import com.mx.path.core.common.accessor.BadRequestException;
+import com.mx.path.core.common.accessor.RequestValidationException;
 import com.mx.path.core.common.lang.Strings;
 import com.mx.path.core.context.Session;
 import com.mx.path.core.context.Session.SessionState;
@@ -14,7 +12,6 @@ import com.mx.path.model.mdx.model.authorization.HtmlPage;
 import com.mx.path.model.mdx.model.id.Authentication;
 import com.mx.path.model.mdx.model.id.ForgotUsername;
 import com.mx.path.model.mdx.model.id.ResetPassword;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,11 +22,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import java.nio.charset.StandardCharsets;
+import java.util.Objects;
+
 @RestController
 @RequestMapping(value = "{clientId}", produces = BaseController.MDX_MEDIA)
 public class AuthenticationController extends BaseController {
 
-  @RequestMapping(value = { "/authentications", "/sessions" }, method = RequestMethod.POST, consumes = { MDX_MEDIA, MDX_ONDEMAND_MEDIA }, produces = { MDX_MEDIA, MDX_ONDEMAND_MEDIA })
+  @RequestMapping(value = {"/authentications", "/sessions"}, method = RequestMethod.POST, consumes = {MDX_MEDIA, MDX_ONDEMAND_MEDIA}, produces = {MDX_MEDIA, MDX_ONDEMAND_MEDIA})
   public final ResponseEntity<Authentication> authenticate(@PathVariable("clientId") String clientId, @RequestBody Authentication requestAuthentication) {
     ensureFeature("identity");
 
@@ -125,43 +126,24 @@ public class AuthenticationController extends BaseController {
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders(), headers), status);
   }
 
-  @RequestMapping(value = "/authentications/start", method = RequestMethod.POST, consumes = MDX_MEDIA)
-  public final ResponseEntity<Authentication> start(@PathVariable("clientId") String clientId, @RequestBody Authentication requestAuthentication) {
+  @RequestMapping(value = "/authentications/start", method = RequestMethod.POST)
+  public final ResponseEntity<?> start(@PathVariable("clientId") String clientId, HttpServletRequest request) {
+    return versioned(request)
+        .defaultVersion(Authentication.class, Authentication.class, (_inputObject) -> {
+          return start_0(clientId, _inputObject);
+        })
+        .version(1, Authentication.class, Authentication.class, (_inputObject) -> {
+          return start_1(clientId, _inputObject);
+        })
+        .execute();
+  }
 
-    // Delete existing session if it exists;
-    Session.deleteCurrent();
-    Session.createSession();
+  protected final ResponseEntity<Authentication> start_1(@PathVariable("clientId") String clientId, @RequestBody Authentication requestAuthentication) {
+    throw new RequestValidationException("Minor version 1", "Minor version 1");
+  }
 
-    // Store clientId
-    Session.current().setClientId(clientId);
-    Session.current().setDeviceId(requestAuthentication.getDeviceId());
-    Session.current().setDeviceMake(requestAuthentication.getDeviceMake());
-    Session.current().setDeviceModel(requestAuthentication.getDeviceModel());
-    Session.current().setDeviceOperatingSystem(requestAuthentication.getDeviceOperatingSystem());
-    Session.current().setDeviceOperatingSystemVersion(requestAuthentication.getDeviceOperatingSystemVersion());
-    Session.current().setDeviceHeight(requestAuthentication.getDeviceHeight());
-    Session.current().setDeviceLatitude(requestAuthentication.getDeviceLatitude());
-    Session.current().setDeviceLongitude(requestAuthentication.getDeviceLongitude());
-    Session.current().setDeviceWidth(requestAuthentication.getDeviceWidth());
-
-    AccessorResponse<Authentication> response = gateway().id().startAuthentication(requestAuthentication);
-    response.getResult().withId(Session.current().getId());
-    HttpHeaders headers = new HttpHeaders();
-    headers.add("mx-session-key", Session.current().getId());
-
-    // Return 204 if challenges are null to indicate non-federated login
-    // Return 202 to trigger follow-up PUT /authentications/{session_key} call w/ token when challenges are NOT null
-    // Return 200 if user_id is NOT null, no follow-up PUT /authentications/{session_key} call needed
-    HttpStatus status = HttpStatus.NO_CONTENT;
-    if (response.getResult().getChallenges() != null
-        && response.getResult().getChallenges().size() > 0) {
-      status = HttpStatus.ACCEPTED;
-    } else if (Strings.isNotBlank(response.getResult().getUserId())) {
-      status = HttpStatus.OK;
-      Session.current().setUserId(response.getResult().getUserId());
-      Session.current().setSessionState(SessionState.AUTHENTICATED);
-    }
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders(), headers), status);
+  protected final ResponseEntity<Authentication> start_0(@PathVariable("clientId") String clientId, @RequestBody Authentication requestAuthentication) {
+    throw new RequestValidationException("Minor version 0", "Minor version 0");
   }
 
   /***
@@ -232,8 +214,8 @@ public class AuthenticationController extends BaseController {
     if (Strings.isNotBlank(requestAuthentication.getToken())
         || Strings.isNotBlank(requestAuthentication.getAccessToken())
         || (Strings.isNotBlank(requestAuthentication.getLogin())
-            && requestAuthentication.getPassword() != null
-            && requestAuthentication.getPassword().length > 0)) {
+        && requestAuthentication.getPassword() != null
+        && requestAuthentication.getPassword().length > 0)) {
       // ---------------------------------------------
       // Login/Password OR token Authentication
       result = gateway().id().authenticate(requestAuthentication);
