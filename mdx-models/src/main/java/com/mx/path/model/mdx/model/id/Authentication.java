@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.gson.annotations.SerializedName;
 import com.mx.path.model.mdx.model.MdxBase;
 
+@Deprecated
 public class Authentication extends MdxBase<Authentication> {
 
   @Deprecated

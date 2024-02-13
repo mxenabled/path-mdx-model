@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "{clientId}", produces = BaseController.MDX_MEDIA)
 public class AuthenticationController extends BaseController {
 
+  @Deprecated
   @RequestMapping(value = { "/authentications", "/sessions" }, method = RequestMethod.POST, consumes = { MDX_MEDIA, MDX_ONDEMAND_MEDIA }, produces = { MDX_MEDIA, MDX_ONDEMAND_MEDIA })
   public final ResponseEntity<Authentication> authenticate(@PathVariable("clientId") String clientId, @RequestBody Authentication requestAuthentication) {
     ensureFeature("identity");
@@ -53,6 +54,52 @@ public class AuthenticationController extends BaseController {
     dumpEncryptedLoginHashToSession(requestAuthentication.getLogin());
 
     AccessorResponse<Authentication> accessorResponse;
+    accessorResponse = getAuthenticationResult(requestAuthentication);
+
+    accessorResponse.getResult().withId(Session.current().getId());
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("mx-session-key", Session.current().getId());
+
+    // Session is authenticated if the user id is set.
+    if (accessorResponse.getResult().getUserId() != null) {
+      Session.current().setUserId(accessorResponse.getResult().getUserId());
+      Session.current().setSessionState(SessionState.AUTHENTICATED);
+    }
+
+    HttpStatus status = HttpStatus.OK;
+    if (accessorResponse.getResult().getChallenges() != null
+        && accessorResponse.getResult().getChallenges().size() > 0) {
+      status = HttpStatus.ACCEPTED;
+    }
+
+    return new ResponseEntity<>(accessorResponse.getResult().wrapped(), createMultiMapForResponse(accessorResponse.getHeaders(), headers),
+        status);
+  }
+
+  @RequestMapping(value = { "/authentications", "/sessions" }, method = RequestMethod.POST, consumes = { MDX_MEDIA, MDX_ONDEMAND_MEDIA }, produces = { MDX_MEDIA, MDX_ONDEMAND_MEDIA }, headers = "X-API-VERSION=20240209")
+  public final ResponseEntity<com.mx.path.model.mdx.model.id.v20240209.Authentication> authenticate(@PathVariable("clientId") String clientId, @RequestBody com.mx.path.model.mdx.model.id.v20240209.Authentication requestAuthentication) {
+    ensureFeature("identity");
+
+    // Delete existing session if it exists;
+    Session.deleteCurrent();
+    Session.createSession();
+
+    // Store clientId
+    Session.current().setClientId(clientId);
+    Session.current().setDeviceId(requestAuthentication.getDeviceId());
+    Session.current().setDeviceMake(requestAuthentication.getDeviceMake());
+    Session.current().setDeviceModel(requestAuthentication.getDeviceModel());
+    Session.current().setDeviceOperatingSystem(requestAuthentication.getDeviceOperatingSystem());
+    Session.current().setDeviceOperatingSystemVersion(requestAuthentication.getDeviceOperatingSystemVersion());
+    Session.current().setDeviceHeight(requestAuthentication.getDeviceHeight());
+    Session.current().setDeviceLatitude(requestAuthentication.getDeviceLatitude());
+    Session.current().setDeviceLongitude(requestAuthentication.getDeviceLongitude());
+    Session.current().setDeviceWidth(requestAuthentication.getDeviceWidth());
+
+    // Store login for troubleshooting failed authentication
+    dumpEncryptedLoginHashToSession(requestAuthentication.getLogin());
+
+    AccessorResponse<com.mx.path.model.mdx.model.id.v20240209.Authentication> accessorResponse;
     accessorResponse = getAuthenticationResult(requestAuthentication);
 
     accessorResponse.getResult().withId(Session.current().getId());
@@ -226,6 +273,7 @@ public class AuthenticationController extends BaseController {
     }
   }
 
+  @Deprecated
   @SuppressWarnings("PMD.UselessParentheses")
   final AccessorResponse<Authentication> getAuthenticationResult(Authentication requestAuthentication) {
     AccessorResponse<Authentication> result;
@@ -234,6 +282,31 @@ public class AuthenticationController extends BaseController {
         || (Strings.isNotBlank(requestAuthentication.getLogin())
             && requestAuthentication.getPassword() != null
             && requestAuthentication.getPassword().length > 0)) {
+      // ---------------------------------------------
+      // Login/Password OR token Authentication
+      result = gateway().id().authenticate(requestAuthentication);
+    } else if (Strings.isNotBlank(requestAuthentication.getUserkey())) {
+      // ---------------------------------------------
+      // OnDemand Authentication
+      result = gateway().id().authenticateWithUserKey(requestAuthentication);
+
+    } else {
+      // ---------------------------------------------
+      // Invalid authentication request
+
+      throw new BadRequestException("Invalid authentication body", "Invalid authentication body");
+    }
+    return result;
+  }
+
+  @SuppressWarnings("PMD.UselessParentheses")
+  final AccessorResponse<com.mx.path.model.mdx.model.id.v20240209.Authentication> getAuthenticationResult(com.mx.path.model.mdx.model.id.v20240209.Authentication requestAuthentication) {
+    AccessorResponse<com.mx.path.model.mdx.model.id.v20240209.Authentication> result;
+    if (Strings.isNotBlank(requestAuthentication.getToken())
+        || Strings.isNotBlank(requestAuthentication.getAccessToken())
+        || (Strings.isNotBlank(requestAuthentication.getLogin())
+        && requestAuthentication.getPassword() != null
+        && requestAuthentication.getPassword().length > 0)) {
       // ---------------------------------------------
       // Login/Password OR token Authentication
       result = gateway().id().authenticate(requestAuthentication);
