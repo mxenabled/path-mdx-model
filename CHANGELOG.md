@@ -5,6 +5,17 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [5.0.0](https://github.com/mxenabled/path-mdx-model/compare/v4.18.1...v5.0.0) (2024-02-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* changing running_balance to BigDecimal
+
+### Code Refactoring
+
+* changing running_balance to BigDecimal ([79798c7](https://github.com/mxenabled/path-mdx-model/commit/79798c74b6c6222b7248ef829cdf230ef8b8f4a9))
+
 ## [4.18.1](https://github.com/mxenabled/path-mdx-model/compare/v4.18.0...v4.18.1) (2024-02-08)
 
 
