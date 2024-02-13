@@ -4,6 +4,7 @@ import com.mx.path.core.common.accessor.API;
 import com.mx.path.core.common.accessor.AccessorMethodNotImplementedException;
 import com.mx.path.core.common.gateway.GatewayAPI;
 import com.mx.path.core.common.gateway.GatewayClass;
+import com.mx.path.core.common.remote.RemoteOperation;
 import com.mx.path.gateway.accessor.Accessor;
 import com.mx.path.gateway.accessor.AccessorConfiguration;
 import com.mx.path.gateway.accessor.AccessorResponse;
@@ -50,9 +51,23 @@ public abstract class IdBaseAccessor extends Accessor {
    * @param authentication
    * @return
    */
+  @Deprecated
   @GatewayAPI
-  @API(description = "Authenticate user")
+  @API(description = "Authenticate user - legacy")
   public AccessorResponse<Authentication> authenticate(Authentication authentication) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Authenticate session
+   *
+   * @param authentication
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Authenticate user - version 20240209")
+  @RemoteOperation("authenticate20240209")
+  public AccessorResponse<com.mx.path.model.mdx.model.id.v20240209.Authentication> authenticate(com.mx.path.model.mdx.model.id.v20240209.Authentication authentication) {
     throw new AccessorMethodNotImplementedException();
   }
 
