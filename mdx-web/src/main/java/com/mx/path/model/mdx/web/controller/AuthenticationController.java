@@ -3,6 +3,8 @@ package com.mx.path.model.mdx.web.controller;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.google.common.hash.Hashing;
 import com.mx.path.core.common.accessor.BadRequestException;
 import com.mx.path.core.common.lang.Strings;
@@ -14,6 +16,7 @@ import com.mx.path.model.mdx.model.authorization.HtmlPage;
 import com.mx.path.model.mdx.model.id.Authentication;
 import com.mx.path.model.mdx.model.id.ForgotUsername;
 import com.mx.path.model.mdx.model.id.ResetPassword;
+import com.mx.path.model.mdx.model.id.v20240209.Authentication20240209;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -29,8 +32,66 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "{clientId}", produces = BaseController.MDX_MEDIA)
 public class AuthenticationController extends BaseController {
 
-  @RequestMapping(value = { "/authentications", "/sessions" }, method = RequestMethod.POST, consumes = { MDX_MEDIA, MDX_ONDEMAND_MEDIA }, produces = { MDX_MEDIA, MDX_ONDEMAND_MEDIA })
-  public final ResponseEntity<Authentication> authenticate(@PathVariable("clientId") String clientId, @RequestBody Authentication requestAuthentication) {
+  @SuppressWarnings("MagicNumber")
+  @RequestMapping(value = "/authentications", method = RequestMethod.POST, consumes = MDX_MEDIA)
+  public final ResponseEntity<?> authenticate(@PathVariable("clientId") String clientId, HttpServletRequest request) {
+    return versioned(request)
+        .defaultVersion(Authentication.class, Authentication.class, (authentication -> {
+          return authenticateLegacy(clientId, authentication);
+        }))
+        .version(20240209, Authentication20240209.class, Authentication20240209.class, (authentication -> {
+          return authenticate(clientId, authentication);
+        }))
+        .execute();
+  }
+
+  @RequestMapping(value = { "/sessions" }, method = RequestMethod.POST, consumes = MDX_ONDEMAND_MEDIA, produces = MDX_ONDEMAND_MEDIA)
+  public final ResponseEntity<Authentication20240209> authenticate(@PathVariable("clientId") String clientId, @RequestBody Authentication20240209 requestAuthentication) {
+    ensureFeature("identity");
+
+    // Delete existing session if it exists;
+    Session.deleteCurrent();
+    Session.createSession();
+
+    // Store clientId
+    Session.current().setClientId(clientId);
+    Session.current().setDeviceId(requestAuthentication.getDeviceId());
+    Session.current().setDeviceMake(requestAuthentication.getDeviceMake());
+    Session.current().setDeviceModel(requestAuthentication.getDeviceModel());
+    Session.current().setDeviceOperatingSystem(requestAuthentication.getDeviceOperatingSystem());
+    Session.current().setDeviceOperatingSystemVersion(requestAuthentication.getDeviceOperatingSystemVersion());
+    Session.current().setDeviceHeight(requestAuthentication.getDeviceHeight());
+    Session.current().setDeviceLatitude(requestAuthentication.getDeviceLatitude());
+    Session.current().setDeviceLongitude(requestAuthentication.getDeviceLongitude());
+    Session.current().setDeviceWidth(requestAuthentication.getDeviceWidth());
+
+    // Store login for troubleshooting failed authentication
+    dumpEncryptedLoginHashToSession(requestAuthentication.getLogin());
+
+    AccessorResponse<Authentication20240209> accessorResponse;
+    accessorResponse = getAuthenticationResult(requestAuthentication);
+
+    accessorResponse.getResult().withId(Session.current().getId());
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("mx-session-key", Session.current().getId());
+
+    // Session is authenticated if the user id is set.
+    if (accessorResponse.getResult().getUserId() != null) {
+      Session.current().setUserId(accessorResponse.getResult().getUserId());
+      Session.current().setSessionState(SessionState.AUTHENTICATED);
+    }
+
+    HttpStatus status = HttpStatus.OK;
+    if (accessorResponse.getResult().getChallenges() != null
+        && accessorResponse.getResult().getChallenges().size() > 0) {
+      status = HttpStatus.ACCEPTED;
+    }
+
+    return new ResponseEntity<>(accessorResponse.getResult().wrapped(), createMultiMapForResponse(accessorResponse.getHeaders(), headers),
+        status);
+  }
+
+  protected final ResponseEntity<Authentication> authenticateLegacy(@PathVariable("clientId") String clientId, @RequestBody Authentication requestAuthentication) {
     ensureFeature("identity");
 
     // Delete existing session if it exists;
@@ -248,6 +309,27 @@ public class AuthenticationController extends BaseController {
 
       throw new BadRequestException("Invalid authentication body", "Invalid authentication body");
     }
+    return result;
+  }
+
+  @SuppressWarnings("PMD.UselessParentheses")
+  final AccessorResponse<Authentication20240209> getAuthenticationResult(Authentication20240209 requestAuthentication) {
+    AccessorResponse<Authentication20240209> result;
+    if (Strings.isNotBlank(requestAuthentication.getToken())
+        || Strings.isNotBlank(requestAuthentication.getAccessToken())
+        || (Strings.isNotBlank(requestAuthentication.getLogin())
+            && requestAuthentication.getPassword() != null
+            && requestAuthentication.getPassword().length > 0)) {
+      // ---------------------------------------------
+      // Login/Password OR token Authentication
+      result = gateway().id().authenticate20240209(requestAuthentication);
+    } else {
+      // ---------------------------------------------
+      // Invalid authentication request
+
+      throw new BadRequestException("Invalid authentication body");
+    }
+
     return result;
   }
 }
