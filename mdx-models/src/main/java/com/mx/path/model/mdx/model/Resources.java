@@ -256,7 +256,7 @@ public class Resources {
     // ForgotUsername
     builder.registerTypeAdapter(ForgotUsername.class, new ModelWrappableSerializer("forgot_username"));
     // UnlockUser
-    builder.registerTypeAdapter(UnlockUser.class, new ModelWrappableSerializer("unlock"));
+    builder.registerTypeAdapter(UnlockUser.class, new ModelWrappableSerializer("unlock_user"));
     // Register Profile related models
     registerProfileModelClasses(builder);
     // Register ACH Transfer related models
