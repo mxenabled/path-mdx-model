@@ -299,7 +299,7 @@ public class AuthenticationController extends BaseController {
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 
-  @RequestMapping(value = "/unlock", method = RequestMethod.POST)
+  @RequestMapping(value = "/unlock_user", method = RequestMethod.POST)
   public final ResponseEntity<UnlockUser> unlockUser(@RequestBody UnlockUser unlockUser) {
     //This endpoint always creates a new session when it called even if there is an existing session being passed
     Session.deleteCurrent();
@@ -312,7 +312,7 @@ public class AuthenticationController extends BaseController {
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders(), headers), HttpStatus.ACCEPTED);
   }
 
-  @RequestMapping(value = "/unlock", method = RequestMethod.PUT)
+  @RequestMapping(value = "/unlock_user", method = RequestMethod.PUT)
   public final ResponseEntity<UnlockUser> answerUnlockUser(@RequestBody UnlockUser unlockUser) {
     AccessorResponse<UnlockUser> response = gateway().id().unlockUser(unlockUser);
     UnlockUser result = response.getResult();

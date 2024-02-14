@@ -31,6 +31,7 @@ import com.mx.path.model.mdx.model.authorization.HtmlPage
 import com.mx.path.model.mdx.model.challenges.Action
 import com.mx.path.model.mdx.model.challenges.Challenge
 import com.mx.path.model.mdx.model.challenges.DeepLinkData
+import com.mx.path.model.mdx.model.challenges.Option
 import com.mx.path.model.mdx.model.challenges.Question
 import com.mx.path.model.mdx.model.id.Authentication
 import com.mx.path.model.mdx.model.id.ForgotUsername
@@ -649,10 +650,37 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
   def "unlockUser - ACCEPTED"() {
     given:
     AuthenticationController.setGateway(gateway)
-    def challenge = getChallenge()
-    def unlockUser = new UnlockUser().tap { challenges = [challenge] }
-    def expected = new UnlockUser().tap { challenges = [new Challenge()] }
-    doReturn(new AccessorResponse<UnlockUser>().withResult(expected).withStatus(PathResponseStatus.ACCEPTED)).when(id).unlockUser(unlockUser)
+    def unlockUser = new UnlockUser()
+    def challenge = new Challenge().tap {
+      id = "INITIAL_USER_UNLOCK"
+      questions = new ArrayList<Question>().tap {
+        add(new Question().tap {
+          id = "userName"
+          prompt = "username"
+          promptType = "text"
+        })
+        add(new Question().tap {
+          id = "mfaChoice"
+          prompt = "Additional verification needed. Please select a delivery method to receive the verification code"
+          options = new ArrayList<Option>().tap {
+            add(new Option().tap {
+              id = "sms"
+              name = "SMS Text"
+            })
+            add(new Option().tap {
+              id = "call"
+              name = "Voice Call"
+            })
+            add(new Option().tap {
+              id = "email"
+              name = "Email"
+            })
+          }
+        })
+      }
+    }
+    def accessorResponse = new UnlockUser().tap { challenges = [challenge] }
+    doReturn(new AccessorResponse<UnlockUser>().withResult(accessorResponse).withStatus(PathResponseStatus.ACCEPTED)).when(id).unlockUser(unlockUser)
 
     when:
     def response = subject.answerUnlockUser(unlockUser)
@@ -661,6 +689,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     verify(gateway).id()              || true
     verify(id).unlockUser(unlockUser) || true
     response.statusCode == HttpStatus.ACCEPTED
+    response.getBody().challenges.size() > 0
   }
 
   def "unlockUser - NO_CONTENT"() {
