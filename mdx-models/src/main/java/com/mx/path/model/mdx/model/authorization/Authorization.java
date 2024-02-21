@@ -11,6 +11,7 @@ public class Authorization extends MdxBase<Authorization> {
   private NameValuePair[] headers;
   private JavaScript javascript;
   private String token;
+  private NameValuePair[] tokens;
   private String type;
   private String url;
   private String vendorId;
@@ -72,6 +73,14 @@ public class Authorization extends MdxBase<Authorization> {
 
   public final void setToken(String newToken) {
     this.token = newToken;
+  }
+
+  public final NameValuePair[] getTokens() {
+    return tokens;
+  }
+
+  public final void setTokens(NameValuePair[] tokens) {
+    this.tokens = tokens;
   }
 
   public final String getType() {
