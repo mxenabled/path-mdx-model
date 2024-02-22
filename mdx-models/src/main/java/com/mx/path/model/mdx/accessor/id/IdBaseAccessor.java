@@ -4,6 +4,7 @@ import com.mx.path.core.common.accessor.API;
 import com.mx.path.core.common.accessor.AccessorMethodNotImplementedException;
 import com.mx.path.core.common.gateway.GatewayAPI;
 import com.mx.path.core.common.gateway.GatewayClass;
+import com.mx.path.core.common.remote.RemoteOperation;
 import com.mx.path.gateway.accessor.Accessor;
 import com.mx.path.gateway.accessor.AccessorConfiguration;
 import com.mx.path.gateway.accessor.AccessorResponse;
@@ -45,6 +46,19 @@ public abstract class IdBaseAccessor extends Accessor {
   }
 
   /**
+   * Start Authenticate
+   *
+   * @param authentication
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "start Authentication process by sending if login should be webview or normal login", version = "20240213")
+  @RemoteOperation("startAuthentication20240213")
+  public AccessorResponse<com.mx.path.model.mdx.model.id.v20240213.Authentication> startAuthentication(com.mx.path.model.mdx.model.id.v20240213.Authentication authentication) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
    * Authenticate session
    *
    * @param authentication
@@ -53,6 +67,19 @@ public abstract class IdBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Authenticate user")
   public AccessorResponse<Authentication> authenticate(Authentication authentication) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Authenticate session
+   *
+   * @param authentication
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Authenticate user version 20240213")
+  @RemoteOperation("authenticate20240213")
+  public AccessorResponse<com.mx.path.model.mdx.model.id.v20240213.Authentication> authenticate(com.mx.path.model.mdx.model.id.v20240213.Authentication authentication) {
     throw new AccessorMethodNotImplementedException();
   }
 
@@ -86,6 +113,19 @@ public abstract class IdBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Respond to MFA questions")
   public AccessorResponse<Authentication> resumeMFA(Authentication authentication) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Resume MFA Session
+   *
+   * @param authentication
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Respond to MFA questions", version = "20240213")
+  @RemoteOperation("resumeMFA20240213")
+  public AccessorResponse<com.mx.path.model.mdx.model.id.v20240213.Authentication> resumeMFA(com.mx.path.model.mdx.model.id.v20240213.Authentication authentication) {
     throw new AccessorMethodNotImplementedException();
   }
 

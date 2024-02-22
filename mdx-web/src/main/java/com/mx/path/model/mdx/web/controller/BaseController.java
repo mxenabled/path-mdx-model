@@ -3,11 +3,14 @@ package com.mx.path.model.mdx.web.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.mx.path.core.common.accessor.PathResponseStatus;
 import com.mx.path.core.common.lang.Strings;
 import com.mx.path.core.context.RequestContext;
 import com.mx.path.core.context.ResponseContext;
 import com.mx.path.gateway.api.Gateway;
+import com.mx.path.model.mdx.web.DateVersionedResponse;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -47,6 +50,10 @@ public class BaseController {
     }
 
     return sessionId;
+  }
+
+  protected final DateVersionedResponse versioned(HttpServletRequest request) {
+    return new DateVersionedResponse(request);
   }
 
   /**
