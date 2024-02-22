@@ -123,6 +123,7 @@ public class Resources {
     builder.registerTypeAdapter(com.mx.path.model.mdx.model.challenges.Challenge.class, new ModelWrappableSerializer("challenge"));
     // Authentication
     builder.registerTypeAdapter(Authentication.class, new ModelWrappableSerializer("authentication"));
+    builder.registerTypeAdapter(com.mx.path.model.mdx.model.id.v20240213.Authentication.class, new ModelWrappableSerializer("authentication"));
     // Transaction
     builder.registerTypeAdapter(Transaction.class, new ModelWrappableSerializer("transaction"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Transaction>>() {

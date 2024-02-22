@@ -1,14 +1,20 @@
 package com.mx.path.model.mdx.web.controller
 
+import static org.mockito.ArgumentMatchers.any
 import static org.mockito.Mockito.doAnswer
 import static org.mockito.Mockito.doReturn
+import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 import static org.mockito.Mockito.when
 
 import java.nio.charset.StandardCharsets
 
+import javax.servlet.http.HttpServletRequest
+
 import com.google.common.hash.Hashing
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.mx.path.core.common.accessor.PathResponseStatus
 import com.mx.path.core.common.collection.ObjectMap
 import com.mx.path.core.context.RequestContext
@@ -19,16 +25,18 @@ import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.id.IdGateway
 import com.mx.path.gateway.context.Scope
+import com.mx.path.model.mdx.model.Resources
 import com.mx.path.model.mdx.model.authorization.Authorization
 import com.mx.path.model.mdx.model.authorization.HtmlPage
+import com.mx.path.model.mdx.model.challenges.Action
 import com.mx.path.model.mdx.model.challenges.Challenge
+import com.mx.path.model.mdx.model.challenges.DeepLinkData
 import com.mx.path.model.mdx.model.challenges.Question
 import com.mx.path.model.mdx.model.id.Authentication
 import com.mx.path.model.mdx.model.id.ForgotUsername
 import com.mx.path.model.mdx.model.id.MfaChallenge
 import com.mx.path.model.mdx.model.id.ResetPassword
 import com.mx.path.testing.WithMockery
-import com.mx.path.testing.WithSessionRepository
 import com.mx.path.testing.session.TestEncryptionService
 import com.mx.path.testing.session.TestSessionRepository
 import com.mx.testing.Utils
@@ -42,10 +50,12 @@ import spock.lang.Specification
 
 class AuthenticationControllerTest extends Specification implements WithMockery {
   Authentication authentication
+  com.mx.path.model.mdx.model.id.v20240213.Authentication authentication20240213
   AuthenticationController subject
   SessionRepository sessionRepository
   Gateway gateway
   IdGateway id
+  Gson gson
 
   def setup() {
     subject = new AuthenticationController()
@@ -72,6 +82,24 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     authentication.setDeviceOperatingSystem("iOS")
     authentication.setDeviceOperatingSystemVersion("12")
     authentication.setDeviceWidth(50)
+
+    authentication20240213 = new com.mx.path.model.mdx.model.id.v20240213.Authentication()
+    authentication20240213.setLogin("login")
+    authentication20240213.setPassword("p@\$\$w0rd".toCharArray())
+    authentication20240213.setDeviceHeight(100)
+    authentication20240213.setDeviceId("123456789")
+    authentication20240213.setDeviceLatitude(13)
+    authentication20240213.setDeviceLongitude(14)
+    authentication20240213.setDeviceMake("Apple")
+    authentication20240213.setDeviceModel("XS")
+    authentication20240213.setDeviceOperatingSystem("iOS")
+    authentication20240213.setDeviceOperatingSystemVersion("12")
+    authentication20240213.setDeviceWidth(50)
+
+    GsonBuilder builder = new GsonBuilder();
+    Resources.registerResources(builder);
+
+    gson = builder.create();
   }
 
   def cleanup() {
@@ -98,6 +126,24 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
     "user-1234" == response.getBody().getUserId()
     RequestContext.current().feature == "identity"
+  }
+
+  def "loginWithPasswordSuccessful 20240213"() {
+    given:
+    AuthenticationController.setGateway(gateway)
+    def resultAuthentication = new com.mx.path.model.mdx.model.id.v20240213.Authentication().withUserId("user-1234")
+
+    when:
+    doReturn(new AccessorResponse<com.mx.path.model.mdx.model.id.v20240213.Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).authenticate((com.mx.path.model.mdx.model.id.v20240213.Authentication) any(com.mx.path.model.mdx.model.id.v20240213.Authentication))
+    def response = subject.authenticate("client1234", buildRequest(authentication20240213, "application/vnd.mx.id.v6+json;version=20240213"))
+
+    then:
+    verify(id).authenticate((com.mx.path.model.mdx.model.id.v20240213.Authentication) any(com.mx.path.model.mdx.model.id.v20240213.Authentication)) || true
+    HttpStatus.OK == response.getStatusCode()
+    Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
+    "user-1234" == response.getBody().getUserId()
+    RequestContext.current().feature == "identity"
+    response.headers.get("Content-Type").contains("application/vnd.mx.mdx.v6+json;charset=UTF-8;version=20240213")
   }
 
   def "loginWithTokenSuccessful"() {
@@ -190,11 +236,11 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     SessionRepository repository = new TestSessionRepository()
     Session.setRepositorySupplier({ -> repository })
     TestEncryptionService testEncryptionService = new TestEncryptionService(new ObjectMap())
-    Session.setEncryptionServiceSupplier({-> testEncryptionService})
+    Session.setEncryptionServiceSupplier({ -> testEncryptionService })
     Utils.injectSessionEncryptionService()
 
     def login = "user_1234"
-    def authentication = new Authentication().tap { setLogin(login)}
+    def authentication = new Authentication().tap { setLogin(login) }
     def subjectSpy = spy(subject)
     doReturn(new AccessorResponse<Authentication>().withResult(authentication)).when(subjectSpy).getAuthenticationResult(authentication)
 
@@ -207,7 +253,6 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
         .hashString(login, StandardCharsets.UTF_8)
         .toString()
     hashedLogin == sha256hex
-
   }
 
   def "loginWithPasswordWithChallenges"() {
@@ -265,11 +310,17 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     def resultAuthentication = new Authentication().withUserId("user-1234")
 
     when:
-    doReturn(new AccessorResponse<Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).resumeMFA(authentication)
-    ResponseEntity<Authentication> response = subject.resumeMfa("client-1234", Session.current().getId(), authentication)
+    doReturn(new AccessorResponse<Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).resumeMFA((Authentication) any(Authentication))
+    HttpServletRequest request = mock(HttpServletRequest.class)
+
+    when(request.getReader()).thenReturn(new BufferedReader(new StringReader(gson.toJson(authentication))))
+    when(request.getHeader("mx-session-key")).thenReturn(Session.current().getId())
+    when(request.getHeaders("Content-Type")).thenReturn(Collections.enumeration(["vnd.mx.mdx.v6+json"]))
+    when(request.getHeaders("Accept")).thenReturn(Collections.enumeration(["vnd.mx.mdx.v6+json"]))
+    ResponseEntity<Authentication> response = subject.resumeMfa("client-1234", Session.current().getId(), request)
 
     then:
-    verify(id).resumeMFA(authentication) || true
+    verify(id).resumeMFA((Authentication) any()) || true
     HttpStatus.OK == response.getStatusCode()
     Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
     "user-1234" == response.getBody().getUserId()
@@ -289,14 +340,26 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     resultAuthentication.setChallenges(challenges)
 
     when:
-    doReturn(new AccessorResponse<Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).resumeMFA(authentication)
-    def response = subject.resumeMfa("client1234", Session.current().getId(), authentication)
+    doReturn(new AccessorResponse<Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).resumeMFA((Authentication) any(Authentication))
+    def response = subject.resumeMfa("client1234", Session.current().getId(), buildRequest(authentication, "vnd.mx.mdx.v6+json"))
 
     then:
-    verify(id).resumeMFA(authentication) || true
+    verify(id).resumeMFA((Authentication) any(Authentication)) || true
     HttpStatus.ACCEPTED == response.getStatusCode()
     Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
     response.getBody().getUserId() == null
+  }
+
+  def buildRequest(Object body, String contentType) {
+    HttpServletRequest request = mock(HttpServletRequest.class)
+    when(request.getReader()).thenReturn(new BufferedReader(new StringReader(gson.toJson(body))))
+    if (Session.current() != null) {
+      when(request.getHeader("mx-session-key")).thenReturn(Session.current().getId())
+    }
+    when(request.getHeaders("Content-Type")).thenReturn(Collections.enumeration([contentType]))
+    when(request.getHeaders("Accept")).thenReturn(Collections.enumeration([contentType]))
+
+    return request
   }
 
   def "callback"() {
@@ -334,11 +397,11 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     def resultAuthentication = new Authentication()
 
     when:
-    doReturn(new AccessorResponse<Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).startAuthentication(authentication)
-    def response = subject.start("client1234", authentication)
+    doReturn(new AccessorResponse<Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).startAuthentication((Authentication) any(Authentication))
+    def response = subject.start("client1234", buildRequest(authentication, "application/vnd.mx.mdx.v6+json"))
 
     then:
-    verify(id).startAuthentication(authentication) || true
+    verify(id).startAuthentication((Authentication) any(Authentication)) || true
     HttpStatus.NO_CONTENT == response.getStatusCode()
     Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
     response.getBody().getUserId() == null
@@ -356,11 +419,39 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     })
 
     when:
-    doReturn(new AccessorResponse<Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).startAuthentication(authentication)
-    def response = subject.start("client1234", authentication)
+    doReturn(new AccessorResponse<Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).startAuthentication((Authentication) any(Authentication))
+    def response = subject.start("client1234", buildRequest(authentication, "application/vnd.mx.mdx.v6+json"))
 
     then:
-    verify(id).startAuthentication(authentication) || true
+    verify(id).startAuthentication((Authentication) any(Authentication)) || true
+    HttpStatus.ACCEPTED == response.getStatusCode()
+    Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
+    response.getBody().getUserId() == null
+    Session.current().getSessionState() == Session.SessionState.UNAUTHENTICATED
+  }
+
+  def "/authentications/start without token - FederatedLogin On - 20240213"() {
+    given:
+    AuthenticationController.setGateway(gateway)
+    def resultAuthentication = new com.mx.path.model.mdx.model.id.v20240213.Authentication()
+    resultAuthentication.setChallenges(new ArrayList<Challenge>().tap {
+      add(new Challenge().tap {
+        it.setActions(new ArrayList<Action>().tap {
+          add(new Action().tap {
+            it.setDeepLinkData(new DeepLinkData().tap {
+              setDeepLink("https://someUrlForFederatedLogin.com/")
+            })
+          })
+        })
+      })
+    })
+
+    when:
+    doReturn(new AccessorResponse<com.mx.path.model.mdx.model.id.v20240213.Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).startAuthentication((com.mx.path.model.mdx.model.id.v20240213.Authentication) any(com.mx.path.model.mdx.model.id.v20240213.Authentication))
+    def response = subject.start("client1234", buildRequest(authentication, "application/vnd.mx.mdx.v6+json;version=20240213"))
+
+    then:
+    verify(id).startAuthentication((com.mx.path.model.mdx.model.id.v20240213.Authentication) any(com.mx.path.model.mdx.model.id.v20240213.Authentication)) || true
     HttpStatus.ACCEPTED == response.getStatusCode()
     Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
     response.getBody().getUserId() == null
@@ -376,11 +467,32 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     }
 
     when:
-    doReturn(new AccessorResponse<Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).startAuthentication(authentication)
-    def response = subject.start("client1234", authentication)
+    doReturn(new AccessorResponse<Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).startAuthentication((Authentication) any(Authentication))
+    def response = subject.start("client1234", buildRequest(authentication, "application/vnd.mx.mdx.v6+json"))
 
     then:
-    verify(id).startAuthentication(authentication) || true
+    verify(id).startAuthentication((Authentication) any(Authentication)) || true
+    HttpStatus.OK == response.getStatusCode()
+    Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
+    response.body.getUserId() == "U-111"
+    response.body.refreshToken == "someRefreshToken"
+    Session.current().getSessionState() == Session.SessionState.AUTHENTICATED
+  }
+
+  def "/authentications/start with refreshToken - FederatedLogin On 20240213"() {
+    given:
+    AuthenticationController.setGateway(gateway)
+    def resultAuthentication = new com.mx.path.model.mdx.model.id.v20240213.Authentication().tap {
+      setRefreshToken("someRefreshToken")
+      setUserId("U-111")
+    }
+
+    when:
+    doReturn(new AccessorResponse<com.mx.path.model.mdx.model.id.v20240213.Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).startAuthentication((com.mx.path.model.mdx.model.id.v20240213.Authentication) any(com.mx.path.model.mdx.model.id.v20240213.Authentication))
+    def response = subject.start("client1234", buildRequest(authentication, "application/vnd.mx.mdx.v6+json;version=20240213"))
+
+    then:
+    verify(id).startAuthentication((com.mx.path.model.mdx.model.id.v20240213.Authentication) any(com.mx.path.model.mdx.model.id.v20240213.Authentication)) || true
     HttpStatus.OK == response.getStatusCode()
     Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
     response.body.getUserId() == "U-111"
@@ -396,15 +508,35 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     def resultAuthentication = new Authentication().withUserId("user-1234")
 
     when:
-    doReturn(new AccessorResponse<Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).resumeMFA(authentication)
-    def response = subject.resumeMfa("client1234", Session.current().getId(), authentication)
+    doReturn(new AccessorResponse<Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).resumeMFA((Authentication) any(Authentication))
+    def response = subject.resumeMfa("client1234", Session.current().getId(), buildRequest(authentication, "application/vnd.mx.mdx.v6+json"))
 
     then:
-    verify(id).resumeMFA(authentication) || true
+    verify(id).resumeMFA((Authentication) any(Authentication)) || true
     HttpStatus.OK == response.getStatusCode()
     Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
     response.getBody().getUserId() == "user-1234"
     Session.current().getSessionState() == Session.SessionState.AUTHENTICATED
+  }
+
+  def "/authentications/id - With Token 20240213"() {
+    given:
+    AuthenticationController.setGateway(gateway)
+    initActiveSession()
+    authentication20240213.setToken("Abcd1234")
+    def resultAuthentication = new com.mx.path.model.mdx.model.id.v20240213.Authentication().withUserId("user-1234")
+
+    when:
+    doReturn(new AccessorResponse<com.mx.path.model.mdx.model.id.v20240213.Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).resumeMFA((com.mx.path.model.mdx.model.id.v20240213.Authentication) any(com.mx.path.model.mdx.model.id.v20240213.Authentication))
+    def response = subject.resumeMfa("client1234", Session.current().getId(), buildRequest(authentication20240213, "application/vnd.mx.mdx.v6+json; version=20240213"))
+
+    then:
+    verify(id).resumeMFA((com.mx.path.model.mdx.model.id.v20240213.Authentication) any(com.mx.path.model.mdx.model.id.v20240213.Authentication)) || true
+    HttpStatus.OK == response.getStatusCode()
+    Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
+    response.getBody().getUserId() == "user-1234"
+    Session.current().getSessionState() == Session.SessionState.AUTHENTICATED
+    response.headers.get("Content-Type").contains("application/vnd.mx.mdx.v6+json;charset=UTF-8;version=20240213")
   }
 
   def "forgotUsername"() {

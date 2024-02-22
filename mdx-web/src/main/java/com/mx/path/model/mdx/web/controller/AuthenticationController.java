@@ -3,6 +3,8 @@ package com.mx.path.model.mdx.web.controller;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.google.common.hash.Hashing;
 import com.mx.path.core.common.accessor.BadRequestException;
 import com.mx.path.core.common.lang.Strings;
@@ -29,7 +31,27 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "{clientId}", produces = BaseController.MDX_MEDIA)
 public class AuthenticationController extends BaseController {
 
-  @RequestMapping(value = { "/authentications", "/sessions" }, method = RequestMethod.POST, consumes = { MDX_MEDIA, MDX_ONDEMAND_MEDIA }, produces = { MDX_MEDIA, MDX_ONDEMAND_MEDIA })
+  @SuppressWarnings("MagicNumber")
+  @RequestMapping(value = "/authentications", method = RequestMethod.POST, consumes = MDX_MEDIA)
+  public final ResponseEntity<?> authenticate(@PathVariable("clientId") String clientId, HttpServletRequest request) {
+    return versioned(request)
+        .defaultVersion(Authentication.class, Authentication.class, authentication -> {
+          return authenticate(clientId, authentication);
+        })
+        .version(20240213, com.mx.path.model.mdx.model.id.v20240213.Authentication.class, com.mx.path.model.mdx.model.id.v20240213.Authentication.class, authentication -> {
+          return authenticate(clientId, authentication);
+        })
+        .execute();
+  }
+
+  /**
+   * Legacy and MDXOnDemand version of authenticate
+   *
+   * @param clientId
+   * @param requestAuthentication
+   * @return
+   */
+  @RequestMapping(value = { "/sessions" }, method = RequestMethod.POST, consumes = MDX_ONDEMAND_MEDIA, produces = MDX_ONDEMAND_MEDIA)
   public final ResponseEntity<Authentication> authenticate(@PathVariable("clientId") String clientId, @RequestBody Authentication requestAuthentication) {
     ensureFeature("identity");
 
@@ -96,72 +118,133 @@ public class AuthenticationController extends BaseController {
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 
+  @SuppressWarnings("MagicNumber")
   @RequestMapping(value = "/authentications/{sessionId}", method = RequestMethod.PUT, consumes = MDX_MEDIA)
-  public final ResponseEntity<Authentication> resumeMfa(@PathVariable("clientId") String clientId, @PathVariable("sessionId") String sessionKey, @RequestBody Authentication requestAuthentication) {
+  public final ResponseEntity<?> resumeMfa(@PathVariable("clientId") String clientId, @PathVariable("sessionId") String sessionKey, HttpServletRequest request) {
     if (!Objects.equals(sessionKey, Session.current().getId())) {
       throw new BadRequestException("Session key mismatch. Header and path session keys don't match.", "Session key mismatch. Header and path session keys don't match.").withReport(true);
     }
 
-    AccessorResponse<Authentication> response = gateway()
-        .id()
-        .resumeMFA(requestAuthentication);
-    response.getResult().withId(Session.current().getId());
+    return versioned(request)
+        .defaultVersion(Authentication.class, Authentication.class, authentication -> {
+          AccessorResponse<Authentication> response = gateway()
+              .id()
+              .resumeMFA(authentication);
+          response.getResult().withId(Session.current().getId());
 
-    HttpHeaders headers = new HttpHeaders();
-    headers.add("mx-session-key", response.getResult().getId());
+          HttpHeaders headers = new HttpHeaders();
+          headers.add("mx-session-key", response.getResult().getId());
 
-    // Session is authenticated if the user id is set.
-    if (response.getResult().getUserId() != null) {
-      Session.current().setUserId(response.getResult().getUserId());
-      Session.current().setSessionState(SessionState.AUTHENTICATED);
-    }
+          // Session is authenticated if the user id is set.
+          if (response.getResult().getUserId() != null) {
+            Session.current().setUserId(response.getResult().getUserId());
+            Session.current().setSessionState(SessionState.AUTHENTICATED);
+          }
 
-    HttpStatus status = HttpStatus.OK;
-    if (response.getResult().getChallenges() != null
-        && response.getResult().getChallenges().size() > 0) {
-      status = HttpStatus.ACCEPTED;
-    }
+          HttpStatus status = HttpStatus.OK;
+          if (response.getResult().getChallenges() != null
+              && response.getResult().getChallenges().size() > 0) {
+            status = HttpStatus.ACCEPTED;
+          }
 
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders(), headers), status);
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders(), headers), status);
+        }).version(20240213, com.mx.path.model.mdx.model.id.v20240213.Authentication.class, com.mx.path.model.mdx.model.id.v20240213.Authentication.class, authentication -> {
+          AccessorResponse<com.mx.path.model.mdx.model.id.v20240213.Authentication> response = gateway()
+              .id()
+              .resumeMFA(authentication);
+          response.getResult().withId(Session.current().getId());
+
+          HttpHeaders headers = new HttpHeaders();
+          headers.add("mx-session-key", response.getResult().getId());
+
+          // Session is authenticated if the user id is set.
+          if (response.getResult().getUserId() != null) {
+            Session.current().setUserId(response.getResult().getUserId());
+            Session.current().setSessionState(SessionState.AUTHENTICATED);
+          }
+
+          HttpStatus status = HttpStatus.OK;
+          if (response.getResult().getChallenges() != null
+              && response.getResult().getChallenges().size() > 0) {
+            status = HttpStatus.ACCEPTED;
+          }
+
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders(), headers), status);
+        }).execute();
   }
 
+  @SuppressWarnings("MagicNumber")
   @RequestMapping(value = "/authentications/start", method = RequestMethod.POST, consumes = MDX_MEDIA)
-  public final ResponseEntity<Authentication> start(@PathVariable("clientId") String clientId, @RequestBody Authentication requestAuthentication) {
+  public final ResponseEntity<?> start(@PathVariable("clientId") String clientId, HttpServletRequest request) {
 
     // Delete existing session if it exists;
     Session.deleteCurrent();
     Session.createSession();
 
-    // Store clientId
-    Session.current().setClientId(clientId);
-    Session.current().setDeviceId(requestAuthentication.getDeviceId());
-    Session.current().setDeviceMake(requestAuthentication.getDeviceMake());
-    Session.current().setDeviceModel(requestAuthentication.getDeviceModel());
-    Session.current().setDeviceOperatingSystem(requestAuthentication.getDeviceOperatingSystem());
-    Session.current().setDeviceOperatingSystemVersion(requestAuthentication.getDeviceOperatingSystemVersion());
-    Session.current().setDeviceHeight(requestAuthentication.getDeviceHeight());
-    Session.current().setDeviceLatitude(requestAuthentication.getDeviceLatitude());
-    Session.current().setDeviceLongitude(requestAuthentication.getDeviceLongitude());
-    Session.current().setDeviceWidth(requestAuthentication.getDeviceWidth());
+    return versioned(request)
+        .defaultVersion(Authentication.class, Authentication.class, authentication -> {
+          // Store clientId
+          Session.current().setClientId(clientId);
+          Session.current().setDeviceId(authentication.getDeviceId());
+          Session.current().setDeviceMake(authentication.getDeviceMake());
+          Session.current().setDeviceModel(authentication.getDeviceModel());
+          Session.current().setDeviceOperatingSystem(authentication.getDeviceOperatingSystem());
+          Session.current().setDeviceOperatingSystemVersion(authentication.getDeviceOperatingSystemVersion());
+          Session.current().setDeviceHeight(authentication.getDeviceHeight());
+          Session.current().setDeviceLatitude(authentication.getDeviceLatitude());
+          Session.current().setDeviceLongitude(authentication.getDeviceLongitude());
+          Session.current().setDeviceWidth(authentication.getDeviceWidth());
 
-    AccessorResponse<Authentication> response = gateway().id().startAuthentication(requestAuthentication);
-    response.getResult().withId(Session.current().getId());
-    HttpHeaders headers = new HttpHeaders();
-    headers.add("mx-session-key", Session.current().getId());
+          AccessorResponse<Authentication> response = gateway().id().startAuthentication(authentication);
+          response.getResult().withId(Session.current().getId());
+          HttpHeaders headers = new HttpHeaders();
+          headers.add("mx-session-key", Session.current().getId());
 
-    // Return 204 if challenges are null to indicate non-federated login
-    // Return 202 to trigger follow-up PUT /authentications/{session_key} call w/ token when challenges are NOT null
-    // Return 200 if user_id is NOT null, no follow-up PUT /authentications/{session_key} call needed
-    HttpStatus status = HttpStatus.NO_CONTENT;
-    if (response.getResult().getChallenges() != null
-        && response.getResult().getChallenges().size() > 0) {
-      status = HttpStatus.ACCEPTED;
-    } else if (Strings.isNotBlank(response.getResult().getUserId())) {
-      status = HttpStatus.OK;
-      Session.current().setUserId(response.getResult().getUserId());
-      Session.current().setSessionState(SessionState.AUTHENTICATED);
-    }
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders(), headers), status);
+          // Return 204 if challenges are null to indicate non-federated login
+          // Return 202 to trigger follow-up PUT /authentications/{session_key} call w/ token when challenges are NOT null
+          // Return 200 if user_id is NOT null, no follow-up PUT /authentications/{session_key} call needed
+          HttpStatus status = HttpStatus.NO_CONTENT;
+          if (response.getResult().getChallenges() != null
+              && response.getResult().getChallenges().size() > 0) {
+            status = HttpStatus.ACCEPTED;
+          } else if (Strings.isNotBlank(response.getResult().getUserId())) {
+            status = HttpStatus.OK;
+            Session.current().setUserId(response.getResult().getUserId());
+            Session.current().setSessionState(SessionState.AUTHENTICATED);
+          }
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders(), headers), status);
+        }).version(20240213, com.mx.path.model.mdx.model.id.v20240213.Authentication.class, com.mx.path.model.mdx.model.id.v20240213.Authentication.class, authentication -> {
+          // Store clientId
+          Session.current().setClientId(clientId);
+          Session.current().setDeviceId(authentication.getDeviceId());
+          Session.current().setDeviceMake(authentication.getDeviceMake());
+          Session.current().setDeviceModel(authentication.getDeviceModel());
+          Session.current().setDeviceOperatingSystem(authentication.getDeviceOperatingSystem());
+          Session.current().setDeviceOperatingSystemVersion(authentication.getDeviceOperatingSystemVersion());
+          Session.current().setDeviceHeight(authentication.getDeviceHeight());
+          Session.current().setDeviceLatitude(authentication.getDeviceLatitude());
+          Session.current().setDeviceLongitude(authentication.getDeviceLongitude());
+          Session.current().setDeviceWidth(authentication.getDeviceWidth());
+
+          AccessorResponse<com.mx.path.model.mdx.model.id.v20240213.Authentication> response = gateway().id().startAuthentication(authentication);
+          response.getResult().withId(Session.current().getId());
+          HttpHeaders headers = new HttpHeaders();
+          headers.add("mx-session-key", Session.current().getId());
+
+          // Return 204 if challenges are null to indicate non-federated login
+          // Return 202 to trigger follow-up PUT /authentications/{session_key} call w/ token when challenges are NOT null
+          // Return 200 if user_id is NOT null, no follow-up PUT /authentications/{session_key} call needed
+          HttpStatus status = HttpStatus.NO_CONTENT;
+          if (response.getResult().getChallenges() != null
+              && response.getResult().getChallenges().size() > 0) {
+            status = HttpStatus.ACCEPTED;
+          } else if (Strings.isNotBlank(response.getResult().getUserId())) {
+            status = HttpStatus.OK;
+            Session.current().setUserId(response.getResult().getUserId());
+            Session.current().setSessionState(SessionState.AUTHENTICATED);
+          }
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders(), headers), status);
+        }).execute();
   }
 
   /***
@@ -246,8 +329,81 @@ public class AuthenticationController extends BaseController {
       // ---------------------------------------------
       // Invalid authentication request
 
-      throw new BadRequestException("Invalid authentication body", "Invalid authentication body");
+      throw new BadRequestException("Invalid authentication body");
     }
     return result;
+  }
+
+  @SuppressWarnings("PMD.UselessParentheses")
+  final AccessorResponse<com.mx.path.model.mdx.model.id.v20240213.Authentication> getAuthenticationResult(com.mx.path.model.mdx.model.id.v20240213.Authentication requestAuthentication) {
+    AccessorResponse<com.mx.path.model.mdx.model.id.v20240213.Authentication> result;
+    if (Strings.isNotBlank(requestAuthentication.getToken())
+        || Strings.isNotBlank(requestAuthentication.getAccessToken())
+        || (Strings.isNotBlank(requestAuthentication.getLogin())
+            && requestAuthentication.getPassword() != null
+            && requestAuthentication.getPassword().length > 0)) {
+      // ---------------------------------------------
+      // Login/Password OR token Authentication
+      result = gateway().id().authenticate(requestAuthentication);
+    } else {
+      // ---------------------------------------------
+      // Invalid authentication request
+
+      throw new BadRequestException("Invalid authentication body");
+    }
+
+    return result;
+  }
+
+  /**
+   * 20240213 version of authenticate
+   *
+   * @param clientId
+   * @param requestAuthentication
+   * @return
+   */
+  protected final ResponseEntity<com.mx.path.model.mdx.model.id.v20240213.Authentication> authenticate(@PathVariable("clientId") String clientId, @RequestBody com.mx.path.model.mdx.model.id.v20240213.Authentication requestAuthentication) {
+    ensureFeature("identity");
+
+    // Delete existing session if it exists;
+    Session.deleteCurrent();
+    Session.createSession();
+
+    // Store clientId
+    Session.current().setClientId(clientId);
+    Session.current().setDeviceId(requestAuthentication.getDeviceId());
+    Session.current().setDeviceMake(requestAuthentication.getDeviceMake());
+    Session.current().setDeviceModel(requestAuthentication.getDeviceModel());
+    Session.current().setDeviceOperatingSystem(requestAuthentication.getDeviceOperatingSystem());
+    Session.current().setDeviceOperatingSystemVersion(requestAuthentication.getDeviceOperatingSystemVersion());
+    Session.current().setDeviceHeight(requestAuthentication.getDeviceHeight());
+    Session.current().setDeviceLatitude(requestAuthentication.getDeviceLatitude());
+    Session.current().setDeviceLongitude(requestAuthentication.getDeviceLongitude());
+    Session.current().setDeviceWidth(requestAuthentication.getDeviceWidth());
+
+    // Store login for troubleshooting failed authentication
+    dumpEncryptedLoginHashToSession(requestAuthentication.getLogin());
+
+    AccessorResponse<com.mx.path.model.mdx.model.id.v20240213.Authentication> accessorResponse;
+    accessorResponse = getAuthenticationResult(requestAuthentication);
+
+    accessorResponse.getResult().withId(Session.current().getId());
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("mx-session-key", Session.current().getId());
+
+    // Session is authenticated if the user id is set.
+    if (accessorResponse.getResult().getUserId() != null) {
+      Session.current().setUserId(accessorResponse.getResult().getUserId());
+      Session.current().setSessionState(SessionState.AUTHENTICATED);
+    }
+
+    HttpStatus status = HttpStatus.OK;
+    if (accessorResponse.getResult().getChallenges() != null
+        && accessorResponse.getResult().getChallenges().size() > 0) {
+      status = HttpStatus.ACCEPTED;
+    }
+
+    return new ResponseEntity<>(accessorResponse.getResult().wrapped(), createMultiMapForResponse(accessorResponse.getHeaders(), headers),
+        status);
   }
 }
