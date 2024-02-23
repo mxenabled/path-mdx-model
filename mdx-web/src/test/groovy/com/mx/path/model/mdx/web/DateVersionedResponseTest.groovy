@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.mx.path.core.common.accessor.PathResponseStatus
 import com.mx.path.core.common.accessor.RequestValidationException
 import com.mx.path.core.common.configuration.ConfigurationException
 import com.mx.path.core.context.Session
@@ -17,6 +18,7 @@ import com.mx.path.testing.WithMockery
 import org.springframework.http.ResponseEntity
 
 import spock.lang.Specification
+import spock.lang.Unroll
 
 class DateVersionedResponseTest extends Specification implements WithMockery {
   Gson gson
@@ -124,17 +126,71 @@ class DateVersionedResponseTest extends Specification implements WithMockery {
 
     then:
     def ex = thrown(RequestValidationException)
-    ex.message == "Invalid version specified in header"
+    ex.message == "Invalid version specified in Accept header"
+    ex.status == PathResponseStatus.BAD_REQUEST
   }
 
-  def buildRequest(Object body, String contentType) {
+  def "raises Invalid Request if versions provided are inconsistent"() {
+    given:
+    def request = buildRequest(new Account(), "application/vnd.mdx.v6+json;version=20231231", "application/vnd.mdx.v6+json;version=20240101")
+    def subject = new DateVersionedResponse(request)
+        .defaultVersion(Account, Account, { o ->
+          return ResponseEntity.ok().build()
+        })
+        .version(20240101, Account, Account, { o ->
+          return ResponseEntity.ok().build()
+        })
+
+    when:
+    subject.execute()
+
+    then:
+    def ex = thrown(RequestValidationException)
+    ex.message == "Accept and Content-Type versions must match."
+    ex.status == PathResponseStatus.BAD_REQUEST
+  }
+
+  @Unroll
+  def "does not raise error if only one header has the version"() {
+    given:
+    def defaultExecuted = false
+    def versionedExecuted = false
+    def request = buildRequest(new Account(), contentType, accept)
+    def subject = new DateVersionedResponse(request)
+        .defaultVersion(Account, Account, { o ->
+          defaultExecuted = true
+          return ResponseEntity.ok().build()
+        })
+        .version(20240101, Account, Account, { o ->
+          versionedExecuted = true
+          return ResponseEntity.ok().build()
+        })
+
+    def result = subject.execute()
+
+    expect:
+    defaultExecuted == defaultShouldBeExecuted
+    versionedExecuted == versionShouldBeExecuted
+
+    where:
+    contentType                                    || accept                                         || defaultShouldBeExecuted || versionShouldBeExecuted
+    "application/vnd.mdx.v6+json"                  || "application/vnd.mdx.v6+json"                  || true                    || false
+    "application/vnd.mdx.v6+json;version=20240101" || "application/vnd.mdx.v6+json"                  || false                   || true
+    "application/vnd.mdx.v6+json"                  || "application/vnd.mdx.v6+json;version=20240101" || false                   || true
+  }
+
+  def buildRequest(Object body, String contentType, String accept = null) {
+    if (accept == null) {
+      accept = contentType
+    }
+
     HttpServletRequest request = mock(HttpServletRequest.class)
     when(request.getReader()).thenReturn(new BufferedReader(new StringReader(gson.toJson(body))))
     if (Session.current() != null) {
       when(request.getHeader("mx-session-key")).thenReturn(Session.current().getId())
     }
     when(request.getHeaders("Content-Type")).thenReturn(Collections.enumeration([contentType]))
-    when(request.getHeaders("Accept")).thenReturn(Collections.enumeration([contentType]))
+    when(request.getHeaders("Accept")).thenReturn(Collections.enumeration([accept]))
 
     return request
   }
