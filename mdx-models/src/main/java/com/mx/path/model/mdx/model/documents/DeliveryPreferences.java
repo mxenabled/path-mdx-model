@@ -3,11 +3,10 @@ package com.mx.path.model.mdx.model.documents;
 import java.util.List;
 
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.challenges.Challenge;
 
 public final class DeliveryPreferences extends MdxBase<DeliveryPreferences> {
   private String accountId;
-  private List<Challenge> challenges;
+  private List<Preference> preferences;
   private String documentType;
 
   public String getAccountId() {
@@ -18,12 +17,12 @@ public final class DeliveryPreferences extends MdxBase<DeliveryPreferences> {
     this.accountId = accountId;
   }
 
-  public List<Challenge> getChallenges() {
-    return challenges;
+  public List<Preference> getPreferences() {
+    return preferences;
   }
 
-  public void setChallenges(List<Challenge> challenges) {
-    this.challenges = challenges;
+  public void setPreferences(List<Preference> preferences) {
+    this.preferences = preferences;
   }
 
   public String getDocumentType() {
