@@ -1,12 +1,12 @@
 package com.mx.path.model.mdx.model.documents;
 
+import java.util.List;
+
 import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.challenges.Action;
 import com.mx.path.model.mdx.model.challenges.Question;
 
-import java.util.List;
-
-public class Preference extends MdxBase<Preference> {
+public final class Preference extends MdxBase<Preference> {
   private String id;
   private String prompt;
   private String title;
