@@ -5,6 +5,19 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [5.2.0](https://github.com/mxenabled/path-mdx-model/compare/v5.1.0...v5.2.0) (2024-02-26)
+
+
+### Features
+
+* added 'preference' object ([9e3d5d7](https://github.com/mxenabled/path-mdx-model/commit/9e3d5d7840931b29190dd6618bade2f7fa8b384d))
+* added support for unlocking user ([54346a9](https://github.com/mxenabled/path-mdx-model/commit/54346a97102ec81696ea7a9ba595b7ae26a9d78e))
+
+
+### Bug Fixes
+
+* addressed MR recommendations ([95c00b0](https://github.com/mxenabled/path-mdx-model/commit/95c00b0d28b24080f7d9931ffbb1dd5f55c06e3e))
+
 ## [5.1.0](https://github.com/mxenabled/path-mdx-model/compare/v5.0.0...v5.1.0) (2024-02-26)
 
 
