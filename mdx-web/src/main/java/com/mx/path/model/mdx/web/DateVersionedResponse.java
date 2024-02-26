@@ -20,6 +20,7 @@ import lombok.Data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.mx.path.core.common.accessor.PathResponseStatus;
 import com.mx.path.core.common.accessor.RequestValidationException;
 import com.mx.path.core.common.configuration.ConfigurationException;
 import com.mx.path.core.common.lang.Strings;
@@ -32,7 +33,7 @@ import org.springframework.http.ResponseEntity;
 /**
  * Use in Controller to provide multiple code paths, based on provided version header.
  * <p>
- * The Version header is expected to be present in the Accept or Content-Type header as a parameters
+ * The Version header is expected to be present in the Accept or Content-Type header as a parameter.
  * <p>
  * <b>Example:</b>
  * <pre>{@code
@@ -52,7 +53,6 @@ import org.springframework.http.ResponseEntity;
  *   })
  *   .execute()
  * }</pre>
- *
  */
 public class DateVersionedResponse {
   private static final int MINIMUM_VERSION = 19700101;
@@ -134,8 +134,8 @@ public class DateVersionedResponse {
    * @param requestType
    * @param responseType
    * @param supplier
-   * @return result from code block
    * @param <REQ>
+   * @return result from code block
    */
   @SuppressWarnings("unchecked")
   public final <REQ> DateVersionedResponse defaultVersion(Class<REQ> requestType, Class<?> responseType, Function<REQ, ResponseEntity<?>> supplier) {
@@ -150,14 +150,24 @@ public class DateVersionedResponse {
 
   /**
    * Call to execute the incoming request
+   *
    * @return ResponseEntity from code block
    */
   public final ResponseEntity<?> execute() {
-    Integer version = extractVersion("Accept");
-    if (version == null) {
-      version = extractVersion("Content-Type");
+    Integer acceptVersion = extractVersionFromHeader("Accept");
+    Integer contentTypeVersion = extractVersionFromHeader("Content-Type");
+
+    // If both version are present and versions are not the same, throw exception
+    if (acceptVersion != null
+        && contentTypeVersion != null
+        && !acceptVersion.equals(contentTypeVersion)) {
+      throw new RequestValidationException("Accept and Content-Type versions must match.", "Accept and Content-Type versions must match.").withStatus(PathResponseStatus.BAD_REQUEST);
     }
 
+    Integer version = acceptVersion;
+    if (version == null) {
+      version = contentTypeVersion;
+    }
     version = pickVersion(version);
 
     return supplier(version).call(request);
@@ -166,12 +176,12 @@ public class DateVersionedResponse {
   /**
    * Responder for provided version
    *
-   * @param version version in YYYYMMDD format
-   * @param requestType incoming object type (used to deserialize request)
+   * @param version      version in YYYYMMDD format
+   * @param requestType  incoming object type (used to deserialize request)
    * @param responseType response object type
-   * @param supplier code block
-   * @return result from code block
+   * @param supplier     code block
    * @param <REQ>
+   * @return result from code block
    */
   public final <REQ> DateVersionedResponse version(int version, Class<REQ> requestType, Class<?> responseType, Function<REQ, ResponseEntity<?>> supplier) {
     if (version < MINIMUM_VERSION) {
@@ -190,10 +200,11 @@ public class DateVersionedResponse {
 
   /**
    * Extracts the version from provided header.
+   *
    * @param header
    * @return responder version
    */
-  private Integer extractVersion(String header) {
+  private Integer extractVersionFromHeader(String header) {
     Enumeration<String> headers = request.getHeaders(header);
     while (headers.hasMoreElements()) {
       String value = headers.nextElement();
@@ -203,7 +214,7 @@ public class DateVersionedResponse {
         try {
           return Integer.valueOf(m.group(1));
         } catch (NumberFormatException e) {
-          throw new RequestValidationException("Invalid version specified in header", "Invalid version specified in header", e);
+          throw new RequestValidationException("Invalid version specified in " + header + " header", "Invalid version specified in " + header + " header", e).withStatus(PathResponseStatus.BAD_REQUEST);
         }
       }
     }
@@ -213,6 +224,7 @@ public class DateVersionedResponse {
 
   /**
    * Takes provided version and selects the responder version to use.
+   *
    * @param version Provided version
    * @return version of the selected responder
    */
@@ -230,6 +242,7 @@ public class DateVersionedResponse {
 
   /**
    * Select the supplier for provided version.
+   *
    * @param version
    * @return
    */
