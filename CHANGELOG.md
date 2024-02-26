@@ -5,6 +5,14 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [5.1.0](https://github.com/mxenabled/path-mdx-model/compare/v5.0.0...v5.1.0) (2024-02-26)
+
+
+### Features
+
+* add support for date-based versioning ([a5dfa59](https://github.com/mxenabled/path-mdx-model/commit/a5dfa59f7a2603f2f41b1facf0ac1c609a802ade))
+* improve version header validation ([e276371](https://github.com/mxenabled/path-mdx-model/commit/e276371e241907a31b3003ec8d4ef7d5fa55ed92))
+
 ## [5.0.0](https://github.com/mxenabled/path-mdx-model/compare/v4.18.1...v5.0.0) (2024-02-13)
 
 
