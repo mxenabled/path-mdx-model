@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [5.2.1](https://github.com/mxenabled/path-mdx-model/compare/v5.2.0...v5.2.1) (2024-02-27)
+
+
+### Bug Fixes
+
+* reuse challenge object, only variable name change ([e9b4df8](https://github.com/mxenabled/path-mdx-model/commit/e9b4df89424124c35a94088e646a6b38c163ced8))
+
 ## [5.2.0](https://github.com/mxenabled/path-mdx-model/compare/v5.1.0...v5.2.0) (2024-02-26)
 
 
