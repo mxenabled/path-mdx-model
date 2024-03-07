@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [5.4.0](https://github.com/mxenabled/path-mdx-model/compare/v5.3.0...v5.4.0) (2024-03-07)
+
+
+### Features
+
+* add default logout implementation ([af44b48](https://github.com/mxenabled/path-mdx-model/commit/af44b48e8a2fa23f179f20b4324bc6db87b271a8))
+
 ## [5.3.0](https://github.com/mxenabled/path-mdx-model/compare/v5.2.1...v5.3.0) (2024-03-05)
 
 
