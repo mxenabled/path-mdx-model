@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [5.5.0](https://github.com/mxenabled/path-mdx-model/compare/v5.4.0...v5.5.0) (2024-03-13)
+
+
+### Features
+
+* add tokens array to Authorization ([6f9fe1e](https://github.com/mxenabled/path-mdx-model/commit/6f9fe1e65b5a8a6f0708754e1acf3c7536ada517))
+
 ## [5.4.0](https://github.com/mxenabled/path-mdx-model/compare/v5.3.0...v5.4.0) (2024-03-07)
 
 
