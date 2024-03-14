@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [5.6.0](https://github.com/mxenabled/path-mdx-model/compare/v5.5.0...v5.6.0) (2024-03-14)
+
+
+### Features
+
+* add has_direct_deposit_management to account details features ([96c2bcb](https://github.com/mxenabled/path-mdx-model/commit/96c2bcb349a3a775f97f0db9590f5d1eea77b6da))
+
 ## [5.5.0](https://github.com/mxenabled/path-mdx-model/compare/v5.4.0...v5.5.0) (2024-03-13)
 
 
