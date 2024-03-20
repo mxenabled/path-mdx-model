@@ -1,6 +1,7 @@
 package com.mx.path.model.mdx.model.cross_account_transfer;
 
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.UserIdProvider;
 
 public class DestinationAccount extends MdxBase<DestinationAccount> {
 
@@ -12,6 +13,7 @@ public class DestinationAccount extends MdxBase<DestinationAccount> {
   private String nickname;
 
   public DestinationAccount() {
+    UserIdProvider.setUserId(this);
   }
 
   public final String getAccountHolder() {

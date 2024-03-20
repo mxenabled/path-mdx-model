@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.UserIdProvider;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -25,4 +26,8 @@ public final class AchScheduledTransfer extends MdxBase<AchScheduledTransfer> {
   private Long endAfterCount;
   private Long createdAt;
   private String transferType;
+
+  public AchScheduledTransfer() {
+    UserIdProvider.setUserId(this);
+  }
 }
