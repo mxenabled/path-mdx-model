@@ -3,7 +3,6 @@ package com.mx.path.model.mdx.model.dispute;
 import javax.xml.bind.annotation.XmlElement;
 
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.UserIdProvider;
 
 /**
  * Represents an MDX disputed transaction. XmlElements assigned so that it can be demarshalled from MDXv5 XML.
@@ -22,10 +21,6 @@ public class DisputedTransaction extends MdxBase<DisputedTransaction> {
   private String transactedOn;
   @XmlElement(name = "transaction_id")
   private String transactionId;
-
-  public DisputedTransaction() {
-    UserIdProvider.setUserId(this);
-  }
 
   public final Double getAmount() {
     return amount;

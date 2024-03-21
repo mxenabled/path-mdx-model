@@ -9,7 +9,6 @@ import lombok.Getter;
 
 import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.MdxRelationId;
-import com.mx.path.model.mdx.model.UserIdProvider;
 import com.mx.path.model.mdx.model.account.Account;
 import com.mx.path.model.mdx.model.challenges.Challenge;
 
@@ -37,10 +36,6 @@ public final class RecurringTransfer extends MdxBase<RecurringTransfer> {
   @Getter(onMethod_ = { @MdxRelationId(referredClass = Account.class) })
   private String toAccountId;
   private String transferType;
-
-  public RecurringTransfer() {
-    UserIdProvider.setUserId(this);
-  }
 
   public List<Challenge> getChallenges() {
     return challenges;

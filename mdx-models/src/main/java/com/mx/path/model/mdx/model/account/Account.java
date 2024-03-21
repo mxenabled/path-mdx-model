@@ -9,7 +9,6 @@ import com.google.gson.annotations.SerializedName;
 import com.mx.path.core.common.model.Internal;
 import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.MdxList;
-import com.mx.path.model.mdx.model.UserIdProvider;
 import com.mx.path.model.mdx.model.challenges.Challenge;
 
 @SuppressWarnings("PMD.CyclomaticComplexity")
@@ -155,10 +154,6 @@ public class Account extends MdxBase<Account> {
   @Internal
   @SerializedName("transfer_to")
   private boolean transferTo;
-
-  public Account() {
-    UserIdProvider.setUserId(this);
-  }
 
   public final BigDecimal getAvailableBalance() {
     return availableBalance;

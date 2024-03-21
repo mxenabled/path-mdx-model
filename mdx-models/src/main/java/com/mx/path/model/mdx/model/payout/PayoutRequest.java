@@ -3,7 +3,6 @@ package com.mx.path.model.mdx.model.payout;
 import java.time.LocalDate;
 
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.UserIdProvider;
 
 public final class PayoutRequest extends MdxBase<PayoutRequest> {
   private String accountId;
@@ -17,10 +16,6 @@ public final class PayoutRequest extends MdxBase<PayoutRequest> {
   private String status;
   private LocalDate sentOn;
   private String type;
-
-  public PayoutRequest() {
-    UserIdProvider.setUserId(this);
-  }
 
   public String getAccountId() {
     return accountId;

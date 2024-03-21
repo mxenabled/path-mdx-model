@@ -1,7 +1,6 @@
 package com.mx.path.model.mdx.model.payout;
 
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.UserIdProvider;
 
 public final class PayoutSettings extends MdxBase<PayoutSettings> {
 
@@ -9,10 +8,6 @@ public final class PayoutSettings extends MdxBase<PayoutSettings> {
   private String emailAddress;
   private String payoutContactMethodType;
   private String status;
-
-  private PayoutSettings() {
-    UserIdProvider.setUserId(this);
-  }
 
   public String getId() {
     return id;
