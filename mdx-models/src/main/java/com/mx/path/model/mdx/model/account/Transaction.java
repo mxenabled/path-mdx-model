@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import javax.xml.bind.annotation.XmlElement;
 
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.UserIdProvider;
 
 /**
  * Represents an MDX transaction. XmlElements assigned so that it can be demarshalled from MDXv5 XML.
@@ -67,10 +66,6 @@ public class Transaction extends MdxBase<Transaction> {
   private String type;
   @XmlElement(name = "user_guid")
   private String userGuid;
-
-  public Transaction() {
-    UserIdProvider.setUserId(this);
-  }
 
   public final String getAccountGuid() {
     return accountGuid;

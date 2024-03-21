@@ -3,7 +3,6 @@ package com.mx.path.model.mdx.model.payment;
 import java.time.LocalDate;
 
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.UserIdProvider;
 
 public final class Payment extends MdxBase<Payment> {
 
@@ -22,10 +21,6 @@ public final class Payment extends MdxBase<Payment> {
   private Long sentAt;
   private String sentOn;
   private String status;
-
-  public Payment() {
-    UserIdProvider.setUserId(this);
-  }
 
   public String getAccountId() {
     return accountId;

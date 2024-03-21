@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import com.google.gson.annotations.SerializedName;
 import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.MdxRelationId;
-import com.mx.path.model.mdx.model.UserIdProvider;
 import com.mx.path.model.mdx.model.account.Account;
 
 public final class RemoteDeposit extends MdxBase<RemoteDeposit> {
@@ -28,10 +27,6 @@ public final class RemoteDeposit extends MdxBase<RemoteDeposit> {
   private String status;
   private Long updatedAt;
   private LocalDate updatedOn;
-
-  public RemoteDeposit() {
-    UserIdProvider.setUserId(this);
-  }
 
   @MdxRelationId(referredClass = Account.class)
   public String getAccountId() {

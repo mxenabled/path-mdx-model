@@ -8,7 +8,6 @@ import lombok.Getter;
 
 import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.MdxRelationId;
-import com.mx.path.model.mdx.model.UserIdProvider;
 import com.mx.path.model.mdx.model.account.Account;
 
 @EqualsAndHashCode(callSuper = true)
@@ -33,8 +32,4 @@ public final class CrossAccountTransfer extends MdxBase<CrossAccountTransfer> {
   private String status;
   @Deprecated
   private String toAccountNumber;
-
-  public CrossAccountTransfer() {
-    UserIdProvider.setUserId(this);
-  }
 }

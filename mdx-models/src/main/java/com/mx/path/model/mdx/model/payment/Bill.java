@@ -3,7 +3,6 @@ package com.mx.path.model.mdx.model.payment;
 import java.time.LocalDate;
 
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.UserIdProvider;
 
 public final class Bill extends MdxBase<Bill> {
 
@@ -14,10 +13,6 @@ public final class Bill extends MdxBase<Bill> {
   private String payeeId;
   private LocalDate paymentDueOn;
   private String status;
-
-  public Bill() {
-    UserIdProvider.setUserId(this);
-  }
 
   public Double getAmount() {
     return amount;

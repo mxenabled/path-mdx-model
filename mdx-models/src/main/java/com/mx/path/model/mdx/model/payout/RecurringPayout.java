@@ -1,7 +1,6 @@
 package com.mx.path.model.mdx.model.payout;
 
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.UserIdProvider;
 
 public final class RecurringPayout extends MdxBase<RecurringPayout> {
 
@@ -21,10 +20,6 @@ public final class RecurringPayout extends MdxBase<RecurringPayout> {
   private String startOn;
   private String status;
   private String token;
-
-  public RecurringPayout() {
-    UserIdProvider.setUserId(this);
-  }
 
   public String getAccountId() {
     return accountId;
