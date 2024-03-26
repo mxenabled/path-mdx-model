@@ -6,6 +6,7 @@ import com.mx.path.model.mdx.model.MdxBase;
 public final class Format extends MdxBase<Format> {
   private String font;
   private String color;
+
   @SerializedName("all_upper")
   private boolean allUpper;
 
