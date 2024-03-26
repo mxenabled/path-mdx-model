@@ -5,6 +5,55 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [5.6.0](https://github.com/mxenabled/path-mdx-model/compare/v5.5.0...v5.6.0) (2024-03-14)
+
+
+### Features
+
+* add has_direct_deposit_management to account details features ([96c2bcb](https://github.com/mxenabled/path-mdx-model/commit/96c2bcb349a3a775f97f0db9590f5d1eea77b6da))
+
+## [5.5.0](https://github.com/mxenabled/path-mdx-model/compare/v5.4.0...v5.5.0) (2024-03-13)
+
+
+### Features
+
+* add tokens array to Authorization ([6f9fe1e](https://github.com/mxenabled/path-mdx-model/commit/6f9fe1e65b5a8a6f0708754e1acf3c7536ada517))
+
+## [5.4.0](https://github.com/mxenabled/path-mdx-model/compare/v5.3.0...v5.4.0) (2024-03-07)
+
+
+### Features
+
+* add default logout implementation ([af44b48](https://github.com/mxenabled/path-mdx-model/commit/af44b48e8a2fa23f179f20b4324bc6db87b271a8))
+
+## [5.3.0](https://github.com/mxenabled/path-mdx-model/compare/v5.2.1...v5.3.0) (2024-03-05)
+
+
+### Features
+
+* account alerts ([5899415](https://github.com/mxenabled/path-mdx-model/commit/58994159dc80127f17d48c186f54dd8822865a2c))
+* add phone.rank for secondary context ([b9673d1](https://github.com/mxenabled/path-mdx-model/commit/b9673d11d1143e95a8b3739a2b171fba7646e666))
+
+## [5.2.1](https://github.com/mxenabled/path-mdx-model/compare/v5.2.0...v5.2.1) (2024-02-27)
+
+
+### Bug Fixes
+
+* reuse challenge object, only variable name change ([e9b4df8](https://github.com/mxenabled/path-mdx-model/commit/e9b4df89424124c35a94088e646a6b38c163ced8))
+
+## [5.2.0](https://github.com/mxenabled/path-mdx-model/compare/v5.1.0...v5.2.0) (2024-02-26)
+
+
+### Features
+
+* added 'preference' object ([9e3d5d7](https://github.com/mxenabled/path-mdx-model/commit/9e3d5d7840931b29190dd6618bade2f7fa8b384d))
+* added support for unlocking user ([54346a9](https://github.com/mxenabled/path-mdx-model/commit/54346a97102ec81696ea7a9ba595b7ae26a9d78e))
+
+
+### Bug Fixes
+
+* addressed MR recommendations ([95c00b0](https://github.com/mxenabled/path-mdx-model/commit/95c00b0d28b24080f7d9931ffbb1dd5f55c06e3e))
+
 ## [5.1.0](https://github.com/mxenabled/path-mdx-model/compare/v5.0.0...v5.1.0) (2024-02-26)
 
 

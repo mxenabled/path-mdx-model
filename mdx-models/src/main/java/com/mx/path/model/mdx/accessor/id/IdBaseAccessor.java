@@ -2,6 +2,7 @@ package com.mx.path.model.mdx.accessor.id;
 
 import com.mx.path.core.common.accessor.API;
 import com.mx.path.core.common.accessor.AccessorMethodNotImplementedException;
+import com.mx.path.core.common.accessor.PathResponseStatus;
 import com.mx.path.core.common.gateway.GatewayAPI;
 import com.mx.path.core.common.gateway.GatewayClass;
 import com.mx.path.core.common.remote.RemoteOperation;
@@ -98,11 +99,13 @@ public abstract class IdBaseAccessor extends Accessor {
 
   /**
    * End current session
+   *
+   * <p>Default implementation does nothing and returns a 204
    */
   @GatewayAPI
   @API(description = "Terminate the session")
   public AccessorResponse<Void> logout(String sessionId) {
-    throw new AccessorMethodNotImplementedException();
+    return AccessorResponse.<Void>builder().status(PathResponseStatus.NO_CONTENT).build();
   }
 
   /**

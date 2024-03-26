@@ -18,6 +18,8 @@ import com.mx.path.model.mdx.model.account.StopPayment;
 import com.mx.path.model.mdx.model.account.StopPaymentReason;
 import com.mx.path.model.mdx.model.account.Transaction;
 import com.mx.path.model.mdx.model.account.TransactionsPage;
+import com.mx.path.model.mdx.model.account.alerts.AccountAlert;
+import com.mx.path.model.mdx.model.account.alerts.DeliveryMethod;
 import com.mx.path.model.mdx.model.ach_transfer.AchAccount;
 import com.mx.path.model.mdx.model.ach_transfer.AchScheduledTransfer;
 import com.mx.path.model.mdx.model.ach_transfer.AchTransfer;
@@ -227,6 +229,8 @@ public class Resources {
     builder.registerTypeAdapter(Document.class, new ModelWrappableSerializer("document"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Document>>() {
     }.getType(), new ModelWrappableSerializer("documents"));
+    // DeliveryPreferences
+    builder.registerTypeAdapter(DeliveryPreferences.class, new ModelWrappableSerializer("delivery_preferences"));
     // Location
     builder.registerTypeAdapter(Location.class, new ModelWrappableSerializer("location"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Location>>() {
@@ -267,6 +271,8 @@ public class Resources {
     registerPaymentsModels(builder);
     // Register multistage transfer models
     registerMultistageTransferModels(builder);
+    // Register account alert models
+    registerAccountAlertModels(builder);
   }
 
   public static void registerOnDemandResources(SimpleModule module) {
@@ -382,8 +388,6 @@ public class Resources {
     builder.registerTypeAdapter(RecurringPayment.class, new ModelWrappableSerializer("recurring_payment"));
     builder.registerTypeAdapter(new TypeToken<MdxList<RecurringPayment>>() {
     }.getType(), new ModelWrappableSerializer("recurring_payments"));
-    // Documents
-    builder.registerTypeAdapter(DeliveryPreferences.class, new ModelWrappableSerializer("delivery_preferences"));
   }
 
   private static void registerMultistageTransferModels(GsonBuilder builder) {
@@ -395,5 +399,15 @@ public class Resources {
     builder.registerTypeAdapter(Repayment.class, new ModelWrappableSerializer("repayment"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Repayment>>() {
     }.getType(), new ModelWrappableSerializer("repayments"));
+  }
+
+  private static void registerAccountAlertModels(GsonBuilder builder) {
+    // AccountAlert
+    builder.registerTypeAdapter(AccountAlert.class, new ModelWrappableSerializer("alert"));
+    builder.registerTypeAdapter(new TypeToken<MdxList<AccountAlert>>() {
+    }.getType(), new ModelWrappableSerializer("alerts"));
+    // DeliveryMethod
+    builder.registerTypeAdapter(new TypeToken<MdxList<DeliveryMethod>>() {
+    }.getType(), new ModelWrappableSerializer("delivery_methods"));
   }
 }

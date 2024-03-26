@@ -22,6 +22,10 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
+  private AccountAlertBaseAccessor accountAlerts;
+
+  @GatewayAPI
+  @Getter(AccessLevel.PROTECTED)
   private AccountDetailsBaseAccessor accountDetails;
 
   @GatewayAPI
@@ -58,6 +62,20 @@ public abstract class AccountBaseAccessor extends Accessor {
   @Deprecated
   public AccountBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
+  }
+
+  /**
+   * Account alert accessor
+   *
+   * @return
+   */
+  @API(description = "Access account alerts")
+  public AccountAlertBaseAccessor accountAlerts() {
+    if (accountAlerts != null) {
+      return accountAlerts;
+    }
+
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -154,6 +172,15 @@ public abstract class AccountBaseAccessor extends Accessor {
     }
 
     throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Set account alerts accessor
+   *
+   * @param accountAlerts
+   */
+  public void setAccountAlerts(AccountAlertBaseAccessor accountAlerts) {
+    this.accountAlerts = accountAlerts;
   }
 
   /**

@@ -7,7 +7,7 @@ import com.mx.path.model.mdx.model.challenges.Challenge;
 
 public final class DeliveryPreferences extends MdxBase<DeliveryPreferences> {
   private String accountId;
-  private List<Challenge> challenges;
+  private List<Challenge> preferences;
   private String documentType;
 
   public String getAccountId() {
@@ -18,12 +18,12 @@ public final class DeliveryPreferences extends MdxBase<DeliveryPreferences> {
     this.accountId = accountId;
   }
 
-  public List<Challenge> getChallenges() {
-    return challenges;
+  public List<Challenge> getPreferences() {
+    return preferences;
   }
 
-  public void setChallenges(List<Challenge> challenges) {
-    this.challenges = challenges;
+  public void setPreferences(List<Challenge> preferences) {
+    this.preferences = preferences;
   }
 
   public String getDocumentType() {
