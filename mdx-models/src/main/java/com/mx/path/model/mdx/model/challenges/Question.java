@@ -196,6 +196,7 @@ public final class Question extends MdxBase<Question> {
   public InfoData getInfoData() {
     return infoData;
   }
+
   public void setInfoData(InfoData infoData) {
     this.infoData = infoData;
   }

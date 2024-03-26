@@ -8,6 +8,7 @@ public final class Format extends MdxBase<Format> {
   private String color;
   @SerializedName("all_upper")
   private boolean allUpper;
+
   public String getFont() {
     return font;
   }
