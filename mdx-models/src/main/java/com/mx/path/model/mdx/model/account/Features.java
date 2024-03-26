@@ -18,6 +18,5 @@ public class Features extends MdxBase<Features> {
   private Boolean hasOverdraft;
   private Boolean hasOverdraftEnrollment;
   private Boolean hasStatements;
-  private Boolean hasStatementsEnrollment;
   private Boolean hasStopPayment;
 }
