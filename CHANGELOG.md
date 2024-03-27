@@ -5,6 +5,19 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [5.7.0](https://github.com/mxenabled/path-mdx-model/compare/v5.6.0...v5.7.0) (2024-03-27)
+
+
+### Features
+
+* add new model for info_data in question ([a7f9927](https://github.com/mxenabled/path-mdx-model/commit/a7f9927ad6bb77776b63aa2e529602bc8be84c5f))
+* adding new field to the model ([10a0d52](https://github.com/mxenabled/path-mdx-model/commit/10a0d52d3ae23ab434398c50d70536537f5755c0))
+
+
+### Bug Fixes
+
+* updating an existing account field ([7b7e49e](https://github.com/mxenabled/path-mdx-model/commit/7b7e49e2ec9b109df065d71663e875797c9466ca))
+
 ## [5.6.0](https://github.com/mxenabled/path-mdx-model/compare/v5.5.0...v5.6.0) (2024-03-14)
 
 
