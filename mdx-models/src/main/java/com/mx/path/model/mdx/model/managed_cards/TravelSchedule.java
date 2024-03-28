@@ -1,7 +1,6 @@
 package com.mx.path.model.mdx.model.managed_cards;
 
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.UserIdProvider;
 
 public final class TravelSchedule extends MdxBase<TravelSchedule> {
 
@@ -14,10 +13,6 @@ public final class TravelSchedule extends MdxBase<TravelSchedule> {
   private String secondaryPhoneNumber;
   private String startOn;
   private String status;
-
-  public TravelSchedule() {
-    UserIdProvider.setUserId(this);
-  }
 
   public String[] getCardIds() {
     return cardIds;

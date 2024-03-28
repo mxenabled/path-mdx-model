@@ -2,7 +2,6 @@ package com.mx.path.model.mdx.model.payout;
 
 import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.MdxList;
-import com.mx.path.model.mdx.model.UserIdProvider;
 
 public final class Recipient extends MdxBase<Recipient> {
 
@@ -11,10 +10,6 @@ public final class Recipient extends MdxBase<Recipient> {
   private String lastName;
   private String primaryPayoutMethodId;
   private MdxList<PayoutMethod> payoutMethods;
-
-  public Recipient() {
-    UserIdProvider.setUserId(this);
-  }
 
   public String getFirstName() {
     return firstName;

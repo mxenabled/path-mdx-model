@@ -1,7 +1,6 @@
 package com.mx.path.model.mdx.model.payout;
 
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.UserIdProvider;
 
 public final class PayoutMethod extends MdxBase<PayoutMethod> {
 
@@ -16,10 +15,6 @@ public final class PayoutMethod extends MdxBase<PayoutMethod> {
   private String routingNumber;
   private String sendTo;
   private String status;
-
-  public PayoutMethod() {
-    UserIdProvider.setUserId(this);
-  }
 
   public String getAccountNumber() {
     return accountNumber;

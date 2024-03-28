@@ -3,7 +3,6 @@ package com.mx.path.model.mdx.model.payment;
 import java.util.List;
 
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.UserIdProvider;
 import com.mx.path.model.mdx.model.challenges.Challenge;
 
 public final class Payee extends MdxBase<Payee> {
@@ -24,10 +23,6 @@ public final class Payee extends MdxBase<Payee> {
   private String phoneNumber;
   private String postalCode;
   private String state;
-
-  public Payee() {
-    UserIdProvider.setUserId(this);
-  }
 
   public String getAccountNumber() {
     return accountNumber;

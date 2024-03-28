@@ -3,7 +3,6 @@ package com.mx.path.model.mdx.model.dispute;
 import javax.xml.bind.annotation.XmlElement;
 
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.UserIdProvider;
 
 /**
  * Represents an MDX dispute. XmlElements assigned so that it can be demarshalled from MDXv5 XML.
@@ -64,10 +63,6 @@ public class Dispute extends MdxBase<Dispute> {
   private String sourceImage;
   @XmlElement(name = "status")
   private String status;
-
-  public Dispute() {
-    UserIdProvider.setUserId(this);
-  }
 
   public final String getAccountId() {
     return accountId;

@@ -3,7 +3,6 @@ package com.mx.path.model.mdx.model.payment;
 import java.time.LocalDate;
 
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.UserIdProvider;
 
 public final class RecurringPayment extends MdxBase<RecurringPayment> {
   private String id;
@@ -21,10 +20,6 @@ public final class RecurringPayment extends MdxBase<RecurringPayment> {
   private Long paymentsCount;
   private LocalDate nextPaymentOn;
   private LocalDate lastPaymentOn;
-
-  public RecurringPayment() {
-    UserIdProvider.setUserId(this);
-  }
 
   public String getId() {
     return id;

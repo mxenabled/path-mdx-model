@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import com.google.gson.annotations.SerializedName;
 import com.mx.path.core.common.model.Internal;
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.UserIdProvider;
 import com.mx.path.model.mdx.model.challenges.Challenge;
 
 @EqualsAndHashCode
@@ -40,10 +39,6 @@ public final class ManagedCard extends MdxBase<ManagedCard> {
   @Internal
   @SerializedName("ondot_ref_id")
   private String ondotRefId;
-
-  public ManagedCard() {
-    UserIdProvider.setUserId(this);
-  }
 
   public String getAccountId() {
     return accountId;

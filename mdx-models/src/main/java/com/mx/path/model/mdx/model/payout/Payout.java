@@ -3,7 +3,6 @@ package com.mx.path.model.mdx.model.payout;
 import java.time.LocalDate;
 
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.UserIdProvider;
 
 public final class Payout extends MdxBase<Payout> {
 
@@ -30,10 +29,6 @@ public final class Payout extends MdxBase<Payout> {
   private String type;
   private String challengeQuestion;
   private String challengeAnswer;
-
-  public Payout() {
-    UserIdProvider.setUserId(this);
-  }
 
   public String getAccountId() {
     return accountId;

@@ -8,7 +8,6 @@ import lombok.Getter;
 
 import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.MdxRelationId;
-import com.mx.path.model.mdx.model.UserIdProvider;
 import com.mx.path.model.mdx.model.account.Account;
 
 @EqualsAndHashCode(callSuper = true)
@@ -31,8 +30,4 @@ public class CrossAccountRecurringTransfer extends MdxBase<CrossAccountRecurring
   private LocalDate nextTransferOn;
   private String status;
   private LocalDate startOn;
-
-  public CrossAccountRecurringTransfer() {
-    UserIdProvider.setUserId(this);
-  }
 }
