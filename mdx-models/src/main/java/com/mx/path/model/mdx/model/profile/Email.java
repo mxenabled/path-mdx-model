@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.UserIdProvider;
 import com.mx.path.model.mdx.model.challenges.Challenge;
 
 public final class Email extends MdxBase<Email> {
@@ -17,6 +18,7 @@ public final class Email extends MdxBase<Email> {
   private String id;
 
   public Email() {
+    UserIdProvider.setUserId(this);
   }
 
   public List<Challenge> getChallenges() {

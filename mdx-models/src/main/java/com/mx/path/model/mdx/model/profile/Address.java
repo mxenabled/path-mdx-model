@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.UserIdProvider;
 import com.mx.path.model.mdx.model.challenges.Challenge;
 
 public final class Address extends MdxBase<Address> {
@@ -32,6 +33,7 @@ public final class Address extends MdxBase<Address> {
   private String state;
 
   public Address() {
+    UserIdProvider.setUserId(this);
   }
 
   public Boolean getApplyToAll() {

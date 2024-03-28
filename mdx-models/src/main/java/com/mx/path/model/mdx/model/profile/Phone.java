@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.UserIdProvider;
 import com.mx.path.model.mdx.model.challenges.Challenge;
 
 public final class Phone extends MdxBase<Phone> {
@@ -18,6 +19,7 @@ public final class Phone extends MdxBase<Phone> {
   private String workExtension;
 
   public Phone() {
+    UserIdProvider.setUserId(this);
   }
 
   public List<Challenge> getChallenges() {

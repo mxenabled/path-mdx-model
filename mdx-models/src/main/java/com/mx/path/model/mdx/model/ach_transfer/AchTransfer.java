@@ -7,6 +7,7 @@ import lombok.Getter;
 
 import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.MdxRelationId;
+import com.mx.path.model.mdx.model.UserIdProvider;
 import com.mx.path.model.mdx.model.account.Account;
 
 @Data
@@ -25,4 +26,8 @@ public final class AchTransfer extends MdxBase<AchTransfer> {
   private String toAccountId;
   private String toAchAccountId;
   private String transferType;
+
+  public AchTransfer() {
+    UserIdProvider.setUserId(this);
+  }
 }
