@@ -5,6 +5,18 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [5.8.0](https://github.com/mxenabled/path-mdx-model/compare/v5.7.0...v5.8.0) (2024-03-28)
+
+
+### Features
+
+* add account_number endpoint to AccountNumbersController ([ff7922b](https://github.com/mxenabled/path-mdx-model/commit/ff7922bca7a850e689a68b1db5ad1c435da2f5d1))
+* added getMdx to base accessor ([ff7922b](https://github.com/mxenabled/path-mdx-model/commit/ff7922bca7a850e689a68b1db5ad1c435da2f5d1))
+* added javadoc ([ff7922b](https://github.com/mxenabled/path-mdx-model/commit/ff7922bca7a850e689a68b1db5ad1c435da2f5d1))
+* fixing path ([ff7922b](https://github.com/mxenabled/path-mdx-model/commit/ff7922bca7a850e689a68b1db5ad1c435da2f5d1))
+* mr suggestions ([ff7922b](https://github.com/mxenabled/path-mdx-model/commit/ff7922bca7a850e689a68b1db5ad1c435da2f5d1))
+* mr suggestions ([ff7922b](https://github.com/mxenabled/path-mdx-model/commit/ff7922bca7a850e689a68b1db5ad1c435da2f5d1))
+
 ## [5.7.0](https://github.com/mxenabled/path-mdx-model/compare/v5.6.0...v5.7.0) (2024-03-27)
 
 
