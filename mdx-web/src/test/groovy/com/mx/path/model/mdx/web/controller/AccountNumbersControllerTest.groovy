@@ -35,6 +35,22 @@ class AccountNumbersControllerTest extends Specification {
     RequestContext.clear()
   }
 
+  def "gets on demand account numbers for an account"() {
+    given:
+    AccountsController.setGateway(gateway)
+    def accountNumbers = new AccountNumbers()
+
+    when:
+    doReturn(new AccessorResponse<AccountNumbers>().withResult(accountNumbers)).when(accountNumberGateway).get("A-123")
+    def result = subject.getOnDemandAccountNumbers("A-123")
+
+    then:
+    verify(accountGateway).accountNumbers() || true
+    verify(accountNumberGateway).get("A-123") || true
+    result.getBody() == accountNumbers
+    RequestContext.current().feature == "accounts"
+  }
+
   def "gets account numbers for an account"() {
     given:
     AccountsController.setGateway(gateway)
@@ -42,12 +58,11 @@ class AccountNumbersControllerTest extends Specification {
 
     when:
     doReturn(new AccessorResponse<AccountNumbers>().withResult(accountNumbers)).when(accountNumberGateway).get("A-123")
-    def result = subject.get("A-123")
+    def result = subject.getAccountNumbers("A-123")
 
     then:
     verify(accountGateway).accountNumbers() || true
     verify(accountNumberGateway).get("A-123") || true
     result.getBody() == accountNumbers
-    RequestContext.current().feature == "accounts"
   }
 }

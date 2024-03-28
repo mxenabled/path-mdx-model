@@ -14,8 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "{clientId}")
 public class AccountNumbersController extends BaseController {
   @RequestMapping(value = "/accounts/{id}/account_numbers", method = RequestMethod.GET, produces = BaseController.MDX_ONDEMAND_MEDIA)
-  public final ResponseEntity<AccountNumbers> get(@PathVariable("id") String accountId) throws Exception {
+  public final ResponseEntity<AccountNumbers> getOnDemandAccountNumbers(@PathVariable("id") String accountId) throws Exception {
     ensureFeature("accounts");
+    AccessorResponse<AccountNumbers> response = gateway().accounts().accountNumbers().get(accountId);
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+  }
+
+  @RequestMapping(value = "/users/{userId}/accounts/{id}/account_number", method = RequestMethod.GET, produces = BaseController.MDX_MEDIA)
+  public final ResponseEntity<AccountNumbers> getAccountNumbers(@PathVariable("id") String accountId) throws Exception {
     AccessorResponse<AccountNumbers> response = gateway().accounts().accountNumbers().get(accountId);
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
