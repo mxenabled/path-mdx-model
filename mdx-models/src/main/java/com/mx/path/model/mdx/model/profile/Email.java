@@ -9,12 +9,12 @@ import com.mx.path.model.mdx.model.challenges.Challenge;
 public final class Email extends MdxBase<Email> {
 
   private List<Challenge> challenges;
-
   @SerializedName("email_address")
   private String emailAddress;
   @SerializedName("email_type")
   private String emailType;
   private String id;
+  private String rank;
 
   public Email() {
   }
@@ -49,6 +49,14 @@ public final class Email extends MdxBase<Email> {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public String getRank() {
+    return rank;
+  }
+
+  public void setRank(String rank) {
+    this.rank = rank;
   }
 
   public enum EmailType {
