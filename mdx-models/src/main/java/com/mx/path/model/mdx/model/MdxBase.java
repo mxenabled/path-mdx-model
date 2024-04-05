@@ -3,6 +3,7 @@ package com.mx.path.model.mdx.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mx.path.core.common.lang.Strings;
 import com.mx.path.core.common.model.ModelBase;
 import com.mx.path.core.common.model.Warning;
 import com.mx.path.core.context.Session;
@@ -13,7 +14,7 @@ public abstract class MdxBase<T> extends ModelBase<T> {
   private List<Warning> warnings;
 
   public MdxBase() {
-    if (Session.current() != null) {
+    if (Session.current() != null && Strings.isNotBlank(Session.current().getUserId())) {
       this.setUserId(Session.current().getUserId());
     }
   }
