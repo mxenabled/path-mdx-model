@@ -5,6 +5,18 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [5.9.0](https://github.com/mxenabled/path-mdx-model/compare/v5.8.0...v5.9.0) (2024-04-08)
+
+
+### Features
+
+* remove references to UserIdProvider and mark deprecated ([3c9fd2a](https://github.com/mxenabled/path-mdx-model/commit/3c9fd2afbbed37b99eeeeab7fb02c861a9ff4d1d))
+
+
+### Bug Fixes
+
+* add null check to Session userId before setting userId on MdxBase ([e52d7ca](https://github.com/mxenabled/path-mdx-model/commit/e52d7ca7cf674ec6a19cecef5dfa72f9f3bbc808))
+
 ## [5.8.0](https://github.com/mxenabled/path-mdx-model/compare/v5.7.0...v5.8.0) (2024-03-28)
 
 
