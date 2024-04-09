@@ -14,6 +14,7 @@ public final class Email extends MdxBase<Email> {
   @SerializedName("email_type")
   private String emailType;
   private String id;
+  @SerializedName("rank")
   private String rank;
 
   public Email() {
@@ -61,5 +62,9 @@ public final class Email extends MdxBase<Email> {
 
   public enum EmailType {
     BUSINESS, PERSONAL
+  }
+
+  public enum Rank {
+    PRIMARY, SECONDARY, TERTIARY
   }
 }
