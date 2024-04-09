@@ -5,6 +5,19 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [6.0.0](https://github.com/mxenabled/path-mdx-model/compare/v5.9.0...v6.0.0) (2024-04-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* updated dataType
+
+### Features
+
+* adding rank field to email modal ([661d2b0](https://github.com/mxenabled/path-mdx-model/commit/661d2b0bfa714c44683baea6878ee83532941de6))
+* updated dataType ([40facd8](https://github.com/mxenabled/path-mdx-model/commit/40facd89c536a5231e15a7eb247b8e76bb762a44))
+* updating string to enum ([c41a145](https://github.com/mxenabled/path-mdx-model/commit/c41a1455445b008ce8a78ab6d2c959fccc3959f0))
+
 ## [5.9.0](https://github.com/mxenabled/path-mdx-model/compare/v5.8.0...v5.9.0) (2024-04-08)
 
 
