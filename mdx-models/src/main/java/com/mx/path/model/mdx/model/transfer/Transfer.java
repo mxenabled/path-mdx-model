@@ -9,7 +9,6 @@ import lombok.Getter;
 
 import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.MdxRelationId;
-import com.mx.path.model.mdx.model.UserIdProvider;
 import com.mx.path.model.mdx.model.account.Account;
 import com.mx.path.model.mdx.model.challenges.Challenge;
 
@@ -47,9 +46,5 @@ public final class Transfer extends MdxBase<Transfer> {
 
   public void setChallenges(List<Challenge> challenges) {
     this.challenges = challenges;
-  }
-
-  public Transfer() {
-    UserIdProvider.setUserId(this);
   }
 }

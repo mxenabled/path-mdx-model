@@ -3,7 +3,6 @@ package com.mx.path.model.mdx.model.documents;
 import java.time.LocalDate;
 
 import com.mx.path.model.mdx.model.MdxBase;
-import com.mx.path.model.mdx.model.UserIdProvider;
 
 /*
  Up to date with MDX Documents Rev 5
@@ -20,10 +19,6 @@ public final class Document extends MdxBase<Document> {
   private String id;
   private String name;
   private String type;
-
-  public Document() {
-    UserIdProvider.setUserId(this);
-  }
 
   public String getAccountId() {
     return accountId;
