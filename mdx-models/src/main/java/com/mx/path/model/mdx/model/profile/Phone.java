@@ -13,6 +13,7 @@ public final class Phone extends MdxBase<Phone> {
   private String phoneNumber;
   @SerializedName("phone_type")
   private String phoneType;
+  @SerializedName("rank")
   private String rank;
   @SerializedName("work_extension")
   private String workExtension;
@@ -70,5 +71,9 @@ public final class Phone extends MdxBase<Phone> {
 
   public enum PhoneType {
     MOBILE, HOME, WORK, FOREIGN
+  }
+
+  public enum Rank {
+    PRIMARY, SECONDARY, TERTIARY
   }
 }
