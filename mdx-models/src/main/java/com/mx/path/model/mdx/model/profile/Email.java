@@ -12,10 +12,10 @@ public final class Email extends MdxBase<Email> {
   @SerializedName("email_address")
   private String emailAddress;
   @SerializedName("email_type")
-  private String emailType;
+  private EmailType emailType;
   private String id;
   @SerializedName("rank")
-  private String rank;
+  private Rank rank;
 
   public Email() {
   }
@@ -36,11 +36,11 @@ public final class Email extends MdxBase<Email> {
     this.emailAddress = emailAddress;
   }
 
-  public String getEmailType() {
+  public EmailType getEmailType() {
     return emailType;
   }
 
-  public void setEmailType(String emailType) {
+  public void setEmailType(EmailType emailType) {
     this.emailType = emailType;
   }
 
@@ -52,11 +52,11 @@ public final class Email extends MdxBase<Email> {
     this.id = id;
   }
 
-  public String getRank() {
+  public Rank getRank() {
     return rank;
   }
 
-  public void setRank(String rank) {
+  public void setRank(Rank rank) {
     this.rank = rank;
   }
 
