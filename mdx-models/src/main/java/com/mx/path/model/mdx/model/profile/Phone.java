@@ -12,9 +12,9 @@ public final class Phone extends MdxBase<Phone> {
   @SerializedName("phone_number")
   private String phoneNumber;
   @SerializedName("phone_type")
-  private String phoneType;
+  private PhoneType phoneType;
   @SerializedName("rank")
-  private String rank;
+  private Rank rank;
   @SerializedName("work_extension")
   private String workExtension;
 
@@ -45,19 +45,19 @@ public final class Phone extends MdxBase<Phone> {
     this.phoneNumber = phoneNumber;
   }
 
-  public String getPhoneType() {
+  public PhoneType getPhoneType() {
     return phoneType;
   }
 
-  public void setPhoneType(String phoneType) {
+  public void setPhoneType(PhoneType phoneType) {
     this.phoneType = phoneType;
   }
 
-  public String getRank() {
+  public Rank getRank() {
     return rank;
   }
 
-  public void setRank(String rank) {
+  public void setRank(Rank rank) {
     this.rank = rank;
   }
 
