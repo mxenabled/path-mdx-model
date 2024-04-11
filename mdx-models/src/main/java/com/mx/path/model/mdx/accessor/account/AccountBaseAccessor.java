@@ -30,7 +30,7 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
-  private AccountNumberBaseAccessor accountNumbers;
+  private AccountNumbersBaseAccessor accountNumbers;
 
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
@@ -98,7 +98,7 @@ public abstract class AccountBaseAccessor extends Accessor {
    * @return
    */
   @API(description = "Access account numbers")
-  public AccountNumberBaseAccessor accountNumbers() {
+  public AccountNumbersBaseAccessor accountNumbers() {
     if (accountNumbers != null) {
       return accountNumbers;
     }
@@ -197,7 +197,7 @@ public abstract class AccountBaseAccessor extends Accessor {
    *
    * @param accountNumbers
    */
-  public void setAccountNumbers(AccountNumberBaseAccessor accountNumbers) {
+  public void setAccountNumbers(AccountNumbersBaseAccessor accountNumbers) {
     this.accountNumbers = accountNumbers;
   }
 

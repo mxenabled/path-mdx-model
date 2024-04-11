@@ -8,7 +8,7 @@ import com.mx.path.core.context.RequestContext
 import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.account.AccountGateway
-import com.mx.path.gateway.api.account.AccountNumberGateway
+import com.mx.path.gateway.api.account.AccountNumbersGateway
 import com.mx.path.model.mdx.model.account.AccountNumbers
 
 import spock.lang.Specification
@@ -17,7 +17,7 @@ class AccountNumbersControllerTest extends Specification {
   AccountNumbersController subject
   Gateway gateway
   AccountGateway accountGateway
-  AccountNumberGateway accountNumberGateway
+  AccountNumbersGateway accountNumbersGateway
 
   def setup() {
     def clientId = "client-1234"
@@ -25,8 +25,8 @@ class AccountNumbersControllerTest extends Specification {
 
     RequestContext.builder().clientId(clientId).build().register()
 
-    accountNumberGateway = spy(AccountNumberGateway.builder().clientId(clientId).build())
-    accountGateway = spy(AccountGateway.builder().clientId(clientId).accountNumbers(accountNumberGateway).build())
+    accountNumbersGateway = spy(AccountNumbersGateway.builder().clientId(clientId).build())
+    accountGateway = spy(AccountGateway.builder().clientId(clientId).accountNumbers(accountNumbersGateway).build())
     gateway = spy(Gateway.builder().clientId(clientId).accounts(accountGateway).build())
   }
 
@@ -41,13 +41,14 @@ class AccountNumbersControllerTest extends Specification {
     def accountNumbers = new AccountNumbers()
 
     when:
-    doReturn(new AccessorResponse<AccountNumbers>().withResult(accountNumbers)).when(accountNumberGateway).get("A-123")
+    doReturn(new AccessorResponse<AccountNumbers>().withResult(accountNumbers)).when(accountNumbersGateway).get("A-123")
     def result = subject.getOnDemandAccountNumbers("A-123")
 
     then:
     verify(accountGateway).accountNumbers() || true
-    verify(accountNumberGateway).get("A-123") || true
-    result.getBody() == accountNumbers
+    verify(accountNumbersGateway).get("A-123") || true
+    result.body.accountNumbers == accountNumbers
+    result.body.id == "A-123"
     RequestContext.current().feature == "accounts"
   }
 
@@ -57,12 +58,12 @@ class AccountNumbersControllerTest extends Specification {
     def accountNumbers = new AccountNumbers()
 
     when:
-    doReturn(new AccessorResponse<AccountNumbers>().withResult(accountNumbers)).when(accountNumberGateway).get("A-123")
+    doReturn(new AccessorResponse<AccountNumbers>().withResult(accountNumbers)).when(accountNumbersGateway).get("A-123")
     def result = subject.getAccountNumbers("A-123")
 
     then:
     verify(accountGateway).accountNumbers() || true
-    verify(accountNumberGateway).get("A-123") || true
-    result.getBody() == accountNumbers
+    verify(accountNumbersGateway).get("A-123") || true
+    result.body == accountNumbers
   }
 }
