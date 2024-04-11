@@ -5,6 +5,17 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [7.0.0](https://github.com/mxenabled/path-mdx-model/compare/v6.0.0...v7.0.0) (2024-04-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* update account numbers serialization
+
+### Bug Fixes
+
+* update account numbers serialization ([a9ee598](https://github.com/mxenabled/path-mdx-model/commit/a9ee598f7e621444119ae4d558cea463f6bcd252))
+
 ## [6.0.0](https://github.com/mxenabled/path-mdx-model/compare/v5.9.0...v6.0.0) (2024-04-09)
 
 
