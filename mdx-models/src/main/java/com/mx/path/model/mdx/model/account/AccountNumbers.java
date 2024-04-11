@@ -3,22 +3,22 @@ package com.mx.path.model.mdx.model.account;
 import com.mx.path.model.mdx.model.MdxBase;
 
 public final class AccountNumbers extends MdxBase<AccountNumbers> {
-  private String id;
-  private AccountNumber accountNumbers;
+  private String accountNumber;
+  private String routingNumber;
 
-  public String getId() {
-    return id;
+  public String getAccountNumber() {
+    return accountNumber;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setAccountNumber(String accountNumber) {
+    this.accountNumber = accountNumber;
   }
 
-  public AccountNumber getAccountNumbers() {
-    return accountNumbers;
+  public String getRoutingNumber() {
+    return routingNumber;
   }
 
-  public void setAccountNumbers(AccountNumber accountNumbers) {
-    this.accountNumbers = accountNumbers;
+  public void setRoutingNumber(String routingNumber) {
+    this.routingNumber = routingNumber;
   }
 }

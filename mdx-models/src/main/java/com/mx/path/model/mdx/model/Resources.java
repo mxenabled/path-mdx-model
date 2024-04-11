@@ -7,11 +7,11 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.mx.path.model.mdx.model.account.Account;
 import com.mx.path.model.mdx.model.account.AccountDetails;
-import com.mx.path.model.mdx.model.account.AccountNumber;
 import com.mx.path.model.mdx.model.account.AccountNumbers;
 import com.mx.path.model.mdx.model.account.AccountOwner;
 import com.mx.path.model.mdx.model.account.AccountOwnerDetails;
 import com.mx.path.model.mdx.model.account.AccountTransactions;
+import com.mx.path.model.mdx.model.account.OnDemandAccountNumbers;
 import com.mx.path.model.mdx.model.account.OnDemandAccounts;
 import com.mx.path.model.mdx.model.account.Overdraft;
 import com.mx.path.model.mdx.model.account.StopPayment;
@@ -48,13 +48,13 @@ import com.mx.path.model.mdx.model.ondemand.MdxListWrapper;
 import com.mx.path.model.mdx.model.ondemand.MdxOnDemandDeserializer;
 import com.mx.path.model.mdx.model.ondemand.MdxOnDemandMdxListSerializer;
 import com.mx.path.model.mdx.model.ondemand.MdxOnDemandSerializer;
-import com.mx.path.model.mdx.model.ondemand.mixins.AccountNumberXmlMixin;
 import com.mx.path.model.mdx.model.ondemand.mixins.AccountNumbersXmlMixin;
 import com.mx.path.model.mdx.model.ondemand.mixins.AccountOwnerDetailsXmlMixin;
 import com.mx.path.model.mdx.model.ondemand.mixins.AccountOwnerXmlMixin;
 import com.mx.path.model.mdx.model.ondemand.mixins.AccountTransactionsMixIn;
 import com.mx.path.model.mdx.model.ondemand.mixins.AccountXmlMixin;
 import com.mx.path.model.mdx.model.ondemand.mixins.MixinDefinition;
+import com.mx.path.model.mdx.model.ondemand.mixins.OnDemandAccountNumbersXmlMixin;
 import com.mx.path.model.mdx.model.ondemand.mixins.OnDemandAccountsXmlMixin;
 import com.mx.path.model.mdx.model.ondemand.mixins.SessionXmlMixin;
 import com.mx.path.model.mdx.model.ondemand.mixins.TransactionMixIn;
@@ -112,6 +112,7 @@ public class Resources {
     builder.registerTypeAdapter(Account.class, new ModelWrappableSerializer("account"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Account>>() {
     }.getType(), new ModelWrappableSerializer("accounts"));
+    builder.registerTypeAdapter(AccountNumbers.class, new ModelWrappableSerializer("account"));
     builder.registerTypeAdapter(AccountDetails.class, new ModelWrappableSerializer("account_details"));
     builder.registerTypeAdapter(Overdraft.class, new ModelWrappableSerializer("overdraft"));
     builder.registerTypeAdapter(StopPayment.class, new ModelWrappableSerializer("stop_payment"));
@@ -287,9 +288,6 @@ public class Resources {
         new MixinDefinition(TransactionsPage.class, TransactionsPageMixin.class),
         new MixinDefinition(Transaction.class, TransactionMixIn.class)));
 
-    module.addSerializer(AccountNumbers.class, new MdxOnDemandSerializer<>(
-        new MixinDefinition(AccountNumbers.class, AccountNumbersXmlMixin.class),
-        new MixinDefinition(AccountNumber.class, AccountNumberXmlMixin.class)));
     module.addSerializer(AccountOwner.class, new MdxOnDemandSerializer<>(
         new MixinDefinition(AccountOwner.class, AccountOwnerXmlMixin.class),
         new MixinDefinition(AccountOwnerDetails.class, AccountOwnerDetailsXmlMixin.class)));
@@ -297,6 +295,9 @@ public class Resources {
     module.addSerializer(OnDemandAccounts.class, new MdxOnDemandSerializer<>(
         new MixinDefinition(OnDemandAccounts.class, OnDemandAccountsXmlMixin.class),
         new MixinDefinition(Account.class, AccountXmlMixin.class)));
+    module.addSerializer(OnDemandAccountNumbers.class, new MdxOnDemandSerializer<>(
+        new MixinDefinition(OnDemandAccountNumbers.class, OnDemandAccountNumbersXmlMixin.class),
+        new MixinDefinition(AccountNumbers.class, AccountNumbersXmlMixin.class)));
   }
 
   private static void registerProfileModelClasses(GsonBuilder builder) {
