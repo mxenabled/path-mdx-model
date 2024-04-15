@@ -107,7 +107,12 @@ public class ProfilesController extends BaseController {
   @RequestMapping(value = "/users/{userId}/profile/phones", method = RequestMethod.POST)
   public final ResponseEntity<Phone> createPhone(@RequestBody Phone phone) {
     AccessorResponse<Phone> response = gateway().profiles().phones().create(phone);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+    Phone result = response.getResult();
+    HttpStatus status = HttpStatus.OK;
+    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 
   @RequestMapping(value = "/users/{userId}/profile/phones/{phoneId}", method = RequestMethod.PUT)
@@ -124,8 +129,12 @@ public class ProfilesController extends BaseController {
   }
 
   @RequestMapping(value = "/users/{userId}/profile/phones/{phoneId}", method = RequestMethod.DELETE)
-  public final ResponseEntity<?> deletePhone(@PathVariable("phoneId") String phoneId) {
-    AccessorResponse<Void> response = gateway().profiles().phones().delete(phoneId);
+  public final ResponseEntity<Phone> deletePhone(@PathVariable("phoneId") String phoneId, @RequestBody Phone phone) {
+    AccessorResponse<Phone> response = gateway().profiles().phones().delete(phoneId, phone);
+    Phone result = response.getResult();
+    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+    }
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
 
@@ -144,7 +153,12 @@ public class ProfilesController extends BaseController {
   @RequestMapping(value = "/users/{userId}/profile/emails", method = RequestMethod.POST)
   public final ResponseEntity<Email> createEmail(@RequestBody Email email) {
     AccessorResponse<Email> response = gateway().profiles().emails().create(email);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+    Email result = response.getResult();
+    HttpStatus status = HttpStatus.OK;
+    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 
   @RequestMapping(value = "/users/{userId}/profile/emails/{emailId}", method = RequestMethod.PUT)
@@ -160,8 +174,12 @@ public class ProfilesController extends BaseController {
   }
 
   @RequestMapping(value = "/users/{userId}/profile/emails/{emailId}", method = RequestMethod.DELETE)
-  public final ResponseEntity<Email> deleteEmail(@PathVariable("emailId") String emailId) {
-    AccessorResponse<Void> response = gateway().profiles().emails().delete(emailId);
+  public final ResponseEntity<Email> deleteEmail(@PathVariable("emailId") String emailId, @RequestBody Email email) {
+    AccessorResponse<Email> response = gateway().profiles().emails().delete(emailId, email);
+    Email result = response.getResult();
+    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+    }
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
 

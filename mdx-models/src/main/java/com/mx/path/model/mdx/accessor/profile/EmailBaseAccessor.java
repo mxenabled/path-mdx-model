@@ -50,7 +50,7 @@ public class EmailBaseAccessor extends Accessor {
    */
   @GatewayAPI
   @API(description = "Delete an email")
-  public AccessorResponse<Void> delete(String id) {
+  public AccessorResponse<Email> delete(String id, Email email) {
     throw new AccessorMethodNotImplementedException();
   }
 
