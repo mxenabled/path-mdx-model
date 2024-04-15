@@ -277,20 +277,42 @@ class ProfilesControllerTest extends Specification {
     response.statusCode == HttpStatus.OK
   }
 
-  def "postPhone_implemented"() {
+  def "postPhone_implemented - 200"() {
     given:
     ProfilesController.setGateway(gateway)
 
     def mockResponse = new AccessorResponse<Phone>().withResult(new Phone())
-    doReturn(mockResponse).when(phoneGateway).create(any())
+    def request = new Phone()
+    doReturn(mockResponse).when(phoneGateway).create(request)
 
     when:
-    def response = subject.createPhone(new Phone())
+    def response = subject.createPhone(request)
 
     then:
+    verify(phoneGateway).create(request) || true
     response.body == mockResponse.result
     response.body.wrapped
     response.statusCode == HttpStatus.OK
+  }
+
+  def "postPhone_implemented - 202"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def mockResponse = new AccessorResponse<Phone>().withResult(new Phone().tap {
+      challenges = [new Challenge()]
+    })
+    def request = new Phone()
+    doReturn(mockResponse).when(phoneGateway).create(request)
+
+    when:
+    def response = subject.createPhone(request)
+
+    then:
+    verify(phoneGateway).create(request) || true
+    response.body == mockResponse.result
+    response.body.wrapped
+    response.statusCode == HttpStatus.ACCEPTED
   }
 
   def "putPhone_implemented - 200"() {
@@ -329,21 +351,43 @@ class ProfilesControllerTest extends Specification {
     response.statusCode == HttpStatus.ACCEPTED
   }
 
-  def "deletePhone_implemented"() {
+  def "deletePhone_implemented - 204"() {
     given:
     ProfilesController.setGateway(gateway)
 
-    def mockResponse = new AccessorResponse<Void>()
-    doReturn(mockResponse).when(phoneGateway).delete("1")
+    def mockResponse = new AccessorResponse<Phone>().withResult(new Phone())
+    def phone = new Phone()
+    def id = "1"
+    doReturn(mockResponse).when(phoneGateway).delete(id, phone)
 
     when:
-    def response = subject.deletePhone("1")
+    def response = subject.deletePhone(id, phone)
 
     then:
-    verify(phoneGateway).delete("1") || true
+    verify(phoneGateway).delete(id, phone) || true
     response.statusCode == HttpStatus.NO_CONTENT
   }
 
+  def "deletePhone_implemented - 202"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def mockResponse = new AccessorResponse<Phone>().withResult(new Phone().tap {
+      challenges = [new Challenge()]
+    })
+    def phone = new Phone()
+    def id = "1"
+    doReturn(mockResponse).when(phoneGateway).delete(id, phone)
+
+    when:
+    def response = subject.deletePhone(id, phone)
+
+    then:
+    verify(phoneGateway).delete(id, phone) || true
+    response.body == mockResponse.result
+    response.body.wrapped
+    response.statusCode == HttpStatus.ACCEPTED
+  }
 
   // email CRUD
 
@@ -381,20 +425,42 @@ class ProfilesControllerTest extends Specification {
     response.statusCode == HttpStatus.OK
   }
 
-  def "postEmail_implemented"() {
+  def "postEmail_implemented - 200"() {
     given:
     ProfilesController.setGateway(gateway)
 
     def mockResponse = new AccessorResponse<Email>().withResult(new Email())
-    doReturn(mockResponse).when(emailGateway).create(any())
+    def email = new Email()
+    doReturn(mockResponse).when(emailGateway).create(email)
 
     when:
-    def response = subject.createEmail(new Email())
+    def response = subject.createEmail(email)
 
     then:
+    verify(emailGateway).create(email) || true
     response.body == mockResponse.result
     response.body.wrapped
     response.statusCode == HttpStatus.OK
+  }
+
+  def "postEmail_implemented - 202"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def mockResponse = new AccessorResponse<Email>().withResult(new Email().tap {
+      challenges = [new Challenge()]
+    })
+    def email = new Email()
+    doReturn(mockResponse).when(emailGateway).create(email)
+
+    when:
+    def response = subject.createEmail(email)
+
+    then:
+    verify(emailGateway).create(email) || true
+    response.body == mockResponse.result
+    response.body.wrapped
+    response.statusCode == HttpStatus.ACCEPTED
   }
 
   def "putEmail_implemented - 202"() {
@@ -536,19 +602,42 @@ class ProfilesControllerTest extends Specification {
     response.statusCode == HttpStatus.NO_CONTENT
   }
 
-  def "deleteEmail_implemented"() {
+  def "deleteEmail_implemented - 204"() {
     given:
     ProfilesController.setGateway(gateway)
 
-    def mockResponse = new AccessorResponse<Void>()
-    doReturn(mockResponse).when(emailGateway).delete("1")
+    def mockResponse = new AccessorResponse<Email>().withResult(new Email())
+    def email = new Email()
+    def id = "1"
+    doReturn(mockResponse).when(emailGateway).delete(id, email)
 
     when:
-    def response = subject.deleteEmail("1")
+    def response = subject.deleteEmail(id, email)
 
     then:
-    verify(emailGateway).delete("1") || true
+    verify(emailGateway).delete(id, email) || true
     response.statusCode == HttpStatus.NO_CONTENT
+  }
+
+  def "deleteEmail_implemented - 202"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def mockResponse = new AccessorResponse<Email>().withResult(new Email().tap {
+      challenges = [new Challenge()]
+    })
+    def email = new Email()
+    def id = "1"
+    doReturn(mockResponse).when(emailGateway).delete(id, email)
+
+    when:
+    def response = subject.deleteEmail(id, email)
+
+    then:
+    verify(emailGateway).delete(id, email) || true
+    response.body == mockResponse.result
+    response.body.wrapped
+    response.statusCode == HttpStatus.ACCEPTED
   }
 
   def "updateUserName test"() {

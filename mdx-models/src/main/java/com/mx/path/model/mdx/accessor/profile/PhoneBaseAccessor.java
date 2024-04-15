@@ -50,7 +50,7 @@ public class PhoneBaseAccessor extends Accessor {
    */
   @GatewayAPI
   @API(description = "Delete a phone")
-  public AccessorResponse<Void> delete(String id) {
+  public AccessorResponse<Phone> delete(String id, Phone phone) {
     throw new AccessorMethodNotImplementedException();
   }
 
