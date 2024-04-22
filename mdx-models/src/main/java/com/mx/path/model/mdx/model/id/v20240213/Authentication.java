@@ -10,6 +10,11 @@ import com.mx.path.model.mdx.model.challenges.Challenge;
 
 @Data
 public class Authentication extends MdxBase<Authentication> {
+  public enum DeviceRegistration {
+    PRIMARY,
+    SECONDARY
+  }
+
   private final String version = "20240213";
 
   private List<Challenge> challenges;
@@ -24,6 +29,7 @@ public class Authentication extends MdxBase<Authentication> {
   private String deviceOperatingSystemVersion;
   private Double deviceLatitude;
   private Double deviceLongitude;
+  private DeviceRegistration deviceRegistration;
   private Integer deviceWidth;
   private String id;
   @SerializedName("device_iovation_token")

@@ -1,5 +1,6 @@
 package com.mx.path.model.mdx.web.controller
 
+import static com.mx.path.model.mdx.model.id.v20240213.Authentication.DeviceRegistration.*
 import static org.mockito.ArgumentMatchers.any
 import static org.mockito.Mockito.doAnswer
 import static org.mockito.Mockito.doReturn
@@ -112,7 +113,6 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     ResponseContext.clear()
   }
 
-
   def "loginWithPasswordSuccessful"() {
     given:
     AuthenticationController.setGateway(gateway)
@@ -127,6 +127,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     HttpStatus.OK == response.getStatusCode()
     Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
     "user-1234" == response.getBody().getUserId()
+    null == response.getBody().deviceRegistration
     RequestContext.current().feature == "identity"
   }
 
@@ -143,9 +144,47 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     verify(id).authenticate((com.mx.path.model.mdx.model.id.v20240213.Authentication) any(com.mx.path.model.mdx.model.id.v20240213.Authentication)) || true
     HttpStatus.OK == response.getStatusCode()
     Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
-    "user-1234" == response.getBody().getUserId()
+    "user-1234" == response.getBody().userId
     RequestContext.current().feature == "identity"
     response.headers.get("Content-Type").contains("application/vnd.mx.mdx.v6+json;charset=UTF-8;version=20240213")
+  }
+
+  def "loginWithDeviceRegistrationSuccessful"() {
+    given:
+    AuthenticationController.setGateway(gateway)
+    def resultAuthentication = new Authentication().withUserId("user-1234")
+    resultAuthentication.setDeviceRegistration(PRIMARY)
+
+    when:
+    doReturn(new AccessorResponse<Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).authenticate(authentication)
+    def response = subject.authenticate("client1234", authentication)
+
+    then:
+    verify(id).authenticate(authentication) || true
+    HttpStatus.OK == response.getStatusCode()
+    Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
+    "user-1234" == response.getBody().getUserId()
+    PRIMARY == response.getBody().deviceRegistration
+  }
+
+  def "loginWithDeviceRegistrationSuccessful 20240213"() {
+    given:
+    AuthenticationController.setGateway(gateway)
+    def resultAuthentication = new com.mx.path.model.mdx.model.id.v20240213.Authentication().withUserId("user-1234")
+    resultAuthentication.setDeviceRegistration(PRIMARY)
+
+    when:
+    doReturn(new AccessorResponse<com.mx.path.model.mdx.model.id.v20240213.Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)).when(id).authenticate((com.mx.path.model.mdx.model.id.v20240213.Authentication) any(com.mx.path.model.mdx.model.id.v20240213.Authentication))
+    def response = subject.authenticate("client1234", buildRequest(authentication20240213, "application/vnd.mx.id.v6+json;version=20240213"))
+
+    then:
+    verify(id).authenticate((com.mx.path.model.mdx.model.id.v20240213.Authentication) any(com.mx.path.model.mdx.model.id.v20240213.Authentication)) || true
+    HttpStatus.OK == response.getStatusCode()
+    Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
+    "user-1234" == response.getBody().userId
+    RequestContext.current().feature == "identity"
+    response.headers.get("Content-Type").contains("application/vnd.mx.mdx.v6+json;charset=UTF-8;version=20240213")
+    PRIMARY == response.getBody().deviceRegistration
   }
 
   def "loginWithTokenSuccessful"() {
@@ -195,6 +234,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
     "user-1234" == response.getBody().getUserId()
   }
+
 
   def "loginSavesDeviceIpToSessionAndRequestContext"() {
     given:
