@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.id.v20240213.Authentication.DeviceRegistration;
 
 public class Authentication extends MdxBase<Authentication> {
 
@@ -25,6 +26,7 @@ public class Authentication extends MdxBase<Authentication> {
   private String deviceOperatingSystemVersion;
   private Double deviceLatitude;
   private Double deviceLongitude;
+  private DeviceRegistration deviceRegistration;
   private Integer deviceWidth;
   private String id;
   @SerializedName("device_iovation_token")
@@ -170,6 +172,14 @@ public class Authentication extends MdxBase<Authentication> {
 
   public final void setDeviceWidth(int newDeviceWidth) {
     this.deviceWidth = newDeviceWidth;
+  }
+
+  public final void setDeviceRegistration(DeviceRegistration deviceRegistration) {
+    this.deviceRegistration = deviceRegistration;
+  }
+
+  public final DeviceRegistration getDeviceRegistration() {
+    return deviceRegistration;
   }
 
   public final String getId() {
