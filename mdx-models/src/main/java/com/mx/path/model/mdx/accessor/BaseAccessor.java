@@ -21,6 +21,7 @@ import com.mx.path.model.mdx.accessor.managed_card.ManagedCardBaseAccessor;
 import com.mx.path.model.mdx.accessor.origination.OriginationBaseAccessor;
 import com.mx.path.model.mdx.accessor.payment.PaymentBaseAccessor;
 import com.mx.path.model.mdx.accessor.payout.PayoutBaseAccessor;
+import com.mx.path.model.mdx.accessor.products.ProductBaseAccessor;
 import com.mx.path.model.mdx.accessor.profile.ProfileBaseAccessor;
 import com.mx.path.model.mdx.accessor.remote_deposit.RemoteDepositBaseAccessor;
 import com.mx.path.model.mdx.accessor.transfer.TransferBaseAccessor;
@@ -75,6 +76,10 @@ public abstract class BaseAccessor extends Accessor {
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
   private PayoutBaseAccessor payouts;
+
+  @GatewayAPI
+  @Getter(AccessLevel.PROTECTED)
+  private ProductBaseAccessor products;
 
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
@@ -359,6 +364,29 @@ public abstract class BaseAccessor extends Accessor {
    */
   public void setPayouts(PayoutBaseAccessor payouts) {
     this.payouts = payouts;
+  }
+
+  /**
+   * Accessor for products operations
+   *
+   * @return accessor
+   */
+  @API
+  public ProductBaseAccessor products() {
+    if (products != null) {
+      return products;
+    }
+
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Set products accessor
+   *
+   * @param products
+   */
+  public void setProducts(ProductBaseAccessor products) {
+    this.products = products;
   }
 
   /**

@@ -79,6 +79,7 @@ import com.mx.path.model.mdx.model.payout.PayoutSettings;
 import com.mx.path.model.mdx.model.payout.Question;
 import com.mx.path.model.mdx.model.payout.Recipient;
 import com.mx.path.model.mdx.model.payout.RecurringPayout;
+import com.mx.path.model.mdx.model.products.Product;
 import com.mx.path.model.mdx.model.profile.Address;
 import com.mx.path.model.mdx.model.profile.ChallengeQuestions;
 import com.mx.path.model.mdx.model.profile.Email;
@@ -274,6 +275,8 @@ public class Resources {
     registerMultistageTransferModels(builder);
     // Register account alert models
     registerAccountAlertModels(builder);
+    // Register product models
+    registerProductModels(builder);
   }
 
   public static void registerOnDemandResources(SimpleModule module) {
@@ -410,5 +413,12 @@ public class Resources {
     // DeliveryMethod
     builder.registerTypeAdapter(new TypeToken<MdxList<DeliveryMethod>>() {
     }.getType(), new ModelWrappableSerializer("delivery_methods"));
+  }
+
+  private static void registerProductModels(GsonBuilder builder) {
+    // Product
+    builder.registerTypeAdapter(Product.class, new ModelWrappableSerializer("product"));
+    builder.registerTypeAdapter(new TypeToken<MdxList<Product>>() {
+    }.getType(), new ModelWrappableSerializer("products"));
   }
 }
