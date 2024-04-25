@@ -671,22 +671,6 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     response.statusCode == HttpStatus.NO_CONTENT
   }
 
-  def "unlockUser"() {
-    given:
-    AuthenticationController.setGateway(gateway)
-    def unlockUser = new UnlockUser()
-    doReturn(new AccessorResponse<UnlockUser>().withResult(unlockUser).withStatus(PathResponseStatus.OK)).when(id).unlockUser(unlockUser)
-
-    when:
-    def response = subject.unlockUser(unlockUser)
-
-    then:
-    verify(gateway).id()              || true
-    verify(id).unlockUser(unlockUser) || true
-    Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
-    response.statusCode == HttpStatus.ACCEPTED
-  }
-
   def "unlockUser - ACCEPTED"() {
     given:
     AuthenticationController.setGateway(gateway)
@@ -723,7 +707,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     doReturn(new AccessorResponse<UnlockUser>().withResult(accessorResponse).withStatus(PathResponseStatus.ACCEPTED)).when(id).unlockUser(unlockUser)
 
     when:
-    def response = subject.answerUnlockUser(unlockUser)
+    def response = subject.unlockUser(unlockUser)
 
     then:
     verify(gateway).id()              || true
@@ -739,7 +723,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     doReturn(new AccessorResponse<UnlockUser>().withResult(new UnlockUser()).withStatus(PathResponseStatus.NO_CONTENT)).when(id).unlockUser(unlockUser)
 
     when:
-    def response = subject.answerUnlockUser(unlockUser)
+    def response = subject.unlockUser(unlockUser)
 
     then:
     verify(gateway).id()              || true
