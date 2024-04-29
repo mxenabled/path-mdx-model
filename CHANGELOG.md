@@ -5,6 +5,19 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [8.0.0](https://github.com/mxenabled/path-mdx-model/compare/v7.0.0...v8.0.0) (2024-04-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* add mfa to delete and create phone and email
+
+### Features
+
+* add device_registration field to authentication ([7ab1812](https://github.com/mxenabled/path-mdx-model/commit/7ab18129bb4fa1c2fdf40fbc49cd28f83fd6754f))
+* add mfa to delete and create phone and email ([670fa10](https://github.com/mxenabled/path-mdx-model/commit/670fa10eb815ed1bf7472963ca086d3142a9d93a))
+* add product endpoint ([06f3a09](https://github.com/mxenabled/path-mdx-model/commit/06f3a09bde36775354c4d869478bd2ead2b15747))
+
 ## [7.0.0](https://github.com/mxenabled/path-mdx-model/compare/v6.0.0...v7.0.0) (2024-04-11)
 
 
