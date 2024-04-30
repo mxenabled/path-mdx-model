@@ -93,6 +93,6 @@ class DocumentsControllerTest extends Specification {
 
     then:
     verify(documentGateway).updateDeliveryPreferences(deliveryPreferences) || true
-    HttpStatus.ACCEPTED == response.getStatusCode()
+    HttpStatus.OK == response.getStatusCode()
   }
 }
