@@ -31,6 +31,7 @@ import com.mx.path.model.mdx.model.credit_report.CreditReportSettings;
 import com.mx.path.model.mdx.model.cross_account_transfer.CrossAccountRecurringTransfer;
 import com.mx.path.model.mdx.model.cross_account_transfer.CrossAccountTransfer;
 import com.mx.path.model.mdx.model.cross_account_transfer.DestinationAccount;
+import com.mx.path.model.mdx.model.device.VerificationMethod;
 import com.mx.path.model.mdx.model.dispute.Dispute;
 import com.mx.path.model.mdx.model.dispute.DisputedTransaction;
 import com.mx.path.model.mdx.model.documents.DeliveryPreferences;
@@ -263,6 +264,8 @@ public class Resources {
     builder.registerTypeAdapter(ForgotUsername.class, new ModelWrappableSerializer("forgot_username"));
     // UnlockUser
     builder.registerTypeAdapter(UnlockUser.class, new ModelWrappableSerializer("unlock_user"));
+    // Device related models
+    registerDeviceModels(builder);
     // Register Profile related models
     registerProfileModelClasses(builder);
     // Register ACH Transfer related models
@@ -277,6 +280,12 @@ public class Resources {
     registerAccountAlertModels(builder);
     // Register product models
     registerProductModels(builder);
+  }
+
+  private static void registerDeviceModels(GsonBuilder builder) {
+    builder.registerTypeAdapter(VerificationMethod.class, new ModelWrappableSerializer("verification_method"));
+    builder.registerTypeAdapter(new TypeToken<MdxList<VerificationMethod>>() {
+    }.getType(), new ModelWrappableSerializer("verification_methods"));
   }
 
   public static void registerOnDemandResources(SimpleModule module) {

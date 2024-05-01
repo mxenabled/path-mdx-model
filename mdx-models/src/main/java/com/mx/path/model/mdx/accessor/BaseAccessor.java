@@ -14,6 +14,7 @@ import com.mx.path.model.mdx.accessor.ach_transfer.AchTransferBaseAccessor;
 import com.mx.path.model.mdx.accessor.authorization.AuthorizationBaseAccessor;
 import com.mx.path.model.mdx.accessor.credit_report.CreditReportBaseAccessor;
 import com.mx.path.model.mdx.accessor.cross_account_transfer.CrossAccountTransferBaseAccessor;
+import com.mx.path.model.mdx.accessor.device.DeviceBaseAccessor;
 import com.mx.path.model.mdx.accessor.document.DocumentBaseAccessor;
 import com.mx.path.model.mdx.accessor.id.IdBaseAccessor;
 import com.mx.path.model.mdx.accessor.location.LocationBaseAccessor;
@@ -48,6 +49,10 @@ public abstract class BaseAccessor extends Accessor {
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
   private CreditReportBaseAccessor creditReports;
+
+  @GatewayAPI
+  @Getter(AccessLevel.PROTECTED)
+  private DeviceBaseAccessor devices;
 
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
@@ -203,6 +208,30 @@ public abstract class BaseAccessor extends Accessor {
    */
   public void setCreditReports(CreditReportBaseAccessor creditReports) {
     this.creditReports = creditReports;
+  }
+
+  /**
+   /**
+   * Accessor for device operations
+   *
+   * @return accessor
+   */
+  @API
+  public DeviceBaseAccessor devices() {
+    if (devices != null) {
+      return devices;
+    }
+
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Set devices accessor
+   *
+   * @param deviceBaseAccessor
+   */
+  public void setDevices(DeviceBaseAccessor deviceBaseAccessor) {
+    this.devices = deviceBaseAccessor;
   }
 
   /**
