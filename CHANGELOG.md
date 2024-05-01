@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [8.0.1](https://github.com/mxenabled/path-mdx-model/compare/v8.0.0...v8.0.1) (2024-05-01)
+
+
+### Bug Fixes
+
+* updated response code to OK from Accepted ([3dfd508](https://github.com/mxenabled/path-mdx-model/commit/3dfd508a321385ca417a6b82098a821265c6ba42))
+
 ## [8.0.0](https://github.com/mxenabled/path-mdx-model/compare/v7.0.0...v8.0.0) (2024-04-29)
 
 
