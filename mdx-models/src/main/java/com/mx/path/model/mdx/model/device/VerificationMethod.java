@@ -8,7 +8,7 @@ import com.mx.path.model.mdx.model.MdxBase;
 public class VerificationMethod extends MdxBase<VerificationMethod> {
   public enum METHOD {
     CODE,
-    LINKj
+    LINK
   }
 
   private String id;

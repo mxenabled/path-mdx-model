@@ -18,7 +18,6 @@ import com.mx.path.model.mdx.model.device.VerificationMethod;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/device/#verification-methods")
 public abstract class VerificationMethodsBaseAccessor extends Accessor {
-
   public VerificationMethodsBaseAccessor() {
   }
 
@@ -31,6 +30,11 @@ public abstract class VerificationMethodsBaseAccessor extends Accessor {
     super(configuration);
   }
 
+  /**
+   * Get all verification methods for a user
+   *
+   * @return
+   */
   @GatewayAPI
   @API(description = "Get all user's verification methods")
   public AccessorResponse<MdxList<VerificationMethod>> list() {
