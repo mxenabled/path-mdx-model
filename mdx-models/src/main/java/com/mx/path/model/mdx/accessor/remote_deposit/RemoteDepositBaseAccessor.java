@@ -9,6 +9,7 @@ import com.mx.path.gateway.accessor.AccessorConfiguration;
 import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.account.Account;
+import com.mx.path.model.mdx.model.remote_deposit.Limits;
 import com.mx.path.model.mdx.model.remote_deposit.RemoteDeposit;
 
 /**
@@ -74,6 +75,17 @@ public abstract class RemoteDepositBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "List all remote deposits")
   public AccessorResponse<MdxList<RemoteDeposit>> list() {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Get remote deposits limits
+   *
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Get remote deposits limits")
+  public AccessorResponse<Limits> limits() {
     throw new AccessorMethodNotImplementedException();
   }
 

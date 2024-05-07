@@ -3,6 +3,7 @@ package com.mx.path.model.mdx.web.controller;
 import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.account.Account;
+import com.mx.path.model.mdx.model.remote_deposit.Limits;
 import com.mx.path.model.mdx.model.remote_deposit.RemoteDeposit;
 
 import org.springframework.http.HttpStatus;
@@ -41,6 +42,12 @@ public class RemoteDepositsController extends BaseController {
   @RequestMapping(value = "/users/{userId}/accounts/remote_deposit", method = RequestMethod.GET)
   public final ResponseEntity<MdxList<Account>> getRemoteDepositAccounts() {
     AccessorResponse<MdxList<Account>> response = gateway().remoteDeposits().accounts();
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+  }
+
+  @RequestMapping(value = "/users/{userId}/accounts/remote_deposits/limits", method = RequestMethod.GET)
+  public final ResponseEntity<Limits> getRemoteDepositLimits() {
+    AccessorResponse<Limits> response = gateway().remoteDeposits().limits();
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 }
