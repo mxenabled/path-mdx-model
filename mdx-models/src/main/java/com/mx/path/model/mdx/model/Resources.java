@@ -90,6 +90,7 @@ import com.mx.path.model.mdx.model.profile.Password;
 import com.mx.path.model.mdx.model.profile.Phone;
 import com.mx.path.model.mdx.model.profile.Profile;
 import com.mx.path.model.mdx.model.profile.UserName;
+import com.mx.path.model.mdx.model.remote_deposit.Limits;
 import com.mx.path.model.mdx.model.remote_deposit.RemoteDeposit;
 import com.mx.path.model.mdx.model.transfer.Fee;
 import com.mx.path.model.mdx.model.transfer.RecurringTransfer;
@@ -254,6 +255,8 @@ public class Resources {
     builder.registerTypeAdapter(RemoteDeposit.class, new ModelWrappableSerializer("remote_deposit"));
     builder.registerTypeAdapter(new TypeToken<MdxList<RemoteDeposit>>() {
     }.getType(), new ModelWrappableSerializer("remote_deposits"));
+    // RemoteDeposit Limits
+    builder.registerTypeAdapter(Limits.class, new ModelWrappableSerializer("limits"));
     // MfaChallenge
     builder.registerTypeAdapter(MfaChallenge.class, new ModelWrappableSerializer("mfa_challenge"));
     builder.registerTypeAdapter(new TypeToken<MdxList<MfaChallenge>>() {
