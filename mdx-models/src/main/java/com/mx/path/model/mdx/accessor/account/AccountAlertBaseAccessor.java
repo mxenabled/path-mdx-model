@@ -57,19 +57,6 @@ public abstract class AccountAlertBaseAccessor extends Accessor {
   }
 
   /**
-   * Create account alert
-   *
-   * @param accountId
-   * @param accountAlert
-   * @return
-   */
-  @GatewayAPI
-  @API(description = "Create account alert")
-  public AccessorResponse<AccountAlert> create(String accountId, AccountAlert accountAlert) {
-    throw new AccessorMethodNotImplementedException();
-  }
-
-  /**
    * Update an account alert
    *
    * @param accountId
@@ -79,19 +66,6 @@ public abstract class AccountAlertBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Update an account alert")
   public AccessorResponse<AccountAlert> update(String accountId, AccountAlert accountAlert) {
-    throw new AccessorMethodNotImplementedException();
-  }
-
-  /**
-   * Delete an account alert by id
-   *
-   * @param accountId
-   * @param alertId
-   * @return
-   */
-  @GatewayAPI
-  @API(description = "Delete an account alert")
-  public AccessorResponse<Void> delete(String accountId, String alertId) {
     throw new AccessorMethodNotImplementedException();
   }
 

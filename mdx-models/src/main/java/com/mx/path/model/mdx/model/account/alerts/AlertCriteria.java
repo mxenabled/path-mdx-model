@@ -1,33 +1,17 @@
 package com.mx.path.model.mdx.model.account.alerts;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import com.mx.path.model.mdx.model.MdxBase;
 
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class AlertCriteria extends MdxBase<AlertCriteria> {
   private String id;
+  private Integer intValue;
   private String name;
-  private String value;
-
-  public final String getId() {
-    return id;
-  }
-
-  public final void setId(String id) {
-    this.id = id;
-  }
-
-  public final String getName() {
-    return name;
-  }
-
-  public final void setName(String name) {
-    this.name = name;
-  }
-
-  public final String getValue() {
-    return value;
-  }
-
-  public final void setValue(String value) {
-    this.value = value;
-  }
+  private Double numberValue;
+  private String stringValue;
+  private String type;
 }
