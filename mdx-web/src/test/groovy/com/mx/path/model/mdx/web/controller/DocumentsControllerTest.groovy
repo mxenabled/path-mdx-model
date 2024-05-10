@@ -78,7 +78,7 @@ class DocumentsControllerTest extends Specification {
 
     then:
     verify(documentGateway).deliveryPreferences(any(DeliveryPreferences)) || true
-    HttpStatus.ACCEPTED == response.getStatusCode()
+    HttpStatus.OK == response.getStatusCode()
   }
 
   def "updateDeliveryPreferences interacts with gateway"() {

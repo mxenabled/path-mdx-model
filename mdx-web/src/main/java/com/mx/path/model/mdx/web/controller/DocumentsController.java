@@ -40,7 +40,7 @@ public class DocumentsController extends BaseController {
     deliveryPreferences.setAccountId(queryParameters.getAccount_id());
     deliveryPreferences.setDocumentType(queryParameters.getDocument_type());
     AccessorResponse<DeliveryPreferences> response = gateway().documents().deliveryPreferences(deliveryPreferences);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/users/{userId}/documents/delivery_preferences", method = RequestMethod.PUT)
