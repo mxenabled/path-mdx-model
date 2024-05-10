@@ -79,7 +79,7 @@ public class ProfilesController extends BaseController {
   @RequestMapping(value = "/users/{userId}/profile/challenge_questions", method = RequestMethod.GET)
   public final ResponseEntity<ChallengeQuestions> getChallengeQuestions() {
     AccessorResponse<ChallengeQuestions> response = gateway().profiles().challengeQuestions().list();
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/users/{userId}/profile/challenge_questions", method = RequestMethod.PUT, consumes = MDX_MEDIA)

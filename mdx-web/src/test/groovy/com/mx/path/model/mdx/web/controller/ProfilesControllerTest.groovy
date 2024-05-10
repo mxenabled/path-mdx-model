@@ -187,7 +187,7 @@ class ProfilesControllerTest extends Specification {
     then:
     response.body == mockResponse.result
     response.body.wrapped
-    response.statusCode == HttpStatus.ACCEPTED
+    response.statusCode == HttpStatus.OK
   }
 
   def "updateChallengeQuestions_implemented response is 202"() {
