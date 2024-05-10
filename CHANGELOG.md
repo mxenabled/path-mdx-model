@@ -5,6 +5,16 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [8.1.0](https://github.com/mxenabled/path-mdx-model/compare/v8.0.1...v8.1.0) (2024-05-10)
+
+
+### Features
+
+* add device verification methods ([904498b](https://github.com/mxenabled/path-mdx-model/commit/904498bdefba607a430c82bb341160f44c268dfa))
+* add device verification methods ([c80b5ac](https://github.com/mxenabled/path-mdx-model/commit/c80b5ac1b4db765f09dcf6f5f393a4f6f5369e79))
+* update status code for GET recovery questions ([3ea61ce](https://github.com/mxenabled/path-mdx-model/commit/3ea61cefb9d36747632c362c82c2cfe28a72e189))
+* update staus code ([e34e225](https://github.com/mxenabled/path-mdx-model/commit/e34e2258a3e0cf6d363ff6a0f2724c642d5c2175))
+
 ## [8.0.1](https://github.com/mxenabled/path-mdx-model/compare/v8.0.0...v8.0.1) (2024-05-01)
 
 
