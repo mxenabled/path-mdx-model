@@ -69,20 +69,6 @@ class AccountAlertsControllerTest extends Specification {
     response.body == alerts
   }
 
-  def "createAlert interacts with gateway"() {
-    given:
-    def accountId = "account-id"
-    def accountAlert = new AccountAlert()
-
-    when:
-    doReturn(new AccessorResponse<AccountAlert>().withResult(accountAlert)).when(accountAlertGateway).create(accountId, accountAlert)
-    def response = subject.createAlert(accountId, accountAlert)
-
-    then:
-    verify(accountAlertGateway).create(accountId, accountAlert) || true
-    response.body == accountAlert
-  }
-
   def "updateAlert interacts with gateway"() {
     given:
     def accountId = "account-id"
@@ -95,20 +81,6 @@ class AccountAlertsControllerTest extends Specification {
     then:
     verify(accountAlertGateway).update(accountId, accountAlert) || true
     response.body == accountAlert
-  }
-
-  def "deleteAlert interacts with gateway"() {
-    given:
-    def accountId = "account-id"
-    def alertId = "alert-id"
-
-    when:
-    doReturn(new AccessorResponse<Void>()).when(accountAlertGateway).delete(accountId, alertId)
-    def response = subject.deleteAlert(accountId, alertId)
-
-    then:
-    verify(accountAlertGateway).delete(accountId, alertId) || true
-    HttpStatus.NO_CONTENT == response.statusCode
   }
 
   def "getDeliveryMethods interacts with gateway"() {

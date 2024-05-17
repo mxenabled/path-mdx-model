@@ -31,25 +31,11 @@ public class AccountAlertsController extends BaseController {
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
-  @RequestMapping(value = "/users/{userId}/accounts/{accountId}/alerts", method = RequestMethod.POST, consumes = BaseController.MDX_MEDIA)
-  public final ResponseEntity<AccountAlert> createAlert(@PathVariable("accountId") String accountId, @RequestBody AccountAlert accountAlert) {
-    ensureFeature("accounts");
-    AccessorResponse<AccountAlert> response = gateway().accounts().accountAlerts().create(accountId, accountAlert);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
-  }
-
   @RequestMapping(value = "/users/{userId}/accounts/{accountId}/alerts/{id}", method = RequestMethod.PUT, consumes = BaseController.MDX_MEDIA)
   public final ResponseEntity<AccountAlert> updateAlert(@PathVariable("accountId") String accountId, @RequestBody AccountAlert accountAlert) {
     ensureFeature("accounts");
     AccessorResponse<AccountAlert> response = gateway().accounts().accountAlerts().update(accountId, accountAlert);
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
-  }
-
-  @RequestMapping(value = "/users/{userId}/accounts/{accountId}/alerts/{id}", method = RequestMethod.DELETE)
-  public final ResponseEntity<?> deleteAlert(@PathVariable("accountId") String accountId, @PathVariable("id") String alertId) {
-    ensureFeature("accounts");
-    AccessorResponse<Void> response = gateway().accounts().accountAlerts().delete(accountId, alertId);
-    return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
 
   @RequestMapping(value = "/users/{userId}/accounts/{accountId}/alerts/{id}/delivery_methods", method = RequestMethod.GET, produces = BaseController.MDX_MEDIA)
