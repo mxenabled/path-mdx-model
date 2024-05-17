@@ -1,7 +1,5 @@
 package com.mx.path.model.mdx.web.controller
 
-import com.mx.path.model.mdx.model.remote_deposit.Limits
-
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
@@ -10,6 +8,7 @@ import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.remote_deposit.RemoteDepositGateway
 import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.account.Account
+import com.mx.path.model.mdx.model.remote_deposit.Limits
 import com.mx.path.model.mdx.model.remote_deposit.RemoteDeposit
 
 import org.mockito.Mockito
