@@ -5,6 +5,18 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [9.0.0](https://github.com/mxenabled/path-mdx-model/compare/v8.1.0...v9.0.0) (2024-05-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* hw2-840 - alert spec change refactor
+
+### Features
+
+* adding new limits endpoint for rdc ([d84a34e](https://github.com/mxenabled/path-mdx-model/commit/d84a34e176cd8c52f7d65b75627d94fa5194a04e))
+* hw2-840 - alert spec change refactor ([ef43ff3](https://github.com/mxenabled/path-mdx-model/commit/ef43ff376f4a9bf516f80af8ffade0f63eb59ad9))
+
 ## [8.1.0](https://github.com/mxenabled/path-mdx-model/compare/v8.0.1...v8.1.0) (2024-05-10)
 
 
