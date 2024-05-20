@@ -8,6 +8,7 @@ import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.remote_deposit.RemoteDepositGateway
 import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.account.Account
+import com.mx.path.model.mdx.model.remote_deposit.Limits
 import com.mx.path.model.mdx.model.remote_deposit.RemoteDeposit
 
 import org.mockito.Mockito
@@ -94,5 +95,21 @@ class RemoteDepositsControllerTest extends Specification {
     verify(remoteDepositGateway).accounts() || true
     HttpStatus.OK == response.getStatusCode()
     response.getBody() == list
+  }
+
+  def "getRemoteDepositLimits interacts with gateway"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def limits = new Limits()
+
+    when:
+    Mockito.doReturn(new AccessorResponse<Limits>().withResult(limits)).when(remoteDepositGateway).limits()
+    def response = subject.getRemoteDepositLimits()
+
+    then:
+    verify(remoteDepositGateway).limits() || true
+    HttpStatus.OK == response.getStatusCode()
+    response.getBody() == limits
   }
 }
