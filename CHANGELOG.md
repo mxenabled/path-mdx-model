@@ -5,6 +5,17 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [10.0.0](https://github.com/mxenabled/path-mdx-model/compare/v9.0.0...v10.0.0) (2024-05-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* hw2-776 - refactor unlock user feature to solve integration issues with mobile
+
+### Features
+
+* hw2-776 - refactor unlock user feature to solve integration issues with mobile ([cdd1dda](https://github.com/mxenabled/path-mdx-model/commit/cdd1dda8f7772ee0bf80c132d6ccdb724f317674))
+
 ## [9.0.0](https://github.com/mxenabled/path-mdx-model/compare/v8.1.0...v9.0.0) (2024-05-17)
 
 
