@@ -13,6 +13,7 @@ name: ci
 jobs:
   ci:
     permissions: read-all
-    uses: mxenabled/path-tools/.github/workflows/ci.yml@master
+    uses: mxenabled/path-tools/.github/workflows/ci.yml@reject_merge_commits
     with:
       force: ${{ inputs.force != '' && inputs.force }}
+
