@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [10.0.1](https://github.com/mxenabled/path-mdx-model/compare/v10.0.0...v10.0.1) (2024-05-22)
+
+
+### Bug Fixes
+
+* adding PERSONAL for backward compatibility ([5d43647](https://github.com/mxenabled/path-mdx-model/commit/5d4364746f1b5a75f30beb01e55e9d5e9ae7725e))
+
 ## [10.0.0](https://github.com/mxenabled/path-mdx-model/compare/v9.0.0...v10.0.0) (2024-05-20)
 
 
