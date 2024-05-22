@@ -70,7 +70,7 @@ public final class Phone extends MdxBase<Phone> {
   }
 
   public enum PhoneType {
-    MOBILE, HOME, WORK, FOREIGN
+    MOBILE, HOME, WORK, FOREIGN, PERSONAL
   }
 
   public enum Rank {
