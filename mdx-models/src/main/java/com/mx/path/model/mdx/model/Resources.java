@@ -89,6 +89,7 @@ import com.mx.path.model.mdx.model.profile.NewUserName;
 import com.mx.path.model.mdx.model.profile.Password;
 import com.mx.path.model.mdx.model.profile.Phone;
 import com.mx.path.model.mdx.model.profile.Profile;
+import com.mx.path.model.mdx.model.profile.SecurityQuestions;
 import com.mx.path.model.mdx.model.profile.UserName;
 import com.mx.path.model.mdx.model.remote_deposit.Limits;
 import com.mx.path.model.mdx.model.remote_deposit.RemoteDeposit;
@@ -324,6 +325,8 @@ public class Resources {
     builder.registerTypeAdapter(Address.class, new ModelWrappableSerializer("address"));
     // Challenge Questions
     builder.registerTypeAdapter(ChallengeQuestions.class, new ModelWrappableSerializer("challenge_questions"));
+    // Security Questions
+    builder.registerTypeAdapter(SecurityQuestions.class, new ModelWrappableSerializer("security_questions"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Address>>() {
     }.getType(), new ModelWrappableSerializer("addresses"));
     // Phones

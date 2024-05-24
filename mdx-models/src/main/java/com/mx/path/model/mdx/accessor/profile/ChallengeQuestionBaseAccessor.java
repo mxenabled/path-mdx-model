@@ -12,6 +12,7 @@ import com.mx.path.model.mdx.model.profile.ChallengeQuestions;
 /**
  * Accessor base for profile challenge questions
  */
+@Deprecated
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/profile/index.html#challenge-questions")
 public class ChallengeQuestionBaseAccessor extends Accessor {

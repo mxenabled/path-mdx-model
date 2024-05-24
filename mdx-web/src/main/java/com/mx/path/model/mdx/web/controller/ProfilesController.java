@@ -11,6 +11,7 @@ import com.mx.path.model.mdx.model.profile.NewUserName;
 import com.mx.path.model.mdx.model.profile.Password;
 import com.mx.path.model.mdx.model.profile.Phone;
 import com.mx.path.model.mdx.model.profile.Profile;
+import com.mx.path.model.mdx.model.profile.SecurityQuestions;
 import com.mx.path.model.mdx.model.profile.UserName;
 
 import org.springframework.http.HttpStatus;
@@ -76,12 +77,14 @@ public class ProfilesController extends BaseController {
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
 
+  @Deprecated
   @RequestMapping(value = "/users/{userId}/profile/challenge_questions", method = RequestMethod.GET)
   public final ResponseEntity<ChallengeQuestions> getChallengeQuestions() {
     AccessorResponse<ChallengeQuestions> response = gateway().profiles().challengeQuestions().list();
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
+  @Deprecated
   @RequestMapping(value = "/users/{userId}/profile/challenge_questions", method = RequestMethod.PUT, consumes = MDX_MEDIA)
   public final ResponseEntity<ChallengeQuestions> updateChallengeQuestions(@RequestBody ChallengeQuestions challengeQuestions) {
     AccessorResponse<ChallengeQuestions> response = gateway().profiles().challengeQuestions().update(challengeQuestions);
@@ -90,6 +93,22 @@ public class ProfilesController extends BaseController {
       return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
     }
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
+  }
+
+  @RequestMapping(value = "/users/{userId}/profile/security_questions", method = RequestMethod.GET)
+  public final ResponseEntity<SecurityQuestions> getSecurityQuestions() {
+    AccessorResponse<SecurityQuestions> response = gateway().profiles().securityQuestions().list();
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+  }
+
+  @RequestMapping(value = "/users/{userId}/profile/security_questions", method = RequestMethod.PUT, consumes = MDX_MEDIA)
+  public final ResponseEntity<SecurityQuestions> updateSecurityQuestions(@RequestBody SecurityQuestions securityQuestions) {
+    AccessorResponse<SecurityQuestions> response = gateway().profiles().securityQuestions().update(securityQuestions);
+    SecurityQuestions result = response.getResult();
+    if (result != null && result.getChallenges() != null && result.getChallenges().size() > 0) {
+      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+    }
+    return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/users/{userId}/profile/phones", method = RequestMethod.GET)
