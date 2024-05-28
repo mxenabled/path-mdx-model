@@ -13,6 +13,7 @@ import com.mx.path.gateway.api.profile.ChallengeQuestionGateway
 import com.mx.path.gateway.api.profile.EmailGateway
 import com.mx.path.gateway.api.profile.PhoneGateway
 import com.mx.path.gateway.api.profile.ProfileGateway
+import com.mx.path.gateway.api.profile.SecurityQuestionGateway
 import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.challenges.Challenge
 import com.mx.path.model.mdx.model.profile.Address
@@ -23,6 +24,7 @@ import com.mx.path.model.mdx.model.profile.NewUserName
 import com.mx.path.model.mdx.model.profile.Password
 import com.mx.path.model.mdx.model.profile.Phone
 import com.mx.path.model.mdx.model.profile.Profile
+import com.mx.path.model.mdx.model.profile.SecurityQuestions
 import com.mx.path.model.mdx.model.profile.UserName
 
 import org.springframework.http.HttpStatus
@@ -35,6 +37,7 @@ class ProfilesControllerTest extends Specification {
   ProfileGateway profileGateway
   AddressGateway addressGateway
   ChallengeQuestionGateway challengeQuestionGateway
+  SecurityQuestionGateway securityQuestionGateway
   EmailGateway emailGateway
   PhoneGateway phoneGateway
   String clientId
@@ -44,9 +47,10 @@ class ProfilesControllerTest extends Specification {
 
     addressGateway = spy(AddressGateway.builder().clientId(clientId).build())
     challengeQuestionGateway = spy(ChallengeQuestionGateway.builder().clientId(clientId).build())
+    securityQuestionGateway = spy(SecurityQuestionGateway.builder().clientId(clientId).build())
     emailGateway = spy(EmailGateway.builder().clientId(clientId).build())
     phoneGateway = spy(PhoneGateway.builder().clientId(clientId).build())
-    profileGateway = spy(ProfileGateway.builder().clientId(clientId).emails(emailGateway).phones(phoneGateway).addresses(addressGateway).challengeQuestions(challengeQuestionGateway).build())
+    profileGateway = spy(ProfileGateway.builder().clientId(clientId).emails(emailGateway).phones(phoneGateway).addresses(addressGateway).challengeQuestions(challengeQuestionGateway).securityQuestions(securityQuestionGateway).build())
     gateway = spy(Gateway.builder().clientId(clientId).profiles(profileGateway).build())
 
     subject = new ProfilesController()
@@ -190,6 +194,22 @@ class ProfilesControllerTest extends Specification {
     response.statusCode == HttpStatus.OK
   }
 
+  def "getSecurityQuestions_implemented"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def mockResponse = new AccessorResponse<SecurityQuestions>().withResult(new SecurityQuestions())
+    doReturn(mockResponse).when(securityQuestionGateway).list()
+
+    when:
+    def response = subject.getSecurityQuestions()
+
+    then:
+    response.body == mockResponse.result
+    response.body.wrapped
+    response.statusCode == HttpStatus.OK
+  }
+
   def "updateChallengeQuestions_implemented response is 202"() {
     given:
     ProfilesController.setGateway(gateway)
@@ -209,6 +229,42 @@ class ProfilesControllerTest extends Specification {
     response.body == mockResponse.result
     response.body.wrapped
     response.statusCode == HttpStatus.ACCEPTED
+  }
+
+  def "updateSecurityQuestions_implemented response is 202"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def mockResponse = new AccessorResponse<SecurityQuestions>().withResult(
+        new SecurityQuestions().tap {
+          setChallenges(new MdxList<Challenge>().tap { add(new Challenge()) })
+          setQuestionList(new Challenge())
+        }
+        )
+
+    doReturn(mockResponse).when(securityQuestionGateway).update(any())
+
+    when:
+    def response = subject.updateSecurityQuestions(new SecurityQuestions())
+
+    then:
+    response.body == mockResponse.result
+    response.body.wrapped
+    response.statusCode == HttpStatus.ACCEPTED
+  }
+
+  def "updateSecurityQuestions_implemented response is 200"() {
+    given:
+    ProfilesController.setGateway(gateway)
+
+    def mockResponse = new AccessorResponse<SecurityQuestions>().withResult(new SecurityQuestions()).withStatus(PathResponseStatus.ACCEPTED)
+    doReturn(mockResponse).when(securityQuestionGateway).update(any())
+
+    when:
+    def response = subject.updateSecurityQuestions(new SecurityQuestions())
+
+    then:
+    response.statusCode == HttpStatus.OK
   }
 
   def "updateChallengeQuestions_implemented response is 204"() {
