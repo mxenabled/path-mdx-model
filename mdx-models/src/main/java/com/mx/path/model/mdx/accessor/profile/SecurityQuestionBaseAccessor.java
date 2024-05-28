@@ -18,7 +18,6 @@ public class SecurityQuestionBaseAccessor extends Accessor {
   public SecurityQuestionBaseAccessor() {
   }
 
-  @Deprecated
   public SecurityQuestionBaseAccessor(AccessorConfiguration configuration) {
     super(configuration);
   }
