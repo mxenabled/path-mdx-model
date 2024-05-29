@@ -1,6 +1,5 @@
 package com.mx.path.model.mdx.model.account;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -54,8 +53,6 @@ public class Transaction extends MdxBase<Transaction> {
   private Long postedAt;
   @XmlElement(name = "posted_on")
   private LocalDate postedOn;
-  @XmlElement(name = "running_balance")
-  private BigDecimal runningBalance;
   @XmlElement(name = "status")
   private String status;
   @XmlElement(name = "transacted_at")
@@ -233,14 +230,6 @@ public class Transaction extends MdxBase<Transaction> {
 
   public final void setPostedOn(LocalDate newPostedOn) {
     this.postedOn = newPostedOn;
-  }
-
-  public final BigDecimal getRunningBalance() {
-    return runningBalance;
-  }
-
-  public final void setRunningBalance(BigDecimal runningBalance) {
-    this.runningBalance = runningBalance;
   }
 
   public final String getStatus() {
