@@ -5,6 +5,22 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [11.0.0](https://github.com/mxenabled/path-mdx-model/compare/v10.0.1...v11.0.0) (2024-05-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* Adding recovery questions endpoint and deprecating existing
+
+### Features
+
+* Adding recovery questions endpoint and deprecating existing ([fe28b4b](https://github.com/mxenabled/path-mdx-model/commit/fe28b4b6dd56c597ee77d1e66fe801df3d177620))
+
+
+### Bug Fixes
+
+* removing annotation ([6b2f928](https://github.com/mxenabled/path-mdx-model/commit/6b2f928ffe55b71e5c2d1334c2e0b6cfe3bb3755))
+
 ## [10.0.1](https://github.com/mxenabled/path-mdx-model/compare/v10.0.0...v10.0.1) (2024-05-22)
 
 
