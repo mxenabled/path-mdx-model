@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [11.1.0](https://github.com/mxenabled/path-mdx-model/compare/v11.0.0...v11.1.0) (2024-05-30)
+
+
+### Features
+
+* add loan_amount to Account model ([7581e40](https://github.com/mxenabled/path-mdx-model/commit/7581e400048a0dac83f901cf8248cca21c2c6ed2))
+
 ## [11.0.0](https://github.com/mxenabled/path-mdx-model/compare/v10.0.1...v11.0.0) (2024-05-29)
 
 
