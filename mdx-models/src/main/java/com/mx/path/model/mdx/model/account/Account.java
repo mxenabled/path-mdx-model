@@ -61,6 +61,8 @@ public class Account extends MdxBase<Account> {
   private Long lastPaymentAt;
   @XmlElement(name = "last_payment_on")
   private LocalDate lastPaymentOn;
+  @XmlElement(name = "loan_amount")
+  private BigDecimal loanAmount;
   @XmlElement(name = "monthly_deposit_limit_current")
   private Double monthlyDepositLimitCurrent;
   @XmlElement(name = "monthly_deposit_limit_total")
@@ -345,6 +347,14 @@ public class Account extends MdxBase<Account> {
 
   public final void setLastPaymentOn(LocalDate newLastPaymentOn) {
     this.lastPaymentOn = newLastPaymentOn;
+  }
+
+  public final BigDecimal getLoanAmount() {
+    return loanAmount;
+  }
+
+  public final void setLoanAmount(BigDecimal loanAmount) {
+    this.loanAmount = loanAmount;
   }
 
   public final Double getMonthlyDepositLimitCurrent() {
