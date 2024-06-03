@@ -5,6 +5,19 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [11.2.0](https://github.com/mxenabled/path-mdx-model/compare/v11.1.0...v11.2.0) (2024-06-03)
+
+
+### Features
+
+* exclude userId from serialized nested objects ([828c11d](https://github.com/mxenabled/path-mdx-model/commit/828c11d18d86185af7248916e16b2627546f1a62))
+
+
+### Bug Fixes
+
+* 200 response needs a body returned ([3dca1f2](https://github.com/mxenabled/path-mdx-model/commit/3dca1f2482bf82ea9669dd1f2e101215e4166feb))
+* respond with status 400 if the input payload is unparsable ([1a605a6](https://github.com/mxenabled/path-mdx-model/commit/1a605a60c91e81b9301b3100082df330571d5624))
+
 ## [11.1.0](https://github.com/mxenabled/path-mdx-model/compare/v11.0.0...v11.1.0) (2024-05-30)
 
 
