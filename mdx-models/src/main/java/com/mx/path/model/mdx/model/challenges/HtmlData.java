@@ -1,8 +1,10 @@
 package com.mx.path.model.mdx.model.challenges;
 
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.MdxNested;
 import com.mx.path.model.mdx.model.authorization.NameValuePair;
 
+@MdxNested
 public final class HtmlData extends MdxBase<HtmlData> {
 
   private NameValuePair[] cookies;

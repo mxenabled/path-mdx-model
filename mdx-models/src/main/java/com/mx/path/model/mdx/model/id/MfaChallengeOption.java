@@ -1,7 +1,9 @@
 package com.mx.path.model.mdx.model.id;
 
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.MdxNested;
 
+@MdxNested
 public class MfaChallengeOption extends MdxBase<MfaChallengeOption> {
   private String id;
   private String name;
