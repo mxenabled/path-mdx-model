@@ -108,7 +108,7 @@ public class ProfilesController extends BaseController {
     if (result != null && result.getChallenges() != null && result.getChallenges().size() > 0) {
       return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
     }
-    return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/users/{userId}/profile/phones", method = RequestMethod.GET)
