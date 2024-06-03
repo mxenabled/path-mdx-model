@@ -92,7 +92,7 @@ public class DateVersionedResponse {
         try {
           requestObject = gson.fromJson(requestBody, requestType);
         } catch (Exception e) {
-          throw new PathRequestSerializableException();
+          throw new WebPathRequestSerializationException(requestType.getTypeName(), e);
         }
       }
 
