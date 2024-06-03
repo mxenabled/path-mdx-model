@@ -3,7 +3,9 @@ package com.mx.path.model.mdx.model.location;
 import java.time.LocalDate;
 
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.MdxNested;
 
+@MdxNested
 public final class Location extends MdxBase<Location> {
 
   private String address;

@@ -1,7 +1,9 @@
 package com.mx.path.model.mdx.model.authorization;
 
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.MdxNested;
 
+@MdxNested
 public class JavaScript extends MdxBase<JavaScript> {
 
   private NameValuePair[] arguments;

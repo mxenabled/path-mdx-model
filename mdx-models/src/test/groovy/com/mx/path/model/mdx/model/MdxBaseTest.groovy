@@ -2,6 +2,7 @@ package com.mx.path.model.mdx.model
 
 import com.mx.path.core.common.model.Warning
 import com.mx.path.model.mdx.model.account.Account
+import com.mx.testing.MdxBaseNested
 
 import spock.lang.Specification
 
@@ -28,5 +29,18 @@ class MdxBaseTest extends Specification {
 
     then:
     warnings.size() == 2
+  }
+
+  def "setUserId"() {
+    given:
+    def nestedSubject = new MdxBaseNested()
+
+    when:
+    subject.setUserId("123")
+    nestedSubject.setUserId("123")
+
+    then:
+    subject.getUserId() == "123"
+    nestedSubject.getUserId() == null
   }
 }

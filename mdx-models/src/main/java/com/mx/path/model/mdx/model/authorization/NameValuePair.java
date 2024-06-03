@@ -1,7 +1,9 @@
 package com.mx.path.model.mdx.model.authorization;
 
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.MdxNested;
 
+@MdxNested
 public class NameValuePair extends MdxBase<NameValuePair> {
   private String name;
   private String value;

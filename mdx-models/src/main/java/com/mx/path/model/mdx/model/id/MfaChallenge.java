@@ -3,8 +3,10 @@ package com.mx.path.model.mdx.model.id;
 import java.util.List;
 
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.MdxNested;
 import com.mx.path.model.mdx.model.authorization.Authorization;
 
+@MdxNested
 public final class MfaChallenge extends MdxBase<MfaChallenge> {
 
   private String answer;

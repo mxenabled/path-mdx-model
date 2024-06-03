@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.MdxNested;
 
+@MdxNested
 public final class Question extends MdxBase<Question> {
   private String id;
   private String prompt;
