@@ -1,5 +1,7 @@
 package com.mx.path.model.mdx.web.controller
 
+import static org.mockito.ArgumentMatchers.any
+import static org.mockito.ArgumentMatchers.anyString
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
@@ -15,8 +17,10 @@ import com.mx.path.model.mdx.model.account.TransactionSearchRequest
 import com.mx.path.model.mdx.model.account.TransactionsPage
 import com.mx.path.model.mdx.model.account.options.TransactionListOptions
 import com.mx.path.model.mdx.model.challenges.Challenge
+import com.mx.path.model.mdx.web.model.transaction.TransactionListQueryParameters
 import com.mx.path.testing.WithMockery
 
+import org.mockito.ArgumentCaptor
 import org.mockito.Mockito
 import org.springframework.http.HttpStatus
 
@@ -203,15 +207,23 @@ class AccountsControllerTest extends Specification implements WithMockery {
     MdxList<Transaction> transactions = new MdxList<Transaction>()
     def checkNumber = "4321"
     def accountId = "A-123"
-    TransactionListOptions transactionListOptions = new TransactionListOptions()
-    transactionListOptions.checkNumber = checkNumber
+    def transactionStatus = "PENDING"
+    TransactionListQueryParameters parameters = new TransactionListQueryParameters().tap {
+      check_number = checkNumber
+      status = transactionStatus
+    }
 
     when:
-    Mockito.doReturn(new AccessorResponse<MdxList<Transaction>>().withResult(transactions)).when(transactionGateway).list(accountId, transactionListOptions)
-    def result = subject.listTransactions(accountId, checkNumber)
+    Mockito.doReturn(new AccessorResponse<MdxList<Transaction>>().withResult(transactions))
+        .when(transactionGateway)
+        .list(anyString(), any(TransactionListOptions))
+    def result = subject.listTransactions(accountId, parameters)
 
     then:
-    verify(transactionGateway).list(accountId, transactionListOptions) || true
+    ArgumentCaptor<TransactionListOptions> captor = ArgumentCaptor.forClass(TransactionListOptions)
+    verify(transactionGateway).list(anyString(), captor.capture()) || true
     result.body == transactions
+    captor.value.checkNumber == checkNumber
+    captor.value.status == transactionStatus
   }
 }

@@ -8,4 +8,5 @@ import lombok.Data;
 @Data
 public class TransactionListOptions {
   private String checkNumber;
+  private String status;
 }

@@ -11,6 +11,7 @@ import com.mx.path.model.mdx.model.account.Transaction;
 import com.mx.path.model.mdx.model.account.TransactionSearchRequest;
 import com.mx.path.model.mdx.model.account.TransactionsPage;
 import com.mx.path.model.mdx.model.account.options.TransactionListOptions;
+import com.mx.path.model.mdx.web.model.transaction.TransactionListQueryParameters;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -93,9 +93,10 @@ public class AccountsController extends BaseController {
   }
 
   @RequestMapping(value = "/users/{userId}/accounts/{accountId}/transactions", method = RequestMethod.GET)
-  public final ResponseEntity<MdxList<Transaction>> listTransactions(@PathVariable("accountId") String accountId, @RequestParam("check_number") String checkNumber) throws Exception {
+  public final ResponseEntity<MdxList<Transaction>> listTransactions(@PathVariable("accountId") String accountId, TransactionListQueryParameters queryParameters) throws Exception {
     TransactionListOptions transactionListOptions = new TransactionListOptions();
-    transactionListOptions.setCheckNumber(checkNumber);
+    transactionListOptions.setCheckNumber(queryParameters.getCheck_number());
+    transactionListOptions.setStatus(queryParameters.getStatus());
     AccessorResponse<MdxList<Transaction>> response = gateway().accounts().transactions().list(accountId, transactionListOptions);
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
