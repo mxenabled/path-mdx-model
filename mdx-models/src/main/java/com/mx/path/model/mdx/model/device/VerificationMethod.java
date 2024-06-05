@@ -13,6 +13,6 @@ public class VerificationMethod extends MdxBase<VerificationMethod> {
 
   private String id;
   private String phoneNumber;
-  private String email;
+  private String emailAddress;
   private METHOD method;
 }
