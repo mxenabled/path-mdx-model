@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [11.3.1](https://github.com/mxenabled/path-mdx-model/compare/v11.3.0...v11.3.1) (2024-06-05)
+
+
+### Bug Fixes
+
+* changing 'email' to 'emailAddress' for VerificationMethod ([aef78aa](https://github.com/mxenabled/path-mdx-model/commit/aef78aa1eb493574bb3e9b988cdc90f5d100f6a4))
+
 ## [11.3.0](https://github.com/mxenabled/path-mdx-model/compare/v11.2.0...v11.3.0) (2024-06-05)
 
 
