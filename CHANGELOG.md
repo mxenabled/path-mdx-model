@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [11.3.0](https://github.com/mxenabled/path-mdx-model/compare/v11.2.0...v11.3.0) (2024-06-05)
+
+
+### Features
+
+* add status query param to list transactions ([f818e34](https://github.com/mxenabled/path-mdx-model/commit/f818e3486546c1cd3d605e892373df5710bae3d4))
+
 ## [11.2.0](https://github.com/mxenabled/path-mdx-model/compare/v11.1.0...v11.2.0) (2024-06-03)
 
 
