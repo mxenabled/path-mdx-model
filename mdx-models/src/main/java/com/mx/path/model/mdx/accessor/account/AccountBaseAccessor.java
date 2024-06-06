@@ -46,6 +46,10 @@ public abstract class AccountBaseAccessor extends Accessor {
 
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
+  private AccountAddressBaseAccessor addresses;
+
+  @GatewayAPI
+  @Getter(AccessLevel.PROTECTED)
   private TransactionBaseAccessor transactions;
 
   @GatewayAPI
@@ -147,6 +151,19 @@ public abstract class AccountBaseAccessor extends Accessor {
   }
 
   /**
+   * Account address accessor
+   * @return
+   */
+  @API(description = "Access account overdrafts")
+  public AccountAddressBaseAccessor addresses() {
+    if (addresses != null) {
+      return addresses;
+    }
+
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
    * Transaction accessor
    *
    * @return
@@ -226,6 +243,15 @@ public abstract class AccountBaseAccessor extends Accessor {
    */
   public void setAccountStopPayments(AccountStopPaymentsBaseAccessor accountStopPayments) {
     this.accountStopPayments = accountStopPayments;
+  }
+
+  /**
+   * Set account addresses accessor
+   *
+   * @param addresses
+   */
+  public void setAddresses(AccountAddressBaseAccessor addresses) {
+    this.addresses = addresses;
   }
 
   /**
