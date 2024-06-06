@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.mx.path.model.mdx.model.account.Account;
+import com.mx.path.model.mdx.model.account.AccountAddress;
 import com.mx.path.model.mdx.model.account.AccountDetails;
 import com.mx.path.model.mdx.model.account.AccountNumbers;
 import com.mx.path.model.mdx.model.account.AccountOwner;
@@ -117,6 +118,8 @@ public class Resources {
     builder.registerTypeAdapter(new TypeToken<MdxList<Account>>() {
     }.getType(), new ModelWrappableSerializer("accounts"));
     builder.registerTypeAdapter(AccountNumbers.class, new ModelWrappableSerializer("account"));
+    //Account address model
+    builder.registerTypeAdapter(AccountAddress.class, new ModelWrappableSerializer("address"));
     builder.registerTypeAdapter(AccountDetails.class, new ModelWrappableSerializer("account_details"));
     builder.registerTypeAdapter(Overdraft.class, new ModelWrappableSerializer("overdraft"));
     builder.registerTypeAdapter(StopPayment.class, new ModelWrappableSerializer("stop_payment"));
