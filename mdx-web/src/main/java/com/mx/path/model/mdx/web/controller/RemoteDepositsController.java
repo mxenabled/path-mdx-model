@@ -45,7 +45,7 @@ public class RemoteDepositsController extends BaseController {
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
-  @RequestMapping(value = "/users/{userId}/accounts/remote_deposits/limits", method = RequestMethod.GET)
+  @RequestMapping(value = "/users/{userId}/remote_deposits/limits", method = RequestMethod.GET)
   public final ResponseEntity<Limits> getRemoteDepositLimits() {
     AccessorResponse<Limits> response = gateway().remoteDeposits().limits();
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
