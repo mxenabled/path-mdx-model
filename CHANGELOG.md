@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [11.3.2](https://github.com/mxenabled/path-mdx-model/compare/v11.3.1...v11.3.2) (2024-06-06)
+
+
+### Bug Fixes
+
+* updated url to match gutenberg ([f1d9409](https://github.com/mxenabled/path-mdx-model/commit/f1d94097c2f65c3618021cf8943044b41aaff592))
+
 ## [11.3.1](https://github.com/mxenabled/path-mdx-model/compare/v11.3.0...v11.3.1) (2024-06-05)
 
 
