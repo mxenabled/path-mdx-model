@@ -154,7 +154,7 @@ public abstract class AccountBaseAccessor extends Accessor {
    * Account address accessor
    * @return
    */
-  @API(description = "Access account overdrafts")
+  @API(description = "Access account addresses")
   public AccountAddressBaseAccessor addresses() {
     if (addresses != null) {
       return addresses;
