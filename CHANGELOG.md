@@ -5,6 +5,20 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [11.4.0](https://github.com/mxenabled/path-mdx-model/compare/v11.3.2...v11.4.0) (2024-06-10)
+
+
+### Features
+
+* adding account address controller ([cf0f128](https://github.com/mxenabled/path-mdx-model/commit/cf0f1289edad48aeab2565215bf225a301c34ed3))
+
+
+### Bug Fixes
+
+* leveraging existing Address modal ([ac08ea5](https://github.com/mxenabled/path-mdx-model/commit/ac08ea5e0aa8ba535be0e099dc1952db5fed4fd9))
+* updated class name ([cf0f128](https://github.com/mxenabled/path-mdx-model/commit/cf0f1289edad48aeab2565215bf225a301c34ed3))
+* updating model names ([cf0f128](https://github.com/mxenabled/path-mdx-model/commit/cf0f1289edad48aeab2565215bf225a301c34ed3))
+
 ## [11.3.2](https://github.com/mxenabled/path-mdx-model/compare/v11.3.1...v11.3.2) (2024-06-06)
 
 
