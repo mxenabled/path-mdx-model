@@ -9,8 +9,8 @@ import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.account.AccountAddressGateway
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.model.mdx.model.MdxList
-import com.mx.path.model.mdx.model.account.AccountAddress
 import com.mx.path.model.mdx.model.challenges.Challenge
+import com.mx.path.model.mdx.model.profile.Address
 import com.mx.path.testing.WithMockery
 
 import org.springframework.http.HttpStatus
@@ -42,8 +42,8 @@ class AccountAddressControllerTest extends Specification implements WithMockery 
     given:
     AccountAddressController.setGateway(gateway)
 
-    def mockResponse = new AccessorResponse<MdxList<AccountAddress>>().withResult(new MdxList<>().tap {
-      add(new AccountAddress())
+    def mockResponse = new AccessorResponse<MdxList<Address>>().withResult(new MdxList<>().tap {
+      add(new Address())
     })
     doReturn(mockResponse).when(accountAddressGateway).list()
 
@@ -58,7 +58,7 @@ class AccountAddressControllerTest extends Specification implements WithMockery 
 
   def "getAccountAddress"() {
     given:
-    def mockResponse = new AccessorResponse<AccountAddress>().withResult(new AccountAddress())
+    def mockResponse = new AccessorResponse<Address>().withResult(new Address())
     doReturn(mockResponse).when(accountAddressGateway).get("1")
 
     when:
@@ -72,11 +72,11 @@ class AccountAddressControllerTest extends Specification implements WithMockery 
 
   def "createAccountAddress"() {
     given:
-    def mockResponse = new AccessorResponse<AccountAddress>().withResult(new AccountAddress())
+    def mockResponse = new AccessorResponse<Address>().withResult(new Address())
     doReturn(mockResponse).when(accountAddressGateway).create(any())
 
     when:
-    def response = subject.createAccountAddress(new AccountAddress())
+    def response = subject.createAccountAddress(new Address())
 
     then:
     response.body == mockResponse.result
@@ -87,11 +87,11 @@ class AccountAddressControllerTest extends Specification implements WithMockery 
 
   def "updateAccountAddress - 200"() {
     given:
-    def mockResponse = new AccessorResponse<AccountAddress>().withResult(new AccountAddress())
+    def mockResponse = new AccessorResponse<Address>().withResult(new Address())
     doReturn(mockResponse).when(accountAddressGateway).update(any(), any())
 
     when:
-    def response = subject.updateAccountAddress("1", new AccountAddress())
+    def response = subject.updateAccountAddress("1", new Address())
 
     then:
     response.body == mockResponse.result
@@ -101,13 +101,13 @@ class AccountAddressControllerTest extends Specification implements WithMockery 
 
   def "putAddress_implemented - 202"() {
     given:
-    def mockResponse = new AccessorResponse<AccountAddress>().withResult(new AccountAddress().tap {
+    def mockResponse = new AccessorResponse<Address>().withResult(new Address().tap {
       setChallenges(new MdxList<Challenge>().tap { add(new Challenge()) })
     })
     doReturn(mockResponse).when(accountAddressGateway).update(any(), any())
 
     when:
-    def response = subject.updateAccountAddress("1", new AccountAddress())
+    def response = subject.updateAccountAddress("1", new Address())
 
     then:
     response.body == mockResponse.result

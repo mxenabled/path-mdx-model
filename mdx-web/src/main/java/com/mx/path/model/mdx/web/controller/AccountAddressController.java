@@ -2,7 +2,7 @@ package com.mx.path.model.mdx.web.controller;
 
 import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
-import com.mx.path.model.mdx.model.account.AccountAddress;
+import com.mx.path.model.mdx.model.profile.Address;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,15 +20,15 @@ public class AccountAddressController extends BaseController {
   }
 
   @RequestMapping(value = "/users/{user_id}/accounts/{account_id}/addresses", method = RequestMethod.GET, produces = BaseController.MDX_MEDIA)
-  public final ResponseEntity<MdxList<AccountAddress>> getAllAccountAddresses()
+  public final ResponseEntity<MdxList<Address>> getAllAccountAddresses()
       throws Exception {
-    AccessorResponse<MdxList<AccountAddress>> response = gateway().accounts().addresses().list();
+    AccessorResponse<MdxList<Address>> response = gateway().accounts().addresses().list();
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/users/{user_id}/accounts/{account_id}/addresses/{address_id}", method = RequestMethod.GET)
-  public final ResponseEntity<AccountAddress> getAccountAddress(@PathVariable("addressId") String addressId) {
-    AccessorResponse<AccountAddress> response = gateway().accounts().addresses().get(addressId);
+  public final ResponseEntity<Address> getAccountAddress(@PathVariable("addressId") String addressId) {
+    AccessorResponse<Address> response = gateway().accounts().addresses().get(addressId);
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
@@ -39,16 +39,16 @@ public class AccountAddressController extends BaseController {
   }
 
   @RequestMapping(value = "/users/{user_id}/accounts/{account_id}/addresses", method = RequestMethod.POST)
-  public final ResponseEntity<AccountAddress> createAccountAddress(@RequestBody AccountAddress address) {
-    AccessorResponse<AccountAddress> response = gateway().accounts().addresses().create(address);
+  public final ResponseEntity<Address> createAccountAddress(@RequestBody Address address) {
+    AccessorResponse<Address> response = gateway().accounts().addresses().create(address);
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/users/{user_id}/accounts/{account_id}/addresses/{address_id}", method = RequestMethod.PUT)
-  public final ResponseEntity<AccountAddress> updateAccountAddress(@PathVariable("addressId") String addressId, @RequestBody AccountAddress address) {
+  public final ResponseEntity<Address> updateAccountAddress(@PathVariable("addressId") String addressId, @RequestBody Address address) {
     address.setId(addressId);
-    AccessorResponse<AccountAddress> response = gateway().accounts().addresses().update(addressId, address);
-    AccountAddress result = response.getResult();
+    AccessorResponse<Address> response = gateway().accounts().addresses().update(addressId, address);
+    Address result = response.getResult();
     HttpStatus status = HttpStatus.OK;
     if (result.getChallenges() != null && result.getChallenges().size() > 0) {
       status = HttpStatus.ACCEPTED;

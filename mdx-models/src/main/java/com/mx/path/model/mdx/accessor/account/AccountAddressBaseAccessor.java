@@ -8,7 +8,7 @@ import com.mx.path.gateway.accessor.Accessor;
 import com.mx.path.gateway.accessor.AccessorConfiguration;
 import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
-import com.mx.path.model.mdx.model.account.AccountAddress;
+import com.mx.path.model.mdx.model.profile.Address;
 
 /**
  * Accessor base for account addresses
@@ -38,7 +38,7 @@ public class AccountAddressBaseAccessor extends Accessor {
    */
   @GatewayAPI
   @API(description = "Create an account address")
-  public AccessorResponse<AccountAddress> create(AccountAddress address) {
+  public AccessorResponse<Address> create(Address address) {
     throw new AccessorMethodNotImplementedException();
   }
 
@@ -62,7 +62,7 @@ public class AccountAddressBaseAccessor extends Accessor {
    */
   @GatewayAPI
   @API(description = "Get an account address")
-  public AccessorResponse<AccountAddress> get(String id) {
+  public AccessorResponse<Address> get(String id) {
     throw new AccessorMethodNotImplementedException();
   }
 
@@ -73,7 +73,7 @@ public class AccountAddressBaseAccessor extends Accessor {
    */
   @GatewayAPI
   @API(description = "List all account addresses")
-  public AccessorResponse<MdxList<AccountAddress>> list() {
+  public AccessorResponse<MdxList<Address>> list() {
     throw new AccessorMethodNotImplementedException();
   }
 
@@ -86,7 +86,7 @@ public class AccountAddressBaseAccessor extends Accessor {
    */
   @GatewayAPI
   @API(description = "Update an account address")
-  public AccessorResponse<AccountAddress> update(String id, AccountAddress address) {
+  public AccessorResponse<Address> update(String id, Address address) {
     throw new AccessorMethodNotImplementedException();
   }
 
