@@ -101,12 +101,6 @@ public class AccountsController extends BaseController {
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
-  @RequestMapping(value = "/users/{userId}/accounts/{id}/transactions/pending", method = RequestMethod.GET)
-  public final ResponseEntity<MdxList<Transaction>> pendingTransactions(@PathVariable("id") String accountId) throws Exception {
-    AccessorResponse<MdxList<Transaction>> response = gateway().accounts().transactions().pending(accountId);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
-  }
-
   @RequestMapping(value = "/users/{userId}/accounts/{id}/transactions/recent", method = RequestMethod.GET)
   public final ResponseEntity<MdxList<Transaction>> recentTransactions(@PathVariable("id") String accountId) throws Exception {
     AccessorResponse<MdxList<Transaction>> response = gateway().accounts().transactions().recent(accountId);
