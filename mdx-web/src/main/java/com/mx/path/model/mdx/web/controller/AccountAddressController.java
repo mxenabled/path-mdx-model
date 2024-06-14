@@ -27,13 +27,13 @@ public class AccountAddressController extends BaseController {
   }
 
   @RequestMapping(value = "/users/{user_id}/accounts/{account_id}/addresses/{address_id}", method = RequestMethod.GET)
-  public final ResponseEntity<Address> getAccountAddress(@PathVariable("addressId") String addressId) {
+  public final ResponseEntity<Address> getAccountAddress(@PathVariable("address_id") String addressId) {
     AccessorResponse<Address> response = gateway().accounts().addresses().get(addressId);
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/users/{user_id}/accounts/{account_id}/addresses/{address_id}", method = RequestMethod.DELETE)
-  public final ResponseEntity<?> deleteAccountAddress(@PathVariable("addressId") String addressId) {
+  public final ResponseEntity<?> deleteAccountAddress(@PathVariable("address_id") String addressId) {
     AccessorResponse<Void> response = gateway().accounts().addresses().delete(addressId);
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
@@ -45,7 +45,7 @@ public class AccountAddressController extends BaseController {
   }
 
   @RequestMapping(value = "/users/{user_id}/accounts/{account_id}/addresses/{address_id}", method = RequestMethod.PUT)
-  public final ResponseEntity<Address> updateAccountAddress(@PathVariable("addressId") String addressId, @RequestBody Address address) {
+  public final ResponseEntity<Address> updateAccountAddress(@PathVariable("address_id") String addressId, @RequestBody Address address) {
     address.setId(addressId);
     AccessorResponse<Address> response = gateway().accounts().addresses().update(addressId, address);
     Address result = response.getResult();
