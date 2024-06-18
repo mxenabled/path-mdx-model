@@ -148,6 +148,16 @@ public class ProfilesController extends BaseController {
   }
 
   @RequestMapping(value = "/users/{userId}/profile/phones/{phoneId}", method = RequestMethod.DELETE)
+  public final ResponseEntity<Phone> deletePhone(@PathVariable("phoneId") String phoneId) {
+    AccessorResponse<Phone> response = gateway().profiles().phones().delete(phoneId);
+    Phone result = response.getResult();
+    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+    }
+    return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
+  }
+
+  @RequestMapping(value = "/users/{userId}/profile/phones/{phoneId}", method = RequestMethod.DELETE)
   public final ResponseEntity<Phone> deletePhone(@PathVariable("phoneId") String phoneId, @RequestBody Phone phone) {
     AccessorResponse<Phone> response = gateway().profiles().phones().delete(phoneId, phone);
     Phone result = response.getResult();
@@ -190,6 +200,16 @@ public class ProfilesController extends BaseController {
       status = HttpStatus.ACCEPTED;
     }
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
+  }
+
+  @RequestMapping(value = "/users/{userId}/profile/emails/{emailId}", method = RequestMethod.DELETE)
+  public final ResponseEntity<Email> deleteEmail(@PathVariable("emailId") String emailId) {
+    AccessorResponse<Email> response = gateway().profiles().emails().delete(emailId);
+    Email result = response.getResult();
+    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+    }
+    return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
 
   @RequestMapping(value = "/users/{userId}/profile/emails/{emailId}", method = RequestMethod.DELETE)
