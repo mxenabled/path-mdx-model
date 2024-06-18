@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [12.0.1](https://github.com/mxenabled/path-mdx-model/compare/v12.0.0...v12.0.1) (2024-06-18)
+
+
+### Bug Fixes
+
+* hw2-1027 - updated path var names to match ([8cffcb2](https://github.com/mxenabled/path-mdx-model/commit/8cffcb28fc20a2c1091481deb302f39167d36f32))
+
 ## [12.0.0](https://github.com/mxenabled/path-mdx-model/compare/v11.4.0...v12.0.0) (2024-06-11)
 
 
