@@ -4,6 +4,7 @@ import com.mx.path.core.common.accessor.API;
 import com.mx.path.core.common.accessor.AccessorMethodNotImplementedException;
 import com.mx.path.core.common.gateway.GatewayAPI;
 import com.mx.path.core.common.gateway.GatewayClass;
+import com.mx.path.core.common.remote.RemoteOperation;
 import com.mx.path.gateway.accessor.Accessor;
 import com.mx.path.gateway.accessor.AccessorConfiguration;
 import com.mx.path.gateway.accessor.AccessorResponse;
@@ -49,7 +50,20 @@ public class PhoneBaseAccessor extends Accessor {
    * @return
    */
   @GatewayAPI
-  @API(description = "Delete a phone")
+  @API(description = "Delete a phone initial request")
+  public AccessorResponse<Phone> delete(String id) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Delete phone by id with challenges
+   *
+   * @param id
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Delete a phone with challenges")
+  @RemoteOperation("DeleteWithChallenges")
   public AccessorResponse<Phone> delete(String id, Phone phone) {
     throw new AccessorMethodNotImplementedException();
   }
