@@ -148,20 +148,10 @@ public class ProfilesController extends BaseController {
   }
 
   @RequestMapping(value = "/users/{userId}/profile/phones/{phoneId}", method = RequestMethod.DELETE)
-  public final ResponseEntity<Phone> deletePhone(@PathVariable("phoneId") String phoneId) {
-    AccessorResponse<Phone> response = gateway().profiles().phones().delete(phoneId);
-    Phone result = response.getResult();
-    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
-      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
-    }
-    return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
-  }
-
-  @RequestMapping(value = "/users/{userId}/profile/phones/{phoneId}", method = RequestMethod.DELETE)
-  public final ResponseEntity<Phone> deletePhone(@PathVariable("phoneId") String phoneId, @RequestBody Phone phone) {
+  public final ResponseEntity<Phone> deletePhone(@PathVariable("phoneId") String phoneId, @RequestBody(required = false) Phone phone) {
     AccessorResponse<Phone> response = gateway().profiles().phones().delete(phoneId, phone);
     Phone result = response.getResult();
-    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+    if (result != null && result.getChallenges() != null && result.getChallenges().size() > 0) {
       return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
     }
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
@@ -203,20 +193,10 @@ public class ProfilesController extends BaseController {
   }
 
   @RequestMapping(value = "/users/{userId}/profile/emails/{emailId}", method = RequestMethod.DELETE)
-  public final ResponseEntity<Email> deleteEmail(@PathVariable("emailId") String emailId) {
-    AccessorResponse<Email> response = gateway().profiles().emails().delete(emailId);
-    Email result = response.getResult();
-    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
-      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
-    }
-    return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
-  }
-
-  @RequestMapping(value = "/users/{userId}/profile/emails/{emailId}", method = RequestMethod.DELETE)
-  public final ResponseEntity<Email> deleteEmail(@PathVariable("emailId") String emailId, @RequestBody Email email) {
+  public final ResponseEntity<Email> deleteEmail(@PathVariable("emailId") String emailId, @RequestBody(required = false) Email email) {
     AccessorResponse<Email> response = gateway().profiles().emails().delete(emailId, email);
     Email result = response.getResult();
-    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+    if (result != null && result.getChallenges() != null && result.getChallenges().size() > 0) {
       return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
     }
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
