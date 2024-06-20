@@ -43,13 +43,13 @@ public class PhoneBaseAccessor extends Accessor {
   }
 
   /**
-   * Delete phone by id with challenges
+   * Delete phone by id
    *
    * @param id
    * @return
    */
   @GatewayAPI
-  @API(description = "Delete a phone with challenges")
+  @API(description = "Delete a phone")
   public AccessorResponse<Phone> delete(String id, Phone phone) {
     throw new AccessorMethodNotImplementedException();
   }
