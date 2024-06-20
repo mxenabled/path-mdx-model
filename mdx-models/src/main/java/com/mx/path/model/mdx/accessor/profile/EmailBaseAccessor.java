@@ -4,7 +4,6 @@ import com.mx.path.core.common.accessor.API;
 import com.mx.path.core.common.accessor.AccessorMethodNotImplementedException;
 import com.mx.path.core.common.gateway.GatewayAPI;
 import com.mx.path.core.common.gateway.GatewayClass;
-import com.mx.path.core.common.remote.RemoteOperation;
 import com.mx.path.gateway.accessor.Accessor;
 import com.mx.path.gateway.accessor.AccessorConfiguration;
 import com.mx.path.gateway.accessor.AccessorResponse;
@@ -50,20 +49,7 @@ public class EmailBaseAccessor extends Accessor {
    * @return
    */
   @GatewayAPI
-  @API(description = "Delete an email initial request")
-  public AccessorResponse<Email> delete(String id) {
-    throw new AccessorMethodNotImplementedException();
-  }
-
-  /**
-   * Delete email by id
-   *
-   * @param id
-   * @return
-   */
-  @GatewayAPI
   @API(description = "Delete an email with challenges")
-  @RemoteOperation("DeleteWithChallenges")
   public AccessorResponse<Email> delete(String id, Email email) {
     throw new AccessorMethodNotImplementedException();
   }
