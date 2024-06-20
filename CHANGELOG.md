@@ -5,6 +5,14 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [12.1.0](https://github.com/mxenabled/path-mdx-model/compare/v12.0.1...v12.1.0) (2024-06-20)
+
+
+### Features
+
+* adding a new method to handle delete requests ([9df4a88](https://github.com/mxenabled/path-mdx-model/commit/9df4a889415894423ff8ac75ed87ccef4a7d005b))
+* making request body optional ([fa517c3](https://github.com/mxenabled/path-mdx-model/commit/fa517c35b2c7851ee35647407731c886951e2fb7))
+
 ## [12.0.1](https://github.com/mxenabled/path-mdx-model/compare/v12.0.0...v12.0.1) (2024-06-18)
 
 
