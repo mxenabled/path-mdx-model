@@ -33,60 +33,65 @@ public class AccountAddressBaseAccessor extends Accessor {
   /**
    * Create an account address
    *
+   * @param accountId
    * @param address
    * @return
    */
   @GatewayAPI
   @API(description = "Create an account address")
-  public AccessorResponse<Address> create(Address address) {
+  public AccessorResponse<Address> create(String accountId, Address address) {
     throw new AccessorMethodNotImplementedException();
   }
 
   /**
    * Delete address by id
    *
-   * @param id
+   * @param accountId
+   * @param addressId
    * @return
    */
   @GatewayAPI
   @API(description = "Delete an account address")
-  public AccessorResponse<Void> delete(String id) {
+  public AccessorResponse<Void> delete(String accountId, String addressId) {
     throw new AccessorMethodNotImplementedException();
   }
 
   /**
    * Get address by id
    *
-   * @param id
+   * @param accountId
+   * @param addressId
    * @return
    */
   @GatewayAPI
   @API(description = "Get an account address")
-  public AccessorResponse<Address> get(String id) {
+  public AccessorResponse<Address> get(String accountId, String addressId) {
     throw new AccessorMethodNotImplementedException();
   }
 
   /**
    * List addresses
    *
+   * @param accountId
    * @return
    */
   @GatewayAPI
   @API(description = "List all account addresses")
-  public AccessorResponse<MdxList<Address>> list() {
+  public AccessorResponse<MdxList<Address>> list(String accountId) {
     throw new AccessorMethodNotImplementedException();
   }
 
   /**
    * Update address
    *
-   * @param id
+   * @param accountId
+   * @param addressId
    * @param address
    * @return
    */
   @GatewayAPI
   @API(description = "Update an account address")
-  public AccessorResponse<Address> update(String id, Address address) {
+  public AccessorResponse<Address> update(String accountId, String addressId, Address address) {
     throw new AccessorMethodNotImplementedException();
   }
 
