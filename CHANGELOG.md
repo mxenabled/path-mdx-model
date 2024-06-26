@@ -5,6 +5,17 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [13.0.0](https://github.com/mxenabled/path-mdx-model/compare/v12.1.0...v13.0.0) (2024-06-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* grabbing accountId variable from url path
+
+### Bug Fixes
+
+* grabbing accountId variable from url path ([6bf41c7](https://github.com/mxenabled/path-mdx-model/commit/6bf41c74c8374495e4259e47e3bbc8ec2a502691))
+
 ## [12.1.0](https://github.com/mxenabled/path-mdx-model/compare/v12.0.1...v12.1.0) (2024-06-20)
 
 
