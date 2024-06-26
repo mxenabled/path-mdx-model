@@ -1,10 +1,14 @@
 package com.mx.path.model.mdx.model.authorization;
 
+import java.util.List;
+
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.challenges.Challenge;
 
 public class Authorization extends MdxBase<Authorization> {
 
   private String accountId;
+  private List<Challenge> challenges;
   private NameValuePair[] cookies;
   private String deviceId;
   private Long expiresAt;
@@ -25,6 +29,14 @@ public class Authorization extends MdxBase<Authorization> {
 
   public final void setAccountId(String newAccountId) {
     accountId = newAccountId;
+  }
+
+  public final List<Challenge> getChallenges() {
+    return challenges;
+  }
+
+  public final void setChallenges(List<Challenge> challenges) {
+    this.challenges = challenges;
   }
 
   public final NameValuePair[] getCookies() {
