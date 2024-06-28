@@ -22,7 +22,13 @@ public class AuthorizationsController extends BaseController {
   @RequestMapping(value = "/users/{user_id}/authorizations", method = RequestMethod.POST, consumes = BaseController.MDX_MEDIA)
   public final ResponseEntity<Authorization> createAuthorization(@RequestBody Authorization authorizationRequest) throws Exception {
     AccessorResponse<Authorization> response = gateway().authorizations().create(authorizationRequest);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+    Authorization result = response.getResult();
+
+    HttpStatus status = HttpStatus.OK;
+    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 
   @RequestMapping(value = "/users/{user_id}/authorizations/callback", method = RequestMethod.GET, produces = "text/html")
