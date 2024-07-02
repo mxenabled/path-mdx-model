@@ -2,6 +2,7 @@ package com.mx.path.model.mdx.model.authorization;
 
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
 import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.challenges.Challenge;
 
@@ -10,6 +11,8 @@ public class Authorization extends MdxBase<Authorization> {
   private String accountId;
   private List<Challenge> challenges;
   private NameValuePair[] cookies;
+  @SerializedName("cookies_url")
+  private String cookiesUrl;
   private String deviceId;
   private Long expiresAt;
   private NameValuePair[] headers;
@@ -45,6 +48,14 @@ public class Authorization extends MdxBase<Authorization> {
 
   public final void setCookies(NameValuePair[] newCookies) {
     this.cookies = newCookies;
+  }
+
+  public final String getCookiesUrl() {
+    return cookiesUrl;
+  }
+
+  public final void setCookiesUrl(String cookiesUrl) {
+    this.cookiesUrl = cookiesUrl;
   }
 
   public final String getDeviceId() {
