@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [13.1.1](https://github.com/mxenabled/path-mdx-model/compare/v13.1.0...v13.1.1) (2024-07-02)
+
+
+### Bug Fixes
+
+* return 202 when challenge in createAuthorization response ([fc590a5](https://github.com/mxenabled/path-mdx-model/commit/fc590a514308f0eeb63b693bbb5dd0c8dd8bf98f))
+
 ## [13.1.0](https://github.com/mxenabled/path-mdx-model/compare/v13.0.1...v13.1.0) (2024-07-02)
 
 
