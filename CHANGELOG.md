@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [13.1.0](https://github.com/mxenabled/path-mdx-model/compare/v13.0.1...v13.1.0) (2024-07-02)
+
+
+### Features
+
+* add cookies_url field to authorization ([dcfa46d](https://github.com/mxenabled/path-mdx-model/commit/dcfa46d03c81c189d30f42c64010d5451c06e869))
+
 ## [13.0.1](https://github.com/mxenabled/path-mdx-model/compare/v13.0.0...v13.0.1) (2024-06-26)
 
 
