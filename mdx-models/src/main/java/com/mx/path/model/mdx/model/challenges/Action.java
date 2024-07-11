@@ -14,6 +14,8 @@ public final class Action extends MdxBase<Action> {
   private ShowStatus showStatusData;
   @SerializedName("deep_link_data")
   private DeepLinkData deepLinkData;
+  @SerializedName("url_data")
+  private UrlData urlData;
 
   public String getId() {
     return id;
@@ -53,5 +55,13 @@ public final class Action extends MdxBase<Action> {
 
   public void setDeepLinkData(DeepLinkData deepLinkData) {
     this.deepLinkData = deepLinkData;
+  }
+
+  public UrlData getUrlData() {
+    return urlData;
+  }
+
+  public void setUrlData(UrlData urlData) {
+    this.urlData = urlData;
   }
 }
