@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [13.2.0](https://github.com/mxenabled/path-mdx-model/compare/v13.1.1...v13.2.0) (2024-07-15)
+
+
+### Features
+
+* add url_data field to Action challenges ([bf9652d](https://github.com/mxenabled/path-mdx-model/commit/bf9652df331b143d286dd40ece5670988de0cff8))
+
 ## [13.1.1](https://github.com/mxenabled/path-mdx-model/compare/v13.1.0...v13.1.1) (2024-07-02)
 
 
