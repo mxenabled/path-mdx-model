@@ -7,14 +7,14 @@ package com.mx.path.model.mdx.model.products;
 @SuppressWarnings({ "checkstyle:MemberName", "checkstyle:ParameterName", "checkstyle:MethodName" })
 public class ProductSearch {
 
-  private String product_type;
+  private String type;
 
-  public final String getProduct_type() {
-    return product_type;
+  public final String getType() {
+    return type;
   }
 
-  public final void setProduct_type(String product_type) {
-    this.product_type = product_type;
+  public final void setType(String type) {
+    this.type = type;
   }
 
 }
