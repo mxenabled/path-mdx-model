@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [13.2.1](https://github.com/mxenabled/path-mdx-model/compare/v13.2.0...v13.2.1) (2024-07-22)
+
+
+### Bug Fixes
+
+* rename product search parameter ([7fcc6d3](https://github.com/mxenabled/path-mdx-model/commit/7fcc6d34f318079901e52515fb2b37d7043df6fa))
+
 ## [13.2.0](https://github.com/mxenabled/path-mdx-model/compare/v13.1.1...v13.2.0) (2024-07-15)
 
 
