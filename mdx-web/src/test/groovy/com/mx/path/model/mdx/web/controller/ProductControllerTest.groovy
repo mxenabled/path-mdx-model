@@ -40,7 +40,7 @@ class ProductControllerTest extends Specification {
   def "listProducts interacts with gateway"() {
     given:
     def search = new ProductSearch().tap {
-      product_type = "ACCOUNT"
+      type = "ACCOUNT"
     }
     def mockResponse = new AccessorResponse<MdxList<Product>>().withResult(new MdxList<>().tap {
       add(new Product())

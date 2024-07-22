@@ -33,8 +33,7 @@ public final class Product extends MdxBase<Product> {
 
   private String name;
 
-  @SerializedName("product_type")
-  private String productType;
+  private String type;
 
   public List<Challenge> getActivateChallenges() {
     return activateChallenges;
@@ -116,12 +115,12 @@ public final class Product extends MdxBase<Product> {
     this.name = name;
   }
 
-  public String getProductType() {
-    return productType;
+  public String getType() {
+    return type;
   }
 
-  public void setProductType(String productType) {
-    this.productType = productType;
+  public void setType(String type) {
+    this.type = type;
   }
 
 }
