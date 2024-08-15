@@ -126,6 +126,8 @@ public class Account extends MdxBase<Account> {
   private String subtype;
   @XmlElement(name = "type")
   private String type;
+  @XmlElement(name = "insured_status")
+  private String insuredStatus;
 
   // --------------------------------------------------------
   // Internal Fields
@@ -603,6 +605,14 @@ public class Account extends MdxBase<Account> {
 
   public final void setType(String newType) {
     this.type = newType;
+  }
+
+  public final String getInsuredStatus() {
+    return insuredStatus;
+  }
+
+  public final void setInsuredStatus(String insuredStatus) {
+    this.insuredStatus = insuredStatus;
   }
 
   // Internal Fields
