@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [13.3.0](https://github.com/mxenabled/path-mdx-model/compare/v13.2.2...v13.3.0) (2024-08-20)
+
+
+### Features
+
+* Added insuredStatus field in Account ([8a845fd](https://github.com/mxenabled/path-mdx-model/commit/8a845fd00eb4324d5408da0eb56d3a5afe7314c1))
+
 ## [13.2.2](https://github.com/mxenabled/path-mdx-model/compare/v13.2.1...v13.2.2) (2024-07-24)
 
 
