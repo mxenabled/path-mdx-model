@@ -12,10 +12,11 @@ import com.mx.path.core.common.collection.MultiValueMap;
 import com.mx.path.core.common.exception.ExceptionContext;
 import com.mx.path.core.context.RequestContext;
 import com.mx.path.core.context.Session;
-import com.mx.path.core.context.tracing.CustomTracer;
 
 import org.springframework.core.env.Environment;
 import org.springframework.lang.NonNull;
+
+import io.opentracing.util.GlobalTracer;
 
 class WebExceptionContext implements ExceptionContext {
 
@@ -166,7 +167,7 @@ class WebExceptionContext implements ExceptionContext {
 
   @Override
   public final String getTraceId() {
-    return CustomTracer.getTraceId();
+    return GlobalTracer.get().activeSpan().context().toTraceId();
   }
 
   @Override
