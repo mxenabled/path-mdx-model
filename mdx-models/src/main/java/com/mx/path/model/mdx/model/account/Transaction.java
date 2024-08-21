@@ -41,7 +41,7 @@ public class Transaction extends MdxBase<Transaction> {
   @XmlElement(name = "member_id")
   private String memberId;
   @XmlElement(name = "merchant_category_code")
-  private String merchantCategoryCode;
+  private Integer merchantCategoryCode;
   @XmlElement(name = "memo")
   private String memo;
   @XmlElement(name = "metadata")
@@ -179,12 +179,20 @@ public class Transaction extends MdxBase<Transaction> {
     this.memberId = newMemberId;
   }
 
-  public final String getMerchantCategoryCode() {
+  public final Integer getMerchantCategoryCode() {
     return merchantCategoryCode;
   }
 
-  public final void setMerchantCategoryCode(String merchantCategoryCode) {
+  public final void setMerchantCategoryCode(Integer merchantCategoryCode) {
     this.merchantCategoryCode = merchantCategoryCode;
+  }
+
+  /**
+   * @deprecated use {@link #setMerchantCategoryCode(Integer)}
+   */
+  @Deprecated
+  public final void setMerchantCategoryCode(String merchantCategoryCode) {
+    this.merchantCategoryCode = Integer.parseInt(merchantCategoryCode);
   }
 
   public final String getMemo() {
