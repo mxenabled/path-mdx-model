@@ -5,6 +5,17 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [14.0.0](https://github.com/mxenabled/path-mdx-model/compare/v13.3.0...v14.0.0) (2024-08-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* Remove TracingProviderComponent.java
+
+### Code Refactoring
+
+* rebase master ([24bd7fd](https://github.com/mxenabled/path-mdx-model/commit/24bd7fd10f29c6bfe52a3ed7adf7bb4d423fdeef))
+
 ## [13.3.0](https://github.com/mxenabled/path-mdx-model/compare/v13.2.2...v13.3.0) (2024-08-20)
 
 
