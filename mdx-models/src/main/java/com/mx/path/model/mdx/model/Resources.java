@@ -252,6 +252,9 @@ public class Resources {
     builder.registerTypeAdapter(ManagedCard.class, new ModelWrappableSerializer("managed_card"));
     builder.registerTypeAdapter(new TypeToken<MdxList<ManagedCard>>() {
     }.getType(), new ModelWrappableSerializer("managed_cards"));
+    builder.registerTypeAdapter(com.mx.path.model.mdx.model.managed_cards.Merchant.class, new ModelWrappableSerializer("merchant"));
+    builder.registerTypeAdapter(new TypeToken<MdxList<com.mx.path.model.mdx.model.managed_cards.Merchant>>() {
+    }.getType(), new ModelWrappableSerializer("merchants"));
     // RemoteDeposit
     builder.registerTypeAdapter(RemoteDeposit.class, new ModelWrappableSerializer("remote_deposit"));
     builder.registerTypeAdapter(new TypeToken<MdxList<RemoteDeposit>>() {
