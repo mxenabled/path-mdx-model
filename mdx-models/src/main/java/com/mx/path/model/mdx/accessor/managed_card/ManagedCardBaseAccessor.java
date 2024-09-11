@@ -1,5 +1,8 @@
 package com.mx.path.model.mdx.accessor.managed_card;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+
 import com.mx.path.core.common.accessor.API;
 import com.mx.path.core.common.accessor.AccessorMethodNotImplementedException;
 import com.mx.path.core.common.gateway.GatewayAPI;
@@ -18,6 +21,11 @@ import com.mx.path.model.mdx.model.managed_cards.ManagedCard;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/managed_cards/#mdx-managed-cards")
 public abstract class ManagedCardBaseAccessor extends Accessor {
+
+  @GatewayAPI
+  @Getter(AccessLevel.PROTECTED)
+  private MerchantBaseAccessor merchants;
+
   public ManagedCardBaseAccessor() {
   }
 
@@ -158,4 +166,21 @@ public abstract class ManagedCardBaseAccessor extends Accessor {
     throw new AccessorMethodNotImplementedException();
   }
 
+  /**
+   * Accessor for merchant operations
+   *
+   * @return accessor
+   */
+  @API
+  public MerchantBaseAccessor merchants() {
+    return merchants;
+  }
+
+  /**
+   * Sets merchants accessor
+   * @param merchants
+   */
+  public void setMerchants(MerchantBaseAccessor merchants) {
+    this.merchants = merchants;
+  }
 }
