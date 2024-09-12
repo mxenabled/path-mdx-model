@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [14.1.0](https://github.com/mxenabled/path-mdx-model/compare/v14.0.1...v14.1.0) (2024-09-12)
+
+
+### Features
+
+* add managed card merchants feature ([5804ae7](https://github.com/mxenabled/path-mdx-model/commit/5804ae7db244b74e67c15992b9c35bd69ecb2d47))
+
 ## [14.0.1](https://github.com/mxenabled/path-mdx-model/compare/v14.0.0...v14.0.1) (2024-08-23)
 
 
