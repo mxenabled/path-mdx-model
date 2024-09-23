@@ -160,7 +160,11 @@ public final class RemoteDeposit extends MdxBase<RemoteDeposit> {
     this.updatedOn = newUpdatedOn;
   }
 
-  public List<Challenge> getChallenges() { return challenges; }
+  public List<Challenge> getChallenges() {
+    return challenges;
+  }
 
-  public void setChallenges(List<Challenge> newChallenges) { this.challenges = newChallenges; }
+  public void setChallenges(List<Challenge> newChallenges) {
+    this.challenges = newChallenges;
+  }
 }
