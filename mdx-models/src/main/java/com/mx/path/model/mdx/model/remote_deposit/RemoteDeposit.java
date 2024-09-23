@@ -1,11 +1,13 @@
 package com.mx.path.model.mdx.model.remote_deposit;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.MdxRelationId;
 import com.mx.path.model.mdx.model.account.Account;
+import com.mx.path.model.mdx.model.challenges.Challenge;
 
 public final class RemoteDeposit extends MdxBase<RemoteDeposit> {
   @SerializedName("account_id")
@@ -27,6 +29,7 @@ public final class RemoteDeposit extends MdxBase<RemoteDeposit> {
   private String status;
   private Long updatedAt;
   private LocalDate updatedOn;
+  private List<Challenge> challenges;
 
   @MdxRelationId(referredClass = Account.class)
   public String getAccountId() {
@@ -156,4 +159,8 @@ public final class RemoteDeposit extends MdxBase<RemoteDeposit> {
   public void setUpdatedOn(LocalDate newUpdatedOn) {
     this.updatedOn = newUpdatedOn;
   }
+
+  public List<Challenge> getChallenges() { return challenges; }
+
+  public void setChallenges(List<Challenge> newChallenges) { this.challenges = newChallenges; }
 }
