@@ -1,5 +1,7 @@
 package com.mx.path.model.mdx.web.controller
 
+import static org.mockito.ArgumentMatchers.any
+import static org.mockito.Mockito.doReturn
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
@@ -8,6 +10,7 @@ import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.remote_deposit.RemoteDepositGateway
 import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.account.Account
+import com.mx.path.model.mdx.model.challenges.Challenge
 import com.mx.path.model.mdx.model.remote_deposit.Limits
 import com.mx.path.model.mdx.model.remote_deposit.RemoteDeposit
 
@@ -62,6 +65,24 @@ class RemoteDepositsControllerTest extends Specification {
     verify(remoteDepositGateway).list() || true
     HttpStatus.OK == response.getStatusCode()
     response.getBody() == list
+  }
+
+  def "createRemoteDeposit - 202"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def mockResponse = new AccessorResponse<RemoteDeposit>().withResult(new RemoteDeposit().tap {
+      setChallenges(new MdxList<Challenge>().tap { add(new Challenge()) })
+    })
+    doReturn(mockResponse).when(remoteDepositGateway).create(any())
+
+    when:
+    def response = subject.createRemoteDeposit(new RemoteDeposit())
+
+    then:
+    response.body == mockResponse.result
+    response.body.wrapped
+    response.statusCode == HttpStatus.ACCEPTED
   }
 
   def "createRemoteDeposit interacts with gateway"() {

@@ -24,7 +24,12 @@ public class RemoteDepositsController extends BaseController {
   @RequestMapping(value = "/users/{user_id}/remote_deposits", method = RequestMethod.POST, consumes = MDX_MEDIA)
   public final ResponseEntity<RemoteDeposit> createRemoteDeposit(@RequestBody RemoteDeposit remoteDepositRequest) {
     AccessorResponse<RemoteDeposit> response = gateway().remoteDeposits().create(remoteDepositRequest);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+    RemoteDeposit result = response.getResult();
+    HttpStatus status = HttpStatus.OK;
+    if (result != null && result.getChallenges() != null && !result.getChallenges().isEmpty()) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 
   @RequestMapping(value = "/users/{userId}/remote_deposits/{id}", method = RequestMethod.GET)
