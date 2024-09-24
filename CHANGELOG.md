@@ -5,6 +5,15 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [14.2.0](https://github.com/mxenabled/path-mdx-model/compare/v14.1.0...v14.2.0) (2024-09-24)
+
+
+### Features
+
+* added challenges to remote deposit object ([74934d3](https://github.com/mxenabled/path-mdx-model/commit/74934d38d60efa67a253d0ad068b414335d612ca))
+* returning 202 when challenges present for post rdc ([da34f74](https://github.com/mxenabled/path-mdx-model/commit/da34f74eb554e4ae8638dd11687dcc34451ae1db))
+* spotless ([557893d](https://github.com/mxenabled/path-mdx-model/commit/557893d4970460ad9081794cc24da9be55972982))
+
 ## [14.1.0](https://github.com/mxenabled/path-mdx-model/compare/v14.0.1...v14.1.0) (2024-09-12)
 
 
