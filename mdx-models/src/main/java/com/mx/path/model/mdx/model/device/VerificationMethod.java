@@ -6,7 +6,7 @@ import com.mx.path.model.mdx.model.MdxBase;
 
 @Data
 public class VerificationMethod extends MdxBase<VerificationMethod> {
-  public enum METHOD {
+  public enum TYPE {
     CODE,
     LINK
   }
@@ -14,5 +14,5 @@ public class VerificationMethod extends MdxBase<VerificationMethod> {
   private String id;
   private String phoneNumber;
   private String emailAddress;
-  private METHOD method;
+  private TYPE type;
 }
