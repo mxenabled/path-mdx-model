@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [14.2.1](https://github.com/mxenabled/path-mdx-model/compare/v14.2.0...v14.2.1) (2024-10-04)
+
+
+### Bug Fixes
+
+* correcting ValidationMethod.java to match mdx spec ([d2d0981](https://github.com/mxenabled/path-mdx-model/commit/d2d09810f6f974b7518ef90172bafca15888e433))
+
 ## [14.2.0](https://github.com/mxenabled/path-mdx-model/compare/v14.1.0...v14.2.0) (2024-09-24)
 
 
