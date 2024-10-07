@@ -48,7 +48,7 @@ public class CrossAccountRecurringTransferController extends BaseController {
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
 
-  @RequestMapping(value = "/users/{userId}/cross_account_transfers/recurring_cross_account_transfers/{id}/skip_next", method = RequestMethod.PUT, consumes = MDX_MEDIA)
+  @RequestMapping(value = "/users/{userId}/cross_account_transfers/recurring_cross_account_transfers/{id}/skip_next", method = RequestMethod.PUT)
   public final ResponseEntity<?> skipCrossAccountRecurringTransfer(@PathVariable("id") String recurringTransferId) {
     AccessorResponse<CrossAccountRecurringTransfer> response = gateway().crossAccount().crossAccountRecurring().skipNext(recurringTransferId);
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
