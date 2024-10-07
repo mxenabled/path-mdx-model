@@ -37,6 +37,8 @@ public class Account extends MdxBase<Account> {
   private Double dailyDepositLimitTotal;
   @XmlElement(name = "day_payment_is_due")
   private LocalDate dayPaymentIsDue;
+  @XmlElement(name = "federal_insurance_status")
+  private String federalInsuranceStatus;
   @XmlElement(name = "guid")
   private String guid;
   @XmlElement(name = "has_monthly_transfer_limit")
@@ -126,8 +128,6 @@ public class Account extends MdxBase<Account> {
   private String subtype;
   @XmlElement(name = "type")
   private String type;
-  @XmlElement(name = "insured_status")
-  private String insuredStatus;
 
   // --------------------------------------------------------
   // Internal Fields
@@ -255,6 +255,14 @@ public class Account extends MdxBase<Account> {
     this.dayPaymentIsDue = newDayPaymentIsDue;
   }
 
+  public final String getFederalInsuranceStatus() {
+    return federalInsuranceStatus;
+  }
+
+  public final void setFederalInsuranceStatus(String federalInsuranceStatus) {
+    this.federalInsuranceStatus = federalInsuranceStatus;
+  }
+
   public final String getGuid() {
     return guid;
   }
@@ -285,6 +293,22 @@ public class Account extends MdxBase<Account> {
 
   public final void setId(String newId) {
     this.id = newId;
+  }
+
+  /**
+   * @deprecated Use {@link #getFederalInsuranceStatus()} instead.
+   */
+  @Deprecated
+  public final String getInsuredStatus() {
+    return federalInsuranceStatus;
+  }
+
+  /**
+   * @deprecated Use {@link #setFederalInsuranceStatus(String)} instead.
+   */
+  @Deprecated
+  public final void setInsuredStatus(String insuredStatus) {
+    this.federalInsuranceStatus = insuredStatus;
   }
 
   public final Double getInterestPaidPreviousYear() {
@@ -605,14 +629,6 @@ public class Account extends MdxBase<Account> {
 
   public final void setType(String newType) {
     this.type = newType;
-  }
-
-  public final String getInsuredStatus() {
-    return insuredStatus;
-  }
-
-  public final void setInsuredStatus(String insuredStatus) {
-    this.insuredStatus = insuredStatus;
   }
 
   // Internal Fields
