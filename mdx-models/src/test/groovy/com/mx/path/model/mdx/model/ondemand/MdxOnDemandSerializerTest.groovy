@@ -1,5 +1,7 @@
 package com.mx.path.model.mdx.model.ondemand
 
+import static com.mx.path.extensions.StringStaticExtension.sanitizeXml
+
 import java.time.LocalDate
 
 import com.fasterxml.jackson.core.JsonGenerator
@@ -47,12 +49,14 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
     generator.flush()
 
     then:
-    stringWriter.toString() == "<Account>\n" +
+    def expectedResponse = "<Account>\n" +
         "  <wrapped>false</wrapped>\n" +
         "  <balance>0.09</balance>\n" +
         "  <id>A-123</id>\n" +
         "  <name>Checking</name>\n" +
         "</Account>\n"
+
+    sanitizeXml(stringWriter) == sanitizeXml(expectedResponse)
   }
 
   def "wrapped, interacts with generator"() {
@@ -69,7 +73,7 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
     generator.flush()
 
     then:
-    stringWriter.toString() == "<mdx version=\"5.0\">\n" +
+    def expectedResponse = "<mdx version=\"5.0\">\n" +
         "<Account>\n" +
         "  <wrapped>true</wrapped>\n" +
         "  <balance>0.09</balance>\n" +
@@ -77,6 +81,8 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
         "  <name>Checking</name>\n" +
         "</Account>\n" +
         "</mdx>\n"
+
+    sanitizeXml(stringWriter) == sanitizeXml(expectedResponse)
   }
 
   def "applies mixins"() {
@@ -96,7 +102,7 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
     generator.flush()
 
     then:
-    stringWriter.toString() == "<mdx version=\"5.0\">\n" +
+    def expectedResponse = "<mdx version=\"5.0\">\n" +
         "<account>\n" +
         "  <balance>0.09</balance>\n" +
         "  <id>A-123</id>\n" +
@@ -104,6 +110,8 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
         "  <payment_due_on>2020-12-05</payment_due_on>\n" +
         "</account>\n" +
         "</mdx>\n"
+
+    sanitizeXml(stringWriter) == sanitizeXml(expectedResponse)
   }
 
   def "accounts list mixins"() {
@@ -135,7 +143,7 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
     generator.flush()
 
     then:
-    stringWriter.toString() == "<mdx version=\"5.0\">\n" +
+    def expectedResponse = "<mdx version=\"5.0\">\n" +
         "<accounts>\n" +
         "  <account>\n" +
         "    <balance>0.09</balance>\n" +
@@ -151,6 +159,8 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
         "  </account>\n" +
         "</accounts>\n" +
         "</mdx>\n"
+
+    sanitizeXml(stringWriter) == sanitizeXml(expectedResponse)
   }
 
   def "empty accounts list mixins"() {
@@ -167,9 +177,11 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
     generator.flush()
 
     then:
-    stringWriter.toString() == "<mdx version=\"5.0\">\n" +
+    def expectedResponse = "<mdx version=\"5.0\">\n" +
         "<accounts/>\n" +
         "</mdx>\n"
+
+    sanitizeXml(stringWriter) == sanitizeXml(expectedResponse)
   }
 
   def "serializes LocalDate to string"() {
@@ -183,10 +195,12 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
     generator.flush()
 
     then:
-    stringWriter.toString() == "<Transaction>\n" +
+    def expectedResponse = "<Transaction>\n" +
         "  <wrapped>false</wrapped>\n" +
         "  <posted_on>2020-01-12</posted_on>\n" +
         "</Transaction>\n"
+
+    sanitizeXml(stringWriter) == sanitizeXml(expectedResponse)
   }
 
   def "serializes large amounts"() {
@@ -204,7 +218,7 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
     generator.flush()
 
     then:
-    stringWriter.toString() == "<mdx version=\"5.0\">\n" +
+    def expectedResponse = "<mdx version=\"5.0\">\n" +
         "<Account>\n" +
         "  <wrapped>true</wrapped>\n" +
         "  <balance>30000000.00</balance>\n" +
@@ -212,5 +226,7 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
         "  <name>Checking</name>\n" +
         "</Account>\n" +
         "</mdx>\n"
+
+    sanitizeXml(stringWriter) == sanitizeXml(expectedResponse)
   }
 }
