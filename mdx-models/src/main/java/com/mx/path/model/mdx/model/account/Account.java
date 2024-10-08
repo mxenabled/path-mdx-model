@@ -31,10 +31,6 @@ public class Account extends MdxBase<Account> {
   private BigDecimal creditLimit;
   @XmlElement(name = "currency_code")
   private String currencyCode;
-  @XmlElement(name = "daily_deposit_limit_current")
-  private Double dailyDepositLimitCurrent;
-  @XmlElement(name = "daily_deposit_limit_total")
-  private Double dailyDepositLimitTotal;
   @XmlElement(name = "day_payment_is_due")
   private LocalDate dayPaymentIsDue;
   @XmlElement(name = "guid")
@@ -45,10 +41,6 @@ public class Account extends MdxBase<Account> {
   private BigDecimal holdTotal;
   @XmlElement(name = "id")
   private String id;
-  @XmlElement(name = "interest_paid_previous_year")
-  private Double interestPaidPreviousYear;
-  @XmlElement(name = "interest_paid_ytd")
-  private Double interestPaidYtd;
   @XmlElement(name = "interest_rate")
   private Double interestRate;
   @XmlElement(name = "is_closed")
@@ -63,10 +55,6 @@ public class Account extends MdxBase<Account> {
   private LocalDate lastPaymentOn;
   @XmlElement(name = "loan_amount")
   private BigDecimal loanAmount;
-  @XmlElement(name = "monthly_deposit_limit_current")
-  private Double monthlyDepositLimitCurrent;
-  @XmlElement(name = "monthly_deposit_limit_total")
-  private Double monthlyDepositLimitTotal;
   @XmlElement(name = "matures_at")
   private Long maturesAt;
   @XmlElement(name = "matures_on")
@@ -87,8 +75,6 @@ public class Account extends MdxBase<Account> {
   private String name;
   @XmlElement(name = "nickname")
   private String nickname;
-  @XmlElement(name = "next_payment")
-  private Double nextPayment;
   @XmlElement(name = "original_balance")
   private BigDecimal originalBalance;
   @XmlElement(name = "past_due_amount")
@@ -105,8 +91,6 @@ public class Account extends MdxBase<Account> {
   private BigDecimal pendingBalance;
   @XmlElement(name = "pending_transactions_total")
   private BigDecimal pendingTransactionsTotal;
-  @XmlElement(name = "principal_balance")
-  private Double principalBalance;
   @XmlElement(name = "routing_number")
   private String routingNumber;
   @Deprecated
@@ -120,8 +104,6 @@ public class Account extends MdxBase<Account> {
   private BigDecimal statementBalance;
   @XmlElement(name = "statement_closed_on")
   private LocalDate statementClosedOn;
-  @XmlElement(name = "statement_late_charges")
-  private Double statementLateCharges;
   @XmlElement(name = "subtype")
   private String subtype;
   @XmlElement(name = "type")
@@ -231,22 +213,6 @@ public class Account extends MdxBase<Account> {
     this.currencyCode = newCurrencyCode;
   }
 
-  public final Double getDailyDepositLimitCurrent() {
-    return dailyDepositLimitCurrent;
-  }
-
-  public final void setDailyDepositLimitCurrent(Double dailyDepositLimitCurrent) {
-    this.dailyDepositLimitCurrent = dailyDepositLimitCurrent;
-  }
-
-  public final Double getDailyDepositLimitTotal() {
-    return dailyDepositLimitTotal;
-  }
-
-  public final void setDailyDepositLimitTotal(Double dailyDepositLimitTotal) {
-    this.dailyDepositLimitTotal = dailyDepositLimitTotal;
-  }
-
   public final LocalDate getDayPaymentIsDue() {
     return dayPaymentIsDue;
   }
@@ -285,22 +251,6 @@ public class Account extends MdxBase<Account> {
 
   public final void setId(String newId) {
     this.id = newId;
-  }
-
-  public final Double getInterestPaidPreviousYear() {
-    return interestPaidPreviousYear;
-  }
-
-  public final void setInterestPaidPreviousYear(Double interestPaidPreviousYear) {
-    this.interestPaidPreviousYear = interestPaidPreviousYear;
-  }
-
-  public final Double getInterestPaidYtd() {
-    return interestPaidYtd;
-  }
-
-  public final void setInterestPaidYtd(Double interestPaidYtd) {
-    this.interestPaidYtd = interestPaidYtd;
   }
 
   public final Double getInterestRate() {
@@ -357,22 +307,6 @@ public class Account extends MdxBase<Account> {
 
   public final void setLoanAmount(BigDecimal loanAmount) {
     this.loanAmount = loanAmount;
-  }
-
-  public final Double getMonthlyDepositLimitCurrent() {
-    return monthlyDepositLimitCurrent;
-  }
-
-  public final void setMonthlyDepositLimitCurrent(Double monthlyDepositLimitCurrent) {
-    this.monthlyDepositLimitCurrent = monthlyDepositLimitCurrent;
-  }
-
-  public final Double getMonthlyDepositLimitTotal() {
-    return monthlyDepositLimitTotal;
-  }
-
-  public final void setMonthlyDepositLimitTotal(Double monthlyDepositLimitTotal) {
-    this.monthlyDepositLimitTotal = monthlyDepositLimitTotal;
   }
 
   public final Long getMaturesAt() {
@@ -455,14 +389,6 @@ public class Account extends MdxBase<Account> {
     this.nickname = newNickname;
   }
 
-  public final Double getNextPayment() {
-    return nextPayment;
-  }
-
-  public final void setNextPayment(Double nextPayment) {
-    this.nextPayment = nextPayment;
-  }
-
   public final BigDecimal getOriginalBalance() {
     return originalBalance;
   }
@@ -527,14 +453,6 @@ public class Account extends MdxBase<Account> {
     this.pendingTransactionsTotal = pendingTransactionsTotal;
   }
 
-  public final Double getPrincipalBalance() {
-    return principalBalance;
-  }
-
-  public final void setPrincipalBalance(Double principalBalance) {
-    this.principalBalance = principalBalance;
-  }
-
   public final String getRoutingNumber() {
     return routingNumber;
   }
@@ -581,14 +499,6 @@ public class Account extends MdxBase<Account> {
 
   public final void setStatementClosedOn(LocalDate newStatementClosedOn) {
     this.statementClosedOn = newStatementClosedOn;
-  }
-
-  public final Double getStatementLateCharges() {
-    return statementLateCharges;
-  }
-
-  public final void setStatementLateCharges(Double statementLateCharges) {
-    this.statementLateCharges = statementLateCharges;
   }
 
   public final String getSubtype() {

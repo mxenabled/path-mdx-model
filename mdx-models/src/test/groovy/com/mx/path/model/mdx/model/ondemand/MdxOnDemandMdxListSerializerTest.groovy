@@ -1,5 +1,7 @@
 package com.mx.path.model.mdx.model.ondemand
 
+import static com.mx.path.extensions.StringStaticExtension.sanitizeXml
+
 import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.databind.SerializerProvider
 import com.fasterxml.jackson.dataformat.xml.XmlFactory
@@ -52,12 +54,14 @@ class MdxOnDemandMdxListSerializerTest extends Specification implements WithMock
     generator.flush()
 
     then:
-    stringWriter.toString() == "<Transaction>\n" +
+    def expectedResponse= "<Transaction>\n" +
         "  <wrapped>false</wrapped>\n" +
         "  <amount>9.99</amount>\n" +
         "  <description>Fees</description>\n" +
         "  <id>T-123</id>\n" +
         "</Transaction>\n"
+
+    sanitizeXml(stringWriter) == sanitizeXml(expectedResponse)
   }
 
   def "wrapper name, empty interacts with generator"() {
@@ -83,9 +87,11 @@ class MdxOnDemandMdxListSerializerTest extends Specification implements WithMock
     generator.flush()
 
     then:
-    stringWriter.toString() == "<mdx version=\"5.0\">\n" +
+    def expectedResponse= "<mdx version=\"5.0\">\n" +
         "<transactions>\n</transactions>\n" +
         "</mdx>\n"
+
+    sanitizeXml(stringWriter) == sanitizeXml(expectedResponse)
   }
 
   def "wraps list interacts with generator"() {
@@ -108,7 +114,7 @@ class MdxOnDemandMdxListSerializerTest extends Specification implements WithMock
     generator.flush()
 
     then:
-    stringWriter.toString() == "<mdx version=\"5.0\">\n" +
+    def expectedResponse= "<mdx version=\"5.0\">\n" +
         "<transactions>\n" +
         "<Transaction>\n" +
         "  <wrapped>false</wrapped>\n" +
@@ -124,6 +130,8 @@ class MdxOnDemandMdxListSerializerTest extends Specification implements WithMock
         "</Transaction>\n" +
         "</transactions>\n" +
         "</mdx>\n"
+
+    sanitizeXml(stringWriter) == sanitizeXml(expectedResponse)
   }
 
   def "wraps list interacts with generator applies mixins"() {
@@ -149,7 +157,7 @@ class MdxOnDemandMdxListSerializerTest extends Specification implements WithMock
     subject.serialize(list, (JsonGenerator) generator, (SerializerProvider) null)
 
     then:
-    stringWriter.toString() == "<mdx version=\"5.0\">\n" +
+    def expectedResponse= "<mdx version=\"5.0\">\n" +
         "<accounts>\n" +
         "<account>\n" +
         "  <balance>9.99</balance>\n" +
@@ -161,5 +169,7 @@ class MdxOnDemandMdxListSerializerTest extends Specification implements WithMock
         "</account>\n"
     "</accounts>\n" +
         "</mdx>\n"
+
+    sanitizeXml(stringWriter) == sanitizeXml(expectedResponse)
   }
 }
