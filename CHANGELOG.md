@@ -5,6 +5,18 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [15.0.0](https://github.com/mxenabled/path-mdx-model/compare/v14.2.2...v15.0.0) (2024-10-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove custom variables for hw that are not needed
+
+### Bug Fixes
+
+* remove custom variables for hw that are not needed ([f400daf](https://github.com/mxenabled/path-mdx-model/commit/f400daf88b1fff24958d2df2d527ddf5a21db7ee))
+* this is still needed ([b40389c](https://github.com/mxenabled/path-mdx-model/commit/b40389c2c842de44f56ce6b316062672ffdfaa84))
+
 ## [14.2.2](https://github.com/mxenabled/path-mdx-model/compare/v14.2.1...v14.2.2) (2024-10-09)
 
 
