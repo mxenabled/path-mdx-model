@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [14.2.2](https://github.com/mxenabled/path-mdx-model/compare/v14.2.1...v14.2.2) (2024-10-09)
+
+
+### Bug Fixes
+
+* removed consumes mdx-media CrossAccountRecurringTransferController ([89b0ddb](https://github.com/mxenabled/path-mdx-model/commit/89b0ddb360563c900e410a9c005efc55016fbf6f))
+
 ## [14.2.1](https://github.com/mxenabled/path-mdx-model/compare/v14.2.0...v14.2.1) (2024-10-04)
 
 
