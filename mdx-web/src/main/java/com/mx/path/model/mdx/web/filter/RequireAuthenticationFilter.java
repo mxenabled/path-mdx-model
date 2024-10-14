@@ -11,7 +11,9 @@ import com.mx.path.core.common.accessor.UnauthorizedException;
 import com.mx.path.core.common.lang.Strings;
 import com.mx.path.core.context.Session;
 import com.mx.path.core.context.Session.SessionState;
+import com.mx.path.model.mdx.web.NotAuthenticatedException;
 import com.mx.path.model.mdx.web.PathTools;
+import com.mx.path.model.mdx.web.SessionNotFoundException;
 
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -38,14 +40,14 @@ public class RequireAuthenticationFilter extends OncePerRequestFilter {
     if (PathTools.isSessionRequiredPath(path)
         && Session.current() == null) {
 
-      throw new UnauthorizedException("Session not found", "Session not found");
+      throw new SessionNotFoundException();
     }
 
     if (PathTools.isAuthenticationRequiredPath(path)
         && (Session.current() == null
             || Session.current().getSessionState() != SessionState.AUTHENTICATED)) {
 
-      throw new UnauthorizedException("Not Authenticated", "Not Authenticated");
+      throw new NotAuthenticatedException();
     }
 
     if (PathTools.isUserRequiredPath(path)) {
