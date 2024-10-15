@@ -98,10 +98,16 @@ class ErrorHandler {
           ExceptionFormatter.convertToPathRequestException(ex, response));
     }
 
-    // Temporarily put back error response writer.
-    // This fails when a filter fails.
-    //    HttpServletResponse resp = response;
-    response.reset();
+    try {
+      if (!response.isCommitted()) {
+        response.reset();
+      }
+    } catch (IllegalStateException ignored) {
+      // Ignoring the exception since the response has been already committed
+      LOGGER.warn("Response already committed, cannot reset or modify.");
+      return;
+    }
+
     response.setStatus(status.value());
     response.setContentType("application/vnd.mx.mdx.v6+json");
 
