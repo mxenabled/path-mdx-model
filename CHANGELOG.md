@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [15.1.0](https://github.com/mxenabled/path-mdx-model/compare/v15.0.0...v15.1.0) (2024-10-15)
+
+
+### Features
+
+* create new exception types ([9aef423](https://github.com/mxenabled/path-mdx-model/commit/9aef42312239f7ffab074ba134cba08bae1fb987))
+
 ## [15.0.0](https://github.com/mxenabled/path-mdx-model/compare/v14.2.2...v15.0.0) (2024-10-09)
 
 
