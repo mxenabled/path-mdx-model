@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [15.1.1](https://github.com/mxenabled/path-mdx-model/compare/v15.1.0...v15.1.1) (2024-10-16)
+
+
+### Bug Fixes
+
+* avoid modifying the response after it has been already committed ([cea1342](https://github.com/mxenabled/path-mdx-model/commit/cea13422054c3c811e4cdf552e4b8fb112b777d3))
+
 ## [15.1.0](https://github.com/mxenabled/path-mdx-model/compare/v15.0.0...v15.1.0) (2024-10-15)
 
 
