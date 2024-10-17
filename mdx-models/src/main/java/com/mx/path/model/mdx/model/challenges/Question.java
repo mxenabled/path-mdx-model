@@ -37,7 +37,8 @@ public final class Question extends MdxBase<Question> {
   private Camera cameraData;
   @SerializedName("json_data")
   private JsonData jsonData;
-
+  @SerializedName("federated_login_data")
+  private FederatedLoginData federatedLoginData;
   @SerializedName("html_data")
   private HtmlData htmlData;
   @SerializedName("info_data")
@@ -185,6 +186,14 @@ public final class Question extends MdxBase<Question> {
 
   public void setJsonData(JsonData jsonData) {
     this.jsonData = jsonData;
+  }
+
+  public FederatedLoginData getFederatedLoginData() {
+    return federatedLoginData;
+  }
+
+  public void setFederatedLoginData(FederatedLoginData federatedLoginData) {
+    this.federatedLoginData = federatedLoginData;
   }
 
   public HtmlData getHtmlData() {
