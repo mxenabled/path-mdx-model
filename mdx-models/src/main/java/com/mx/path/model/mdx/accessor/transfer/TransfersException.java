@@ -1,8 +1,10 @@
-package com.mx.path.model.mdx.accessor.ach_transfer;
 
+package com.mx.path.model.mdx.accessor.transfer;
+
+import com.mx.path.core.common.request.Feature;
 import com.mx.path.model.mdx.accessor.feature.ErrorDescriptor;
-import com.mx.path.model.mdx.accessor.feature.Feature;
 import com.mx.path.model.mdx.accessor.feature.FeatureException;
+import com.mx.path.model.mdx.accessor.feature.FeatureMapper;
 
 /**
  * Exception thrown when there is an error related to transfers.
@@ -29,6 +31,6 @@ public class TransfersException extends FeatureException {
    */
   @Override
   protected String getFeatureName() {
-    return Feature.TRANSFERS.getFeatureName();
+    return FeatureMapper.getFeatureName(Feature.TRANSFERS);
   }
 }
