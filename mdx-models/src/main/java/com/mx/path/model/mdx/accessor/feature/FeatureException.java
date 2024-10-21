@@ -1,6 +1,7 @@
 package com.mx.path.model.mdx.accessor.feature;
 
 import com.mx.path.core.common.exception.PathRequestException;
+import com.mx.path.core.common.request.Feature;
 
 /**
  * Base class for exceptions related to features in the path-mdx-model project.
@@ -22,7 +23,7 @@ public abstract class FeatureException extends PathRequestException {
 
   protected FeatureException(String userMessage, Feature feature, String errorDescriptor) {
     super(userMessage);
-    this.feature = feature.getFeatureName();
+    this.feature = FeatureMapper.getFeatureName(feature);
     this.errorDescriptor = errorDescriptor;
     initialize();
   }
@@ -41,5 +42,4 @@ public abstract class FeatureException extends PathRequestException {
     withHeader("MX-Feature", feature);
     withHeader("MX-Feature-Error", errorDescriptor);
   }
-
 }
