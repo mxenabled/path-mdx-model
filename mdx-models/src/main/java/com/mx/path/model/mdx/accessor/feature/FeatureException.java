@@ -18,28 +18,21 @@ import com.mx.path.core.common.request.Feature;
  */
 public abstract class FeatureException extends PathRequestException {
 
-  private final String feature;
-  private final String errorDescriptor;
+  private final Feature feature;
+  private final ErrorDescriptor errorDescriptor;
 
-  protected FeatureException(String userMessage, Feature feature, String errorDescriptor) {
+  protected FeatureException(String userMessage, Feature feature, ErrorDescriptor errorDescriptor) {
     super(userMessage);
-    this.feature = FeatureMapper.getFeatureName(feature);
+    this.feature = feature;
     this.errorDescriptor = errorDescriptor;
     initialize();
   }
 
   /**
-   * Abstract method to be implemented by subclasses to provide the feature name.
-   *
-   * @return The name of the feature.
-   */
-  protected abstract String getFeatureName();
-
-  /**
    * Initializes headers for the exception.
    */
   private void initialize() {
-    withHeader("MX-Feature", feature);
-    withHeader("MX-Feature-Error", errorDescriptor);
+    withHeader("MX-Feature", feature.toString().toLowerCase());
+    withHeader("MX-Feature-Error", errorDescriptor.toString());
   }
 }
