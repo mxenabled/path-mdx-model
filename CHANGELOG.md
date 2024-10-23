@@ -5,6 +5,15 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [15.2.0](https://github.com/mxenabled/path-mdx-model/compare/v15.1.2...v15.2.0) (2024-10-23)
+
+
+### Features
+
+* Business logic exception categorized as features ([017620c](https://github.com/mxenabled/path-mdx-model/commit/017620c6d61084aef87380913441db84a3fed698))
+* Business logic exception categorized as features ([6e6fe66](https://github.com/mxenabled/path-mdx-model/commit/6e6fe6640513c7551f51a6311d8254872b4d44b2))
+* Business logic exception categorized as features ([eb26b74](https://github.com/mxenabled/path-mdx-model/commit/eb26b742efae9aaa5d1e74aca6aa3897cd274994))
+
 ## [15.1.2](https://github.com/mxenabled/path-mdx-model/compare/v15.1.1...v15.1.2) (2024-10-17)
 
 
