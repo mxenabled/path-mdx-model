@@ -5,6 +5,17 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [16.0.0](https://github.com/mxenabled/path-mdx-model/compare/v15.2.0...v16.0.0) (2024-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* restore interest_paid_previous_year and interest_paid_ytd
+
+### Bug Fixes
+
+* restore interest_paid_previous_year and interest_paid_ytd ([6b62abf](https://github.com/mxenabled/path-mdx-model/commit/6b62abf34d553208eab22e47001f9496d13cdecf))
+
 ## [15.2.0](https://github.com/mxenabled/path-mdx-model/compare/v15.1.2...v15.2.0) (2024-11-05)
 
 
