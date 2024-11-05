@@ -5,6 +5,14 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [15.2.0](https://github.com/mxenabled/path-mdx-model/compare/v15.1.2...v15.2.0) (2024-11-05)
+
+
+### Features
+
+* Business logic exception categorized as features ([017620c](https://github.com/mxenabled/path-mdx-model/commit/017620c6d61084aef87380913441db84a3fed698))
+* rename insured_status to federal_insurance_status ([f6131e9](https://github.com/mxenabled/path-mdx-model/commit/f6131e95d3f9834f6ffc93cb7c195466546647f9))
+
 ## [15.1.2](https://github.com/mxenabled/path-mdx-model/compare/v15.1.1...v15.1.2) (2024-10-17)
 
 
