@@ -43,6 +43,10 @@ public class Account extends MdxBase<Account> {
   private BigDecimal holdTotal;
   @XmlElement(name = "id")
   private String id;
+  @XmlElement(name = "interest_paid_previous_year")
+  private Double interestPaidPreviousYear;
+  @XmlElement(name = "interest_paid_ytd")
+  private Double interestPaidYtd;
   @XmlElement(name = "interest_rate")
   private Double interestRate;
   @XmlElement(name = "is_closed")
@@ -275,6 +279,22 @@ public class Account extends MdxBase<Account> {
   @Deprecated
   public final void setInsuredStatus(String insuredStatus) {
     this.federalInsuranceStatus = insuredStatus;
+  }
+
+  public final Double getInterestPaidPreviousYear() {
+    return interestPaidPreviousYear;
+  }
+
+  public final void setInterestPaidPreviousYear(Double newInterestPaidPreviousYear) {
+    this.interestPaidPreviousYear = newInterestPaidPreviousYear;
+  }
+
+  public final Double getInterestPaidYtd() {
+    return interestPaidYtd;
+  }
+
+  public final void setInterestPaidYtd(Double newInterestPaidYtd) {
+    this.interestPaidYtd = newInterestPaidYtd;
   }
 
   public final Double getInterestRate() {
