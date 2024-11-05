@@ -17,8 +17,6 @@ public class CoreFields extends MdxBase<CoreFields> {
   private Boolean hasCashSurrenderValue;
   private Boolean hasCreditLimit;
   private Boolean hasCurrencyCode;
-  private Boolean hasDailyDepositLimitCurrent;
-  private Boolean hasDailyDepositLimitTotal;
   private Boolean hasDayPaymentIsDue;
   private Boolean hasDeathBenefit;
   private Boolean hasMonthlyTransferLimit;
@@ -38,10 +36,7 @@ public class CoreFields extends MdxBase<CoreFields> {
   private Boolean hasMinimumBalance;
   private Boolean hasMinimumPayment;
   private Boolean hasMonthlyTransferCount;
-  private Boolean hasMonthlyDepositLimitCurrent;
-  private Boolean hasMonthlyDepositLimitTotal;
   private Boolean hasName;
-  private Boolean hasNextPayment;
   private Boolean hasNickname;
   private Boolean hasOriginalBalance;
   private Boolean hasPastDueAmount;
@@ -52,10 +47,8 @@ public class CoreFields extends MdxBase<CoreFields> {
   private Boolean hasPendingBalance;
   private Boolean hasPendingTransactionsTotal;
   private Boolean hasPremiumAmount;
-  private Boolean hasPrincipalBalance;
   private Boolean hasRoutingNumber;
   private Boolean hasStartedDate;
-  private Boolean hasStatementBalance;
   private Boolean hasStatementClosedOn;
   private Boolean hasStatementLateCharges;
   private Boolean hasSubtype;
