@@ -1,7 +1,7 @@
 package com.mx.path.model.mdx.accessor.transfer;
 
 import com.mx.path.core.common.request.Feature;
-import com.mx.path.model.mdx.accessor.feature.ErrorDescriptor;
+import com.mx.path.model.mdx.accessor.errorDescriptor.TransferErrorDescriptor;
 import com.mx.path.model.mdx.accessor.feature.FeatureException;
 
 /**
@@ -19,7 +19,7 @@ public class TransferException extends FeatureException {
    * @param userMessage The message to be displayed to the user.
    * @param errorDescriptor The error descriptor for this exception.
    */
-  public TransferException(String userMessage, ErrorDescriptor errorDescriptor) {
+  public TransferException(String userMessage, TransferErrorDescriptor errorDescriptor) {
     super(userMessage, Feature.TRANSFERS, errorDescriptor);
   }
 }
