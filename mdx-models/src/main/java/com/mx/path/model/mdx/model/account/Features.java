@@ -9,6 +9,7 @@ import com.mx.path.model.mdx.model.MdxBase;
 @Data
 public class Features extends MdxBase<Features> {
   private Boolean hasCardManager;
+  private Boolean hasCardRewards;
   private Boolean hasCheckReorder;
   private Boolean hasDirectDepositManagement;
   private Boolean hasEditAddress;
