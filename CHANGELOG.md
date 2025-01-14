@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [16.1.0](https://github.com/mxenabled/path-mdx-model/compare/v16.0.1...v16.1.0) (2025-01-14)
+
+
+### Features
+
+* add support for multiple phone numbers to remote user ([66c0f64](https://github.com/mxenabled/path-mdx-model/commit/66c0f6491f1e1c46fbc4873ede85a3d713f03879))
+
 ## [16.0.1](https://github.com/mxenabled/path-mdx-model/compare/v16.0.0...v16.0.1) (2024-12-12)
 
 
