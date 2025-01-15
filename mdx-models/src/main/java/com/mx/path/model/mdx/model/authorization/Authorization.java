@@ -20,6 +20,7 @@ public class Authorization extends MdxBase<Authorization> {
   private String deviceId;
   private Long expiresAt;
   private NameValuePair[] headers;
+  @SerializedName("javascript")
   private JavaScript javaScript;
   private String token;
   private NameValuePair[] tokens;
