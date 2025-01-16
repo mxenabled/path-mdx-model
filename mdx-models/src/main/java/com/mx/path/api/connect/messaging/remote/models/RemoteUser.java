@@ -1,8 +1,11 @@
 package com.mx.path.connect.messaging.remote.models;
 
+import java.util.List;
+
 import lombok.Data;
 
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.profile.Phone;
 
 @Data
 public class RemoteUser extends MdxBase<RemoteUser> {
@@ -19,9 +22,7 @@ public class RemoteUser extends MdxBase<RemoteUser> {
   private String firstName;
   private String lastName;
   private String phone;
-  private String homePhone;
-  private String mobilePhone;
-  private String workPhone;
+  private List<Phone> phones;
   private Boolean remoteDepositEligible;
   private Boolean remoteDepositEnrolled;
   private String ssn;
