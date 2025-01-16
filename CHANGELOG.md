@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [16.1.2](https://github.com/mxenabled/path-mdx-model/compare/v16.1.1...v16.1.2) (2025-01-16)
+
+
+### Bug Fixes
+
+* replace phone strings with list of phones for remote user ([315fd66](https://github.com/mxenabled/path-mdx-model/commit/315fd661fc7aff5322240c54691006f279fcf1ee))
+
 ## [16.1.1](https://github.com/mxenabled/path-mdx-model/compare/v16.1.0...v16.1.1) (2025-01-15)
 
 
