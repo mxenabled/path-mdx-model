@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [16.2.0](https://github.com/mxenabled/path-mdx-model/compare/v16.1.2...v16.2.0) (2025-01-23)
+
+
+### Features
+
+* add hasCardRewards field to account details features ([b30c540](https://github.com/mxenabled/path-mdx-model/commit/b30c5400d9a3561b53e7b958858ae31123ea2c0d))
+
 ## [16.1.2](https://github.com/mxenabled/path-mdx-model/compare/v16.1.1...v16.1.2) (2025-01-16)
 
 
