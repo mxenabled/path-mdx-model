@@ -29,7 +29,14 @@ public class PayoutsController extends BaseController {
   @RequestMapping(value = "/payouts", method = RequestMethod.POST, consumes = BaseController.MDX_MEDIA)
   public final ResponseEntity<Payout> createPayout(@RequestBody Payout payoutRequest) {
     AccessorResponse<Payout> response = gateway().payouts().create(payoutRequest);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+
+    // Return 202 returning challenge questions
+    Payout result = response.getResult();
+    HttpStatus status = HttpStatus.OK;
+    if (result.getChallenges() != null && !result.getChallenges().isEmpty()) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 
   @RequestMapping(value = "/payouts/{id}/cancel", method = RequestMethod.PUT)
