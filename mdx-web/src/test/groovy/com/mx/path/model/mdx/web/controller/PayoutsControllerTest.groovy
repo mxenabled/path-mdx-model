@@ -10,6 +10,7 @@ import com.mx.path.gateway.api.payout.PayoutMethodGateway
 import com.mx.path.gateway.api.payout.RecipientGateway
 import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.account.Account
+import com.mx.path.model.mdx.model.challenges.Challenge
 import com.mx.path.model.mdx.model.payout.Payout
 import com.mx.path.model.mdx.model.payout.PayoutMethod
 import com.mx.path.model.mdx.model.payout.Recipient
@@ -72,6 +73,27 @@ class PayoutsControllerTest extends Specification implements WithMockery {
     response.getStatusCode() == HttpStatus.OK
     response.getBody().getWrapped()
     response.getBody() == payout
+  }
+
+  def "CreatePayout with challenges"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def payout = new Payout().tap {
+      setChallenges(new MdxList<Challenge>().tap {
+        add(new Challenge())
+      })
+    }
+
+    Mockito.doReturn(new AccessorResponse<Payout>().withResult(payout)).when(payoutGateway).create(payout)
+
+    when:
+    def response = subject.createPayout(payout)
+
+    then:
+    verify(payoutGateway).create(payout) || true
+    response.statusCode == HttpStatus.ACCEPTED
+    response.body == payout
   }
 
   def "CancelPayout interacts with gateway"() {
