@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [16.3.0](https://github.com/mxenabled/path-mdx-model/compare/v16.2.0...v16.3.0) (2025-02-03)
+
+
+### Features
+
+* add challenges to payout model ([18c78dd](https://github.com/mxenabled/path-mdx-model/commit/18c78dd04a3c82df0416caefe42888907e2d20a7))
+
 ## [16.2.0](https://github.com/mxenabled/path-mdx-model/compare/v16.1.2...v16.2.0) (2025-01-23)
 
 
