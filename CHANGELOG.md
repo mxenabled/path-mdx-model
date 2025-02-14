@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [16.4.0](https://github.com/mxenabled/path-mdx-model/compare/v16.3.0...v16.4.0) (2025-02-14)
+
+
+### Features
+
+* add card_manager_data to authorization model ([b6e157f](https://github.com/mxenabled/path-mdx-model/commit/b6e157f084495300fa48230c2b2db87ddcbcb2f5))
+
 ## [16.3.0](https://github.com/mxenabled/path-mdx-model/compare/v16.2.0...v16.3.0) (2025-02-03)
 
 
