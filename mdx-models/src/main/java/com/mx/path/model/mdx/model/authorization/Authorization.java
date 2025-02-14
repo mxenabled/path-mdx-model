@@ -13,6 +13,7 @@ import com.mx.path.model.mdx.model.challenges.Challenge;
 @EqualsAndHashCode(callSuper = true)
 public class Authorization extends MdxBase<Authorization> {
   private String accountId;
+  private CardManagerData cardManagerData;
   private List<Challenge> challenges;
   private NameValuePair[] cookies;
   @SerializedName("cookies_url")
