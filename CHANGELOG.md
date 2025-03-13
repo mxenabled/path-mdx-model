@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [16.5.0](https://github.com/mxenabled/path-mdx-model/compare/v16.4.0...v16.5.0) (2025-03-13)
+
+
+### Features
+
+* add RDC eligibility fields to Profile model ([ad6fb48](https://github.com/mxenabled/path-mdx-model/commit/ad6fb48931ee002c35049ec37c0011dc14169745))
+
 ## [16.4.0](https://github.com/mxenabled/path-mdx-model/compare/v16.3.0...v16.4.0) (2025-02-14)
 
 
