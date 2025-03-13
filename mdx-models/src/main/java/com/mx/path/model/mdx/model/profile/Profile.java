@@ -2,71 +2,33 @@ package com.mx.path.model.mdx.model.profile;
 
 import java.time.LocalDate;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import com.google.gson.annotations.SerializedName;
+import com.mx.path.core.common.model.Internal;
 import com.mx.path.model.mdx.model.MdxBase;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 public final class Profile extends MdxBase<Profile> {
   @SerializedName("birth_date_on")
   private LocalDate birthDate;
-  @SerializedName("first_name")
   private String firstName;
   private Gender gender;
-  @SerializedName("last_name")
   private String lastName;
-  @SerializedName("middle_name")
   private String middleName;
   private String ssn;
 
-  public Profile() {
-  }
-
-  public LocalDate getBirthDate() {
-    return birthDate;
-  }
-
-  public void setBirthDate(LocalDate birthDate) {
-    this.birthDate = birthDate;
-  }
-
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-
-  public Gender getGender() {
-    return gender;
-  }
-
-  public void setGender(Gender gender) {
-    this.gender = gender;
-  }
-
-  public String getLastName() {
-    return lastName;
-  }
-
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
-
-  public String getMiddleName() {
-    return middleName;
-  }
-
-  public void setMiddleName(String middleName) {
-    this.middleName = middleName;
-  }
-
-  public String getSsn() {
-    return ssn;
-  }
-
-  public void setSsn(String ssn) {
-    this.ssn = ssn;
-  }
+  // --------------------------------------------------------
+  // Internal Fields
+  //  ** These fields will not render in web responses.
+  //  ** They are only for internal communication.
+  // --------------------------------------------------------
+  @Internal
+  private boolean remoteDepositEligible;
+  @Internal
+  private boolean remoteDepositEnrolled;
 
   // enum definition
 
