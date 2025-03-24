@@ -5,6 +5,16 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [16.6.0](https://github.com/mxenabled/path-mdx-model/compare/v16.5.0...v16.6.0) (2025-03-24)
+
+
+### Features
+
+* added isbottomachored to challenge question ([843aca6](https://github.com/mxenabled/path-mdx-model/commit/843aca63f89d8046838791675e15c2b3e60874db))
+* added standardized lombok headers ([843aca6](https://github.com/mxenabled/path-mdx-model/commit/843aca63f89d8046838791675e15c2b3e60874db))
+* spotless check ([843aca6](https://github.com/mxenabled/path-mdx-model/commit/843aca63f89d8046838791675e15c2b3e60874db))
+* using lombok library for getter and setter ([843aca6](https://github.com/mxenabled/path-mdx-model/commit/843aca63f89d8046838791675e15c2b3e60874db))
+
 ## [16.5.0](https://github.com/mxenabled/path-mdx-model/compare/v16.4.0...v16.5.0) (2025-03-13)
 
 
