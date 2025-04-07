@@ -15,8 +15,9 @@ import com.mx.path.testing.WithMockery
 
 import org.springframework.http.HttpStatus
 
-import  com.mx.path.model.mdx.model.check.CheckImage
 import spock.lang.Specification
+
+import  com.mx.path.model.mdx.model.check.CheckImage
 
 class CheckImagesControllerTest extends Specification implements WithMockery{
   CheckImagesController subject

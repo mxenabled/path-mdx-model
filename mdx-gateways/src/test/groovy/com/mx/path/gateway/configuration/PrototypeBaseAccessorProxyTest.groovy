@@ -10,7 +10,7 @@ class PrototypeBaseAccessorProxyTest extends Specification {
 
   def "build returns different instance"() {
     given:
-    def subject = new BaseAccessorProxyPrototype(AccessorConfiguration.builder().clientId("client1").build(), BaseAccessorImpl.class);
+    def subject = new BaseAccessorProxyPrototype(AccessorConfiguration.builder().clientId("client1").build(), BaseAccessorImpl.class)
 
     when:
     def instance = subject.build()

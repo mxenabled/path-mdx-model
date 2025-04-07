@@ -4,7 +4,7 @@ package com.mx.path.service.connection.realtime
 import spock.lang.Specification
 
 class MdxRealtimeConnectionTest extends Specification {
-  MdxRealtimeConnection subject;
+  MdxRealtimeConnection subject
 
   def setup() {
     subject = new MdxRealtimeConnection(new MdxRealtimeConnectionConfiguration().tap {

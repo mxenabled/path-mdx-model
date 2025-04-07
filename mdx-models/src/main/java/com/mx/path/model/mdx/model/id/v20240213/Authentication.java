@@ -15,8 +15,6 @@ public class Authentication extends MdxBase<Authentication> {
     SECONDARY
   }
 
-  private final String version = "20240213";
-
   private List<Challenge> challenges;
   private String clientDeviceToken;
   private Integer deviceHeight;

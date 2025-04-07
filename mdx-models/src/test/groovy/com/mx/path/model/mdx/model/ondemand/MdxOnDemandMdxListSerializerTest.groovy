@@ -55,10 +55,10 @@ class MdxOnDemandMdxListSerializerTest extends Specification implements WithMock
 
     then:
     def expectedResponse= "<Transaction>\n" +
-        "  <wrapped>false</wrapped>\n" +
         "  <amount>9.99</amount>\n" +
         "  <description>Fees</description>\n" +
         "  <id>T-123</id>\n" +
+        "  <wrapped>false</wrapped>\n" +
         "</Transaction>\n"
 
     sanitizeXml(stringWriter) == sanitizeXml(expectedResponse)
@@ -117,16 +117,16 @@ class MdxOnDemandMdxListSerializerTest extends Specification implements WithMock
     def expectedResponse= "<mdx version=\"5.0\">\n" +
         "<transactions>\n" +
         "<Transaction>\n" +
-        "  <wrapped>false</wrapped>\n" +
         "  <amount>9.99</amount>\n" +
         "  <description>Fees</description>\n" +
         "  <id>T-123</id>\n" +
+        "  <wrapped>false</wrapped>\n" +
         "</Transaction>\n" +
         "<Transaction>\n" +
-        "  <wrapped>false</wrapped>\n" +
         "  <amount>9.99</amount>\n" +
         "  <description>Fees</description>\n" +
         "  <id>T-456</id>\n" +
+        "  <wrapped>false</wrapped>\n" +
         "</Transaction>\n" +
         "</transactions>\n" +
         "</mdx>\n"

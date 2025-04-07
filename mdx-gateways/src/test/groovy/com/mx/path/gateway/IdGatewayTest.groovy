@@ -29,7 +29,7 @@ class IdGatewayTest extends Specification {
 
   def "authenticate"() {
     given:
-    def response = new AccessorResponse<Authentication>();
+    def response = new AccessorResponse<Authentication>()
     def authentication = new Authentication()
 
     when:
@@ -41,7 +41,7 @@ class IdGatewayTest extends Specification {
 
   def "authenticateWithUserKey"() {
     given:
-    def response = new AccessorResponse<Authentication>();
+    def response = new AccessorResponse<Authentication>()
     def authentication = new Authentication()
 
     when:
@@ -53,7 +53,7 @@ class IdGatewayTest extends Specification {
 
   def "resumeMfa"() {
     given:
-    def response = new AccessorResponse<Authentication>();
+    def response = new AccessorResponse<Authentication>()
     def authentication = new Authentication()
 
     when:
@@ -65,7 +65,7 @@ class IdGatewayTest extends Specification {
 
   def "logout"() {
     given:
-    def response = new AccessorResponse<>();
+    def response = new AccessorResponse<>()
 
     when:
     when(accessor.logout("session-123")).thenReturn(response)

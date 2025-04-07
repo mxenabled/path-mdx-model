@@ -1,4 +1,4 @@
-package com.mx.path.model.mdx.web;
+package com.mx.path.model.mdx.web
 
 import spock.lang.Specification
 
