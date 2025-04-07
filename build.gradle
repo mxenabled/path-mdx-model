@@ -2,7 +2,7 @@ plugins {
   id "idea"
   id "com.github.mxenabled.coppuccino" version "4.+" apply false
   id "com.github.mxenabled.vogue" version "1.+"
-  id "io.freefair.lombok" version "8.0.+" apply false
+  id "io.freefair.lombok" version "8.+" apply false
   id "io.github.gradle-nexus.publish-plugin" version "1.1.+"
 }
 
@@ -44,7 +44,7 @@ allprojects {
   }
 
   ext {
-    pathSDKVersion = "[4.0.0,5.0.0)"
+    pathSDKVersion = "[4.0,5.0)"
     springVersion = "[2.7.0,2.8.0)!!2.7.5"
   }
 }
@@ -107,7 +107,7 @@ subprojects {
     }
 
     task packageJavadoc(type: Jar) {
-      classifier = 'javadoc'
+      classifier = "javadoc"
       from javadoc
     }
 
@@ -145,11 +145,11 @@ subprojects {
               }
 
               licenses {
-                  license {
-                      name = "Proprietary"
-                      url = "https://github.com/mxenabled/path-mdx-model/blob/master/LICENSE"
-                      distribution = "repo"
-                  }
+                license {
+                  name = "Proprietary"
+                  url = "https://github.com/mxenabled/path-mdx-model/blob/master/LICENSE"
+                  distribution = "repo"
+                }
               }
 
               scm {
