@@ -16,7 +16,6 @@ public class Authorization extends MdxBase<Authorization> {
   private CardManagerData cardManagerData;
   private List<Challenge> challenges;
   private NameValuePair[] cookies;
-  @SerializedName("cookies_url")
   private String cookiesUrl;
   private String deviceId;
   private Long expiresAt;
