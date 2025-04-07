@@ -25,6 +25,11 @@ public final class Profile extends MdxBase<Profile> {
   //  ** These fields will not render in web responses.
   //  ** They are only for internal communication.
   // --------------------------------------------------------
+
+  @Internal
+  private boolean billPayEligible;
+  @Internal
+  private boolean billPayEnrolled;
   @Internal
   private boolean remoteDepositEligible;
   @Internal
