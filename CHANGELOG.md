@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [16.7.0](https://github.com/mxenabled/path-mdx-model/compare/v16.6.0...v16.7.0) (2025-04-07)
+
+
+### Features
+
+* add billpay eligibility fields to Profile model ([8adc44e](https://github.com/mxenabled/path-mdx-model/commit/8adc44e160fb6ad55770e9d2bc73c5d181b4b52f))
+
 ## [16.6.0](https://github.com/mxenabled/path-mdx-model/compare/v16.5.0...v16.6.0) (2025-03-24)
 
 
