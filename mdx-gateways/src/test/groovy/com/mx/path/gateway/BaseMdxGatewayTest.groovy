@@ -35,7 +35,7 @@ class BaseMdxGatewayTest extends Specification {
 
     @Override
     protected <T> AccessorResponse<T> call(Class<T> resultType, GatewayRequestContext request, GatewayBehavior terminatingBehavior) {
-      return callNext(resultType, request, terminatingBehavior);
+      return callNext(resultType, request, terminatingBehavior)
     }
   }
 

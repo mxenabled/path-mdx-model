@@ -39,7 +39,7 @@ class TransactionGatewayTest extends Specification {
 
   def "recent"() {
     given:
-    def response = new AccessorResponse<MdxList<Transaction>>();
+    def response = new AccessorResponse<MdxList<Transaction>>()
     def searchRequest = new TransactionSearchRequest()
 
     when:
@@ -51,7 +51,7 @@ class TransactionGatewayTest extends Specification {
 
   def "search"() {
     given:
-    def response = new AccessorResponse<TransactionsPage>();
+    def response = new AccessorResponse<TransactionsPage>()
     def searchRequest = new TransactionSearchRequest()
 
     when:

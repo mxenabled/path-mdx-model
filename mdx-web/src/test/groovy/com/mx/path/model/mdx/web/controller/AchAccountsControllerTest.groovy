@@ -53,7 +53,7 @@ class AchAccountsControllerTest extends Specification {
     BaseController.setGateway(gateway)
     def heldAccounts = new MdxList<Account>()
     heldAccounts.add(new Account())
-    def queryParameters = new AchTransferAccountListQueryParameters();
+    def queryParameters = new AchTransferAccountListQueryParameters()
     queryParameters.setTransfer_type(testTransferType)
     queryParameters.setList_type(testType)
     queryParameters.setAccount_id(testAccountId)

@@ -50,10 +50,10 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
 
     then:
     def expectedResponse = "<Account>\n" +
-        "  <wrapped>false</wrapped>\n" +
         "  <balance>0.09</balance>\n" +
         "  <id>A-123</id>\n" +
         "  <name>Checking</name>\n" +
+        "  <wrapped>false</wrapped>\n" +
         "</Account>\n"
 
     sanitizeXml(stringWriter) == sanitizeXml(expectedResponse)
@@ -75,10 +75,10 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
     then:
     def expectedResponse = "<mdx version=\"5.0\">\n" +
         "<Account>\n" +
-        "  <wrapped>true</wrapped>\n" +
         "  <balance>0.09</balance>\n" +
         "  <id>A-123</id>\n" +
         "  <name>Checking</name>\n" +
+        "  <wrapped>true</wrapped>\n" +
         "</Account>\n" +
         "</mdx>\n"
 
@@ -196,8 +196,8 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
 
     then:
     def expectedResponse = "<Transaction>\n" +
-        "  <wrapped>false</wrapped>\n" +
         "  <posted_on>2020-01-12</posted_on>\n" +
+        "  <wrapped>false</wrapped>\n" +
         "</Transaction>\n"
 
     sanitizeXml(stringWriter) == sanitizeXml(expectedResponse)
@@ -220,10 +220,10 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
     then:
     def expectedResponse = "<mdx version=\"5.0\">\n" +
         "<Account>\n" +
-        "  <wrapped>true</wrapped>\n" +
         "  <balance>30000000.00</balance>\n" +
         "  <id>A-123</id>\n" +
         "  <name>Checking</name>\n" +
+        "  <wrapped>true</wrapped>\n" +
         "</Account>\n" +
         "</mdx>\n"
 

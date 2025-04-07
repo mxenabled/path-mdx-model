@@ -99,10 +99,10 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     authentication20240213.setDeviceOperatingSystemVersion("12")
     authentication20240213.setDeviceWidth(50)
 
-    GsonBuilder builder = new GsonBuilder();
-    Resources.registerResources(builder);
+    GsonBuilder builder = new GsonBuilder()
+    Resources.registerResources(builder)
 
-    gson = builder.create();
+    gson = builder.create()
   }
 
   def cleanup() {
@@ -332,7 +332,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     doAnswer(new Answer() {
           public Object answer(InvocationOnMock invocation) {
             ResponseContext.current().getHeaders().put("forwarded-h1", "v1")
-            return new AccessorResponse<Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK);
+            return new AccessorResponse<Authentication>().withResult(resultAuthentication).withStatus(PathResponseStatus.OK)
           }
         }).when(id).authenticate(authentication)
 

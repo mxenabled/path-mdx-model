@@ -29,7 +29,7 @@ class AccountGatewayTest extends Specification {
 
   def "all"() {
     given:
-    def response = new AccessorResponse<MdxList<Account>>();
+    def response = new AccessorResponse<MdxList<Account>>()
 
     when:
     when(accessor.list()).thenReturn(response)

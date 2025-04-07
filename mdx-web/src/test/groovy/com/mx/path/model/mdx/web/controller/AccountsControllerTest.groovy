@@ -97,7 +97,7 @@ class AccountsControllerTest extends Specification implements WithMockery {
 
   def "update when implemented"() {
     given:
-    def account = new Account();
+    def account = new Account()
     AccountsController.setGateway(gateway)
     Mockito.doReturn(new AccessorResponse<Account>().withResult(account)).when(accountGateway).update("account-1", account)
 

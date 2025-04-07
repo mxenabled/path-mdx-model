@@ -19,9 +19,13 @@ import com.mx.testing.*
 import spock.lang.Specification
 
 class GatewayConfiguratorTest extends Specification {
+  def cleanup() {
+    Facilities.reset()
+  }
+
   def "fromJson empty"() {
     given:
-    def subject = new GatewayConfigurator();
+    def subject = new GatewayConfigurator()
 
     when: "empty json"
     def result = subject.buildFromJson("")
@@ -38,7 +42,7 @@ class GatewayConfiguratorTest extends Specification {
 
   def "fromJson"() {
     given:
-    def subject = new GatewayConfigurator();
+    def subject = new GatewayConfigurator()
 
     when:
     def file = new File("src/test/resources/gatewayConfig.json")
@@ -51,7 +55,7 @@ class GatewayConfiguratorTest extends Specification {
 
   def "fromYaml empty"() {
     given:
-    def subject = new GatewayConfigurator();
+    def subject = new GatewayConfigurator()
 
     when: "empty yaml"
     def result = subject.buildFromYaml("")
@@ -68,7 +72,7 @@ class GatewayConfiguratorTest extends Specification {
 
   def "fromYaml"() {
     given:
-    def subject = new GatewayConfigurator();
+    def subject = new GatewayConfigurator()
 
     when:
     def file = new File("src/test/resources/gatewayConfig.yaml")

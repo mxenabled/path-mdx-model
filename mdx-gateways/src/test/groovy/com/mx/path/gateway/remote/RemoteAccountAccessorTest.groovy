@@ -22,9 +22,9 @@ import spock.lang.Specification
 
 class RemoteAccountAccessorTest extends Specification {
   RemoteAccountAccessor subject
-  private static GsonBuilder gsonBuilder = new GsonBuilder();
+  private static GsonBuilder gsonBuilder = new GsonBuilder()
   private static Gson gson = gsonBuilder.registerTypeAdapter(LocalDate.class, LocalDateDeserializer.builder()
-  .build()).create();
+  .build()).create()
 
   def setup() {
     subject = spy(new RemoteAccountAccessor())

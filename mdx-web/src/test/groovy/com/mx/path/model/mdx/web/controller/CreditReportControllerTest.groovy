@@ -41,7 +41,7 @@ class CreditReportControllerTest extends Specification implements WithMockery {
   def "getCreditReportSettings interacts with gateway"() {
     given:
     BaseController.setGateway(gateway)
-    CreditReportSettings settings = new CreditReportSettings();
+    CreditReportSettings settings = new CreditReportSettings()
 
     when:
     Mockito.doReturn(new AccessorResponse<CreditReportSettings>().withResult(settings)).when(creditReportSettingsGateway).get()
@@ -54,7 +54,7 @@ class CreditReportControllerTest extends Specification implements WithMockery {
   def "subscribeCreditReport interacts with gateway"() {
     given:
     BaseController.setGateway(gateway)
-    CreditReportSettings settings = new CreditReportSettings();
+    CreditReportSettings settings = new CreditReportSettings()
 
     when:
     Mockito.doReturn(new AccessorResponse<CreditReportSettings>().withResult(settings)).when(creditReportGateway).subscribe()
@@ -68,7 +68,7 @@ class CreditReportControllerTest extends Specification implements WithMockery {
   def "unsubscribeCreditReport interacts with gateway"() {
     given:
     BaseController.setGateway(gateway)
-    CreditReportSettings settings = new CreditReportSettings();
+    CreditReportSettings settings = new CreditReportSettings()
 
     when:
     Mockito.doReturn(new AccessorResponse<CreditReportSettings>().withResult(settings)).when(creditReportGateway).unsubscribe()
