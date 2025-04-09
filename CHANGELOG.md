@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [16.7.1](https://github.com/mxenabled/path-mdx-model/compare/v16.7.0...v16.7.1) (2025-04-09)
+
+
+### Build System
+
+* upgrade path-core and lombok ([03968ed](https://github.com/mxenabled/path-mdx-model/commit/03968edefe596a71700cb1e7b6c0f4ca83eb6254))
+
 ## [16.7.0](https://github.com/mxenabled/path-mdx-model/compare/v16.6.0...v16.7.0) (2025-04-07)
 
 
