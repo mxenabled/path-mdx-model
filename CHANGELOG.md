@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [16.7.2](https://github.com/mxenabled/path-mdx-model/compare/v16.7.1...v16.7.2) (2025-04-17)
+
+
+### Bug Fixes
+
+* add VANTAGE_SCORE as one of the score versions in Path Models ([954289a](https://github.com/mxenabled/path-mdx-model/commit/954289ae2d9af3e43e80a17eb31f31c76114728a))
+
 ## [16.7.1](https://github.com/mxenabled/path-mdx-model/compare/v16.7.0...v16.7.1) (2025-04-09)
 
 
