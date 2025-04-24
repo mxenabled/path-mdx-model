@@ -75,7 +75,7 @@ public final class CreditReport extends MdxBase<CreditReport> {
   }
 
   public enum ScoreVersions {
-    FICO_SCORE_8("Fico Score 8"), FICO_SCORE_9("Fico Score 9"), VANTAGE_SCORE("Vantage Score");
+    FICO_SCORE_8("Fico Score 8"), FICO_SCORE_9("Fico Score 9"), VANTAGE_SCORE_3("Vantage Score 3");
 
     private final String description;
 
