@@ -31,6 +31,7 @@ public class Authentication extends MdxBase<Authentication> {
   private String id;
   @SerializedName("device_iovation_token")
   private String iovationToken;
+  private String idToken;
   private String login;
   private char[] password;
   private String refreshToken;
@@ -196,6 +197,14 @@ public class Authentication extends MdxBase<Authentication> {
 
   public final void setIovationToken(String iovationToken) {
     this.iovationToken = iovationToken;
+  }
+
+  public final String getIdToken() {
+    return idToken;
+  }
+
+  public final void setIdToken(String idToken) {
+    this.idToken = idToken;
   }
 
   public final String getLogin() {
