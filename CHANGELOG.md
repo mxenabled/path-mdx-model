@@ -5,6 +5,20 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [16.8.0](https://github.com/mxenabled/path-mdx-model/compare/v16.7.3...v16.8.0) (2025-05-05)
+
+
+### Features
+
+* add incoming request logging filter ([86361a9](https://github.com/mxenabled/path-mdx-model/commit/86361a93a3914e46fe18055e8f850efeee971c6b))
+* adding the new variable id token for supporting the IDP Auth flows ([819e3b9](https://github.com/mxenabled/path-mdx-model/commit/819e3b9fcbfbcc04af2d623b9c624206cb2789bb))
+
+
+### Bug Fixes
+
+* initial log masking support ([87239b4](https://github.com/mxenabled/path-mdx-model/commit/87239b4c561ec827563e044059ffd034b3651b8a))
+* remove unused managed card merchant endpoints ([d63fc82](https://github.com/mxenabled/path-mdx-model/commit/d63fc82b21e015ea9792cf4ae88e4dc10ad1d847))
+
 ## [16.7.3](https://github.com/mxenabled/path-mdx-model/compare/v16.7.2...v16.7.3) (2025-04-25)
 
 

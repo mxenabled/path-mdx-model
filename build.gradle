@@ -6,7 +6,7 @@ plugins {
   id "io.github.gradle-nexus.publish-plugin" version "1.1.+"
 }
 
-version "16.7.3" // x-release-please-version
+version "16.8.0" // x-release-please-version
 
 def platformProject = "platform"
 def publishedProjects = [
