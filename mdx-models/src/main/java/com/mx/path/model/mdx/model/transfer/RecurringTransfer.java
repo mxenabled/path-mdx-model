@@ -18,6 +18,7 @@ public final class RecurringTransfer extends MdxBase<RecurringTransfer> {
   private List<Challenge> challenges;
 
   private Double amount;
+  private String amountOptionId;
   private String confirmationId;
   private Double endAfterAmount;
   private Integer endAfterCount;
