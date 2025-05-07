@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [16.9.0](https://github.com/mxenabled/path-mdx-model/compare/v16.8.0...v16.9.0) (2025-05-07)
+
+
+### Features
+
+* add amountOptionId to transfer and recurringTransfer ([e0558d2](https://github.com/mxenabled/path-mdx-model/commit/e0558d2fc34a34205687c7fb303f7ee005c7bb9e))
+
 ## [16.8.0](https://github.com/mxenabled/path-mdx-model/compare/v16.7.3...v16.8.0) (2025-05-05)
 
 
