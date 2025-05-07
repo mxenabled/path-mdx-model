@@ -19,6 +19,7 @@ public final class Transfer extends MdxBase<Transfer> {
   private List<Challenge> challenges;
 
   private Double amount;
+  private String amountOptionId;
   private String confirmationId;
   private Long createdAt;
   private LocalDate createdOn;
