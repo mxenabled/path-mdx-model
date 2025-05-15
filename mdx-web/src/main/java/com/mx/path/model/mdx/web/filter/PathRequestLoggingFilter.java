@@ -25,8 +25,6 @@ import com.mx.path.model.mdx.model.MdxLogMasker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
-import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
@@ -37,8 +35,9 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
  * This filter logs incoming requests.
  * These values are inserted into the MDC.
  */
-@Component
-@Order(FilterOrderSequence.REQUEST_LOGGING_FILTER)
+// TODO Needs more testing before enabling. This is causing opensearch issues
+//@Component
+//@Order(FilterOrderSequence.REQUEST_LOGGING_FILTER)
 public class PathRequestLoggingFilter extends OncePerRequestFilter {
 
   // Statics
