@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [16.9.1](https://github.com/mxenabled/path-mdx-model/compare/v16.9.0...v16.9.1) (2025-05-15)
+
+
+### Bug Fixes
+
+* disable request logging filter ([1a70cd1](https://github.com/mxenabled/path-mdx-model/commit/1a70cd124d5e9d083c6c5f30a6d2e99b66382300))
+
 ## [16.9.0](https://github.com/mxenabled/path-mdx-model/compare/v16.8.0...v16.9.0) (2025-05-07)
 
 
