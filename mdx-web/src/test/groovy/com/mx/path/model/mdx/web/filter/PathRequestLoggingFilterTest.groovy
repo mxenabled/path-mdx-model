@@ -147,7 +147,7 @@ class PathRequestLoggingFilterTest extends Specification {
   def "captures expected data in MDC"() {
     given:
     def testNoMDCClearingSubject = new PathRequestLoggingFilterWithNoMDCClearing()
-    when(request.getRequestURL()).thenReturn(new StringBuffer("https://localhost:13024/testing"))
+    when(request.getRequestURI()).thenReturn("/testing")
     when(request.getQueryString()).thenReturn("param1=value1&param2=value2")
     when(request.getMethod()).thenReturn("GET")
 
@@ -189,7 +189,7 @@ class PathRequestLoggingFilterTest extends Specification {
     MDC.get("session_trace_id") == "ebebebe"
     MDC.get("device_trace_id") == "device123"
     MDC.get("request_method") == "GET"
-    MDC.get("request_uri") == "https://localhost:13024/testing"
+    MDC.get("request_uri") == "/testing"
     MDC.get("query_params") == "param1: value1\nparam2: value2\n"
     MDC.get("request_headers_json") == "{\"Accept\":\"application/vnd.mx.mdx.v6+json\",\"x-request-token\":\"**MASKED**\",\"mx-device-ip-address\":\"10.10.10.1\"}"
     MDC.get("request_headers") == "Accept: application/vnd.mx.mdx.v6+json\nx-request-token: **MASKED**\nmx-device-ip-address: 10.10.10.1\n"

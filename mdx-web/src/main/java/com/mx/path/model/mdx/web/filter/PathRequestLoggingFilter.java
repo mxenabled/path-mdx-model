@@ -18,9 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.mx.path.core.common.security.LogValueMasker;
 import com.mx.path.core.context.RequestContext;
 import com.mx.path.gateway.util.LoggingExceptionFormatter;
-import com.mx.path.model.mdx.model.MdxLogMasker;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,6 +43,7 @@ public class PathRequestLoggingFilter extends OncePerRequestFilter {
 
   // Statics
   private static final Gson GSON;
+  private static final LogValueMasker LOG_MASKER;
   private static Logger logger;
 
   public static void setLogger(Logger logger) {
@@ -84,8 +85,6 @@ public class PathRequestLoggingFilter extends OncePerRequestFilter {
       } finally {
         resetMDC();
       }
-
-      responseWrapper.copyBodyToResponse();
     }
   }
 
@@ -131,7 +130,7 @@ public class PathRequestLoggingFilter extends OncePerRequestFilter {
     }
 
     MDC.put("request_method", request.getMethod());
-    MDC.put("request_uri", String.valueOf(request.getRequestURL()));
+    MDC.put("request_uri", request.getRequestURI());
 
     if (request.getQueryString() != null) {
       final Map<String, String> queryParams = this.buildQueryStringMap(request.getQueryString());
@@ -152,7 +151,7 @@ public class PathRequestLoggingFilter extends OncePerRequestFilter {
 
     final String requestBody = new String(request.getContentAsByteArray(), StandardCharsets.UTF_8);
     if (!requestBody.isEmpty()) {
-      MDC.put("request_body", MdxLogMasker.maskPayload(requestBody));
+      MDC.put("request_body", LOG_MASKER.maskPayload(requestBody));
     } else {
       MDC.remove("request_body");
     }
@@ -179,10 +178,11 @@ public class PathRequestLoggingFilter extends OncePerRequestFilter {
 
     final String responseBody = new String(response.getContentAsByteArray(), StandardCharsets.UTF_8);
     if (!responseBody.isEmpty()) {
-      MDC.put("response_body", MdxLogMasker.maskPayload(responseBody));
+      MDC.put("response_body", LOG_MASKER.maskPayload(responseBody));
     } else {
       MDC.remove("response_body");
     }
+    response.copyBodyToResponse();
 
     logger.info("Incoming request");
   }
@@ -285,13 +285,14 @@ public class PathRequestLoggingFilter extends OncePerRequestFilter {
 
     final Map<String, String> maskedHeaders = new HashMap<>();
     headers.forEach((name, value) -> {
-      maskedHeaders.put(name, MdxLogMasker.maskHeaderValue(name, value));
+      maskedHeaders.put(name, LOG_MASKER.maskHeaderValue(name, value));
     });
     return maskedHeaders;
   }
 
   static {
     GSON = new GsonBuilder().disableHtmlEscaping().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY).create();
+    LOG_MASKER = new LogValueMasker();
     logger = LoggerFactory.getLogger(PathRequestLoggingFilter.class);
   }
 }
