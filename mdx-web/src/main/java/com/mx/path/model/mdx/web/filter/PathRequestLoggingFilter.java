@@ -2,11 +2,9 @@ package com.mx.path.model.mdx.web.filter;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -25,6 +23,8 @@ import com.mx.path.model.mdx.model.MdxLogMasker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
@@ -35,9 +35,8 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
  * This filter logs incoming requests.
  * These values are inserted into the MDC.
  */
-// TODO Needs more testing before enabling. This is causing opensearch issues
-//@Component
-//@Order(FilterOrderSequence.REQUEST_LOGGING_FILTER)
+@Component
+@Order(FilterOrderSequence.REQUEST_LOGGING_FILTER)
 public class PathRequestLoggingFilter extends OncePerRequestFilter {
 
   // Statics
@@ -156,6 +155,7 @@ public class PathRequestLoggingFilter extends OncePerRequestFilter {
       MDC.remove("request_body");
     }
 
+    MDC.put("api_call_payload", buildApiPayload(response, request));
     MDC.put("request_duration", String.valueOf(elapsedTime));
     MDC.put("status", String.valueOf(response.getStatus()));
 
@@ -190,6 +190,7 @@ public class PathRequestLoggingFilter extends OncePerRequestFilter {
    * Resets the MDC by just cleaning up what we place there.
    */
   protected void resetMDC() {
+    MDC.remove("api_call_payload");
     MDC.remove("client_guid");
     MDC.remove("client_id");
     MDC.remove("device_trace_id");
@@ -210,6 +211,55 @@ public class PathRequestLoggingFilter extends OncePerRequestFilter {
     MDC.remove("session_trace_id");
     MDC.remove("status");
     MDC.remove("user_guid");
+  }
+
+  private String buildApiPayload(ContentCachingResponseWrapper response, ContentCachingRequestWrapper request) {
+    StringBuilder b = new StringBuilder();
+    b.append("\n= Request\n\n");
+    b.append(request.getMethod());
+    b.append(" ");
+    b.append(request.getRequestURL());
+    b.append("\n\n");
+    if (request.getHeaderNames() != null) {
+      Map<String, String> requestHeaders = this.buildRequestHeadersMap(request);
+      Map<String, String> maskedRequestHeaders = this.maskHeaders(requestHeaders);
+      b.append(this.buildHeaderString(maskedRequestHeaders));
+    }
+
+    String queryString = request.getQueryString();
+    if (queryString != null) {
+      Map<String, String> queryParams = this.buildQueryStringMap(queryString);
+      b.append(this.buildHeaderString(this.maskHeaders(queryParams)));
+    }
+
+    String requestBody = new String(request.getContentAsByteArray(), StandardCharsets.UTF_8);
+    if (!requestBody.isEmpty()) {
+      b.append("\n");
+      b.append(MdxLogMasker.maskPayload(requestBody));
+      b.append("\n");
+    }
+
+    b.append("\n= Response\n\n");
+    b.append(response.getStatus());
+    b.append("\n");
+    if (response.getHeaderNames() != null) {
+      Map<String, String> responseHeaders = this.buildResponseHeadersMap(response);
+      Map<String, String> maskedResponseHeaders = this.maskHeaders(responseHeaders);
+
+      if (response.getContentType() != null) {
+        maskedResponseHeaders.put("Content-Type", response.getContentType());
+      }
+
+      if (!maskedResponseHeaders.isEmpty()) {
+        b.append(buildHeaderString(maskedResponseHeaders));
+      }
+    }
+
+    String responseBody = new String(response.getContentAsByteArray(), StandardCharsets.UTF_8);
+    if (!responseBody.isEmpty()) {
+      b.append(MdxLogMasker.maskPayload(responseBody));
+    }
+    return b.toString();
   }
 
   private Map<String, String> buildRequestHeadersMap(HttpServletRequest request) {
@@ -239,14 +289,10 @@ public class PathRequestLoggingFilter extends OncePerRequestFilter {
 
     for (String headerName : headerNames) {
       final Collection<String> headerValues = response.getHeaders(headerName);
-      String headerValuesFlattened = "";
 
       if (headerValues != null) {
-        final List<String> headerValuesList = new ArrayList<>(headerValues);
-        headerValuesFlattened = String.join(", ", headerValuesList);
+        headerMap.put(headerName, (String) headerValues.toArray()[0]);
       }
-
-      headerMap.put(headerName, headerValuesFlattened);
     }
 
     return headerMap;
