@@ -5,6 +5,17 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [17.0.0](https://github.com/mxenabled/path-mdx-model/compare/v16.9.1...v17.0.0) (2025-05-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* restore PathRequestLoggingFilter
+
+### Features
+
+* restore PathRequestLoggingFilter ([29b0583](https://github.com/mxenabled/path-mdx-model/commit/29b05834de7344252db1839452f5027b66795567))
+
 ## [16.9.1](https://github.com/mxenabled/path-mdx-model/compare/v16.9.0...v16.9.1) (2025-05-15)
 
 
