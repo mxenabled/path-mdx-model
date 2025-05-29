@@ -1,5 +1,7 @@
 package com.mx.path.model.mdx.web.filter
 
+import static org.mockito.ArgumentMatchers.anyLong
+import static org.mockito.Mockito.*
 import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.verify
 import static org.mockito.Mockito.when
@@ -10,8 +12,11 @@ import javax.servlet.http.HttpServletResponse
 
 import com.mx.path.core.context.RequestContext
 
+import org.mockito.Mockito
 import org.slf4j.Logger
 import org.slf4j.MDC
+import org.springframework.web.util.ContentCachingRequestWrapper
+import org.springframework.web.util.ContentCachingResponseWrapper
 
 import spock.lang.Specification
 
@@ -26,8 +31,9 @@ class PathRequestLoggingFilterTest extends Specification {
     logger = mock(Logger.class)
     PathRequestLoggingFilter.setLogger(logger)
 
-    subject = new PathRequestLoggingFilter()
+    subject = spy(new PathRequestLoggingFilter())
     request = mock(HttpServletRequest)
+    when(request.getRequestURI()).thenReturn("wedge/afcu/U-123/accounts")
     response = mock(HttpServletResponse)
     filterChain = mock(FilterChain)
 
@@ -197,6 +203,17 @@ class PathRequestLoggingFilterTest extends Specification {
     MDC.get("request_duration") != null
     MDC.get("response_headers_json") == "{\"Content-Length\":\"50\",\"mx-session-key\":\"**MASKED**\",\"Content-Type\":\"application/vnd.mx.mdx.v6+json\"}"
     MDC.get("response_headers") == "Content-Length: 50\nmx-session-key: **MASKED**\nContent-Type: application/vnd.mx.mdx.v6+json\n"
+  }
+
+  def "skips logging when requestURI contains status"() {
+    given:
+    when(request.getRequestURI()).thenReturn("path-connector-<client-id>/status")
+
+    when:
+    subject.doFilterInternal(request, response, filterChain)
+
+    then:
+    verify(subject, never()).logRequest(any(ContentCachingRequestWrapper), any(ContentCachingResponseWrapper), anyLong()) || true
   }
 
   private class PathRequestLoggingFilterWithNoMDCClearing extends PathRequestLoggingFilter {

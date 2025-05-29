@@ -74,21 +74,30 @@ public class PathRequestLoggingFilter extends OncePerRequestFilter {
       // Pass request to next filter with wrappers to support logging request and response bodies
       filterChain.doFilter(requestWrapper, responseWrapper);
     } finally {
-      try {
-        this.logRequest(requestWrapper, responseWrapper, requestStartTimeMillis);
-      } catch (Exception ex) {
-        MDC.put("exception", LoggingExceptionFormatter.formatLoggingExceptionWithStacktrace(ex));
-        logger.error("Failed to log incoming request", ex);
-      } finally {
-        resetMDC();
+      if (!request.getRequestURI().contains("/status")) {
+        try {
+          this.logRequest(requestWrapper, responseWrapper, requestStartTimeMillis);
+        } catch (Exception ex) {
+          MDC.put("exception", LoggingExceptionFormatter.formatLoggingExceptionWithStacktrace(ex));
+          logger.error("Failed to log incoming request", ex);
+        } finally {
+          resetMDC();
+        }
       }
 
       responseWrapper.copyBodyToResponse();
     }
   }
 
+  /**
+   * logs request/response via logback appender. Function is protected for testing purposes, do not extend
+   * @param request
+   * @param response
+   * @param requestStartTimeMillis
+   * @throws IOException
+   */
   @SuppressWarnings("PMD.CyclomaticComplexity")
-  private void logRequest(ContentCachingRequestWrapper request, ContentCachingResponseWrapper response,
+  protected void logRequest(ContentCachingRequestWrapper request, ContentCachingResponseWrapper response,
       long requestStartTimeMillis) throws IOException {
     final long elapsedTime = System.currentTimeMillis() - requestStartTimeMillis;
     final RequestContext requestContext = RequestContext.current();
