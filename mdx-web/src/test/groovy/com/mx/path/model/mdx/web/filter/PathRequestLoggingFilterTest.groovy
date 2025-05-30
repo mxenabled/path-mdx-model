@@ -19,6 +19,7 @@ import org.springframework.web.util.ContentCachingRequestWrapper
 import org.springframework.web.util.ContentCachingResponseWrapper
 
 import spock.lang.Specification
+import spock.lang.Unroll
 
 class PathRequestLoggingFilterTest extends Specification {
   HttpServletRequest request
@@ -205,7 +206,8 @@ class PathRequestLoggingFilterTest extends Specification {
     MDC.get("response_headers") == "Content-Length: 50\nmx-session-key: **MASKED**\nContent-Type: application/vnd.mx.mdx.v6+json\n"
   }
 
-  def "skips logging when requestURI contains status"() {
+  @Unroll
+  def "skips logging when requestURI contains #request_uri"() {
     given:
     when(request.getRequestURI()).thenReturn("path-connector-<client-id>/status")
 
@@ -214,6 +216,11 @@ class PathRequestLoggingFilterTest extends Specification {
 
     then:
     verify(subject, never()).logRequest(any(ContentCachingRequestWrapper), any(ContentCachingResponseWrapper), anyLong()) || true
+
+    where:
+    request_uri                               || _
+    "http://10.66.90.77:3000/actuator/health" || _
+    "path-connector-<client-id>/status"       || _
   }
 
   private class PathRequestLoggingFilterWithNoMDCClearing extends PathRequestLoggingFilter {
