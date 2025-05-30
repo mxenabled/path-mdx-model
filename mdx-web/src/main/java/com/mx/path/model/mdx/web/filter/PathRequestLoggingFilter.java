@@ -74,7 +74,7 @@ public class PathRequestLoggingFilter extends OncePerRequestFilter {
       // Pass request to next filter with wrappers to support logging request and response bodies
       filterChain.doFilter(requestWrapper, responseWrapper);
     } finally {
-      if (!request.getRequestURI().contains("/status")) {
+      if (!request.getRequestURI().contains("/health") && !request.getRequestURI().contains("/status")) {
         try {
           this.logRequest(requestWrapper, responseWrapper, requestStartTimeMillis);
         } catch (Exception ex) {
