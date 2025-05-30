@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [17.0.3](https://github.com/mxenabled/path-mdx-model/compare/v17.0.2...v17.0.3) (2025-05-30)
+
+
+### Bug Fixes
+
+* ignore k8s health logs in path request logging filter ([0a89b72](https://github.com/mxenabled/path-mdx-model/commit/0a89b729d95950787bdab7bec59c8740069397ed))
+
 ## [17.0.2](https://github.com/mxenabled/path-mdx-model/compare/v17.0.1...v17.0.2) (2025-05-30)
 
 
