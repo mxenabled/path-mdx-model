@@ -48,6 +48,24 @@ public class Authentication extends MdxBase<Authentication> {
     setPassword(newPassword);
   }
 
+  /**
+   * Returns the version of the application.
+   *
+   * @return the application version as a {@link String}, or {@code null} if not set
+   */
+  public String getAppVersion() {
+    return appVersion;
+  }
+
+  /**
+   * Sets the version of the application.
+   *
+   * @param appVersion the application version to set
+   */
+  public void setAppVersion(String appVersion) {
+    this.appVersion = appVersion;
+  }
+
   public final Boolean isCanUsePayments() {
     return canUsePayments;
   }
