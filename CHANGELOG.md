@@ -5,6 +5,16 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [17.0.4](https://github.com/mxenabled/path-mdx-model/compare/v17.0.3...v17.0.4) (2025-07-17)
+
+
+### Bug Fixes
+
+* adding appVersion field to auth model ([21a38ca](https://github.com/mxenabled/path-mdx-model/commit/21a38ca6359e418aeecf675db0d629b319a18914))
+* adding to new auth model as well ([abaa85f](https://github.com/mxenabled/path-mdx-model/commit/abaa85f6a9a1b2bfb4f4d806a3d56bd057955ef8))
+* removing getter setter ([4eae95b](https://github.com/mxenabled/path-mdx-model/commit/4eae95b244d0399173cd1fe661165dd7f53dfc89))
+* removing getter setters ([e7f5092](https://github.com/mxenabled/path-mdx-model/commit/e7f509296b9d629b017627dbf0823228c94d47bc))
+
 ## [17.0.3](https://github.com/mxenabled/path-mdx-model/compare/v17.0.2...v17.0.3) (2025-05-30)
 
 
