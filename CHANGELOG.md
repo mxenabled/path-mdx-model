@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [17.0.8](https://github.com/mxenabled/path-mdx-model/compare/v17.0.7...v17.0.8) (2025-07-22)
+
+
+### Bug Fixes
+
+* resolve dependencies to pass maven new pom validation rules ([a6f8083](https://github.com/mxenabled/path-mdx-model/commit/a6f8083ba8a51ccd25dfa93b38a01d3c192cd1f5))
+
 ## [17.0.7](https://github.com/mxenabled/path-mdx-model/compare/v17.0.6...v17.0.7) (2025-07-22)
 
 
