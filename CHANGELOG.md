@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [17.0.6](https://github.com/mxenabled/path-mdx-model/compare/v17.0.5...v17.0.6) (2025-07-22)
+
+
+### Bug Fixes
+
+* update maven publish url ([31b6084](https://github.com/mxenabled/path-mdx-model/commit/31b60847acc5060961aa520ad08c10c77afc7976))
+
 ## [17.0.5](https://github.com/mxenabled/path-mdx-model/compare/v17.0.4...v17.0.5) (2025-07-21)
 
 
