@@ -7,7 +7,7 @@ plugins {
   id "com.netflix.nebula.maven-resolved-dependencies" version "21.2.0" apply false
 }
 
-version "17.0.7" // x-release-please-version
+version "17.0.8" // x-release-please-version
 
 def platformProject = "platform"
 def publishedProjects = [
