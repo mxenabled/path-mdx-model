@@ -158,33 +158,6 @@ subprojects {
                 connection = "scm:git:git@github.com:mxenabled/path-mdx-model.git"
                 url = "https://github.com/mxenabled/path-mdx-model/tree/master"
               }
-
-//              withXml {
-//                def root = asNode()
-//
-//                // Get or create the <dependencies> node
-//                def depsNodeList = root.get('dependencies')
-//                def depsNode = depsNodeList ? depsNodeList[0] : root.appendNode('dependencies')
-//
-//                configurations.runtimeClasspath.allDependencies.findAll {
-//                  it.group && it.name && it.version
-//                }.each { dep ->
-//                  // Only add if not already present
-//                  def alreadyExists = depsNode.children().find {
-//                    it.name() == 'dependency' &&
-//                            it.groupId?.text() == dep.group &&
-//                            it.artifactId?.text() == dep.name
-//                  }
-//
-//                  if (!alreadyExists) {
-//                    def depNode = depsNode.appendNode('dependency')
-//                    depNode.appendNode('groupId', dep.group)
-//                    depNode.appendNode('artifactId', dep.name)
-//                    depNode.appendNode('version', dep.version)
-//                    depNode.appendNode('scope', 'runtime')
-//                  }
-//                }
-//              }
             }
           }
         }
