@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [17.0.7](https://github.com/mxenabled/path-mdx-model/compare/v17.0.6...v17.0.7) (2025-07-22)
+
+
+### Bug Fixes
+
+* update path-core ([d3ea1c3](https://github.com/mxenabled/path-mdx-model/commit/d3ea1c3ec8b843aa676413d81b239be25a5bb90c))
+
 ## [17.0.6](https://github.com/mxenabled/path-mdx-model/compare/v17.0.5...v17.0.6) (2025-07-22)
 
 
