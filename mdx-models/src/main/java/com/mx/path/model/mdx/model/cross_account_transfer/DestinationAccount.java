@@ -6,7 +6,9 @@ public class DestinationAccount extends MdxBase<DestinationAccount> {
 
   private String accountHolder;
   private String accountNumber;
+  private String accountType;
   private String accountTypeId;
+  private String accountTypeSubtype;
   private Integer accountTypeNumber;
   private String id;
   private String nickname;
@@ -30,12 +32,28 @@ public class DestinationAccount extends MdxBase<DestinationAccount> {
     this.accountNumber = accountNumber;
   }
 
+  public final String getAccountType() {
+    return accountType;
+  }
+
+  public final void setAccountType(String accountType) {
+    this.accountType = accountType;
+  }
+
   public final String getAccountTypeId() {
     return accountTypeId;
   }
 
   public final void setAccountTypeId(String accountTypeId) {
     this.accountTypeId = accountTypeId;
+  }
+
+  public final String getAccountTypeSubtype() {
+    return accountTypeSubtype;
+  }
+
+  public final void setAccountTypeSubtype(String accountTypeSubtype) {
+    this.accountTypeSubtype = accountTypeSubtype;
   }
 
   public final Integer getAccountTypeNumber() {
