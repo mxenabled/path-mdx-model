@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [17.0.9](https://github.com/mxenabled/path-mdx-model/compare/v17.0.8...v17.0.9) (2025-07-25)
+
+
+### Bug Fixes
+
+* adding new fields to destination accounts ([a281ced](https://github.com/mxenabled/path-mdx-model/commit/a281ced068461f4b32dd39c93d71fe807fcde6d8))
+
 ## [17.0.8](https://github.com/mxenabled/path-mdx-model/compare/v17.0.7...v17.0.8) (2025-07-22)
 
 
