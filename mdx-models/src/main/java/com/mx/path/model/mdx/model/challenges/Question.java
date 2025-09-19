@@ -26,11 +26,12 @@ public final class Question extends MdxBase<Question> {
   private String parentQuestionId;
   private Integer width;
   private Button buttonData;
-  private Image imageData;
-  private Text textData;
   private Camera cameraData;
+  private Code codeData;
+  private Image imageData;
   private JsonData jsonData;
   private FederatedLoginData federatedLoginData;
   private HtmlData htmlData;
   private InfoData infoData;
+  private Text textData;
 }
