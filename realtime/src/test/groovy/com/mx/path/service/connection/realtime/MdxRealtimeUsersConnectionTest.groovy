@@ -4,15 +4,12 @@ import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.when
 
 import com.mx.path.connect.messaging.remote.models.RemoteUser
-import com.mx.path.core.common.accessor.ResourceNotFoundException
 import com.mx.path.core.common.accessor.UnauthorizedException
 import com.mx.path.core.common.http.HttpStatus
 import com.mx.path.service.connection.realtime.model.MdxUser
-import com.mx.path.testing.WithRequestExpectations
+import com.mx.path.testing.Mockery
 
-import spock.lang.Specification
-
-class MdxRealtimeUsersConnectionTest extends Specification implements WithRequestExpectations {
+class MdxRealtimeUsersConnectionTest extends Mockery {
   MdxRealtimeUsersConnection subject
   MdxRealtimeConnection connection
 

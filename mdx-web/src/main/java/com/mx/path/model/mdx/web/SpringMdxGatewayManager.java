@@ -162,7 +162,7 @@ public class SpringMdxGatewayManager {
    *
    * <p>This class is loaded by Spring. If reset is called on it, there is no way for Spring to know it needs to be reinitialized.
    */
-  public static void reset() {
+  public static synchronized void reset() {
     configurator = new GatewayConfigurator();
     gateways = null;
     profiles = null;
@@ -176,7 +176,7 @@ public class SpringMdxGatewayManager {
    * Use {@link #reset()}
    */
   @Deprecated
-  public static void resetAfterInitialized() {
+  public static synchronized void resetAfterInitialized() {
     initialized = false;
   }
 
@@ -237,6 +237,7 @@ public class SpringMdxGatewayManager {
     return returnPaths;
   }
 
+  @SuppressFBWarnings("AT_STALE_THREAD_WRITE_OF_PRIMITIVE")
   private void initializeFromProfiles() {
     // Notify consumers that initialization is starting
     BEFORE_INITIALIZATION_CONSUMERS.forEach(consumer -> consumer.accept(configurator));
