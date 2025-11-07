@@ -6,15 +6,10 @@ import static org.mockito.Mockito.when
 import com.mx.path.core.common.accessor.UnauthorizedException
 import com.mx.path.core.common.http.HttpStatus
 import com.mx.path.core.common.http.MediaType
-import com.mx.path.service.connection.realtime.MdxRealtimeAccountsConnection
-import com.mx.path.service.connection.realtime.MdxRealtimeConnection
-import com.mx.path.service.connection.realtime.MdxRealtimeConnectionConfiguration
 import com.mx.path.service.connection.realtime.model.MdxAccount
-import com.mx.path.testing.WithRequestExpectations
+import com.mx.path.testing.Mockery
 
-import spock.lang.Specification
-
-class MdxRealtimeAccountsConnectionTest extends Specification implements WithRequestExpectations {
+class MdxRealtimeAccountsConnectionTest extends Mockery {
   MdxRealtimeAccountsConnection subject
   MdxRealtimeConnection connection
 

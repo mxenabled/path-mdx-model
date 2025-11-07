@@ -6,8 +6,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SignatureException;
 import java.util.Objects;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 import com.mx.path.core.common.accessor.UnauthorizedException;
 import com.mx.path.model.mdx.web.filter.MultiReadHttpServletRequest;
 
@@ -34,7 +32,6 @@ public class MDXHmac {
    * @param salt
    */
   @SuppressWarnings("PMD.CyclomaticComplexity")
-  @SuppressFBWarnings("DCN_NULLPOINTER_EXCEPTION")
   public static void validateRequest(MultiReadHttpServletRequest request, String salt) {
     try {
       if (request.getHeader("Authorization") == null) {

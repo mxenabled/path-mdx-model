@@ -1,6 +1,6 @@
 coppuccino {
   coverage {
-    minimumCoverage = 0.12
+    minimumCoverage = 0.21
   }
 }
 
@@ -9,7 +9,7 @@ dependencies {
   api "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.14.0-rc1"
   api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.0-rc1"
 
-  implementation "commons-beanutils:commons-beanutils:1.9.4"
+  implementation "commons-beanutils:commons-beanutils:1.11.0"
 
   testImplementation "com.mx.path-core:testing"
 }

@@ -24,7 +24,7 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
   ToXmlGenerator generator
   StringWriter stringWriter
 
-  void setup() {
+  def setup() {
     subject = new MdxOnDemandSerializer()
     stringWriter = new StringWriter()
     generator = new XmlFactory().createGenerator(stringWriter)

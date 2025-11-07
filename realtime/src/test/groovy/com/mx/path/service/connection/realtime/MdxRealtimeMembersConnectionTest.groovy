@@ -6,11 +6,9 @@ import static org.mockito.Mockito.when
 import com.mx.path.core.common.accessor.UnauthorizedException
 import com.mx.path.core.common.http.HttpStatus
 import com.mx.path.service.connection.realtime.model.MdxMember
-import com.mx.path.testing.WithRequestExpectations
+import com.mx.path.testing.Mockery
 
-import spock.lang.Specification
-
-class MdxRealtimeMembersConnectionTest extends Specification implements WithRequestExpectations {
+class MdxRealtimeMembersConnectionTest extends Mockery {
   MdxRealtimeMembersConnection subject
   MdxRealtimeConnection connection
 
@@ -144,7 +142,7 @@ class MdxRealtimeMembersConnectionTest extends Specification implements WithRequ
     def mdxMember = new MdxMember()
 
     when:
-    def status = subject.create("userId", mdxMember)
+    subject.create("userId", mdxMember)
 
     then:
     def ex = thrown(UnauthorizedException)
@@ -197,7 +195,7 @@ class MdxRealtimeMembersConnectionTest extends Specification implements WithRequ
     }
 
     when:
-    def status = subject.update("userId", mdxMember)
+    subject.update("userId", mdxMember)
 
     then:
     def ex = thrown(UnauthorizedException)
