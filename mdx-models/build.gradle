@@ -10,6 +10,5 @@ dependencies {
   api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.0-rc1"
 
   implementation "commons-beanutils:commons-beanutils:1.11.0"
-
   testImplementation "com.mx.path-core:testing"
 }
