@@ -5,6 +5,18 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [18.0.0](https://github.com/mxenabled/path-mdx-model/compare/v17.1.0...v18.0.0) (2025-11-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* update vulnerable deps major version bump
+
+### Features
+
+* update vulnerable deps ([8e72762](https://github.com/mxenabled/path-mdx-model/commit/8e72762b891ab6a808834d23e72bf577507cec4f))
+* update vulnerable deps major version bump ([fa88d05](https://github.com/mxenabled/path-mdx-model/commit/fa88d05ba94475901d71229872ca4503d3817e92))
+
 ## [17.1.0](https://github.com/mxenabled/path-mdx-model/compare/v17.0.9...v17.1.0) (2025-09-19)
 
 
