@@ -17,7 +17,29 @@ import com.mx.path.gateway.accessor.Accessor;
 public class P2PTransferBaseAccessor extends Accessor {
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
+  private AccountBaseAccessor accounts;
+
+  @GatewayAPI
+  @Getter(AccessLevel.PROTECTED)
   private DurationBaseAccessor durations;
+
+  /**
+   * Accessor for account operations
+   *
+   * @return accessor
+   */
+  @API
+  public AccountBaseAccessor accounts() {
+    return accounts;
+  }
+
+  /**
+   * Sets account accessor
+   * @param accounts
+   */
+  public void setAccounts(AccountBaseAccessor accounts) {
+    this.accounts = accounts;
+  }
 
   /**
    * Accessor for duration operations
