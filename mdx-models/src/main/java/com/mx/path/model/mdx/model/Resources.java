@@ -61,6 +61,7 @@ import com.mx.path.model.mdx.model.ondemand.mixins.SessionXmlMixin;
 import com.mx.path.model.mdx.model.ondemand.mixins.TransactionMixIn;
 import com.mx.path.model.mdx.model.ondemand.mixins.TransactionsPageMixin;
 import com.mx.path.model.mdx.model.origination.Origination;
+import com.mx.path.model.mdx.model.p2p_transfer.Duration;
 import com.mx.path.model.mdx.model.payment.Bill;
 import com.mx.path.model.mdx.model.payment.Enrollment;
 import com.mx.path.model.mdx.model.payment.Merchant;
@@ -284,6 +285,8 @@ public class Resources {
     registerAccountAlertModels(builder);
     // Register product models
     registerProductModels(builder);
+    // Register P2P transfer models
+    registerP2PTransferModels(builder);
   }
 
   private static void registerDeviceModels(GsonBuilder builder) {
@@ -378,6 +381,13 @@ public class Resources {
     builder.registerTypeAdapter(DisputedTransaction.class, new ModelWrappableSerializer("disputed_transaction"));
     builder.registerTypeAdapter(new TypeToken<MdxList<DisputedTransaction>>() {
     }.getType(), new ModelWrappableSerializer("disputed_transactions"));
+  }
+
+  private static void registerP2PTransferModels(GsonBuilder builder) {
+    // Duration
+    builder.registerTypeAdapter(Frequency.class, new ModelWrappableSerializer("duration"));
+    builder.registerTypeAdapter(new TypeToken<MdxList<Duration>>() {
+    }.getType(), new ModelWrappableSerializer("durations"));
   }
 
   private static void registerPaymentsModels(GsonBuilder builder) {
