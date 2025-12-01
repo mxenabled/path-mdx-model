@@ -20,6 +20,7 @@ import com.mx.path.model.mdx.accessor.id.IdBaseAccessor;
 import com.mx.path.model.mdx.accessor.location.LocationBaseAccessor;
 import com.mx.path.model.mdx.accessor.managed_card.ManagedCardBaseAccessor;
 import com.mx.path.model.mdx.accessor.origination.OriginationBaseAccessor;
+import com.mx.path.model.mdx.accessor.p2p_transfer.P2PTransferBaseAccessor;
 import com.mx.path.model.mdx.accessor.payment.PaymentBaseAccessor;
 import com.mx.path.model.mdx.accessor.payout.PayoutBaseAccessor;
 import com.mx.path.model.mdx.accessor.products.ProductBaseAccessor;
@@ -73,6 +74,10 @@ public abstract class BaseAccessor extends Accessor {
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
   private OriginationBaseAccessor originations;
+
+  @GatewayAPI
+  @Getter(AccessLevel.PROTECTED)
+  private P2PTransferBaseAccessor p2pTransfers;
 
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
@@ -347,6 +352,29 @@ public abstract class BaseAccessor extends Accessor {
    */
   public void setOriginations(OriginationBaseAccessor originations) {
     this.originations = originations;
+  }
+
+  /**
+   * Accessor for p2p transfer operations
+   *
+   * @return accessor
+   */
+  @API
+  public P2PTransferBaseAccessor p2pTransfers() {
+    if (p2pTransfers != null) {
+      return p2pTransfers;
+    }
+
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Set p2p transfer accessor
+   *
+   * @param p2pTransfers
+   */
+  public void setP2pTransfers(P2PTransferBaseAccessor p2pTransfers) {
+    this.p2pTransfers = p2pTransfers;
   }
 
   /**
