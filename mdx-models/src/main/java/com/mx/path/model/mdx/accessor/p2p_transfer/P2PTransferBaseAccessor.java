@@ -23,6 +23,10 @@ public class P2PTransferBaseAccessor extends Accessor {
   @Getter(AccessLevel.PROTECTED)
   private DurationBaseAccessor durations;
 
+  @GatewayAPI
+  @Getter(AccessLevel.PROTECTED)
+  private FrequencyBaseAccessor frequencies;
+
   /**
    * Accessor for account operations
    *
@@ -57,5 +61,23 @@ public class P2PTransferBaseAccessor extends Accessor {
    */
   public void setDurations(DurationBaseAccessor durations) {
     this.durations = durations;
+  }
+
+  /**
+   * Accessor for frequency operations
+   *
+   * @return accessor
+   */
+  @API
+  public FrequencyBaseAccessor frequencies() {
+    return frequencies;
+  }
+
+  /**
+   * Sets frequency accessor
+   * @param frequencies
+   */
+  public void setFrequencies(FrequencyBaseAccessor frequencies) {
+    this.frequencies = frequencies;
   }
 }
