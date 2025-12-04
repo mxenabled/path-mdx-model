@@ -388,6 +388,10 @@ public class Resources {
     builder.registerTypeAdapter(Frequency.class, new ModelWrappableSerializer("duration"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Duration>>() {
     }.getType(), new ModelWrappableSerializer("durations"));
+    // Recipients
+    builder.registerTypeAdapter(com.mx.path.model.mdx.model.p2p_transfer.Recipient.class, new ModelWrappableSerializer("recipient"));
+    builder.registerTypeAdapter(new TypeToken<MdxList<com.mx.path.model.mdx.model.p2p_transfer.Recipient>>() {
+    }.getType(), new ModelWrappableSerializer("recipients"));
   }
 
   private static void registerPaymentsModels(GsonBuilder builder) {
