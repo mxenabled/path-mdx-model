@@ -62,6 +62,7 @@ import com.mx.path.model.mdx.model.ondemand.mixins.TransactionMixIn;
 import com.mx.path.model.mdx.model.ondemand.mixins.TransactionsPageMixin;
 import com.mx.path.model.mdx.model.origination.Origination;
 import com.mx.path.model.mdx.model.p2p_transfer.Duration;
+import com.mx.path.model.mdx.model.p2p_transfer.P2PTransfer;
 import com.mx.path.model.mdx.model.payment.Bill;
 import com.mx.path.model.mdx.model.payment.Enrollment;
 import com.mx.path.model.mdx.model.payment.Merchant;
@@ -392,6 +393,10 @@ public class Resources {
     builder.registerTypeAdapter(com.mx.path.model.mdx.model.p2p_transfer.Recipient.class, new ModelWrappableSerializer("recipient"));
     builder.registerTypeAdapter(new TypeToken<MdxList<com.mx.path.model.mdx.model.p2p_transfer.Recipient>>() {
     }.getType(), new ModelWrappableSerializer("recipients"));
+    // P2P Transfers
+    builder.registerTypeAdapter(P2PTransfer.class, new ModelWrappableSerializer("p2p_transfer"));
+    builder.registerTypeAdapter(new TypeToken<MdxList<P2PTransfer>>() {
+    }.getType(), new ModelWrappableSerializer("p2p_transfers"));
   }
 
   private static void registerPaymentsModels(GsonBuilder builder) {
