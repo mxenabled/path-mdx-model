@@ -9,6 +9,7 @@ import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.p2p_transfer.FrequencyGateway
 import com.mx.path.gateway.api.p2p_transfer.P2PTransferGateway
+import com.mx.path.gateway.api.p2p_transfer.RecurringP2PTransferGateway
 import com.mx.path.model.mdx.model.Frequency
 import com.mx.path.model.mdx.model.MdxList
 
@@ -20,14 +21,17 @@ class P2PTransferFrequenciesControllerTest extends Specification {
   P2PTransferFrequenciesController subject
   Gateway gateway
   P2PTransferGateway p2pTransferGateway
+  RecurringP2PTransferGateway recurringP2PTransferGateway
   FrequencyGateway frequencyGateway
 
   def setup() {
     subject = new P2PTransferFrequenciesController()
     p2pTransferGateway = mock(P2PTransferGateway)
+    recurringP2PTransferGateway = mock(RecurringP2PTransferGateway)
     frequencyGateway = mock(FrequencyGateway)
 
-    doReturn(frequencyGateway).when(p2pTransferGateway).frequencies()
+    doReturn(recurringP2PTransferGateway).when(p2pTransferGateway).recurring()
+    doReturn(frequencyGateway).when(recurringP2PTransferGateway).frequencies()
     gateway = spy(Gateway.builder().clientId("client-1234").p2pTransfers(p2pTransferGateway).build())
   }
 
