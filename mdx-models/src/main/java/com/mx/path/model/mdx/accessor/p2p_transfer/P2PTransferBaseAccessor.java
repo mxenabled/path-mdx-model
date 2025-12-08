@@ -25,11 +25,7 @@ public class P2PTransferBaseAccessor extends Accessor {
 
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
-  private DurationBaseAccessor durations;
-
-  @GatewayAPI
-  @Getter(AccessLevel.PROTECTED)
-  private FrequencyBaseAccessor frequencies;
+  private RecurringP2PTransferBaseAccessor recurring;
 
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
@@ -117,39 +113,21 @@ public class P2PTransferBaseAccessor extends Accessor {
   }
 
   /**
-   * Accessor for duration operations
+   * Accessor for recurring transfer operations
    *
    * @return accessor
    */
   @API
-  public DurationBaseAccessor durations() {
-    return durations;
+  public RecurringP2PTransferBaseAccessor recurring() {
+    return recurring;
   }
 
   /**
-   * Sets duration accessor
-   * @param durations
+   * Sets recurring transfer accessor
+   * @param recurring
    */
-  public void setDurations(DurationBaseAccessor durations) {
-    this.durations = durations;
-  }
-
-  /**
-   * Accessor for frequency operations
-   *
-   * @return accessor
-   */
-  @API
-  public FrequencyBaseAccessor frequencies() {
-    return frequencies;
-  }
-
-  /**
-   * Sets frequency accessor
-   * @param frequencies
-   */
-  public void setFrequencies(FrequencyBaseAccessor frequencies) {
-    this.frequencies = frequencies;
+  public void setRecurring(RecurringP2PTransferBaseAccessor recurring) {
+    this.recurring = recurring;
   }
 
   /**

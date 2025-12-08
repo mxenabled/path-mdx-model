@@ -9,6 +9,7 @@ import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.p2p_transfer.DurationGateway
 import com.mx.path.gateway.api.p2p_transfer.P2PTransferGateway
+import com.mx.path.gateway.api.p2p_transfer.RecurringP2PTransferGateway
 import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.p2p_transfer.Duration
 
@@ -20,14 +21,17 @@ class P2PTransferDurationsControllerTest extends Specification {
   P2PTransferDurationsController subject
   Gateway gateway
   P2PTransferGateway p2pTransferGateway
+  RecurringP2PTransferGateway recurringP2PTransferGateway
   DurationGateway durationGateway
 
   def setup() {
     subject = new P2PTransferDurationsController()
     p2pTransferGateway = mock(P2PTransferGateway)
+    recurringP2PTransferGateway = mock(RecurringP2PTransferGateway)
     durationGateway = mock(DurationGateway)
 
-    doReturn(durationGateway).when(p2pTransferGateway).durations()
+    doReturn(recurringP2PTransferGateway).when(p2pTransferGateway).recurring()
+    doReturn(durationGateway).when(recurringP2PTransferGateway).durations()
     gateway = spy(Gateway.builder().clientId("client-1234").p2pTransfers(p2pTransferGateway).build())
   }
 

@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "{clientId}", produces = BaseController.MDX_MEDIA)
 public class P2PTransferDurationsController extends BaseController {
-  @RequestMapping(value = "/users/{userId}/p2p_transfers/durations", method = RequestMethod.GET)
+  @RequestMapping(value = "/users/{userId}/recurring_p2p_transfers/durations", method = RequestMethod.GET)
   public final ResponseEntity<MdxList<Duration>> list() {
-    AccessorResponse<MdxList<Duration>> response = gateway().p2pTransfers().durations().list();
+    AccessorResponse<MdxList<Duration>> response = gateway().p2pTransfers().recurring().durations().list();
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 }
