@@ -5,6 +5,23 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [18.1.0](https://github.com/mxenabled/path-mdx-model/compare/v18.0.0...v18.1.0) (2025-12-10)
+
+
+### Features
+
+* add p2p transfer accounts endpoint ([ca25102](https://github.com/mxenabled/path-mdx-model/commit/ca2510240f5707ac4768de0380a6af7b6a6913ef))
+* add p2p transfer duration endpoints ([5445421](https://github.com/mxenabled/path-mdx-model/commit/544542143eb94df4c76cb0a354bf686e93a6d96e))
+* add p2p transfer frequencies endpoint ([1b26f9e](https://github.com/mxenabled/path-mdx-model/commit/1b26f9e7e861aea3bd06ad3af2cd9ee46d0255fa))
+* add p2p transfer recipient endpoints ([7cdb496](https://github.com/mxenabled/path-mdx-model/commit/7cdb496475cf01c8c8dcde780f5993fcd0ea1f3b))
+* add p2p transfers endpoints ([41990e0](https://github.com/mxenabled/path-mdx-model/commit/41990e027ba9a0353a72ec87e55670bba8c81322))
+* add recurring p2p transfers endpoints ([6c4983e](https://github.com/mxenabled/path-mdx-model/commit/6c4983e9553348835ca45015ba921262a5106286))
+
+
+### Bug Fixes
+
+* replace accounts with sources for p2p transfers ([cc3e89c](https://github.com/mxenabled/path-mdx-model/commit/cc3e89c1f8f58e74e9673d9f0a06054aaeca43a0))
+
 ## [18.0.0](https://github.com/mxenabled/path-mdx-model/compare/v17.1.0...v18.0.0) (2025-11-21)
 
 
