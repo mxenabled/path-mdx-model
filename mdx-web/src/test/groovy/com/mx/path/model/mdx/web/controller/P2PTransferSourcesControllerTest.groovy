@@ -7,27 +7,27 @@ import static org.mockito.Mockito.verify
 
 import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
-import com.mx.path.gateway.api.p2p_transfer.AccountGateway
 import com.mx.path.gateway.api.p2p_transfer.P2PTransferGateway
+import com.mx.path.gateway.api.p2p_transfer.SourceGateway
 import com.mx.path.model.mdx.model.MdxList
-import com.mx.path.model.mdx.model.account.Account
+import com.mx.path.model.mdx.model.p2p_transfer.Source
 
 import org.springframework.http.HttpStatus
 
 import spock.lang.Specification
 
-class P2PTransferAccountsControllerTest extends Specification {
-  P2PTransferAccountsController subject
+class P2PTransferSourcesControllerTest extends Specification {
+  P2PTransferSourcesController subject
   Gateway gateway
   P2PTransferGateway p2pTransferGateway
-  AccountGateway accountGateway
+  SourceGateway sourceGateway
 
   def setup() {
-    subject = new P2PTransferAccountsController()
+    subject = new P2PTransferSourcesController()
     p2pTransferGateway = mock(P2PTransferGateway)
-    accountGateway = mock(AccountGateway)
+    sourceGateway = mock(SourceGateway)
 
-    doReturn(accountGateway).when(p2pTransferGateway).accounts()
+    doReturn(sourceGateway).when(p2pTransferGateway).sources()
     gateway = spy(Gateway.builder().clientId("client-1234").p2pTransfers(p2pTransferGateway).build())
   }
 
@@ -38,17 +38,17 @@ class P2PTransferAccountsControllerTest extends Specification {
   def "list interacts with gateway"() {
     given:
     BaseController.setGateway(gateway)
-    def accounts = new MdxList().tap {
-      add(new Account())
+    def sources = new MdxList().tap {
+      add(new Source())
     }
-    doReturn(new AccessorResponse<MdxList<Account>>().withResult(accounts)).when(accountGateway).list()
+    doReturn(new AccessorResponse<MdxList<Source>>().withResult(sources)).when(sourceGateway).list()
 
     when:
     def result = subject.list()
 
     then:
     HttpStatus.OK == result.statusCode
-    result.body == accounts
-    verify(accountGateway).list() || true
+    result.body == sources
+    verify(sourceGateway).list() || true
   }
 }

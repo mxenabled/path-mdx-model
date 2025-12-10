@@ -12,7 +12,6 @@ import com.mx.path.model.mdx.model.MdxBase;
 @EqualsAndHashCode(callSuper = true)
 public class RecurringP2PTransfer extends MdxBase<RecurringP2PTransfer> {
   private String id;
-  private String accountId;
   private BigDecimal amount;
   private String confirmationId;
   private String deliveryMethod;
@@ -24,5 +23,6 @@ public class RecurringP2PTransfer extends MdxBase<RecurringP2PTransfer> {
   private String recipientVerificationAnswer;
   private String recipientVerificationQuestion;
   private LocalDate startOn;
+  private String sourceId;
   private String status;
 }

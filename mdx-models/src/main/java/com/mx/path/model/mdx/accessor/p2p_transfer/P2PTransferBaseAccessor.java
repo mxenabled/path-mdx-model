@@ -21,7 +21,7 @@ import com.mx.path.model.mdx.model.p2p_transfer.P2PTransfer;
 public class P2PTransferBaseAccessor extends Accessor {
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
-  private AccountBaseAccessor accounts;
+  private SourceBaseAccessor sources;
 
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
@@ -95,21 +95,21 @@ public class P2PTransferBaseAccessor extends Accessor {
   }
 
   /**
-   * Accessor for account operations
+   * Accessor for source operations
    *
    * @return accessor
    */
   @API
-  public AccountBaseAccessor accounts() {
-    return accounts;
+  public SourceBaseAccessor sources() {
+    return sources;
   }
 
   /**
-   * Sets account accessor
-   * @param accounts
+   * Sets source accessor
+   * @param sources
    */
-  public void setAccounts(AccountBaseAccessor accounts) {
-    this.accounts = accounts;
+  public void setSources(SourceBaseAccessor sources) {
+    this.sources = sources;
   }
 
   /**
