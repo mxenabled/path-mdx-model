@@ -4,11 +4,6 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.Enumeration;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.mx.path.core.common.lang.Strings;
 import com.mx.path.core.context.RequestContext;
 import com.mx.path.core.context.ResponseContext;
@@ -16,6 +11,11 @@ import com.mx.path.core.context.ResponseContext;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Request context filter

@@ -1,14 +1,14 @@
 package com.mx.path.model.mdx.web.filter
 
-import javax.servlet.FilterChain
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
-
 import com.mx.path.core.context.RequestContext
 import com.mx.path.core.context.ResponseContext
 import com.mx.path.core.context.store.SessionRepository
 
 import spock.lang.Specification
+
+import jakarta.servlet.FilterChain
+import jakarta.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletResponse
 
 class PathRequestContextFilterTest extends Specification {
   FilterChain filterChain
@@ -18,7 +18,6 @@ class PathRequestContextFilterTest extends Specification {
 
   PathRequestContextFilter subject
   RequestContext requestContext
-  ResponseContext responseContext
 
   def setup() {
     filterChain = Mock()

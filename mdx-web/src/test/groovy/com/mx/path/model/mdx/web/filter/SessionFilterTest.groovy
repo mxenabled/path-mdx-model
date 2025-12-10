@@ -1,14 +1,14 @@
 package com.mx.path.model.mdx.web.filter
 
-import javax.servlet.FilterChain
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
-
 import com.mx.path.core.context.RequestContext
 import com.mx.path.core.context.Session
 import com.mx.path.core.context.store.SessionRepository
 
 import spock.lang.Specification
+
+import jakarta.servlet.FilterChain
+import jakarta.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletResponse
 
 class SessionFilterTest extends Specification {
   FilterChain filterChain

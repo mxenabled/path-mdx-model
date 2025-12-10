@@ -1,9 +1,5 @@
 package com.mx.path.model.mdx.web.filter
 
-import javax.servlet.FilterChain
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
-
 import com.mx.path.core.common.accessor.ResourceNotFoundException
 import com.mx.path.core.context.Session
 import com.mx.path.core.context.store.SessionRepository
@@ -11,6 +7,10 @@ import com.mx.path.model.mdx.web.filter.hmac.HMACConfiguration
 import com.mx.path.model.mdx.web.filter.hmac.HMACConfigurationFactory
 
 import spock.lang.Specification
+
+import jakarta.servlet.FilterChain
+import jakarta.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletResponse
 
 class HMACFilterTest extends Specification {
 

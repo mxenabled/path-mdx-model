@@ -3,9 +3,6 @@ package com.mx.path.model.mdx.web.filter;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.mx.path.core.common.accessor.RequestValidationException;
 import com.mx.path.model.mdx.web.EnvironmentHelper;
 
@@ -15,6 +12,9 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @RestControllerAdvice
 public class ValidationExceptionHandler {

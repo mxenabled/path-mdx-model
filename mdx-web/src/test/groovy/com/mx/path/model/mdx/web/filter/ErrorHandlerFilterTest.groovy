@@ -1,10 +1,5 @@
 package com.mx.path.model.mdx.web.filter
 
-import javax.servlet.FilterChain
-import javax.servlet.ServletOutputStream
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
-
 import com.mx.path.core.common.accessor.PathResponseStatus
 import com.mx.path.core.common.accessor.RequestValidationException
 import com.mx.path.core.context.RequestContext
@@ -12,13 +7,17 @@ import com.mx.path.core.context.ResponseContext
 
 import spock.lang.Specification
 
+import jakarta.servlet.FilterChain
+import jakarta.servlet.ServletOutputStream
+import jakarta.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletResponse
+
 class ErrorHandlerFilterTest extends Specification {
   FilterChain filterChain
   HttpServletRequest request
   HttpServletResponse response
   ErrorHandlerFilter subject
   ServletOutputStream outputStream
-  String clientId = "client-123"
   ErrorHandler errorHandler
 
   String responseBody

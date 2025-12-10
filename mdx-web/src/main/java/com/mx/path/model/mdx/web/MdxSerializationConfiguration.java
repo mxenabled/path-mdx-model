@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @SuppressWarnings("checkstyle:designforextension")
 public class MdxSerializationConfiguration {
-  @Bean(name = "gson")
   public MdxSerializerFactoryBean gsonBeanFactory() {
     MdxSerializerFactoryBean factory = new MdxSerializerFactoryBean();
     return factory;

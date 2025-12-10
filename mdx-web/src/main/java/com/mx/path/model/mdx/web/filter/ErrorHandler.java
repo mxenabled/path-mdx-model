@@ -5,9 +5,6 @@ import java.nio.charset.StandardCharsets;
 import java.time.ZoneOffset;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import com.google.gson.JsonObject;
@@ -25,6 +22,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 class ErrorHandler {

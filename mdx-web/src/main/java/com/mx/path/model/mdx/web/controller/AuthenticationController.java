@@ -3,8 +3,6 @@ package com.mx.path.model.mdx.web.controller;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.google.common.hash.Hashing;
 import com.mx.path.core.common.accessor.BadRequestException;
 import com.mx.path.core.common.lang.Strings;
@@ -27,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping(value = "{clientId}", produces = BaseController.MDX_MEDIA)
