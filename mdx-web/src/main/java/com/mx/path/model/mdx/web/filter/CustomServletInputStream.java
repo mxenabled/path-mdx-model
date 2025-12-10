@@ -3,8 +3,8 @@ package com.mx.path.model.mdx.web.filter;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
-import javax.servlet.ReadListener;
-import javax.servlet.ServletInputStream;
+import jakarta.servlet.ReadListener;
+import jakarta.servlet.ServletInputStream;
 
 /**
  * Wraps request input stream to allow multiple reads

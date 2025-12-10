@@ -13,8 +13,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import javax.servlet.http.HttpServletRequest;
-
 import lombok.Builder;
 import lombok.Data;
 
@@ -29,6 +27,8 @@ import com.mx.path.model.mdx.model.Resources;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * Use in Controller to provide multiple code paths, based on provided version header.

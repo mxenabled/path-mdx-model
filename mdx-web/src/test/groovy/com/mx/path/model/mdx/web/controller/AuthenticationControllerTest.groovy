@@ -11,8 +11,6 @@ import static org.mockito.Mockito.when
 
 import java.nio.charset.StandardCharsets
 
-import javax.servlet.http.HttpServletRequest
-
 import com.google.common.hash.Hashing
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -50,6 +48,8 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 
 import spock.lang.Specification
+
+import jakarta.servlet.http.HttpServletRequest
 
 class AuthenticationControllerTest extends Specification implements WithMockery {
   Authentication authentication

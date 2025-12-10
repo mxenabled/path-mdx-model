@@ -3,13 +3,13 @@ package com.mx.path.model.mdx.model.account;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import javax.xml.bind.annotation.XmlElement;
-
 import com.google.gson.annotations.SerializedName;
 import com.mx.path.core.common.model.Internal;
 import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.challenges.Challenge;
+
+import jakarta.xml.bind.annotation.XmlElement;
 
 @SuppressWarnings("PMD.CyclomaticComplexity")
 public class Account extends MdxBase<Account> {

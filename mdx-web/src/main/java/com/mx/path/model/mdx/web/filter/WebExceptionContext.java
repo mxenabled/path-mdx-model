@@ -6,8 +6,6 @@ import java.util.Enumeration;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.mx.path.core.common.collection.MultiValueMap;
 import com.mx.path.core.common.exception.ExceptionContext;
 import com.mx.path.core.context.RequestContext;
@@ -17,6 +15,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.lang.NonNull;
 
 import io.opentracing.util.GlobalTracer;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 class WebExceptionContext implements ExceptionContext {
 

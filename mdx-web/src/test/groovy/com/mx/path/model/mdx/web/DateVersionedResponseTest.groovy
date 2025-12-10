@@ -3,8 +3,6 @@ package com.mx.path.model.mdx.web
 import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.when
 
-import javax.servlet.http.HttpServletRequest
-
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.mx.path.core.common.accessor.PathResponseStatus
@@ -19,6 +17,8 @@ import org.springframework.http.ResponseEntity
 
 import spock.lang.Specification
 import spock.lang.Unroll
+
+import jakarta.servlet.http.HttpServletRequest
 
 class DateVersionedResponseTest extends Specification implements WithMockery {
   Gson gson

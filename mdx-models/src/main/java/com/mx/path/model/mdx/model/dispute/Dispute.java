@@ -1,8 +1,8 @@
 package com.mx.path.model.mdx.model.dispute;
 
-import javax.xml.bind.annotation.XmlElement;
-
 import com.mx.path.model.mdx.model.MdxBase;
+
+import jakarta.xml.bind.annotation.XmlElement;
 
 /**
  * Represents an MDX dispute. XmlElements assigned so that it can be demarshalled from MDXv5 XML.

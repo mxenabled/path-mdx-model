@@ -1,18 +1,15 @@
 package com.mx.path.model.mdx.web.filter
 
+import static org.mockito.ArgumentMatchers.any
 import static org.mockito.ArgumentMatchers.anyLong
-import static org.mockito.Mockito.*
 import static org.mockito.Mockito.mock
+import static org.mockito.Mockito.never
+import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 import static org.mockito.Mockito.when
 
-import javax.servlet.FilterChain
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
-
 import com.mx.path.core.context.RequestContext
 
-import org.mockito.Mockito
 import org.slf4j.Logger
 import org.slf4j.MDC
 import org.springframework.web.util.ContentCachingRequestWrapper
@@ -20,6 +17,10 @@ import org.springframework.web.util.ContentCachingResponseWrapper
 
 import spock.lang.Specification
 import spock.lang.Unroll
+
+import jakarta.servlet.FilterChain
+import jakarta.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletResponse
 
 class PathRequestLoggingFilterTest extends Specification {
   HttpServletRequest request
