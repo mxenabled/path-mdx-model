@@ -14,7 +14,6 @@ import com.mx.path.model.mdx.model.challenges.Challenge;
 @EqualsAndHashCode(callSuper = true)
 public class P2PTransfer extends MdxBase<P2PTransfer> {
   private String id;
-  private String accountId;
   private BigDecimal amount;
   private MdxList<Challenge> challenges;
   private String confirmationId;
@@ -25,5 +24,6 @@ public class P2PTransfer extends MdxBase<P2PTransfer> {
   private String recipientVerificationQuestion;
   private LocalDate sendOn;
   private LocalDate sentOn;
+  private String sourceId;
   private String status;
 }
