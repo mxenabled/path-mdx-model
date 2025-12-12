@@ -5,6 +5,17 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [19.0.0](https://github.com/mxenabled/path-mdx-model/compare/v18.1.0...v19.0.0) (2025-12-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* bump gradle, quality plugin, spring
+
+### Features
+
+* bump gradle, quality plugin, spring ([3350cc3](https://github.com/mxenabled/path-mdx-model/commit/3350cc31faf4ba572a21e465e542e5092fdf6728))
+
 ## [18.1.0](https://github.com/mxenabled/path-mdx-model/compare/v18.0.0...v18.1.0) (2025-12-10)
 
 
