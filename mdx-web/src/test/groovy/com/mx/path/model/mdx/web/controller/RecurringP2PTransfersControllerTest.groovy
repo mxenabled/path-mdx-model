@@ -51,18 +51,18 @@ class RecurringP2PTransfersControllerTest extends Specification {
     verify(recurringP2PTransferGateway).create(p2pTransfer) || true
   }
 
-  def "delete interacts with gateway"() {
+  def "cancel interacts with gateway"() {
     given:
     BaseController.setGateway(gateway)
     def id = "transfer-1234"
-    doReturn(new AccessorResponse<Void>()).when(recurringP2PTransferGateway).delete(id)
+    doReturn(new AccessorResponse<Void>()).when(recurringP2PTransferGateway).cancel(id)
 
     when:
-    def result = subject.delete(id)
+    def result = subject.cancel(id)
 
     then:
     HttpStatus.NO_CONTENT == result.statusCode
-    verify(recurringP2PTransferGateway).delete(id) || true
+    verify(recurringP2PTransferGateway).cancel(id) || true
   }
 
   def "get interacts with gateway"() {

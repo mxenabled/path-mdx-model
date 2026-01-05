@@ -47,14 +47,14 @@ public class P2PTransferBaseAccessor extends Accessor {
   }
 
   /**
-   * Delete a P2P transfer
+   * Cancel a P2P transfer
    *
    * @param id
    * @return
    */
   @GatewayAPI
-  @API(description = "Delete a P2P transfer")
-  public AccessorResponse<Void> delete(String id) {
+  @API(description = "Cancel a P2P transfer")
+  public AccessorResponse<Void> cancel(String id) {
     throw new AccessorMethodNotImplementedException();
   }
 
