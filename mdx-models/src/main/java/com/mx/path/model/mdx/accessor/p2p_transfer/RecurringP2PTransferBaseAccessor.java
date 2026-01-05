@@ -42,14 +42,14 @@ public class RecurringP2PTransferBaseAccessor extends Accessor {
   }
 
   /**
-   * Delete a recurring P2P transfer
+   * Cancel a recurring P2P transfer
    *
    * @param id
    * @return
    */
   @GatewayAPI
-  @API(description = "Delete a recurring P2P transfer")
-  public AccessorResponse<Void> delete(String id) {
+  @API(description = "Cancel a recurring P2P transfer")
+  public AccessorResponse<Void> cancel(String id) {
     throw new AccessorMethodNotImplementedException();
   }
 

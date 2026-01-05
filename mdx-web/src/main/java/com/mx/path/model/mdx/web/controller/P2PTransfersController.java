@@ -21,9 +21,9 @@ public class P2PTransfersController extends BaseController {
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
-  @RequestMapping(value = "/users/{userId}/p2p_transfers/{id}", method = RequestMethod.DELETE)
-  public final ResponseEntity<?> delete(@PathVariable("id") String p2pTransferId) {
-    AccessorResponse<Void> response = gateway().p2pTransfers().delete(p2pTransferId);
+  @RequestMapping(value = "/users/{userId}/p2p_transfers/{id}/cancel", method = RequestMethod.PUT)
+  public final ResponseEntity<?> cancel(@PathVariable("id") String p2pTransferId) {
+    AccessorResponse<Void> response = gateway().p2pTransfers().cancel(p2pTransferId);
     return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
   }
 
