@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [19.0.1](https://github.com/mxenabled/path-mdx-model/compare/v19.0.0...v19.0.1) (2026-01-06)
+
+
+### Bug Fixes
+
+* a couple p2p transfer fixes to match spec ([4e8b4ce](https://github.com/mxenabled/path-mdx-model/commit/4e8b4ceb42d522a4311dbf52f087a4015bfe3e0f))
+
 ## [19.0.0](https://github.com/mxenabled/path-mdx-model/compare/v18.1.0...v19.0.0) (2025-12-12)
 
 
