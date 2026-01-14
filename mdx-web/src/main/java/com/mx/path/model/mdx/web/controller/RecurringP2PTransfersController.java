@@ -18,7 +18,14 @@ public class RecurringP2PTransfersController extends BaseController {
   @RequestMapping(value = "/users/{userId}/recurring_p2p_transfers", method = RequestMethod.POST, consumes = BaseController.MDX_MEDIA)
   public final ResponseEntity<RecurringP2PTransfer> create(@RequestBody RecurringP2PTransfer p2pTransferRequest) {
     AccessorResponse<RecurringP2PTransfer> response = gateway().p2pTransfers().recurring().create(p2pTransferRequest);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+
+    // Return 202 if there are challenges
+    RecurringP2PTransfer result = response.getResult();
+    HttpStatus status = HttpStatus.OK;
+    if (result.getChallenges() != null && !result.getChallenges().isEmpty()) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 
   @RequestMapping(value = "/users/{userId}/recurring_p2p_transfers/{id}/cancel", method = RequestMethod.PUT)
@@ -42,6 +49,13 @@ public class RecurringP2PTransfersController extends BaseController {
   @RequestMapping(value = "/users/{userId}/recurring_p2p_transfers/{id}", method = RequestMethod.PUT, consumes = BaseController.MDX_MEDIA)
   public final ResponseEntity<RecurringP2PTransfer> update(@PathVariable("id") String p2pTransferId, @RequestBody RecurringP2PTransfer p2pTransferRequest) {
     AccessorResponse<RecurringP2PTransfer> response = gateway().p2pTransfers().recurring().update(p2pTransferId, p2pTransferRequest);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+
+    // Return 202 if there are challenges
+    RecurringP2PTransfer result = response.getResult();
+    HttpStatus status = HttpStatus.OK;
+    if (result.getChallenges() != null && !result.getChallenges().isEmpty()) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 }

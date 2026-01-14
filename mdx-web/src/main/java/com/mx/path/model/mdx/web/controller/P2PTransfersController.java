@@ -18,7 +18,14 @@ public class P2PTransfersController extends BaseController {
   @RequestMapping(value = "/users/{userId}/p2p_transfers", method = RequestMethod.POST, consumes = BaseController.MDX_MEDIA)
   public final ResponseEntity<P2PTransfer> create(@RequestBody P2PTransfer p2pTransferRequest) {
     AccessorResponse<P2PTransfer> response = gateway().p2pTransfers().create(p2pTransferRequest);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+
+    // Return 202 if there are challenges
+    P2PTransfer result = response.getResult();
+    HttpStatus status = HttpStatus.OK;
+    if (result.getChallenges() != null && !result.getChallenges().isEmpty()) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 
   @RequestMapping(value = "/users/{userId}/p2p_transfers/{id}/cancel", method = RequestMethod.PUT)
@@ -42,6 +49,13 @@ public class P2PTransfersController extends BaseController {
   @RequestMapping(value = "/users/{userId}/p2p_transfers/{id}", method = RequestMethod.PUT, consumes = BaseController.MDX_MEDIA)
   public final ResponseEntity<P2PTransfer> update(@PathVariable("id") String p2pTransferId, @RequestBody P2PTransfer p2pTransferRequest) {
     AccessorResponse<P2PTransfer> response = gateway().p2pTransfers().update(p2pTransferId, p2pTransferRequest);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+
+    // Return 202 if there are challenges
+    P2PTransfer result = response.getResult();
+    HttpStatus status = HttpStatus.OK;
+    if (result.getChallenges() != null && !result.getChallenges().isEmpty()) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
 }

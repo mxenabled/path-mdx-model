@@ -52,6 +52,7 @@ public class MdxLogMasker {
     buildIdentificationPayloadPatterns();
     buildManagedCardsPayloadPatterns();
     buildOriginationPayloadPatterns();
+    buildP2PTransferPayloadPatterns();
     buildPaymentPayloadPatterns();
     buildPayoutPayloadPatterns();
     buildProfilePayloadPatterns();
@@ -272,6 +273,12 @@ public class MdxLogMasker {
   private static void buildOriginationPayloadPatterns() {
     // Origination - https://developer.mx.com/drafts/mdx/origination/index.html#mdx-origination-origination-fields
     MDX_PAYLOAD_REGEX.add(LogValueRegex.jsonString("login_token"));
+  }
+
+  private static void buildP2PTransferPayloadPatterns() {
+    // P2P Transfer - https://developer.mx.com/drafts/mdx/p2p_transfer/index.html#p2p-transfers
+    MDX_PAYLOAD_REGEX.add(LogValueRegex.jsonString("recipient_verification_answer"));
+    MDX_PAYLOAD_REGEX.add(LogValueRegex.jsonString("recipient_verification_question"));
   }
 
   private static void buildPaymentPayloadPatterns() {

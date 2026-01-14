@@ -7,12 +7,15 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.MdxList;
+import com.mx.path.model.mdx.model.challenges.Challenge;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class RecurringP2PTransfer extends MdxBase<RecurringP2PTransfer> {
   private String id;
   private BigDecimal amount;
+  private MdxList<Challenge> challenges;
   private String confirmationId;
   private String deliveryMethod;
   private String durationType;
