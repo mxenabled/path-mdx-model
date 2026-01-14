@@ -1,6 +1,5 @@
 package com.mx.path.model.mdx.web.controller
 
-
 import static org.mockito.Mockito.doReturn
 import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.spy
@@ -11,6 +10,7 @@ import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.p2p_transfer.P2PTransferGateway
 import com.mx.path.gateway.api.p2p_transfer.RecurringP2PTransferGateway
 import com.mx.path.model.mdx.model.MdxList
+import com.mx.path.model.mdx.model.challenges.Challenge
 import com.mx.path.model.mdx.model.p2p_transfer.RecurringP2PTransfer
 
 import org.springframework.http.HttpStatus
@@ -47,6 +47,26 @@ class RecurringP2PTransfersControllerTest extends Specification {
 
     then:
     HttpStatus.OK == result.statusCode
+    result.body == p2pTransfer
+    verify(recurringP2PTransferGateway).create(p2pTransfer) || true
+  }
+
+  def "create with challenges"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def p2pTransfer = new RecurringP2PTransfer().tap {
+      setChallenges(new MdxList<Challenge>().tap {
+        add(new Challenge())
+      })
+    }
+    doReturn(new AccessorResponse<RecurringP2PTransfer>().withResult(p2pTransfer)).when(recurringP2PTransferGateway).create(p2pTransfer)
+
+    when:
+    def result = subject.create(p2pTransfer)
+
+    then:
+    result.statusCode == HttpStatus.ACCEPTED
     result.body == p2pTransfer
     verify(recurringP2PTransferGateway).create(p2pTransfer) || true
   }
@@ -110,6 +130,26 @@ class RecurringP2PTransfersControllerTest extends Specification {
 
     then:
     HttpStatus.OK == result.statusCode
+    result.body == p2pTransfer
+    verify(recurringP2PTransferGateway).update(id, p2pTransfer) || true
+  }
+
+  def "update with challenges"() {
+    given:
+    BaseController.setGateway(gateway)
+    def id = "transfer-1234"
+    def p2pTransfer = new RecurringP2PTransfer().tap {
+      setChallenges(new MdxList<Challenge>().tap {
+        add(new Challenge())
+      })
+    }
+    doReturn(new AccessorResponse<RecurringP2PTransfer>().withResult(p2pTransfer)).when(recurringP2PTransferGateway).update(id, p2pTransfer)
+
+    when:
+    def result = subject.update(id, p2pTransfer)
+
+    then:
+    result.statusCode == HttpStatus.ACCEPTED
     result.body == p2pTransfer
     verify(recurringP2PTransferGateway).update(id, p2pTransfer) || true
   }

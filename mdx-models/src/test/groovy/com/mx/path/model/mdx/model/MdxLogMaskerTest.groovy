@@ -527,6 +527,20 @@ class MdxLogMaskerTest extends Specification {
   }
 
   @Unroll
+  def "maskPayload() masks P2P Transfer JSON fields"() {
+    when:
+    String result = MdxLogMasker.maskPayload(payload)
+
+    then:
+    result == expectedResult
+
+    where:
+    payload                                              || expectedResult
+    "\"recipient_verification_answer\":\"an answer\""    || "\"recipient_verification_answer\":\"**MASKED**\""
+    "\"recipient_verification_question\":\"a question\"" || "\"recipient_verification_question\":\"**MASKED**\""
+  }
+
+  @Unroll
   def "maskPayload() masks Payee JSON fields"() {
     when:
     String result = MdxLogMasker.maskPayload(payload)

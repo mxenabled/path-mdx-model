@@ -9,6 +9,7 @@ import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.p2p_transfer.P2PTransferGateway
 import com.mx.path.model.mdx.model.MdxList
+import com.mx.path.model.mdx.model.challenges.Challenge
 import com.mx.path.model.mdx.model.p2p_transfer.P2PTransfer
 
 import org.springframework.http.HttpStatus
@@ -41,6 +42,26 @@ class P2PTransfersControllerTest extends Specification {
 
     then:
     HttpStatus.OK == result.statusCode
+    result.body == p2pTransfer
+    verify(p2pTransferGateway).create(p2pTransfer) || true
+  }
+
+  def "create with challenges"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def p2pTransfer = new P2PTransfer().tap {
+      setChallenges(new MdxList<Challenge>().tap {
+        add(new Challenge())
+      })
+    }
+    doReturn(new AccessorResponse<P2PTransfer>().withResult(p2pTransfer)).when(p2pTransferGateway).create(p2pTransfer)
+
+    when:
+    def result = subject.create(p2pTransfer)
+
+    then:
+    result.statusCode == HttpStatus.ACCEPTED
     result.body == p2pTransfer
     verify(p2pTransferGateway).create(p2pTransfer) || true
   }
@@ -104,6 +125,26 @@ class P2PTransfersControllerTest extends Specification {
 
     then:
     HttpStatus.OK == result.statusCode
+    result.body == p2pTransfer
+    verify(p2pTransferGateway).update(id, p2pTransfer) || true
+  }
+
+  def "update with challenges"() {
+    given:
+    BaseController.setGateway(gateway)
+    def id = "transfer-1234"
+    def p2pTransfer = new P2PTransfer().tap {
+      setChallenges(new MdxList<Challenge>().tap {
+        add(new Challenge())
+      })
+    }
+    doReturn(new AccessorResponse<P2PTransfer>().withResult(p2pTransfer)).when(p2pTransferGateway).update(id, p2pTransfer)
+
+    when:
+    def result = subject.update(id, p2pTransfer)
+
+    then:
+    result.statusCode == HttpStatus.ACCEPTED
     result.body == p2pTransfer
     verify(p2pTransferGateway).update(id, p2pTransfer) || true
   }
