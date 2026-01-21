@@ -1,7 +1,7 @@
 plugins {
   id "idea"
-  id "com.github.mxenabled.coppuccino" version "5.+" apply false
-  id "com.github.mxenabled.vogue" version "2.+"
+  id "com.github.mxenabled.coppuccino" version "6.0.0-SNAPSHOT" apply false
+  id "com.github.mxenabled.vogue" version "3.0.0-SNAPSHOT"
   id "io.freefair.lombok" version "8.+" apply false
   id "io.github.gradle-nexus.publish-plugin" version "1.1.+"
   id "com.netflix.nebula.maven-resolved-dependencies" version "21.2.0" apply false
@@ -26,8 +26,8 @@ allprojects {
   group "com.mx.path-mdx-model"
   description "Path MDX Model"
   version rootProject.version
-  sourceCompatibility = JavaVersion.VERSION_17
-  targetCompatibility = JavaVersion.VERSION_17
+  sourceCompatibility = JavaVersion.VERSION_21
+  targetCompatibility = JavaVersion.VERSION_21
 
   repositories {
     mavenCentral()
@@ -39,7 +39,7 @@ allprojects {
   }
 
   ext {
-    pathSDKVersion = "[5.0,6.0)"
+    pathSDKVersion = "6.0.0-SNAPSHOT"
     springVersion = "3.5.8"
   }
 }
@@ -56,7 +56,7 @@ subprojects {
     dependencies {
       api platform("com.mx.path-core:platform:${project.ext.pathSDKVersion}")
 
-      testImplementation "org.mockito:mockito-inline:[5.0,6.0)"
+      testImplementation "org.mockito:mockito-core:5.21.0"
       testImplementation "org.spockframework:spock-core:2.4-M6-groovy-3.0"
     }
 
@@ -75,7 +75,7 @@ subprojects {
     coppuccino {
       rootDir = "${projectDir}/"
       dependencies {
-        excludePreReleaseVersions = true
+        excludePreReleaseVersions = false
       }
     }
 
@@ -84,12 +84,12 @@ subprojects {
     }
 
     task sourcesJar(type: Jar, dependsOn: classes) {
-      classifier = "sources"
+      archiveClassifier = "sources"
       from sourceSets.main.allSource
     }
 
     task packageJavadoc(type: Jar) {
-      classifier = "javadoc"
+      archiveClassifier = "javadoc"
       from javadoc
     }
 
