@@ -20,10 +20,6 @@ import com.mx.path.model.mdx.model.p2p_transfer.RecurringP2PTransfer;
 public class RecurringP2PTransferBaseAccessor extends Accessor {
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
-  private DurationBaseAccessor durations;
-
-  @GatewayAPI
-  @Getter(AccessLevel.PROTECTED)
   private FrequencyBaseAccessor frequencies;
 
   public RecurringP2PTransferBaseAccessor() {
@@ -87,24 +83,6 @@ public class RecurringP2PTransferBaseAccessor extends Accessor {
   @API(description = "Update a recurring P2P transfer")
   public AccessorResponse<RecurringP2PTransfer> update(String id, RecurringP2PTransfer p2pTransfer) {
     throw new AccessorMethodNotImplementedException();
-  }
-
-  /**
-   * Accessor for duration operations
-   *
-   * @return accessor
-   */
-  @API
-  public DurationBaseAccessor durations() {
-    return durations;
-  }
-
-  /**
-   * Sets duration accessor
-   * @param durations
-   */
-  public void setDurations(DurationBaseAccessor durations) {
-    this.durations = durations;
   }
 
   /**

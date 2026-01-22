@@ -61,7 +61,6 @@ import com.mx.path.model.mdx.model.ondemand.mixins.SessionXmlMixin;
 import com.mx.path.model.mdx.model.ondemand.mixins.TransactionMixIn;
 import com.mx.path.model.mdx.model.ondemand.mixins.TransactionsPageMixin;
 import com.mx.path.model.mdx.model.origination.Origination;
-import com.mx.path.model.mdx.model.p2p_transfer.Duration;
 import com.mx.path.model.mdx.model.p2p_transfer.P2PTransfer;
 import com.mx.path.model.mdx.model.p2p_transfer.RecurringP2PTransfer;
 import com.mx.path.model.mdx.model.p2p_transfer.Source;
@@ -387,10 +386,6 @@ public class Resources {
   }
 
   private static void registerP2PTransferModels(GsonBuilder builder) {
-    // Duration
-    builder.registerTypeAdapter(Frequency.class, new ModelWrappableSerializer("duration"));
-    builder.registerTypeAdapter(new TypeToken<MdxList<Duration>>() {
-    }.getType(), new ModelWrappableSerializer("durations"));
     // Recipients
     builder.registerTypeAdapter(com.mx.path.model.mdx.model.p2p_transfer.Recipient.class, new ModelWrappableSerializer("recipient"));
     builder.registerTypeAdapter(new TypeToken<MdxList<com.mx.path.model.mdx.model.p2p_transfer.Recipient>>() {
