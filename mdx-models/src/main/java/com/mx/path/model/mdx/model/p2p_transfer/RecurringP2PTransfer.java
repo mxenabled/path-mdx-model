@@ -19,7 +19,8 @@ public class RecurringP2PTransfer extends MdxBase<RecurringP2PTransfer> {
   private String confirmationId;
   private String deliveryMethod;
   private String durationType;
-  private String durationValue;
+  private Integer endAfterCount;
+  private LocalDate endOn;
   private String frequencyId;
   private String memo;
   private String recipientId;
