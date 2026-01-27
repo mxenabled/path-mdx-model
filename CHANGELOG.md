@@ -5,6 +5,17 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [20.0.0](https://github.com/mxenabled/path-mdx-model/compare/v19.0.3...v20.0.0) (2026-01-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove durations endpoint from p2p transfers
+
+### Bug Fixes
+
+* remove durations endpoint from p2p transfers ([88992fd](https://github.com/mxenabled/path-mdx-model/commit/88992fdbd524e785af4db07b46192e4ccf44967e))
+
 ## [19.0.3](https://github.com/mxenabled/path-mdx-model/compare/v19.0.2...v19.0.3) (2026-01-15)
 
 
