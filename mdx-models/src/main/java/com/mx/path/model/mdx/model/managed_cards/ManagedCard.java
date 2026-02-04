@@ -12,6 +12,7 @@ public final class ManagedCard extends MdxBase<ManagedCard> {
 
   private String accountId;
   private String accountType;
+  private Boolean allowPushNotification;
   private String expirationOnCard;
   private String id;
   private String imageUrl;
@@ -54,6 +55,14 @@ public final class ManagedCard extends MdxBase<ManagedCard> {
 
   public void setAccountType(String accountType) {
     this.accountType = accountType;
+  }
+
+  public Boolean getAllowPushNotification() {
+    return allowPushNotification;
+  }
+
+  public void setAllowPushNotification(Boolean allowPushNotification) {
+    this.allowPushNotification = allowPushNotification;
   }
 
   public String getExpirationOnCard() {
