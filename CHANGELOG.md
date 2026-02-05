@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [20.0.1](https://github.com/mxenabled/path-mdx-model/compare/v20.0.0...v20.0.1) (2026-02-05)
+
+
+### Bug Fixes
+
+* add managed cards allow push notifications ([c2ee071](https://github.com/mxenabled/path-mdx-model/commit/c2ee071096abde8e7e94a18d2da4a89a99866eb2))
+
 ## [20.0.0](https://github.com/mxenabled/path-mdx-model/compare/v19.0.3...v20.0.0) (2026-01-27)
 
 
