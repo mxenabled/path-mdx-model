@@ -15,6 +15,7 @@ public class Authorization extends MdxBase<Authorization> {
   private String accountId;
   private CardManagerData cardManagerData;
   private List<Challenge> challenges;
+  private ChatData chatData;
   private NameValuePair[] cookies;
   private String cookiesUrl;
   private String deviceId;
