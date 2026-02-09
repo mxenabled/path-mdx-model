@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [20.1.0](https://github.com/mxenabled/path-mdx-model/compare/v20.0.1...v20.1.0) (2026-02-09)
+
+
+### Features
+
+* add chat data to authorization model ([32935ae](https://github.com/mxenabled/path-mdx-model/commit/32935ae407e4b69f58bef4ffe1a882195d20dc27))
+
 ## [20.0.1](https://github.com/mxenabled/path-mdx-model/compare/v20.0.0...v20.0.1) (2026-02-05)
 
 
