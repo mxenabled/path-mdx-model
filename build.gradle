@@ -34,13 +34,39 @@ allprojects {
     mavenLocal()
   }
 
-  configurations.all {
+  configurations.configureEach {
+    resolutionStrategy.eachDependency { details ->
+      //Uncontrolled Recursion [High Severity][https://security.snyk.io/vuln/SNYK-JAVA-ORGAPACHECOMMONS-10734078] in org.apache.commons:commons-lang3@3.17.0
+      //    introduced by net.sourceforge.pmd:pmd-java@7.16.0 > org.apache.commons:commons-lang3@3.17.0 and 7 other path(s)
+      //  This issue was fixed in versions: 3.18.0
+      if (details.requested.group == "org.apache.commons" && details.requested.name == "commons-lang3") {
+        details.useVersion "3.18.0"
+      }
+      //Improper Validation of Certificate with Host Mismatch [Medium Severity][https://security.snyk.io/vuln/SNYK-JAVA-ORGAPACHELOGGINGLOG4J-14532782] in org.apache.logging.log4j:log4j-core@2.24.3
+      //    introduced by com.github.spotbugs:spotbugs@4.9.8 > org.apache.logging.log4j:log4j-core@2.24.3
+      //  This issue was fixed in versions: 2.25.3
+      else if (details.requested.group == "org.apache.logging.log4j" && details.requested.name == "log4j-core") {
+        details.useVersion "2.25.3"
+      }
+      //XML External Entity (XXE) Injection [Medium Severity][https://security.snyk.io/vuln/SNYK-JAVA-ORGASSERTJ-15102413] in org.assertj:assertj-core@3.27.6
+      //    introduced by com.mx.path-core:testing@5.1.0 > org.assertj:assertj-core@3.27.6 and 1 other path(s)
+      //  This issue was fixed in versions: 3.27.7
+      else if (details.requested.group == "org.assertj" && details.requested.name == "assertj-core") {
+        details.useVersion "3.27.7"
+      }
+      //Information Exposure [Low Severity][https://security.snyk.io/vuln/SNYK-JAVA-COMMONSCODEC-561518] in commons-codec:commons-codec@1.11
+      //    introduced by io.honeybadger:honeybadger-java@2.1.2 > org.apache.httpcomponents:fluent-hc@4.5.14 > org.apache.httpcomponents:httpclient@4.5.14 > commons-codec:commons-codec@1.11
+      //  This issue was fixed in versions: 1.14
+      else if (details.requested.group == "commons-codec" && details.requested.name == "commons-codec") {
+        details.useVersion "1.14"
+      }
+    }
     resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
   }
 
   ext {
-    pathSDKVersion = "[5.0,6.0)"
-    springVersion = "3.5.8"
+    pathSDKVersion = "[6.0,7.0)"
+    springVersion = "[3.5,4.0)"
   }
 }
 
