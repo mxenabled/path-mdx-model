@@ -35,11 +35,11 @@ allprojects {
   }
 
   configurations.all {
-    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    resolutionStrategy.cacheChangingModulesFor 0, "seconds"
   }
 
   ext {
-    pathSDKVersion = "[5.0,6.0)"
+    pathSDKVersion = "[6.0,7.0)"
     springVersion = "3.5.8"
   }
 }
