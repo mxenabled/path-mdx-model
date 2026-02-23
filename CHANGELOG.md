@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [20.2.0](https://github.com/mxenabled/path-mdx-model/compare/v20.1.0...v20.2.0) (2026-02-23)
+
+
+### Features
+
+* add managed card update notification preferences ([809cc35](https://github.com/mxenabled/path-mdx-model/commit/809cc35eb1b09365beb95b1419422396137f7c6f))
+
 ## [20.1.0](https://github.com/mxenabled/path-mdx-model/compare/v20.0.1...v20.1.0) (2026-02-09)
 
 
