@@ -3,7 +3,22 @@ defaultRules: {}
 packageRules:
 - package: "com.github.mxenabled.coppuccino:com.github.mxenabled.coppuccino.gradle.plugin"
   rules: {}
-  suppressUntil: "2026-02-09"
+  suppressUntil: "2026-02-28"
 - package: "com.github.mxenabled.vogue:com.github.mxenabled.vogue.gradle.plugin"
   rules: {}
-  suppressUntil: "2026-02-09"
+  suppressUntil: "2026-02-28"
+- package: "com.mx.path-core:gateway"
+  rules: {}
+  suppressUntil: "2026-02-28"
+- package: "com.mx.path-core:gateway-generator"
+  rules: {}
+  suppressUntil: "2026-02-28"
+- package: "com.mx.path-core:http"
+  rules: {}
+  suppressUntil: "2026-02-28"
+- package: "com.mx.path-core:platform"
+  rules: {}
+  suppressUntil: "2026-02-28"
+- package: "com.mx.path-core:testing"
+  rules: {}
+  suppressUntil: "2026-02-28"

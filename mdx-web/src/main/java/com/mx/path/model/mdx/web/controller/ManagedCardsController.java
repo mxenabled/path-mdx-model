@@ -3,6 +3,7 @@ package com.mx.path.model.mdx.web.controller;
 import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.managed_cards.ManagedCard;
+import com.mx.path.model.mdx.model.managed_cards.NotificationPreferences;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -89,4 +90,9 @@ public class ManagedCardsController extends BaseController {
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
+  @RequestMapping(value = "/users/{userId}/managed_cards/{id}/notification_preferences", method = RequestMethod.PUT, consumes = MDX_MEDIA)
+  public final ResponseEntity<?> updateNotificationPreferences(@RequestBody NotificationPreferences notificationPreferencesRequest) throws Exception {
+    AccessorResponse<NotificationPreferences> response = gateway().managedCards().updateNotificationPreferences(notificationPreferencesRequest);
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+  }
 }

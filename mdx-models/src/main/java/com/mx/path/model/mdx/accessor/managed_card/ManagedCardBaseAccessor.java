@@ -9,6 +9,7 @@ import com.mx.path.gateway.accessor.AccessorConfiguration;
 import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.managed_cards.ManagedCard;
+import com.mx.path.model.mdx.model.managed_cards.NotificationPreferences;
 
 /**
  * Accessor base for managed card operations
@@ -156,6 +157,17 @@ public abstract class ManagedCardBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Update a managed card")
   public AccessorResponse<ManagedCard> update(String id, ManagedCard card) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Update a managed card's notification preferences
+   *
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Update a managed card's notification preferences")
+  public AccessorResponse<NotificationPreferences> updateNotificationPreferences(NotificationPreferences notificationPreferences) {
     throw new AccessorMethodNotImplementedException();
   }
 }
