@@ -10,6 +10,7 @@ import com.mx.path.gateway.api.managed_card.ManagedCardGateway
 import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.challenges.Challenge
 import com.mx.path.model.mdx.model.managed_cards.ManagedCard
+import com.mx.path.model.mdx.model.managed_cards.NotificationPreferences
 
 import org.springframework.http.HttpStatus
 
@@ -204,5 +205,21 @@ class ManagedCardsControllerTest extends Specification {
     then:
     verify(managedCardGateway).getUnmaskedCardNumber(managedCard.id) || true
     response.body == managedCard
+  }
+
+  def "update notification preferences interacts with gateway"() {
+    given:
+    NotificationPreferences notificationPreferences = new NotificationPreferences().tap {
+      setAllowPushNotification(false)
+    }
+    doReturn(new AccessorResponse<NotificationPreferences>().withResult(notificationPreferences)).when(managedCardGateway).updateNotificationPreferences(notificationPreferences)
+
+    when:
+    def response = subject.updateNotificationPreferences(notificationPreferences)
+
+    then:
+    verify(managedCardGateway).updateNotificationPreferences(notificationPreferences) || true
+    response.body == notificationPreferences
+    HttpStatus.OK == response.statusCode
   }
 }

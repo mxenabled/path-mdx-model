@@ -44,6 +44,7 @@ import com.mx.path.model.mdx.model.id.UnlockUser;
 import com.mx.path.model.mdx.model.location.Location;
 import com.mx.path.model.mdx.model.managed_cards.Destination;
 import com.mx.path.model.mdx.model.managed_cards.ManagedCard;
+import com.mx.path.model.mdx.model.managed_cards.NotificationPreferences;
 import com.mx.path.model.mdx.model.managed_cards.TravelSchedule;
 import com.mx.path.model.mdx.model.ondemand.MdxListWrapper;
 import com.mx.path.model.mdx.model.ondemand.MdxOnDemandDeserializer;
@@ -255,6 +256,7 @@ public class Resources {
     builder.registerTypeAdapter(ManagedCard.class, new ModelWrappableSerializer("managed_card"));
     builder.registerTypeAdapter(new TypeToken<MdxList<ManagedCard>>() {
     }.getType(), new ModelWrappableSerializer("managed_cards"));
+    builder.registerTypeAdapter(NotificationPreferences.class, new ModelWrappableSerializer("notification_preferences"));
     // RemoteDeposit
     builder.registerTypeAdapter(RemoteDeposit.class, new ModelWrappableSerializer("remote_deposit"));
     builder.registerTypeAdapter(new TypeToken<MdxList<RemoteDeposit>>() {
