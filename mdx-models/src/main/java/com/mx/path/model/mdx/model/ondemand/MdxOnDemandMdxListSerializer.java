@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
@@ -43,7 +43,7 @@ public class MdxOnDemandMdxListSerializer extends JsonSerializer<MdxListWrapper>
     this.mapper = new XmlMapper()
         .configure(SerializationFeature.WRAP_ROOT_VALUE, false)
         .setAnnotationIntrospector(new XmlSkipInternalAnnotationsIntrospector())
-        .setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE)
+        .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
         .enable(SerializationFeature.INDENT_OUTPUT)
         .registerModule(new JavaTimeModule().addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ISO_DATE)))
         .setSerializationInclusion(JsonInclude.Include.NON_NULL);
