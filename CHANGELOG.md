@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [20.2.3](https://github.com/mxenabled/path-mdx-model/compare/v20.2.2...v20.2.3) (2026-02-24)
+
+
+### Bug Fixes
+
+* pass id with update notification preferences ([986c947](https://github.com/mxenabled/path-mdx-model/commit/986c947192d0680b86e0c045118fa85c8ac9d755))
+
 ## [20.2.2](https://github.com/mxenabled/path-mdx-model/compare/v20.2.1...v20.2.2) (2026-02-23)
 
 
