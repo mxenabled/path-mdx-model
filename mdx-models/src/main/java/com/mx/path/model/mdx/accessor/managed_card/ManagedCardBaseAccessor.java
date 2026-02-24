@@ -167,7 +167,7 @@ public abstract class ManagedCardBaseAccessor extends Accessor {
    */
   @GatewayAPI
   @API(description = "Update a managed card's notification preferences")
-  public AccessorResponse<NotificationPreferences> updateNotificationPreferences(NotificationPreferences notificationPreferences) {
+  public AccessorResponse<NotificationPreferences> updateNotificationPreferences(String id, NotificationPreferences notificationPreferences) {
     throw new AccessorMethodNotImplementedException();
   }
 }
