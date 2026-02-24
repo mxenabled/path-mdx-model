@@ -91,8 +91,8 @@ public class ManagedCardsController extends BaseController {
   }
 
   @RequestMapping(value = "/users/{userId}/managed_cards/{id}/notification_preferences", method = RequestMethod.PUT, consumes = MDX_MEDIA)
-  public final ResponseEntity<?> updateNotificationPreferences(@RequestBody NotificationPreferences notificationPreferencesRequest) throws Exception {
-    AccessorResponse<NotificationPreferences> response = gateway().managedCards().updateNotificationPreferences(notificationPreferencesRequest);
+  public final ResponseEntity<?> updateNotificationPreferences(@PathVariable("id") String id, @RequestBody NotificationPreferences notificationPreferencesRequest) throws Exception {
+    AccessorResponse<NotificationPreferences> response = gateway().managedCards().updateNotificationPreferences(id, notificationPreferencesRequest);
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 }

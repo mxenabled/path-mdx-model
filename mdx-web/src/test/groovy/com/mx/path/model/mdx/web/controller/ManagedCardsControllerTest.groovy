@@ -212,13 +212,13 @@ class ManagedCardsControllerTest extends Specification {
     NotificationPreferences notificationPreferences = new NotificationPreferences().tap {
       setAllowPushNotification(false)
     }
-    doReturn(new AccessorResponse<NotificationPreferences>().withResult(notificationPreferences)).when(managedCardGateway).updateNotificationPreferences(notificationPreferences)
+    doReturn(new AccessorResponse<NotificationPreferences>().withResult(notificationPreferences)).when(managedCardGateway).updateNotificationPreferences("CARD-123", notificationPreferences)
 
     when:
-    def response = subject.updateNotificationPreferences(notificationPreferences)
+    def response = subject.updateNotificationPreferences("CARD-123", notificationPreferences)
 
     then:
-    verify(managedCardGateway).updateNotificationPreferences(notificationPreferences) || true
+    verify(managedCardGateway).updateNotificationPreferences("CARD-123", notificationPreferences) || true
     response.body == notificationPreferences
     HttpStatus.OK == response.statusCode
   }
