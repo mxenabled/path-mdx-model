@@ -9,13 +9,11 @@ dependencies {
   implementation "org.springframework.boot:spring-boot-starter-web"
 
   api project(":mdx-gateways")
+
   implementation "commons-codec:commons-codec:1.15"
   implementation "commons-io:commons-io:2.14.0"
 
-  //testing dependencies
-  testImplementation "com.mx.path-core:testing"
-  testImplementation "io.opentracing:opentracing-mock:0.33.0"
+  testImplementation "io.opentracing:opentracing-mock"
   testImplementation "org.springframework.boot:spring-boot-starter-test"
-  testImplementation "org.mockito:mockito-inline:[5.0,6.0)"
   testRuntimeOnly "org.junit.platform:junit-platform-launcher"
 }

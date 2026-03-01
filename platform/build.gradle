@@ -1,9 +1,3 @@
-plugins {
-  id "java-platform"
-  id "maven-publish"
-  id "signing"
-}
-
 javaPlatform {
   allowDependencies()
 }
@@ -11,7 +5,7 @@ javaPlatform {
 // Dependency versions aren't resolved, by default. Check this out to resolve this issue:
 // https://github.com/gradle/gradle/issues/8887
 dependencies {
-  api platform("com.mx.path-core:platform:${project.ext.pathSDKVersion}")
+  api platform("com.mx.path-core:platform:${project.ext.pathCoreVersion}")
   api platform("org.springframework.boot:spring-boot-starter-parent:${project.ext.springVersion}")
 
   constraints {
@@ -20,54 +14,5 @@ dependencies {
     api project(":mdx-models")
     api project(":mdx-web")
     api project(":realtime")
-  }
-}
-
-publishing {
-  publications {
-    bom(MavenPublication) {
-      from components.javaPlatform
-      pom {
-        groupId = project.group
-        artifactId = project.name
-        name = project.name
-        description = project.description
-        url = "https://github.com/mxenabled/path-mdx-model"
-
-        developers {
-          developer {
-            name = "MX"
-            email = "path@mx.com"
-            organization = "MX Technologies Inc."
-            url = "http://www.mx.com"
-          }
-        }
-
-        licenses {
-          license {
-            name = "Proprietary"
-            url = "https://github.com/mxenabled/path-mdx-model/blob/master/LICENSE"
-            distribution = "repo"
-          }
-        }
-
-        scm {
-          connection = "scm:git:git@github.com:mxenabled/path-mdx-model.git"
-          url = "https://github.com/mxenabled/path-mdx-model/tree/master"
-        }
-      }
-    }
-  }
-}
-
-signing {
-  def signingKey = findProperty("signingKey")
-  def signingPassword = findProperty("signingKeyPassword")
-  if (signingKey != null && signingKey != "") {
-    useInMemoryPgpKeys(signingKey, signingPassword)
-    sign publishing.publications.bom
-    logger.lifecycle("Configuring signing for ${project.name}")
-  } else {
-    logger.lifecycle("Skipping artifact signing for ${project.name} - missing signing key")
   }
 }

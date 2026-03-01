@@ -1,7 +1,7 @@
 plugins {
+  id "com.github.mxenabled.coppuccino" version "6.+" apply false
+  id "com.github.mxenabled.vogue" version "3.+"
   id "idea"
-  id "com.github.mxenabled.coppuccino" version "5.+" apply false
-  id "com.github.mxenabled.vogue" version "2.+"
   id "io.freefair.lombok" version "8.+" apply false
   id "io.github.gradle-nexus.publish-plugin" version "1.1.+"
   id "com.netflix.nebula.maven-resolved-dependencies" version "21.2.0" apply false
@@ -18,58 +18,32 @@ def publishedProjects = [
   "mdx-web"
 ]
 
-allprojects {
-  if (it.name != platformProject) {
-    apply plugin: "java"
-  }
-
+subprojects {
   group "com.mx.path-mdx-model"
   description "Path MDX Model"
   version rootProject.version
-  sourceCompatibility = JavaVersion.VERSION_17
-  targetCompatibility = JavaVersion.VERSION_17
-
-  repositories {
-    mavenCentral()
-    mavenLocal()
-  }
-
-  configurations.all {
-    resolutionStrategy.cacheChangingModulesFor 0, "seconds"
-  }
 
   ext {
-    pathSDKVersion = "[6.0,7.0)"
+    pathCoreVersion = "[6.0,7.0)"
     springVersion = "3.5.8"
   }
-}
 
-subprojects {
-  if (it.name != platformProject) {
-    apply plugin: "java-library"
-    apply plugin: "groovy"
+  if (it.name == platformProject) {
+    apply plugin: "java-platform"
+  } else {
     apply plugin: "com.github.mxenabled.coppuccino"
     apply plugin: "com.github.mxenabled.vogue"
+    apply plugin: "groovy"
+    apply plugin: "java-library"
     apply plugin: "io.freefair.lombok"
     apply plugin: "com.netflix.nebula.maven-resolved-dependencies"
 
-    dependencies {
-      api platform("com.mx.path-core:platform:${project.ext.pathSDKVersion}")
-
-      testImplementation "org.mockito:mockito-inline:[5.0,6.0)"
-      testImplementation "org.spockframework:spock-core:2.4-M6-groovy-3.0"
-    }
-
-    test { useJUnitPlatform() }
-
-    compileJava { options.compilerArgs << "-parameters" }
-
-    javadoc {
-      classpath = configurations.compileClasspath
-      options {
-        setMemberLevel JavadocMemberLevel.PUBLIC
-        setAuthor true
+    java {
+      toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
       }
+      withSourcesJar()
+      withJavadocJar()
     }
 
     coppuccino {
@@ -83,76 +57,81 @@ subprojects {
       dependencyUpdatesOutputDir = "${projectDir}/build/dependencyUpdates"
     }
 
-    task sourcesJar(type: Jar, dependsOn: classes) {
-      classifier = "sources"
-      from sourceSets.main.allSource
+    repositories {
+      mavenCentral()
+      mavenLocal()
     }
 
-    task packageJavadoc(type: Jar) {
-      classifier = "javadoc"
-      from javadoc
+    dependencies {
+      api platform("com.mx.path-core:platform:${project.ext.pathCoreVersion}")
+
+      testImplementation "com.mx.path-core:testing"
     }
 
-    artifacts {
-      archives sourcesJar
-      archives jar
-      archives packageJavadoc
+    test { useJUnitPlatform() }
+
+    compileJava { options.compilerArgs << "-parameters" }
+
+    javadoc {
+      classpath = configurations.compileClasspath
+      options {
+        setMemberLevel JavadocMemberLevel.PUBLIC
+        setAuthor true
+      }
     }
+  }
 
-    if (publishedProjects.contains(it.name)) {
-      apply plugin: "maven-publish"
-      apply plugin: "signing"
+  if (publishedProjects.contains(it.name)) {
+    apply plugin: "maven-publish"
+    apply plugin: "signing"
 
-      publishing {
-        publications {
-          maven(MavenPublication) {
-            from components.java
-            artifact sourcesJar
-            artifact packageJavadoc
+    publishing {
+      publications {
+        maven(MavenPublication) {
+          from(project.name == platformProject ? components.javaPlatform : components.java)
 
-            pom {
-              groupId = project.group
-              artifactId = project.name
-              name = project.name
-              description = project.description
-              url = "https://github.com/mxenabled/path-mdx-model"
+          pom {
+            groupId = project.group
+            artifactId = project.name
+            name = project.name
+            description = project.description
+            url = "https://github.com/mxenabled/path-mdx-model"
 
-              developers {
-                developer {
-                  name = "MX"
-                  email = "path@mx.com"
-                  organization = "MX Technologies Inc."
-                  url = "http://www.mx.com"
-                }
+            developers {
+              developer {
+                name = "MX"
+                email = "path@mx.com"
+                organization = "MX Technologies Inc."
+                url = "http://www.mx.com"
               }
+            }
 
-              licenses {
-                license {
-                  name = "Proprietary"
-                  url = "https://github.com/mxenabled/path-mdx-model/blob/master/LICENSE"
-                  distribution = "repo"
-                }
+            licenses {
+              license {
+                name = "Proprietary"
+                url = "https://github.com/mxenabled/path-mdx-model/blob/master/LICENSE"
+                distribution = "repo"
               }
+            }
 
-              scm {
-                connection = "scm:git:git@github.com:mxenabled/path-mdx-model.git"
-                url = "https://github.com/mxenabled/path-mdx-model/tree/master"
-              }
+            scm {
+              connection = "scm:git:git@github.com:mxenabled/path-mdx-model.git"
+              url = "https://github.com/mxenabled/path-mdx-model/tree/master"
             }
           }
         }
       }
+    }
 
-      signing {
-        def signingKey = findProperty("signingKey")
-        def signingPassword = findProperty("signingKeyPassword")
-        if (signingKey != null && signingKey != "") {
-          useInMemoryPgpKeys(signingKey, signingPassword)
-          sign publishing.publications.maven
-          logger.lifecycle("Configuring signing for ${project.name}")
-        } else {
-          logger.lifecycle("Skipping artifact signing for ${project.name} - missing signing key")
-        }
+    signing {
+      def signingKey = findProperty("signingKey")
+      def signingPassword = findProperty("signingKeyPassword")
+      if (signingKey != null && signingKey != "") {
+        useInMemoryPgpKeys(signingKey, signingPassword)
+        sign publishing.publications.maven
+        logger.lifecycle("Configuring signing for ${project.name}")
+      } else {
+        logger.lifecycle("Skipping artifact signing for ${project.name} - missing signing key")
       }
     }
   }
@@ -173,25 +152,16 @@ nexusPublishing {
 }
 
 task spotlessApply {
-  subprojects.each {
-    if (it.name != platformProject) {
-      it.afterEvaluate {
-        def spotlessApplyTask = it.tasks.findByName("spotlessApply")
-        dependsOn(spotlessApplyTask)
-      }
-    }
-  }
+  dependsOn subprojects.findAll { it.name != platformProject }.collect { "${it.path}:spotlessApply" }
 }
 
 task subdependencies {
-  subprojects.each {
-    if (it.name != platformProject) {
-      it.afterEvaluate {
-        def dependenciesTask = it.tasks.findByName("dependencies")
-        dependsOn(dependenciesTask)
-      }
-    }
-  }
+  dependsOn subprojects.findAll { it.name != platformProject }.collect { "${it.path}:dependencies" }
 }
 
 project.tasks.getByPath("dependencies").finalizedBy("subdependencies")
+
+wrapper {
+  gradleVersion = "7.6.4"
+  distributionType = Wrapper.DistributionType.ALL
+}

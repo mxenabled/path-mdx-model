@@ -6,9 +6,8 @@ coppuccino {
 
 dependencies {
   api "com.mx.path-core:gateway"
-  api "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.14.0-rc1"
-  api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.0-rc1"
+  api "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.21.0"
+  api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.21.0"
 
   implementation "commons-beanutils:commons-beanutils:1.11.0"
-  testImplementation "com.mx.path-core:testing"
 }
