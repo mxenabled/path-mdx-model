@@ -14,7 +14,6 @@ dependencies {
   api project(":mdx-models")
   annotationProcessor project(":mdx-gateway-generator")
 
-  //testing dependencies
-  testImplementation "org.slf4j:slf4j-simple:1.7.30"
-  testImplementation "io.opentracing:opentracing-mock:0.33.0"
+  testImplementation "org.slf4j:slf4j-simple"
+  testImplementation "io.opentracing:opentracing-mock"
 }

@@ -7,6 +7,4 @@ coppuccino {
 dependencies {
   implementation project(":mdx-models")
   implementation "com.mx.path-core:http"
-
-  testImplementation "com.mx.path-core:testing"
 }
