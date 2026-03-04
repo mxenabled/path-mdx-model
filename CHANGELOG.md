@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [20.2.4](https://github.com/mxenabled/path-mdx-model/compare/v20.2.3...v20.2.4) (2026-03-04)
+
+
+### Bug Fixes
+
+* resolve snyk vulnerabilities ([c899757](https://github.com/mxenabled/path-mdx-model/commit/c8997577a79747d7e47006a5e6669503775c7a76))
+
 ## [20.2.3](https://github.com/mxenabled/path-mdx-model/compare/v20.2.2...v20.2.3) (2026-02-24)
 
 
