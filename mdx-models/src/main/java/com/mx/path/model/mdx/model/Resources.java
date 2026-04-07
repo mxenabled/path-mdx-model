@@ -18,11 +18,11 @@ import com.mx.path.model.mdx.model.account.StopPayment;
 import com.mx.path.model.mdx.model.account.StopPaymentReason;
 import com.mx.path.model.mdx.model.account.Transaction;
 import com.mx.path.model.mdx.model.account.TransactionsPage;
-import com.mx.path.model.mdx.model.account.alerts.AccountAlert;
-import com.mx.path.model.mdx.model.account.alerts.DeliveryMethod;
 import com.mx.path.model.mdx.model.ach_transfer.AchAccount;
 import com.mx.path.model.mdx.model.ach_transfer.AchScheduledTransfer;
 import com.mx.path.model.mdx.model.ach_transfer.AchTransfer;
+import com.mx.path.model.mdx.model.alerts.Alert;
+import com.mx.path.model.mdx.model.alerts.DeliveryMethod;
 import com.mx.path.model.mdx.model.authorization.Authorization;
 import com.mx.path.model.mdx.model.check.CheckImage;
 import com.mx.path.model.mdx.model.credit_report.CreditReport;
@@ -285,8 +285,8 @@ public class Resources {
     registerPaymentsModels(builder);
     // Register multistage transfer models
     registerMultistageTransferModels(builder);
-    // Register account alert models
-    registerAccountAlertModels(builder);
+    // Register alert models
+    registerAlertModels(builder);
     // Register product models
     registerProductModels(builder);
     // Register P2P transfer models
@@ -446,10 +446,10 @@ public class Resources {
     }.getType(), new ModelWrappableSerializer("repayments"));
   }
 
-  private static void registerAccountAlertModels(GsonBuilder builder) {
-    // AccountAlert
-    builder.registerTypeAdapter(AccountAlert.class, new ModelWrappableSerializer("alert"));
-    builder.registerTypeAdapter(new TypeToken<MdxList<AccountAlert>>() {
+  private static void registerAlertModels(GsonBuilder builder) {
+    // Alert
+    builder.registerTypeAdapter(Alert.class, new ModelWrappableSerializer("alert"));
+    builder.registerTypeAdapter(new TypeToken<MdxList<Alert>>() {
     }.getType(), new ModelWrappableSerializer("alerts"));
     // DeliveryMethod
     builder.registerTypeAdapter(new TypeToken<MdxList<DeliveryMethod>>() {

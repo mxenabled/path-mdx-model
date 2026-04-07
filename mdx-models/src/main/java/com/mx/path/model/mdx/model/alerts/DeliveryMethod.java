@@ -1,4 +1,4 @@
-package com.mx.path.model.mdx.model.account.alerts;
+package com.mx.path.model.mdx.model.alerts;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -3,8 +3,8 @@ package com.mx.path.model.mdx.web.controller;
 import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.account.Account;
-import com.mx.path.model.mdx.model.account.alerts.AccountAlert;
-import com.mx.path.model.mdx.model.account.alerts.DeliveryMethod;
+import com.mx.path.model.mdx.model.alerts.Alert;
+import com.mx.path.model.mdx.model.alerts.DeliveryMethod;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,23 +18,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "{clientId}")
 public class AccountAlertsController extends BaseController {
   @RequestMapping(value = "/users/{userId}/accounts/{accountId}/alerts/{id}", method = RequestMethod.GET)
-  public final ResponseEntity<AccountAlert> getAlert(@PathVariable("accountId") String accountId, @PathVariable("id") String alertId) {
+  public final ResponseEntity<Alert> getAlert(@PathVariable("accountId") String accountId, @PathVariable("id") String alertId) {
     ensureFeature("accounts");
-    AccessorResponse<AccountAlert> response = gateway().accounts().accountAlerts().get(accountId, alertId);
+    AccessorResponse<Alert> response = gateway().accounts().accountAlerts().get(accountId, alertId);
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/users/{userId}/accounts/{accountId}/alerts", method = RequestMethod.GET, produces = BaseController.MDX_MEDIA)
-  public final ResponseEntity<MdxList<AccountAlert>> getAlertList(@PathVariable("accountId") String accountId) {
+  public final ResponseEntity<MdxList<Alert>> getAlertList(@PathVariable("accountId") String accountId) {
     ensureFeature("accounts");
-    AccessorResponse<MdxList<AccountAlert>> response = gateway().accounts().accountAlerts().list(accountId);
+    AccessorResponse<MdxList<Alert>> response = gateway().accounts().accountAlerts().list(accountId);
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/users/{userId}/accounts/{accountId}/alerts/{id}", method = RequestMethod.PUT, consumes = BaseController.MDX_MEDIA)
-  public final ResponseEntity<AccountAlert> updateAlert(@PathVariable("accountId") String accountId, @RequestBody AccountAlert accountAlert) {
+  public final ResponseEntity<Alert> updateAlert(@PathVariable("accountId") String accountId, @RequestBody Alert accountAlert) {
     ensureFeature("accounts");
-    AccessorResponse<AccountAlert> response = gateway().accounts().accountAlerts().update(accountId, accountAlert);
+    AccessorResponse<Alert> response = gateway().accounts().accountAlerts().update(accountId, accountAlert);
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 

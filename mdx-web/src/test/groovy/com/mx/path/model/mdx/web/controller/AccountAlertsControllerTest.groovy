@@ -10,10 +10,8 @@ import com.mx.path.gateway.api.account.AccountAlertGateway
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.account.Account
-import com.mx.path.model.mdx.model.account.alerts.AccountAlert
-import com.mx.path.model.mdx.model.account.alerts.DeliveryMethod
-
-import org.springframework.http.HttpStatus
+import com.mx.path.model.mdx.model.alerts.Alert
+import com.mx.path.model.mdx.model.alerts.DeliveryMethod
 
 import spock.lang.Specification
 
@@ -43,10 +41,10 @@ class AccountAlertsControllerTest extends Specification {
     given:
     def accountId = "account-id"
     def alertId = "alert-id"
-    def accountAlert = new AccountAlert()
+    def accountAlert = new Alert()
 
     when:
-    doReturn(new AccessorResponse<AccountAlert>().withResult(accountAlert)).when(accountAlertGateway).get(accountId, alertId)
+    doReturn(new AccessorResponse<Alert>().withResult(accountAlert)).when(accountAlertGateway).get(accountId, alertId)
     def response = subject.getAlert(accountId, alertId)
 
     then:
@@ -57,11 +55,11 @@ class AccountAlertsControllerTest extends Specification {
   def "getAlertList interacts with gateway"() {
     given:
     def accountId = "account-id"
-    def alerts = new MdxList<AccountAlert>()
-    alerts.add(new AccountAlert())
+    def alerts = new MdxList<Alert>()
+    alerts.add(new Alert())
 
     when:
-    doReturn(new AccessorResponse<MdxList<AccountAlert>>().withResult(alerts)).when(accountAlertGateway).list(accountId)
+    doReturn(new AccessorResponse<MdxList<Alert>>().withResult(alerts)).when(accountAlertGateway).list(accountId)
     def response = subject.getAlertList(accountId)
 
     then:
@@ -72,10 +70,10 @@ class AccountAlertsControllerTest extends Specification {
   def "updateAlert interacts with gateway"() {
     given:
     def accountId = "account-id"
-    def accountAlert = new AccountAlert()
+    def accountAlert = new Alert()
 
     when:
-    doReturn(new AccessorResponse<AccountAlert>().withResult(accountAlert)).when(accountAlertGateway).update(accountId, accountAlert)
+    doReturn(new AccessorResponse<Alert>().withResult(accountAlert)).when(accountAlertGateway).update(accountId, accountAlert)
     def response = subject.updateAlert(accountId, accountAlert)
 
     then:
