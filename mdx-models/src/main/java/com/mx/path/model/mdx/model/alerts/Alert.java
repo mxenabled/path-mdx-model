@@ -1,4 +1,4 @@
-package com.mx.path.model.mdx.model.account.alerts;
+package com.mx.path.model.mdx.model.alerts;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import com.mx.path.model.mdx.model.challenges.Challenge;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class AccountAlert extends MdxBase<AccountAlert> {
+public class Alert extends MdxBase<Alert> {
   private List<Challenge> challenges;
   private List<AlertCriteria> criteria;
   private List<String> deliveryMethodIds;

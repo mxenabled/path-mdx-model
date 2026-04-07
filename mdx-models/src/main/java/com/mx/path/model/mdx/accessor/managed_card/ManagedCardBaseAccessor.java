@@ -1,5 +1,8 @@
 package com.mx.path.model.mdx.accessor.managed_card;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+
 import com.mx.path.core.common.accessor.API;
 import com.mx.path.core.common.accessor.AccessorMethodNotImplementedException;
 import com.mx.path.core.common.gateway.GatewayAPI;
@@ -19,6 +22,9 @@ import com.mx.path.model.mdx.model.managed_cards.NotificationPreferences;
 @GatewayClass
 @API(specificationUrl = "https://developer.mx.com/drafts/mdx/managed_cards/#mdx-managed-cards")
 public abstract class ManagedCardBaseAccessor extends Accessor {
+  @GatewayAPI
+  @Getter(AccessLevel.PROTECTED)
+  private ManagedCardAlertBaseAccessor alerts;
 
   public ManagedCardBaseAccessor() {
   }
@@ -169,5 +175,23 @@ public abstract class ManagedCardBaseAccessor extends Accessor {
   @API(description = "Update a managed card's notification preferences")
   public AccessorResponse<NotificationPreferences> updateNotificationPreferences(String id, NotificationPreferences notificationPreferences) {
     throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Accessor for managed card alerts
+   *
+   * @return accessor
+   */
+  @API
+  public ManagedCardAlertBaseAccessor alerts() {
+    return alerts;
+  }
+
+  /**
+   * Sets managed card alert accessor
+   * @param alerts
+   */
+  public void setAlerts(ManagedCardAlertBaseAccessor alerts) {
+    this.alerts = alerts;
   }
 }

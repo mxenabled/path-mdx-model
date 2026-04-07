@@ -9,14 +9,14 @@ import com.mx.path.gateway.accessor.AccessorConfiguration;
 import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.account.Account;
-import com.mx.path.model.mdx.model.account.alerts.AccountAlert;
-import com.mx.path.model.mdx.model.account.alerts.DeliveryMethod;
+import com.mx.path.model.mdx.model.alerts.Alert;
+import com.mx.path.model.mdx.model.alerts.DeliveryMethod;
 
 /**
  * Accessor for account alert operations
  */
 @GatewayClass
-@API(description = "Access to account alerts", specificationUrl = "https://developer.mx.com/drafts/mdx/accounts/#accounts-alerts")
+@API(description = "Access to account alerts", specificationUrl = "https://developer.mx.com/drafts/mdx/accounts/#alerts")
 public abstract class AccountAlertBaseAccessor extends Accessor {
 
   public AccountAlertBaseAccessor() {
@@ -40,7 +40,7 @@ public abstract class AccountAlertBaseAccessor extends Accessor {
    */
   @GatewayAPI
   @API(description = "Get account alert")
-  public AccessorResponse<AccountAlert> get(String accountId, String alertId) {
+  public AccessorResponse<Alert> get(String accountId, String alertId) {
     throw new AccessorMethodNotImplementedException();
   }
 
@@ -52,7 +52,7 @@ public abstract class AccountAlertBaseAccessor extends Accessor {
    */
   @GatewayAPI
   @API(description = "List account alerts")
-  public AccessorResponse<MdxList<AccountAlert>> list(String accountId) {
+  public AccessorResponse<MdxList<Alert>> list(String accountId) {
     throw new AccessorMethodNotImplementedException();
   }
 
@@ -65,7 +65,7 @@ public abstract class AccountAlertBaseAccessor extends Accessor {
    */
   @GatewayAPI
   @API(description = "Update an account alert")
-  public AccessorResponse<AccountAlert> update(String accountId, AccountAlert accountAlert) {
+  public AccessorResponse<Alert> update(String accountId, Alert accountAlert) {
     throw new AccessorMethodNotImplementedException();
   }
 
