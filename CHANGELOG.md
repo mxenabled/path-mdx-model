@@ -5,6 +5,17 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [21.0.0](https://github.com/mxenabled/path-mdx-model/compare/v20.2.4...v21.0.0) (2026-04-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* add managed card alert endpoints
+
+### Features
+
+* add managed card alert endpoints ([607b09d](https://github.com/mxenabled/path-mdx-model/commit/607b09df67cbc19e07ccf9f73b3abc6a377b0d01))
+
 ## [20.2.4](https://github.com/mxenabled/path-mdx-model/compare/v20.2.3...v20.2.4) (2026-03-04)
 
 
