@@ -14,6 +14,7 @@ import com.mx.path.model.mdx.model.challenges.Challenge;
 public class Authorization extends MdxBase<Authorization> {
   private String accountId;
   private CardManagerData cardManagerData;
+  private CardSwitchData cardSwitchData;
   private List<Challenge> challenges;
   private ChatData chatData;
   private NameValuePair[] cookies;
