@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [21.1.0](https://github.com/mxenabled/path-mdx-model/compare/v21.0.0...v21.1.0) (2026-04-21)
+
+
+### Features
+
+* add CardSwitchData to Authorization ([68ae663](https://github.com/mxenabled/path-mdx-model/commit/68ae66301bab815b4c57a380e33dad2137297202))
+
 ## [21.0.0](https://github.com/mxenabled/path-mdx-model/compare/v20.2.4...v21.0.0) (2026-04-08)
 
 
