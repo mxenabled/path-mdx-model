@@ -1,12 +1,19 @@
 package com.mx.path.model.mdx.web.controller
 
+import static org.mockito.Mockito.any
+import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
+import static org.mockito.Mockito.when
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.mx.path.core.context.Session
 import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.payment.PaymentGateway
 import com.mx.path.model.mdx.model.MdxList
+import com.mx.path.model.mdx.model.Resources
 import com.mx.path.model.mdx.model.account.Account
 import com.mx.path.model.mdx.model.challenges.Challenge
 import com.mx.path.model.mdx.model.payment.Payment
@@ -17,16 +24,24 @@ import org.springframework.http.HttpStatus
 
 import spock.lang.Specification
 
+import jakarta.servlet.http.HttpServletRequest
+
 class PaymentsControllerTest extends Specification {
   PaymentsController subject
   Gateway gateway
   PaymentGateway paymentGateway
+  Gson gson
 
   def setup() {
     paymentGateway = spy(PaymentGateway.builder().build())
     gateway = Gateway.builder().payments(paymentGateway).build()
 
     subject = new PaymentsController()
+
+    GsonBuilder builder = new GsonBuilder()
+    Resources.registerResources(builder)
+
+    gson = builder.create()
   }
 
   def cleanup() {
@@ -127,6 +142,18 @@ class PaymentsControllerTest extends Specification {
     verify(paymentGateway).accounts() || true
   }
 
+  def buildRequest(Object body, String contentType) {
+    HttpServletRequest request = mock(HttpServletRequest.class)
+    when(request.getReader()).thenReturn(new BufferedReader(new StringReader(gson.toJson(body))))
+    if (Session.current() != null) {
+      when(request.getHeader("mx-session-key")).thenReturn(Session.current().getId())
+    }
+    when(request.getHeaders("Content-Type")).thenReturn(Collections.enumeration([contentType]))
+    when(request.getHeaders("Accept")).thenReturn(Collections.enumeration([contentType]))
+
+    return request
+  }
+
   def "getPaymentSettings interacts with gateway - 202"() {
     given:
     BaseController.setGateway(gateway)
@@ -139,7 +166,7 @@ class PaymentsControllerTest extends Specification {
 
     when:
     Mockito.doReturn(new AccessorResponse<Settings>().withResult(settings)).when(paymentGateway).settings()
-    def response = subject.getPaymentSettings()
+    def response = subject.getPaymentSettings(buildRequest(null, "application/vnd.moneydesktop.v2+json"))
 
     then:
     HttpStatus.ACCEPTED == response.getStatusCode()
@@ -155,7 +182,7 @@ class PaymentsControllerTest extends Specification {
 
     when:
     Mockito.doReturn(new AccessorResponse<Settings>().withResult(settings)).when(paymentGateway).settings()
-    def response = subject.getPaymentSettings()
+    def response = subject.getPaymentSettings(buildRequest(null, "application/vnd.moneydesktop.v2+json"))
 
     then:
     HttpStatus.OK == response.getStatusCode()
@@ -174,13 +201,13 @@ class PaymentsControllerTest extends Specification {
     }
 
     when:
-    Mockito.doReturn(new AccessorResponse<Settings>().withResult(settings)).when(paymentGateway).updateSettings(settings)
-    def response = subject.setPaymentSettings(settings)
+    Mockito.doReturn(new AccessorResponse<Settings>().withResult(settings)).when(paymentGateway).updateSettings(any(Settings.class))
+    def response = subject.setPaymentSettings(buildRequest(settings, "application/vnd.moneydesktop.v2+json"))
 
     then:
     HttpStatus.ACCEPTED == response.getStatusCode()
     response.getBody() == settings
-    verify(paymentGateway).updateSettings(settings) || true
+    verify(paymentGateway).updateSettings(any(Settings.class)) || true
   }
 
   def "setPaymentSettings interacts with gateway - 200"() {
@@ -190,12 +217,94 @@ class PaymentsControllerTest extends Specification {
     def settings = new Settings()
 
     when:
-    Mockito.doReturn(new AccessorResponse<Settings>().withResult(settings)).when(paymentGateway).updateSettings(settings)
-    def response = subject.setPaymentSettings(settings)
+    Mockito.doReturn(new AccessorResponse<Settings>().withResult(settings)).when(paymentGateway).updateSettings(any(Settings.class))
+    def response = subject.setPaymentSettings(buildRequest(settings, "application/vnd.moneydesktop.v2+json"))
 
     then:
     HttpStatus.OK == response.getStatusCode()
     response.getBody() == settings
-    verify(paymentGateway).updateSettings(settings) || true
+    verify(paymentGateway).updateSettings(any(Settings.class)) || true
+  }
+
+  def "getPaymentSettings v20260427 interacts with gateway - 202"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def settings = new com.mx.path.model.mdx.model.payment.v20260427.Settings().tap {
+      setChallenges(new ArrayList<Challenge>().tap {
+        add(new Challenge())
+      })
+      setSettings(new ArrayList<Challenge>().tap {
+        add(new Challenge())
+      })
+    }
+
+    when:
+    Mockito.doReturn(new AccessorResponse<com.mx.path.model.mdx.model.payment.v20260427.Settings>().withResult(settings)).when(paymentGateway).settings20260427()
+    def response = subject.getPaymentSettings(buildRequest(null, "application/vnd.moneydesktop.v2+json;version=20260427"))
+
+    then:
+    HttpStatus.ACCEPTED == response.getStatusCode()
+    response.getBody() instanceof com.mx.path.model.mdx.model.payment.v20260427.Settings
+    response.getBody().getSettings() == settings.getSettings()
+    verify(paymentGateway).settings20260427() || true
+  }
+
+  def "getPaymentSettings v20260427 interacts with gateway - 200"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def settings = new com.mx.path.model.mdx.model.payment.v20260427.Settings()
+
+    when:
+    Mockito.doReturn(new AccessorResponse<com.mx.path.model.mdx.model.payment.v20260427.Settings>().withResult(settings)).when(paymentGateway).settings20260427()
+    def response = subject.getPaymentSettings(buildRequest(null, "application/vnd.moneydesktop.v2+json;version=20260427"))
+
+    then:
+    HttpStatus.OK == response.getStatusCode()
+    response.getBody() instanceof com.mx.path.model.mdx.model.payment.v20260427.Settings
+    response.getBody().getSettings() == settings.getSettings()
+    verify(paymentGateway).settings20260427() || true
+  }
+
+  def "setPaymentSettings v20260427 interacts with gateway - 202"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def settings = new com.mx.path.model.mdx.model.payment.v20260427.Settings().tap {
+      setChallenges(new ArrayList<Challenge>().tap {
+        add(new Challenge())
+      })
+      setSettings(new ArrayList<Challenge>().tap {
+        add(new Challenge())
+      })
+    }
+
+    when:
+    Mockito.doReturn(new AccessorResponse<com.mx.path.model.mdx.model.payment.v20260427.Settings>().withResult(settings)).when(paymentGateway).updateSettings20260427(any(com.mx.path.model.mdx.model.payment.v20260427.Settings.class))
+    def response = subject.setPaymentSettings(buildRequest(settings.wrapped(), "application/vnd.moneydesktop.v2+json;version=20260427"))
+
+    then:
+    HttpStatus.ACCEPTED == response.getStatusCode()
+    response.getBody() instanceof com.mx.path.model.mdx.model.payment.v20260427.Settings
+    response.getBody().getSettings() == settings.getSettings()
+    verify(paymentGateway).updateSettings20260427(any(com.mx.path.model.mdx.model.payment.v20260427.Settings.class)) || true
+  }
+
+  def "setPaymentSettings v20260427 interacts with gateway - 200"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def settings = new com.mx.path.model.mdx.model.payment.v20260427.Settings()
+
+    when:
+    Mockito.doReturn(new AccessorResponse<com.mx.path.model.mdx.model.payment.v20260427.Settings>().withResult(settings)).when(paymentGateway).updateSettings20260427(any(com.mx.path.model.mdx.model.payment.v20260427.Settings.class))
+    def response = subject.setPaymentSettings(buildRequest(settings, "application/vnd.moneydesktop.v2+json;version=20260427"))
+
+    then:
+    HttpStatus.OK == response.getStatusCode()
+    response.getBody() instanceof com.mx.path.model.mdx.model.payment.v20260427.Settings
+    response.getBody().getSettings() == settings.getSettings()
+    verify(paymentGateway).updateSettings20260427(any(com.mx.path.model.mdx.model.payment.v20260427.Settings.class)) || true
   }
 }
