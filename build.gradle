@@ -9,7 +9,7 @@ plugins {
 
 group "com.mx.path-mdx-model"
 description "Path MDX Model"
-version "21.1.0" // x-release-please-version
+version "21.2.0" // x-release-please-version
 
 def platformProject = "platform"
 def publishedProjects = [
