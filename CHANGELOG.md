@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [21.2.0](https://github.com/mxenabled/path-mdx-model/compare/v21.1.0...v21.2.0) (2026-04-30)
+
+
+### Features
+
+* adding versioned payment settings API (v20260427) ([09cbc3e](https://github.com/mxenabled/path-mdx-model/commit/09cbc3e3d941696ce7028a62e3f166a240f86300))
+
 ## [21.1.0](https://github.com/mxenabled/path-mdx-model/compare/v21.0.0...v21.1.0) (2026-04-21)
 
 
