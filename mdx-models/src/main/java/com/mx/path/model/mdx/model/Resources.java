@@ -426,6 +426,7 @@ public class Resources {
     // Payment
     builder.registerTypeAdapter(Enrollment.class, new ModelWrappableSerializer("enrollment"));
     builder.registerTypeAdapter(Settings.class, new ModelWrappableSerializer("settings"));
+    builder.registerTypeAdapter(com.mx.path.model.mdx.model.payment.v20260427.Settings.class, new ModelWrappableSerializer("settings"));
     builder.registerTypeAdapter(Payment.class, new ModelWrappableSerializer("payment"));
     builder.registerTypeAdapter(new TypeToken<MdxList<Payment>>() {
     }.getType(), new ModelWrappableSerializer("payments"));

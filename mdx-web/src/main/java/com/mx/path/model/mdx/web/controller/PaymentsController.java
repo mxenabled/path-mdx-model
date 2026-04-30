@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping(value = "{clientId}/users/{user_id}", produces = BaseController.MDX_MEDIA)
 public class PaymentsController extends BaseController {
@@ -31,26 +33,55 @@ public class PaymentsController extends BaseController {
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
+  @SuppressWarnings("MagicNumber")
   @RequestMapping(value = "/payments/settings", method = RequestMethod.GET)
-  public final ResponseEntity<Settings> getPaymentSettings() {
-    AccessorResponse<Settings> response = gateway().payments().settings();
-    Settings result = response.getResult();
-    // Return 202 returning challenge questions
-    if (result != null && result.getChallenges() != null && result.getChallenges().size() > 0) {
-      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
-    }
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+  public final ResponseEntity<?> getPaymentSettings(HttpServletRequest request) {
+    return versioned(request)
+        .defaultVersion(Settings.class, Settings.class, settings -> {
+          AccessorResponse<Settings> response = gateway().payments().settings();
+          Settings result = response.getResult();
+          // Return 202 returning challenge questions
+          if (result != null && result.getChallenges() != null && !result.getChallenges().isEmpty()) {
+            return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+          }
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+        })
+        .version(20260427, com.mx.path.model.mdx.model.payment.v20260427.Settings.class, com.mx.path.model.mdx.model.payment.v20260427.Settings.class, settings -> {
+          AccessorResponse<com.mx.path.model.mdx.model.payment.v20260427.Settings> response = gateway().payments().settings20260427();
+          com.mx.path.model.mdx.model.payment.v20260427.Settings result = response.getResult();
+          // Return 202 returning settings and challenge questions
+          if ((result != null && result.getSettings() != null && !result.getSettings().isEmpty())
+              || (result != null && result.getChallenges() != null && !result.getChallenges().isEmpty())) {
+            return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+          }
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+        })
+        .execute();
   }
 
+  @SuppressWarnings("MagicNumber")
   @RequestMapping(value = "/payments/settings", method = RequestMethod.PUT, consumes = BaseController.MDX_MEDIA)
-  public final ResponseEntity<Settings> setPaymentSettings(@RequestBody Settings settingsRequest) {
-    AccessorResponse<Settings> response = gateway().payments().updateSettings(settingsRequest);
-    Settings result = response.getResult();
-    // Return 202 returning challenge questions
-    if (result != null && result.getChallenges() != null && result.getChallenges().size() > 0) {
-      return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
-    }
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+  public final ResponseEntity<?> setPaymentSettings(HttpServletRequest request) {
+    return versioned(request)
+        .defaultVersion(Settings.class, Settings.class, settings -> {
+          AccessorResponse<Settings> response = gateway().payments().updateSettings(settings);
+          Settings result = response.getResult();
+          // Return 202 returning challenge questions
+          if (result != null && result.getChallenges() != null && !result.getChallenges().isEmpty()) {
+            return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+          }
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+        })
+        .version(20260427, com.mx.path.model.mdx.model.payment.v20260427.Settings.class, com.mx.path.model.mdx.model.payment.v20260427.Settings.class, settings -> {
+          AccessorResponse<com.mx.path.model.mdx.model.payment.v20260427.Settings> response = gateway().payments().updateSettings20260427(settings);
+          com.mx.path.model.mdx.model.payment.v20260427.Settings result = response.getResult();
+          // Return 202 returning challenge questions
+          if ((result != null && result.getSettings() != null && !result.getSettings().isEmpty())
+              || (result != null && result.getChallenges() != null && !result.getChallenges().isEmpty())) {
+            return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.ACCEPTED);
+          }
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+        }).execute();
   }
 
   @RequestMapping(value = "/payments", method = RequestMethod.POST, consumes = BaseController.MDX_MEDIA)

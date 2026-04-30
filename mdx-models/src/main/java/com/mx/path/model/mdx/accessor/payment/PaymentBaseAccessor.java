@@ -100,6 +100,29 @@ public abstract class PaymentBaseAccessor extends Accessor {
   }
 
   /**
+   * Get Payment Settings - Version 20260427
+   *
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Get the current Payment Settings version 20260427")
+  public AccessorResponse<com.mx.path.model.mdx.model.payment.v20260427.Settings> settings20260427() {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Update Payment Settings - Version 20260427
+   *
+   * @param settings
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Update the Payment Settings version 20260427")
+  public AccessorResponse<com.mx.path.model.mdx.model.payment.v20260427.Settings> updateSettings20260427(com.mx.path.model.mdx.model.payment.v20260427.Settings settings) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
    * List accounts to pay from
    *
    * @return
