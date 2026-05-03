@@ -68,9 +68,9 @@ subprojects {
       testImplementation "com.mx.path-core:testing"
     }
 
-    test { useJUnitPlatform() }
-
     compileJava { options.compilerArgs << "-parameters" }
+
+    test { useJUnitPlatform() }
 
     javadoc {
       classpath = configurations.compileClasspath
@@ -88,7 +88,7 @@ subprojects {
     if (it.name != platformProject) {
       publishing {
         publications {
-          maven(MavenPublication) {
+          register("maven", MavenPublication) {
             from components.java
           }
         }
@@ -157,15 +157,17 @@ nexusPublishing {
   }
 }
 
-task spotlessApply {
+tasks.register("spotlessApply") {
   dependsOn subprojects.findAll { it.name != platformProject }.collect { "${it.path}:spotlessApply" }
 }
 
-task subdependencies {
+tasks.register("subdependencies") {
   dependsOn subprojects.findAll { it.name != platformProject }.collect { "${it.path}:dependencies" }
 }
 
-project.tasks.getByPath("dependencies").finalizedBy("subdependencies")
+tasks.named("dependencies") {
+  finalizedBy("subdependencies")
+}
 
 wrapper {
   gradleVersion = "7.6.4"
