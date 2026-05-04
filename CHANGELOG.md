@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [21.2.1](https://github.com/mxenabled/path-mdx-model/compare/v21.2.0...v21.2.1) (2026-05-04)
+
+
+### Build System
+
+* minor gradle formatting changes ([73a6166](https://github.com/mxenabled/path-mdx-model/commit/73a61665894413e0533d2e534dea0bad3185934b))
+
 ## [21.2.0](https://github.com/mxenabled/path-mdx-model/compare/v21.1.0...v21.2.0) (2026-04-30)
 
 
