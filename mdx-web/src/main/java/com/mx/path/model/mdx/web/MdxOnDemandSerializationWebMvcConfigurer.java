@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.mx.path.model.mdx.model.Resources;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
@@ -25,6 +26,7 @@ public class MdxOnDemandSerializationWebMvcConfigurer implements WebMvcConfigure
     CONVERT_CLASSES = new ArrayList<>();
     CONVERT_CLASSES.add(GsonHttpMessageConverter.class);
     CONVERT_CLASSES.add(StringHttpMessageConverter.class);
+    CONVERT_CLASSES.add(ByteArrayHttpMessageConverter.class);
   }
 
   @Override
