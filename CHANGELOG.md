@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [21.2.2](https://github.com/mxenabled/path-mdx-model/compare/v21.2.1...v21.2.2) (2026-05-18)
+
+
+### Bug Fixes
+
+* **mdx-web:** restore byte array message converter ([cb09cf2](https://github.com/mxenabled/path-mdx-model/commit/cb09cf2a807582672ef160374b459548c4fbd7a8))
+
 ## [21.2.1](https://github.com/mxenabled/path-mdx-model/compare/v21.2.0...v21.2.1) (2026-05-04)
 
 
