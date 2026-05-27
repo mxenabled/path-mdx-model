@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [21.3.1](https://github.com/mxenabled/path-mdx-model/compare/v21.3.0...v21.3.1) (2026-05-27)
+
+
+### Bug Fixes
+
+* revert version endpoint changes for payments and recurring payments ([4146d37](https://github.com/mxenabled/path-mdx-model/commit/4146d37ff7bb1d300a80c050099e8713ac7e788e))
+
 ## [21.3.0](https://github.com/mxenabled/path-mdx-model/compare/v21.2.2...v21.3.0) (2026-05-26)
 
 
