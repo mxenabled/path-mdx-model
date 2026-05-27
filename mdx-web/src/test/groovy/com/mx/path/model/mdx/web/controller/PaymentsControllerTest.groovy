@@ -68,33 +68,16 @@ class PaymentsControllerTest extends Specification {
     BaseController.setGateway(gateway)
 
     def payment = new Payment()
-    def payments = new MdxList<Payment>().tap { add(payment) }
+    def payments = new MdxList<>().tap { add(payment) }
 
     when:
     Mockito.doReturn(new AccessorResponse<MdxList<Payment>>().withResult(payments)).when(paymentGateway).list()
-    def response = subject.getPaymentList(buildRequest(null, "application/vnd.mx.mdx.v6+json"))
+    def response = subject.getPaymentList()
 
     then:
     HttpStatus.OK == response.getStatusCode()
     response.getBody() == payments
     verify(paymentGateway).list() || true
-  }
-
-  def "getPayments v20260427 interacts with gateway"() {
-    given:
-    BaseController.setGateway(gateway)
-
-    def payment = new Payment()
-    def payments = new MdxList<Payment>().tap { add(payment) }
-
-    when:
-    Mockito.doReturn(new AccessorResponse<MdxList<Payment>>().withResult(payments)).when(paymentGateway).list20260427()
-    def response = subject.getPaymentList(buildRequest(null, "application/vnd.mx.mdx.v6+json;version=20260427"))
-
-    then:
-    HttpStatus.OK == response.getStatusCode()
-    response.getBody() == payments
-    verify(paymentGateway).list20260427() || true
   }
 
   def "createPayment interacts with gateway"() {
