@@ -1,6 +1,6 @@
 plugins {
-  id "com.github.mxenabled.coppuccino" version "6.+" apply false
-  id "com.github.mxenabled.vogue" version "3.+" apply false
+  id "com.github.mxenabled.coppuccino" version "7.+" apply false
+  id "com.github.mxenabled.vogue" version "4.+" apply false
   id "idea"
   id "io.freefair.lombok" version "8.+" apply false
   id "io.github.gradle-nexus.publish-plugin" version "1.1.+"
@@ -26,8 +26,8 @@ subprojects {
   version rootProject.version
 
   ext {
-    pathCoreVersion = "[6.0,7.0)"
-    springVersion = "3.5.11"
+    pathCoreVersion = "[7.0,8.0)"
+    springVersion = "3.5.14"
   }
 
   if (it.name != platformProject) {
@@ -40,7 +40,7 @@ subprojects {
 
     java {
       toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
       }
       withSourcesJar()
       withJavadocJar()
@@ -170,6 +170,6 @@ tasks.named("dependencies") {
 }
 
 wrapper {
-  gradleVersion = "7.6.4"
+  gradleVersion = "8.14.3"
   distributionType = Wrapper.DistributionType.ALL
 }
