@@ -2,22 +2,20 @@ package com.mx.path.model.mdx.model.ondemand
 
 import static com.mx.path.extensions.StringStaticExtension.sanitizeXml
 
-import com.fasterxml.jackson.core.JsonGenerator
-import com.fasterxml.jackson.databind.SerializerProvider
-import com.fasterxml.jackson.dataformat.xml.XmlFactory
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator
 import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.account.Account
 import com.mx.path.model.mdx.model.account.Transaction
 import com.mx.path.model.mdx.model.ondemand.mixins.AccountXmlMixin
 import com.mx.path.model.mdx.model.ondemand.mixins.MixinDefinition
-import com.mx.path.testing.WithMockery
+import com.mx.path.testing.MockeryAndSessionRepository
 
-import spock.lang.Specification
+import tools.jackson.core.JsonGenerator
+import tools.jackson.databind.SerializationContext
+import tools.jackson.dataformat.xml.XmlFactory
 
-class MdxOnDemandMdxListSerializerTest extends Specification implements WithMockery {
+class MdxOnDemandMdxListSerializerTest extends MockeryAndSessionRepository {
   MdxOnDemandMdxListSerializer subject
-  ToXmlGenerator generator
+  JsonGenerator generator
   StringWriter stringWriter
 
   void setup() {
@@ -32,7 +30,7 @@ class MdxOnDemandMdxListSerializerTest extends Specification implements WithMock
     def list = new MdxListWrapper(null, transactions)
 
     when:
-    subject.serialize(list, (JsonGenerator) generator, (SerializerProvider) null)
+    subject.serialize(list, generator, (SerializationContext) null)
     generator.flush()
 
     then:
@@ -50,7 +48,7 @@ class MdxOnDemandMdxListSerializerTest extends Specification implements WithMock
     def list = new MdxListWrapper(null, transactions)
 
     when:
-    subject.serialize(list, (JsonGenerator) generator, (SerializerProvider) null)
+    subject.serialize(list, generator, (SerializationContext) null)
     generator.flush()
 
     then:
@@ -70,7 +68,7 @@ class MdxOnDemandMdxListSerializerTest extends Specification implements WithMock
     def list = new MdxListWrapper("transactions", transactions)
 
     when:
-    subject.serialize(list, (JsonGenerator) generator, (SerializerProvider) null)
+    subject.serialize(list, generator, (SerializationContext) null)
     generator.flush()
 
     then:
@@ -83,7 +81,7 @@ class MdxOnDemandMdxListSerializerTest extends Specification implements WithMock
     def list = new MdxListWrapper("transactions", transactions)
 
     when:
-    subject.serialize(list, (JsonGenerator) generator, (SerializerProvider) null)
+    subject.serialize(list, generator, (SerializationContext) null)
     generator.flush()
 
     then:
@@ -110,7 +108,7 @@ class MdxOnDemandMdxListSerializerTest extends Specification implements WithMock
     def list = new MdxListWrapper("transactions", transactions.wrapped())
 
     when:
-    subject.serialize(list, (JsonGenerator) generator, (SerializerProvider) null)
+    subject.serialize(list, generator, (SerializationContext) null)
     generator.flush()
 
     then:
@@ -154,7 +152,7 @@ class MdxOnDemandMdxListSerializerTest extends Specification implements WithMock
     def list = new MdxListWrapper("accounts", transactions.wrapped())
 
     when:
-    subject.serialize(list, (JsonGenerator) generator, (SerializerProvider) null)
+    subject.serialize(list, generator, (SerializationContext) null)
 
     then:
     def expectedResponse= "<mdx version=\"5.0\">\n" +

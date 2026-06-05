@@ -4,8 +4,9 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonRootName;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.mx.path.model.mdx.model.ondemand.MdxOnDemandLocalDateSerializer;
+
+import tools.jackson.databind.annotation.JsonSerialize;
 
 @JsonRootName("account")
 public interface AccountXmlMixin {

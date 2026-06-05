@@ -4,10 +4,6 @@ import static com.mx.path.extensions.StringStaticExtension.sanitizeXml
 
 import java.time.LocalDate
 
-import com.fasterxml.jackson.core.JsonGenerator
-import com.fasterxml.jackson.databind.SerializerProvider
-import com.fasterxml.jackson.dataformat.xml.XmlFactory
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator
 import com.mx.path.model.mdx.model.MdxList
 import com.mx.path.model.mdx.model.account.Account
 import com.mx.path.model.mdx.model.account.OnDemandAccounts
@@ -18,6 +14,11 @@ import com.mx.path.model.mdx.model.ondemand.mixins.OnDemandAccountsXmlMixin
 import com.mx.path.testing.WithMockery
 
 import spock.lang.Specification
+
+import tools.jackson.core.JsonGenerator
+import tools.jackson.databind.SerializationContext
+import tools.jackson.dataformat.xml.XmlFactory
+import tools.jackson.dataformat.xml.ser.ToXmlGenerator
 
 class MdxOnDemandSerializerTest extends Specification implements WithMockery {
   MdxOnDemandSerializer subject
@@ -45,7 +46,7 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
     }
 
     when:
-    subject.serialize(account, (JsonGenerator) generator, (SerializerProvider) null)
+    subject.serialize(account, (JsonGenerator) generator, (SerializationContext) null)
     generator.flush()
 
     then:
@@ -69,7 +70,7 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
     }
 
     when:
-    subject.serialize(account.wrapped(), (JsonGenerator) generator, (SerializerProvider) null)
+    subject.serialize(account.wrapped(), (JsonGenerator) generator, (SerializationContext) null)
     generator.flush()
 
     then:
@@ -98,7 +99,7 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
     }
 
     when:
-    subject.serialize(account.wrapped(), (JsonGenerator) generator, (SerializerProvider) null)
+    subject.serialize(account.wrapped(), (JsonGenerator) generator, (SerializationContext) null)
     generator.flush()
 
     then:
@@ -139,7 +140,7 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
     def onDemandAccounts = new OnDemandAccounts(accounts)
 
     when:
-    subject.serialize(onDemandAccounts.wrapped(), (JsonGenerator) generator, (SerializerProvider) null)
+    subject.serialize(onDemandAccounts.wrapped(), (JsonGenerator) generator, (SerializationContext) null)
     generator.flush()
 
     then:
@@ -173,7 +174,7 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
     def onDemandAccounts = new OnDemandAccounts(accounts)
 
     when:
-    subject.serialize(onDemandAccounts.wrapped(), (JsonGenerator) generator, (SerializerProvider) null)
+    subject.serialize(onDemandAccounts.wrapped(), (JsonGenerator) generator, (SerializationContext) null)
     generator.flush()
 
     then:
@@ -191,7 +192,7 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
     }
 
     when:
-    subject.serialize(transaction, (JsonGenerator) generator, (SerializerProvider) null)
+    subject.serialize(transaction, (JsonGenerator) generator, (SerializationContext) null)
     generator.flush()
 
     then:
@@ -214,7 +215,7 @@ class MdxOnDemandSerializerTest extends Specification implements WithMockery {
 
     when:
     print("BALANCE: "+account.balance)
-    subject.serialize(account.wrapped(), (JsonGenerator) generator, (SerializerProvider) null)
+    subject.serialize(account.wrapped(), (JsonGenerator) generator, (SerializationContext) null)
     generator.flush()
 
     then:

@@ -12,7 +12,7 @@ public class MdxSerializerFactoryBean implements FactoryBean<Gson> {
   }
 
   @Override
-  public final Gson getObject() throws Exception {
+  public final Gson getObject() {
     GsonBuilder baseGson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
         .setDateFormat("YYYY-MM-dd").setPrettyPrinting();
 

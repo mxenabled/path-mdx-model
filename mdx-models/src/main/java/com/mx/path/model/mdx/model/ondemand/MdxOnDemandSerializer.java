@@ -1,23 +1,25 @@
 package com.mx.path.model.mdx.model.ondemand;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.mx.path.core.common.model.ModelWrappable;
 import com.mx.path.model.mdx.model.ondemand.mixins.MixinDefinition;
 import com.mx.path.model.mdx.model.ondemand.mixins.XmlSkipInternalAnnotationsIntrospector;
+
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.PropertyNamingStrategies;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.databind.ext.javatime.ser.LocalDateSerializer;
+import tools.jackson.databind.module.SimpleModule;
+import tools.jackson.dataformat.xml.XmlMapper;
+import tools.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 /**
  * Object serializer for MDX OnDemand
@@ -25,7 +27,7 @@ import com.mx.path.model.mdx.model.ondemand.mixins.XmlSkipInternalAnnotationsInt
  * Relies on Jackson Mix-ins to control details of serialization. For more information on Jackson Mix-ins see:
  * https://github.com/FasterXML/jackson-docs/wiki/JacksonMixInAnnotations
  */
-public class MdxOnDemandSerializer<T extends ModelWrappable<?>> extends JsonSerializer<T> {
+public class MdxOnDemandSerializer<T extends ModelWrappable<?>> extends ValueSerializer<T> {
 
   private final ObjectMapper mapper;
 
@@ -37,21 +39,19 @@ public class MdxOnDemandSerializer<T extends ModelWrappable<?>> extends JsonSeri
   @SuppressWarnings("unchecked")
   public MdxOnDemandSerializer(MixinDefinition... mixinDefinitions) {
     super();
-    this.mapper = new XmlMapper()
-        .setAnnotationIntrospector(new XmlSkipInternalAnnotationsIntrospector())
-        .setSerializationInclusion(JsonInclude.Include.NON_NULL)
-        .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
-        .enable(SerializationFeature.INDENT_OUTPUT)
-        .registerModule(new JavaTimeModule().addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ISO_DATE)))
-        .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
 
-    for (MixinDefinition mixinDefinition : mixinDefinitions) {
-      this.mapper.addMixIn(mixinDefinition.getTarget(), mixinDefinition.getMixin());
-    }
+    this.mapper = XmlMapper.builder()
+        .addMixIns(Arrays.stream(mixinDefinitions)
+            .collect(Collectors.toMap(MixinDefinition::getTarget, MixinDefinition::getMixin)))
+        .addModule(new SimpleModule("CustomLocalDateModule").addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ISO_DATE)))
+        .annotationIntrospector(new XmlSkipInternalAnnotationsIntrospector())
+        .changeDefaultPropertyInclusion(incl -> incl.withValueInclusion(JsonInclude.Include.NON_NULL))
+        .propertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
+        .build();
   }
 
   @Override
-  public final void serialize(T value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+  public final void serialize(T value, JsonGenerator gen, SerializationContext serializers) throws JacksonException {
     ToXmlGenerator generator = (ToXmlGenerator) gen;
 
     if (value.getWrapped()) {

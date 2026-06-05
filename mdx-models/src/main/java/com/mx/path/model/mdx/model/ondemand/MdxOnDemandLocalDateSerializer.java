@@ -1,12 +1,12 @@
 package com.mx.path.model.mdx.model.ondemand;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ser.std.StdSerializer;
 
 /**
  * Handles serialization of LocalDate for MDX OnDemand responses
@@ -24,7 +24,7 @@ public class MdxOnDemandLocalDateSerializer extends StdSerializer<LocalDate> {
   }
 
   @Override
-  public final void serialize(LocalDate value, JsonGenerator gen, SerializerProvider provider) throws IOException {
+  public final void serialize(LocalDate value, JsonGenerator gen, SerializationContext context) throws JacksonException {
     gen.writeString(FORMATTER.format(value));
   }
 

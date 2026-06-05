@@ -78,14 +78,14 @@ class MdxRealtimeUsersConnectionTest extends Mockery {
     expectConnection(withPath("/clientId/users.json")
         .withMatcher {req ->
           return req.body == "{\n" +
-              "  \"user\": {\n" +
-              "    \"id\": \"userId\",\n" +
-              "    \"email\": \"email\",\n" +
-              "    \"first_name\": \"firstName\",\n" +
-              "    \"last_name\": \"lastName\",\n" +
-              "    \"phone\": \"phone\"\n" +
-              "  }\n" +
-              "}"
+          "  \"user\": {\n" +
+          "    \"id\": \"userId\",\n" +
+          "    \"email\": \"email\",\n" +
+          "    \"first_name\": \"firstName\",\n" +
+          "    \"last_name\": \"lastName\",\n" +
+          "    \"phone\": \"phone\"\n" +
+          "  }\n" +
+          "}"
         })
         .toRespond { request, response ->
           response.withStatus(HttpStatus.OK)

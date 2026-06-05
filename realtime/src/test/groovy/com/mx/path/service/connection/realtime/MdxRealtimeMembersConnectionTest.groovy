@@ -79,11 +79,11 @@ class MdxRealtimeMembersConnectionTest extends Mockery {
     expectConnection(withPath("/clientId/users/userId/members.json")
         .withMatcher { request ->
           return request.body == "{\n" +
-              "  \"member\": {\n" +
-              "    \"id\": \"memberId\",\n" +
-              "    \"userkey\": \"userKey\"\n" +
-              "  }\n" +
-              "}"
+          "  \"member\": {\n" +
+          "    \"id\": \"memberId\",\n" +
+          "    \"userkey\": \"userKey\"\n" +
+          "  }\n" +
+          "}"
         }
         )
         .toRespond { request, response ->
@@ -107,12 +107,12 @@ class MdxRealtimeMembersConnectionTest extends Mockery {
     expectConnection(withPath("/clientId/users/userId/members.json")
         .withMatcher { request ->
           return request.body == "{\n" +
-              "  \"member\": {\n" +
-              "    \"id\": \"memberId\",\n" +
-              "    \"login\": \"login\",\n" +
-              "    \"password\": \"abc\"\n" +
-              "  }\n" +
-              "}"
+          "  \"member\": {\n" +
+          "    \"id\": \"memberId\",\n" +
+          "    \"login\": \"login\",\n" +
+          "    \"password\": \"abc\"\n" +
+          "  }\n" +
+          "}"
         }
         )
         .toRespond { request, response ->
@@ -154,11 +154,11 @@ class MdxRealtimeMembersConnectionTest extends Mockery {
     expectConnection(withPath("/clientId/users/userId/members/memberId.json")
         .withMatcher { request ->
           return request.body == "{\n" +
-              "  \"member\": {\n" +
-              "    \"id\": \"memberId\",\n" +
-              "    \"userkey\": \"newUserKey\"\n" +
-              "  }\n" +
-              "}"
+          "  \"member\": {\n" +
+          "    \"id\": \"memberId\",\n" +
+          "    \"userkey\": \"newUserKey\"\n" +
+          "  }\n" +
+          "}"
         }
         )
         .toRespond { request, response ->

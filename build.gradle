@@ -1,9 +1,9 @@
 plugins {
-  id "com.github.mxenabled.coppuccino" version "7.+" apply false
-  id "com.github.mxenabled.vogue" version "4.+" apply false
+  id "com.github.mxenabled.coppuccino" version "8.+" apply false
+  id "com.github.mxenabled.vogue" version "5.+" apply false
   id "idea"
-  id "io.freefair.lombok" version "8.+" apply false
-  id "io.github.gradle-nexus.publish-plugin" version "1.1.+"
+  id "io.freefair.lombok" version "9.5.0" apply false
+  id "io.github.gradle-nexus.publish-plugin" version "2.+"
   id "com.netflix.nebula.maven-resolved-dependencies" version "21.2.0" apply false
 }
 
@@ -26,8 +26,8 @@ subprojects {
   version rootProject.version
 
   ext {
-    pathCoreVersion = "[7.0,8.0)"
-    springVersion = "3.5.14"
+    pathCoreVersion = "[8.0,9.0)"
+    springVersion = "4.1.0"
   }
 
   if (it.name != platformProject) {
@@ -35,7 +35,10 @@ subprojects {
     apply plugin: "com.github.mxenabled.vogue"
     apply plugin: "groovy"
     apply plugin: "java-library"
-    apply plugin: "io.freefair.lombok"
+    //necessary to avoid collision with spring-boot-starter-parent
+    if (it.name != "mdx-web") {
+      apply plugin: "io.freefair.lombok"
+    }
     apply plugin: "com.netflix.nebula.maven-resolved-dependencies"
 
     java {
@@ -66,6 +69,7 @@ subprojects {
       api platform("com.mx.path-core:platform:${project.ext.pathCoreVersion}")
 
       testImplementation "com.mx.path-core:testing"
+      testRuntimeOnly "org.junit.platform:junit-platform-launcher"
     }
 
     compileJava { options.compilerArgs << "-parameters" }
@@ -170,6 +174,6 @@ tasks.named("dependencies") {
 }
 
 wrapper {
-  gradleVersion = "8.14.3"
+  gradleVersion = "9.5.1"
   distributionType = Wrapper.DistributionType.ALL
 }

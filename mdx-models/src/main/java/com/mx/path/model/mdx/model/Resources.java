@@ -2,7 +2,6 @@ package com.mx.path.model.mdx.model;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.mx.path.model.mdx.model.account.Account;
@@ -102,6 +101,8 @@ import com.mx.path.model.mdx.model.transfer.RecurringTransfer;
 import com.mx.path.model.mdx.model.transfer.Repayment;
 import com.mx.path.model.mdx.model.transfer.Transfer;
 import com.mx.path.model.mdx.model.transfer.TransferAmountOption;
+
+import tools.jackson.databind.module.SimpleModule;
 
 /**
  * Registration for all MDX resources

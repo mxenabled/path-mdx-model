@@ -1,14 +1,14 @@
 package com.mx.path.model.mdx.model.ondemand;
 
-import java.io.IOException;
-
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonPointer;
-import com.fasterxml.jackson.core.TreeNode;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mx.path.core.common.model.ModelWrappable;
+
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.core.JsonPointer;
+import tools.jackson.core.TreeNode;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ValueDeserializer;
 
 /**
  * Custom deserializer for MDX OnDemand Resources
@@ -17,7 +17,7 @@ import com.mx.path.core.common.model.ModelWrappable;
  *
  * @param <T>
  */
-public class MdxOnDemandDeserializer<T extends ModelWrappable<?>> extends JsonDeserializer<T> {
+public class MdxOnDemandDeserializer<T extends ModelWrappable<?>> extends ValueDeserializer<T> {
   private static final ObjectMapper MAPPER = new ObjectMapper();
 
   private final String nodePath;
@@ -32,7 +32,7 @@ public class MdxOnDemandDeserializer<T extends ModelWrappable<?>> extends JsonDe
 
   @Override
   @SuppressWarnings("unchecked")
-  public final T deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+  public final T deserialize(JsonParser p, DeserializationContext ctxt) throws JacksonException {
     TreeNode root = p.readValueAsTree();
     TreeNode value = root.at(JsonPointer.compile(nodePath));
 

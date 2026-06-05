@@ -7,6 +7,6 @@ class StringStaticExtension {
   }
 
   static String sanitizeXml(final String self) {
-    self.replaceAll("\n","").replaceAll("\r","").replaceAll("\t","").replaceAll(">\\s+<", "")
+    self.replaceAll("\n","").replaceAll("\r","").replaceAll("\t","").replaceAll(">\\s+<", "><")
   }
 }

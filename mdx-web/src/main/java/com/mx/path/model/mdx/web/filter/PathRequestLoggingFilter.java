@@ -59,7 +59,7 @@ public class PathRequestLoggingFilter extends OncePerRequestFilter {
     ContentCachingResponseWrapper responseWrapper;
 
     try {
-      requestWrapper = new ContentCachingRequestWrapper(request);
+      requestWrapper = new ContentCachingRequestWrapper(request, 0);
       responseWrapper = new ContentCachingResponseWrapper(response);
     } catch (Exception ex) {
       MDC.put("exception", LoggingExceptionFormatter.formatLoggingExceptionWithStacktrace(ex));

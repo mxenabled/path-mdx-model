@@ -1,24 +1,27 @@
 package com.mx.path.model.mdx.model.ondemand;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.ondemand.mixins.MixinDefinition;
 import com.mx.path.model.mdx.model.ondemand.mixins.XmlSkipInternalAnnotationsIntrospector;
+
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.PropertyNamingStrategies;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.SerializationFeature;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.databind.ext.javatime.ser.LocalDateSerializer;
+import tools.jackson.databind.module.SimpleModule;
+import tools.jackson.dataformat.xml.XmlMapper;
+import tools.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 /**
  * MdxList serializer for MDX OnDemand
@@ -27,7 +30,7 @@ import com.mx.path.model.mdx.model.ondemand.mixins.XmlSkipInternalAnnotationsInt
  * {@see https://github.com/FasterXML/jackson-docs/wiki/JacksonMixInAnnotations}
  */
 @Deprecated
-public class MdxOnDemandMdxListSerializer extends JsonSerializer<MdxListWrapper> {
+public class MdxOnDemandMdxListSerializer extends ValueSerializer<MdxListWrapper> {
 
   private final ObjectMapper mapper;
 
@@ -40,19 +43,16 @@ public class MdxOnDemandMdxListSerializer extends JsonSerializer<MdxListWrapper>
   public MdxOnDemandMdxListSerializer(MixinDefinition... mixinDefinitions) {
     super();
 
-    this.mapper = new XmlMapper()
+    this.mapper = XmlMapper.builder()
+        .addMixIns(
+            Arrays.stream(mixinDefinitions)
+                .collect(Collectors.toMap(MixinDefinition::getTarget, MixinDefinition::getMixin)))
+        .addModule(new SimpleModule("CustomLocalDateModule").addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ISO_DATE)))
+        .annotationIntrospector(new XmlSkipInternalAnnotationsIntrospector())
+        .changeDefaultPropertyInclusion(incl -> incl.withValueInclusion(JsonInclude.Include.NON_NULL))
         .configure(SerializationFeature.WRAP_ROOT_VALUE, false)
-        .setAnnotationIntrospector(new XmlSkipInternalAnnotationsIntrospector())
-        .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
-        .enable(SerializationFeature.INDENT_OUTPUT)
-        .registerModule(new JavaTimeModule().addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ISO_DATE)))
-        .setSerializationInclusion(JsonInclude.Include.NON_NULL);
-
-    for (MixinDefinition mixin : mixinDefinitions) {
-      if (mixin != null) {
-        mapper.addMixIn(mixin.getTarget(), mixin.getMixin());
-      }
-    }
+        .propertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
+        .build();
   }
 
   /**
@@ -62,11 +62,11 @@ public class MdxOnDemandMdxListSerializer extends JsonSerializer<MdxListWrapper>
    *
    * @param value
    * @param gen
-   * @param serializers
-   * @throws IOException
+   * @param context
+   * @throws JacksonException
    */
   @Override
-  public final void serialize(MdxListWrapper value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+  public final void serialize(MdxListWrapper value, JsonGenerator gen, SerializationContext context) throws JacksonException {
     ToXmlGenerator generator = (ToXmlGenerator) gen;
 
     MdxList<?> list = value.getList();
