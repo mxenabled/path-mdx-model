@@ -1,9 +1,10 @@
 package com.mx.path.model.mdx.model
 
-import com.fasterxml.jackson.databind.module.SimpleModule
 import com.google.gson.GsonBuilder
 
 import spock.lang.Specification
+
+import tools.jackson.databind.module.SimpleModule
 
 class ResourcesTest extends Specification {
   def "registerResources registers all Gson type adapters"() {

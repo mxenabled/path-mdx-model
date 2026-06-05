@@ -1,15 +1,15 @@
 package com.mx.path.model.mdx.web
 
-import com.fasterxml.jackson.databind.module.SimpleModule
-
 import org.springframework.http.converter.ByteArrayHttpMessageConverter
 import org.springframework.http.converter.FormHttpMessageConverter
 import org.springframework.http.converter.ResourceHttpMessageConverter
 import org.springframework.http.converter.StringHttpMessageConverter
 import org.springframework.http.converter.json.GsonHttpMessageConverter
-import org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter
+import org.springframework.http.converter.xml.JacksonXmlHttpMessageConverter
 
 import spock.lang.Specification
+
+import tools.jackson.databind.module.SimpleModule
 
 class MdxOnDemandSerializationWebMvcConfigurerTest extends Specification {
 
@@ -46,7 +46,7 @@ class MdxOnDemandSerializationWebMvcConfigurerTest extends Specification {
       it.contains(byteArrayConverter)
       !it.contains(unwantedResourceConverter)
       !it.contains(unwantedFormConverter)
-      it.last() instanceof MappingJackson2XmlHttpMessageConverter
+      it.last() instanceof JacksonXmlHttpMessageConverter
     }
   }
 

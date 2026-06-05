@@ -4,9 +4,24 @@ coppuccino {
   }
 }
 
+configurations.configureEach {
+  resolutionStrategy {
+    // Downgrade spring-boot-starter-parent 4 groovy transitive dependency because gradle 9 does not support groovy 5
+    // Upgrade to Gradle 10 to remove this
+    force 'org.apache.groovy:groovy:4.0.29'
+  }
+}
+
 dependencies {
+  //necessary to avoid class conflict with lombok imported from spring-boot-starter-parent
+  compileOnly "org.projectlombok:lombok:[1.18,2.0)"
+  annotationProcessor "org.projectlombok:lombok:[1.18,2.0)"
+  testCompileOnly "org.projectlombok:lombok:[1.18,2.0)"
+  testAnnotationProcessor "org.projectlombok:lombok:[1.18,2.0)"
+
   api platform("org.springframework.boot:spring-boot-starter-parent:${project.ext.springVersion}")
-  api "org.springframework.boot:spring-boot-starter-web"
+
+  api "org.springframework.boot:spring-boot-starter-webmvc"
 
   api project(":mdx-gateways")
 

@@ -94,7 +94,9 @@ public class BaseController {
     accessorResponseHeaders.forEach(headerMap::set);
 
     // Attach headers added by the controller (these take precedence)
-    headerMap.addAll(httpHeaders);
+    MultiValueMap<String, String> multiValueMapHttpHeaders = new LinkedMultiValueMap<>();
+    httpHeaders.forEach(multiValueMapHttpHeaders::addAll);
+    headerMap.addAll(multiValueMapHttpHeaders);
 
     return headerMap;
   }

@@ -1,10 +1,11 @@
 package com.mx.path.model.mdx.model.ondemand
 
-import com.fasterxml.jackson.core.JsonParser
-import com.fasterxml.jackson.dataformat.xml.XmlMapper
 import com.mx.path.model.mdx.model.account.Account
 
 import spock.lang.Specification
+
+import tools.jackson.core.JsonParser
+import tools.jackson.dataformat.xml.XmlMapper
 
 class MdxOnDemandDeserializerTest extends Specification {
   MdxOnDemandDeserializer<Account> subject
@@ -15,7 +16,7 @@ class MdxOnDemandDeserializerTest extends Specification {
   def "deserializes"() {
     given:
     XmlMapper mapper = new XmlMapper()
-    JsonParser parser = mapper.getFactory().createParser("<mdx><account><balance>0.09</balance><id>A-123</id><name>Checking</name></account></mdx>")
+    JsonParser parser = mapper.createParser("<mdx><account><balance>0.09</balance><id>A-123</id><name>Checking</name></account></mdx>")
 
     when:
     def account = subject.deserialize(parser, null)
