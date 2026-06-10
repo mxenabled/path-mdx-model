@@ -90,10 +90,19 @@ public class PaymentsController extends BaseController {
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
+  @SuppressWarnings({ "MagicNumber", "unchecked" })
   @RequestMapping(value = "/payments", method = RequestMethod.GET)
-  public final ResponseEntity<MdxList<Payment>> getPaymentList() {
-    AccessorResponse<MdxList<Payment>> response = gateway().payments().list();
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+  public final ResponseEntity<MdxList<Payment>> getPaymentList(HttpServletRequest request) {
+    return (ResponseEntity<MdxList<Payment>>) versioned(request)
+        .defaultVersion(MdxList.class, MdxList.class, payments -> {
+          AccessorResponse<MdxList<Payment>> response = gateway().payments().list();
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+        })
+        .version(20260427, MdxList.class, MdxList.class, payments -> {
+          AccessorResponse<MdxList<Payment>> response = gateway().payments().list20260427();
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+        })
+        .execute();
   }
 
   @RequestMapping(value = "/payments/{id}", method = RequestMethod.GET)
