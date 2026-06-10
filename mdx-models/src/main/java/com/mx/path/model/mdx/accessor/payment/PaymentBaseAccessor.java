@@ -195,6 +195,17 @@ public abstract class PaymentBaseAccessor extends Accessor {
   }
 
   /**
+   * List all payments - Version 20260427
+   *
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "List all payments version 20260427")
+  public AccessorResponse<MdxList<Payment>> list20260427() {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
    * Accessor for bill operations
    *
    * @return accessor

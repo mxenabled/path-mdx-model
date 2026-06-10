@@ -79,6 +79,17 @@ public abstract class RecurringPaymentBaseAccessor extends Accessor {
   }
 
   /**
+   * List all recurring payments - Version 20260427
+   *
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "List all payments version 20260427")
+  public AccessorResponse<MdxList<RecurringPayment>> list20260427() {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
    * Cancel a recurring payment
    *
    * @param id
