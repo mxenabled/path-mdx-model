@@ -162,6 +162,7 @@ public class SpringMdxGatewayManager {
    *
    * <p>This class is loaded by Spring. If reset is called on it, there is no way for Spring to know it needs to be reinitialized.
    */
+  @SuppressFBWarnings("USO_UNSAFE_STATIC_METHOD_SYNCHRONIZATION")
   public static synchronized void reset() {
     configurator = new GatewayConfigurator();
     gateways = null;
@@ -175,6 +176,7 @@ public class SpringMdxGatewayManager {
   /**
    * Use {@link #reset()}
    */
+  @SuppressFBWarnings("USO_UNSAFE_STATIC_METHOD_SYNCHRONIZATION")
   @Deprecated
   public static synchronized void resetAfterInitialized() {
     initialized = false;
