@@ -5,6 +5,17 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.0.0](https://github.com/mxenabled/path-mdx-model/compare/v22.0.0...v23.0.0) (2026-07-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* bump to Gradle 9.5.1 and Spring Boot 4.1.0
+
+### Features
+
+* bump to Gradle 9.5.1 and Spring Boot 4.1.0 ([8595a74](https://github.com/mxenabled/path-mdx-model/commit/8595a74a33714c353d45d417b5d1f7a70b404730))
+
 ## [22.0.0](https://github.com/mxenabled/path-mdx-model/compare/v21.3.1...v22.0.0) (2026-06-01)
 
 
