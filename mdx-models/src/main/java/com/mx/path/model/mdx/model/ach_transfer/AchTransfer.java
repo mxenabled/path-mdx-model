@@ -13,6 +13,7 @@ import com.mx.path.model.mdx.model.account.Account;
 public final class AchTransfer extends MdxBase<AchTransfer> {
   private String id;
   private String achScheduledTransferId;
+  private String confirmationId;
   private Double amount;
   private Long createdAt;
   @Getter(onMethod_ = { @MdxRelationId(referredClass = Account.class) })
