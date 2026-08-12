@@ -5,6 +5,15 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.0.1](https://github.com/mxenabled/path-mdx-model/compare/v23.0.0...v23.0.1) (2026-08-12)
+
+
+### Bug Fixes
+
+* **achtransfer:** add confirmation_id to AchTransfer ([edeb4df](https://github.com/mxenabled/path-mdx-model/commit/edeb4df63381815f2163e603106b7f004601693f))
+* **achtransfer:** added `confirmationId` (String) field to `AchTransfer` ([db25563](https://github.com/mxenabled/path-mdx-model/commit/db2556301cbf91b36f70c0f9332dbc3c204a46af))
+* **achtransfer:** added `confirmationId` (String) field to `AchTransfer` ([cbda804](https://github.com/mxenabled/path-mdx-model/commit/cbda804b4ca7e73b8cbbc148aa3e09bf49818238))
+
 ## [23.0.0](https://github.com/mxenabled/path-mdx-model/compare/v22.0.0...v23.0.0) (2026-07-15)
 
 
