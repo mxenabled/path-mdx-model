@@ -41,7 +41,9 @@ class AchTransfersControllerTest extends Specification implements WithMockery {
     BaseController.setGateway(gateway)
     def transfers = new MdxList<AchTransfer>()
     transfers.add(new AchTransfer())
-    def queryParameters = new AchTransferListQueryParameters().tap { transfer_type = "test" }
+    def queryParameters = new AchTransferListQueryParameters().tap {
+      transfer_type = "test"
+    }
 
     when:
     Mockito.doReturn(new AccessorResponse<MdxList<AchTransfer>>().withResult(transfers))

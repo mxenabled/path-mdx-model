@@ -10,14 +10,13 @@ import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.account.AccountGateway
 import com.mx.path.gateway.api.account.CheckImageGateway
 import com.mx.path.gateway.api.account.TransactionGateway
+import com.mx.path.model.mdx.model.check.CheckImage
 import com.mx.path.model.mdx.web.model.check_image.CheckImagesGetQueryParameters
 import com.mx.path.testing.WithMockery
 
 import org.springframework.http.HttpStatus
 
 import spock.lang.Specification
-
-import  com.mx.path.model.mdx.model.check.CheckImage
 
 class CheckImagesControllerTest extends Specification implements WithMockery{
   CheckImagesController subject

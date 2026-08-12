@@ -115,7 +115,7 @@ class BaseMdxGatewayTest extends Specification {
 
     when:
     def accounts = new AccountGateway()
-    subject.setAccounts (accounts)
+    subject.setAccounts(accounts)
 
     then:
     subject.gateways().size() == 1

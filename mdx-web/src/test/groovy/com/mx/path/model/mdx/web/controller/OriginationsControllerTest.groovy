@@ -44,7 +44,9 @@ class OriginationsControllerTest extends Specification {
 
   def "start interacts with gateway"() {
     given:
-    def origination = new Origination().tap { setChallenges(Arrays.asList(new Challenge())) }
+    def origination = new Origination().tap {
+      setChallenges(Arrays.asList(new Challenge()))
+    }
     doReturn(new AccessorResponse<Origination>().withResult(origination)).when(originationGateway).start()
 
     when:
@@ -118,7 +120,9 @@ class OriginationsControllerTest extends Specification {
   def "authenticated user start interacts with gateway"() {
     given:
     initActiveSession()
-    def origination = new Origination().tap { setChallenges(Arrays.asList(new Challenge())) }
+    def origination = new Origination().tap {
+      setChallenges(Arrays.asList(new Challenge()))
+    }
     doReturn(new AccessorResponse<Origination>().withResult(origination)).when(originationGateway).authenticatedUserStart(any())
 
     when:

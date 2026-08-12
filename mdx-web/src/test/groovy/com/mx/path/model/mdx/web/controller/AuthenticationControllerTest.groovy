@@ -456,7 +456,9 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     def resultAuthentication = new Authentication()
     resultAuthentication.setChallenges(new ArrayList<MfaChallenge>().tap {
       add(new MfaChallenge().tap {
-        setAuthorization(new Authorization().tap { setUrl("https://someUrlForFederatedLogin.com/") })
+        setAuthorization(new Authorization().tap {
+          setUrl("https://someUrlForFederatedLogin.com/")
+        })
       })
     })
 
@@ -590,7 +592,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     def response = subject.forgotUsername()
 
     then:
-    verify(gateway).id()        || true
+    verify(gateway).id() || true
     verify(id).forgotUsername() || true
     response.statusCode == HttpStatus.OK
   }
@@ -598,7 +600,9 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
   def "forgotUsernameResend - ACCEPTED"() {
     given:
     AuthenticationController.setGateway(gateway)
-    def forgotUsername = new ForgotUsername().tap { setChallenge(getChallenge()) }
+    def forgotUsername = new ForgotUsername().tap {
+      setChallenge(getChallenge())
+    }
     def expected = new ForgotUsername().tap { setChallenge(new Challenge()) }
     doReturn(new AccessorResponse<ForgotUsername>().withResult(expected).withStatus(PathResponseStatus.ACCEPTED)).when(id).answerForgotUsername(forgotUsername)
 
@@ -606,7 +610,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     def response = subject.forgotUsername(forgotUsername)
 
     then:
-    verify(gateway).id()                            || true
+    verify(gateway).id() || true
     verify(id).answerForgotUsername(forgotUsername) || true
     response.statusCode == HttpStatus.ACCEPTED
   }
@@ -614,14 +618,16 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
   def "answerForgotUsername - NO_CONTENT"() {
     given:
     AuthenticationController.setGateway(gateway)
-    def forgotUsername = new ForgotUsername().tap { setChallenge(getChallenge()) }
+    def forgotUsername = new ForgotUsername().tap {
+      setChallenge(getChallenge())
+    }
     doReturn(new AccessorResponse<ForgotUsername>().withResult(new ForgotUsername()).withStatus(PathResponseStatus.NO_CONTENT)).when(id).answerForgotUsername(forgotUsername)
 
     when:
     def response = subject.forgotUsername(forgotUsername)
 
     then:
-    verify(gateway).id()                            || true
+    verify(gateway).id() || true
     verify(id).answerForgotUsername(forgotUsername) || true
     response.statusCode == HttpStatus.NO_CONTENT
   }
@@ -635,7 +641,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     def response = subject.resetPassword()
 
     then:
-    verify(gateway).id()       || true
+    verify(gateway).id() || true
     verify(id).resetPassword() || true
     response.statusCode == HttpStatus.OK
   }
@@ -651,7 +657,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     def response = subject.resetPassword(resetPassword)
 
     then:
-    verify(gateway).id()                          || true
+    verify(gateway).id() || true
     verify(id).answerResetPassword(resetPassword) || true
     response.statusCode == HttpStatus.ACCEPTED
   }
@@ -666,7 +672,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     def response = subject.resetPassword(resetPassword)
 
     then:
-    verify(gateway).id()                          || true
+    verify(gateway).id() || true
     verify(id).answerResetPassword(resetPassword) || true
     response.statusCode == HttpStatus.NO_CONTENT
   }
@@ -710,7 +716,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     def response = subject.unlockUser(unlockUser)
 
     then:
-    verify(gateway).id()              || true
+    verify(gateway).id() || true
     verify(id).unlockUser(unlockUser) || true
     response.statusCode == HttpStatus.ACCEPTED
     response.getBody().challenges.size() > 0
@@ -726,7 +732,7 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     def response = subject.unlockUser(unlockUser)
 
     then:
-    verify(gateway).id()              || true
+    verify(gateway).id() || true
     verify(id).unlockUser(unlockUser) || true
     response.statusCode == HttpStatus.NO_CONTENT
   }

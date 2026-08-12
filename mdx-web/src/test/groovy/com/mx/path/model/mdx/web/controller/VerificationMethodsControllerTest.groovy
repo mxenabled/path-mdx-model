@@ -37,7 +37,9 @@ class VerificationMethodsControllerTest extends Specification {
     BaseController.setGateway(gateway)
 
     def verificationMethod = new VerificationMethod()
-    def verificationMethods = new MdxList<VerificationMethod>().tap { add(verificationMethod) }
+    def verificationMethods = new MdxList<VerificationMethod>().tap {
+      add(verificationMethod)
+    }
 
     when:
     Mockito.doReturn(new AccessorResponse<MdxList<VerificationMethod>>().withResult(verificationMethods)).when(verificationMethodGateway).list()

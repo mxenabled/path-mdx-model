@@ -52,7 +52,7 @@ class MdxOnDemandMdxListSerializerTest extends MockeryAndSessionRepository {
     generator.flush()
 
     then:
-    def expectedResponse= "<Transaction>\n" +
+    def expectedResponse = "<Transaction>\n" +
         "  <amount>9.99</amount>\n" +
         "  <description>Fees</description>\n" +
         "  <id>T-123</id>\n" +
@@ -85,7 +85,7 @@ class MdxOnDemandMdxListSerializerTest extends MockeryAndSessionRepository {
     generator.flush()
 
     then:
-    def expectedResponse= "<mdx version=\"5.0\">\n" +
+    def expectedResponse = "<mdx version=\"5.0\">\n" +
         "<transactions>\n</transactions>\n" +
         "</mdx>\n"
 
@@ -112,7 +112,7 @@ class MdxOnDemandMdxListSerializerTest extends MockeryAndSessionRepository {
     generator.flush()
 
     then:
-    def expectedResponse= "<mdx version=\"5.0\">\n" +
+    def expectedResponse = "<mdx version=\"5.0\">\n" +
         "<transactions>\n" +
         "<Transaction>\n" +
         "  <amount>9.99</amount>\n" +
@@ -155,7 +155,7 @@ class MdxOnDemandMdxListSerializerTest extends MockeryAndSessionRepository {
     subject.serialize(list, generator, (SerializationContext) null)
 
     then:
-    def expectedResponse= "<mdx version=\"5.0\">\n" +
+    def expectedResponse = "<mdx version=\"5.0\">\n" +
         "<accounts>\n" +
         "<account>\n" +
         "  <balance>9.99</balance>\n" +

@@ -86,7 +86,9 @@ class TransfersControllerTest extends Specification {
     BaseController.setGateway(gateway)
     def transfer = new Transfer()
     def list = new MdxList<Transfer>().tap { add(transfer) }
-    def queryParameters = new TransferListQueryParameters().tap { transfer_type = "test"}
+    def queryParameters = new TransferListQueryParameters().tap {
+      transfer_type = "test"
+    }
 
     when:
     Mockito.doReturn(new AccessorResponse<MdxList<Transfer>>().withResult(list)).when(transferGateway).list(any(TransferListOptions))

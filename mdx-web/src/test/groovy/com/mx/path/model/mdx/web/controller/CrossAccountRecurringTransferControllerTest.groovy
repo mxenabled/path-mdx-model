@@ -70,7 +70,9 @@ class CrossAccountRecurringTransferControllerTest extends Specification{
     BaseController.setGateway(gateway)
 
     def crossAccountRecurringTransfer = new CrossAccountRecurringTransfer()
-    def list = new MdxList<CrossAccountRecurringTransfer>().tap { add(crossAccountRecurringTransfer) }
+    def list = new MdxList<CrossAccountRecurringTransfer>().tap {
+      add(crossAccountRecurringTransfer)
+    }
 
     when:
     Mockito.doReturn(new AccessorResponse<MdxList<CrossAccountRecurringTransfer>>().withResult(list)).when(crossAccountRecurringTransferGateway).list()
@@ -102,7 +104,7 @@ class CrossAccountRecurringTransferControllerTest extends Specification{
     BaseController.setGateway(gateway)
 
     when:
-    Mockito.doReturn(new AccessorResponse<Void>()).when(crossAccountRecurringTransferGateway).delete ("id")
+    Mockito.doReturn(new AccessorResponse<Void>()).when(crossAccountRecurringTransferGateway).delete("id")
     def response = subject.deleteCrossAccountRecurringTransfer("id")
 
     then:
@@ -117,7 +119,7 @@ class CrossAccountRecurringTransferControllerTest extends Specification{
 
     when:
     Mockito.doReturn(new AccessorResponse<CrossAccountRecurringTransfer>().withResult(crossAccountRecurringTransfer))
-        .when(crossAccountRecurringTransferGateway).skipNext ("id")
+        .when(crossAccountRecurringTransferGateway).skipNext("id")
     def response = subject.skipCrossAccountRecurringTransfer("id")
 
     then:

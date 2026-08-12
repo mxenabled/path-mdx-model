@@ -93,7 +93,9 @@ class DisputedTransactionsControllerTest extends Specification {
   def "listDisputedTransactions interacts with gateway"() {
     given:
     def disputeId = "4321"
-    def disputedTransactions = new MdxList<DisputedTransaction>().tap {add(new DisputedTransaction()) }
+    def disputedTransactions = new MdxList<DisputedTransaction>().tap {
+      add(new DisputedTransaction())
+    }
     BaseController.setGateway(gateway)
     doReturn(new AccessorResponse<MdxList<DisputedTransaction>>().withResult(disputedTransactions)).when(disputedTransactionGateway).list(disputeId)
 

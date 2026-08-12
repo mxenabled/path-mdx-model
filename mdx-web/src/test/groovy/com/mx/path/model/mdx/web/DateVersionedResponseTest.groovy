@@ -173,10 +173,10 @@ class DateVersionedResponseTest extends Specification implements WithMockery {
     versionedExecuted == versionShouldBeExecuted
 
     where:
-    contentType                                    || accept                                         || defaultShouldBeExecuted || versionShouldBeExecuted
-    "application/vnd.mdx.v6+json"                  || "application/vnd.mdx.v6+json"                  || true                    || false
-    "application/vnd.mdx.v6+json;version=20240101" || "application/vnd.mdx.v6+json"                  || false                   || true
-    "application/vnd.mdx.v6+json"                  || "application/vnd.mdx.v6+json;version=20240101" || false                   || true
+    contentType || accept || defaultShouldBeExecuted || versionShouldBeExecuted
+    "application/vnd.mdx.v6+json" || "application/vnd.mdx.v6+json" || true || false
+    "application/vnd.mdx.v6+json;version=20240101" || "application/vnd.mdx.v6+json" || false || true
+    "application/vnd.mdx.v6+json" || "application/vnd.mdx.v6+json;version=20240101" || false || true
   }
 
   def buildRequest(Object body, String contentType, String accept = null) {

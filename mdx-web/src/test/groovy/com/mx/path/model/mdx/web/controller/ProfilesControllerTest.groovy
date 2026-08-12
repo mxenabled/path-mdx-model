@@ -738,7 +738,7 @@ class ProfilesControllerTest extends Specification {
     doReturn(mockResponse).when(profileGateway).updateUserNameWithMFA(any())
 
     when:
-    def response = subject.updateUserNameWithMFA(new NewUserName()  )
+    def response = subject.updateUserNameWithMFA(new NewUserName())
 
     then:
     response.body == mockResponse.result

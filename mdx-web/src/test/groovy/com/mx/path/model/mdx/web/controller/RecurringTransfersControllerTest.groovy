@@ -97,7 +97,9 @@ class RecurringTransfersControllerTest extends Specification implements WithMock
     BaseController.setGateway(gateway)
     def transfer = new RecurringTransfer()
     def list = new MdxList<RecurringTransfer>().tap { add(transfer) }
-    def queryParameters = new RecurringTransferListQueryParameters().tap { transfer_type = "test" }
+    def queryParameters = new RecurringTransferListQueryParameters().tap {
+      transfer_type = "test"
+    }
 
     when:
     Mockito.doReturn(new AccessorResponse<MdxList<RecurringTransfer>>().withResult(list)).when(recurringTransferGateway).list(any(RecurringTransferListOptions))
