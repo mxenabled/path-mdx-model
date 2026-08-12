@@ -22,7 +22,9 @@ class BaseAccessorTest extends Specification {
 
     then: "It contains accessors for implemented AccountBaseTestAccessor AND StatusBaseAccessor"
     result.size() == 2
-    result.any({it.accessorClass == BaseAccessorTestImplemented.AccountBaseTestAccessor})
+    result.any({
+      it.accessorClass == BaseAccessorTestImplemented.AccountBaseTestAccessor
+    })
     result.any({it.accessorClass == StatusDefaultAccessor })
     result[0].base.accessorClass == BaseAccessor
     result.every({ it.base.accessorClass == BaseAccessor })

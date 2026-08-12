@@ -15,7 +15,7 @@ import org.springframework.http.HttpStatus
 
 import spock.lang.Specification
 
-class CrossAccountTransferDestinationControllerTest  extends Specification {
+class CrossAccountTransferDestinationControllerTest extends Specification {
   CrossAccountTransferDestinationController subject
   Gateway gateway
   CrossAccountTransferGateway crossAccountTransferGateway

@@ -53,11 +53,11 @@ class ExceptionResolverWebMvcConfigurerTest extends Specification {
     response.status == expectedStatus
 
     where:
-    exception                                      | expectNullMav | expectedStatus
-    new EOFException()                             | true          | 200
-    new IOException("Broken pipe")                 | true          | 200
-    new IOException("Connection reset by peer")    | true          | 200
-    new ConnectException("", new EOFException())   | true          | 200
-    new TypeMismatchException("bad value", String) | false         | 400
+    exception | expectNullMav | expectedStatus
+    new EOFException() | true | 200
+    new IOException("Broken pipe") | true | 200
+    new IOException("Connection reset by peer") | true | 200
+    new ConnectException("", new EOFException()) | true | 200
+    new TypeMismatchException("bad value", String) | false | 400
   }
 }

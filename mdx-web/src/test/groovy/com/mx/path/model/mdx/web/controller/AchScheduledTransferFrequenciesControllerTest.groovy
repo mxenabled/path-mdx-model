@@ -46,7 +46,9 @@ class AchScheduledTransferFrequenciesControllerTest extends Specification implem
     BaseController.setGateway(gateway)
     def frequency = new Frequency()
     def list = new MdxList<Frequency>().tap { add(frequency) }
-    def queryParameters = new AchScheduledTransferFrequencyListQueryParameters().tap { transfer_type = "test" }
+    def queryParameters = new AchScheduledTransferFrequencyListQueryParameters().tap {
+      transfer_type = "test"
+    }
 
     when:
     Mockito.doReturn(new AccessorResponse<MdxList<Frequency>>().withResult(list)).when(achScheduledTransferFrequencyGateway).list(any())

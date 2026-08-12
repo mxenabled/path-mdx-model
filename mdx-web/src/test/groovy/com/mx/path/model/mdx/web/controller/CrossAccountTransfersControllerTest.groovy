@@ -89,7 +89,9 @@ class CrossAccountTransfersControllerTest extends Specification implements WithM
     given:
     BaseController.setGateway(gateway)
     def crossAccountTransfer = new CrossAccountTransfer()
-    def crossAccountTransfers = new MdxList<CrossAccountTransfer>().tap { add(crossAccountTransfer) }
+    def crossAccountTransfers = new MdxList<CrossAccountTransfer>().tap {
+      add(crossAccountTransfer)
+    }
 
     when:
     Mockito.doReturn(new AccessorResponse<MdxList<CrossAccountTransfer>>().withResult(crossAccountTransfers)).when(crossAccountTransferGateway).list()

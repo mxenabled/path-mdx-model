@@ -54,7 +54,9 @@ class MdxUserTest extends Specification {
   def "getMetadataField String"() {
     given:
     def fingerprint = "U-12345"
-    def mdxUser = new MdxUser().tap { setMetadataField("fingerprint", fingerprint) }
+    def mdxUser = new MdxUser().tap {
+      setMetadataField("fingerprint", fingerprint)
+    }
 
     when:
     def result = mdxUser.getMetadataField("fingerprint")
@@ -72,17 +74,19 @@ class MdxUserTest extends Specification {
     mdxUser.getMetadataField("someValue", klass) == value
 
     where:
-    klass   || value
+    klass || value
     Boolean || true
     Integer || 1
-    Double  || 2.0
-    String  || "hello"
+    Double || 2.0
+    String || "hello"
   }
 
   def "getMetadataField for complex object"() {
     given:
     def remoteUser = new RemoteUser().tap { setLastName("Doe")}
-    def mdxUser = new MdxUser().tap { setMetadataField("someValue", remoteUser) }
+    def mdxUser = new MdxUser().tap {
+      setMetadataField("someValue", remoteUser)
+    }
 
     when:
     def result = mdxUser.getMetadataField("someValue", RemoteUser)

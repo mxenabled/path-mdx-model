@@ -123,7 +123,7 @@ class GatewayConfiguratorTest extends Specification {
     assert result["clientName"].behaviors.get(0).getClass().canonicalName == "com.mx.testing.GatewayBehaviorImpl"
     assert result["clientName"].id().behaviors.size() == 2
     assert result["clientName"].id().behaviors.get(0).getClass().canonicalName == "com.mx.testing.GatewayBehaviorImpl"
-    assert result["clientName"].id().behaviors.get(1).getClass().canonicalName =="com.mx.testing.MDXGatewayBehaviorImpl"
+    assert result["clientName"].id().behaviors.get(1).getClass().canonicalName == "com.mx.testing.MDXGatewayBehaviorImpl"
   }
 
   def "build gateway with child accessor annotations"() {
@@ -134,7 +134,9 @@ class GatewayConfiguratorTest extends Specification {
     def baseAccessorConf = objectMap.createMap("accessor")
     baseAccessorConf.put("class", ChildAccessorBase.class.getCanonicalName())
     baseAccessorConf.put("scope", "singleton")
-    baseAccessorConf.put("configurations", new ObjectMap().tap { put("Wakirimasu ka?", "Hai!") })
+    baseAccessorConf.put("configurations", new ObjectMap().tap {
+      put("Wakirimasu ka?", "Hai!")
+    })
     baseAccessorConf.put("connections", new ObjectMap().tap {
       put("MyConnection", new ObjectMap().tap {
         put("baseUrl", "https://example.com")

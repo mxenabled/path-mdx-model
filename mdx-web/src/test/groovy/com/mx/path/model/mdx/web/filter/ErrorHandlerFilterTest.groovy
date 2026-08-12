@@ -51,7 +51,9 @@ class ErrorHandlerFilterTest extends Specification {
     subject.doFilter(request, response, filterChain)
 
     then:
-    1 * outputStream.write(_) >> { args -> responseBody = new String((byte[]) args[0]) }
+    1 * outputStream.write(_) >> { args ->
+      responseBody = new String((byte[]) args[0])
+    }
     responseBody == '{"error":{"message":"Danger!","user_message":"Danger"}}'
   }
 
@@ -66,7 +68,9 @@ class ErrorHandlerFilterTest extends Specification {
     subject.doFilter(request, response, filterChain)
 
     then:
-    1 * outputStream.write(_) >> { args -> responseBody = new String((byte[]) args[0]) }
+    1 * outputStream.write(_) >> { args ->
+      responseBody = new String((byte[]) args[0])
+    }
     responseBody == '{"error":{"message":"Danger!","user_message":"Danger!"}}'
   }
 
@@ -81,7 +85,9 @@ class ErrorHandlerFilterTest extends Specification {
     subject.doFilter(request, response, filterChain)
 
     then:
-    1 * outputStream.write(_) >> { args -> responseBody = new String((byte[]) args[0]) }
+    1 * outputStream.write(_) >> { args ->
+      responseBody = new String((byte[]) args[0])
+    }
     responseBody == '{"error":{"message":"Danger!","user_message":"Danger!","error_code":"4011"}}'
   }
 
@@ -96,7 +102,9 @@ class ErrorHandlerFilterTest extends Specification {
     subject.doFilter(request, response, filterChain)
 
     then:
-    1 * outputStream.write(_) >> { args -> responseBody = new String((byte[]) args[0]) }
+    1 * outputStream.write(_) >> { args ->
+      responseBody = new String((byte[]) args[0])
+    }
     responseBody == '{"error":{"message":"Danger!","user_message":"Danger!","error_title":"errorTitle","error_code":"4011"}}'
   }
 

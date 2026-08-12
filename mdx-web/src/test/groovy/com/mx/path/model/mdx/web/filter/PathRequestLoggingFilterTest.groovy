@@ -219,9 +219,9 @@ class PathRequestLoggingFilterTest extends Specification {
     verify(subject, never()).logRequest(any(ContentCachingRequestWrapper), any(ContentCachingResponseWrapper), anyLong()) || true
 
     where:
-    request_uri                               || _
+    request_uri || _
     "http://10.66.90.77:3000/actuator/health" || _
-    "path-connector-<client-id>/status"       || _
+    "path-connector-<client-id>/status" || _
   }
 
   private class PathRequestLoggingFilterWithNoMDCClearing extends PathRequestLoggingFilter {
