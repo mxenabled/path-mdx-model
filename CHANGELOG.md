@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.0.2](https://github.com/mxenabled/path-mdx-model/compare/v23.0.1...v23.0.2) (2026-08-14)
+
+
+### Bug Fixes
+
+* **mdx-web:** restore default message converters ([9df8759](https://github.com/mxenabled/path-mdx-model/commit/9df8759ad074417f0f8c246fc43af7f2d02abd7d))
+
 ## [23.0.1](https://github.com/mxenabled/path-mdx-model/compare/v23.0.0...v23.0.1) (2026-08-12)
 
 
