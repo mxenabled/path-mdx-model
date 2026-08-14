@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import com.google.gson.annotations.SerializedName;
 import com.mx.path.model.mdx.model.MdxBase;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.challenges.Challenge;
@@ -22,6 +23,8 @@ public class P2PTransfer extends MdxBase<P2PTransfer> {
   private String recipientId;
   private String recipientVerificationAnswer;
   private String recipientVerificationQuestion;
+  @SerializedName("recurring_p2p_transfer_id")
+  private String recurringP2PTransferId;
   private LocalDate sendOn;
   private LocalDate sentOn;
   private String sourceId;
