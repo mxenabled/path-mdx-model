@@ -36,7 +36,7 @@ class MdxOnDemandSerializationWebMvcConfigurerTest extends Specification {
     ]
 
     when:
-    subject.configureMessageConverters(converters)
+    subject.extendMessageConverters(converters)
 
     then:
     verifyAll(converters) {

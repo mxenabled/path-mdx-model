@@ -20,6 +20,7 @@ import tools.jackson.dataformat.xml.XmlMapper;
 
 @Configuration
 public class MdxOnDemandSerializationWebMvcConfigurer implements WebMvcConfigurer {
+
   /**
    * List of all configured converts. All others will be removed before inserting custom MappingJackson2XmlHttpMessageConverter
    */
@@ -32,9 +33,8 @@ public class MdxOnDemandSerializationWebMvcConfigurer implements WebMvcConfigure
   }
 
   @Override
-  public final void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-    // Get rid of unused converters
-    // These get in the way of the other
+  public final void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+    // Filter out unwanted default converters to strictly enforce custom serialization
     List<HttpMessageConverter<?>> toRemove = converters.stream().filter(t -> !CONVERT_CLASSES.contains(t.getClass())).collect(Collectors.toCollection(ArrayList::new));
     converters.removeAll(toRemove);
 
