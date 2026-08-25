@@ -30,8 +30,8 @@ public class ManagedCardAlertsController extends BaseController {
   }
 
   @RequestMapping(value = "/users/{userId}/managed_cards/{cardId}/alerts/{id}", method = RequestMethod.PUT, consumes = BaseController.MDX_MEDIA)
-  public final ResponseEntity<Alert> updateAlert(@PathVariable("cardId") String cardId, @RequestBody Alert alert) {
-    AccessorResponse<Alert> response = gateway().managedCards().alerts().update(cardId, alert);
+  public final ResponseEntity<Alert> updateAlert(@PathVariable("cardId") String cardId, @PathVariable("id") String alertId, @RequestBody Alert alert) {
+    AccessorResponse<Alert> response = gateway().managedCards().alerts().update(cardId, alertId, alert);
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 

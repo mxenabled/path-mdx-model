@@ -70,15 +70,16 @@ class ManagedCardAlertsControllerTest extends Specification {
 
   def "updateAlert interacts with gateway"() {
     given:
+    def alertId = "alert-id"
     def cardId = "card-id"
     def alert = new Alert()
 
     when:
-    doReturn(new AccessorResponse<Alert>().withResult(alert)).when(alertGateway).update(cardId, alert)
-    def response = subject.updateAlert(cardId, alert)
+    doReturn(new AccessorResponse<Alert>().withResult(alert)).when(alertGateway).update(cardId, alertId, alert)
+    def response = subject.updateAlert(cardId, alertId, alert)
 
     then:
-    verify(alertGateway).update(cardId, alert) || true
+    verify(alertGateway).update(cardId, alertId, alert) || true
     response.body == alert
   }
 
