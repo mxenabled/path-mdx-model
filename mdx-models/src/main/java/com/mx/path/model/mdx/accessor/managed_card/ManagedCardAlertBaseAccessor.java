@@ -49,12 +49,13 @@ public abstract class ManagedCardAlertBaseAccessor extends Accessor {
    * Update a managed card alert
    *
    * @param cardId
+   * @param alertId
    * @param alert
    * @return
    */
   @GatewayAPI
   @API(description = "Update a managed card alert")
-  public AccessorResponse<Alert> update(String cardId, Alert alert) {
+  public AccessorResponse<Alert> update(String cardId, String alertId, Alert alert) {
     throw new AccessorMethodNotImplementedException();
   }
 

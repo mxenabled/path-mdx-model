@@ -24,7 +24,7 @@ class ManagedCardAlertBaseAccessorTest extends Specification {
   }
 
   def "update throws"() {
-    when: subject.update("cardId", null)
+    when: subject.update("cardId", "alertId", null)
     then: thrown(AccessorMethodNotImplementedException)
   }
 
