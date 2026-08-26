@@ -5,6 +5,14 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.0.3](https://github.com/mxenabled/path-mdx-model/compare/v23.0.2...v23.0.3) (2026-08-26)
+
+
+### Bug Fixes
+
+* add recurringP2PTransferId to P2PTransfer ([e7b46cf](https://github.com/mxenabled/path-mdx-model/commit/e7b46cf789ec71538848e7e30fc18f8749e589a3))
+* extract card alertID from url for update endpoint ([3571d5b](https://github.com/mxenabled/path-mdx-model/commit/3571d5b1d3ffcb97ca80b6a9a16bbce3c0e53d4c))
+
 ## [23.0.2](https://github.com/mxenabled/path-mdx-model/compare/v23.0.1...v23.0.2) (2026-08-14)
 
 
