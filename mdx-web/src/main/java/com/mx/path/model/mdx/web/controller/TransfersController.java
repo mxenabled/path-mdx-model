@@ -14,16 +14,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping(value = "{clientId}", produces = BaseController.MDX_MEDIA)
 public class TransfersController extends BaseController {
 
+  @SuppressWarnings({ "MagicNumber", "unchecked" })
   @RequestMapping(value = "/users/{userId}/transfers", method = RequestMethod.GET)
-  public final ResponseEntity<MdxList<Transfer>> list(TransferListQueryParameters queryParameters) {
+  public final ResponseEntity<MdxList<Transfer>> list(TransferListQueryParameters queryParameters, HttpServletRequest request) {
     TransferListOptions options = new TransferListOptions();
     options.setTransferType(queryParameters.getTransfer_type());
-    AccessorResponse<MdxList<Transfer>> response = gateway().transfers().list(options);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+    return (ResponseEntity<MdxList<Transfer>>) versioned(request)
+        .defaultVersion(MdxList.class, MdxList.class, transfers -> {
+          AccessorResponse<MdxList<Transfer>> response = gateway().transfers().list(options);
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+        })
+        .version(20260427, MdxList.class, MdxList.class, transfers -> {
+          AccessorResponse<MdxList<Transfer>> response = gateway().transfers().list20260427(options);
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+        })
+        .execute();
   }
 
   @RequestMapping(value = "/users/{user_id}/transfers/{id}", method = RequestMethod.GET)
