@@ -92,6 +92,18 @@ public abstract class TransferBaseAccessor extends Accessor {
   }
 
   /**
+   * List all transfers - Version 20260427
+   *
+   * @param options
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "List all transfers version 20260427")
+  public AccessorResponse<MdxList<Transfer>> list20260427(TransferListOptions options) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
    * Update a transfer
    *
    * <p>Note: Typically only available on future-dated transfers or transfers that haven't posted

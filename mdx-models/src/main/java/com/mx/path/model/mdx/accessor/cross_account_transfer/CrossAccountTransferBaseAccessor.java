@@ -162,6 +162,17 @@ public abstract class CrossAccountTransferBaseAccessor extends Accessor {
   }
 
   /**
+   * List all cross-account transfers - Version 20260427
+   *
+   * @return list of cross account transfers
+   */
+  @GatewayAPI
+  @API(description = "List all cross-account transfers version 20260427")
+  public AccessorResponse<MdxList<CrossAccountTransfer>> list20260427() {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
    * Update a scheduled cross account transfer
    *
    * @param id the transfer id

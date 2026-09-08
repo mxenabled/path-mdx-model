@@ -78,6 +78,17 @@ public class CrossAccountRecurringTransferBaseAccessor extends Accessor {
   }
 
   /**
+   * List all recurring cross account transfers - Version 20260427
+   *
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "List all recurring cross account transfers version 20260427")
+  public AccessorResponse<MdxList<CrossAccountRecurringTransfer>> list20260427() {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
    * Skip next payment of recurring cross account transfer
    *
    * @param id

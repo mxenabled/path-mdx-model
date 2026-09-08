@@ -1,13 +1,19 @@
 package com.mx.path.model.mdx.web.controller
 
+import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
+import static org.mockito.Mockito.when
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.mx.path.core.context.Session
 import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.cross_account_transfer.CrossAccountRecurringTransferGateway
 import com.mx.path.gateway.api.cross_account_transfer.CrossAccountTransferGateway
 import com.mx.path.model.mdx.model.MdxList
+import com.mx.path.model.mdx.model.Resources
 import com.mx.path.model.mdx.model.cross_account_transfer.CrossAccountRecurringTransfer
 
 import org.mockito.Mockito
@@ -15,11 +21,14 @@ import org.springframework.http.HttpStatus
 
 import spock.lang.Specification
 
+import jakarta.servlet.http.HttpServletRequest
+
 class CrossAccountRecurringTransferControllerTest extends Specification{
   CrossAccountRecurringTransferController subject
   Gateway gateway
   CrossAccountTransferGateway crossAccountTransferGateway
   CrossAccountRecurringTransferGateway crossAccountRecurringTransferGateway
+  Gson gson
 
   def setup() {
     subject = new CrossAccountRecurringTransferController()
@@ -27,6 +36,10 @@ class CrossAccountRecurringTransferControllerTest extends Specification{
     crossAccountTransferGateway = spy(CrossAccountTransferGateway.builder()
         .crossAccountRecurring(crossAccountRecurringTransferGateway).build())
     gateway = Gateway.builder().crossAccount(crossAccountTransferGateway).build()
+
+    GsonBuilder builder = new GsonBuilder()
+    Resources.registerResources(builder)
+    gson = builder.create()
   }
 
   def cleanup() {
@@ -76,11 +89,29 @@ class CrossAccountRecurringTransferControllerTest extends Specification{
 
     when:
     Mockito.doReturn(new AccessorResponse<MdxList<CrossAccountRecurringTransfer>>().withResult(list)).when(crossAccountRecurringTransferGateway).list()
-    def response = subject.getCrossAccountRecurringTransfers()
+    def response = subject.getCrossAccountRecurringTransfers(buildRequest(null, "application/vnd.mx.mdx.v6+json"))
 
     then:
     HttpStatus.OK == response.getStatusCode()
     verify(crossAccountRecurringTransferGateway).list() || true
+  }
+
+  def "getCrossAccountRecurringTransfers v20260427 interacts with gateway"() {
+    given:
+    BaseController.setGateway(gateway)
+
+    def crossAccountRecurringTransfer = new CrossAccountRecurringTransfer()
+    def list = new MdxList<CrossAccountRecurringTransfer>().tap {
+      add(crossAccountRecurringTransfer)
+    }
+
+    when:
+    Mockito.doReturn(new AccessorResponse<MdxList<CrossAccountRecurringTransfer>>().withResult(list)).when(crossAccountRecurringTransferGateway).list20260427()
+    def response = subject.getCrossAccountRecurringTransfers(buildRequest(null, "application/vnd.mx.mdx.v6+json;version=20260427"))
+
+    then:
+    HttpStatus.OK == response.getStatusCode()
+    verify(crossAccountRecurringTransferGateway).list20260427() || true
   }
 
   def "updateCrossAccountRecurringTransfer interacts with gateway"() {
@@ -125,5 +156,17 @@ class CrossAccountRecurringTransferControllerTest extends Specification{
     then:
     HttpStatus.NO_CONTENT == response.getStatusCode()
     verify(crossAccountRecurringTransferGateway).skipNext("id") || true
+  }
+
+  def buildRequest(Object body, String contentType) {
+    HttpServletRequest request = mock(HttpServletRequest.class)
+    when(request.getReader()).thenReturn(new BufferedReader(new StringReader(gson.toJson(body))))
+    if (Session.current() != null) {
+      when(request.getHeader("mx-session-key")).thenReturn(Session.current().getId())
+    }
+    when(request.getHeaders("Content-Type")).thenReturn(Collections.enumeration([contentType]))
+    when(request.getHeaders("Accept")).thenReturn(Collections.enumeration([contentType]))
+
+    return request
   }
 }

@@ -87,6 +87,18 @@ public abstract class RecurringTransferBaseAccessor extends Accessor {
   }
 
   /**
+   * List recurring transfers - Version 20260427
+   *
+   * @param options
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "List recurring transfers version 20260427")
+  public AccessorResponse<MdxList<RecurringTransfer>> list20260427(RecurringTransferListOptions options) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
    * Skip next payment of recurring transfer
    *
    * @param id

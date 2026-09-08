@@ -12,16 +12,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping(value = "{clientId}", produces = BaseController.MDX_MEDIA)
 public class CrossAccountRecurringTransferController extends BaseController {
   public CrossAccountRecurringTransferController() {
   }
 
+  @SuppressWarnings({ "MagicNumber", "unchecked" })
   @RequestMapping(value = "/users/{userId}/cross_account_transfers/recurring_cross_account_transfers", method = RequestMethod.GET)
-  public final ResponseEntity<MdxList<CrossAccountRecurringTransfer>> getCrossAccountRecurringTransfers() {
-    AccessorResponse<MdxList<CrossAccountRecurringTransfer>> response = gateway().crossAccount().crossAccountRecurring().list();
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+  public final ResponseEntity<MdxList<CrossAccountRecurringTransfer>> getCrossAccountRecurringTransfers(HttpServletRequest request) {
+    return (ResponseEntity<MdxList<CrossAccountRecurringTransfer>>) versioned(request)
+        .defaultVersion(MdxList.class, MdxList.class, recurringTransfers -> {
+          AccessorResponse<MdxList<CrossAccountRecurringTransfer>> response = gateway().crossAccount().crossAccountRecurring().list();
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+        })
+        .version(20260427, MdxList.class, MdxList.class, recurringTransfers -> {
+          AccessorResponse<MdxList<CrossAccountRecurringTransfer>> response = gateway().crossAccount().crossAccountRecurring().list20260427();
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+        })
+        .execute();
   }
 
   @RequestMapping(value = "/users/{userId}/cross_account_transfers/recurring_cross_account_transfers/{id}", method = RequestMethod.GET)

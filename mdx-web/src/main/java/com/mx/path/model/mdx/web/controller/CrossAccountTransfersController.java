@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping(value = "{clientId}", produces = BaseController.MDX_MEDIA)
 public class CrossAccountTransfersController extends BaseController {
@@ -35,10 +37,19 @@ public class CrossAccountTransfersController extends BaseController {
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
+  @SuppressWarnings({ "MagicNumber", "unchecked" })
   @RequestMapping(value = "/users/{userId}/cross_account_transfers", method = RequestMethod.GET)
-  public final ResponseEntity<MdxList<CrossAccountTransfer>> listCrossAccountTransfers() {
-    AccessorResponse<MdxList<CrossAccountTransfer>> response = gateway().crossAccount().list();
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+  public final ResponseEntity<MdxList<CrossAccountTransfer>> listCrossAccountTransfers(HttpServletRequest request) {
+    return (ResponseEntity<MdxList<CrossAccountTransfer>>) versioned(request)
+        .defaultVersion(MdxList.class, MdxList.class, crossAccountTransfers -> {
+          AccessorResponse<MdxList<CrossAccountTransfer>> response = gateway().crossAccount().list();
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+        })
+        .version(20260427, MdxList.class, MdxList.class, crossAccountTransfers -> {
+          AccessorResponse<MdxList<CrossAccountTransfer>> response = gateway().crossAccount().list20260427();
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+        })
+        .execute();
   }
 
   @Deprecated
