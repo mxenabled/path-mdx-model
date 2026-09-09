@@ -11,6 +11,7 @@ import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
+import org.springframework.http.converter.json.JacksonJsonHttpMessageConverter;
 import org.springframework.http.converter.xml.JacksonXmlHttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -22,7 +23,10 @@ import tools.jackson.dataformat.xml.XmlMapper;
 public class MdxOnDemandSerializationWebMvcConfigurer implements WebMvcConfigurer {
 
   /**
-   * List of all configured converts. All others will be removed before inserting custom MappingJackson2XmlHttpMessageConverter
+   * Converters retained by {@link #extendMessageConverters(List)}; every other converter is removed before the
+   * custom XML converter is appended. Gson handles MDX JSON serialization. The Jackson JSON converter is retained
+   * because Spring Boot's actuator endpoints (e.g. {@code /actuator/health}) are serialized with Jackson; without it
+   * those responses have no writable converter and fail with {@code HttpMessageNotWritableException}.
    */
   static final List<Class<?>> CONVERT_CLASSES;
   static {
@@ -30,6 +34,7 @@ public class MdxOnDemandSerializationWebMvcConfigurer implements WebMvcConfigure
     CONVERT_CLASSES.add(GsonHttpMessageConverter.class);
     CONVERT_CLASSES.add(StringHttpMessageConverter.class);
     CONVERT_CLASSES.add(ByteArrayHttpMessageConverter.class);
+    CONVERT_CLASSES.add(JacksonJsonHttpMessageConverter.class);
   }
 
   @Override

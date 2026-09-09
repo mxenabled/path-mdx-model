@@ -5,6 +5,7 @@ import org.springframework.http.converter.FormHttpMessageConverter
 import org.springframework.http.converter.ResourceHttpMessageConverter
 import org.springframework.http.converter.StringHttpMessageConverter
 import org.springframework.http.converter.json.GsonHttpMessageConverter
+import org.springframework.http.converter.json.JacksonJsonHttpMessageConverter
 import org.springframework.http.converter.xml.JacksonXmlHttpMessageConverter
 
 import spock.lang.Specification
@@ -22,6 +23,7 @@ class MdxOnDemandSerializationWebMvcConfigurerTest extends Specification {
   def "filters non-whitelisted message converters and appends the custom XML converter"() {
     given:
     def gsonConverter = new GsonHttpMessageConverter()
+    def jacksonJsonConverter = new JacksonJsonHttpMessageConverter()
     def stringConverter = new StringHttpMessageConverter()
     def byteArrayConverter = new ByteArrayHttpMessageConverter()
     def unwantedResourceConverter = new ResourceHttpMessageConverter()
@@ -30,6 +32,7 @@ class MdxOnDemandSerializationWebMvcConfigurerTest extends Specification {
     def converters = [
       unwantedResourceConverter,
       gsonConverter,
+      jacksonJsonConverter,
       unwantedFormConverter,
       stringConverter,
       byteArrayConverter
@@ -40,8 +43,9 @@ class MdxOnDemandSerializationWebMvcConfigurerTest extends Specification {
 
     then:
     verifyAll(converters) {
-      it.size() == 4
+      it.size() == 5
       it.contains(gsonConverter)
+      it.contains(jacksonJsonConverter)
       it.contains(stringConverter)
       it.contains(byteArrayConverter)
       !it.contains(unwantedResourceConverter)
