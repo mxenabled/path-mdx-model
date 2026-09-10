@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.1.0](https://github.com/mxenabled/path-mdx-model/compare/v23.0.4...v23.1.0) (2026-09-10)
+
+
+### Features
+
+* add versioned list endpoints (20260427) for transfers and cross-account transfers ([2c17f3d](https://github.com/mxenabled/path-mdx-model/commit/2c17f3de9c16ad2a843febb86189576dbb52f223))
+
 ## [23.0.4](https://github.com/mxenabled/path-mdx-model/compare/v23.0.3...v23.0.4) (2026-08-27)
 
 
