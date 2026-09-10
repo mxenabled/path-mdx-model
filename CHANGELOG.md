@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.2.0](https://github.com/mxenabled/path-mdx-model/compare/v23.1.0...v23.2.0) (2026-09-10)
+
+
+### Features
+
+* add name field to ManagedCard model ([290396f](https://github.com/mxenabled/path-mdx-model/commit/290396f1b71d8e912ef6bd0f0495aafb7f868c9f))
+
 ## [23.1.0](https://github.com/mxenabled/path-mdx-model/compare/v23.0.4...v23.1.0) (2026-09-10)
 
 
