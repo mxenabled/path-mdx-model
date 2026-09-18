@@ -192,6 +192,18 @@ public abstract class IdBaseAccessor extends Accessor {
   }
 
   /**
+   * Reset password - Version 20260428
+   *
+   * @param resetPassword
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Reset Password version 20260428")
+  public AccessorResponse<com.mx.path.model.mdx.model.id.v20260428.ResetPassword> resetPassword20260428(com.mx.path.model.mdx.model.id.v20260428.ResetPassword resetPassword) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
    * Unlock user
    *
    * @return

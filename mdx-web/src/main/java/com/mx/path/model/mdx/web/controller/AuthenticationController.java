@@ -254,7 +254,9 @@ public class AuthenticationController extends BaseController {
    * Always creates a new session, discards old session
    *
    * @return
+   * @deprecated Use {@link #resetPassword20260428(com.mx.path.model.mdx.model.id.v20260428.ResetPassword)}
    */
+  @Deprecated
   @RequestMapping(value = "/reset_password", method = RequestMethod.POST)
   public final ResponseEntity<ResetPassword> resetPassword() {
     //This endpoint always creates a new session when it called even if there is an existing session being passed
@@ -268,6 +270,12 @@ public class AuthenticationController extends BaseController {
     return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders(), headers), HttpStatus.OK);
   }
 
+  /**
+   * @param resetPasswordAuthentication
+   * @return
+   * @deprecated Use {@link #resetPassword20260428(com.mx.path.model.mdx.model.id.v20260428.ResetPassword)}
+   */
+  @Deprecated
   @RequestMapping(value = "/reset_password/challenges/{challengeId}", method = RequestMethod.PUT, consumes = MDX_MEDIA)
   public final ResponseEntity<ResetPassword> resetPassword(@RequestBody ResetPassword resetPasswordAuthentication) {
     AccessorResponse<ResetPassword> response = gateway().id().answerResetPassword(resetPasswordAuthentication);
@@ -279,6 +287,34 @@ public class AuthenticationController extends BaseController {
       status = HttpStatus.ACCEPTED;
     }
     return new ResponseEntity<>(result.wrapped(), createMultiMapForResponse(response.getHeaders()), status);
+  }
+
+  /**
+   * Initiates and answers the reset password workflow - Version 20260428
+   *
+   * Always creates a new session, discards old session
+   *
+   * @param resetPasswordRequest
+   * @return
+   */
+  @RequestMapping(value = "/reset_password", method = RequestMethod.PUT, consumes = MDX_MEDIA)
+  public final ResponseEntity<com.mx.path.model.mdx.model.id.v20260428.ResetPassword> resetPassword20260428(@RequestBody com.mx.path.model.mdx.model.id.v20260428.ResetPassword resetPasswordRequest) {
+    //This endpoint always creates a new session when it called even if there is an existing session being passed
+    Session.deleteCurrent();
+    Session.createSession();
+
+    AccessorResponse<com.mx.path.model.mdx.model.id.v20260428.ResetPassword> response = gateway().id().resetPassword20260428(resetPasswordRequest);
+    com.mx.path.model.mdx.model.id.v20260428.ResetPassword result = response.getResult();
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("mx-session-key", Session.current().getId());
+
+    // Return 202 returning challenge questions
+    HttpStatus status = HttpStatus.NO_CONTENT;
+    if (result.getChallenges() != null && !result.getChallenges().isEmpty()) {
+      status = HttpStatus.ACCEPTED;
+    }
+    return new ResponseEntity<>(result.wrapped(), createMultiMapForResponse(response.getHeaders(), headers), status);
   }
 
   @RequestMapping(value = "/forgot_username", method = RequestMethod.POST)

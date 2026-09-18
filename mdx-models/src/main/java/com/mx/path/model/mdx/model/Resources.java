@@ -270,6 +270,7 @@ public class Resources {
     }.getType(), new ModelWrappableSerializer("mfa_challenges"));
     // ResetPassword
     builder.registerTypeAdapter(ResetPassword.class, new ModelWrappableSerializer("reset_password"));
+    builder.registerTypeAdapter(com.mx.path.model.mdx.model.id.v20260428.ResetPassword.class, new ModelWrappableSerializer("reset_password"));
     // ForgotUsername
     builder.registerTypeAdapter(ForgotUsername.class, new ModelWrappableSerializer("forgot_username"));
     // UnlockUser
