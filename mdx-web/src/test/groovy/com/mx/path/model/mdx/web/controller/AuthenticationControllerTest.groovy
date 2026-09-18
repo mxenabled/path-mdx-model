@@ -677,6 +677,56 @@ class AuthenticationControllerTest extends Specification implements WithMockery 
     response.statusCode == HttpStatus.NO_CONTENT
   }
 
+  def "resetPassword20260428 - ACCEPTED"() {
+    given:
+    AuthenticationController.setGateway(gateway)
+    def resetPasswordRequest = new com.mx.path.model.mdx.model.id.v20260428.ResetPassword().tap {
+      setUsername("USER-1234")
+    }
+    def challenge = new Challenge().tap {
+      setId("CHALLENGE_ID_1")
+      setPrompt("Your password has been reset.")
+      setQuestions([
+        new Question().tap {
+          setId("QUESTION_ID_1")
+          setPrompt("Please enter your new password")
+        }
+      ])
+    }
+    def expected = new com.mx.path.model.mdx.model.id.v20260428.ResetPassword().tap {
+      setUsername("USER-1234")
+      setChallenges([challenge])
+    }
+    doReturn(new AccessorResponse<com.mx.path.model.mdx.model.id.v20260428.ResetPassword>().withResult(expected).withStatus(PathResponseStatus.ACCEPTED)).when(id).resetPassword20260428(resetPasswordRequest)
+
+    when:
+    def response = subject.resetPassword20260428(resetPasswordRequest)
+
+    then:
+    verify(gateway).id() || true
+    verify(id).resetPassword20260428(resetPasswordRequest) || true
+    response.statusCode == HttpStatus.ACCEPTED
+    Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
+  }
+
+  def "resetPassword20260428 - NO_CONTENT"() {
+    given:
+    AuthenticationController.setGateway(gateway)
+    def resetPasswordRequest = new com.mx.path.model.mdx.model.id.v20260428.ResetPassword().tap {
+      setUsername("USER-1234")
+    }
+    doReturn(new AccessorResponse<com.mx.path.model.mdx.model.id.v20260428.ResetPassword>().withResult(new com.mx.path.model.mdx.model.id.v20260428.ResetPassword()).withStatus(PathResponseStatus.NO_CONTENT)).when(id).resetPassword20260428(resetPasswordRequest)
+
+    when:
+    def response = subject.resetPassword20260428(resetPasswordRequest)
+
+    then:
+    verify(gateway).id() || true
+    verify(id).resetPassword20260428(resetPasswordRequest) || true
+    response.statusCode == HttpStatus.NO_CONTENT
+    Session.current().getId() == response.getHeaders().getFirst("mx-session-key")
+  }
+
   def "unlockUser - ACCEPTED"() {
     given:
     AuthenticationController.setGateway(gateway)

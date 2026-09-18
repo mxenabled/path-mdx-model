@@ -1,5 +1,6 @@
 package com.mx.path.model.mdx.accessor.id
 
+import com.mx.path.core.common.accessor.AccessorMethodNotImplementedException
 import com.mx.path.core.common.accessor.PathResponseStatus
 
 import spock.lang.Specification
@@ -22,5 +23,12 @@ class IdBaseAccessorTest extends Specification {
     def response = subject.logout(null)
     then:
     response.status == PathResponseStatus.NO_CONTENT
+  }
+
+  def "resetPassword20260428 throws"() {
+    when:
+    subject.resetPassword20260428(null)
+    then:
+    thrown(AccessorMethodNotImplementedException)
   }
 }
