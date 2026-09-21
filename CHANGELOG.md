@@ -5,6 +5,18 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.3.0](https://github.com/mxenabled/path-mdx-model/compare/v23.2.0...v23.3.0) (2026-09-21)
+
+
+### Features
+
+* add new endpoint for reset password ([48c1a19](https://github.com/mxenabled/path-mdx-model/commit/48c1a190c458051c182f7fa5b482180183cc3ef8))
+
+
+### Bug Fixes
+
+* vulnerabilities ([8a57523](https://github.com/mxenabled/path-mdx-model/commit/8a5752377a7d85fa7d1a483c22b190f3d3c7be11))
+
 ## [23.2.0](https://github.com/mxenabled/path-mdx-model/compare/v23.1.0...v23.2.0) (2026-09-10)
 
 
