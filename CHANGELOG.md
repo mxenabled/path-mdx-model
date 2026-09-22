@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.3.1](https://github.com/mxenabled/path-mdx-model/compare/v23.3.0...v23.3.1) (2026-09-22)
+
+
+### Bug Fixes
+
+* add authorization to challenge ([044daa5](https://github.com/mxenabled/path-mdx-model/commit/044daa56378ed4d2a39cbb18884bac1a232f9f09))
+
 ## [23.3.0](https://github.com/mxenabled/path-mdx-model/compare/v23.2.0...v23.3.0) (2026-09-21)
 
 
