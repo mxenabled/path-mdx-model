@@ -3,6 +3,7 @@ package com.mx.path.model.mdx.model.challenges;
 import java.util.List;
 
 import com.mx.path.model.mdx.model.MdxBase;
+import com.mx.path.model.mdx.model.authorization.Authorization;
 
 public final class Challenge extends MdxBase<Challenge> {
   private String id;
@@ -12,6 +13,7 @@ public final class Challenge extends MdxBase<Challenge> {
   private String[] modes;
   private String format;
   private List<Action> actions;
+  private Authorization authorization;
 
   public String getId() {
     return id;
@@ -67,5 +69,13 @@ public final class Challenge extends MdxBase<Challenge> {
 
   public void setActions(List<Action> actions) {
     this.actions = actions;
+  }
+
+  public Authorization getAuthorization() {
+    return authorization;
+  }
+
+  public void setAuthorization(Authorization authorization) {
+    this.authorization = authorization;
   }
 }
