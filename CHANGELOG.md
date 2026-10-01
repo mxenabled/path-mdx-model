@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.4.0](https://github.com/mxenabled/path-mdx-model/compare/v23.3.1...v23.4.0) (2026-10-01)
+
+
+### Features
+
+* add Rev 6 status and account_data to Product | MC-16319 ([8be8115](https://github.com/mxenabled/path-mdx-model/commit/8be81151bce24e861d086a51ba99868ce6ced916))
+
 ## [23.3.1](https://github.com/mxenabled/path-mdx-model/compare/v23.3.0...v23.3.1) (2026-09-22)
 
 
