@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.4.1](https://github.com/mxenabled/path-mdx-model/compare/v23.4.0...v23.4.1) (2026-10-02)
+
+
+### Bug Fixes
+
+* honor accessor status and add 204 path in ProductController | MC-16536 ([c274703](https://github.com/mxenabled/path-mdx-model/commit/c274703c726c27820551fab3d9efb9698a82e384))
+
 ## [23.4.0](https://github.com/mxenabled/path-mdx-model/compare/v23.3.1...v23.4.0) (2026-10-01)
 
 
