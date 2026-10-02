@@ -1,5 +1,6 @@
 package com.mx.path.model.mdx.web.controller;
 
+import com.mx.path.core.common.accessor.PathResponseStatus;
 import com.mx.path.gateway.accessor.AccessorResponse;
 import com.mx.path.model.mdx.model.MdxList;
 import com.mx.path.model.mdx.model.products.Product;
@@ -40,14 +41,29 @@ public class ProductController extends BaseController {
   }
 
   private ResponseEntity<Product> buildResponse(AccessorResponse<Product> response) {
+    PathResponseStatus accessorStatus = response.getStatus();
+
+    // An accessor can explicitly signal that a product is no longer available. This takes
+    // precedence over the null-result check below -- a product that existed and is now gone is a
+    // different case than a product id that never existed (still 404).
+    if (accessorStatus == PathResponseStatus.NO_CONTENT) {
+      return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NO_CONTENT);
+    }
+
     Product result = response.getResult();
     if (result == null) {
       return new ResponseEntity<>(createMultiMapForResponse(response.getHeaders()), HttpStatus.NOT_FOUND);
     }
 
-    HttpStatus status = HttpStatus.OK;
-    if (result.getChallenges() != null && result.getChallenges().size() > 0) {
+    HttpStatus status;
+    if (accessorStatus != null) {
+      // Respect an explicit accessor status (e.g. OK alongside a trailing success challenge) rather
+      // than inferring it purely from the presence of challenges. Mirrors PayeesController.addPayee().
+      status = HttpStatus.valueOf(accessorStatus.value());
+    } else if (result.getChallenges() != null && result.getChallenges().size() > 0) {
       status = HttpStatus.ACCEPTED;
+    } else {
+      status = HttpStatus.OK;
     }
     return new ResponseEntity<>(result.wrapped(), createMultiMapForResponse(response.getHeaders()), status);
   }
