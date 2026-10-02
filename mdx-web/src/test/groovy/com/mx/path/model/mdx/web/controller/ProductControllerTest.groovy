@@ -4,6 +4,7 @@ import static org.mockito.Mockito.doReturn
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 
+import com.mx.path.core.common.accessor.PathResponseStatus
 import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
 import com.mx.path.gateway.api.products.ProductGateway
@@ -158,5 +159,122 @@ class ProductControllerTest extends Specification {
     then:
     verify(productGateway).update(productId, product) || true
     response.statusCode == HttpStatus.NOT_FOUND
+  }
+
+  def "updateProduct - accessor-set OK status wins over non-empty challenges (Rev 6 terminal response)"() {
+    given:
+    def productId = "ID_1"
+    def product = new Product()
+    def mockResponse = new AccessorResponse<Product>().withResult(
+        new Product().tap {
+          challenges = [new Challenge()]
+        }
+        ).withStatus(PathResponseStatus.OK)
+
+    when:
+    doReturn(mockResponse).when(productGateway).update(productId, product)
+    def response = subject.updateProduct(productId, product)
+
+    then:
+    verify(productGateway).update(productId, product) || true
+    response.statusCode == HttpStatus.OK
+  }
+
+  def "updateProduct - no accessor status with non-empty challenges still returns 202 (unchanged default)"() {
+    given:
+    def productId = "ID_1"
+    def product = new Product()
+    def mockResponse = new AccessorResponse<Product>().withResult(
+        new Product().tap {
+          challenges = [new Challenge()]
+        }
+        )
+
+    when:
+    doReturn(mockResponse).when(productGateway).update(productId, product)
+    def response = subject.updateProduct(productId, product)
+
+    then:
+    verify(productGateway).update(productId, product) || true
+    response.statusCode == HttpStatus.ACCEPTED
+  }
+
+  def "updateProduct - no accessor status with empty challenges still returns 200 (unchanged default)"() {
+    given:
+    def productId = "ID_1"
+    def product = new Product()
+    def mockResponse = new AccessorResponse<Product>().withResult(new Product())
+
+    when:
+    doReturn(mockResponse).when(productGateway).update(productId, product)
+    def response = subject.updateProduct(productId, product)
+
+    then:
+    verify(productGateway).update(productId, product) || true
+    response.statusCode == HttpStatus.OK
+  }
+
+  def "updateProduct - accessor signals NO_CONTENT when product is no longer available"() {
+    given:
+    def productId = "ID_1"
+    def product = new Product()
+    def mockResponse = new AccessorResponse<Product>().withStatus(PathResponseStatus.NO_CONTENT)
+
+    when:
+    doReturn(mockResponse).when(productGateway).update(productId, product)
+    def response = subject.updateProduct(productId, product)
+
+    then:
+    verify(productGateway).update(productId, product) || true
+    response.statusCode == HttpStatus.NO_CONTENT
+    response.body == null
+  }
+
+  def "updateProduct - product id not found still returns 404 even though NO_CONTENT exists"() {
+    given:
+    def productId = "ID_1"
+    def product = new Product()
+    def mockResponse = new AccessorResponse<Product>()
+
+    when:
+    doReturn(mockResponse).when(productGateway).update(productId, product)
+    def response = subject.updateProduct(productId, product)
+
+    then:
+    verify(productGateway).update(productId, product) || true
+    response.statusCode == HttpStatus.NOT_FOUND
+  }
+
+  def "getProduct - accessor-set OK status wins over non-empty challenges"() {
+    given:
+    def productId = "ID_1"
+    def mockResponse = new AccessorResponse<Product>().withResult(
+        new Product().tap {
+          challenges = [new Challenge()]
+        }
+        ).withStatus(PathResponseStatus.OK)
+
+    when:
+    doReturn(mockResponse).when(productGateway).get(productId)
+    def response = subject.getProduct(productId)
+
+    then:
+    verify(productGateway).get(productId) || true
+    response.statusCode == HttpStatus.OK
+  }
+
+  def "getProduct - accessor signals NO_CONTENT when product is no longer available"() {
+    given:
+    def productId = "ID_1"
+    def mockResponse = new AccessorResponse<Product>().withStatus(PathResponseStatus.NO_CONTENT)
+
+    when:
+    doReturn(mockResponse).when(productGateway).get(productId)
+    def response = subject.getProduct(productId)
+
+    then:
+    verify(productGateway).get(productId) || true
+    response.statusCode == HttpStatus.NO_CONTENT
+    response.body == null
   }
 }
