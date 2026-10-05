@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.4.3](https://github.com/mxenabled/path-mdx-model/compare/v23.4.2...v23.4.3) (2026-10-05)
+
+
+### Bug Fixes
+
+* pin spring to explicit version to avoid unstable milestone releases ([ec50979](https://github.com/mxenabled/path-mdx-model/commit/ec509793b577827cb4366ba7f20ad61c392c3add))
+
 ## [23.4.2](https://github.com/mxenabled/path-mdx-model/compare/v23.4.1...v23.4.2) (2026-10-05)
 
 
