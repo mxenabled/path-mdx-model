@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.4.2](https://github.com/mxenabled/path-mdx-model/compare/v23.4.1...v23.4.2) (2026-10-05)
+
+
+### Bug Fixes
+
+* bump transitive jackson deps and spring to resolve CVEs ([82e04da](https://github.com/mxenabled/path-mdx-model/commit/82e04dabee0383212d644bb4cdf3eed144096330))
+
 ## [23.4.1](https://github.com/mxenabled/path-mdx-model/compare/v23.4.0...v23.4.1) (2026-10-02)
 
 
