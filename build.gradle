@@ -27,7 +27,7 @@ subprojects {
 
   ext {
     pathCoreVersion = "[8.0,9.0)"
-    springVersion = "4.1.0"
+    springVersion = "[4.1,5.0)"
   }
 
   if (it.name != platformProject) {
