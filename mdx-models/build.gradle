@@ -6,7 +6,7 @@ coppuccino {
 
 dependencies {
   api "com.mx.path-core:gateway"
-  api "tools.jackson.dataformat:jackson-dataformat-xml:[3.1.4,4.0.0)"
+  api "tools.jackson.dataformat:jackson-dataformat-xml:[3.2.3,4.0.0)"
 
   implementation "commons-beanutils:commons-beanutils:1.11.0"
 }
