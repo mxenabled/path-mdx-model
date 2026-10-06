@@ -14,27 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 @RestController
 @RequestMapping(value = "{clientId}", produces = BaseController.MDX_MEDIA)
 public class RecurringTransfersController extends BaseController {
 
-  @SuppressWarnings({ "MagicNumber", "unchecked" })
   @RequestMapping(value = "/users/{userId}/recurring_transfers", method = RequestMethod.GET)
-  public final ResponseEntity<MdxList<RecurringTransfer>> list(RecurringTransferListQueryParameters queryParameters, HttpServletRequest request) {
+  public final ResponseEntity<MdxList<RecurringTransfer>> list(RecurringTransferListQueryParameters queryParameters) {
     RecurringTransferListOptions options = new RecurringTransferListOptions();
     options.setTransferType(queryParameters.getTransfer_type());
-    return (ResponseEntity<MdxList<RecurringTransfer>>) versioned(request)
-        .defaultVersion(MdxList.class, MdxList.class, recurringTransfers -> {
-          AccessorResponse<MdxList<RecurringTransfer>> response = gateway().transfers().recurring().list(options);
-          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
-        })
-        .version(20260427, MdxList.class, MdxList.class, recurringTransfers -> {
-          AccessorResponse<MdxList<RecurringTransfer>> response = gateway().transfers().recurring().list20260427(options);
-          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
-        })
-        .execute();
+    AccessorResponse<MdxList<RecurringTransfer>> response = gateway().transfers().recurring().list(options);
+    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/users/{userId}/recurring_transfers", method = RequestMethod.POST, consumes = MDX_MEDIA)
