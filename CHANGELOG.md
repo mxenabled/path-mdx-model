@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.4.4](https://github.com/mxenabled/path-mdx-model/compare/v23.4.3...v23.4.4) (2026-10-07)
+
+
+### Bug Fixes
+
+* removing 20260427 minor version from recurring transfers ([5b5c523](https://github.com/mxenabled/path-mdx-model/commit/5b5c5232e5570ac40717cc09c16cdb3e65d2f824))
+
 ## [23.4.3](https://github.com/mxenabled/path-mdx-model/compare/v23.4.2...v23.4.3) (2026-10-05)
 
 
