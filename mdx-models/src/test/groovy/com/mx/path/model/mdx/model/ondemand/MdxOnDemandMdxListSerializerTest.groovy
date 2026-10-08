@@ -136,7 +136,7 @@ class MdxOnDemandMdxListSerializerTest extends MockeryAndSessionRepository {
     given:
     subject = new MdxOnDemandMdxListSerializer(
         new MixinDefinition(Account, AccountXmlMixin)
-        )
+    )
 
     def transactions = new MdxList<Account>()
     transactions.add(new Account().tap {
