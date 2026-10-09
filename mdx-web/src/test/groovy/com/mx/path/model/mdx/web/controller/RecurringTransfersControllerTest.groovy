@@ -48,7 +48,7 @@ class RecurringTransfersControllerTest extends Specification implements WithMock
         new RecurringTransfer().tap {
           setChallenges(new MdxList<Challenge>().tap { add(new Challenge()) })
         }
-        )
+    )
 
     when:
     Mockito.doReturn(mockResponse).when(recurringTransferGateway).create(transfer)
@@ -147,7 +147,7 @@ class RecurringTransfersControllerTest extends Specification implements WithMock
         new RecurringTransfer().tap {
           setChallenges(new MdxList<Challenge>().tap { add(new Challenge()) })
         }
-        )
+    )
 
     when:
     Mockito.doReturn(mockResponse).when(recurringTransferGateway).update("id", transfer)

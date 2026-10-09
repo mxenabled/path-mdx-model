@@ -218,7 +218,7 @@ class ProfilesControllerTest extends Specification {
         new ChallengeQuestions().tap {
           setChallenges(new MdxList<Challenge>().tap { add(new Challenge()) })
         }
-        )
+    )
 
     doReturn(mockResponse).when(challengeQuestionGateway).update(any())
 
@@ -240,7 +240,7 @@ class ProfilesControllerTest extends Specification {
           setChallenges(new MdxList<Challenge>().tap { add(new Challenge()) })
           setQuestionList(new Challenge())
         }
-        )
+    )
 
     doReturn(mockResponse).when(securityQuestionGateway).update(any())
 

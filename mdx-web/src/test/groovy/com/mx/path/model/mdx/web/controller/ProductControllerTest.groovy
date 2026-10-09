@@ -81,7 +81,7 @@ class ProductControllerTest extends Specification {
         new Product().tap {
           challenges = [new Challenge()]
         }
-        )
+    )
 
     when:
     doReturn(mockResponse).when(productGateway).get(productId)
@@ -133,7 +133,7 @@ class ProductControllerTest extends Specification {
         new Product().tap {
           challenges = [new Challenge()]
         }
-        )
+    )
 
     when:
     doReturn(mockResponse).when(productGateway).update(productId, product)
@@ -169,7 +169,7 @@ class ProductControllerTest extends Specification {
         new Product().tap {
           challenges = [new Challenge()]
         }
-        ).withStatus(PathResponseStatus.OK)
+    ).withStatus(PathResponseStatus.OK)
 
     when:
     doReturn(mockResponse).when(productGateway).update(productId, product)
@@ -188,7 +188,7 @@ class ProductControllerTest extends Specification {
         new Product().tap {
           challenges = [new Challenge()]
         }
-        )
+    )
 
     when:
     doReturn(mockResponse).when(productGateway).update(productId, product)
@@ -252,7 +252,7 @@ class ProductControllerTest extends Specification {
         new Product().tap {
           challenges = [new Challenge()]
         }
-        ).withStatus(PathResponseStatus.OK)
+    ).withStatus(PathResponseStatus.OK)
 
     when:
     doReturn(mockResponse).when(productGateway).get(productId)
