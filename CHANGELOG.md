@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.5.0](https://github.com/mxenabled/path-mdx-model/compare/v23.4.4...v23.5.0) (2026-10-09)
+
+
+### Features
+
+* add account_type field to ProductSearch for Rev 6 account_type filtering | MC-16677 ([a6cd7d9](https://github.com/mxenabled/path-mdx-model/commit/a6cd7d9ec0b8626e9eabf95d296d30d620d999fd))
+
 ## [23.4.4](https://github.com/mxenabled/path-mdx-model/compare/v23.4.3...v23.4.4) (2026-10-07)
 
 
