@@ -69,4 +69,22 @@ public abstract class ProductBaseAccessor extends Accessor {
     throw new AccessorMethodNotImplementedException();
   }
 
+  /**
+   * Update a product - Version 20261014
+   *
+   * <p>Same request/response shape as {@link #update(String, Product)}; exists so
+   * accessors can serve different challenge content (e.g. clients whose challenge-widget
+   * rendering differs from the original consumer) based on client-sent API version, without
+   * affecting consumers that don't request this version.
+   *
+   * @param id
+   * @param product
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Update a product version 20261014")
+  public AccessorResponse<Product> update20261014(String id, Product product) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
 }
