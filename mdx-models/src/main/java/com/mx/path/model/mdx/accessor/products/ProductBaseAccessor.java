@@ -70,7 +70,7 @@ public abstract class ProductBaseAccessor extends Accessor {
   }
 
   /**
-   * Update a product - Version 20261014
+   * Update a product - Version 20260529
    *
    * <p>Same request/response shape as {@link #update(String, Product)}; exists so
    * accessors can serve different challenge content (e.g. clients whose challenge-widget
@@ -82,8 +82,8 @@ public abstract class ProductBaseAccessor extends Accessor {
    * @return
    */
   @GatewayAPI
-  @API(description = "Update a product version 20261014")
-  public AccessorResponse<Product> update20261014(String id, Product product) {
+  @API(description = "Update a product version 20260529")
+  public AccessorResponse<Product> update20260529(String id, Product product) {
     throw new AccessorMethodNotImplementedException();
   }
 

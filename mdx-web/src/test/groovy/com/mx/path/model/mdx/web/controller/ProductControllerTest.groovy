@@ -261,7 +261,7 @@ class ProductControllerTest extends Specification {
     response.statusCode == HttpStatus.NOT_FOUND
   }
 
-  def "updateProduct v20261014 interacts with gateway - dispatches to update20261014"() {
+  def "updateProduct v20260529 interacts with gateway - dispatches to update20260529"() {
     given:
     def productId = "ID_1"
     def product = new Product()
@@ -272,11 +272,11 @@ class ProductControllerTest extends Specification {
     )
 
     when:
-    doReturn(mockResponse).when(productGateway).update20261014(eq(productId), any(Product.class))
-    def response = subject.updateProduct(productId, buildRequest(product, "application/vnd.mx.mdx.v6+json;version=20261014"))
+    doReturn(mockResponse).when(productGateway).update20260529(eq(productId), any(Product.class))
+    def response = subject.updateProduct(productId, buildRequest(product, "application/vnd.mx.mdx.v6+json;version=20260529"))
 
     then:
-    verify(productGateway).update20261014(eq(productId), any(Product.class)) || true
+    verify(productGateway).update20260529(eq(productId), any(Product.class)) || true
     verify(productGateway, org.mockito.Mockito.never()).update(any(String.class), any(Product.class)) || true
     response.body == mockResponse.result
     response.statusCode == HttpStatus.ACCEPTED
@@ -294,7 +294,7 @@ class ProductControllerTest extends Specification {
 
     then:
     verify(productGateway).update(eq(productId), any(Product.class)) || true
-    verify(productGateway, org.mockito.Mockito.never()).update20261014(any(String.class), any(Product.class)) || true
+    verify(productGateway, org.mockito.Mockito.never()).update20260529(any(String.class), any(Product.class)) || true
     response.statusCode == HttpStatus.OK
   }
 

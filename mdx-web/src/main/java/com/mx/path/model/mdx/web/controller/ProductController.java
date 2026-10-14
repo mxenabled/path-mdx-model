@@ -43,9 +43,9 @@ public class ProductController extends BaseController {
           AccessorResponse<Product> response = gateway().products().update(productId, product);
           return buildResponse(response);
         })
-        .version(20261014, Product.class, Product.class, product -> {
+        .version(20260529, Product.class, Product.class, product -> {
           product.setId(productId);
-          AccessorResponse<Product> response = gateway().products().update20261014(productId, product);
+          AccessorResponse<Product> response = gateway().products().update20260529(productId, product);
           return buildResponse(response);
         })
         .execute();
