@@ -9,10 +9,11 @@ import com.mx.path.model.mdx.model.products.ProductSearch;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping(value = "{clientId}", produces = BaseController.MDX_MEDIA)
@@ -33,11 +34,21 @@ public class ProductController extends BaseController {
     return buildResponse(response);
   }
 
+  @SuppressWarnings("MagicNumber")
   @RequestMapping(value = "/users/{userId}/products/{productId}", method = RequestMethod.PUT)
-  public final ResponseEntity<Product> updateProduct(@PathVariable("productId") String productId, @RequestBody Product product) {
-    product.setId(productId);
-    AccessorResponse<Product> response = gateway().products().update(productId, product);
-    return buildResponse(response);
+  public final ResponseEntity<?> updateProduct(@PathVariable("productId") String productId, HttpServletRequest request) {
+    return versioned(request)
+        .defaultVersion(Product.class, Product.class, product -> {
+          product.setId(productId);
+          AccessorResponse<Product> response = gateway().products().update(productId, product);
+          return buildResponse(response);
+        })
+        .version(20261014, Product.class, Product.class, product -> {
+          product.setId(productId);
+          AccessorResponse<Product> response = gateway().products().update20261014(productId, product);
+          return buildResponse(response);
+        })
+        .execute();
   }
 
   private ResponseEntity<Product> buildResponse(AccessorResponse<Product> response) {

@@ -1,9 +1,14 @@
 package com.mx.path.model.mdx.web.controller
 
+import static org.mockito.ArgumentMatchers.any
+import static org.mockito.ArgumentMatchers.eq
 import static org.mockito.Mockito.doReturn
+import static org.mockito.Mockito.mock
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
+import static org.mockito.Mockito.when
 
+import com.google.gson.Gson
 import com.mx.path.core.common.accessor.PathResponseStatus
 import com.mx.path.gateway.accessor.AccessorResponse
 import com.mx.path.gateway.api.Gateway
@@ -17,11 +22,14 @@ import org.springframework.http.HttpStatus
 
 import spock.lang.Specification
 
+import jakarta.servlet.http.HttpServletRequest
+
 
 class ProductControllerTest extends Specification {
   ProductController subject
   Gateway gateway
   ProductGateway productGateway
+  Gson gson = new Gson()
 
   void setup() {
     subject = new ProductController()
@@ -36,6 +44,14 @@ class ProductControllerTest extends Specification {
 
   def cleanup() {
     BaseController.clearGateway()
+  }
+
+  def buildRequest(Object body, String contentType) {
+    HttpServletRequest request = mock(HttpServletRequest.class)
+    when(request.getReader()).thenReturn(new BufferedReader(new StringReader(gson.toJson(body))))
+    when(request.getHeaders("Content-Type")).thenReturn(Collections.enumeration([contentType]))
+    when(request.getHeaders("Accept")).thenReturn(Collections.enumeration([contentType]))
+    return request
   }
 
   def "listProducts interacts with gateway"() {
@@ -115,11 +131,11 @@ class ProductControllerTest extends Specification {
     def mockResponse = new AccessorResponse<Product>().withResult(new Product())
 
     when:
-    doReturn(mockResponse).when(productGateway).update(productId, product)
-    def response = subject.updateProduct(productId, product)
+    doReturn(mockResponse).when(productGateway).update(eq(productId), any(Product.class))
+    def response = subject.updateProduct(productId, buildRequest(product, "application/vnd.mx.mdx.v6+json"))
 
     then:
-    verify(productGateway).update(productId, product) || true
+    verify(productGateway).update(eq(productId), any(Product.class)) || true
     response.body == mockResponse.result
     response.body.wrapped
     response.statusCode == HttpStatus.OK
@@ -136,11 +152,11 @@ class ProductControllerTest extends Specification {
     )
 
     when:
-    doReturn(mockResponse).when(productGateway).update(productId, product)
-    def response = subject.updateProduct(productId, product)
+    doReturn(mockResponse).when(productGateway).update(eq(productId), any(Product.class))
+    def response = subject.updateProduct(productId, buildRequest(product, "application/vnd.mx.mdx.v6+json"))
 
     then:
-    verify(productGateway).update(productId, product) || true
+    verify(productGateway).update(eq(productId), any(Product.class)) || true
     response.body == mockResponse.result
     response.body.wrapped
     response.statusCode == HttpStatus.ACCEPTED
@@ -153,11 +169,11 @@ class ProductControllerTest extends Specification {
     def mockResponse = new AccessorResponse<Product>()
 
     when:
-    doReturn(mockResponse).when(productGateway).update(productId, product)
-    def response = subject.updateProduct(productId, product)
+    doReturn(mockResponse).when(productGateway).update(eq(productId), any(Product.class))
+    def response = subject.updateProduct(productId, buildRequest(product, "application/vnd.mx.mdx.v6+json"))
 
     then:
-    verify(productGateway).update(productId, product) || true
+    verify(productGateway).update(eq(productId), any(Product.class)) || true
     response.statusCode == HttpStatus.NOT_FOUND
   }
 
@@ -172,11 +188,11 @@ class ProductControllerTest extends Specification {
     ).withStatus(PathResponseStatus.OK)
 
     when:
-    doReturn(mockResponse).when(productGateway).update(productId, product)
-    def response = subject.updateProduct(productId, product)
+    doReturn(mockResponse).when(productGateway).update(eq(productId), any(Product.class))
+    def response = subject.updateProduct(productId, buildRequest(product, "application/vnd.mx.mdx.v6+json"))
 
     then:
-    verify(productGateway).update(productId, product) || true
+    verify(productGateway).update(eq(productId), any(Product.class)) || true
     response.statusCode == HttpStatus.OK
   }
 
@@ -191,11 +207,11 @@ class ProductControllerTest extends Specification {
     )
 
     when:
-    doReturn(mockResponse).when(productGateway).update(productId, product)
-    def response = subject.updateProduct(productId, product)
+    doReturn(mockResponse).when(productGateway).update(eq(productId), any(Product.class))
+    def response = subject.updateProduct(productId, buildRequest(product, "application/vnd.mx.mdx.v6+json"))
 
     then:
-    verify(productGateway).update(productId, product) || true
+    verify(productGateway).update(eq(productId), any(Product.class)) || true
     response.statusCode == HttpStatus.ACCEPTED
   }
 
@@ -206,11 +222,11 @@ class ProductControllerTest extends Specification {
     def mockResponse = new AccessorResponse<Product>().withResult(new Product())
 
     when:
-    doReturn(mockResponse).when(productGateway).update(productId, product)
-    def response = subject.updateProduct(productId, product)
+    doReturn(mockResponse).when(productGateway).update(eq(productId), any(Product.class))
+    def response = subject.updateProduct(productId, buildRequest(product, "application/vnd.mx.mdx.v6+json"))
 
     then:
-    verify(productGateway).update(productId, product) || true
+    verify(productGateway).update(eq(productId), any(Product.class)) || true
     response.statusCode == HttpStatus.OK
   }
 
@@ -221,11 +237,11 @@ class ProductControllerTest extends Specification {
     def mockResponse = new AccessorResponse<Product>().withStatus(PathResponseStatus.NO_CONTENT)
 
     when:
-    doReturn(mockResponse).when(productGateway).update(productId, product)
-    def response = subject.updateProduct(productId, product)
+    doReturn(mockResponse).when(productGateway).update(eq(productId), any(Product.class))
+    def response = subject.updateProduct(productId, buildRequest(product, "application/vnd.mx.mdx.v6+json"))
 
     then:
-    verify(productGateway).update(productId, product) || true
+    verify(productGateway).update(eq(productId), any(Product.class)) || true
     response.statusCode == HttpStatus.NO_CONTENT
     response.body == null
   }
@@ -237,12 +253,49 @@ class ProductControllerTest extends Specification {
     def mockResponse = new AccessorResponse<Product>()
 
     when:
-    doReturn(mockResponse).when(productGateway).update(productId, product)
-    def response = subject.updateProduct(productId, product)
+    doReturn(mockResponse).when(productGateway).update(eq(productId), any(Product.class))
+    def response = subject.updateProduct(productId, buildRequest(product, "application/vnd.mx.mdx.v6+json"))
 
     then:
-    verify(productGateway).update(productId, product) || true
+    verify(productGateway).update(eq(productId), any(Product.class)) || true
     response.statusCode == HttpStatus.NOT_FOUND
+  }
+
+  def "updateProduct v20261014 interacts with gateway - dispatches to update20261014"() {
+    given:
+    def productId = "ID_1"
+    def product = new Product()
+    def mockResponse = new AccessorResponse<Product>().withResult(
+        new Product().tap {
+          challenges = [new Challenge()]
+        }
+    )
+
+    when:
+    doReturn(mockResponse).when(productGateway).update20261014(eq(productId), any(Product.class))
+    def response = subject.updateProduct(productId, buildRequest(product, "application/vnd.mx.mdx.v6+json;version=20261014"))
+
+    then:
+    verify(productGateway).update20261014(eq(productId), any(Product.class)) || true
+    verify(productGateway, org.mockito.Mockito.never()).update(any(String.class), any(Product.class)) || true
+    response.body == mockResponse.result
+    response.statusCode == HttpStatus.ACCEPTED
+  }
+
+  def "updateProduct without version header still dispatches to default update (unaffected by new version)"() {
+    given:
+    def productId = "ID_1"
+    def product = new Product()
+    def mockResponse = new AccessorResponse<Product>().withResult(new Product())
+
+    when:
+    doReturn(mockResponse).when(productGateway).update(eq(productId), any(Product.class))
+    def response = subject.updateProduct(productId, buildRequest(product, "application/vnd.mx.mdx.v6+json"))
+
+    then:
+    verify(productGateway).update(eq(productId), any(Product.class)) || true
+    verify(productGateway, org.mockito.Mockito.never()).update20261014(any(String.class), any(Product.class)) || true
+    response.statusCode == HttpStatus.OK
   }
 
   def "getProduct - accessor-set OK status wins over non-empty challenges"() {

@@ -27,4 +27,9 @@ class ProductBaseAccessorTest extends Specification {
     when: subject.update("id", null)
     then: thrown(AccessorMethodNotImplementedException)
   }
+
+  def "update20261014 throws"() {
+    when: subject.update20261014("id", null)
+    then: thrown(AccessorMethodNotImplementedException)
+  }
 }
