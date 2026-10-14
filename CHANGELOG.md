@@ -5,6 +5,18 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.6.0](https://github.com/mxenabled/path-mdx-model/compare/v23.5.0...v23.6.0) (2026-10-14)
+
+
+### Features
+
+* add Product update version 20261014 for client-specific challenge rendering | MC-16843 ([33e15a1](https://github.com/mxenabled/path-mdx-model/commit/33e15a119c8ca609889bc6c1608c079c82e4c3eb))
+
+
+### Bug Fixes
+
+* use version 20260529 instead of 20261014 | MC-16843 ([165cef7](https://github.com/mxenabled/path-mdx-model/commit/165cef74e63ca079558f26eb3170df4908d81df9))
+
 ## [23.5.0](https://github.com/mxenabled/path-mdx-model/compare/v23.4.4...v23.5.0) (2026-10-09)
 
 
