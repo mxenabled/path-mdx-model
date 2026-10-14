@@ -28,8 +28,8 @@ class ProductBaseAccessorTest extends Specification {
     then: thrown(AccessorMethodNotImplementedException)
   }
 
-  def "update20261014 throws"() {
-    when: subject.update20261014("id", null)
+  def "update20260529 throws"() {
+    when: subject.update20260529("id", null)
     then: thrown(AccessorMethodNotImplementedException)
   }
 }
