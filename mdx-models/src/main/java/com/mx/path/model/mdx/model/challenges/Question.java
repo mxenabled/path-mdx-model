@@ -16,6 +16,7 @@ public final class Question extends MdxBase<Question> {
   private String prompt;
   private String promptType;
   private String info;
+  private String label;
   private List<Option> options;
   private String answer;
   private String errorMessage;
