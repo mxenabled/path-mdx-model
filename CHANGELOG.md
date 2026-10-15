@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.7.0](https://github.com/mxenabled/path-mdx-model/compare/v23.6.0...v23.7.0) (2026-10-15)
+
+
+### Features
+
+* add label field to Question for version 20260529 INFO rendering ([22ab2b8](https://github.com/mxenabled/path-mdx-model/commit/22ab2b8bc4153dd8626691b3a1ca3f7440a5a1ac))
+
 ## [23.6.0](https://github.com/mxenabled/path-mdx-model/compare/v23.5.0...v23.6.0) (2026-10-14)
 
 
