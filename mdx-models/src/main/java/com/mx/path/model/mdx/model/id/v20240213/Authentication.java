@@ -31,6 +31,7 @@ public class Authentication extends MdxBase<Authentication> {
   private DeviceRegistration deviceRegistration;
   private Integer deviceWidth;
   private String id;
+  private String idToken;
   @SerializedName("device_iovation_token")
   private String iovationToken;
   private String login;
