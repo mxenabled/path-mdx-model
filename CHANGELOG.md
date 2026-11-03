@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.7.2](https://github.com/mxenabled/path-mdx-model/compare/v23.7.1...v23.7.2) (2026-11-03)
+
+
+### Bug Fixes
+
+* code changes to add IdToken in the new version of Authentication payload ([3ec3630](https://github.com/mxenabled/path-mdx-model/commit/3ec3630ce4791c74177ad8c433d4b3106bc7ba13))
+
 ## [23.7.1](https://github.com/mxenabled/path-mdx-model/compare/v23.7.0...v23.7.1) (2026-11-03)
 
 
