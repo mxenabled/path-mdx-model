@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.7.1](https://github.com/mxenabled/path-mdx-model/compare/v23.7.0...v23.7.1) (2026-11-03)
+
+
+### Bug Fixes
+
+* **mdx-web:** update spring boot to resolve CVEs ([22f8787](https://github.com/mxenabled/path-mdx-model/commit/22f8787230535989dc2c735bbfacfb3a29611138))
+
 ## [23.7.0](https://github.com/mxenabled/path-mdx-model/compare/v23.6.0...v23.7.0) (2026-10-15)
 
 
