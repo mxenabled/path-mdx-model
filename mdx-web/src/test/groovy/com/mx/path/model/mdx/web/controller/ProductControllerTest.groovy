@@ -4,6 +4,7 @@ import static org.mockito.ArgumentMatchers.any
 import static org.mockito.ArgumentMatchers.eq
 import static org.mockito.Mockito.doReturn
 import static org.mockito.Mockito.mock
+import static org.mockito.Mockito.never
 import static org.mockito.Mockito.spy
 import static org.mockito.Mockito.verify
 import static org.mockito.Mockito.when
@@ -277,7 +278,7 @@ class ProductControllerTest extends Specification {
 
     then:
     verify(productGateway).update20260529(eq(productId), any(Product.class)) || true
-    verify(productGateway, org.mockito.Mockito.never()).update(any(String.class), any(Product.class)) || true
+    verify(productGateway, never()).update(any(String.class), any(Product.class)) || true
     response.body == mockResponse.result
     response.statusCode == HttpStatus.ACCEPTED
   }
@@ -294,7 +295,7 @@ class ProductControllerTest extends Specification {
 
     then:
     verify(productGateway).update(eq(productId), any(Product.class)) || true
-    verify(productGateway, org.mockito.Mockito.never()).update20260529(any(String.class), any(Product.class)) || true
+    verify(productGateway, never()).update20260529(any(String.class), any(Product.class)) || true
     response.statusCode == HttpStatus.OK
   }
 
@@ -346,7 +347,7 @@ class ProductControllerTest extends Specification {
 
     then:
     verify(productGateway).list20260529(search) || true
-    verify(productGateway, org.mockito.Mockito.never()).list(any(ProductSearch.class)) || true
+    verify(productGateway, never()).list(any(ProductSearch.class)) || true
     response.body == mockResponse.result
     response.body.wrapped
     response.statusCode == HttpStatus.OK
@@ -364,7 +365,7 @@ class ProductControllerTest extends Specification {
 
     then:
     verify(productGateway).list(search) || true
-    verify(productGateway, org.mockito.Mockito.never()).list20260529(any(ProductSearch.class)) || true
+    verify(productGateway, never()).list20260529(any(ProductSearch.class)) || true
     response.statusCode == HttpStatus.OK
   }
 
@@ -383,7 +384,7 @@ class ProductControllerTest extends Specification {
 
     then:
     verify(productGateway).get20260529(productId) || true
-    verify(productGateway, org.mockito.Mockito.never()).get(any(String.class)) || true
+    verify(productGateway, never()).get(any(String.class)) || true
     response.body == mockResponse.result
     response.body.wrapped
     response.statusCode == HttpStatus.ACCEPTED
@@ -430,7 +431,7 @@ class ProductControllerTest extends Specification {
 
     then:
     verify(productGateway).get(productId) || true
-    verify(productGateway, org.mockito.Mockito.never()).get20260529(any(String.class)) || true
+    verify(productGateway, never()).get20260529(any(String.class)) || true
     response.statusCode == HttpStatus.OK
   }
 }
