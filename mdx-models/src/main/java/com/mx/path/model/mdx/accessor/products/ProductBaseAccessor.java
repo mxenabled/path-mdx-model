@@ -45,6 +45,22 @@ public abstract class ProductBaseAccessor extends Accessor {
   }
 
   /**
+   * List all products - Version 20260529
+   *
+   * <p>Same request/response shape as {@link #list(ProductSearch)}; exists so accessors can serve
+   * different content based on client-sent API version, without affecting consumers that don't
+   * request this version.
+   *
+   * @param productSearch
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "List all products version 20260529")
+  public AccessorResponse<MdxList<Product>> list20260529(ProductSearch productSearch) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
    * Retrieve a product
    *
    * @param id
@@ -53,6 +69,22 @@ public abstract class ProductBaseAccessor extends Accessor {
   @GatewayAPI
   @API(description = "Retrieve a product")
   public AccessorResponse<Product> get(String id) {
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Retrieve a product - Version 20260529
+   *
+   * <p>Same request/response shape as {@link #get(String)}; exists so accessors can serve
+   * different content based on client-sent API version, without affecting consumers that don't
+   * request this version.
+   *
+   * @param id
+   * @return
+   */
+  @GatewayAPI
+  @API(description = "Retrieve a product version 20260529")
+  public AccessorResponse<Product> get20260529(String id) {
     throw new AccessorMethodNotImplementedException();
   }
 

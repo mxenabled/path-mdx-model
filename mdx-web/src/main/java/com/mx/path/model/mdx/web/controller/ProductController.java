@@ -22,16 +22,34 @@ public class ProductController extends BaseController {
   public ProductController() {
   }
 
+  @SuppressWarnings({ "MagicNumber", "unchecked" })
   @RequestMapping(value = "/users/{userId}/products", method = RequestMethod.GET)
-  public final ResponseEntity<MdxList<Product>> listProducts(ProductSearch productSearch) {
-    AccessorResponse<MdxList<Product>> response = gateway().products().list(productSearch);
-    return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+  public final ResponseEntity<MdxList<Product>> listProducts(ProductSearch productSearch, HttpServletRequest request) {
+    return (ResponseEntity<MdxList<Product>>) versioned(request)
+        .defaultVersion(MdxList.class, MdxList.class, products -> {
+          AccessorResponse<MdxList<Product>> response = gateway().products().list(productSearch);
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+        })
+        .version(20260529, MdxList.class, MdxList.class, products -> {
+          AccessorResponse<MdxList<Product>> response = gateway().products().list20260529(productSearch);
+          return new ResponseEntity<>(response.getResult().wrapped(), createMultiMapForResponse(response.getHeaders()), HttpStatus.OK);
+        })
+        .execute();
   }
 
+  @SuppressWarnings("MagicNumber")
   @RequestMapping(value = "/users/{userId}/products/{productId}", method = RequestMethod.GET)
-  public final ResponseEntity<Product> getProduct(@PathVariable("productId") String productId) {
-    AccessorResponse<Product> response = gateway().products().get(productId);
-    return buildResponse(response);
+  public final ResponseEntity<?> getProduct(@PathVariable("productId") String productId, HttpServletRequest request) {
+    return versioned(request)
+        .defaultVersion(Product.class, Product.class, product -> {
+          AccessorResponse<Product> response = gateway().products().get(productId);
+          return buildResponse(response);
+        })
+        .version(20260529, Product.class, Product.class, product -> {
+          AccessorResponse<Product> response = gateway().products().get20260529(productId);
+          return buildResponse(response);
+        })
+        .execute();
   }
 
   @SuppressWarnings("MagicNumber")
