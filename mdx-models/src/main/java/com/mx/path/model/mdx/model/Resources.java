@@ -35,6 +35,9 @@ import com.mx.path.model.mdx.model.dispute.Dispute;
 import com.mx.path.model.mdx.model.dispute.DisputedTransaction;
 import com.mx.path.model.mdx.model.documents.DeliveryPreferences;
 import com.mx.path.model.mdx.model.documents.Document;
+import com.mx.path.model.mdx.model.external_transfer.ExternalAccount;
+import com.mx.path.model.mdx.model.external_transfer.ExternalTransfer;
+import com.mx.path.model.mdx.model.external_transfer.RecurringExternalTransfer;
 import com.mx.path.model.mdx.model.id.Authentication;
 import com.mx.path.model.mdx.model.id.ForgotUsername;
 import com.mx.path.model.mdx.model.id.MfaChallenge;
@@ -281,6 +284,9 @@ public class Resources {
     registerProfileModelClasses(builder);
     // Register ACH Transfer related models
     registerAchTransfersModels(builder);
+
+    // Register External Transfer related models
+    registerExternalTransfersModels(builder);
     // Register Dispute related models
     registerDisputesModels(builder);
     // Register Payment related models
@@ -376,6 +382,20 @@ public class Resources {
     builder.registerTypeAdapter(AchAccount.class, new ModelWrappableSerializer("ach_account"));
     builder.registerTypeAdapter(new TypeToken<MdxList<AchAccount>>() {
     }.getType(), new ModelWrappableSerializer("ach_accounts"));
+  }
+
+  private static void registerExternalTransfersModels(GsonBuilder builder) {
+    builder.registerTypeAdapter(ExternalTransfer.class, new ModelWrappableSerializer("external_transfer"));
+    builder.registerTypeAdapter(new TypeToken<MdxList<ExternalTransfer>>() {
+    }.getType(), new ModelWrappableSerializer("external_transfers"));
+
+    builder.registerTypeAdapter(RecurringExternalTransfer.class, new ModelWrappableSerializer("recurring_external_transfer"));
+    builder.registerTypeAdapter(new TypeToken<MdxList<RecurringExternalTransfer>>() {
+    }.getType(), new ModelWrappableSerializer("recurring_external_transfers"));
+
+    builder.registerTypeAdapter(ExternalAccount.class, new ModelWrappableSerializer("external_account"));
+    builder.registerTypeAdapter(new TypeToken<MdxList<ExternalAccount>>() {
+    }.getType(), new ModelWrappableSerializer("external_accounts"));
   }
 
   private static void registerDisputesModels(GsonBuilder builder) {
