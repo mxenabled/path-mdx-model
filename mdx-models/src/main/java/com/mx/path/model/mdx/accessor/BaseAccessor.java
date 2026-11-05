@@ -16,6 +16,7 @@ import com.mx.path.model.mdx.accessor.credit_report.CreditReportBaseAccessor;
 import com.mx.path.model.mdx.accessor.cross_account_transfer.CrossAccountTransferBaseAccessor;
 import com.mx.path.model.mdx.accessor.device.DeviceBaseAccessor;
 import com.mx.path.model.mdx.accessor.document.DocumentBaseAccessor;
+import com.mx.path.model.mdx.accessor.external_transfer.ExternalTransferBaseAccessor;
 import com.mx.path.model.mdx.accessor.id.IdBaseAccessor;
 import com.mx.path.model.mdx.accessor.location.LocationBaseAccessor;
 import com.mx.path.model.mdx.accessor.managed_card.ManagedCardBaseAccessor;
@@ -58,6 +59,10 @@ public abstract class BaseAccessor extends Accessor {
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
   private DocumentBaseAccessor documents;
+
+  @GatewayAPI
+  @Getter(AccessLevel.PROTECTED)
+  private ExternalTransferBaseAccessor externalTransfers;
 
   @GatewayAPI
   @Getter(AccessLevel.PROTECTED)
@@ -127,7 +132,10 @@ public abstract class BaseAccessor extends Accessor {
    * Accessor for ACH transfer operations
    *
    * @return accessor
+   * @deprecated MDX ACH Transfer is superseded by MDX External Transfer. Use {@link #externalTransfers()} for new
+   * implementations.
    */
+  @Deprecated
   @API
   public AchTransferBaseAccessor achTransfers() {
     if (achTransfers != null) {
@@ -260,6 +268,29 @@ public abstract class BaseAccessor extends Accessor {
    */
   public void setDocuments(DocumentBaseAccessor documents) {
     this.documents = documents;
+  }
+
+  /**
+   * Accessor for external transfer operations
+   *
+   * @return accessor
+   */
+  @API
+  public ExternalTransferBaseAccessor externalTransfers() {
+    if (externalTransfers != null) {
+      return externalTransfers;
+    }
+
+    throw new AccessorMethodNotImplementedException();
+  }
+
+  /**
+   * Set external transfers accessor
+   *
+   * @param externalTransfers
+   */
+  public void setExternalTransfers(ExternalTransferBaseAccessor externalTransfers) {
+    this.externalTransfers = externalTransfers;
   }
 
   /**

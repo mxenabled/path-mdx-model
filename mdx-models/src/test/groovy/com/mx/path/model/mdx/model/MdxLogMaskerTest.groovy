@@ -217,6 +217,21 @@ class MdxLogMaskerTest extends Specification {
   }
 
   @Unroll
+  def "maskPayload() masks ExternalTransfer JSON fields"() {
+    when:
+    String result = MdxLogMasker.maskPayload(payload)
+
+    then:
+    result == expectedResult
+
+    where:
+    payload || expectedResult
+    "\"external_account_id\":\"EXTERNAL-ACCOUNT-1\"" || "\"external_account_id\":\"**MASKED**\""
+    "\"from_external_account_id\":\"EXTERNAL-ACCOUNT-1\"" || "\"from_external_account_id\":\"**MASKED**\""
+    "\"to_external_account_id\":\"EXTERNAL-ACCOUNT-2\"" || "\"to_external_account_id\":\"**MASKED**\""
+  }
+
+  @Unroll
   def "maskPayload() masks Authorization JSON fields"() {
     when:
     String result = MdxLogMasker.maskPayload(payload)
