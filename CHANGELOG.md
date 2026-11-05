@@ -5,6 +5,13 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.8.0](https://github.com/mxenabled/path-mdx-model/compare/v23.7.2...v23.8.0) (2026-11-05)
+
+
+### Features
+
+* add versioned endpoints for list and get products ([d3b9c1a](https://github.com/mxenabled/path-mdx-model/commit/d3b9c1a4d3458d652649d6d41a4c3c90d6f2d643))
+
 ## [23.7.2](https://github.com/mxenabled/path-mdx-model/compare/v23.7.1...v23.7.2) (2026-11-03)
 
 
