@@ -18,6 +18,16 @@ class ProductBaseAccessorTest extends Specification {
     then: thrown(AccessorMethodNotImplementedException)
   }
 
+  def "list20260529 throws"() {
+    when: subject.list20260529(null)
+    then: thrown(AccessorMethodNotImplementedException)
+  }
+
+  def "get20260529 throws"() {
+    when: subject.get20260529("id")
+    then: thrown(AccessorMethodNotImplementedException)
+  }
+
   def "get throws"() {
     when: subject.get("id")
     then: thrown(AccessorMethodNotImplementedException)
