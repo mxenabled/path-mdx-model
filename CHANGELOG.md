@@ -5,6 +5,18 @@
 
 * remove old term repository from base controller ([5402532](https://github.com/mxenabled/path-mdx-model/commit/5402532342b9c6b94f3c921ad025cc2b625a3b95))
 
+## [23.9.0](https://github.com/mxenabled/path-mdx-model/compare/v23.8.0...v23.9.0) (2026-11-09)
+
+
+### Features
+
+* add MDX External Transfer models, accessors, and controllers ([5b3480a](https://github.com/mxenabled/path-mdx-model/commit/5b3480ab0242493fd0e78acd91a4ea79fd8041d3))
+
+
+### Bug Fixes
+
+* throw when external transfer sub-accessors are not set ([9a346fb](https://github.com/mxenabled/path-mdx-model/commit/9a346fb8833c202d8f3b299ac910bf58f4e9d647))
+
 ## [23.8.0](https://github.com/mxenabled/path-mdx-model/compare/v23.7.2...v23.8.0) (2026-11-05)
 
 
