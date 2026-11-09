@@ -41,7 +41,6 @@ public class MdxLogMasker {
   private static void registerPayloadPatterns() {
     buildAccountPayloadPatterns();
     buildAchTransferPayloadPatterns();
-    buildExternalTransferPayloadPatterns();
     buildAuthorizationPayloadPatterns();
     buildChallengesPayloadPatterns();
     buildCheckPayloadPatterns();
@@ -50,6 +49,7 @@ public class MdxLogMasker {
     buildDevicePayloadPatterns();
     buildDisputePayloadPatterns();
     buildDocumentPayloadPatterns();
+    buildExternalTransferPayloadPatterns();
     buildIdentificationPayloadPatterns();
     buildManagedCardsPayloadPatterns();
     buildOriginationPayloadPatterns();
@@ -116,15 +116,6 @@ public class MdxLogMasker {
     MDX_PAYLOAD_REGEX.add(xmlElementRegex("description"));
     MDX_PAYLOAD_REGEX.add(xmlElementRegex("id"));
     MDX_PAYLOAD_REGEX.add(xmlElementRegex("memo"));
-  }
-
-  private static void buildExternalTransferPayloadPatterns() {
-    // ExternalAccount - https://developer.mx.com/drafts/mdx/external_transfer/#accounts-external-account-fields
-    MDX_PAYLOAD_REGEX.add(LogValueRegex.jsonString("external_account_id"));
-
-    // ExternalTransfer, RecurringExternalTransfer - https://developer.mx.com/drafts/mdx/external_transfer/#external-transfers
-    MDX_PAYLOAD_REGEX.add(LogValueRegex.jsonString("from_external_account_id"));
-    MDX_PAYLOAD_REGEX.add(LogValueRegex.jsonString("to_external_account_id"));
   }
 
   private static void buildAchTransferPayloadPatterns() {
@@ -236,6 +227,15 @@ public class MdxLogMasker {
 
     // DocumentSearch - https://developer.mx.com/drafts/mdx/documents/index.html#documents-list-documents
     MDX_PAYLOAD_REGEX.add(LogValueRegex.jsonString("account_id"));
+  }
+
+  private static void buildExternalTransferPayloadPatterns() {
+    // ExternalAccount - https://developer.mx.com/drafts/mdx/external_transfer/#accounts-external-account-fields
+    MDX_PAYLOAD_REGEX.add(LogValueRegex.jsonString("external_account_id"));
+
+    // ExternalTransfer, RecurringExternalTransfer - https://developer.mx.com/drafts/mdx/external_transfer/#external-transfers
+    MDX_PAYLOAD_REGEX.add(LogValueRegex.jsonString("from_external_account_id"));
+    MDX_PAYLOAD_REGEX.add(LogValueRegex.jsonString("to_external_account_id"));
   }
 
   private static void buildIdentificationPayloadPatterns() {

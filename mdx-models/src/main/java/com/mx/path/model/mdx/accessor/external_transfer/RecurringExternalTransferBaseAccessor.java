@@ -92,7 +92,11 @@ public class RecurringExternalTransferBaseAccessor extends Accessor {
    */
   @API
   public FrequencyBaseAccessor frequencies() {
-    return frequencies;
+    if (frequencies != null) {
+      return frequencies;
+    }
+
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**

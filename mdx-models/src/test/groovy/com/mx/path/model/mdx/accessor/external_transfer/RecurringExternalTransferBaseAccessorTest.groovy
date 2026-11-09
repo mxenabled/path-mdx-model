@@ -38,8 +38,9 @@ class RecurringExternalTransferBaseAccessorTest extends Specification {
     then: thrown(AccessorMethodNotImplementedException)
   }
 
-  def "frequencies returns null when not set"() {
-    expect: subject.frequencies() == null
+  def "frequencies throws when not set"() {
+    when: subject.frequencies()
+    then: thrown(AccessorMethodNotImplementedException)
   }
 
   def "frequencies returns when set"() {
