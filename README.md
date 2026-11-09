@@ -1,3 +1,5 @@
+> **This repository is no longer maintained.** Development has moved to GitLab: [mxtechnologies/mx/experiences/path/path-mdx-model](https://gitlab.com/mxtechnologies/mx/experiences/path/path-mdx-model). This repo is archived and kept read-only for historical reference (release history prior to the migration). New releases are published from the GitLab repo to MX's internal Artifactory, not Maven Central.
+
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.mx.path-mdx-model/mdx-models/badge.svg)](https://search.maven.org/search?q=com.mx.path-mdx-model)
 ![img](https://img.shields.io/badge/semver-2.0.0-green)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
