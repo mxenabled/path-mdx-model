@@ -38,11 +38,19 @@ class ExternalTransferBaseAccessorTest extends Specification {
     then: thrown(AccessorMethodNotImplementedException)
   }
 
-  def "child accessors return null when not set"() {
-    expect:
-    subject.accounts() == null
-    subject.externalAccounts() == null
-    subject.recurring() == null
+  def "accounts throws when not set"() {
+    when: subject.accounts()
+    then: thrown(AccessorMethodNotImplementedException)
+  }
+
+  def "externalAccounts throws when not set"() {
+    when: subject.externalAccounts()
+    then: thrown(AccessorMethodNotImplementedException)
+  }
+
+  def "recurring throws when not set"() {
+    when: subject.recurring()
+    then: thrown(AccessorMethodNotImplementedException)
   }
 
   def "child accessors return when set"() {

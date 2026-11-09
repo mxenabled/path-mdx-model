@@ -101,7 +101,11 @@ public class ExternalTransferBaseAccessor extends Accessor {
    */
   @API
   public AccountBaseAccessor accounts() {
-    return accounts;
+    if (accounts != null) {
+      return accounts;
+    }
+
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -120,7 +124,11 @@ public class ExternalTransferBaseAccessor extends Accessor {
    */
   @API
   public ExternalAccountBaseAccessor externalAccounts() {
-    return externalAccounts;
+    if (externalAccounts != null) {
+      return externalAccounts;
+    }
+
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
@@ -139,7 +147,11 @@ public class ExternalTransferBaseAccessor extends Accessor {
    */
   @API
   public RecurringExternalTransferBaseAccessor recurring() {
-    return recurring;
+    if (recurring != null) {
+      return recurring;
+    }
+
+    throw new AccessorMethodNotImplementedException();
   }
 
   /**
